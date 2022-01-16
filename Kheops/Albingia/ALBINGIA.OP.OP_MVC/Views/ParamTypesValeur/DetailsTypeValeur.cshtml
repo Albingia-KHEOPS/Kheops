@@ -1,0 +1,90 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamTypesValeur.ModeleDetailsTypeValeur
+@Html.HiddenNoName("modeSaisie", Model.ModeSaisie)
+@Html.HiddenNoName("idTypeValeurCompSuppr", string.Empty)
+@Html.HiddenNoName("idLigneVide", Model.LigneVideTypesValeur.Code)
+@Html.HiddenNoName("selectedRowTypeValComp", string.Empty)
+<div class="GroupTitle">
+    Création/Modification type valeur
+</div>
+<div class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Code*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AdditionalParam == "**" || Model.AdditionalParam == "30")
+                    {
+                        <input id="codeTypeValeurEdit" class="DoubleInput @(Model.ModeSaisie == "Update" ? "readonly" : string.Empty)" albRegExp="codeRegExp" value="@Model.CodeTypeValeur" readonly="@(Model.ModeSaisie == "Update" )" maxlength="5"/>
+                    }
+                    else
+                    {
+                        <input id="codeTypeValeurEdit" class="DoubleInput readonly" value="@Model.CodeTypeValeur" readonly="readonly"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Description*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AdditionalParam == "**" || Model.AdditionalParam == "30" || Model.AdditionalParam == "20")
+                    {
+                        <input id="descriptionTypeValeurEdit" class="DoubleInput" value="@Model.DescriptionTypeValeur" maxlength="40"/>
+                    }
+                    else
+                    {
+                        <input id="descriptionTypeValeurEdit" class="DoubleInput readonly" value="@Model.DescriptionTypeValeur" readonly="readonly"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="Validation">
+            <div id="divbtnEnregistrer" class="FloatRight">
+                <button id="btnEnregistrer" type="button" albshortcut="true" data-accesskey="e"><u>E</u>nregistrer</button>
+            </div>
+        </div>
+        <div class="HeightSmallRow"></div>
+        <div id="divLstTypeCompValeur">
+            <div id="divTypeValeurCompHeader">
+                <table id="tblTypeValeurCompHeader">
+                    <tr>
+                        <th class="col_HType tablePersoHead">Types de valeurs compatibles
+                        </th>
+                        <th class="col_HAction tablePersoHead">
+                            @if (Model.AdditionalParam == "**" || Model.AdditionalParam == "30")
+                            {
+                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouterTypeValeurComp" />
+                            }
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divTypeValeurCompLigneVide">
+                <table id="tblTypeValeurCompLigneVide" class="trHeight">
+                    <tr>
+                        <td class="col_Type">
+                            <div class="col_Type paddingEdition" name="divEdition_@(Model.LigneVideTypesValeur.Code)">
+                                @Html.AlbDropDownListFor(m => Model.LigneVideTypesValeur.Code, Model.LigneVideTypesValeur.ListeTypesCompatibles, "dvAction", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlType_" + Model.LigneVideTypesValeur.Code, @class = "col_BType" })
+                            </div>
+                        </td>
+                        <td class="col_Action">
+                            <div class="col_BAction  paddingEdition" name="divEdition_@(Model.LigneVideTypesValeur.Code)">
+                                <img src="@Url.Content("/Content/Images/Save_16.png")" id="@("btnEnregistrerTypeValComp_" + @Model.LigneVideTypesValeur.Code)" alt="Enregistrer" title="Enregistrer" class="Action CursorPointer" name="btnEnregistrerTypeValComp"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divTypeValeurCompBody" class="divHeightTypeCompatible">
+                @if (Model.ListeTypesValeurCompatible != null)
+                {
+                    @Html.Partial("ListeTypesValeurCompatibles", Model.ListeTypesValeurCompatible)
+                }
+            </div>
+        </div>
+    </div>
+</div>

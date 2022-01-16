@@ -1,0 +1,29 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsFiltre
+@{
+    var id = string.Empty;
+}
+@switch (Model.FiltreType)
+{
+    case "Garantie":
+    <div class="FloatLeft" style="width: 300px;">
+        <input type="radio" id="radToutes" name="radioGarantie" value="" checked="checked" /><label>Toutes garanties</label>
+        <input type="radio" id="radModif" name="radioGarantie" value="M" /><label>Modifiables seulement</label>
+    </div>
+        break;
+    case "VoletBloc":
+    <div class="FloatLeft">
+        <label class="Block">Volets/Blocs</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDropDownListFor(m => m.FiltreValue, Model.FiltreListe, "Condition_VoletBloc", htmlAttributes: new { @id = "Condition_VoletBloc" }, generateTitle: true)
+    </div>
+        break;
+    case "Niveau":
+    <div class="FloatLeft">
+        <label class="Block">Niveaux</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDropDownListFor(m => m.FiltreValue, Model.FiltreListe, "Condition_Niveau", htmlAttributes: new { @id = "Condition_Niveau" }, generateTitle: true)
+    </div>
+        break;
+}

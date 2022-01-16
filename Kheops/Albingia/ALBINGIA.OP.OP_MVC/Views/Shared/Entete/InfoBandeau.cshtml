@@ -1,0 +1,489 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaData.Bandeau_MetaData
+@using ALBINGIA.Framework.Common.Constants
+@{
+    var styleBandeau = 0;
+    switch (Model.StyleBandeau) {
+        case AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            styleBandeau = 1;
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+            styleBandeau = 2;
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        case AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        case AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        case AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        case AlbConstantesMetiers.SCREEN_TYPE_ATTES:
+        case AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+            styleBandeau = 3;
+            break;
+    }
+}
+<div id="@(Model.ContexteBandeau == " recherche" ? "divInfoBandeauRecherche" : "divInfoBandeau" )" class="nInfoBandeau backgroundBandeauInfo" style="width: 1185px; height: 560px">
+    <div class="FloatLeft">
+        <div class="HeightRow">
+            <div class="Block1">
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    @if (Model.ContexteBandeau == "recherche") {
+                    @Html.HiddenNoName("CodeAffaireRech", (Model.IdOffre))
+                    @Html.HiddenNoName("VersionRech", (Model.Version))
+                    @Html.HiddenNoName("TypeAffaireRech", (Model.Type))
+                    @Html.HiddenNoName("CodeAvnRech", (Model.NumAvenant))
+                    }
+
+                    <div class="FieldBandeau DivEntete1" style="width: 100px;">
+                        @*style uniquement pour l'AN?*@
+                        <label class="TitleOffre">@Model.StyleBandeau</label>
+                    </div>
+                    <div style="width: 80px;" class="FieldBandeauBoldEntete">@(string.Concat(Model.IdOffre, Model.Version != "0" ? string.Format(" - {0}", Model.Version) : string.Empty))</div>
+                    <div class="FieldBandeau DivEntete1">
+                        <label>Devise</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete" title="@Model.LibelleDevise">@Model.CodeDevise</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeauBoldEntete EntetePaddingLeft">@Model.Description</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeauBoldEntete EntetePaddingLeft" title="@Model.LibelleBranche-@Model.LibelleCible">@Model.Branche - @Model.Cible@(Model.Branche == "RC" ? string.Format(" - {0}", Model.SousBranche) : string.Empty)</div>
+                    <div class="FieldBandeau DivEntete2">
+                        @switch (styleBandeau) {
+                        case 1:
+
+                        break;
+                        case 2:
+                        <label>N° int.</label>
+                        break;
+                        case 3:
+                        <u>
+                            <label>N° int.</label>
+                        </u>
+                        break;
+                        }
+                    </div>
+                    <div class="FieldBandeauBoldEntete">
+                        @switch (styleBandeau) {
+                        case 1:
+
+                        break;
+                        case 2:
+                        @(Model.NumAvenant != 0 ? Model.NumAvenant.ToString() : "-")
+                        break;
+                        case 3:
+                        <u>
+                            @(Model.NumAvenant != 0 ? Model.NumAvenant.ToString() : "-")
+                        </u>
+                        break;
+                        }
+                    </div>
+                    <div class="FieldBandeau DivEntete3">
+                        @switch (styleBandeau) {
+                        case 1:
+
+                        break;
+                        case 2:
+                        <label>A effet du</label>
+                        break;
+                        case 3:
+                        <u>
+                            <label>A effet du</label>
+                        </u>
+                        break;
+                        }
+                    </div>
+                    <div class="FieldBandeauBoldEntete">
+                        @switch (styleBandeau) {
+                        case 1:
+
+                        break;
+                        case 2:
+                        @(Model.DateEffetAvenant.HasValue ? Model.DateEffetAvenant.Value.ToShortDateString() : "-")
+                        break;
+                        case 3:
+                        <u>
+                            @(Model.DateEffetAvenant.HasValue ? Model.DateEffetAvenant.Value.ToShortDateString() : "-")
+                        </u>
+                        break;
+                        }
+
+                    </div>
+                    @if (styleBandeau == 3) {
+                    <div class="FieldBandeau DivEntete3">
+                        <u>
+                            <label>N° Avn ext.</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete"><u>@(Model.NumExterne != 0 ? Model.NumExterne.ToString() : "-")</u></div>
+                    }
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete3">
+                        <label>Offre d'origine</label>
+                    </div>
+                    <div name="linkWinOpenOrigine" class="FieldBandeauBoldEntete EntetePaddingLeft CursorPointer TxtLink" albparam="@(!string.IsNullOrEmpty(Model.CodeOffreOrigine) ? Model.CodeOffreOrigine.Trim() + "_" + Model.VersionOffreOrigine + "_OConsultOnly" : "" )">@(!string.IsNullOrEmpty(Model.CodeOffreOrigine) ? Model.CodeOffreOrigine + " - " + Model.VersionOffreOrigine : "")</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEnteteCourtiers">
+                        <label>Courtier gestio.</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete TinyColumnBandeau" title="@Model.CodeCourtierGestionnaire">@Model.CodeCourtierGestionnaire</div>
+                    <div style="width: 120px; overflow: hidden; text-overflow: ellipsis;" class="FieldBandeauBoldEntete" title="@Model.NomCourtierGestionnaire">@Html.Raw(Model.NomCourtierGestionnaire != null ? Model.NomCourtierGestionnaire.Replace(" ", "&nbsp;") : "&nbsp;")</div>
+                    <div class="FieldBandeauBoldEntete DivEntete7">@Model.CPCourtier @Model.VilleCourtierGestionnaire</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEnteteCourtiers">
+                        <label>Courtier apport.</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete TinyColumnBandeau" title="@Model.IdCourtier">@Model.IdCourtier</div>
+                    <div style="width: 120px; overflow: hidden; text-overflow: ellipsis;" class="FieldBandeauBoldEntete" title="@Model.NomCourtier">@Html.Raw(Model.NomCourtier != null ? Model.NomCourtier.Replace(" ", "&nbsp;") : "&nbsp;")</div>
+                    <div class="FieldBandeauBoldEntete DivEntete7">@Model.VilleCourtier</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEnteteCourtiers">
+                        <label>Courtier payeur</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete TinyColumnBandeau" title="@Model.CodeCourtierPayeur">@Model.CodeCourtierPayeur</div>
+                    <div style="width: 120px; overflow: hidden; text-overflow: ellipsis;" class="FieldBandeauBoldEntete" title="@Model.NomCourtierPayeur">@Html.Raw(Model.NomCourtierPayeur != null ? Model.NomCourtierPayeur.Replace(" ", "&nbsp;") : "&nbsp;")</div>
+                    <div class="FieldBandeauBoldEntete DivEntete7">@Model.VilleCourtierPayeur</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEnteteCourtiers">
+                        <label>Preneur Ass.</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete TinyColumnBandeau" title="@Model.IdAssure">@Model.IdAssure</div>
+                    <div style="width: 120px; overflow: hidden; text-overflow: ellipsis;" class="FieldBandeauBoldEntete" title="@Model.NomAssure">@Html.Raw(Model.NomAssure != null ? Model.NomAssure.Replace(" ", "&nbsp;") : "&nbsp;")</div>
+                    <div class="FieldBandeauBoldEntete DivEntete7">@Model.CPAssure @Model.VilleAssure</div>
+                </div>
+            </div>
+            <div class="Block1">
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Effet du</label>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.DateFinEffet)) {
+                    <div class="FieldBandeauBoldEntete TripleColumnBandeau">@Model.DateDebEffet</div>
+                    <div class="FieldBandeau DivEntete1">
+                        <label>au</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.DateFinEffet</div>
+                    }
+                    else {
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.DateDebEffet</div>
+                    <div class="FieldBandeau DivEntete3 TitleColumnBandeau">
+                        <label>Durée</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@(Model.Duree > 0 ? Model.Duree + " " + Model.DureeUnite + " - " + Model.DureeStr : string.Empty)</div>
+                    }
+
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete3 TitleColumnBandeau">
+                        <label>Nature</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.NatureContrat - @Model.LibelleNatureContrat</div>
+                    <div class="FieldBandeau DivEntete1 TitleColumnBandeau">
+                        <label>Préavis</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.Preavis mois</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Part</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.Part</div>
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Couverture</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.Couverture</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete3 TitleColumnBandeau">
+                        <label>Régime</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.CodeRegime - @Model.LibelleRegime">@Model.CodeRegime - @Model.LibelleRegime</div>
+                    <div class="FieldBandeau DivEntete4 TitleColumnBandeau" title="CATNAT possible">
+                        <label>CATNAT possible</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.SoumisCatNat</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Territo.</label>
+                    </div>
+                    <div class="FieldBandeauBoldEnteteNoMargin SingleColumnBandeau">@Model.Territorialite</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Délégation</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.Delegation</div>
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Inspecteur</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.Inspecteur</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Secteur</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete SingleColumnBandeau">@Model.Secteur - @Model.LibSecteur</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Souscripteur</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.SouscripteurCode - @Model.SouscripteurNom @Model.SouscripteurPrenom">@Model.SouscripteurCode - @Model.SouscripteurNom @Model.SouscripteurPrenom</div>
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Gestionnaire</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.GestionnaireCode - @Model.GestionnaireNom @Model.GestionnairePrenom">@Model.GestionnaireCode - @Model.GestionnaireNom @Model.GestionnairePrenom</div>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="Block1">
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau ">
+                        <label>Encaissement</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.CodeEncaissement - @Model.LibelleEncaissement</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau ">
+                        <label>Montant de référence (€)</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.MontantReference</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau  Block">
+                        <label>LCI Générale</label>
+                    </div>
+                    @if (Model.LCIGenerale == 0 && string.IsNullOrEmpty(Model.LCIGeneraleType) && string.IsNullOrEmpty(Model.LCIGeneraleUnit)) {
+                    <div class="FieldBandeauBoldEntete">-</div>
+                    }
+                    else {
+                    <div class="FieldBandeauBoldEntete">@(Model.LCIGenerale + " " + Model.LCIGeneraleUnit + " - " + Model.LCIGeneraleType) </div>
+                    }
+                    <div class="FieldBandeau  Block">
+                        <label>Franchise Générale</label>
+                    </div>
+                    @if (Model.FranchiseGenerale == 0 && string.IsNullOrEmpty(Model.FranchiseGeneraleUnit) && string.IsNullOrEmpty(Model.FranchiseGeneraleType)) {
+                    <div class="FieldBandeauBoldEntete">-</div>
+                    }
+                    else {
+                    <div class="FieldBandeauBoldEntete">@(Model.FranchiseGenerale + " " + Model.FranchiseGeneraleUnit + " - " + Model.FranchiseGeneraleType) </div>
+                    }
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete3">
+                        <label>Périodicité</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.Periodicite</div>
+                    <div class="FieldBandeau DivEntete5">
+                        <label>Echéance principale</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@(Model.EcheancePrincipale != "0/0" ? Model.EcheancePrincipale : "-")</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete5">
+                        <u>
+                            <label>Indexation</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.Indexation</div>
+                </div>
+                @if (Model.Indexation != "non") {
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete2">
+                        <label>Indice</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.CodeIndice - @Model.LibelleIndice</div>
+                    <div class="FieldBandeau DivEntete2">
+                        <label>Valeur</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.Valeur</div>
+                </div>
+                }
+                else {
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete2">
+                        <label>Indice</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">-</div>
+                    <div class="FieldBandeau DivEntete2">
+                        <label>Valeur</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">-</div>
+                </div>
+                }
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete5">
+                        <u>
+                            <label>prochaine échéance</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@(Model.ProchaineEcheance.HasValue ? Model.ProchaineEcheance.Value.ToShortDateString() : "-")</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete5">
+                        <u>
+                            <label>HT hors CATNAT (€)</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.HorsCatNat</div>
+                    @if (Model.TauxAvailable)
+                    {
+                    <div class="FieldBandeau DivEntete3">
+                        <u>
+                            <label>Taux (%)</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.TauxHorsCatNat</div>
+                    }
+
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete5" title="CATNAT possible">
+                        <u>
+                            <label>CATNAT</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.CatNat</div>
+                    @if (Model.TauxAvailable)
+                    {
+                    <div class="FieldBandeau DivEntete3">
+                        <u>
+                            <label>Taux (%)</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.TauxCatNat</div>
+                    }
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete5">
+                        <u>
+                            <label>Affaire nouvelle du</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@(Model.DateaffaireNouvelle.HasValue ? Model.DateaffaireNouvelle.Value.ToShortDateString() : "-")</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete6">
+                        <u>
+                            <label>Montant statistique AN (€)</label>
+                        </u>
+                    </div>
+                    <div class="FieldBandeauBoldEntete">@Model.MontantStatistique</div>
+                </div>
+            </div>
+            <div class="Block1">
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete4 TitleColumnBandeau">
+                        <label>Dernière action</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete SingleColumnBandeau">@Model.CodeAction - @Model.LibelleAction</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Etat</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.LibelleEtat">@Model.CodeEtat - @Model.LibelleEtat</div>
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Motif</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.LibelleMotif">@Model.CodeMotif - @Model.LibelleMotif</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Situation</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.LibelleSituation">@Model.CodeSituation - @Model.LibelleSituation</div>
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>le</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@(Model.DateSituation.HasValue ? Model.DateSituation.Value.ToShortDateString() : "-")</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Créé le</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@(Model.DateEnregistrement.HasValue ? Model.DateEnregistrement.Value.ToShortDateString() : "-")</div>
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>par</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.CodeUsrCreateur - @Model.NomUsrCreateur">@Model.CodeUsrCreateur - @Model.NomUsrCreateur</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>Modifié le</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@(Model.DateMAJ.HasValue ? Model.DateMAJ.Value.ToShortDateString() : "-")</div>
+                    <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                        <label>par</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.CodeUsrModificateur - @Model.NomUsrModificateur">@Model.CodeUsrModificateur - @Model.NomUsrModificateur</div>
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    @if (!string.IsNullOrEmpty(Model.Stop)) {
+                    <div class="FieldBandeauBoldEntete" title="@Model.Stop (PRODU/PBSTP)">Situation STOP : @Model.Stop - @Model.StopLib (PRODU/PBSTP)</div>
+                    }
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    @if (!string.IsNullOrEmpty(Model.StopContentieux)) {
+                    <div class="FieldBandeauBoldEntete" title="@Model.StopContentieux (PRODU/PKREL)">Code Contentieux : @Model.StopContentieux - @Model.StopContentieuxLib (PRODU/PKREL)</div>
+                    }
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                    @if ((!string.IsNullOrEmpty(Model.Stop) && Model.Displaybloqueferme) || (!string.IsNullOrEmpty(Model.StopContentieux) && Model.Displaybloqueferme)) {
+                    <div class="FieldBandeauBoldEntete" title="">Termes bloqués !</div>
+                    }
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                </div>
+                <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                </div>
+            </div>
+        </div>
+    </div>
+    @*TEST SUR LE NUM AVENANT POUR NE PAS AFFICHER LES OPTIONS LORSQUE L'ON EST EN CONTRAT*@
+    @* Model.ContexteBandeau != "recherche" && *@
+    <div class="BlockMenu">
+        <div class="FloatLeft" id="divMenuBandeau" style="margin-left: 10px; margin-right: 10px; margin-top: 10px">
+            @if (Model.NumAvenant > 0 && (Model.Origine is null || Model.Origine == "KHE")) {
+            <div class="HeightRow SmallMarginBottom">
+                <img src="@Url.Content("/Content/Images/Clock-History-Frame-16.png")" class="CursorPointer" alt="Historique" /><a style="margin-left: 5px" href="javascript:void(0)" onclick="OpenVisuHistorique();">Historique du contrat</a>
+            </div>
+            }
+            <div class="HeightRow SmallMarginBottom">
+                <img src="@Url.Content("/Content/Images/LayoutArbre/u100_original.gif")" /><a style="margin-left: 5px" href="javascript:void(0)" onclick="javascript:OpenListeClauses()">Visu des clauses</a>
+            </div>
+            @if (Model.NumAvenant > 0 || Model.Type == AlbConstantesMetiers.TYPE_CONTRAT) {
+            <div class="HeightRow SmallMarginBottom">
+                <img src="@Url.Content("/Content/Images/connexite16.png")" class="CursorPointer" /><a style="margin-left: 5px" href="javascript:void(0)" onclick="openPopupConnexites(undefined, undefined, 'false');">Visu des connexités</a>
+            </div>
+            }
+            @if (Model.NumAvenant > 0 || Model.Type == AlbConstantesMetiers.TYPE_CONTRAT) {
+            <div class="HeightRow SmallMarginBottom">
+                <img src="@Url.Content("/Content/Images/Quittance/frais.png")" class="CursorPointer" /><a style="margin-left: 5px" href="javascript:void(0)" onclick="OpenVisulisationQuittances('Toutes','true');">Visu des quittances</a>
+            </div>
+            }
+            <div class="HeightRow SmallMarginBottom">
+                <img src="@Url.Content("/Content/Images/u408_normal.gif")" class="CursorPointer" /><a style="margin-left: 5px" href="javascript:void(0)" onclick="OpenVisualisationObservations();">Visu des observations</a>
+            </div>
+            @if (Model.NumAvenant > 0) {
+            <div class="HeightRow SmallMarginBottom">
+                <img src="@Url.Content("/Content/Images/u410_normal.gif")" /><span style="margin-left: 5px">Visu des sinistres</span>
+            </div>
+            }
+
+            @if (Model.HasSusp) {
+            <div class="HeightRow SmallMarginBottom">
+                <img src="@Url.Content("/Content/Images/u410_normal.gif")" class="CursorPointer" /><a style="margin-left: 5px" href="javascript:void(0)" onclick="OpenVisualisationSuspension();">Visu période suspens.</a>
+            </div>
+            }
+        </div>
+    </div>
+</div>

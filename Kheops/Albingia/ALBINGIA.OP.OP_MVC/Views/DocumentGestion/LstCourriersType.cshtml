@@ -1,0 +1,23 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.LigneCourrierType>
+@{
+    if (Model != null && Model.Count > 0)
+    {
+    <table id="tblCourrierTypeBody" class="trHeight">
+        @foreach (var ligne in Model)
+        {           
+            <tr>
+                <td class="tdSelection" id="@("courrierSelect_" + ligne.GuidId)">
+                    <input id="@("chkSelect_" + ligne.GuidId)" type="radio" checked="@(ligne.IsSelected )" name="radioSelectCourrier"/></td>
+                <td class="tdCode" id="@("codeCourrier_" + ligne.GuidId)">
+                    <input type="hidden" id="@("INCourriersTypeCode_" + ligne.GuidId)" value="@ligne.Code" />
+                    <input type="hidden" id="@("INCourriersTypeLib_" + ligne.GuidId)" value="@ligne.Libelle" />
+                   <label>@ligne.Code</label>
+                </td>
+                <td class="tdLibelleMedium" id="@("libelleCourrier_" + ligne.GuidId)">
+                   <label>@ligne.Libelle</label>
+                </td>              
+            </tr>    
+        }
+    </table>
+    }
+}

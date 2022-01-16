@@ -1,0 +1,124 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleControleFinPage>
+@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vControleFin.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albControleFin.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    var model = Model as ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleControleFinPage;
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0)
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULPB:
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULBNS:
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULBURNER:
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR_NO_MODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        <div id="FinOffre" class="nGroupFull nGroupWithBorder">
+            @Html.Hidden("IsChekedEch", ((Model.Contrat != null ? Model.Contrat.IsCheckedEcheance : false).ToString()), new { id = "IsChekedEch" })
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection" style="height: 480px;">
+                    <table id="tblControles" width="700px" border="0" style="margin-left: 10px; margin-top: 10px; margin-bottom: 10px;" cellpadding="3px" cellspacing="0px">
+                        <tr style="height: 1px !important;">
+                            <th class="tablePersoHead" width="20px"></th>
+                            <th class="tablePersoHead BorderGrayLeft" width="500px">
+                                Les éléments suivants sont incohérents :
+                            </th>
+                            <th class="tablePersoHead BorderGrayLeft" width="180px">
+                                Etape / Référence
+                            </th>
+                        </tr>
+                        @foreach (var controle in Model.ModeleControleFinControles)
+                        {
+                            string image = "/Content/Images/ControleFin/" + controle.Niveau + ".png";
+                            <tr style="height: 1px !important;">
+                                <td class="BorderGrayBottom">
+                                    <center><img name="@controle.Niveau" src="@image" alt="" /></center>
+                                </td>
+                                <td class="BorderGrayLeft BorderGrayBottom">
+                                    @controle.Message
+                                </td>
+                                <td class="BorderGrayLeft BorderGrayBottom BorderGrayRight">
+                                    @if (!string.IsNullOrEmpty(controle.LienReference) && !Model.IsValidation)
+                                    {
+                                        <span name="lnkControl" class="CursorPointer navig" albhref="@controle.LienReference">@controle.Reference</span>
+                                    }
+                                    else
+                                    {
+                                        @controle.Reference
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                @if (!Model.IsValidation)
+                {
+                    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                }
+                else
+                {
+                    <button id="btnRetourRecherche" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                }
+
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s" tabindex="28"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div id="divRegenerateDocument" class="None">
+        <div class="overlay-background" style="z-index:4" >
+        </div>
+        <div id="divDataRegenerateDocument" class="dvDataRegenerateDocument">
+        </div>
+    </div>*@

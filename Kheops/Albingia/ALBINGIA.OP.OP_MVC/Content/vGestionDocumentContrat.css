@@ -1,0 +1,230 @@
+﻿.tdHeadDocDateEnvoi {
+    width: 80px;
+}
+
+.tdHeadDocDocument {
+    width: 180px;
+}
+
+.tdHeadDocTypeDocument {
+    width: 120px;
+}
+
+.tdHeadDocTypeDiffusion {
+    width: 100px;
+}
+
+.tdHeadDocDestinataire {
+    width: 170px;
+}
+
+.tdHeadDocLot {
+    width: 70px;
+}
+
+.tdHeadDocAvenant {
+    width: 50px;
+}
+
+.tdHeadDocPJ {
+    width: 50px;
+}
+
+.tdHeadDocUtilisateur {
+    width: 80px;
+}
+
+.tdHeadDocAction {
+    width: 30px;
+}
+
+
+
+.tdDocDateEnvoi {
+    width: 80px;
+    padding-left: 3px;
+}
+
+.tdDocDocument {
+    width: 180px;
+    padding-left: 3px;
+}
+
+.tdDocTypeDocument {
+    width: 120px;
+    padding-left: 3px;
+}
+
+.tdDocTypeDiffusion {
+    width: 100px;
+    padding-left: 3px;
+}
+
+.tdDocDestinataire {
+    width: 170px;
+    padding-left: 3px;
+}
+
+.tdDocLot {
+    width: 70px;
+    padding-left: 3px;
+}
+
+.tdDocAvenant {
+    width: 50px;
+    padding-left: 3px;
+    text-align:center;
+}
+
+.tdDocPJ {
+    width: 50px;
+    padding-left: 3px;
+    text-align:center;
+}
+
+.tdDocUtilisateur {
+    width: 80px;
+    padding-left: 3px;
+}
+
+.tdDocAction {
+    width: 30px;
+    text-align:center;
+}
+
+.divHeightGestionDoc {
+    height: 275px;
+    overflow-y: auto;
+}
+
+#Filtre_TypeDocument {
+    width: 200px;
+}
+
+#Filtre_LotEdition {
+    width: 200px;
+}
+
+.ellipsisDestinataire {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 170px;
+}
+
+.navigCopie {
+    color: #009900;
+    cursor: pointer;
+}
+
+    .navigCopie:link {
+        color: #009900;
+        text-decoration: none;
+    }
+
+    .navigCopie:visited {
+        color: #009900;
+        text-decoration: none;
+    }
+
+    .navigCopie:active {
+        color: #009900;
+        text-decoration: none;
+    }
+
+    .navigCopie:hover {
+        color: #009900;
+        text-decoration: underline;
+    }
+
+
+.navigDuplicata {
+    color: pink;
+    cursor: pointer;
+}
+
+    .navigDuplicata:link {
+        color: pink;
+        text-decoration: none;
+    }
+
+    .navigDuplicata:visited {
+        color: pink;
+        text-decoration: none;
+    }
+
+    .navigDuplicata:active {
+        color: pink;
+        text-decoration: none;
+    }
+
+    .navigDuplicata:hover {
+        color: pink;
+        text-decoration: underline;
+    }
+
+.navigOther {
+    color: gray;
+    cursor: pointer;
+}
+
+    .navigOther:link {
+        color: gray;
+        text-decoration: none;
+    }
+
+    .navigOther:visited {
+        color: gray;
+        text-decoration: none;
+    }
+
+    .navigOther:active {
+        color: gray;
+        text-decoration: none;
+    }
+
+    .navigOther:hover {
+        color: gray;
+        text-decoration: underline;
+    }
+
+.LargeurPieceJointe {
+    width: 821px !important;
+}
+
+.MarginLeft10 {
+    margin-left: 10px;
+}
+
+#divDocPieceJointeBody {
+    height: 200px;
+}
+
+.tdHeadDocPJDesignation {
+    width: 350px;
+}
+
+.tdDocPJDesignation {
+    width: 350px;
+    text-align: left;
+    padding-left:3px;
+}
+
+.tdHeadDocPJDocument {
+    width: 350px;
+}
+
+.tdDocPJDocument {
+    width: 350px;
+    text-align: left;
+     padding-left:2px;
+}
+
+.tdHeadDocTailleDocument {
+    width: 70px;
+}
+
+.tdDocPJTailleDocument {
+    width: 70px;
+    text-align: right;
+}

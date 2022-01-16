@@ -1,0 +1,64 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.ModeleSelectionDestinataire
+<div class="FloatLeft" style="width: auto">
+    <div class="GroupFull GroupWithBorder LargeurDetailsSelection">
+        <div class="GradientSection MarginLeft10">
+            @Html.HiddenNoName("guidIdDestinataire", Model.GuidIdDestinataire)
+            @Html.HiddenNoName("selectionTypeIntervenant", Model.TypeIntervenant)
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block LargeLabel BoldUnderline">Sélection d'un destinataire</label>
+                </div>
+            </div>
+            <div class="FloatLeft">
+                <div id="divCourtierHeader" class="PaddingLeft">
+                    <table id="tblCourtierHeader" class="trHeight">
+                        <tr>
+                            <th class="tablePersoHead tdHeadSelection">&nbsp
+                            </th>
+                            <th class="tablePersoHead tdHeadLibelle">@Model.TypeDestinataires</th>
+                            <th class="tablePersoHead tdHeadRole">Rôle</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divCourrierTypeBody" class="PaddingLeft divHeightSelection">
+                    @Html.HiddenNoName("selectedDestinataire", string.Empty)
+                    @if (Model.ListeDestinataires != null)
+                    {
+                        @Html.Partial("LstDestinataires", Model.ListeDestinataires)
+                    }
+                </div>
+                <div id="divAutreDestinataire" class="PaddingLeft None">
+                    @if (Model.AutreDestinataire != null)
+                    {
+                        <div class="tdSelection FloatLeft">
+                            <input id="@("chkSelect_" + Model.AutreDestinataire.GuidId)" type="radio" checked="@(Model.AutreDestinataire.IsSelected )" name="radioSelectDestinataire"/>
+                        </div>
+                        <div class="FloatLeft">
+                            <label>autre</label>
+                        </div>
+                        <div class="inputAutre FloatLeft PaddingLeft">
+                            <input type="hidden" id="@("INDestCode_" + Model.AutreDestinataire.GuidId)" value="@Model.AutreDestinataire.Code" />
+                            <input type="hidden" id="@("INDestLibelle_" + Model.AutreDestinataire.GuidId)" value="@Model.AutreDestinataire.Libelle" />
+                            <input class="inputAutre" value="@(Model.AutreDestinataire.Code + " - " + Model.AutreDestinataire.Libelle)" />
+                        </div>
+                        <div class="FloatLeft PaddingLeft">
+                            <img src="@Url.Content("/Content/Images/loupe.png")" id="btnRechercheAutreDestinataire" albContext="@Model.TypeDestinataires"/>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="GroupFull GroupWithBorder ButtonsHeight LargeurDetailsSelection">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnAnnulerSelectionDestinataire" type="button">Annuler</button>
+            <button id="btnValiderSelectionDestinataire" type="button">Valider</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+

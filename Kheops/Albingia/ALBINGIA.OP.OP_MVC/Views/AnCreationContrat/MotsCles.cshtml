@@ -1,0 +1,7 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.InformationContrat
+<div class="FloatLeft">
+    <label class="Block">Mots-clés</label>
+</div>
+<div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef1, Model.MotsClefs1, "MotClef1", htmlAttributes: new { @id = "MotClef1", @tabindex = "16", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" ,@albhorsavn = ""}, generateTitle: true, replaceHtmlName: "MotClef1" )</div>
+<div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef2, Model.MotsClefs2, "MotClef2", htmlAttributes: new { @id = "MotClef2", @tabindex = "17", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" ,@albhorsavn = ""}, generateTitle: true, replaceHtmlName: "MotClef2")</div>
+<div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef3, Model.MotsClefs3, "MotClef3", htmlAttributes: new { @id = "MotClef3", @tabindex = "18", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" ,@albhorsavn = ""}, generateTitle: true, replaceHtmlName: "MotClef3")</div>

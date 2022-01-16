@@ -1,0 +1,203 @@
+﻿@using ALBINGIA.OP.OP_MVC
+@using Albingia.Kheops.OP.Domain.Formule
+@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@using Albingia.Kheops.OP.Domain.Referentiel
+@model ModeleConditionsGarantiePage
+@{ 
+    bool isRegimeMonaco = Model.InfosGareat?.CodeRegimeTaxe == RegimeTaxe.Monaco || Model.InfosGareat?.CodeRegimeTaxe == RegimeTaxe.MonacoProfessionLiberaleHabitation;
+    var infosConditions = Model.InformationsCondition;
+    var garantieGareat = isRegimeMonaco || !infosConditions.ListGaranties.Any(g => g.IsAttentatGareat) ? null : infosConditions.ListGaranties.FirstOrDefault(g => g.Code == Garantie.CodeGareatAttent && g.LBloc == Garantie.CodeGareat);
+}
+<div id="ConteneurFull" class="@(infosConditions.FullScreen ? "GradientSection" : "")" style="@(infosConditions.FullScreen ? "height: 600px;" : "")">
+    <div id="dataConditions">
+        <div style="@(!infosConditions.FullScreen ? "height: 50px;" : "display: none;")">
+            <div class="FloatLeft">
+                <div class="HeightRow">
+                    <div class="FloatLeft" style="width: 363px;">
+                        <div class="FloatLeft">
+                            <b>
+                                <label class="Block">Formule</label>
+                            </b>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Condition_Formule" name="Condition_Formule" value="@(infosConditions.Formule)" class="readonly" readonly="readonly" style="width:237px;" />
+                        </div>
+                    </div>
+                    <div class="FloatLeft">
+                        <div class="FloatLeft">
+                            <b>
+                                <label class="Block">s'applique</label>
+                            </b>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Condition_AppliqueA" name="Condition_AppliqueA" value="@(infosConditions.AppliqueA)" class="readonly" readonly="readonly" style="width:445px;" />
+                        </div>
+                        <div id="imgInfoApplique" class="FloatLeft CursorPointer">
+                            <img id="infoApplique" src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                            <div id="divInfoApplique" class="None nInfoBandeau">
+                                <div class="even" style="width: 410px; padding: 5px;">@string.Format("Risque {0} - {1}", infosConditions.LstRisque.Code, infosConditions.LstRisque.Designation)</div>
+                                @foreach (var obj in infosConditions.LstRisque.Objets)
+                                {
+                                    <div class="odd" style="width: 400px; padding: 5px; padding-left: 15px;">@string.Format("Objet {0} - {1}", obj.Code, obj.Designation)</div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">
+                            <b>Filtres :</b></label>
+                    </div>
+                    <div class="GenericColumn" id="divFiltreNiveau">
+                        @Html.Partial("ConditionFiltre", infosConditions.FiltreNiveau)
+                    </div>
+                    <div class="GenericColumn" id="divFiltreVoletsBlocs">
+                        @Html.Partial("ConditionFiltre", infosConditions.FiltreVoletsBlocs)
+                    </div>
+                    <div class="GenericColumn" id="divFiltreGarantie">
+                        @Html.Partial("ConditionFiltre", infosConditions.FiltreGarantie)
+                    </div>
+                </div>
+            </div>
+            <div class="FloatRight PaddingRight">
+                @Html.HiddenNoName("spliChar", MvcApplication.SPLIT_CONST_HTML)
+
+                <a id="export" href="javascript:ExportToCSV()">
+                    <img id="imgExportExcel" alt="Export Excel" title="Export Excel" src="@(Url.Content("~/Content/Images/exportExcel3232.png"))" class="CursorPointer" />
+                </a>
+            </div>
+        </div>
+        <div id="divTabCondition" class="PaddingLeft">
+            <div class="FloatLeft">
+                @if (garantieGareat != null) {
+                <fieldset class="bloc-gareat">
+                    <legend>@Garantie.CodeGareat</legend>
+                    <span>
+                        <label for="Tranche_gareat">Tranche</label>
+                        <input id="Tranche_gareat" disabled class="short" value="@((Model.InfosGareat?.PrimeTheorique ?? decimal.Zero) == decimal.Zero ? string.Empty : Model.InfosGareat.Tranche)" />
+                    </span>
+                    <span>
+                        <label for="TauxRetenu_gareat">Taux Retenu</label>
+                        <input id="TauxRetenu_gareat" disabled class="short" value="@((Model.InfosGareat?.PrimeTheorique ?? decimal.Zero) == decimal.Zero ? string.Empty : Model.InfosGareat.TauxRetenu.ToString())" />
+                    </span>
+                    <span>
+                        <label for="PrimeTheorique_gareat">Prime calculée</label>
+                        <input id="PrimeTheorique_gareat" disabled class="numerique" value="@((Model.InfosGareat?.PrimeTheorique ?? decimal.Zero) == decimal.Zero ? string.Empty : Model.InfosGareat.PrimeTheorique.ToString())" />
+                    </span>
+                    <span>
+                        <label for="Prime_gareat">Prime forcée</label>
+                        <input id="Prime_gareat" disabled="@(Model.IsModifHorsAvenant || infosConditions.IsReadOnly || (Model.InfosGareat?.PrimeTheorique ?? decimal.Zero) == decimal.Zero)" class="numerique" value="@(Model.InfosGareat?.Prime)" />
+                    </span>
+                </fieldset>
+                }
+                <table id="tblHeaderCondition">
+                    <tr name="lock">
+                        <th class="tablePersoHead td20">
+                            &nbsp;
+                        </th>
+                        <th class="tablePersoHead td226" colspan="3">
+                            <span>Franchise</span>
+                            <div class="FloatRight">
+                                <img id="imgFranchiseComplexe" class="CursorPointer" alt="Franchise Complexe" title="Franchise Complexe" src="@Url.Content("/Content/Images/Edit_16.png")" />
+                            </div>
+                        </th>
+                        <th class="tablePersoHead td226" colspan="3">
+                            <span>LCI</span>
+                            <div class="FloatRight">
+                                <img id="imgLCIComplexe" class="CursorPointer" alt="LCI Complexe" title="LCI Complexe" src="@Url.Content("/Content/Images/Edit_16.png")" />
+                            </div>
+                        </th>
+                        <th class="tablePersoHead td226" colspan="3">
+                            Assiette
+                        </th>
+                        <th class="tablePersoHead td226" colspan="3">
+                            Taux / Forfait HT
+                        </th>
+                        <th class="tablePersoHead td20">
+                            &nbsp;
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="@(infosConditions.FullScreen ? "maxHeightFull FloatLeft" : ("maxHeight FloatLeft" + (garantieGareat is null ? "" : " with-gareat")))" style="width: 1001px;">
+                <table id="tblConditions" style="table-layout: fixed; border-collapse: collapse;">
+                    @foreach (var garantie in infosConditions.ListGaranties)
+                    {
+                        if (!garantie.IsGarantieSortie && garantie != garantieGareat)
+                        {
+                            <tr name="garantie" id="garantie_@(garantie.Id)_" albNiveau="@(garantie.Niveau)" albGarantie="@(garantie.ReadOnly ? "O" : "M")" albVoletBloc="@(garantie.CVolet)_@(garantie.CBloc)_">
+                                <td>
+                                    <table id="tblConditionName" style="width: 983px; border-collapse: collapse;">
+                                        <tr class="even" albNiveau="@(garantie.Niveau)" albGarantie="@(garantie.ReadOnly ? "O" : "M")" albVoletBloc="@(garantie.CVolet)_@(garantie.CBloc)_">
+                                            <td class="td20" style="text-align: center;">
+                                                <img name="linkDetail" id="@(garantie.IdSequence)" albGarantieId="@(garantie.Id)" class="CursorPointer" alt="Détail Garantie" title="Détail Garantie" src="@Url.Content("/Content/Images/afficher_details1616.png")"
+                                                     data-formule="@Model.CodeFormule" data-sequence="@garantie.IdSequence" data-bloc="@garantie.LBloc"
+                                                     data-branche="@infosConditions.CodeBranche" data-cible="@infosConditions.CodeCible" />
+                                            </td>
+                                            <td name="titre" style="color:@(garantie.Couleur);" class="nameGarantie" title="@string.Format("Volet : {0} - Bloc : {1}", garantie.LVolet, garantie.LBloc)">
+                                                <span>
+                                                    @garantie.Niveau -
+                                                </span>
+                                                <span style="padding-left: @(string.Format("{0}px;", (Convert.ToInt32(garantie.Niveau) - 1) * 10))">
+                                                    @Html.Raw(garantie.Code) - @Html.Raw(garantie.Description)
+                                                </span>
+                                            </td>
+                                            <td class="td20" style="text-align: center;">
+                                                @Html.Hidden($"{garantie.Code}_{garantie.Id}_readonly", garantie.ReadOnly)
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            if (garantie.LstLigneGarantie.Count > 0)
+                            {
+                                Html.RenderPartial("LigneCondition", garantie);
+                            }
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@if (infosConditions.FullScreen)
+{
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="margin-top: 2px; width: 993px;">
+        <div class="ActionButtons ActionButtonLeft">
+            <div>
+                <div class="FloatLeft" style="background-color: Black;">
+                    &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="FloatLeft PaddingLeft" style="color: #000;">
+                    Garantie de base
+                </div>
+            </div>
+            <div>
+                <div class="FloatLeft" style="background-color: #039; margin-left: 30px">
+                    &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="FloatLeft PaddingLeft" style="color: #039;">
+                    Garantie accordée
+                </div>
+            </div>
+            <div>
+                <div class="FloatLeft" style="background-color: #09F; margin-left: 30px">
+                    &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="FloatLeft PaddingLeft" style="color: #09F;">
+                    Garantie comprise
+                </div>
+            </div>
+        </div>
+        <div id="dvLinkClose" class="FloatLeft" style="padding-top: 6px;">
+            <button id="btnNoFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Fermer le plein écran">
+                <img src="@Url.Content("/Content/Images/window_nofullscreen.png")" alt="Fermer" />
+            </button>
+        </div>
+        <div class="ActionButtons ActionButtonRight" style="width: 300px;">
+            <button id="btnFSAnnuler" type="button" tabindex="29"><u>A</u>nnuler</button>
+            <button id="btnFSSuivant" type="button" tabindex="28"><u>S</u>uivant</button>
+        </div>
+    </div>
+}

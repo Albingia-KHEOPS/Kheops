@@ -1,0 +1,201 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleClauseSimplifieePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vClauseSimplifiee.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albClauseSimplifiee.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        @Html.Hidden("delId", string.Empty)
+        @Html.Hidden("Branche", Model.Offre.Branche != null ? Model.Offre.Branche.Code : string.Empty)
+        @Html.Hidden("Cible", Model.Offre.Branche != null && Model.Offre.Branche.Cible != null ? Model.Offre.Branche.Cible.Code : string.Empty)
+        <input type="hidden" id="Etape" name="Etape" value="@(ALBINGIA.Framework.Common.AlbEnumInfoValue.GetEnumInfo(ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Etapes.InfoGenerale))" />
+        @Html.Hidden("CodeRsq", string.Empty)
+        @Html.Hidden("CodeFormule", string.Empty)
+        @Html.Hidden("CodeOption", string.Empty)
+        @Html.Hidden("TypeClause", string.Empty)
+        @Html.HiddenNoName("RubriqueClause", string.Empty)
+        @Html.HiddenNoName("SousRubriqueClause", string.Empty)
+        @Html.HiddenNoName("SequenceClause", string.Empty)
+        @Html.HiddenNoName("CodeClause", string.Empty)
+        @Html.HiddenNoName("VersionClause", string.Empty)
+        @Html.Hidden("NbRisques", Model.NbrRisques)
+        @Html.Hidden("NbObjetsRisque1", Model.NbrObjetsRisque1)
+        @Html.Hidden("CodeAppliqueA", Model.CodeRisqueObjet)
+        @Html.Hidden("LibelleAppliqueA", Model.AppliqueA)
+        <div class="GroupRisquePrincipal">
+            <div class="nGroupFull nGroupWithBorder">
+                @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+                <div class="nHorizontalFullWithGroup">
+                    <div class="nGradientSection" style="height: 481px;">
+                        @*  <div class="HeightRow">
+                            <div id="tabBase" class="GenericColumn CursorPointer onglet-actif">
+                                Clauses base
+                            </div>
+                            <div id="tabRisques" class="GenericColumn CursorPointer onglet">
+                                Clauses risques
+                            </div>
+                            <div id="tabGaranties" class="GenericColumn CursorPointer onglet">
+                                Clauses garanties
+                            </div>
+                            <div class="onglet-vide">
+                            </div>
+                        </div>*@
+                        <div id="divDataClause" class="HeightRow">
+                            @Html.Partial("InfoClauses", Model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="GroupFull GroupWithBorder ButtonsHeight">
+                <div class="ActionButtons ActionButtonLeft">
+                </div>
+                <div id="FullScreen" class="FloatLeft" style="padding-top: 6px;">
+                    <button id="btnFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Plein écran">
+                        <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+                    </button>
+                </div>
+                <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+                    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="o">Ret<u>o</u>ur</button>
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="divClausier" class="None">
+        <div class="overlay-background" style="z-index:40" ></div>
+        <div id="divDataClausier" class="dvDataClausier"></div>
+    </div>
+    <div id="divFullScreenVisualiserClause" class="None">
+        <div class="overlay-background" style="z-index:50" ></div>
+        <div id="divVisualiserClause" class="dvVisualiserClause"></div>
+    </div>
+    <div id="divFullScreenDetailsClause" class="None">
+        <div class="overlay-background" style="z-index:60" ></div>
+        <div id="divDetailsClause" class="dvDetailsClause"></div>
+    </div>
+    <div id="divFullScreenClauseLibre" class="None">
+        <div class="overlay-background" style="z-index:70" ></div>
+        <div id="divEditClauseLibre" class="dvEditClauseLibre"></div>
+    </div>
+    <div id="divFullScreen" class="None">
+        <div class="overlay-background" style="z-index:10" ></div>
+        <div id="divDataFullScreen" class="dvDataFullScreen"></div>
+    </div>
+</div>
+
+<div id="divLstRisques">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataLstRisques">
+        <div class="DivRisques">
+            @if (Model.Risques != null)
+            {
+                foreach (var rsq in Model.Risques)
+                {
+                <div class="HeightRow">
+                    <div class="RsqColumn">
+                        <div class="FloatLeft CheckRsq">
+                            <input id="rsq_@(rsq.Code)" name="checkRsq" type="radio" value="@(rsq.Code)_@(rsq.Designation)"/>
+                        </div>
+                        <div class="FloatLeft">
+                            <div class="DivRsqTitle Ellipsis" title="@rsq.Designation">
+                                Sélection du risque : @(rsq.Code)_@(rsq.Designation)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="DivObjTitle">
+                    Sélection de l'objet
+                </div>
+                    if (rsq.Objets != null)
+                    {
+                @Html.Partial("ListObjets", rsq.Objets)
+                    }
+                }
+            }
+            <div class="Validation PaddingValidation">
+                <button id="btnListCancel" type="button" albshortcut="false" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnListValid" type="button" albshortcut="false" data-accesskey="v"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divSelectedObjets" name="divSelectedObjets" class="nInfoBandeau divSelectedObjetsDim">
+    @if (Model.Risques != null)
+    {
+        foreach (var rsq in Model.Risques)
+        {
+            if (rsq.Objets != null)
+            {
+        <div class="HeightRow nBGEntete1 PaddingTop PaddingBottom objRisque" name="rsq_@(rsq.Code)" style="display: none;">
+            <div class="FieldBandeauBold">Les objets du risque : @rsq.Code-@rsq.Designation</div>
+        </div>
+        <div class="HeightRow nBGEntete1 PaddingTop PaddingBottom objRisque" name="rsqObj_@(rsq.Code)" style="display: none;">
+            <div class="FieldBandeauBold">Risque : @rsq.Code-@rsq.Designation</div>
+        </div>
+                int i = 1;
+                foreach (var obj in rsq.Objets.Objets)
+                {
+        <div class="HeightRow nBGEntete1 PaddingTop objRisque" id="obj_@(rsq.Code)_@(obj.Code)" name="obj_@(rsq.Code)" style="display:none">
+            <div class="FieldBandeau LibelleBandeau"><u>Objet @i :</u></div>
+            <div class="FieldBandeauBold SelectedObjetsEllipsis" title="@(obj.Code)-@(obj.Designation)">@(obj.Code)-@(obj.Designation)</div>
+        </div>
+                    i++;
+                }
+            }
+        }
+    }
+</div>
+<div id="divLstFormules">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataLstFormules">
+        <div class="DivFormuleTitle">
+            Sélection de la formule
+        </div>
+        @if (Model.Formules != null)
+        {
+            @Html.Partial("ListFormules", Model.Formules)
+        }
+        <div class="Validation PaddingValidation">
+            <button id="btnListFrmCancel" type="button" albshortcut="false" data-accesskey="a"><u>A</u>nnuler</button>
+            <button id="btnListFrmValid" type="button" albshortcut="false" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>
+<div id="divSelectedFormule" name="divSelectedFormule" class="nInfoBandeau divSelectedObjetsDim">
+    @foreach (var frm in Model.Formules)
+    {
+        <div class="HeightRow nBGEntete1 PaddingTop PaddingBottom objFormule" name="frm_@(frm.Code)" style="display: none;">
+            <div class="FieldBandeauBold">Formule : @frm.Code-@frm.Libelle</div>
+        </div>
+    }
+</div>

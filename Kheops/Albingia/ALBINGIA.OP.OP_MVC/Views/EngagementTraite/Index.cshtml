@@ -1,0 +1,25 @@
+﻿@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@inherits AlbToReadOnlyHtml<ModeleEngagementTraitePage>
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        case AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        case AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        case AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        case AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        case AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    @Html.Partial("EngagementTraiteBody", Model)
+
+</div>

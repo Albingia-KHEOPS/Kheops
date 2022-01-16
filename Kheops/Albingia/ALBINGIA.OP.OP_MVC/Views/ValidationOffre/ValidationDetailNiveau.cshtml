@@ -1,0 +1,34 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesValidationOffre.ModeleDetailNiveau>
+<div class="CommonForm FloatLeft" style="width: 450px;">
+    <div class="GroupFull GroupWithBorder" style="width: 435px;">
+        <div class="GroupTitle">
+            Liste des valideurs niveau
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 430px;">
+            <div class="GradientSection" style="height: 200px;">
+                <div class="HeightRow">
+                    <div id="divBodyDetail" class="PaddingLeft FloatLeft">
+                        <table id="tblBodyDetail">
+                            @foreach (var niv in Model)
+                            {
+                                <tr>
+                                    <td class="PaddingLeft">
+                                        @niv.Titre @niv.Nom @niv.Prenom
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 435px;">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">          
+            <button id="btnFancyAnnuler" type="button" albShortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>

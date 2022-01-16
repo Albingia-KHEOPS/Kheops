@@ -1,0 +1,47 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamInventaires.DetailsInventaire
+@Html.HiddenNoName("DetailGuidId", Model.GuidId)
+@Html.HiddenNoName("Mode", Model.Mode)
+<div class="GroupTitle">
+    Consultation / Modification Inventaire
+</div>
+<div id="divSectionInfoBaseCible" class="HorizontalHalfWithGroupAdmin GroupHeightInventairesInterieur">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="FloatLeft ">
+                <label class="Block Gras">Code Inventaire</label>
+            </div>
+            <div class="FloatLeft">
+                <input id="CodeDetail" class="DoubleInput @(Model.Mode == "Update" ? "readonly" : string.Empty)" maxlength="20" value="@Model.Code" readonly="@(Model.Mode == "Update")" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft Block">
+                <label class="Block Gras">Libellé</label>
+            </div>
+            <div class="FloatLeft">
+                <input id="Libelle" class="DoubleInput" maxlength="40" value="@Model.Libelle"/>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft Block">
+                <label class="Block Gras">Typologie Grille</label>
+            </div>
+            <div class="FloatLeft">
+                <input id="Kagtmap" class="DoubleInput" maxlength="2" value="@Model.Kagtmap"/>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft Block">
+                <label class="Block Gras">Filtre</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.AlbDropDownListFor(m => m.CodeFiltre, Model.Filtres, "CodeFiltre", htmlAttributes: new { @id = "CodeFiltre", @tabindex = "18", @class = "InputLong" }, generateTitle: false, genEmptyLine: true)
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatRight">
+                <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" style="margin-right: 15px;" />
+            </div>
+        </div>
+    </div>
+</div>

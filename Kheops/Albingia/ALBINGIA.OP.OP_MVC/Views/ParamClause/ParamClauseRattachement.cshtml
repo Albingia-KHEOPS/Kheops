@@ -1,0 +1,139 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamRattachClause
+@*  [Obsolete] cette page n'est pas utilisée *@
+<div class="GroupTitle">
+    Liste des Eléments Générateurs / Délencheurs Inconditionels
+</div>
+<div class="HorizontalFullWithGroup ParamWidth">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @Html.HiddenFor(m => m.CodeService)
+                    @Html.Hidden("CodeActGes", Model.CodeActeGestion)
+                    @Html.HiddenFor(m => m.CodeEtape)
+                    @Html.HiddenFor(m => m.CodeContexte)
+                    @Html.HiddenFor(m => m.Code)
+                    <label class="Block">Service</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Service" name="Service" value="@(Model.Service)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Acte de gestion</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="ActeGestion" name="ActeGestion" value="@(Model.ActeGestion)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Etape</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Etape" name="Etape" value="@(Model.Etape)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Contexte</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Contexte" name="Contexte" value="@(Model.Contexte)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">
+                        Type</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.EG)
+                    {
+                        <input type="radio" id="EG" name="EGDI" value="@(Model.EG.ToString())" disabled="disabled" checked="checked" />  
+                    }
+                    else
+                    { 
+                        <input type="radio" id="EG" name="EGDI" value="@(Model.EG.ToString())" disabled="disabled" />     
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Elément Générateur</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.DI)
+                    {
+                        <input type="radio" id="DI" name="EGDI" value="@(Model.DI.ToString())" disabled="disabled" checked="checked" /> 
+                    }
+                    else
+                    { 
+                        <input type="radio" id="DI" name="EGDI" value="@(Model.DI.ToString())" disabled="disabled" />    
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Déclencheur Incond.</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Code EG/DI</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="CodeEGDI" name="CodeEGDI" value="@(Model.CodeEGDI)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Libellé</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="LibelleEGDI" name="LibelleEGDI" value="@(Model.LibelleEGDI)" readonly="readonly" class="DoubleInputWidth readonly" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">
+                        <b><u>Clausier</u></b></label>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="AutoWidth">Restriction (mot clé et/ou libellé)</label>
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <input type="text" id="Restriction" name="Restriction" value="" style="width: 285px;" />
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <img src="@Url.Content("/Content/Images/arrow-refresh.png")" id="refreshList" name="refreshList" alt="Rafraichir la liste" title="Rafraichir la liste" class="CursorPointer" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Affichage</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.Affichage, Model.Affichages, "Affichage", htmlAttributes: new { @id = "Affichage" }, generateTitle: true, genEmptyLine: false)
+                </div>
+            </div>
+        </div>
+        <div id="divClauses">
+            @Html.Partial("ParamClauseListClauses", Model)
+        </div>
+    </div>
+</div>
+

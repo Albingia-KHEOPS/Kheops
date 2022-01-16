@@ -1,0 +1,123 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.AssuresAdditionnels.AssuAdditionnels
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albAnAssuresAdditionnels.css" }, "~/Content/AffaireNouvelle/")
+@{
+    //var splitChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_FILE;
+}
+<div id="divAssuresAdditionnels" class="CommonForm FloatLeft">
+    <div class="GroupFull GroupWithBorder">
+        @Html.Hidden("SplitChar", ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)
+        @Html.Hidden("UpdAssu", string.Empty)
+        @Html.Hidden("DelAssu", string.Empty)
+        <div class="GroupTitle FloatLeft">
+            Assurés
+        </div>
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection">
+                <div id="divAssureRefHeader" class="PaddingLeft">
+                    <table id="tblAssureRefHeader">
+                        <tr>
+                            <th class="tablePersoHead tdHeadCodeRef">Code</th>
+                            <th class="tablePersoHead tdHeadNomRef">Nom assuré</th>
+                            <th class="tablePersoHead tdHeadCPRef">C.P.</th>
+                            <th class="tablePersoHead tdHeadVilleRef">Ville</th>
+                            <th class="tablePersoHead tdHeadQualitesRef">Qualités</th>
+                            <th class="tablePersoHead tdHeadAutreRef">Autre</th>
+                            <th class="tablePersoHead tdHeadAutreRef CursorPointer" id="addAssureRef">
+                                <img id="imgAddAssuRef" src="@Url.Content("/Content/Images/plusajouter1616.png")" title="Ajout assuré référencé" />
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divAssureRefBody" class="PaddingLeft">
+                    @if (Model.AssuresReference != null) {
+                        @Html.Hidden("AssureBase", (Model.AssuresReference[0].AssureBase))
+                        <table id="tblAssureRefBody">
+                            @Html.Partial("LstAssuresRef", Model)
+                        </table>
+                    }
+                </div>
+                <br />
+                <div id="divAssureNonRefHeader" class="PaddingLeft">
+                    <table id="tblAssureNonRefHeader">
+                        <tr>
+                            <th class="tablePersoHead tdHeadQualitesNonRef">Qualités</th>
+                            <th class="tablePersoHead tdHeadAutreRef">Autre</th>
+                            <th class="tablePersoHead tdHeadAutreRef CursorPointer" id="addAssureNonRef">
+                                <img id="imgAddAssuNonRef" src="@Url.Content("/Content/Images/plusajouter1616.png")" title="Ajout assuré non référencé" />
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divAssureNonRefBody" class="PaddingLeft">
+                    @if (Model.AssuresNonReference != null) {
+                        <table id="tblAssureNonRefBody">
+                            @Html.Partial("LstAssuresNonRef", Model)
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonLeft">
+        </div>
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFermer" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>
+<div id="divAssure">
+    <div class="overlay-background" style="z-index:4" >
+    </div>
+    <div id="divDataAssure">
+    </div>
+</div>
+<div id="divMsgConfirmAssure" style="display: none">
+    <div class="overlay-background" style="z-index:4" >
+    </div>
+    <div id="divDataMsgConfirmAssure">
+        @Html.HiddenNoName("hiddenActionSupprAssure", string.Empty)
+        <div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;">
+            <div class="fancybox-outer">
+                <div class="fancybox-inner" style="overflow: auto; width: 281px; height: 100px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2" style="background-color: #EDEDED;">
+                                    <b>Message de Confirmation</b>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="middle" rowspan="2">
+                                    <img alt="" src="/Content/Images/alertes/notif_icn_warn.png">
+                                </td>
+                                <td>
+                                    <div id="msgConfirm" class="FancyTextCenter">
+                                        Etes-vous sûr de vouloir supprimer l'assuré
+                                        <br>
+                                        <label id="idAssureSuppr"></label>
+                                        ?
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <button id="btnConfirmCancelSupprAssure" data-accesskey="n" value="Non" type="button" title="Utilisez la combinaison Alt + N pour accéder à la fonctionnalité">
+                                        <u>N</u>on
+                                    </button>
+                                    <button id="btnConfirmOkSupprAssure" data-accesskey="o" value="Oui" type="button" title="Utilisez la combinaison Alt + O pour accéder à la fonctionnalité">
+                                        <u>O</u>ui
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

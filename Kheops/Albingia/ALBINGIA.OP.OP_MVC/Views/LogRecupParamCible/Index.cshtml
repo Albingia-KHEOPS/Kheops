@@ -1,0 +1,18 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleLogRecupParamCiblePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vLogRecupParamCible.css" }, "~/Content/")
+
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div>
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+</div>
+
+
+@Html.Partial("Body", Model)
+
+
+
+
+

@@ -1,0 +1,34 @@
+﻿<div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+    <div class="ActionButtons ActionButtonsSearchLeft ActionButtonLeft">
+        @*        <input type="button" value="Créer Saisie" id="btnCreerRechSaisie" tabindex="23" albShortcut="false" data-accesskey="s" />
+        <input type="button" value="Créer Contrat" id="btnCreerRechContrat" albShortcut="false" data-accesskey="c" />
+        <input type="button" value="Double Saisie" id="btnDoubleSaisie" class="ButtonHide" albShortcut="false" data-accesskey="d" />
+        <input type="button" value="Modifier Offre" id="btnCreerOffre" class="ButtonHide" albShortcut="false" data-accesskey="m" />
+        <input type="button" value="Etablir contrat" id="btnEtablirContrat" class="ButtonHide" albShortcut="false" data-accesskey="e" />
+        <input type="button" value="Copier Offre" id="btnCopyOffre" class="ButtonHide" albShortcut="false" data-accesskey="f" />
+        <input type="button" value="Refuser Offre" id="btnRefusOffre" class="ButtonHide" albShortcut="false" data-accesskey="r" />
+        <input type="button" value="Connexités" id="btnConnexites" class="ButtonHide" albShortcut="true" data-accesskey="n" />
+        <input type="button" value="Périodes d'engagements" id="btnEngagementPeriodes" class="ButtonHide" albShortcut="false" data-accesskey="p" />*@
+
+        <button type="button" id="btnCreerRechSaisie" tabindex="23" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="s" title="Créer une nouvelle saisie courtier">Créer <u>S</u>aisie</button>
+        <button type="button" id="btnCreerRechContrat" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="c" title="Créer un nouveau contrat">Créer <u>C</u>ontrat</button>
+        <button type="button" id="btnDoubleSaisie" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="d"><u>D</u>ouble Saisie</button>
+        <button type="button" id="btnCreerOffre" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="m" title="Modifier l’offre/contrat en cours"><u>M</u>odifier Offre</button>
+        <button type="button" id="btnEtablirContrat" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="e"><u>E</u>tablir contrat</button>
+        <button type="button" id="btnCopyOffre" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="f">Copier O<u>f</u>fre</button>
+        <button type="button" id="btnRefusOffre" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="u">Ref<u>u</u>ser Offre</button>
+        <button type="button" id="btnValiderOffre" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="v"><u>V</u>alider Offre</button>
+        <button type="button" id="btnConnexites" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="n">Co<u>n</u>nexités</button>
+        <button type="button" id="btnEngagementPeriodes" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="p"><u>P</u>ériodes d'engagements</button>
+        <button type="button" id="btnFolderReadOnly" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="o" title="Visualiser l’offre/contrat en cours">C<u>o</u>nsulter Offre</button>
+        <button type="button" id="btnRetours" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="g">Pièces si<u>g</u>nées</button>
+        <button type="button" id="btnBlocageTermes" class="ButtonHide" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="t">Blocage des <u>T</u>ermes</button>
+    </div>
+    <div id="LoadingRechDiv" class="FloatLeft">
+        <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+    </div>
+    <div class="ActionButtons ActionButtonsSearchRight ActionButtonRight">
+        <button type="button" value="Réinitialiser" id="btnInitializeRech" tabindex="24" albshortcut="true" data-accesskey="i">Ré<u>i</u>nitialiser</button>
+        <button type="submit" value="Nouvelle Recherche" id="btnNewRechercher" tabindex="22" albshortcut="true" data-accesskey="r"><u>R</u>etour</button>
+    </div>
+</div>

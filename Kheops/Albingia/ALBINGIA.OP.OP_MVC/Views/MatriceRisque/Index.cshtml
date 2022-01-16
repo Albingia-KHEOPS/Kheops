@@ -1,0 +1,188 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleMatriceRisquePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vMatriceRisque.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albMatriceRisque.js" }, "~/Scripts/AlbingiaJS/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "jquery-ui-1.8.23.js" }, "~/Scripts/Jquery/")
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div id="divMatriceFormule" class="CommonForm FloatLeft">
+      
+        @Html.Hidden("CodeRsqSel", string.Empty)
+        @Html.Hidden("CopieBnsPb", string.Empty)
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div>
+                            @if (!Model.IsReadOnly && !Model.IsModifHorsAvenant)
+                            {
+                                <div class="FloatLeft">
+                                    <div class="FloatLeft PaddingLeft">
+                                        <button id="btnAddRisque" type="button" albshortcut="true" data-accesskey="r">Ajouter <u>R</u>isque</button>
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft">
+                                        <button id="btnAddFormule" type="button" albshortcut="true" data-accesskey="f" disabled="@(!Model.AddFormule)">Ajouter <u>F</u>ormule</button>
+                                    </div>
+                                    <!--<div class="FloatLeft PaddingLeft">
+                                    <button id="btnCopyRisque" type="button" albshortcut="true" data-accesskey="c" disabled="@(!Model.CopyRisque)"><u>C</u>opier Risque</button>
+                                </div>-->
+                                </div>
+                            }
+                        </div>
+                        <div>
+                            <div class="FloatRight">
+                                <div class="FloatRight PaddingRight">
+                                    <button id="btnMatriceGarantie" name="btnMatriceGarantie" type="button" albshortcut="true" data-accesskey="n">Vue par gara<u>n</u>ties</button>
+                                </div>
+                                <div class="FloatRight PaddingRight">
+                                    <button id="btnMatriceFormule" name="btnMatriceFormule" type="button" albshortcut="true" data-accesskey="o">Vue par f<u>o</u>rmules</button>
+                                </div>
+                                <div class="FloatRight PaddingRight">
+                                    <button id="btnMatriceRisque" name="btnMatriceRisque" type="button" albshortcut="true" data-accesskey="i" disabled="disabled">Vue par r<u>i</u>sques</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divFormGen">
+                        @if (Model.FormGen)
+                        {
+                            <div class="PaddingLeft">
+                                <div class="divContentFormGen">
+                                    <div class="FloatLeft">
+                                        <b>Formule générale : </b>
+                                    </div>
+                                    @if (Model.Formule != null)
+                                    {
+                                        var libForm = !string.IsNullOrEmpty(Model.Formule.Libelle) ? Model.Formule.Libelle : "...";
+                                        <div id="divLibFormGen" title="@(libForm)" class="divLibFormGen TxtLink CursorPointer">@(libForm)</div>
+                                        <div id="divImgFormGen" class="FloatRight PaddingLeft">
+                                            @if (!Model.IsReadOnly && !Model.IsModifHorsAvenant)
+                                            {
+                                                <img id="DelFormGen" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" title="Supprimer la formule générale" alt="DelFormGen" albCodeForm="@(Model.Formule.Code)" />
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="divLibFormGen" title="">&nbsp;</div>
+                                        <div class="FloatRight PaddingLeft">
+                                            @if (!Model.IsReadOnly && !Model.IsModifHorsAvenant)
+                                            {
+                                                <img id="AddFormGen" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" title="Ajouter une formule générale" alt="AddFormGen" />
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="HeightRow">
+                        @Html.Partial("MatriceRisqueTableau", Model)
+                    </div>
+                    <div class="HeightRow">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" class="next-step" albshortcut="true" tabindex="28" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <table id="tableListRsq" style="visibility:hidden;">
+        @{
+            foreach (var risque in Model.Risques)
+            {
+
+                <tr>
+                    <td></td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+<!-- selection popup -->
+<!--1-->
+<!--2-->
+<!--<div  id="divLstRsq"  style="display:none;">-->
+<!-- <div style="position: absolute; top: 75px; left: 400px; display: block; z-index: 3; float: left; background-color: #FFF; padding: 10px;">-->
+<div id="divLstRsq" class="ui-dialog ui-widget ui-widget-content ui-corner-all undefined ui-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-1" style="display: none; z-index: 1002; outline: 0px; position: absolute; height: auto; width: auto; top: 0px; left: 396.5px;">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span class="ui-dialog-title" id="ui-dialog-title-1">Confirmation</span>
+    </div>
+    <div id="divWinListRsq">
+        <div class="GroupFull GroupWithBorder" style="width: 500px;">
+            <div class="GroupTitle">Le Risque suivant est sélectionné :</div>
+
+            <div id="dvListRsq" class="divFancyListRsqObj">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label>
+                                    <input type="radio" name="radioRsq" style="visibility:hidden;" />
+                                    <label><b id="Copie_risque"></b></label>
+                                </label>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="GroupTitle">Voulez-vous copier les BNS/PB de ce risque?</div>
+                <div class="Validation">
+                    <button id="btnOuiListCopie" type="button" albshortcut="false" accesskey="#**#v"><u>O</u>ui</button>
+                    <button id="btnNanListCopie" type="button" albshortcut="false" accesskey="#**#v"><u>N</u>on</button>
+                    <button id="btnCancelListCopie" type="button" albshortcut="false" accesskey="#**#a"><u>A</u>nnuler</button>
+                    <!-- /ko -->
+                </div>
+            </div>
+
+    </div>
+</div>
+
+<!--</div>-->

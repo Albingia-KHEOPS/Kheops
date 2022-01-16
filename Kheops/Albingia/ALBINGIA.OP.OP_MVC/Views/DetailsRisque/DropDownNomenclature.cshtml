@@ -1,0 +1,10 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDetailsRisque.ModeleListeNomenclatures
+
+@if (Model.NomenclatureReadOnly && ((Model.NiveauNomenclature == "1" || Model.NiveauNomenclature == "I" || !string.IsNullOrEmpty(Model.Nomenclature) || Model.NomenclatureReadOnly) && !string.IsNullOrEmpty(Model.NiveauNomenclature)))
+{
+    @Html.AlbDropDownListFor(m => m.Nomenclature, Model.Nomenclatures, string.Format("InformationsGenerales_Nomenclature{0}", Model.NumeroCombo), htmlAttributes: new { @id = string.Format("InformationsGenerales_Nomenclature{0}", Model.NumeroCombo), @class = "inputDDL", @name = string.Format("InformationsGenerales.ListesNomenclatures.Nomenclature{0}.Nomenclature", Model.NumeroCombo), @albNiveauCombo = Model.NiveauNomenclature }, generateTitle: true, genEmptyLine: true, replaceHtmlName: string.Format("InformationsGenerales.ListesNomenclatures.Nomenclature{0}.Nomenclature", Model.NumeroCombo))
+}
+else
+{
+    @Html.AlbDropDownListFor(m => m.Nomenclature, Model.Nomenclatures, string.Format("InformationsGenerales_Nomenclature{0}", Model.NumeroCombo), htmlAttributes: new { @id = string.Format("InformationsGenerales_Nomenclature{0}", Model.NumeroCombo), @class = "readonly inputDDL", @readonly = "readonly", @disabled = "disabled", @name = string.Format("InformationsGenerales.ListesNomenclatures.Nomenclature{0}.Nomenclature", Model.NumeroCombo), @albNiveauCombo = Model.NiveauNomenclature }, generateTitle: true, genEmptyLine: true, replaceHtmlName: string.Format("InformationsGenerales.ListesNomenclatures.Nomenclature{0}.Nomenclature", Model.NumeroCombo))
+}

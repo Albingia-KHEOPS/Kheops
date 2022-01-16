@@ -1,0 +1,59 @@
+﻿@model  List<ALBINGIA.OP.OP_MVC.Models.ModelesParamEngment.ParamEngmentColonne>
+@{
+    var splitChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+}
+<div id="divHeaderEngmentCol">
+    @Html.Hidden("CodeTraite", string.Empty)
+    @Html.Hidden("delColonne", string.Empty)
+    <table id="tblHeaderEngmentCol" class="trHeight">
+        <tr>
+            <td class="tablePersoHead tdHeaderCode">ID</td>
+            <td class="tablePersoHead tdHeaderLib">Libellé</td>
+            <td class="tablePersoHead">Séparation</td>
+            <td class="tablePersoHead tdHeaderImg">
+                <img id="imgAddCol" name="imgAddCol" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter une colonne" />
+            </td>
+        </tr>
+    </table>
+</div>
+@if (Model != null && Model.Count > 0)
+{
+    <div id="divBodyEngmentCol">
+        <table id="tblBodyEngmentCol" class="trHeight">
+            @{
+    var countLgn = Model.Count;
+    var i = 1;
+    foreach (var lgn in Model)
+    {
+                <tr id="@string.Format("{0}{1}{2}", lgn.CodeTraite, splitChar, lgn.Code)">
+                    <td class="tdBodyCode">@lgn.Code</td>
+                    <td class="tdBodyLib">@lgn.Libelle</td>
+                    <td class="tdBodySepa">
+                        @if (lgn.Separation == "O")
+                        { 
+                            <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="Séparation" />
+                        }
+                    </td>
+                    @if (i < countLgn)
+                    {
+                        <td class="tdBodyImg">
+                            <img id="updCol@(splitChar)@(lgn.CodeTraite)@(splitChar)@(lgn.Code)" name="UpdCol" title="Modifier la colonne" class="CursorPointer" src="@Url.Content("/Content/Images/editer1616.png")" />
+                        </td>
+                        <td class="tdBodyImg"></td>
+                    }
+                    else
+                    {
+                        <td class="tdBodyImg">
+                            <img id="updCol@(splitChar)@(lgn.CodeTraite)@(splitChar)@(lgn.Code)" name="UpdCol" title="Modifier la colonne" class="CursorPointer" src="@Url.Content("/Content/Images/editer1616.png")" />
+                        </td>
+                        <td class="tdBodyImg">
+                            <img id="delCol@(splitChar)@(lgn.CodeTraite)@(splitChar)@(lgn.Code)" name="DelCol" title="Supprimer la colonne" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+                        </td>
+                    }
+                </tr>
+                    i = i + 1;
+    }
+            }
+        </table>
+    </div>
+}

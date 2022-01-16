@@ -1,0 +1,10 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleHistoriquePage
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+@Html.Partial("BodyHistorique", Model)
+
+

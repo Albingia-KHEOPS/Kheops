@@ -1,0 +1,64 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationAttestation.ModeleAttestationGarantie
+<div class="HeightRow">
+    <input type="hidden" id="garAttestId" value="@(Model.LotId)" />
+    <div class="FloatLeft dvPeriodeAttes">
+        <label class="AutoWidth"><b>Période de l'attestation</b></label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PeriodeDeb" class="inputDate readonly" readonly="readonly" value="@(Model.PeriodeDeb)" />
+    </div>
+    <div class="FloatLeft" style="width: 40px; text-align: center;">
+        <label class="AutoWidth"><b>au :</b></label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PeriodeFin" class="inputDate readonly" readonly="readonly" value="@(Model.PeriodeFin)" />
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="AutoWidth"><b>Liste des garanties du contrat sur la période</b> :</label>
+    </div>
+    <div class="FloatLeft PaddingLeft">
+        <input type="text" id="inSearchGarantie" class="inSearchGar" value="" />
+    </div>
+    <div class="FloatLeft PaddingLeft">
+        <img id="btnSearchGar" class="CursorPointer" src="@(Url.Content("/Content/Images/loupe.png"))" title="Rechercher une garantie" />
+    </div>
+    <div class="FloatLeft" style="padding-left:150px;">
+        <button id="btnReinit" type="button" albshortcut="true" accesskey="R"><u>R</u>éinitialiser</button>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft PaddingLeft">
+        <label class="AutoWidth">Filtrer sur formule :</label>
+    </div>
+    <div class="FloatLeft PaddingLeft">
+        @Html.AlbDropDownListFor(m => m.FiltreGarantie, Model.FiltresGarantie, "FiltreFormule", htmlAttributes: new { @id = "FiltreFormule", @class = "" }, replaceHtmlName: "FiltreFormule", genEmptyLine: true, generateTitle: true)
+    </div>
+    <div class="FloatLeft PaddingFiltreRsq">
+        <label class="AutoWidth">Filtrer sur risque :</label>
+    </div>
+    <div class="FloatLeft PaddingLeft">
+        @Html.AlbDropDownListFor(m => m.FiltreRisque, Model.FiltresRisque, "FiltreRisque", htmlAttributes: new { @id = "FiltreRisque", @class = "" }, replaceHtmlName: "FiltreRisque", genEmptyLine: true, generateTitle: true)
+    </div>
+</div>
+
+<div id="dvHeaderGarantie">
+    <table id="tblHeaderGarantie" class="trHeight">
+        <tr>
+            <th class="tablePersoHead thAllCheck">
+                <input type="checkbox" id="checkAllGarantie" />@* @(Model.Risques.Count > 1 ? "" : "checked:checked") />*@
+            </th>
+            <th class="tablePersoHead thGarRsq">Risque</th>
+            <th class="tablePersoHead thGarObj">Objet(s)</th>
+            <th class="tablePersoHead thGarFor">Formule</th>
+            <th class="tablePersoHead thGarantie">Garanties</th>
+            <th class="tablePersoHead thGarValeur">Montant</th>
+            <th class="tablePersoHead thDates">Dates</th>
+        </tr>
+    </table>
+</div>
+<div id="dvBodyGarantie" class="divGarantie" data-min-height="100" data-max-height="290">
+    @Html.Partial("AttesListGarantie", Model)
+</div>
+

@@ -1,0 +1,126 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleAttentat.ModeleAttentatParametre
+<div class="HeightRow">
+    <div class="FloatLeft EmptyInput">
+        &nbsp;</div>
+    <div class="FloatLeft">
+        <label id="ParamLib">
+            @if (Model.Standard)
+            { 
+                @Html.Raw("Paramètres standards")
+            }
+            else
+            { 
+                @Html.Raw("Paramètres retenus")
+            }
+        </label>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="GenericColumn">
+        <div class="FloatLeft EmptyInput">
+            @if (Model.Standard)
+            { 
+                <label class="Block">Soumis</label>
+            }
+            else
+            { 
+                @Html.Raw("&nbsp;")
+            }
+        </div>
+        <div class="FloatLeft">
+            @Html.CheckBoxFor(m => m.Soumis, new { @id = "Soumis" + (Model.Standard ? "Std" : "Ret") })
+        </div>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="GenericColumn">
+        <div class="FloatLeft EmptyInput">
+            @if (Model.Standard)
+            { 
+                <label class="Block">Tranche</label>
+            }
+            else
+            { 
+                @Html.Raw("&nbsp;")
+            }
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="Tranche@(Model.Standard ? "Std" : "Ret")" name="Tranche" value="@(Model.Tranche)" readonly="readonly" class="readonly" albMask="decimal" />
+        </div>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="GenericColumn">
+        <div class="FloatLeft EmptyInput">
+            @if (Model.Standard)
+            { 
+                <label class="Block">Taux cession (%)</label>
+            }
+            else
+            { 
+                @Html.Raw("&nbsp;")
+            }
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="TauxCession@(Model.Standard ? "Std" : "Ret")" name="TauxCession" value="@(Model.TauxCession)" readonly="readonly" class="readonly decimal" albMask="decimal" />
+        </div>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="GenericColumn">
+        <div class="FloatLeft EmptyInput">
+            @if (Model.Standard)
+            { 
+                <label class="Block">Frais de ges. (%)</label>
+            }
+            else
+            { 
+                @Html.Raw("&nbsp;")
+            }
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="FraisGestion@(Model.Standard ? "Std" : "Ret")" name="FraisGestion" value="@(Model.FraisGestion)" readonly="readonly" class="readonly decimal" albMask="decimal" />
+        </div>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="GenericColumn">
+        <div class="FloatLeft EmptyInput">
+            @if (Model.Standard)
+            { 
+                <label class="Block">Commission (%)</label>
+            }
+            else
+            { 
+                @Html.Raw("&nbsp;")
+            }
+        </div>
+        <div class="FloatLeft">
+            @if (Model.Standard)
+            { 
+                <input type="text" id="CommissionStd" name="Commission" value="@(Model.Commission)" readonly="readonly" class="readonly decimal" albMask="decimal" />
+            }
+            else
+            {
+                <input type="text" id="CommissionRet" name="Commission" value="@(Model.Commission)" class="decimal" albMask="decimal" />
+            }
+        </div>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="GenericColumn">
+        <div class="FloatLeft EmptyInput">
+            @if (Model.Standard)
+            { 
+                <label class="Block">Facturé (%)</label>
+            }
+            else
+            { 
+                @Html.Raw("&nbsp;")
+            }
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="Facture@(Model.Standard ? "Std" : "Ret")" name="Facture" value="@(Model.Facture)" readonly="readonly" class="readonly decimal" albMask="decimal" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Acceuil.AcceuilPage
+@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+@{
+    Layout = Url.Content("../Shared/LayoutHome.cshtml");
+}
+
+    <head runat="server">
+        <link rel="shortcut icon" href="/Content/Images/LogoAlbingia.ico">
+        <link rel="icon" type="image/gif" href="/Content/Images/AnimatedLogoAlbingia.gif">
+        @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "Jquery/jquery-1.8.2.min.js", "Jquery/jquery-ui-1.8.23.min.js", "Jquery/autoNumeric.min.js" }, "~/Scripts/")
+        @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albHome.js" }, "~/Scripts/AlbingiaJS/")
+        <title>@string.Format("{0}-[{1}]", "Outil de production", AlbSessionHelper.ConnectedUser)
+        </title>
+        <link rel="stylesheet" href="/Content/home.css">
+        <style type="text/css">
+            div#dvMasterFrame:after {
+                content: '';
+                clear: both;
+                display: block;
+            }
+            #divRechercheCopyOffre {
+                position: relative;
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0
+            }
+            #divDataRechercheCopyOffre {
+                width: 1245px;
+                height: 630px;
+            }
+            #RechercheCopyOffreIFrame {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                border: none;
+                margin: 0;
+                z-index: 61;
+                background-color: gray
+            }
+        </style>
+    </head>
+    <body>
+
+        @{
+            var baseModel = (MetaModelsBase)Model;
+            var tabGuid = "tabGuid" + baseModel.TabGuid + "tabGuid";
+            var srcUrl = !string.IsNullOrEmpty(Model.UrlWin) ?
+                Model.UrlWin.Contains("tabGuid") ?
+                    Model.UrlWin.Replace("tabGuidtabGuid", tabGuid) :
+                    Model.UrlWin
+                : "/RechercheSaisie/Index";
+        }
+
+        <input type="hidden" id="homeTabGuid" name="Offre.TabGuid" value="@(tabGuid)" albguid="" />
+        <input type="hidden" id="temp_value" name="temp-value" value="" />
+        @Html.Hidden("SwitchHardLog", (baseModel.SwitchHardLog), new { id = "switchHardLog" })
+        <div id="dvMasterFrame">
+            <iframe onload="SetIframeHeight();" id="MasterFrame" scrolling="no" frameborder="0" align="left" marginwidth="0"
+                    marginheight="0" src="@(srcUrl)"></iframe>
+        </div>
+        <div id="divRechercheCopyOffre">
+            <div class="overlay-background" style="z-index: 60;">
+            </div>
+            <div id="divDataRechercheCopyOffre">
+                <iframe id="RechercheCopyOffreIFrame" align="left"></iframe>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var homeTabGuid = "@(baseModel.TabGuid)";
+            $(function () {
+                window.history.replaceState(null, "", "/");
+            });
+        </script>
+
+    </body>
+
+</html>

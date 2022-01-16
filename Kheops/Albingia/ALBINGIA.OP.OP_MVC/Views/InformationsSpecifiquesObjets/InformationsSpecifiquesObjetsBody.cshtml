@@ -1,0 +1,55 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsSpecifiquesObjetsPage>     
+@if (Model.Offre != null)
+{
+    @Html.HiddenNoName("CodeOffre", Model.Offre.CodeOffre)
+    @Html.HiddenNoName("Version", Model.Offre.Version)
+}
+else if (Model.Contrat != null)
+{
+    @Html.HiddenNoName("CodeOffre", Model.Contrat.CodeContrat)
+    @Html.HiddenNoName("Version", Model.Contrat.VersionContrat)
+}
+
+@Html.HiddenNoName("Code", Model.Code)
+@Html.HiddenNoName("CodeObjet", Model.CodeObjet)
+
+<input type="hidden" id="Params" albContext="@Model.AlbContext" value="@(Model.Parameters)" />
+<input type="hidden" id="SpecificParams" albContext="@Model.AlbContext" value="@(Model.SpecificParameters)" />
+@Html.HiddenNoName("splitChar", ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)
+<input type="hidden" id="LibRisque" value ="@Model.LibelleRisque" />
+<input type="hidden" id="LibObjet" value ="@Model.LibelleObjet" />
+<div class="nGradientSection None" id="divBandeauIS">
+    <table class="trHeight tblInfo">
+        <tr>
+            <td>
+                <label class="Block">Code risque</label>
+            </td>
+            <td class="ObjetRisque readonly" title="@Model.CodeRisque - @Model.LibelleRisque">
+                <input type="hidden" id="CodeLibelleRisque" value="@Model.CodeRisque - @Model.LibelleRisque"/>
+                @Model.CodeRisque - @Model.LibelleRisque
+            </td>
+            <td>
+                <label class="Block">Code objet</label>
+            </td>
+            <td class="ObjetRisque readonly" title="@Model.CodeObjet - @Model.LibelleObjet">
+                <input type="hidden" id="CodeLibelleObjet" value="@Model.CodeObjet - @Model.LibelleObjet"/>
+                @Model.CodeObjet - @Model.LibelleObjet
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <div class="FloatLeft RisqueIndexe">
+        @if (Model.AlbContext == "OffreSimpObjet")
+        {
+            <div id="dvISGtiesResult" albContext="@Model.AlbContext" class="dvISGtiesResultObjet">
+            </div>
+        }
+        else
+        {
+            <div id="dvISGtiesResult" albContext="@Model.AlbContext">
+            </div>
+        }
+    </div>
+
+</div>

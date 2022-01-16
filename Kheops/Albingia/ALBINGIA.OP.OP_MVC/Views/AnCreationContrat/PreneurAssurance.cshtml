@@ -1,0 +1,69 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.PreneurAssurance
+<div class="HeightRow" data-preneur="preneur">
+    <div class="FloatLeft">
+        @Html.HiddenNoName("inInvalidPreneurAssu", string.Empty, new { albcontext = "assure" })
+        <label class="labelPreneurAssu">Preneur d'assurance</label>
+    </div>
+    <div id="PreneurAssuInvalideDiv" class="FloatLeft error PaddingLeft" albcontext="assure"></div>
+    <div class="FloatLeft hide-it">
+        <i class="alerte-blacklisted"></i>
+    </div>
+    <a class="textInfo lnkBlackList" href="#" id="lnkBlackList">Portefeuille de contrats assuré</a>
+</div>
+<div class="HeightRow" data-preneur="preneur">
+    <div class="FloatLeft">
+        <label class="labelCourtierCode">Code*</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" class="inputAnCodeCourtier" id="PreneurAssurance_Numero" albhorsavn name="NumeroAssur" tabindex="29" value="@Model.Numero" albAutoComplete="autoCompCodeAssure" albcontext="assure" maxlength="7"/>
+    </div>
+    <div class="FloatLeft">
+        <label class="labelNomCourtier">Nom</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PreneurAssurance_Nom" albhorsavn name="NomAssur" class="inputNomCourtier" tabindex="30" value="@Model.Nom" albAutoComplete="autoCompNomAssure" albcontext="assure" />
+    </div>
+    <div class="FloatLeft Loupe">
+        <img src="@Url.Content("/Content/Images/loupe.png")" id="RechercheAvanceePreneurAssurance" alt="" class="CursorPointer" albcontext="assure" />
+    </div>
+    <div class="FloatLeft hide-it">
+        <i id="linkAlertesPreneur" class="alerte-impayes-sinistres"></i>
+    </div>
+    <div class="FloatLeft">
+        <img alt="Informations" src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" class="CursorPointer PaddingLeft PaddingTopLittle" albAutoComplete="autoCompImgInfoAssure" albIdInfo="@Model.Numero" albcontext="assure" />
+    </div>
+    <div class="FloatLeft">
+        <label class="labelDept">Dépt</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PreneurAssurance_Departement" name="DepartementAssur" readonly="readonly" class="readonly inputDept" tabindex="31" value="@Model.Departement" albAutoComplete="autoCompCodePostalAssure" albcontext="assure" />
+    </div>
+    <div class="FloatLeft">
+        <label class="labelDept">Ville</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PreneurAssurance_Ville" name="VilleAssur" readonly="readonly" tabindex="32" class="readonly" value="@Model.Ville" albAutoComplete="autoCompVilleAssure" albcontext="assure" />
+    </div>
+    @if (!string.IsNullOrEmpty(Model.Numero)) {
+        <div class="FloatRight PaddingRight">
+            <img id="btnOpenAssu" class="CursorPointer @(Model.NbAssuAdditionnel > 0 ? "backgroundColorOrange" : "backgroundColorWhite")" title="Assurés" src="@Url.Content("/Content/Images/u132_normal.png")" />
+        </div>
+    }
+</div>
+<div class="HeightRow">
+    <div class="TripleColumnsGroup FloatLeft">
+        <div class="FloatLeft">
+            @if (Model.PreneurEstAssure)
+            {
+                <input type="checkbox" id="PreneurEstAssure" tabindex="33" name="PreneurEstAssure" checked="checked" />
+            }
+            else
+            {
+                <input type="checkbox" id="PreneurEstAssure" tabindex="33" name="PreneurEstAssure" />
+            }
+        </div>
+        <div class="FloatLeft">
+            <label class="Block labelGpIdentiqueApporteur">Le preneur d'assurance est un assuré</label>
+        </div>
+    </div>
+</div>

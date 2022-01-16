@@ -1,0 +1,71 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationAvenantPage>
+
+@Url.IncludeKoComponent("entete-contrat")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css", "vCreationAvenant.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albCreationAvenant.js" }, "~/Scripts/AlbingiaJS/")
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+    <div class="FullWidth">
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        @Html.HiddenFor(m => m.ModeAvt)
+        @Html.Hidden("EtatAvt", (Model.Contrat.Etat))
+        @Html.Hidden("SituationAvt", (Model.Contrat.Situation))
+        @Html.Hidden("ReguleId", (Model.Contrat.ReguleId))
+        @Html.Hidden("FinEffetPrev", (Model.FinEffet))
+        <div class="CommonForm FloatLeft">
+            <div class="nGroupFull nGroupWithBorder">
+                <div class="divGlobalRegulGroup">
+                    @Html.Hidden("SouscripteurSelect", string.Empty, new { albautocomplete = "autoCompSouscripteurSelect" })
+                    @Html.Hidden("SouscripteurCode", Model.Contrat.SouscripteurCode, new { albautocomplete = "autoCompSouscripteurCode" })
+                    @Html.HiddenFor(m => m.HeureEffetGaranties)
+                    @Html.HiddenNoName("FinEffetHeure", Model.FinEffetHeure)
+                    @Html.Hidden("CodePeriodicite", (Model.Contrat.PeriodiciteCode))
+                    @Html.Hidden("GestionnaireSelect", string.Empty, new { albautocomplete = "autoCompGestionnaireSelect" })
+                    @Html.Hidden("GestionnaireCode", Model.Contrat.GestionnaireCode, new { albautocomplete = "autoCompGestionnaireCode" })
+
+                    <entete-contrat></entete-contrat>
+
+                    <div id="divInfoRegul" class="simpleGradientSection divPeriodeAlertRegularisation">
+
+                        <div class="simpleGradientSection FloatLeft dvRegule">
+                            @switch (Model.TypeAvt)
+                            {
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_MODIF:
+                                    @Html.Partial("AvenantModification", Model.AvenantModification)
+                                    break;
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_REGUL:
+                                    @Html.Partial("AvenantModification", Model.AvenantModification)
+                                    break;
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF:
+                                    @Html.Partial("AvenantModification", Model.AvenantModification)
+                                    break;
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_RESIL:
+                                    @Html.Partial("AvenantResiliation", Model.AvenantResiliation)
+                                    break;
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_REMISE_EN_VIGUEUR:
+                                    @Html.Partial("AvenantRemiseEnVigueur", Model.AvenantRemiseEnVigueur)
+                                    break;
+                                default:
+                                    break;
+                            }
+                        </div>
+                        <div class="simpleGradientSection FloatRight dvAlertRegule">
+                            @Html.Partial("AvenantAlerte", Model.Alertes)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+                <div class="nActionButtons ActionButtonRight">
+                    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

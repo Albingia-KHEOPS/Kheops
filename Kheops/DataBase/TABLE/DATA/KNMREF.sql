@@ -1,0 +1,27 @@
+﻿CREATE TABLE ZALBINKHEO.KNMREF ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KNMREF de ZALBINKHEO ignoré. 
+--  SQL1506   30   Clé ou attribut ignoré pour KNMREF de ZALBINKHEO. 
+	KHIID NUMERIC(15, 0) NOT NULL DEFAULT 0 , 
+	KHITYPO CHAR(15) CCSID 297 NOT NULL DEFAULT '' , 
+	KHINMC CHAR(15) CCSID 297 NOT NULL DEFAULT '' , 
+	KHIDESI CHAR(60) CCSID 297 NOT NULL DEFAULT '' , 
+	KHINORD NUMERIC(7, 2) NOT NULL DEFAULT 0 )   
+	RCDFMT FNMREF     ; 
+  
+LABEL ON TABLE ZALBINKHEO.KNMREF 
+	IS 'Nomenclature  référentiel                      KHI' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KNMREF 
+( KHIID IS 'ID unique' , 
+	KHITYPO IS 'Typologie' , 
+	KHINMC IS 'Code Nomenclature' , 
+	KHIDESI IS 'Désignation' , 
+	KHINORD IS 'N° Ordre' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KNMREF 
+( KHIID TEXT IS 'ID unique' , 
+	KHITYPO TEXT IS 'Typologie' , 
+	KHINMC TEXT IS 'Code Nomenclature' , 
+	KHIDESI TEXT IS 'Désignation' , 
+	KHINORD TEXT IS 'N° ordre' ) ; 
+  

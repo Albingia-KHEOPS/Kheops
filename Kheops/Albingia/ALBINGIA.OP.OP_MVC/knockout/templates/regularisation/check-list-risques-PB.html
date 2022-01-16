@@ -1,0 +1,36 @@
+﻿<fieldset class="input-box">
+    <legend class="title"><!-- ko text: title --><!-- /ko --></legend>
+
+    <div class="check-list">
+        <table class="trHeight">
+            <thead>
+                <tr>
+                    <th>Risques</th>
+                    <th>Cibles</th>
+                    <th colspan="2">Dates du risque</th> 
+                    <th>Nombre d'années</th>                    
+                    <th>Taux d'appel %</th>                    
+                    <th>Cotisation retenue %</th>                    
+                    <th>Seuil S/P %</th>                    
+                    <th>Ristourne %</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: list">
+                <tr>
+                    <td class="link-to-check medium">
+                        <input type="checkbox" data-bind="checked: $data.isProcessed, enable: $data.canChange, event: { change: $data.askChangeStatus }" />
+                        <a class="link" data-bind="click: regulRisque, text: $data.label, attr:{title: $data.label}"></a>
+                    </td>
+                    <td class="small" data-bind="text: $data.cible"></td>
+                    <td class="small" data-bind="text: $data.dateDebut"></td>
+                    <td class="small" data-bind="text: $data.dateFin"></td>
+                    <td class="little" data-bind="text: $data.nbAnnees"></td>
+                    <td class="little" data-bind="text: $data.tauxAppel"></td>
+                    <td class="small" data-bind="text: $data.cotisationRetenue"></td>
+                    <td class="little" data-bind="text: $data.seuilSP">Seuil S/P %</td>
+                    <td class="little" data-bind="text: $data.ristourne"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</fieldset>

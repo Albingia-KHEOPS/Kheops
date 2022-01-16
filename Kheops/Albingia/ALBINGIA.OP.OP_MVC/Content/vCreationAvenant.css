@@ -1,0 +1,149 @@
+﻿.divInfoContrat
+{
+    width: 1023px;
+    height: 185px;
+}
+
+.divInfoLeft
+{
+    width: 45%;
+}
+
+.cssCodeOffre
+{
+    width: 75px !important;
+}
+
+.cssVersion
+{
+    width: 40px !important;
+    text-align: right;
+}
+
+.cssType
+{
+    width: 40px !important;
+}
+
+.lblContrat
+{
+    width: 80px !important;
+}
+
+.inputAvenant
+{
+    width: 335px !important;
+}
+
+.lblAvenant
+{
+    width: 150px;
+}
+
+.lblDateAu
+{
+    width: 20px;
+}
+
+.inputPeriodicite
+{
+    width: 256px !important;
+}
+
+.dvAvenant
+{
+    width: 570px;
+    /*width: 650px;*/
+    height: 294px;
+}
+
+.dvAlert
+{
+    width: 449px;
+    /*width: 369px;*/
+    height: 294px;
+}
+
+.paddingleft150
+{
+    padding-left: 150px;
+}
+
+.dvAlertes
+{
+    overflow: auto;
+    max-height: 285px;
+    padding-left: 5px;
+    width: 440px;
+    /*width: 360px;*/
+}
+
+.tblAlertes
+{
+    width: 425px;
+    /*width: 345px;*/
+    table-layout: fixed;
+}
+
+.tdImgAlerte
+{
+    width: 30px;
+    text-align: center;
+}
+
+.tdMsgAlerte
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdLinkAlerte
+{
+    text-align: center;
+    width: 120px;
+    /*width: 50px;*/
+}
+
+.inputTypeAvt
+{
+    width: 440px !important;
+}
+
+.inputNumInterne
+{
+    width: 40px !important;
+    text-align: right;
+}
+
+.avtWarning
+{
+    width: 509px;
+    font-style: italic;
+}
+
+.textareaDesc
+{
+    width: 325px;
+}
+
+.dvWarning
+{
+    height: 65px;
+}
+
+.dvDesc
+{
+    height: 46px;
+}
+
+.avtResilWarning
+{
+    width: 435px;
+    font-style: italic;
+}
+
+.selectDate
+{
+    width: 95px !important;
+}

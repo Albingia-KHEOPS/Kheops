@@ -1,0 +1,47 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.ModelePage.AnCreationContratPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albAnCreationContrat.css" }, "~/Content/AnCreationContrat/")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albRechercherBlackList.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albAnCreationContrat.js" }, "~/Scripts/AlbingiaJS/AnCreationContrat/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albRechercherBlackList.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth FloatLeft">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <div id="divBodyCreationContrat">
+        @Html.Partial("BodyAnCreationContrat", Model)
+    </div>
+</div>
+
+@Html.Partial("_AlertesPreneur", Model)
+
+<div id="divGestionnairePayeur">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataGestionnairePayeur">
+    </div>
+</div>
+<div id="divRechercheContrat">
+    <div class="overlay-background" style="z-index:9" >
+    </div>
+    <div id="divDataRechercheContrat">
+        @Html.Partial("/Views/RechercheSaisie/BodyRechercheSaisie.cshtml", Model.Recherche)
+    </div>
+</div>
+<div id="divRechercheAvanceeCourtierCreationContrat" albname="divRechercheAvancee">
+    <div class="overlay-background" style="z-index:22" >
+    </div>
+    <div id="divDataRechercheAvanceeCourtierCreationCourtier" albname="divDataRechercheAvancee"></div>
+</div>
+<div name="RechercherCourtier" albcontext="courtierGestion" id="divRechercherCourtierGestion">
+    @Html.Partial("/Views/RechercheSaisie/RechercheAvanceeCabinetCourtage.cshtml", Model.ListCabinetCourtageGestion)
+</div>
+<div name="RechercherCourtier" albcontext="courtierApporteur" id="divRechercherCourtierApporteur">
+    @Html.Partial("/Views/RechercheSaisie/RechercheAvanceeCabinetCourtage.cshtml", Model.ListCabinetCourtageApporteur)
+</div>
+<div name="RechercherCourtier" albcontext="courtierPayeur" id="divRechercherCourtierPayeur">
+    @Html.Partial("/Views/RechercheSaisie/RechercheAvanceeCabinetCourtage.cshtml", Model.ListCabinetCourtagePayeur)
+</div>
+
+@Url.IncludeKoComponent("blacklist-affaires")

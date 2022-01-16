@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ContractGeolocValidator"
+    targetNamespace="http://tempuri.org/ContractGeolocValidator.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ContractGeolocValidator.xsd"
+    xmlns:mstns="http://tempuri.org/ContractGeolocValidator.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="MarkerList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Marker">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ActeGestion">
+                <xs:complexType>
+                  <xs:attribute name="Branche" type="xs:string" use="optional" />
+                  <xs:attribute name="Ipb" type="xs:string" use="optional" />
+                  <xs:attribute name="Alx" type="xs:unsignedByte" use="optional" />
+                  <xs:attribute name="Type" type="xs:string" use="optional" />
+                  <xs:attribute name="Date" type="xs:string" use="optional" />
+                  <xs:attribute name="Reference" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Gestionnaire" type="xs:string" />
+              <xs:element minOccurs="0" name="Point">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="Longitude" type="xs:decimal" />
+                    <xs:element minOccurs="0" name="Latitude" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,387 @@
+﻿.col_HeaderCodeGarantie {
+    width: 100px;
+}
+
+.col_CodeGarantie {
+    width: 102px;
+}
+
+.col_HeaderDesignationGarantie {
+    width: 414px;
+}
+
+.col_DesignationGarantie {
+    width: 416px;
+}
+
+.col_HeaderAction {
+    width: 25px;
+}
+
+.col_Action {
+    text-align: center;
+    width: 25px;
+}
+
+.divHeight {
+    overflow-y: auto;
+    height: 475px;
+}
+
+.divHeightTypeValeur {
+    overflow-y: auto;
+    height: 500px;
+}
+
+.Validation {
+    clear: both;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    text-align: right;
+}
+
+.PaddingLeft10 {
+    padding-left: 10px;
+}
+
+.PaddingLeft5 {
+    padding-left: 10px;
+}
+
+.PaddingLeft35 {
+    padding-left: 35px;
+}
+
+.GroupHeight {
+    height: 575px;
+    margin-left: 12px;
+}
+
+#VoletDetails {
+    display: none;
+}
+
+.searchField {
+    width: 250px;
+}
+
+.Gras {
+    font-weight: bold;
+}
+
+.selectLine {
+    background-color: #FFDFDF !important;
+}
+
+.WidthLabelCheckBox {
+    width: 110px !important;
+}
+
+.WidthLabelDDL {
+    width: 50px !important;
+}
+
+.InputDDL {
+    width: 200px !important;
+}
+
+.ColumnCheckBox {
+    width: 140px;
+    margin-right: 10px;
+    float: left;
+}
+
+.ColumnDDL {
+    width: 416px;
+    float: left;
+}
+
+.ButtonReassurance {
+    margin-right: 90px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.ButtonTypesValeurs {
+    text-align: right;
+}
+
+.ButtonAction {
+    clear: both;
+    height: 22px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+#divFamillesReassurance {
+    display: none;
+}
+
+#divDataFamillesReassurance {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 434px;
+    width: 816px;
+}
+
+#divConfirmModifTypeInventaire {
+    display: none;
+}
+
+#divDataConfirmModifTypeInventaire {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 300px;
+    width: 533px;
+}
+
+.TitleTypesValeur {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.WidthGroupTypesValeur {
+    width: 804px !important;
+}
+
+.GradientSectionTypesValeur {
+    height: 350px;
+    width: 800px;
+}
+
+.DivButtonsFermerTypesValeur {
+    margin-left: 2px;
+    width: 796px !important;
+}
+
+.col_HeaderOrdre {
+    width: 50px;
+}
+
+.col_Ordre {
+    width: 50px;
+}
+
+.col_HeaderTypeValeur {
+    width: 400px;
+}
+
+.col_TypeValeur {
+    width: 400px;
+}
+
+.col_HeaderButtonsTypesValeur {
+    width: 100px;
+}
+
+.col_ButtonsTypesValeur {
+    width: 50px;
+}
+
+#divLstTypesValeur {
+    height: 325px;
+}
+
+.InputEditedNumOrder {
+    width: 50px !important;
+}
+
+.EditedNumOrderMargin {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.InputDDLTypeValeur {
+    width: 406px !important;
+}
+
+.DDLTypeValeur {
+    margin-right: 5px;
+}
+
+.divPaneauDynamicHeight {
+    height: 35px;
+}
+
+#divTypesValeur {
+    display: none;
+}
+
+#divDataTypesValeur {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 434px;
+    width: 816px;
+}
+
+.InputDDLBranche {
+    width: 100px !important;
+}
+
+.InputDDLSousBranche {
+    width: 100px !important;
+}
+
+.InputDDLCategorie {
+    width: 100px !important;
+}
+
+.col_HeaderBr {
+    width: 100px;
+}
+
+.col_Br {
+    width: 102px;
+}
+
+.col_HeaderSsBr {
+    width: 100px;
+}
+
+.col_SsBr {
+    width: 102px;
+}
+
+.col_HeaderCat {
+    width: 100px;
+}
+
+.col_Cat {
+    width: 102px;
+}
+
+.col_HeaderFamille {
+    width: 100px;
+}
+
+.col_Famille {
+    width: 102px;
+}
+
+.col_HeaderButtonsTypesValeur {
+    width: 50px;
+}
+
+.col_ButtonsFamillesReassurace {
+    width: 52px;
+}
+
+.noDisplay {
+    display: none;
+}
+
+.ConfirmModifTypeInventaireWidth {
+    width: 514px !important;
+}
+
+#divOffresBody {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.col_HeaderOffre {
+    width: 100px;
+}
+
+.col_Offre {
+    width: 101px;
+}
+
+.col_HeaderLettreFormule {
+    width: 100px;
+}
+
+.col_LettreFormule {
+    width: 101px;
+}
+.col_HeaderVersion {
+    width:50px;
+}
+.col_Version {
+    width:52px;
+}
+.col_HeaderType {
+    width:50px;
+}
+.col_Type {
+    width:52px;
+}
+.col_HeaderLibelleFormule {
+    width:170px;
+}
+.col_LibelleFormule {
+    width:172px;
+}
+
+.ActionButtonCenter { 
+    text-align: center;
+}
+.ButtonsHeightMsgConfirm {
+    height:80px;
+}
+.HeightOffresContrats {
+    height:126px;
+}
+.MsgConfirm {
+    padding-left:18px;
+    padding-bottom:5px;
+}
+
+.col_TypeRegul_CodeTypeRegul {
+    width: 132px;
+}
+
+.col_TypeRegul_Libelle {
+    width: 132px;
+}
+
+.col_TypeRegul_Grille {
+    width: 132px;
+}
+.col_TypeRegul_Action {
+    width: 22px;
+}
+
+.col_TypeRegul_EmptyResult {
+    width:430px;
+}
+
+
+.col_TypeRegul_HeaderCodeTypeRegul {
+    width: 130px;
+}
+
+.col_TypeRegul_HeaderLibelle {
+    width: 130px;
+}
+
+.col_TypeRegul_HeaderGrille {
+    width: 130px;
+}
+
+.col_TypeRegul_HeaderAction {
+    width: 20px;
+}
+
+
+#divListeTypeRegulDetails {
+    height: 145px;
+    overflow-y: auto;
+}
+

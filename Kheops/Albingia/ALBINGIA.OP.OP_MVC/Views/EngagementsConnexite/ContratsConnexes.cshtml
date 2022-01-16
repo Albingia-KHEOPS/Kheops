@@ -1,0 +1,46 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleEngagements.ModeleContratConnexe>
+@{
+        
+    foreach (var engagement in Model)
+    { 
+    <tr id="tr_@(engagement.IdEngagaement)">
+        <td class="col_Contrat">
+            @engagement.NumContrat
+        </td>
+        <td class="col_DateDeb">
+            @engagement.DateDeb
+        </td>
+        <td class="col_DateFin">
+            @engagement.DateFin
+        </td>
+        @*     @foreach (var traite in engagement.AllTraites)
+        {
+            var traiteEng = @engagement.Traites.Find(t => t.CodeTraite == traite.CodeTraite);
+            string engAlbingia = traiteEng != null ? traiteEng.EngagementAlbingia : "";
+            string engTotal = traiteEng != null ? traiteEng.EngagementTotal : "";
+                          
+            <td name="partAlbingia" class="col_Traite decimal">
+                @engAlbingia
+            </td>  
+            <td name="partTotale" class="col_Traite decimal">
+                @engTotal
+            </td>        
+        }*@
+        @foreach (var traite in engagement.ListCodeTraites)
+        {
+            var traiteEng = @engagement.Traites.Find(t => t.CodeTraite == traite.Code);
+            string engAlbingia = traiteEng != null ? traiteEng.EngagementAlbingia : "";
+            string engTotal = traiteEng != null ? traiteEng.EngagementTotal : "";
+                          
+            <td name="partAlbingia" class="col_Traite decimal">
+                @engAlbingia
+            </td>  
+            <td name="partTotale" class="col_Traite decimal">
+                @engTotal
+            </td>        
+        }
+    </tr>
+    }    
+}
+
+

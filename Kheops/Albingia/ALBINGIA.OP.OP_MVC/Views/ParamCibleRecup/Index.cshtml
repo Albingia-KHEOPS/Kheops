@@ -1,0 +1,59 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamCibleRecupPage
+@{
+    @AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamCibleRecup.css" }, "~/Content/")
+    @AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vLogRecupParamCible.css" }, "~/Content/")
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "AlbParamCibleRecup.js" }, "~/Scripts/AlbingiaJS/")
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div id="ParamCibleRecupBody">
+
+        <div class="CommonForm FloatLeft WidthBackOffice">
+            <div class="GroupFull GroupWithBorder TotalWidth">
+                <div class="GroupTitle">
+                    Paramètre cibles de récupération
+                </div>
+                <div class="nHorizontalFullWithGroup">
+                    <div class="nGradientSection">
+                        <div class="HeightRow">
+                            <div class="FloatLeft marGinTop">
+                                <label class="AutoWidth">Code offre / affaire nouvelle</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="cibleCodeOffre" name="CibleCodeOffre" value="" maxlength="9" />
+                            </div>
+                            <div class="FloatLeft marGinTop">
+                                <label class="AutoWidth">Version</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" albmask="numeric" class="numerique" id="CibleVersion" name="CibleVersion" value="" />
+                            </div>
+                            <div class="FloatLeft">
+                                <button id="RechercheOffreRecup" name="RechercheOffreRecup" albshortcut="true" data-accesskey="R" title="Utilisez la combinaison Alt + R pour accéder à la fonctionnalité"><u>R</u>écupérer</button>
+                            </div>
+                            <div class="FloatLeft">
+                                <button id="InitaliseInputs" name="InitaliseInputs" albshortcut="true" data-accesskey="I" title="Utilisez la combinaison Alt + I pour accéder à la fonctionnalité">Ré<u>i</u>nitialiser</button>
+                            </div>
+                            <div class="FloatLeft">
+                                <button id="TraceBtn" name="TraceBtn" albshortcut="true" data-accesskey="T" title="Utilisez la combinaison Alt + T pour accéder à la fonctionnalité"><u>T</u>race</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dvCibleResultSearch" class="nGradientSection None">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="divLog" class="None">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataLog" style="z-index: 3; position: absolute; top: 5px; left: 10%;">
+    </div>
+</div>

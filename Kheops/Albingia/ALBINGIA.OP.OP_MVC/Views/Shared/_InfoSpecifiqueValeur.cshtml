@@ -1,0 +1,119 @@
+﻿@using Albingia.Kheops.DTO
+@using Albingia.Kheops.OP.Domain.InfosSpecifiques
+@using ALBINGIA.Framework.Common.Extensions
+@model InformationSpecifiqueDto
+@{
+    string atrRequired = Model.ModeleLigne.IsMandatory ? "albrequired" : string.Empty;
+    string atrDisabled = Model.ModeleLigne.IsReadonly ? "disabled" : string.Empty;
+    string atrId = $"map_{Model.Cle}";
+    string value = Model.Valeur.Val1 ?? string.Empty;
+    string valIsTrue = value.ToUpper() == "VRAI" || value.ToUpper() == "TRUE" || value.ToUpper() == "O" ? "checked" : string.Empty;
+    var otherAttibutes = new HashSet<string>();
+    var classList = new HashSet<string>();
+    if (!string.IsNullOrWhiteSpace(Model.ModeleLigne.ParentCode))
+    {
+        switch (Model.ModeleLigne.Propriete?.TypeUIControl)
+        {
+            case TypeAffichage.Text:
+            case TypeAffichage.CheckBox:
+            case TypeAffichage.Select:
+            case TypeAffichage.TextArea:
+            case TypeAffichage.Date:
+                otherAttibutes.Add($"linkBehaviour=\"{Model.ModeleLigne.ParentCode}\"");
+                otherAttibutes.Add($"behaviour=\"{Model.ModeleLigne.ComportementSiParent}\"");
+                otherAttibutes.Add($"eventBehaviour=\"{Model.ModeleLigne.EvenementParent}\"");
+                break;
+        }
+    }
+}
+@switch (Model.ModeleLigne.Propriete?.TypeUIControl)
+{
+    case TypeAffichage.Label:
+    case null:
+        <span>@Model.ModeleLigne.Libelle</span>
+        break;
+    case TypeAffichage.Text:
+        if (Model.ModeleLigne.Propriete.Type.ToUpper() == TypeCode.Double.ToString().ToUpper())
+        {
+            otherAttibutes.Add("albMask=decimal");
+            otherAttibutes.Add($"albEntier={(Model.ModeleLigne.Propriete.Longueur < 1 ? 10 : Model.ModeleLigne.Propriete.Longueur)}");
+            otherAttibutes.Add($"albDecimal={(Model.ModeleLigne.Propriete.Longueur < 1 ? 10 : Model.ModeleLigne.Propriete.NbDecimales)}");
+            classList.Add("isDecimal");
+            classList.Add("inputSelect");
+            value = value.Replace(',', '.');
+        }
+        else if (Model.ModeleLigne.Propriete.Type.ToUpper() == TypeCode.Int64.ToString().ToUpper())
+        {
+            otherAttibutes.Add("albMask=numeric");
+            otherAttibutes.Add($"albEntier={(Model.ModeleLigne.Propriete.Longueur < 1 ? 10 : Model.ModeleLigne.Propriete.Longueur)}");
+            classList.Add("numerique");
+            classList.Add("inputSelect");
+        }
+        <input type="text" id="@atrId" @atrDisabled @atrRequired style="width: 500px;" value="@value" class="@string.Join(" ", classList)" @Html.Raw(string.Join(" ", otherAttibutes)) />
+        if (Model.ModeleLigne.ListeUnites.AnyNotNull())
+        {
+            <select @atrRequired @atrDisabled class="inputSelect" id="@(atrId)_unt">
+                <option value=""></option>
+                @foreach (var key in Model.ModeleLigne.ListeUnites.Keys)
+                {
+                    string isSelected = Model.ModeleLigne.ListeUnites[key] == Model.Valeur.Val2 ? "selected" : string.Empty;
+                    <option value="@key" @isSelected>@Model.ModeleLigne.ListeUnites[key]</option>
+                }
+            </select>
+        }
+        break;
+    case TypeAffichage.CheckBox:
+        <input type="checkbox" id="@atrId" @atrDisabled @atrRequired class="isTxtArea" @valIsTrue @Html.Raw(string.Join(" ", otherAttibutes)) />
+        break;
+    case TypeAffichage.Select:
+        <select id="@atrId" @atrRequired @atrDisabled class="inputSelect" @Html.Raw(string.Join(" ", otherAttibutes))>
+            <option value=""></option>
+            @foreach (var key in Model.ModeleLigne.ListeValeurs.Keys)
+            {
+                string isSelected = key == value ? "selected" : string.Empty;
+                <option value="@key" @isSelected>@Model.ModeleLigne.ListeValeurs[key]</option>
+            }
+        </select>
+        break;
+    case TypeAffichage.TextArea:
+        <textarea rows="5" cols="80" id="@atrId" @atrDisabled @atrRequired @Html.Raw(string.Join(" ", otherAttibutes))>@value</textarea>
+        break;
+    case TypeAffichage.Date:
+        otherAttibutes.Add("data-val=true");
+        otherAttibutes.Add("data-val-regex='La date doit suivre la forme 24/11/2030'");
+        otherAttibutes.Add("data-val-regex-pattern='^\\d{2}/\\d{2}/\\d{4}$'");
+        <input type="text" id="@atrId" @atrDisabled @atrRequired class="datepicker" @Html.Raw(string.Join(" ", otherAttibutes)) value="@value" />
+        break;
+    case TypeAffichage.Heure:
+        @Html.TimePickerInfosSpe(m => value, atrId, Model.ModeleLigne.IsReadonly)
+        break;
+    case TypeAffichage.Periode:
+    case TypeAffichage.PeriodeHeure:
+        var date1 = DateTime.TryParse(value, out var d) ? d : default(DateTime?);
+        var date2 = Model.Valeur.Val2.IsEmptyOrNull() ? null : new DateTime?(DateTime.Parse(Model.Valeur.Val2));
+        otherAttibutes.Add("data-val=true");
+        otherAttibutes.Add("data-val-regex='La date doit suivre la forme 24/11/2030'");
+        otherAttibutes.Add("data-val-regex-pattern='^\\d{2}/\\d{2}/\\d{4}$'");
+        <span>
+            <label>
+                Du
+                <input type="text" id="@(atrId)" @atrDisabled @atrRequired class="datepicker" value="@(date1?.ToShortDateString())" @Html.Raw(string.Join(" ", otherAttibutes)) />
+                @if (Model.ModeleLigne.Propriete.TypeUIControl == TypeAffichage.PeriodeHeure) {
+                    @Html.TimePickerInfosSpe(m => date1.HasValue ? date1.Value.ToShortTimeString() : string.Empty, $"{atrId}_h1", Model.ModeleLigne.IsReadonly)
+                }
+            </label>
+            <label>
+                Au
+                <input type="text" id="@(atrId)_d2" @atrDisabled @atrRequired class="datepicker" value="@(date2?.ToShortDateString())" @Html.Raw(string.Join(" ", otherAttibutes)) />
+                @if (Model.ModeleLigne.Propriete.TypeUIControl == TypeAffichage.PeriodeHeure) {
+                    @Html.TimePickerInfosSpe(m => date2.HasValue ? date2.Value.ToShortTimeString() : string.Empty, $"{atrId}_h2", Model.ModeleLigne.IsReadonly)
+                }
+            </label>
+        </span>
+        break;
+    case TypeAffichage.Hidden:
+        <input type="hidden" id="@atrId" value="@value" />
+        break;
+    default:
+        break;
+}

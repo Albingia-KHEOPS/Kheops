@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Albingia.Kheops.OP.Application.Port.Driver.IRisquePort" Factory="OP.IOWebService.LightInject.LightInjectServiceHostFactory" %>

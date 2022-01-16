@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="OPServiceContract.ITraitementsFinOffre.IFinOffre"  Factory="OP.IOWebService.LightInject.LightInjectServiceHostFactory" %>

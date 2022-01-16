@@ -1,0 +1,60 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesGestionDocumentContrat.ModeleGestionDocumentContrat>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vGestionDocumentContrat.css" }, "~/Content/")
+
+<div id="divGestionDocumentContrat" class="CommonForm FloatLeft">
+    <div class="GroupFull GroupWithBorder">
+        <div class="GroupTitle">
+            @("Documents du contrat : " + Model.CodeContrat + " - " + Model.VersionContrat)
+        </div>
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="FloatLeft DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Filtre :</label></div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.FiltreDefautTypeDocument, Model.ListFiltreTypeDocument, "Filtre_TypeDocument", htmlAttributes: new { @id = "Filtre_TypeDocument" }, generateTitle: true, genEmptyLine: false)
+                        </div>
+                    </div>
+                    <div class="FloatLeft DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.FiltreDefautLotEdition, Model.ListFiltreLotEdition, "Filtre_LotEdition", htmlAttributes: new { @id = "Filtre_LotEdition" }, generateTitle: true, genEmptyLine: false)
+                        </div>
+                    </div>
+                </div>
+                <div id="divGestionDocHeader" class="PaddingLeft">
+                    <table id="tblGestionDocHeader" class="trHeight">
+                        <tr>
+                            <th class="tablePersoHead tdHeadDocDateEnvoi">Date d'envoi</th>
+                            <th class="tablePersoHead tdHeadDocDocument">Document</th>
+                            <th class="tablePersoHead tdHeadDocTypeDocument">Type</th>
+                            <th class="tablePersoHead tdHeadDocTypeDiffusion">Type diffusion</th>
+                            <th class="tablePersoHead tdHeadDocDestinataire">Destinataire</th>
+                            <th class="tablePersoHead tdHeadDocLot">Lot</th>
+                            <th class="tablePersoHead tdHeadDocAvenant">N° Avt.</th>
+                            <th class="tablePersoHead tdHeadDocPJ">P.J.</th>
+                            <th class="tablePersoHead tdHeadDocUtilisateur">Utilisateur</th>
+                            <th class="tablePersoHead tdHeadDocAction"></th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divGestionDocBody" class="PaddingLeft divHeightGestionDoc">
+                    @if (Model.ListDocuments != null)
+                    {                        
+                        <table id="tblGestionDocBody" class="trHeight">
+                            @Html.Partial("LstDocuments", Model.ListDocuments)
+                        </table>
+                    }
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">       
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFermerGestionDocument" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>

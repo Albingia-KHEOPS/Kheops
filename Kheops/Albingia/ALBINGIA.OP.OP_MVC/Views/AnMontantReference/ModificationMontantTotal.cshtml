@@ -1,0 +1,64 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleMontantReferencePage
+<div class="FloatLeft">
+    <div class="nGroupFull nGroupWithBorder" style="width: 370px; padding: 5px;">
+        <div class="GroupTitle">
+            Montant de référence total
+        </div>
+        <div class="nHorizontalFullWithGroup" style="width: 355px;">
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block WidthLabelDivFlottante">Total réf. calculé</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="MontantCalcule" value="@Model.TotalMntCalcule" readonly="readonly" albmask="totaldecimal" class="decimal readonly" tabindex="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block WidthLabelDivFlottante">Total réf. forcé</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="MontantForce" value="@Model.TotalMntForce" albmask="totaldecimal" class="decimal" tabindex="2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft" style="padding-left: 2px;">
+                        <input type="checkbox" id="MontantProvisionnel" name="MontantProvisionnel" checked="@(Model.TotalMntProvi == "O" )" />
+                    </div>
+                    <div class="FloatLeft" style="padding-top: 3px; padding-right: 39px;">
+                        <label class="Block WidthLabelDivFlottante">Provisionnel</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="chckMntAcquis" checked="@(Model.IsAcquis == "O" )"/> @* ADD ChkMntAcquis*@
+                    </div>
+                    <div class="FloatLeft" style="padding-top: 3px;">
+                        <label class="WidthLabelDivFlottante">Acquis</label>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block WidthLabelDivFlottante">ou Autre Mnt Acquis</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="MontantAcquis" value="@Model.TotalMntAcquis" albmask="numeric" class="@(Model.IsAcquis == "O" ? "readonly numerique" : "numerique")" tabindex="3" readonly="@(Model.IsAcquis == "O" )" /> @* ADD ChkMntAcquis*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="msgErreurDiv" class="error msgErreur">
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder" style="width: 370px;">
+        <div class="ActionButtons ActionButtonRight">
+            <div class="HeightRow">
+                <button id="btnAnnulerMntTotal" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnValiderMntTotal" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>

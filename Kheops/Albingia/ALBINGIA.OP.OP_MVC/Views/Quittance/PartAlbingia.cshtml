@@ -1,0 +1,158 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.PartAlbingia
+<div class="GroupFull GroupWithBorder" id="divDetailsQuittance">
+    @Html.HiddenNoName("ModeAffichage", Model.ModeAffichage)
+    @Html.HiddenNoName("numQuittanceVisu", Model.NumQuittanceVisu)
+    @Html.HiddenNoName("codeNatureContrat", (Model.NatureContrat))
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                Détails de la cotisation
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div id="tabDetails" class="SmallMediumGenericColumn CursorPointer onglet">
+                    <label>Détails</label>
+                </div>
+                <div id="tabVentilationDetaillee" class="SmallMediumGenericColumn CursorPointer onglet">
+                    <div>
+                        <label>Ventilation détaillée</label>
+                    </div>
+                </div>
+                <div id="tabVentilationCommission" class="SmallMediumGenericColumn CursorPointer onglet">
+                    <div>
+                        <label>Ventilation des commissions</label>
+                    </div>
+                </div>
+                <div id="tabPartAlbingia" class="SmallMediumGenericColumn CursorPointer onglet-actif">
+                    <div>
+                        <label>Part Albingia</label>
+                    </div>
+                </div>
+                <div id="tabVentilationCoassureurs" class="SmallMediumGenericColumn CursorPointer onglet">
+                    <div>
+                        <label>Ventilation des coassureurs</label>
+                    </div>
+                </div>
+                <div class="onglet-vide-tiny">
+                </div>
+            </div>
+            <div class="height6"></div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="titleBold">Part ALBINGIA</label>
+                    <input class="readonly numerique width80" disabled="disabled" value="@Model.PartAlbingiaVal" albMask="decimal"/>
+                    <label>%</label>
+                </div>
+            </div>
+            <div class="GradientSection">
+                <div id="divPartAlbingiaGarantieHeader" style="text-align: center;">
+                    <table id="tblPartAlbingiaGarantieHeader" class="trHeight">
+                        <tr>
+                            <th class="width0"></th>
+                            <th class="width650 tablePersoHead">Garanties
+                            </th>
+                            <th class="width100 tablePersoHead">Hors CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">Total
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divVPartAlbingiaGarantieBody" class="smallPaddingLeft">
+                    @Html.Partial("PartAlbingiaGaranties", Model.ListeGaranties)
+                </div>
+                <div class="HeightRow">
+                </div>
+                <div id="divPartAlbingiaCommissionHeader" style="text-align: center;">
+                    <table id="tblVentilationDetailleeTaxeHeader" class="trHeight">
+                        <tr>
+                            <th class="width450" colspan="2"></th>
+                            <th class="width100 tablePersoHead">Taux H. CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">Taux CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">Hors CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">Total
+                            </th>
+                        </tr>
+                    </table>
+                    <table id="tblVentilationDetailleeTaxeBody" class="trHeight smallPaddingLeft">
+                        <tr>
+                            <td class="width300"></td>
+                            <td class="width150 tablePersoHead smallPaddingLeft2">Commission</td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CommissionTauxHCatnat.ToString())</span></td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CommissionTauxCatnat.ToString())</span></td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CommissionHorsCatnat.ToString())</span></td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CommissionCatnat.ToString())</span></td>
+                            <td class="width100 backgroundWhite numerique"><span albmask="decimal">@(Model.CommissionTotal.ToString())</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="height6"></div>
+            </div>
+            <div class="GradientSection">
+                <div>
+                    <label class="titleBold">Part coassurance</label>
+                </div>
+                <div id="divPartAlbingiaPartCoassurance">
+                    <table id="tblPartAlbingiaPartCoassurance" class="trHeight">
+                        <tr>
+                            <th class="width350" colspan="2"></th>
+                            <th class="width300 tablePersoHead" colspan="3">Hors taxes
+                            </th>
+                            <th class="width300 tablePersoHead" colspan="3">Commissions
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="width250"></th>
+                            <th class="width100 tablePersoHead">Frais apérition
+                            </th>
+                            <th class="width100 tablePersoHead">Hors CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">Total
+                            </th>
+                            <th class="width100 tablePersoHead">Hors CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">CatNat
+                            </th>
+                            <th class="width100 tablePersoHead">Total
+                            </th>
+                        </tr>
+                    </table>
+                    <table id="tblPartAlbingiaPartCoassuranceBody" class="trHeight">
+                        <tr>
+                            <td class="width250">&nbsp</td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CoassFraisAperition.ToString())</span>
+                            </td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CoassHTHorsCatnat.ToString())</span>
+                            </td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CoassHTCatnat.ToString())</span>
+                            </td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CoassHTTotal.ToString())</span>
+                            </td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CoassCommHorsCatnat.ToString())</span>
+                            </td>
+                            <td class="width100 backgroundWhite smallPaddingLeft numerique"><span albmask="decimal">@(Model.CoassCommCatnat.ToString())</span>
+                            </td>
+                            <td class="width100 backgroundWhite numerique"><span albmask="decimal">@(Model.CoassCommTotal.ToString())</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="height6"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div style="text-align: right">
+        <button id="btnFermerQuittance" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+</div>

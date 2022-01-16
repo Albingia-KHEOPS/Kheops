@@ -1,0 +1,45 @@
+﻿body {
+    .search-filters {
+        .code-affaire {
+            text-transform: uppercase;
+        }
+
+        .id-search ~ div {
+            background-color: lightgray;
+        }
+    }
+
+    .search-results {
+        i {
+            &.icon {
+                display: inline-block;
+                background-position: center center;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                background-color: transparent;
+                width: 16px;
+                height: 16px;
+
+                &.icon-contrat-standard {
+                    background-image: url('../../Images/type_C_16.png');
+                }
+
+                &.icon-offre {
+                    background-image: url('../../Images/type_O_16.png');
+                }
+
+                &.icon-double-saisie {
+                    background-image: url('../../Images/type_OO_16.png');
+                }
+
+                &.icon-mere-aliment {
+                    background-image: url('../../Images/type_A_16.png');
+                }
+
+                &.icon-mere {
+                    background-image: url('../../Images/type_M_16.png');
+                }
+            }
+        }
+    }
+}

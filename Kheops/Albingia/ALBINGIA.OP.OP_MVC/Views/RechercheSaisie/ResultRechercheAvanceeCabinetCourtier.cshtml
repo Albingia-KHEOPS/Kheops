@@ -1,0 +1,190 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleRechercheAvancee
+@Html.HiddenNoName("NbCountCabinetCourtage", Model.NbCount)
+@Html.HiddenNoName("LineCountCabinetCourtage", Model.LineCount)
+<div id="PaginationSizeCabinetCourtage" style="visibility: hidden; display: none;">@Model.LineCount</div>
+<table class="field-right Pagination" style="margin-top: -40px;">
+    <tr>
+        @if (Model.PageNumber > 1)
+        {
+            <td>
+                <img id="CabinetCourtagePaginationPremierePage" src="@Url.Content("/Content/Images/1340965186_pagination_1_first.png")" class="CursorPointer" albcontext="@Model.Contexte"/>
+            </td>
+            <td>
+                <img id="CabinetCourtagePaginationPrecedent" src="@Url.Content("/Content/Images/1340965176_pagination_1_previous.png")" class="CursorPointer" albcontext="@Model.Contexte"/>
+            </td>
+        }
+        else
+        {
+            <td>
+                <img src="@Url.Content("/Content/Images/1340965186_pagination_1_first_disabled.png")" />
+            </td>
+            <td>
+                <img src="@Url.Content("/Content/Images/1340965176_pagination_1_previous_disabled.png")" />
+            </td>
+        }
+        <td>
+            <span id="CabinetCourtagePaginationPageActuelle">@Model.PageNumber</span>
+        </td>
+        @if (Model.PageNumber * (Model.EndLigne - Model.StartLigne + 1) < Model.LineCount)
+        {
+            <td>
+                <img id="CabinetCourtagePaginationSuivant" src="@Url.Content("/Content/Images/1340965171_pagination_1_next.png")" class="CursorPointer" albcontext="@Model.Contexte"/>
+            </td>
+            <td>
+                <img id="CabinetCourtagePaginationDernierePage" src="@Url.Content("/Content/Images/1340965180_pagination_1_last.png")" class="CursorPointer" albcontext="@Model.Contexte"/>
+            </td>
+        }
+        else
+        {
+            <td>
+                <img src="@Url.Content("/Content/Images/1340965171_pagination_1_next_disabled.png")" />
+            </td>
+            <td>
+                <img src="@Url.Content("/Content/Images/1340965180_pagination_1_last_disabled.png")" />
+            </td>
+        }
+        <td class="PageSize"><span id="CabinetCourtagePaginationStart">@Html.DisplayFor(m => m.StartLigne)</span> - <span id="CabinetCourtagePaginationEnd">@Html.DisplayFor(m => m.EndLigne)</span>
+            [total : <span id="CabinetCourtagePaginationTotal">
+                @if (Model.NbCount > Model.LineCount)
+                {
+                    @Html.DisplayFor(m => m.LineCount)
+                }
+                else
+                {
+                    @Html.DisplayFor(m => m.NbCount)
+                }</span>]
+        </td>
+    </tr>
+</table>
+<div id="divLstResultatCabinetsCourtage">
+    <div id="divCabinetsCourtageHeader">
+        <table id="tblCabinetsCourtageHeader">
+            <tr>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd1 TablePersoTdHead" id="1">Code<span class="spImg" style="float: right;">
+                    @if (Model.By == 1)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd2 TablePersoTdHead" id="2">Nom<span class="spImg" style="float: right;">
+                    @if (Model.By == 2)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd3 TablePersoTdHead" id="3">Nom secondaire<span class="spImg" style="float: right;">
+                    @if (Model.By == 3)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd4 TablePersoTdHead" title="Code Postal" id="4">CP<span class="spImg" style="float: right;">
+                    @if (Model.By == 4)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd5 TablePersoTdHead" id="5">Ville<span class="spImg" style="float: right;">
+                    @if (Model.By == 5)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd6 TablePersoTdHead" id="6">Type<span class="spImg" style="float: right;">
+                    @if (Model.By == 6)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd7 TablePersoTdHead" title="Nom de l'interlocuteur" id="7">Interloc. nom<span class="spImg" style="float: right;">
+                    @if (Model.By == 7)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd8 TablePersoTdHead" title="Interlocuteur valide" id="8">Interloc. ouvert<span class="spImg" style="float: right;">
+                    @if (Model.By == 8)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+                <th class="tablePersoHeadRechercheSaisie TablePersoHeadCabinetsCourtageTd9 TablePersoTdHead" id="9">Courtier ouvert<span class="spImg" style="float: right;">
+                    @if (Model.By == 9)
+                    {
+                        <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                    }
+                </span>
+                </th>
+            </tr>
+        </table>
+    </div>
+    @if ((Model.CabinetsPreneurs != null) && (Model.CabinetsPreneurs.Count > 0))
+    {
+        <div id="divCabinetsCourtageBody">
+            <table id="tblCabinetsCourtageBody" class="trHeight">
+                @foreach (var cabinetCourtage in Model.CabinetsPreneurs)
+                {
+                    <tr albvalidInvalid="@(cabinetCourtage.EstValide ?"valide":"invalide")" albdemarche="@(cabinetCourtage.DemarcheCom ?"true":"false")">
+                        <td class="TablePersoCabinetsCourtageTd1">
+                            @cabinetCourtage.Code
+                        </td>
+                        <td class="TablePersoCabinetsCourtageTd2">
+                            @cabinetCourtage.Nom
+                        </td>
+                        <td class="TablePersoCabinetsCourtageTd3">
+                            @foreach (var nomSecondaire in cabinetCourtage.NomSecondaires)
+                            {
+                                @nomSecondaire 
+                            }
+                        </td>
+                        <td class="TablePersoCabinetsCourtageTd4">
+                            @cabinetCourtage.CodePostal
+                        </td>
+                        <td class="TablePersoCabinetsCourtageTd5">
+                            @cabinetCourtage.Ville
+                        </td>
+                        <td class="TablePersoCabinetsCourtageTd6">
+                            @cabinetCourtage.Type
+                        </td>
+                        <td class="TablePersoCabinetsCourtageTd7">
+                            @cabinetCourtage.NomInterlocuteur
+                        </td>
+                        <td class="TablePersoCabinetsCourtageTd8" align="center">
+                            @{
+                            string image = string.Empty;
+                            if (cabinetCourtage.ValideInterlocuteur)
+                            {
+                                image = "valide.png";
+                            }
+                            else
+                            {
+                                image = "invalide.png";
+                            }
+                            }
+                            <img alt="" src="@Url.Content("/Content/Images/" + image)" />
+                        </td>
+                        <td class="TablePersoCabinetsCourtageTd9" align="center">
+                            @if (cabinetCourtage.EstValide)
+                            {
+                                image = "valide.png";
+                            }
+                            else
+                            {
+                                image = "invalide.png";
+                            }
+                            <img alt="" src="@Url.Content("/Content/Images/" + image)" />
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

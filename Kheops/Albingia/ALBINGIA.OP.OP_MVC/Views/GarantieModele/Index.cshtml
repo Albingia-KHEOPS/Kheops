@@ -1,0 +1,85 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGarantieModelePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vModelesGarantie.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albModelesGarantie.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            @Html.Hidden("SupprModele", string.Empty)
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder GroupBackOffice GroupHeightModelesGarantie" style="margin-right: 10px;">
+                    <div class="GroupTitle">
+                        Recherche de modèles
+                    </div>
+                    <div class="HorizontalHalfWithGroupAdmin GroupHeightModelesGarantieInterieur">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block labelCode">Code</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="RechercheModelesGarantie_Code" value="@Model.RechercheModelesGarantie.Code">
+                                </div>
+                                <div class="FloatLeft">
+                                    <label class="Block labelCode">Description</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="RechercheModelesGarantie_Description" value="@Model.RechercheModelesGarantie.Description">
+                                </div>
+                                <div class="FloatLeft PaddingLeft">
+                                    <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div id="divLstModelesGarantie">
+                                <div>
+                                    <table class="trHeight">
+                                        <tr>
+                                            <th class="tablePersoHead tdHeaderEditModele">
+                                                &nbsp;
+                                            </th>
+                                            <th class="tablePersoHead tdHeaderCodeModele">
+                                                Code modèle
+                                            </th>
+                                            <th class="tablePersoHead tdHeaderDescModele">
+                                                Description
+                                            </th>
+                                            <th class="tablePersoHead tdHeaderImgModele">
+                                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" onclick="ajouterModelesGarantie();" />
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBodyModelesGarantie" class="divHeight">
+                                    @Html.Partial("ListGarantieModeles", Model.Modeles)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divInfoModelesGarantie" class="GroupFull GroupWithBorder GroupBackOffice GroupHeightModelesGarantieFixe FloatLeft">
+                </div>
+                <div class="GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+

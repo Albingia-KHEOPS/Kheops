@@ -1,0 +1,13 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.DocumentGestionInfoDest
+<div>@Model.RaisonSociale</div>
+<div>@(string.Format("{0} {1}", Model.NomInter, Model.PrenomInter))</div>
+@if (Model.TypeEnvoi == "Email")
+{
+    <div>@Model.EmailInter</div>
+}
+else
+{
+    <div>@string.Format("{0} {1} {2}", Model.NumeroVoie != 0 ? Model.NumeroVoie.ToString() : string.Empty, Model.ExtensionVoie, Model.NomVoie)</div>
+    <div>@string.Format("{0} {1}", Model.CodePostal, Model.NomVille)</div>
+}
+

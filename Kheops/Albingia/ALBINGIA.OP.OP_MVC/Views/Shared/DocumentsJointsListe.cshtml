@@ -1,0 +1,50 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentsJoints.ModeleDocumentsJoints
+@*model List<ALBINGIA.OP.OP_MVC.Models.ModelesDocumentsJoints.Documents>*@
+@{
+    var splitCharHtml = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+}
+<table id="tblDocumentsJointsBody" class="trHeight" style="width: 985px; table-layout: fixed;">
+    @foreach (var item in Model.ListDocuments)
+    {
+        <tr>
+            <td style="width: 92px; text-align: center;">
+                <input type="hidden" id="DocumentJointId@(splitCharHtml)@(item.DocumentId)" value="@item.DocumentId" />
+                <input type="hidden" id="DocumentJointChemin@(splitCharHtml)@(item.DocumentId)" value="@item.Chemin" />
+                <input type="hidden" id="DocumentJointNom@(splitCharHtml)@(item.DocumentId)" value="@item.NomFichier" />
+                @item.DateAjoutString
+            </td>
+            <td style="width: 92px; text-align: center; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" title="@item.ActeCode - @item.ActeLib">@item.ActeCode - @item.ActeLib</td>
+            @if (!string.IsNullOrEmpty(Model.CodeAvn) && Model.CodeAvn != "0")
+            {
+                <td style="width: 43px; text-align: center;" title="@(item.CodeAvnDoc > 0 ? string.Format("{0} au {1}", item.ActeLib, item.DateAvnString) : string.Empty)">@item.CodeAvnDoc</td>
+            }
+            <td style="width: 260px; padding-left: 5px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" title="@item.TitreDocument">@item.TitreDocument</td>
+            <td style="width: @(!string.IsNullOrEmpty(Model.CodeAvn) && Model.CodeAvn != "0" ? "213px;" : "259px;") padding-left: 5px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" title="@item.NomFichier">
+                @if (!string.IsNullOrEmpty(item.Chemin) && !string.IsNullOrEmpty(item.NomFichier) && item.NomFichier.Contains(".doc"))
+                {
+                    <div class="FloatLeft navig" name="linkVisu" albdocfullpath="@(item.Chemin)" albcontext="docJoint">
+                        @Html.Raw(item.NomFichier).ToHtmlString()
+                    </div>      
+                }
+                else
+                {
+                    @Html.ActionLink(Html.Raw(item.NomFichier).ToHtmlString(), "DownloadFile", "CommonNavigation", new { fileName = item.NomFichier, fullNameFile = item.Chemin, pathFile = item.Chemin }, new { @target = "_blank" })
+                }
+            </td>
+            <td style="width: 103px; text-align: center; text-overflow: ellipsis; overflow: hidden; white-space: nowrap" title="@item.Reference">@item.Reference</td>
+            <td style="width: 88px; text-align: center;">
+                @if (item.ReferenceCP)
+                {
+                    <img alt="Référencé au CP" src="@Url.Content("/Content/Images/Checkmark-16.png")" />
+                }
+            </td>
+            <td style="width: 52px; text-align: center;">
+                @if (!item.IsReadOnly)
+                {
+                    <img id="editDocJoint@(splitCharHtml)@(item.DocumentId)" class="CursorPointer" alt="Edition" title="Edition"  name="editDocJoint" albParam="@item.DocumentId" src="@Url.Content("/Content/Images/editer1616.png")" />
+                    <img id="delDocJoint@(splitCharHtml)@(item.DocumentId)" class="CursorPointer" alt="Suppression" title="Suppression" name="delDocJoint" albParam="@item.DocumentId" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+                }
+            </td>
+        </tr>
+    }
+</table>

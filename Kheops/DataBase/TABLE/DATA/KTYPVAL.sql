@@ -1,0 +1,18 @@
+﻿CREATE TABLE ZALBINKHEO.KTYPVAL ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KTYPVAL de ZALBINKHEO ignoré. 
+--  SQL1506   30   Clé ou attribut ignoré pour KTYPVAL de ZALBINKHEO. 
+	KGLTYVAL CHAR(5) CCSID 297 NOT NULL DEFAULT '' , 
+	KGLDESC CHAR(40) CCSID 297 NOT NULL DEFAULT '' )   
+	RCDFMT FTYPVAL    ; 
+  
+LABEL ON TABLE ZALBINKHEO.KTYPVAL 
+	IS 'Référentiel TypeValeur Ent                     KGL' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KTYPVAL 
+( KGLTYVAL IS 'TYpe de valeur grp' , 
+	KGLDESC IS 'Description' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KTYPVAL 
+( KGLTYVAL TEXT IS 'Type de valeur groupé ID unique' , 
+	KGLDESC TEXT IS 'Description' ) ; 
+  

@@ -1,0 +1,128 @@
+﻿.inputMotCle {
+    width: 260px !important;
+}
+
+.ColumnMotCle {
+    float: left;
+    width: 384px;
+}
+
+.lblDateDebut {
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.lblDateFin {
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.RechFiltre {
+    height: 80px;
+}
+
+.colHType {
+    width: 153px;
+}
+
+.colHPDate {
+    width: 225px;
+}
+
+.colPDate {
+    width: 227px;
+}
+
+.colHMessage {
+    width: 829px;
+}
+
+.colHPUser {
+    width: 225px;
+}
+
+.colPUser {
+    width: 227px;
+}
+
+.colHPScreen {
+    width: 225px;
+}
+
+.colPScreen {
+    width: 227px;
+}
+
+.colHPAction {
+    width: 256px;
+}
+
+.colPAction {
+    width: 258px;
+}
+
+.colHPTime {
+    width: 200px;
+}
+
+.colPTime {
+    width: 201px;
+}
+
+.colHDate {
+    width: 152px;
+}
+
+.colType {
+    width: 152px;
+}
+
+.colMessage {
+    width: 834px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.colDate {
+    width: 152px;
+}
+
+#tblBody {
+    table-layout: fixed;
+    width: 917px;
+}
+
+.ImgType {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#divBodyListLogTraces {
+    height: 300px;
+    overflow-y: scroll;
+    width: 1180px;
+}
+
+#divDataMessageLog {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 15;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1043px;
+}
+
+#divMessageVisu {
+    height: 310px;
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 999px;
+    overflow-y: scroll;
+}
+
+.WidthBody {
+    width: 1195px !important;
+}

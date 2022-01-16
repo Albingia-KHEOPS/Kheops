@@ -1,0 +1,87 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsSpecifiquesPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vInformationsSpecifiquesOffreSimp.css", "vInformationsSpecifiquesRisques.css", "vInformationsSpecifiques.css", "vInformationsSpecifiquesGarantie.css", "themes/base/jquery.ui.all.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albInformationsSpecifiquesOffreSimp.js", "albInformationsSpecifiques.js", "albInformationsSpecifiquesRisques.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    @Html.HiddenNoName("CodeRisque", Model.CodeRisque)
+    @Html.HiddenNoName("DescriptifRisque", Model.DescriptifRisque)
+    @Html.HiddenNoName("isTabObjetActif", false.ToString().ToLower())
+    @Html.HiddenNoName("isTabGarantieActif", false.ToString().ToLower())
+    @Html.HiddenNoName("CurrentTab", "Risque")
+    @Html.HiddenNoName("OffreSimpContext", true.ToString())
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup" style="height: 489px;">
+                <div class="nGradientSection">
+
+                    <div id="divInfosSpecifiquesRisque">
+                        @Html.Partial("InformationsSpecifiquesRisque", Model.ModeleInformationsSpecifiquesRisquesPage)
+                    </div>
+                    <div id="divInfosSpecifiquesObjet" class="None">
+                        @Html.Partial("InformationsSpecifiquesObjet", Model.ModeleInformationsSpecifiquesRsqObjGarObjetsPage)
+                    </div>
+                    <div id="divInfosSpecifiquesGarantie" class="None">
+                        @Html.Partial("InformationsSpecifiquesGarantie", Model.ModeleInformationsSpecifiquesRsqObjGarGarantiePage)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div id="divActionButtonsRisque">
+                <div class="ActionButtons ActionButtonRight">
+                    <button id="btnAnnulerRisque" type="button" albshortcut="true" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>
+                    <button id="btnSuivantRisque" name="btnSuivantRisque" type="button" albshortcut="true" tabindex="30" data-accesskey="s"><u>S</u>uivant</button>
+                </div>
+            </div>
+            <div id="divActionButtonsObjet" class="None">
+                <div class="ActionButtons ActionButtonRight">
+                    @* <button id="btnAnnulerObjet" type="button" albshortcut="true" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>*@
+                    <button id="btnSuivantObjet" name="btnSuivantObjet" type="button" albshortcut="true" tabindex="30" data-accesskey="s"><u>S</u>uivant</button>
+                </div>
+            </div>
+            <div id="divActionButtonsGarantie" class="None">
+                <div class="ActionButtons ActionButtonRight">
+                    @*  <button id="btnAnnulerGarantie" type="button" albshortcut="true" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>*@
+                    <button id="btnSuivantGarantie" name="btnSuivantGarantie" type="button" albshortcut="true" tabindex="30" data-accesskey="s"><u>S</u>uivant</button>
+                    <button id="btnSuivant" class="None"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamNomenclature.ModeleLigneDetails
+<td class="col_TableauDetails" id="@("LigneDetailsValeur01_" + @Model.GuidId)" name="clickableColDetails">
+    <label>@Model.Valeur01</label>
+</td>
+<td class="col_TableauDetails" id="@("LigneDetailsValeur02_" + @Model.GuidId)" name="clickableColDetails">
+    <label>@Model.Valeur02</label>
+</td>
+<td class="col_TableauDetails" id="@("LigneDetailsValeur03_" + @Model.GuidId)" name="clickableColDetails">
+    <label>@Model.Valeur03</label>
+</td>
+<td class="col_TableauDetails" id="@("LigneDetailsValeur04_" + @Model.GuidId)" name="clickableColDetails">
+    <label>@Model.Valeur04</label>
+</td>
+<td class="col_Action">
+    <img id="btnSupprimerLigne_" + @Model.GuidId class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Suppr" title="Suppression de la ligne" name="btnSuppression"/>
+</td>

@@ -1,0 +1,165 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleSaisieRegulGarantie.SaisieInfoRegulPeriod
+<div class="FloatLeft divInfoTauxleft">
+    @Html.HiddenNoName("errorCalculStr", (Model.InfoInitregul.ErrorStr))
+    <div class="FloatLeft">
+        <label style="font-weight: bold;">Données de régularisation :</label>
+    </div>
+    <div class="HeightRow">
+
+        <table>
+            <tr>
+                <td></td>
+                <td>
+                    <label class="lblAssiette">Assiette</label>
+                </td>
+                <td>
+                    <label>Taux/Montant </label>
+                </td>
+                <td>
+                    <label class="lblUnite">Unité</label>
+                </td>
+                <td>
+                    <label class="lblCode">Code Taxes</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="autowidth">Prévisionnel</label>
+
+                </td>
+                <td>
+                    <input id="AssietteGarantie" type="text" albmask="decimal" class="readonly inAss" readonly="readonly" value="@Model.InfoInitregul.PrevAssiette_STD" />
+
+                </td>
+                <td>
+                    <input id="TauxMontantGar" type="text" class="readonly inTaux" readonly="readonly" value="@Model.InfoInitregul.PrevTaux_STD" />
+                    <input type="hidden" name="InfoInitregul.PrevMntHt_STD" value="@Model.InfoInitregul.PrevMntHt_STD" />
+                </td>
+                <td>
+                    @Html.AlbDropDownListFor(m => m.InfoInitregul.PrevUnite_STD, Model.UnitesPrev, "", htmlAttributes: new { @id = "uniteprev", @disabled = "disabled", @class = "readonly" }, generateTitle: true)
+                </td>
+                <td>
+                    @Html.AlbDropDownListFor(m => m.InfoInitregul.PrevCodTaxe_STD, Model.CodesTaxesPrev, "", htmlAttributes: new { @id = "codeprev", @disabled = "disabled", @class = "readonly" }, generateTitle: true)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="autowidth">Définitif</label>
+                </td>
+                <td>
+                    <input id="AssietteGarantieDef" type="text" class="inAss" albmask="decimal" value="@Model.InfoInitregul.DefAssiette_STD" />
+                </td>
+
+                <td>
+                    <input id="TauxMontantGarDef" type="text" class="inTaux" value="@Model.InfoInitregul.DefTaux_STD" />
+                </td>
+                <td>
+                    @Html.AlbDropDownListFor(m => m.InfoInitregul.DefUnite_STD, Model.UnitesDef, "", htmlAttributes: new { @id = "unitedef", @class = "" }, generateTitle: true)
+                </td>
+                <td>
+                    @Html.AlbDropDownListFor(m => m.InfoInitregul.DefCodTaxe_STD, Model.CodesTaxesDef, "", htmlAttributes: new { @id = "codetaxedef", @class = "" }, generateTitle: true)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="FloatRight " style="padding-left: 60px; padding-top: 58px;">
+
+    <div class="HeightRow" style="float: right; padding-right: 5px;">
+        <div class="FloatLeft">
+            <label class="LabelHT">H.T Hors Cat Nat</label>
+        </div>
+        <div class="FloatLeft">
+            <label>Taxes</label>
+        </div>
+    </div>
+    <div class="HeightRow" style="float: right; padding-right: 5px;">
+        <div class="FloatLeft" style="margin-right: 20px;">
+            <input id="MontantCotisationsHT" type="text" class="readonly inNumericRegule" readonly="readonly" albmask="decimal" value="@Model.InfoInitregul.DefVmntHt_STD" />
+        </div>
+        <div class="FloatLeft">
+            <input id="MontantTaxeCalcul" type="text" class="readonly inNumericRegule" readonly="readonly" albmask="decimal" value="@Model.InfoInitregul.DefVtax_STD" />
+        </div>
+    </div>
+    <div class="HeightRow" style="float: right; padding-right: 5px;">
+        <div class="FloatLeft" style="margin-left: 20px;">
+            <label style="margin-right: 10px; width: 120px;">Cotisation émise</label>
+        </div>
+        <div class="FloatLeft" style="margin-right: 20px;">
+            <input id="MontantCotisEmises" type="text" class="readonly inNumericRegule" albmask="decimal" readonly="readonly" value="@Model.InfoInitregul.MntCotisEmis_STD" />
+        </div>
+        <div class="FloatLeft">
+            <input id="MontantTaxeEmise" type="text" class="readonly inNumericRegule" albmask="decimal" readonly="readonly" value="@Model.InfoInitregul.MntTxEmis_STD" />
+        </div>
+    </div>
+    <div class="HeightRow" style="float: right; padding-right: 5px;">
+        <div class="FloatLeft" style="margin-left: 20px;">
+            <label style="margin-right: 10px; width: 120px;">Cotisation forcée</label>
+        </div>
+        <div class="FloatLeft" style="margin-right: 20px;">
+            <input id="MontantCotisEmiseForce" type="text" class="@(Model.InfoInitregul.Motif_Inf == 1 ? "readonly inNumericRegule":"inNumericRegule")" albmask="decimal" name="MontantCotisEmiseForce" value="@Model.InfoInitregul.MntForceEmis_STD" />
+        </div>
+        <div class="FloatLeft">
+            <input id="MntTaxePrimeEmise" type="text" class="@(Model.InfoInitregul.Motif_Inf == 1 ? "readonly inNumericRegule":"inNumericRegule")" albmask="decimal" name="MntTaxePrimeEmise" value="@Model.InfoInitregul.MntForceTx_STD" />
+        </div>
+    </div>
+    <div class="HeightRow" style="float: right; padding-right: 5px;">
+        <div class="@(Model.InfoInitregul.TypeReguleGar_STD == "A" ? "FloatLeft" : "None")" style="width:85px !important; text-align: right; margin-left: 20px;">
+            <label style="margin-right: 10px; width: 120px;">Coefficient</label>
+        </div>
+        <div class="FloatLeft" style="padding-right: 20px;">
+            <input id="coefficient" type="text" class="@(Model.InfoInitregul.TypeReguleGar_STD == "A" ? "inNumericRegule" : "inNumericRegule None") @(Model.InfoInitregul.Motif_Inf == 1 ? "readonly":"")" albmask="decimal" value="@Model.InfoInitregul.Coef_STD" />
+        </div>
+        <div class="FloatLeft" style="padding-top: 2px; width: 105px; text-align: center;">
+            <label>DONT ATTENTAT</label>
+        </div>
+    </div>
+    <div class="HeightRow" style="float: right; padding-right: 5px;">
+        <div class="FloatLeft" style="margin-left: 20px;">
+            <label style="margin-right: 10px; width: 110px">Montant de la régul.</label>
+        </div>
+        <div class="FloatLeft " style="margin-right: 20px;">
+            <input id="MontantRegularisationHT" type="text" class="readonly inNumericRegule" readonly="readonly" albmask="decimal" value="@Model.InfoInitregul.MntRegulHt_STD" />
+        </div>
+        <div class="FloatLeft">
+            <input id="AttentatGareat" type="text" class="@(Model.InfoInitregul.Motif_Inf == 1 ? "readonly inNumericRegule":"inNumericRegule")" albmask="decimal" value="@Model.InfoInitregul.Attentat_STD" />
+        </div>
+    </div>
+    <div class="HeightRow" style="float: right; padding-right: 5px;">
+        <div class="FloatLeft" style="margin-left: 20px;">
+            <label style="margin-right: 10px; width: 110px">Ou Montant régul forcé </label>
+        </div>
+        <div class="FloatLeft" style="padding-right: 22px;">
+            @if ((Model.InfoInitregul.Motif_Inf == 1) || ((Model.InfoInitregul.motif == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.MOTIF_RC || Model.InfoInitregul.motif == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.MOTIF_RI) && !Model.InfoInitregul.relaod))
+            {
+                <input id="MontantForcePrimecalcul" type="text" class="inNumericRegule readonly" readonly="readonly" albmask="decimal" value="0" />
+            }
+            else
+            {
+                <input id="MontantForcePrimecalcul" type="text" class="@(Model.InfoInitregul.Force0_STD == "O" ? "inNumericRegule readonly" : "inNumericRegule") " readonly="@(Model.InfoInitregul.Force0_STD == "O" )" albmask="decimal" value="@((Model.InfoInitregul.Force0_STD == "O" || Model.InfoInitregul.topFrc == "N") ? 0 : Model.InfoInitregul.MntForceCalc_STD)" />
+            }
+        </div>
+        <div class="FloatLeft">
+            @if ((Model.InfoInitregul.Motif_Inf == 1) || ((Model.InfoInitregul.motif == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.MOTIF_RC || Model.InfoInitregul.motif == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.MOTIF_RI) && !Model.InfoInitregul.relaod))
+            {
+                <input type="checkbox" id="IsCheckForcer" name="IsCheckForcer" checked="@(Model.InfoInitregul.Motif_Inf == 1 )" disabled="disabled" />
+            }
+            else
+            {
+                <input type="checkbox" id="IsCheckForcer" name="IsCheckForcer" checked="@((Model.InfoInitregul.Force0_STD == "O") && (Model.InfoInitregul.motif != ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.MOTIF_RC || Model.InfoInitregul.motif == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.MOTIF_RI) )" />
+            }
+
+        </div>
+        <div class="FloatLeft" style="padding-top: 3px;">
+            <label>Forcer à "0"</label>
+        </div>
+    </div>
+    <div id="TextRed" class="HeightRow">
+        <div class="FloatLeft ">
+            <label style="margin-right: 10px; width: 110px; color: red">Cotisations < 0€. "Forcer à 0" si vous souhaitez ne pas l'émettre.</label>
+        </div>
+    </div>
+
+</div>
+
+

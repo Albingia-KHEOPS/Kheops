@@ -1,0 +1,82 @@
+﻿<input type="hidden" data-bind="textInput: TypeContrat" />
+
+<div class="input-box nGradientSection">
+    <div class="HeightRow">
+        <div class="PaddingLeft FloatLeft">
+            <b>
+                <!--Régularisation 
+                <span data-bind="text: Title"></span>
+                ---> 
+                Période générale du
+                <span data-bind="text: DebutPeriode"></span> au <span data-bind="text: FinPeriode"></span>
+            </b> :
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Période du </label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" disabled data-bind="textInput: DebutPeriode" class="inputDate" />
+        </div>
+        <div class="FloatLeft">
+            <label class="lblDateAu">au </label>
+        </div>
+        <div class="FloatLeft PaddingLeft">
+            <input type="text" disabled data-bind="textInput: FinPeriode" class="inputDate" />
+        </div>
+    </div>
+    <div class="HeightRow">        
+        <div class="FloatLeft">
+            <label class="Block">Régime de taxe</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" disabled data-bind="textInput: RegimeTaxe" />
+        </div>
+    </div>
+
+    <!--<div class="row">
+        <label class="medium">Type de régularisation :</label>
+        <input type="text" class="little" disabled data-bind="textInput: Type" />
+    </div>
+
+    <div class="row">
+        <div class="row to-left">
+            <label class="medium">N° Contrat / Alim :</label>
+            <input type="text" class="little" disabled data-bind="textInput: CodeOffre" />
+            <input type="text" class="tiny" disabled data-bind="textInput: Version" />
+            <label class="tiny">&nbsp;</label>
+            <input type="text" class="short" disabled data-bind="textInput: DisplayTypeContrat" />
+        </div>
+
+        <div class="row to-right">
+            <label class="short">Régime de taxe</label>
+            <input type="text" class="long" disabled data-bind="textInput: RegimeTaxe" />
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="autosize">Période générale de régularisation du contrat : du </label>
+        <input type="text" class="little" disabled data-bind="textInput: DebutPeriode" />
+        <label class="autosize"> au </label>
+        <input type="text" class="little" disabled data-bind="textInput: FinPeriode" />
+    </div>-->
+</div>
+<div class="input-box nGradientSection">
+    <div class="HeightRow">        
+        <div class="FloatLeft">
+            <label class="Block">Code Taxe</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" disabled data-bind="textInput: CodeTaxe" class="inputDate" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Type de régul.</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" disabled data-bind="textInput: Type" class="inInfoRsqFor" />
+        </div>
+    </div>
+</div>

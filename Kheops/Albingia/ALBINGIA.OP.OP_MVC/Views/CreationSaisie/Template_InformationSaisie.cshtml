@@ -1,0 +1,14 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModeleInfoSaisieTemplate
+<div class="FloatLeft">
+    <label class="labelTemplate Block">Canevas</label>
+</div>
+<div class="divTemplate FloatLeft">
+    @if (((Model.IsReadOnly || Model.CopyMode) && !Model.LoadTemplateMode) || Model.IsReadOnlyDisplay)
+    {
+        <input type="text" id="InformationSaisie_InformationTemplate_Template" name="InformationSaisie.InformationTemplate.Template" readonly="readonly" class="readonly inputTemplate" value="@(Model.Template)" />
+    }
+    else
+    { 
+        @Html.AlbDropDownListFor(m => m.Template, Model.Templates, "InformationSaisie_InformationTemplate_Template", htmlAttributes: new { id = "InformationSaisie_InformationTemplate_Template", @tabindex = "2", @class = "inputTemplate NonReprisCP" }, generateTitle: true, replaceHtmlName: "InformationSaisie.InformationTemplate.Template")
+    }
+</div>

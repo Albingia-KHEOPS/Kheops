@@ -1,0 +1,110 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsExprComplexeDetails
+@Html.Hidden("splitCharHtml", (ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML))
+@Html.Hidden("TypeExpr", (Model.Type))
+@Html.Hidden("IdExpr", (Model.Id))
+@Html.Hidden("IdRowExpr", string.Empty)
+<div class="PaddingLeft"><u>Edition @Model.Type complexe</u></div>
+<div class="HeightDetailInfo">
+    <div class="PaddingTop HeightRow">
+        <div class="FloatLeft">
+            <label class="lblCodeExpr">Expression</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="TypeExpression" name="TypeExpression" class="readonly" value="@(Model.Type == "LCI" ? "L" : "F")" readonly="readonly" style="width: 7px;" />
+            <input type="text" id="CodeExpression" name="CodeExpression" class="@(Model.IsReadOnly ? "inCodeExpr readonly" : "inCodeExpr")" value="@(!string.IsNullOrEmpty(Model.Code) ? Model.Code.Substring(1, 1) : string.Empty)" maxlength="1" readonly="@(Model.IsReadOnly )" style="text-transform:uppercase;"/>
+            <input type="text" id="CodeExpression2" name="CodeExpression2" class="@(Model.IsReadOnly ? "inCodeExpr readonly" : "inCodeExpr")" value="@(!string.IsNullOrEmpty(Model.Code) ? Model.Code.Substring(2, 1) : string.Empty)" maxlength="1" readonly="@(Model.IsReadOnly )" style="text-transform:uppercase;" />
+        </div>
+        <div class="PaddingLeft FloatLeft">
+            <label class="lblLibExpr">Libellé</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="LibExpression" name="LibExpression" class="inLibExpr" value="@Model.Libelle"/>
+        </div>
+        <div class="PaddingLeft FloatLeft">
+            <label class="lblModifExpr">Modifiable</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="checkbox" id="ModifExpression" name="ModifExpression" checked="@(Model.Modifiable )" />
+        </div>
+    </div>
+    <div id="divHeaderDetail" class="PaddingLeft">
+        <table id="tblHeaderDetail" class="tabHeaderDetail trHeight">
+            @switch (Model.Type)
+            {
+                case "LCI":
+                <tr>
+                    <th class="tablePersoHead" colspan="3">LCI</th>
+                    <th class="tablePersoHead" colspan="3">A Concurrence de (maxi de)</th>
+                    <th class="tablePersoHead">&nbsp;</th>
+                </tr>
+                <tr>
+                    <th class="tablePersoHead thValLCI">Valeur</th>
+                    <th class="tablePersoHead thUnitType">Unité</th>
+                    <th class="tablePersoHead thUnitType">Type</th>
+                    <th class="tablePersoHead thValLCI">Valeur</th>
+                    <th class="tablePersoHead thUnitType">Unité</th>
+                    <th class="tablePersoHead thUnitType">Type</th>
+                    <th class="tablePersoHead thImg">
+                        @if (Model.IsReadOnly)
+                        {
+                            <img id="imgAddExprLigne" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" />
+                        }
+
+                    </th>
+                </tr>
+                        break;
+                case "Franchise":
+                <tr>
+                    <th class="tablePersoHead" colspan="5">Franchise</th>
+                    <th class="tablePersoHead" colspan="2">Limite</th>
+                    <th class="tablePersoHead">&nbsp;</th>
+                </tr>
+                <tr>
+                    <th class="tablePersoHead thValMinMax">Valeur</th>
+                    <th class="tablePersoHead thUnitType">Unité</th>
+                    <th class="tablePersoHead thUnitType">Type</th>
+                    <th class="tablePersoHead thValMinMax">Min</th>
+                    <th class="tablePersoHead thValMinMax">Max</th>
+                    <th class="tablePersoHead thDebFin">Début</th>
+                    <th class="tablePersoHead thDebFin">Fin</th>
+                    <th class="tablePersoHead thImg">
+                        @if (Model.IsReadOnly)
+                        {
+                            <img id="imgAddExprLigne" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" />
+                        }
+                    </th>
+                </tr>
+                        break;
+                default:
+                        break;
+            }
+        </table>
+    </div>
+    <div id="divBodyDetail" class="HeightTabDetail PaddingLeft">
+        @Html.Partial("RowsExprComp", Model)
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="lblDescrExpr">Descriptif</label>
+        </div>
+    </div>
+    <div class="HeightTextArea">
+        <div class="PaddingLeft FloatLeft">
+            <textarea class="txtDescrExpr" id="DescrExpr" rows="2" cols="20">@Model.Descriptif</textarea>
+        </div>
+    </div>
+</div>
+<div class="HeightRow FloatRight PaddingRight">
+    <div class="FloatLeft">
+        <button id="btnExprAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+        <button id="btnExprSave" type="button" albshortcut="true" data-accesskey="e"><u>E</u>nregistrer</button>
+    </div>
+</div>

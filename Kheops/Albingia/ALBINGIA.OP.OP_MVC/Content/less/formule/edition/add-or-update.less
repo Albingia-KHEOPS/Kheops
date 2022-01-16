@@ -1,0 +1,301 @@
+﻿
+@bgOdd: #EDEEFF;
+@bgEven: #FFF;
+
+#formule_option {
+    .lines-garanties {
+        background-color: #EEE;
+
+        & > div:first-of-type .tree-line > div {
+            margin-top: 0;
+        }
+
+        & > div:last-of-type .tree-line > div {
+            margin-bottom: 0;
+        }
+
+        & > .tree-line.odd > div {
+            background-color: @bgOdd;
+        }
+
+        & > .tree-line.even > div {
+            background-color: @bgEven;
+        }
+
+        & > div {
+            background-color: transparent;
+
+            .tree-line {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .click-it {
+        cursor: pointer;
+    }
+
+    .tree-line {
+        display: flex;
+        height: 30px;
+
+        div {
+            margin: 1px;
+            width: 20px;
+            display: flex;
+
+            &.no-text {
+                text-align: center;
+
+                input:first-of-type {
+                    line-height: 28px;
+                    height: 28px;
+                    margin: auto;
+                }
+
+                img.h9:first-of-type {
+                    line-height: 28px;
+                    height: 9px;
+                    margin: 8.5px auto;
+                }
+
+                img.h16:first-of-type {
+                    line-height: 28px;
+                    height: 16px;
+                    margin: 6px auto;
+                }
+            }
+
+            span {
+                line-height: 28px;
+                height: 28px;
+            }
+
+            select:first-of-type {
+                line-height: 28px;
+                height: 20px;
+                margin: 3px 0;
+            }
+
+            &.label {
+                width: auto;
+                flex: 1;
+                padding-left: 2px;
+            }
+
+            &.pad-bloc {
+                padding-left: 15px;
+            }
+
+            &.pad-1 {
+                padding-left: 30px;
+            }
+
+            &.pad-2 {
+                padding-left: 45px;
+            }
+
+            &.pad-3 {
+                padding-left: 60px;
+            }
+
+            &.pad-4 {
+                padding-left: 75px;
+            }
+
+            &.niveau, &.caractere {
+                text-align: center;
+
+                span {
+                    margin: auto;
+                }
+            }
+
+            &.nature {
+                width: 33px;
+                padding-left: 1px;
+                text-align: center;
+
+                span {
+                    flex: auto;
+                }
+
+                .liste-natures {
+                    width: 100%;
+                }
+            }
+        }
+
+        &.levelVolet {
+            div {
+                background-color: #003399;
+                color: white;
+                font-weight: bold;
+            }
+        }
+
+        &.levelBloc {
+            div {
+                margin-bottom: 2px;
+                background-color: #AFADD1;
+                color: black;
+            }
+        }
+
+        &.levelGarantie {
+            div {
+                background-color: transparent;
+            }
+
+            &.odd {
+                div {
+                    background-color: @bgOdd;
+                }
+            }
+
+            &.even {
+                div {
+                    background-color: @bgEven;
+                }
+            }
+        }
+
+        .validation-error-message {
+            display: none;
+        }
+
+        &.validation-error {
+            .validation-error-message {
+                content: '';
+                margin-top: 5px;
+                display: block;
+                height: 16px;
+                width: 16px;
+                background-image: url('../../../Images/alertes/notif_icn_crit16.png');
+            }
+        }
+    }
+
+    div::after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+}
+
+#action_buttons_formula {
+    position: relative;
+
+    #FullScreenFormule {
+        position: absolute;
+        right: 493px;
+    }
+}
+
+body {
+    @width: 1200px;
+    @height: 488px;
+    @margin: 9px;
+
+    .libelle-formule {
+        width: 380px;
+    }
+
+    .main div::after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+
+    info-formule-applications, #divModeAvenant, #LayoutArbre, #divFormuleGarantie, #divGarantie, #action_buttons_formula, .CommonForm .main, // .CommonForm .main .nHorizontalFullWithGroup,
+    .CommonForm  .main * {
+        transition-duration: 250ms;
+        transition-timing-function: ease-in;
+        transition-property: height, width, max-height, max-width, border-width, margin, padding;
+    }
+
+    info-formule-applications, #divModeAvenant {
+        display: block;
+        overflow: hidden;
+    }
+
+    info-formule-applications {
+        height: 63px;
+    }
+
+    #divModeAvenant {
+        height: 26px;
+    }
+
+    #LayoutArbre {
+        overflow: hidden;
+    }
+
+    @marginContrat: 74px;
+
+    #divFormuleGarantie {
+        height: @height - @marginContrat;
+    }
+
+    #divListGaranties {
+        height: @height - @marginContrat - 33px;
+        max-height: @height - @marginContrat - 33px;
+        max-height: none;
+    }
+
+    @marginAvenant: 109px;
+
+    .mode-avenant {
+        #divFormuleGarantie {
+            height: @height - @marginAvenant;
+        }
+
+        #divListGaranties {
+            height: @height - @marginAvenant - 33px;
+        }
+    }
+
+    #action_buttons_formula {
+        width: @width - 172px;
+    }
+
+    &.fullscreen {
+
+        info-formule-applications, #divModeAvenant {
+            height: 0;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        #LayoutArbre {
+            width: 0;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+            border: none;
+        }
+
+        .CommonForm .main .nHorizontalFullWithGroup {
+            width: @width;
+        }
+
+        .CommonForm .main {
+            width: @width;
+        }
+
+        #action_buttons_formula {
+            width: @width;
+        }
+
+        #divFormuleGarantie {
+            height: @height - @margin;
+        }
+
+        #divListGaranties {
+            height: @height - @margin - 32px;
+            max-height: @height - @margin - 32px;
+        }
+    }
+}

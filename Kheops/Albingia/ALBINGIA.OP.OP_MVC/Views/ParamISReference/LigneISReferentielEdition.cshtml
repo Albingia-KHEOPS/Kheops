@@ -1,0 +1,97 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamISReference.LigneModeleIS
+@{ 
+    string code = Model.Code.Replace(' ', '¤');
+}
+<td class="col_NomInterne_line" name="selectableCol" id="col_NomInterne_@(code)">
+    <div class="FloatLeft colEdition" name="colEdition_@(code)">
+        @if (code == ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST.ToString())
+        {
+            <input id="nomInterne_@(code)" maxlength="40" class="col_NomInterne_in" name="nomInterne" value="" />
+        }
+        else
+        {
+            <input id="nomInterne_@(code)" maxlength="40" class="col_NomInterne_in readonly" name="nomInterne" value="@Model.Code" readonly="readonly" />
+        }
+    </div>
+</td>
+<td class="col_Description_line" name="selectableCol" id="col_Description_@(code)">
+    <div class="FloatLeft colEdition" name="colEdition_@(code)">
+        <input id="referenceDescription_@(code)" maxlength="80" class="col_Description_in" name="referenceDescription" value="@Model.Description" />
+    </div>
+</td>
+<td class="col_Libelle_line" name="selectableCol" id="col_Libelle_@(code)">
+    <div class="FloatLeft colEdition" name="colEdition_@(code)">
+        <input id="libelle_@(code)"  maxlength="80" class="col_Libelle_in" name="libelle" value="@Model.LibelleAffiche" />
+    </div>
+</td>
+<td class="col_TypeZone_line" name="selectableCol" id="col_TypeZone_@(code)">
+    <div class="FloatLeft colEdition paddingEdition" name="colEdition_@(code)">
+        @Html.AlbDropDownListFor(m => Model.TypeZone, Model.ListTypeZone, "dvTypeZone", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_TypeZone_in", @id = "typeZone_" + code })
+    </div>
+</td>
+<td class="col_LongueurZone_line" name="selectableCol" id="col_LongueurZone_@(code)">
+    <div class="FloatLeft colEdition" name="colEdition_@(code)">
+        <input class=" col_LongueurZone_in " maxlength="4" id="longueurZone_@(code)" name="longueurZone" value="@Model.LongueurZone"/>
+    </div>
+</td>
+<td class="col_Mappage_line" name="selectableCol" id="col_Mappage_@(code)">
+    <div class="FloatLeft colEdition paddingEdition" name="colEdition_@(code)">
+        @Html.AlbDropDownListFor(m => Model.Mappage, Model.ListMappage, "dvMappage", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_Mappage_in", @id = "drlMappage_" + code })
+    </div>
+</td>
+<td class="col_Conversion_line" name="selectableCol" id="col_Conversion_@(code)">
+    <div class="FloatLeft colEdition paddingEdition" name="colEdition_@(code)">
+        @Html.AlbDropDownListFor(m => Model.Conversion, Model.ListConversion, "dvConversion", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_Conversion_in", @id = "drlConversion_" + code })
+    </div>
+</td>
+<td class="col_Presentation_line" name="selectableCol" id="col_Presentation_@(code)">
+    <div class="FloatLeft colEdition paddingReadonly" name="colEdition_@(code)">
+        @Html.AlbDropDownListFor(m => Model.Presentation, Model.ListPresentation, "dvPresentation", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_Presentation_in", @id = "drlPresentation_" + code })
+    </div>
+</td>
+<td class="col_UI_line" name="selectableCol" id="col_UI_@(code)">
+
+    <div class="FloatLeft colEdition paddingEdition" name="colEdition_@(code)">
+        @Html.AlbDropDownListFor(m => Model.TypeUI, Model.ListTypesUI, "dvTypeUI", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_UI_in", @id = "drlTypeUI_" + code })
+    </div>
+</td>
+<td class="col_Obligatoire_line" name="selectableCol" id="col_Obligatoire_@(code)">
+    <div class="FloatLeft colEdition paddingReadonly" name="colEdition_@(code)">
+        @Html.AlbDropDownListFor(m => Model.Obligatoire, Model.ListObligatoire, "dvObligatoire", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_Obligatoire_in", @id = "drlObligatoire_" + code })
+    </div>
+</td>
+<td class="col_ScriptAffichage_line" name="selectableCol" id="col_ScriptAffichage_@(code)">
+    <div class="FloatLeft colEdition paddingReadonly" name="colEdition_@(code)">
+        @Html.AlbDropDownListFor(m => Model.Affichage, Model.ListAffichage, "dvAffichage", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_ScriptAffichage_in", @id = "drlAffichage_" + code })
+    </div>
+</td>
+<td class="col_ScriptControle_line" name="selectableCol" id="col_ScriptControle_@(code)">
+    <div class="FloatLeft colEdition paddingReadonly" name="colEdition_@(code)">
+        @Html.AlbDropDownListFor(m => Model.Controle, Model.ListControle, "dvControle", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_ScriptControle_in", @id = "drlControle_" + code })
+    </div>
+</td>
+<td class="col_Observation_line" name="selectableCol" id="col_Observation_@(code)">
+    <div class="FloatLeft colEdition paddingReadonly" name="colEdition_@(code)">
+        <input id="observation_@(code)"  maxlength="5000" class="col_Observation_in" name="observation" value="@Model.Observation"  />
+    </div>
+</td>
+<td class="col_ValeurDefaut_line" name="selectableCol" id="col_ValeurDefaut_@(code)">
+    <div class="FloatLeft colEdition paddingReadonly" name="colEdition_@(code)">
+        <input id="valeurDefaut_@(code)" maxlength="5000" class="col_ValeurDefaut_in" name="valeurDefaut" value="@Model.ValeurDefaut" />
+    </div>
+</td>
+<td class="col_Tcon_line" name="selectableCol" id="col_Tcon_@(code)">
+    <div class="FloatLeft colEdition paddingReadonly" name="colEdition_@(code)">
+        <input id="tcon_@(code)" maxlength="50" class="col_Tcon_in" name="tcon" value="@Model.Tcon" />
+    </div>
+</td>
+<td class="col_Tfam_line" name="selectableCol" id="col_Tfam_@(code)">
+    <div class="FloatLeft colEdition paddingReadonly" name="colEdition_@(code)">
+        <input id="tfam_@(code)" maxlength="50" class="col_Tfam_in" name="tfam" value="@Model.Tfam" />
+    </div>
+</td>
+<td class="col_Action_line">
+    <div class="FloatLeft colEdition col_Action_line" name="colEdition_@(code)">
+        <img id="saveReference_@(code)" name="saveReference" alt="Sauvegarder la référence" title="Sauvegarder la référence" src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer ImgSave Action" />
+    </div>
+</td>

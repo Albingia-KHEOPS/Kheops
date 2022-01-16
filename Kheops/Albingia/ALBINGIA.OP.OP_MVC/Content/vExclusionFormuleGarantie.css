@@ -1,0 +1,87 @@
+﻿#tblListRsqObj
+{
+    width:99%;
+}
+
+#ObjetRisque
+{
+    width: 250px;
+}
+
+#divListRsqObj
+{
+    max-height:300px;
+}
+
+#divRsqObj
+{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    clear: both;
+}
+
+.tbCellIco
+{
+    width:20px;
+}
+
+.DivInfoGen
+{
+    width: 935px;
+    height: 35px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.FieldLabelFor
+{
+    width: 95px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+.FieldLabelLib
+{
+    width: 70px !important;
+}
+
+.FieldLabelGarantie
+{
+    width: 75px !important;
+}
+
+.FieldTextBoxLettreLib
+{
+    width: 50px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+.FieldTextBoxLettreLib input
+{
+    width: 30px;
+}
+
+.FieldTextBoxFor
+{
+    width: 180px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+.divApplique
+{
+    width:260px !important;
+}
+
+.divLabelRsqObj
+{
+    padding-bottom: 5px;
+}
+
+.linkImage
+{
+    cursor:pointer;
+}

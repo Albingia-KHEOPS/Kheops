@@ -1,0 +1,41 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.ReeditionBulletinAvis
+<div class="GroupWithBorder" style="height:190px;">
+    @Html.HiddenNoName("numQuittanceReeditionBulletin", Model.NumQuittance)
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                <div class="FloatLeft">Bulletin de souscription</div>
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block FloatLeft">Nb exemplaires</label>
+                    <input id="nbExemplaires" style="width:50px;" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block FloatLeft">Copie/Duplicata</label>
+                    @Html.AlbDropDownListFor(m => m.ValCopieDuplicata, Model.ListeCopieDuplicata, "CopieDuplicata", htmlAttributes: new { @id = "CopieDuplicata" }, generateTitle: true, genEmptyLine:false)
+                </div>
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <div class="FloatLeft">
+                        <label class="Block">Avis d'échéance</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="avisEcheance" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: right">
+        <button id="btnFermerBulletinAvis" type="button">Annuler</button>
+        <button id="btnLancerBulletinAvis" type="button">Lancer</button>
+    </div>
+</div>

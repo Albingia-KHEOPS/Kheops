@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{583328B5-C77A-40B6-A9CC-E74BDB583AFB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OP.WSAS400.DTO</RootNamespace>
+    <AssemblyName>OP.WSAS400.DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>..\..\Rule Sets\Kheops.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EmitMapper">
+      <HintPath>..\..\ThirdBinaries\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adresses\AdresseDto.cs" />
+    <Compile Include="Adresses\AdressePlatDto.cs" />
+    <Compile Include="Adresses\GeoAdrDto.cs" />
+    <Compile Include="Adresses\PaysDto.cs" />
+    <Compile Include="Adresses\VilleDto.cs" />
+    <Compile Include="Adresses\_Adresse_Base.cs" />
+    <Compile Include="AffaireNouvelle\AffNouvProchaineEcheanceDto.cs" />
+    <Compile Include="AffaireNouvelle\AvenantInfoPageDto.cs" />
+    <Compile Include="AffaireNouvelle\CoAssureurDto.cs" />
+    <Compile Include="AffaireNouvelle\CommissionCourtierDto.cs" />
+    <Compile Include="AffaireNouvelle\ContratDto.cs" />
+    <Compile Include="AffaireNouvelle\ContratInfoBaseDto.cs" />
+    <Compile Include="AffaireNouvelle\ModeleInfoPageDto.cs" />
+    <Compile Include="AffaireNouvelle\CourtierDto.cs" />
+    <Compile Include="AffaireNouvelle\CreationAffaireNouvelleContratDto.cs" />
+    <Compile Include="AffaireNouvelle\SelectionFormuleOption.cs" />
+    <Compile Include="AffaireNouvelle\SelectionObjet.cs" />
+    <Compile Include="AffaireNouvelle\SelectionRisqueObjets.cs" />
+    <Compile Include="AffaireNouvelle\SelectionRisquesObjets.cs" />
+    <Compile Include="Connexites\FusionConnexitesDto.cs" />
+    <Compile Include="Avenant\AvenantCreation.cs" />
+    <Compile Include="Contrats\ContractJsonDto.cs" />
+    <Compile Include="FaultContracts\BusinessError.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GarantieTypeDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GarantieTypePlatDto.cs" />
+    <Compile Include="LibelleClauses\ClauseBrancheDto.cs" />
+    <Compile Include="LibelleClauses\LibelleClauseDto.cs" />
+    <Compile Include="LibelleClauses\_LibelleClause_Base.cs" />
+    <Compile Include="MatriceRisque\MatriceRisqueFormuleCodeDto.cs" />
+    <Compile Include="Navigation\ContextStepName.cs" />
+    <Compile Include="Offres\ModeleFinOffreInfos.cs" />
+    <Compile Include="Partenaire\PartenaireDto.cs" />
+    <Compile Include="Partenaire\PartenairesBaseDto.cs" />
+    <Compile Include="Partenaire\PartenairesDto.cs" />
+    <Compile Include="Partenaire\PartenairesBaseDetailsDto.cs" />
+    <Compile Include="Avenant\IAvenantDto.cs" />
+    <Compile Include="Avenant\AvenantAccess.cs" />
+    <Compile Include="Clausier\ClauseOpChoixDto.cs" />
+    <Compile Include="Common\AlbErrorDto.cs" />
+    <Compile Include="Common\CreationAffaireNouvelleDto.cs" />
+    <Compile Include="AffaireNouvelle\DeblocageTermeDto.cs" />
+    <Compile Include="AffaireNouvelle\ElementAssureContratDto.cs" />
+    <Compile Include="AffaireNouvelle\FormCoAssureurDto.cs" />
+    <Compile Include="AffaireNouvelle\FormVolAffNouvDto.cs" />
+    <Compile Include="AffaireNouvelle\FormVolAffNouvFormDto.cs" />
+    <Compile Include="AffaireNouvelle\FormVolAffNouvOptDto.cs" />
+    <Compile Include="AffaireNouvelle\FormVolAffNouvPlatDto.cs" />
+    <Compile Include="AffaireNouvelle\FormVolAffNouvRecapDto.cs" />
+    <Compile Include="AffaireNouvelle\FormVolAffNouvRsqDto.cs" />
+    <Compile Include="AffaireNouvelle\FormVolAffNouvVolDto.cs" />
+    <Compile Include="AffaireNouvelle\OptTarAffNouvDto.cs" />
+    <Compile Include="AffaireNouvelle\OptTarAffNouvGaranDto.cs" />
+    <Compile Include="AffaireNouvelle\OptTarAffNouvPlatDto.cs" />
+    <Compile Include="AffaireNouvelle\OptTarAffNouvTarifDto.cs" />
+    <Compile Include="AffaireNouvelle\RetourCoassureurDto.cs" />
+    <Compile Include="AffaireNouvelle\RetourPreneurDto.cs" />
+    <Compile Include="AffaireNouvelle\RsqObjAffNouvDto.cs" />
+    <Compile Include="AffaireNouvelle\RsqObjAffNouvRowDto.cs" />
+    <Compile Include="AssuresAdditionnels\AssuresAdditionnelsDto.cs" />
+    <Compile Include="AssuresAdditionnels\AssuresNonRefDto.cs" />
+    <Compile Include="AssuresAdditionnels\AssuresRefDto.cs" />
+    <Compile Include="AttentatGareat\AttentatGareatDto.cs" />
+    <Compile Include="AttentatGareat\AttentatGareatPlatDto.cs" />
+    <Compile Include="AttentatGareat\AttentatParametreDto.cs" />
+    <Compile Include="AttentatGareat\_AttentatGareat_Base.cs" />
+    <Compile Include="Attestation\AttestationDto.cs" />
+    <Compile Include="Attestation\AttestationFormuleDto.cs" />
+    <Compile Include="Attestation\AttestationGarantieNiv1Dto.cs" />
+    <Compile Include="Attestation\AttestationGarantiePlatDto.cs" />
+    <Compile Include="Attestation\AttestationObjetDto.cs" />
+    <Compile Include="Attestation\AttestationRisqueDto.cs" />
+    <Compile Include="Attestation\AttestationGarantieNiv2Dto.cs" />
+    <Compile Include="Attestation\AttestationGarantieNiv3Dto.cs" />
+    <Compile Include="Attestation\AttestationGarantieNiv4Dto.cs" />
+    <Compile Include="Attestation\AttestationSelGarDto.cs" />
+    <Compile Include="Attestation\AttestationSelGarPlatDto.cs" />
+    <Compile Include="Attestation\AttestationSelRsqDto.cs" />
+    <Compile Include="Attestation\AttestationSelRsqPlatDto.cs" />
+    <Compile Include="Avenant\AvenantAlerteDto.cs" />
+    <Compile Include="Avenant\AvenantDto.cs" />
+    <Compile Include="Avenant\AvenantInfoDto.cs" />
+    <Compile Include="Avenant\AvenantModificationDto.cs" />
+    <Compile Include="Avenant\AvenantRegularisationDto.cs" />
+    <Compile Include="Avenant\AvenantResiliationDto.cs" />
+    <Compile Include="Avenant\AvenantRemiseEnVigueurDto.cs" />
+    <Compile Include="Bloc\BlocDto.cs" />
+    <Compile Include="Bloc\_Bloc_Base.cs" />
+    <Compile Include="ChoixClauses\ChoixClauseListePieceJointeDto.cs" />
+    <Compile Include="ChoixClauses\ChoixClausePieceJointeDto.cs" />
+    <Compile Include="ChoixClauses\ChoixClausesInfoDto.cs" />
+    <Compile Include="ChoixClauses\ClauseVisualisationDto.cs" />
+    <Compile Include="ChoixClauses\EnregistrementClauseLibreDto.cs" />
+    <Compile Include="Clausier\ClausierDto.cs" />
+    <Compile Include="Clausier\ClausierPageDto.cs" />
+    <Compile Include="Clausier\RetGenClauseDto.cs" />
+    <Compile Include="Clausier\ParametreGenClauseDto.cs" />
+    <Compile Include="Common\ActeGestionDto.cs" />
+    <Compile Include="Common\BandeauDto.cs" />
+    <Compile Include="Common\BlocageSaisieDto.cs" />
+    <Compile Include="Common\ColumnInfoDto.cs" />
+    <Compile Include="Common\DtoCommon.cs" />
+    <Compile Include="Common\IdContratDto.cs" />
+    <Compile Include="Common\IdObjetSituationDto.cs" />
+    <Compile Include="Common\InfosBaseDto.cs" />
+    <Compile Include="Common\LCIFranchiseDto.cs" />
+    <Compile Include="Common\LCIFranchiseUnitesTypesDto.cs" />
+    <Compile Include="Common\ModeleControlPeriodeDto.cs" />
+    <Compile Include="Common\VisuInfosContratDto.cs" />
+    <Compile Include="Common\VisuListSuspensionDto.cs" />
+    <Compile Include="Common\VisuObservationsDto.cs" />
+    <Compile Include="Common\VisuSuspensionDto.cs" />
+    <Compile Include="Concerts\Clause\ClauseDto.cs" />
+    <Compile Include="Concerts\Clause\ClauseExecListDto.cs" />
+    <Compile Include="Concerts\Clause\ClauseLibreViewerDto.cs" />
+    <Compile Include="Concerts\Clause\ClausierGetQueryDto.cs" />
+    <Compile Include="Concerts\Clause\ClausierGetResultDto.cs" />
+    <Compile Include="Concerts\Clause\ClauseVersionDto.cs" />
+    <Compile Include="Concerts\Clause\ClausesContextDto.cs" />
+    <Compile Include="Concerts\Clause\_Clause_Base.cs" />
+    <Compile Include="Concerts\ConcertDto.cs" />
+    <Compile Include="Concerts\_Concert_Base.cs" />
+    <Compile Include="Categorie\CategorieDto.cs" />
+    <Compile Include="Condition\ConditionComplexeDto.cs" />
+    <Compile Include="Condition\ConditionComplexeLineDto.cs" />
+    <Compile Include="Condition\DetailsGarantieDto.cs" />
+    <Compile Include="Condition\EnsembleGarantieDto.cs" />
+    <Compile Include="Condition\EnsembleGarantieEpureDto.cs" />
+    <Compile Include="Condition\EnsembleGarantiePlatDto.cs" />
+    <Compile Include="Condition\GarantieVoletBloc.cs" />
+    <Compile Include="Condition\LigneGarantieDto.cs" />
+    <Compile Include="Contrats\KeyLocker.cs" />
+    <Compile Include="ControleFin\ControleFinDto.cs" />
+    <Compile Include="ControleFin\ControleFinControleDto.cs" />
+    <Compile Include="ControleFin\ObjetExecListDto.cs" />
+    <Compile Include="ControleFin\OffreEnteteExecListDto.cs" />
+    <Compile Include="ControleFin\RisqueExecListDto.cs" />
+    <Compile Include="Cotisations\CotisationGarantieExecListDto.cs" />
+    <Compile Include="Cotisations\CotisationCanatGareatDto.cs" />
+    <Compile Include="Cotisations\CotisationCommissionDto.cs" />
+    <Compile Include="Cotisations\CotisationGarantieDto.cs" />
+    <Compile Include="Cotisations\CotisationInfoGarantieEntities.cs" />
+    <Compile Include="Cotisations\CotisationsDto.cs" />
+    <Compile Include="Cotisations\CotisationsInfoTarifDto.cs" />
+    <Compile Include="Cotisations\CotisationsInfoTarifPlatDto.cs" />
+    <Compile Include="Cotisations\CotisationsPlatDto.cs" />
+    <Compile Include="Cotisations\CotisationsTarifDto.cs" />
+    <Compile Include="Cotisations\Cotisations_Base.cs" />
+    <Compile Include="Cotisations\CotisationInfoGarantieDto.cs" />
+    <Compile Include="Cotisations\EcheanceDto.cs" />
+    <Compile Include="Cotisations\EcheancierDto.cs" />
+    <Compile Include="Cotisations\FraisAccessoiresDto.cs" />
+    <Compile Include="Cotisations\InfoCompQuittanceDto.cs" />
+    <Compile Include="Cotisations\QuittanceDetailDto.cs" />
+    <Compile Include="Cotisations\QuittanceDto.cs" />
+    <Compile Include="Cotisations\QuittanceTabAperitionLigneDto.cs" />
+    <Compile Include="Cotisations\QuittanceVentilationAperitionDto.cs" />
+    <Compile Include="Cotisations\QuittanceVentilationAperitionPlatDto.cs" />
+    <Compile Include="Cotisations\QuittanceVentilationCommissionCourtierDto.cs" />
+    <Compile Include="Cotisations\QuittanceVentilationDetailleeGarantieDto.cs" />
+    <Compile Include="Cotisations\QuittanceVentilationDetailleeTaxeDto.cs" />
+    <Compile Include="Cotisations\QuittanceVisualisationDto.cs" />
+    <Compile Include="Cotisations\QuittanceVisualisationLigneDto.cs" />
+    <Compile Include="DocumentGestion\CopieDocDto.cs" />
+    <Compile Include="DocumentGestion\CourrierTypeDto.cs" />
+    <Compile Include="DocumentGestion\DestinataireDto.cs" />
+    <Compile Include="DocumentGestion\DocumentGestionDetailsInfoGen.cs" />
+    <Compile Include="DocumentGestion\DocumentGestionDocDto.cs" />
+    <Compile Include="DocumentGestion\DocumentGestionDocInfoDto.cs" />
+    <Compile Include="DocumentGestion\DocumentGestionDocPlatDto.cs" />
+    <Compile Include="DocumentGestion\DocumentGestionInfoDestDto.cs" />
+    <Compile Include="DocumentsJoints\DocumentsAddDto.cs" />
+    <Compile Include="DocumentsJoints\DocumentsDto.cs" />
+    <Compile Include="DocumentsJoints\DocumentsJointsDto.cs" />
+    <Compile Include="DocumentGestion\LigneCheminDocumentDto.cs" />
+    <Compile Include="Ecran\ConditionRisqueGarantie\ConditionRisqueGarantieGetQueryDto.cs" />
+    <Compile Include="Ecran\ConditionRisqueGarantie\ConditionRisqueGarantieGetResultDto.cs" />
+    <Compile Include="Ecran\ConditionRisqueGarantie\_ConditionRisqueGarantie_Base.cs" />
+    <Compile Include="Ecran\ConfirmationSaisie\ConfirmationSaisieGetQueryDto.cs" />
+    <Compile Include="Ecran\ConfirmationSaisie\ConfirmationSaisieGetResultDto.cs" />
+    <Compile Include="Ecran\ConfirmationSaisie\ConfirmationSaisieSetQueryDto.cs" />
+    <Compile Include="Ecran\ConfirmationSaisie\ConfirmationSaisieSetResultDto.cs" />
+    <Compile Include="Ecran\ConfirmationSaisie\_ConfirmationSaisie_Base.cs" />
+    <Compile Include="Ecran\CreationSaisie\CreationSaisieGetQueryDto.cs" />
+    <Compile Include="Ecran\CreationSaisie\CreationSaisieGetResultDto.cs" />
+    <Compile Include="Ecran\CreationSaisie\CreationSaisieSetQueryDto.cs" />
+    <Compile Include="Ecran\CreationSaisie\CreationSaisieSetResultDto.cs" />
+    <Compile Include="Ecran\CreationSaisie\_CreationSaisie_Base.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireDelQueryDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireDelResultDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireGetQueryDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireGetResultDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireObjetGetQueryDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireObjetGetResultDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireObjetSetQueryDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireObjetSetResultDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireSetQueryDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\DetailsInventaireSetResultDto.cs" />
+    <Compile Include="Ecran\DetailsInventaire\_DetailsInventaire_Base.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\ActiviteDto.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\DetailsObjetRisqueDelQueryDto.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\DetailsObjetRisqueDelResultDto.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\DetailsObjetRisqueGetQueryDto.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\DetailsObjetRisqueGetResultDto.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\DetailsObjetRisqueSetQueryDto.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\DetailsObjetRisqueSetResultDto.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\RechercheActiviteDto.cs" />
+    <Compile Include="Ecran\DetailsObjetRisque\_DetailsObjetRisque_Base.cs" />
+    <Compile Include="Ecran\DetailsRisque\DetailsRisqueDelQueryDto.cs" />
+    <Compile Include="Ecran\DetailsRisque\DetailsRisqueDelResultDto.cs" />
+    <Compile Include="Ecran\DetailsRisque\DetailsRisqueGetQueryDto.cs" />
+    <Compile Include="Ecran\DetailsRisque\DetailsRisqueGetResultDto.cs" />
+    <Compile Include="Ecran\DetailsRisque\DetailsRisqueSetQueryDto.cs" />
+    <Compile Include="Ecran\DetailsRisque\DetailsRisqueSetResultDto.cs" />
+    <Compile Include="Ecran\DetailsRisque\_DetailsRisque_Base.cs" />
+    <Compile Include="Ecran\DoubleSaisie\DoubleSaisieListeDto.cs" />
+    <Compile Include="Ecran\DoubleSaisie\DoubleSaisieSetQueryDto.cs" />
+    <Compile Include="Ecran\DoubleSaisie\DoubleSaisieSetResultDto.cs" />
+    <Compile Include="Ecran\DoubleSaisie\DoubleSaisieGetQueryDto.cs" />
+    <Compile Include="Ecran\DoubleSaisie\DoubleSaisieGetResultDto.cs" />
+    <Compile Include="Ecran\DoubleSaisie\_DoubleSaisie_Base.cs" />
+    <Compile Include="Ecran\InformationsSpecifiquesBranche\InformationsSpecifiquesBrancheGetQueryDto.cs" />
+    <Compile Include="Ecran\InformationsSpecifiquesBranche\InformationsSpecifiquesBrancheGetResultDto.cs" />
+    <Compile Include="Ecran\InformationsSpecifiquesBranche\InformationsSpecifiquesBrancheSetQueryDto.cs" />
+    <Compile Include="Ecran\InformationsSpecifiquesBranche\InformationsSpecifiquesBrancheSetResultDto.cs" />
+    <Compile Include="Ecran\InformationsSpecifiquesBranche\_InformationsSpecifiquesBranche_Base.cs" />
+    <Compile Include="Ecran\ModifierOffre\ModifierOffreInfoGenDto.cs" />
+    <Compile Include="Ecran\Rercherchesaisie\ModeleParametresRechercheDto.cs" />
+    <Compile Include="Ecran\Rercherchesaisie\RechercheOffresGetQueryDto.cs" />
+    <Compile Include="Ecran\Rercherchesaisie\RechercheOffresGetResultDto.cs" />
+    <Compile Include="Ecran\Rercherchesaisie\RechercheOffresRapideSaisieDto.cs" />
+    <Compile Include="Ecran\Rercherchesaisie\RechercheSaisieGetQueryDto.cs" />
+    <Compile Include="Ecran\Rercherchesaisie\RechercheSaisieGetResultDto.cs" />
+    <Compile Include="Ecran\Rercherchesaisie\_RechercheOffres_Base.cs" />
+    <Compile Include="Ecran\Rercherchesaisie\_RechercheSaisie_Base.cs" />
+    <Compile Include="Ecran\ModifierOffre\ModifierOffreGetQueryDto.cs" />
+    <Compile Include="Ecran\ModifierOffre\ModifierOffreGetResultDto.cs" />
+    <Compile Include="Ecran\ModifierOffre\ModifierOffreSetQueryDto.cs" />
+    <Compile Include="Ecran\ModifierOffre\ModifierOffreSetResultDto.cs" />
+    <Compile Include="Ecran\ModifierOffre\_ModifierOffre_Base.cs" />
+    <Compile Include="Ecran\_Ecran_Base_.cs" />
+    <Compile Include="Engagement\ConnexiteDto.cs" />
+    <Compile Include="Engagement\ModeleDetailsConnexitesEngPeriodeDto.cs" />
+    <Compile Include="Engagement\InfoConnexiteDto.cs" />
+    <Compile Include="Engagement\ContratConnexeDto.cs" />
+    <Compile Include="Engagement\ContratConnexeTraiteDto.cs" />
+    <Compile Include="Engagement\EngagementConnexiteDto.cs" />
+    <Compile Include="Engagement\EngagementConnexiteTraiteDto.cs" />
+    <Compile Include="Engagement\EngagementPeriodeDto.cs" />
+    <Compile Include="Engagement\EngagementPlatDto.cs" />
+    <Compile Include="Engagement\InfoConfirmationConnexeDto.cs" />
+    <Compile Include="Engagement\InfoConnexitePlatDto.cs" />
+    <Compile Include="Engagement\InfoContratConnexeDto.cs" />
+    <Compile Include="Engagement\ModeleEngTraitDTO.cs" />
+    <Compile Include="Engagement\PeriodeConnexiteDto.cs" />
+    <Compile Include="Engagement\TypeConnexiteDto.cs" />
+    <Compile Include="ExcelDto\BaseExcelObjets.cs" />
+    <Compile Include="ExcelDto\AllObjExcel.cs" />
+    <Compile Include="ExcelDto\InputExcel.cs" />
+    <Compile Include="ExcelDto\LibCodeDto.cs" />
+    <Compile Include="ExcelDto\LigneInfo.cs" />
+    <Compile Include="ExcelDto\OutPutExcel.cs" />
+    <Compile Include="ExcelDto\RS\DtoGenerator2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtoGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelDto\RS\DtoInfoSpecRs.cs" />
+    <Compile Include="ExcelDto\RS\Entete.cs">
+      <DependentUpon>DtoGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelDto\RS\Garanties.cs">
+      <DependentUpon>DtoGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelDto\RS\Objets.cs">
+      <DependentUpon>DtoGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelDto\RS\Risques.cs" />
+    <Compile Include="ExcelDto\RS\RSRecupGaranties.cs" />
+    <Compile Include="ExcelDto\RS\RSRecupObjets.cs" />
+    <Compile Include="ExcelDto\tst\DtoGenerator.j.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtoGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinOffre\FinOffreAnnotationDto.cs" />
+    <Compile Include="FinOffre\FinOffreDto.cs" />
+    <Compile Include="FinOffre\FinOffreInfosDto.cs" />
+    <Compile Include="FinOffre\FinOffrePlatDto.cs" />
+    <Compile Include="FormuleGarantie\GaranLightDto.cs" />
+    <Compile Include="FormuleGarantie\InfoCommonFormuleGarantieSaveDto.cs" />
+    <Compile Include="FormuleGarantie\InfoFormuleGarantieSave_Base.cs" />
+    <Compile Include="FormuleGarantie\InfoModeleFormuleGarantieSaveDto.cs" />
+    <Compile Include="FormuleGarantie\BlocSaveDto.cs" />
+    <Compile Include="FormuleGarantie\GaranModelDto.cs" />
+    <Compile Include="FormuleGarantie\FormGarDto.cs" />
+    <Compile Include="FormuleGarantie\FormuleGarantieDetailsPlatDto.cs" />
+    <Compile Include="FormuleGarantie\FormuleGarantiePlatDto.cs" />
+    <Compile Include="FormuleGarantie\FormuleGarantiePorteeDto.cs" />
+    <Compile Include="FormuleGarantie\FormuleGarantiePorteePlatDto.cs" />
+    <Compile Include="FormuleGarantie\FormuleGarantieSaveDto.cs" />
+    <Compile Include="FormuleGarantie\Garantie.cs" />
+    <Compile Include="FormuleGarantie\GarantieDetailDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieDetailInfoDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieInfo.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GaranNivModel.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GarantieModeleSousNiveauDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GarantiesDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GarantieInfosDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GarantieModelePlatDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\KpgaranDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\KpgartarDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\KpoptapDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\KpoptdDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\RelationGarantieDto.cs" />
+    <Compile Include="FormuleGarantie\GarantiePeriodeDto.cs" />
+    <Compile Include="FormuleGarantie\GarantiePortee.cs" />
+    <Compile Include="FormuleGarantie\GarBlocRelationDto.cs" />
+    <Compile Include="FormuleGarantie\GartawDto.cs" />
+    <Compile Include="FormuleGarantie\InventaireGarantieDto.cs" />
+    <Compile Include="FormuleGarantie\ModeleNiv1SaveDto.cs" />
+    <Compile Include="FormuleGarantie\ModeleNiveauSave_Base.cs" />
+    <Compile Include="FormuleGarantie\ModeleSaveDto.cs" />
+    <Compile Include="FormuleGarantie\ModeleSousNivSaveDto.cs" />
+    <Compile Include="FormuleGarantie\OptionDetailDto.cs" />
+    <Compile Include="FormuleGarantie\ParamNatGarDto.cs" />
+    <Compile Include="FormuleGarantie\VoletSaveDto.cs" />
+    <Compile Include="FraisAccessoires\FraisAccessoiresEngDto.cs" />
+    <Compile Include="GestionDocumentContrat\LigneDocumentDto.cs" />
+    <Compile Include="GestionDocumentContrat\LignePieceJointeDto.cs" />
+    <Compile Include="GestionDocument\DocumentDto.cs" />
+    <Compile Include="GestionDocument\DocumentParametresDiffusionDto.cs" />
+    <Compile Include="GestionDocument\DocumentParametresDto.cs" />
+    <Compile Include="GestionDocument\DocumentParametresTexteDto.cs" />
+    <Compile Include="GestionDocument\DocumentQueryDto.cs" />
+    <Compile Include="GestionDocument\DocumentTableDto.cs" />
+    <Compile Include="GestionDocument\ElementGenerateurConditionBrancheDto.cs" />
+    <Compile Include="GestionDocument\ElementGenerateurDto.cs" />
+    <Compile Include="GestionDocument\GestionDocumentCourrierDto.cs" />
+    <Compile Include="GestionDocument\GestionDocumentCreationDto.cs" />
+    <Compile Include="GestionDocument\GestionDocumentDiffusionDto.cs" />
+    <Compile Include="GestionDocument\GestionDocumentDto.cs" />
+    <Compile Include="GestionDocument\GestionDocumentTableWDto.cs" />
+    <Compile Include="GestionDocument\LettreTypeDto.cs" />
+    <Compile Include="GestionIntervenants\IntervenantDto.cs" />
+    <Compile Include="GestionIntervenants\IntervenantsInfoDto.cs" />
+    <Compile Include="GestionNomenclature\GestionNomenclatureDto.cs" />
+    <Compile Include="GestionNomenclature\GrilleDto.cs" />
+    <Compile Include="GestionNomenclature\GrillePlatDto.cs" />
+    <Compile Include="GestionNomenclature\NomenclatureDto.cs" />
+    <Compile Include="GestionNomenclature\NomenclaturePlatDto.cs" />
+    <Compile Include="GestionNomenclature\TypologieDto.cs" />
+    <Compile Include="GestUtilisateurs\UtilisateurBrancheDto.cs" />
+    <Compile Include="Historique\HistoriqueDto.cs" />
+    <Compile Include="Historique\HistoriqueLigneDto.cs" />
+    <Compile Include="Historique\HistorizationContext.cs" />
+    <Compile Include="Historique\HistorizationException.cs" />
+    <Compile Include="Historique\HistorizationState.cs" />
+    <Compile Include="Historique\HistorizationSteps.cs" />
+    <Compile Include="Inventaires\CPVilleDto.cs" />
+    <Compile Include="Logging\LogParamCibleRecupDto.cs" />
+    <Compile Include="Logging\LogPerf.cs" />
+    <Compile Include="LTA\LTADto.cs" />
+    <Compile Include="MatriceFormule\MatriceFormuleCellDto.cs" />
+    <Compile Include="MatriceFormule\MatriceFormuleColumnDto.cs" />
+    <Compile Include="MatriceFormule\MatriceFormuleDto.cs" />
+    <Compile Include="MatriceFormule\MatriceFormuleFormDto.cs" />
+    <Compile Include="MatriceFormule\MatriceFormuleLineDto.cs" />
+    <Compile Include="MatriceFormule\MatriceFormuleOptDto.cs" />
+    <Compile Include="MatriceGarantie\MatriceGarantieDto.cs" />
+    <Compile Include="MatriceGarantie\MatriceGarantiePlatDto.cs" />
+    <Compile Include="MatriceRisque\MatriceRisqueDto.cs" />
+    <Compile Include="MatriceGarantie\MatriceGarantieFormDto.cs" />
+    <Compile Include="MatriceRisque\MatriceRisqueFormuleDto.cs" />
+    <Compile Include="MatriceRisque\MatriceRisqueLineDto.cs" />
+    <Compile Include="MenuContextuel\ContextMenuDto.cs" />
+    <Compile Include="MenuContextuel\ContextMenuPlatDto.cs" />
+    <Compile Include="MontantReference\MontantReferenceDto.cs" />
+    <Compile Include="MontantReference\MontantReferenceInfoDto.cs" />
+    <Compile Include="MontantReference\MontantReferencePlatDto.cs" />
+    <Compile Include="NavigationArbre\ArbreDto.cs" />
+    <Compile Include="NavigationArbre\FormuleDto.cs" />
+    <Compile Include="NavigationArbre\NavigationArbreDto.cs" />
+    <Compile Include="NavigationArbre\OptionDto.cs" />
+    <Compile Include="NavigationArbre\RisqueDto.cs" />
+    <Compile Include="NavigationArbre\TraceDto.cs" />
+    <Compile Include="OffresRapide\OffreRapideInfoDto.cs" />
+    <Compile Include="OffresRapide\OffreRapideFiltreDto.cs" />
+    <Compile Include="OffresRapide\OffreRapideResultDto.cs" />
+    <Compile Include="Offres\Assures\AssurePlatDto.cs" />
+    <Compile Include="Offres\Branches\BrancheCiblePlatDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\CabinetAutreDtoPlat.cs" />
+    <Compile Include="Offres\CabinetsCourtage\CabinetCourtagePlatDto.cs" />
+    <Compile Include="Offres\OffreRechPlatDto.cs" />
+    <Compile Include="Offres\OffreRecupDto.cs" />
+    <Compile Include="Offres\OffreInfoDto.cs" />
+    <Compile Include="Offres\OffrePlatDto.cs" />
+    <Compile Include="Offres\RechPolDto.cs" />
+    <Compile Include="Offres\Risque\Inventaire\InventaireGridRowDto.cs" />
+    <Compile Include="Offres\Risque\Inventaire\InventairePlatDto.cs" />
+    <Compile Include="Offres\Risque\NomenclatureDto.cs" />
+    <Compile Include="Offres\Risque\Objet\ObjetPlatDto.cs" />
+    <Compile Include="Offres\Risque\OppositionDto.cs" />
+    <Compile Include="Offres\Risque\OrganismeOppDto.cs" />
+    <Compile Include="Offres\Risque\RisquePlatDto.cs" />
+    <Compile Include="Offres\Risque\RisqueObjetPlatDto.cs" />
+    <Compile Include="ParametreCibles\EditTemplateDto.cs" />
+    <Compile Include="ParametreCibles\ParamCiblesDto.cs" />
+    <Compile Include="ParametreCibles\ParamListBranchesCibleDto.cs" />
+    <Compile Include="ParametreCibles\TemplatePlatDto.cs" />
+    <Compile Include="ParametreClauses\ParamAjoutContexteDto.cs" />
+    <Compile Include="ParametreClauses\ParamAjoutEGDIDto.cs" />
+    <Compile Include="ParametreClauses\ParamAjoutEtapeDto.cs" />
+    <Compile Include="ParametreClauses\ParamAjoutActeGestionDto.cs" />
+    <Compile Include="ParametreClauses\ParamClauseContextePlatDto.cs" />
+    <Compile Include="ParametreClauses\ParamContexteEGDIDto.cs" />
+    <Compile Include="ParametreClauses\ParamEtapeContexteDto.cs" />
+    <Compile Include="ParametreClauses\ParamActeGestionEtapeDto.cs" />
+    <Compile Include="ParametreClauses\ParamClauseEtapeDto.cs" />
+    <Compile Include="ParametreClauses\ParamListClausesDto.cs" />
+    <Compile Include="ParametreClauses\ParamListParamDto.cs" />
+    <Compile Include="ParametreClauses\ParamClausesDto.cs" />
+    <Compile Include="ParametreClauses\ParamClauses_Base.cs" />
+    <Compile Include="ParametreClauses\ParamRattachClauseDto.cs" />
+    <Compile Include="ParametreClauses\ParamRattachSaisieDto.cs" />
+    <Compile Include="ParametreEngagement\ParamEngagementDto.cs" />
+    <Compile Include="ParametreEngagement\ParamEngmentColonneDto.cs" />
+    <Compile Include="ParametreFamilles\ParamFamilleDto.cs" />
+    <Compile Include="ParametreFamilles\ParamValeurDto.cs" />
+    <Compile Include="ParametreFiltre\ModeleDetailsFiltreDto.cs" />
+    <Compile Include="ParametreFiltre\ModeleFiltreLigneDto.cs" />
+    <Compile Include="ParametreFiltre\ModeleLigneBrancheCibleDto.cs" />
+    <Compile Include="ParametreGaranties\FamilleReassuranceDto.cs" />
+    <Compile Include="ParametreGaranties\GarTypeRegulDto.cs" />
+    <Compile Include="ParametreGaranties\OffreInventaireGarantieDto.cs" />
+    <Compile Include="ParametreGaranties\ParamGarantieDto.cs" />
+    <Compile Include="ParametreGaranties\ParamGarantieListesDto.cs" />
+    <Compile Include="ParametreGaranties\TypeValeurDto.cs" />
+    <Compile Include="ParametreInventaires\ParamInventairesDto.cs" />
+    <Compile Include="ParametreInventaires\ParamInventairesListDto.cs" />
+    <Compile Include="ParametreTypeValeur\ModeleDetailsTypeValeurDto.cs" />
+    <Compile Include="ParametreTypeValeur\ModeleLigneTypeValeurCompatibleDto.cs" />
+    <Compile Include="ParametreTypeValeur\ModeleLigneTypeValeurDto.cs" />
+    <Compile Include="ParamIS\AffichageISLineDto.cs" />
+    <Compile Include="ParamIS\LigneModeleISDto.cs" />
+    <Compile Include="ParamIS\ModeleISDto.cs" />
+    <Compile Include="ParamIS\ParamISLigneInfoDto.cs" />
+    <Compile Include="ParamIS\ParamISLigneModeleDto.cs" />
+    <Compile Include="ParamTemplates\ModeleLigneTemplateDto.cs" />
+    <Compile Include="Personnes\UtilisateurDto.cs" />
+    <Compile Include="PGM\ComputeRegularisationParams.cs" />
+    <Compile Include="PGM\RemiseEnVigueurDto.cs" />
+    <Compile Include="PGM\RemiseEnVigueurParams.cs" />
+    <Compile Include="Quittance\QuittanceForceDto.cs" />
+    <Compile Include="Quittance\QuittanceForceFormuleDto.cs" />
+    <Compile Include="Quittance\QuittanceForceGarantieDto.cs" />
+    <Compile Include="Quittance\QuittanceForceGarantiePlatDto.cs" />
+    <Compile Include="Quittance\QuittanceForceInfoFormuleDto.cs" />
+    <Compile Include="Quittance\QuittanceForceInfoGarantieDto.cs" />
+    <Compile Include="Quittance\QuittanceForceTotalDto.cs" />
+    <Compile Include="RefExprComplexe\ExprComplexeDetailDto.cs" />
+    <Compile Include="RefExprComplexe\ListRefExprComplexeDto.cs" />
+    <Compile Include="Regularisation\ActeGestionRegularisation.cs" />
+    <Compile Include="Regularisation\AjoutMouvtGarantieDto.cs" />
+    <Compile Include="Regularisation\AvenantReguleDto.cs" />
+    <Compile Include="Regularisation\CauseResetRegularisation.cs" />
+    <Compile Include="Regularisation\CodeTaxesDto.cs" />
+    <Compile Include="Regularisation\ConfirmSaisieReguleDto.cs" />
+    <Compile Include="Regularisation\GarantieFilter.cs" />
+    <Compile Include="Regularisation\GarantieRCInfosDto.cs" />
+    <Compile Include="Regularisation\GarantieValuesDto.cs" />
+    <Compile Include="Regularisation\IRCFRGroupItem.cs" />
+    <Compile Include="Regularisation\ListeGarantiesRCDto.cs" />
+    <Compile Include="Regularisation\RegularisationSimplifieeDto.cs" />
+    <Compile Include="Regularisation\SaisieGarantieRCValuesDto.cs" />
+    <Compile Include="Regularisation\GarantieRCValuesDto.cs" />
+    <Compile Include="Regularisation\RegularisationBandeauContratDto.cs" />
+    <Compile Include="Regularisation\RegularisationComputeDataSum.cs" />
+    <Compile Include="Regularisation\RegularisationComputeData.cs" />
+    <Compile Include="Regularisation\RegularisationContext.cs" />
+    <Compile Include="Regularisation\RegularisationRisqueComputeData.cs" />
+    <Compile Include="Regularisation\RegularisationStateDto.cs" />
+    <Compile Include="Regularisation\RegularisationStep.cs" />
+    <Compile Include="Regularisation\InfoGarantiesRsqDto.cs" />
+    <Compile Include="Regularisation\RegularisationMode.cs" />
+    <Compile Include="Regularisation\PeriodeReguleDto.cs" />
+    <Compile Include="Regularisation\RegularisationScope.cs" />
+    <Compile Include="Regularisation\RegularisationGarInfoDto.cs" />
+    <Compile Include="Regularisation\LigneMouvtGarantieDto.cs" />
+    <Compile Include="Regularisation\LigneMouvementDto.cs" />
+    <Compile Include="Regularisation\LigneRegularisationGarantieDto.cs" />
+    <Compile Include="Regularisation\LigneRegularisationDto.cs" />
+    <Compile Include="Regularisation\RegularisationDto.cs" />
+    <Compile Include="Regularisation\RegularisationGarantieDto.cs" />
+    <Compile Include="Regularisation\RegularisationGarDto.cs" />
+    <Compile Include="Regularisation\RegularisationInfoDto.cs" />
+    <Compile Include="Regularisation\RegularisationRsqDto.cs" />
+    <Compile Include="Regularisation\RegularisationRsqObjPlatDto.cs" />
+    <Compile Include="Regularisation\RegulMatriceDto.cs" />
+    <Compile Include="Regularisation\SaisieGarantieInfosDto.cs" />
+    <Compile Include="Regularisation\SaisieGarInfoDto.cs" />
+    <Compile Include="Regularisation\SaisieInfoRegulPeriodDto.cs" />
+    <Compile Include="Regularisation\SaisieRisqueInfoDto.cs" />
+    <Compile Include="Regularisation\StepRegularisationDto.cs" />
+    <Compile Include="Regularisation\UniteTauxMontantDto.cs" />
+    <Compile Include="SMP\SMPTaiteDto.cs" />
+    <Compile Include="SMP\LigneSMPdto.cs" />
+    <Compile Include="SMP\SMPdto.cs" />
+    <Compile Include="SMP\SMP_Base.cs" />
+    <Compile Include="Stat\ParamRecherClausLibDto.cs" />
+    <Compile Include="Stat\StatClausesLibresDto.cs" />
+    <Compile Include="Stat\StatOffreContratFiltreDto.cs" />
+    <Compile Include="Stat\StatOffreContratDto.cs" />
+    <Compile Include="StepContext.cs" />
+    <Compile Include="SuiviDocuments\SuiviDocFiltreDto.cs" />
+    <Compile Include="SuiviDocuments\SuiviDocumentsDocDto.cs" />
+    <Compile Include="SuiviDocuments\SuiviDocumentsDto.cs" />
+    <Compile Include="SuiviDocuments\SuiviDocumentsListeDto.cs" />
+    <Compile Include="SuiviDocuments\SuiviDocumentsLotDetailsDto.cs" />
+    <Compile Include="SuiviDocuments\SuiviDocumentsLotDto.cs" />
+    <Compile Include="SuiviDocuments\SuiviDocumentsPlatDto.cs" />
+    <Compile Include="SyntheseDocuments\SyntheseDocumentsDocDto.cs" />
+    <Compile Include="SyntheseDocuments\SyntheseDocumentsDocInfoDto.cs" />
+    <Compile Include="SyntheseDocuments\SyntheseDocumentsDocPlatDto.cs" />
+    <Compile Include="Traite\TraiteDto.cs" />
+    <Compile Include="Traite\TraiteInfoRsqVenDto.cs" />
+    <Compile Include="Traite\TraiteRisqueDto.cs" />
+    <Compile Include="Traite\TraiteRisquesVentilationsDto.cs" />
+    <Compile Include="Traite\TraiteVentilationDto.cs" />
+    <Compile Include="Traite\_Traite_Base.cs" />
+    <Compile Include="Engagement\EngagementDto.cs" />
+    <Compile Include="Engagement\EngagementTraiteDto.cs" />
+    <Compile Include="Engagement\_Engagement_Base.cs" />
+    <Compile Include="FormuleGarantie\FormuleDto.cs" />
+    <Compile Include="FormuleGarantie\FormuleGarantieDetailsDto.cs" />
+    <Compile Include="FormuleGarantie\FormuleGarantieDto.cs" />
+    <Compile Include="FormuleGarantie\_FormuleGarantie_Base.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GarantieModeleDto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\GarantieModeleNiveau1Dto.cs" />
+    <Compile Include="FormuleGarantie\GarantieModele\_GarantieModeleNiveau_Base.cs" />
+    <Compile Include="IQuery.cs" />
+    <Compile Include="IResult.cs" />
+    <Compile Include="Modeles\ModeleDto.cs" />
+    <Compile Include="Modeles\_Modele_Base.cs" />
+    <Compile Include="Offres\Aperiteur\AperiteurDto.cs" />
+    <Compile Include="Offres\Aperiteur\AperiteurGetQueryDto.cs" />
+    <Compile Include="Offres\Aperiteur\AperiteurGetResultDto.cs" />
+    <Compile Include="Offres\Aperiteur\_Aperiteur_Base.cs" />
+    <Compile Include="Offres\Assures\AssureDto.cs" />
+    <Compile Include="Offres\Assures\AssureGetQueryDto.cs" />
+    <Compile Include="Offres\Assures\AssureGetResultDto.cs" />
+    <Compile Include="Offres\Assures\_Assure_Base.cs" />
+    <Compile Include="Offres\Branches\BonificationDto.cs" />
+    <Compile Include="Offres\Branches\BrancheDto.cs" />
+    <Compile Include="Offres\Branches\CibleDto.cs" />
+    <Compile Include="Offres\Branches\_Branches_Base.cs" />
+    <Compile Include="Offres\Branches\_Cible_Base.cs" />
+    <Compile Include="Offres\CabinetsCourtage\CabinetAutreDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\CabinetCourtageDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\CabinetCourtageGetQueryDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\CabinetCourtageGetResultDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\DelegationDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\InspecteurDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\InterlocuteurDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\InterlocuteurGetQueryDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\InterlocuteurGetResultDto.cs" />
+    <Compile Include="Offres\CabinetsCourtage\_CabinetsCourtage_Base.cs" />
+    <Compile Include="Offres\CabinetsCourtage\_Interlocuteur_Base.cs" />
+    <Compile Include="Offres\Indice\IndiceDto.cs" />
+    <Compile Include="Offres\Indice\IndiceGetQueryDto.cs" />
+    <Compile Include="Offres\Indice\IndiceGetResultDto.cs" />
+    <Compile Include="Offres\Indice\_Indice_Base.cs" />
+    <Compile Include="Offres\OffreDto.cs" />
+    <Compile Include="Offres\Parametres\ParametreDto.cs" />
+    <Compile Include="Offres\Parametres\_Parametre_Base.cs" />
+    <Compile Include="Offres\Risque\Inventaire\InventaireDto.cs" />
+    <Compile Include="Offres\Risque\Inventaire\_Inventaire_Base.cs" />
+    <Compile Include="Offres\Risque\Objet\ObjetDto.cs" />
+    <Compile Include="Offres\Risque\Objet\_Objet_Base.cs" />
+    <Compile Include="Offres\Risque\RisqueDto.cs" />
+    <Compile Include="Offres\Risque\_Risque_Base.cs" />
+    <Compile Include="Offres\_Offre_Base.cs" />
+    <Compile Include="Personnes\GestionnaireDto.cs" />
+    <Compile Include="Personnes\GestionnairesGetQueryDto.cs" />
+    <Compile Include="Personnes\GestionnairesGetResultDto.cs" />
+    <Compile Include="Personnes\SouscripteurDto.cs" />
+    <Compile Include="Personnes\SouscripteursGetQueryDto.cs" />
+    <Compile Include="Personnes\SouscripteursGetResultDto.cs" />
+    <Compile Include="Personnes\_Personne_Base.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\AlbUserDto.cs" />
+    <Compile Include="User\UserRightsDto.cs" />
+    <Compile Include="Validation\ValidationCritereDto.cs" />
+    <Compile Include="Validation\ValidationDto.cs" />
+    <Compile Include="Validation\ValidationEditionDto.cs" />
+    <Compile Include="Validation\Validation_Base.cs" />
+    <Compile Include="VerouillageOffres\OffreVerouilleeDto.cs" />
+    <Compile Include="Volet\DtoVolet.cs" />
+    <Compile Include="Volet\VoletDto.cs" />
+    <Compile Include="Volet\_Volet_Base.cs" />
+    <Compile Include="Vsto\BoGestionClauseDesignationDto.cs" />
+    <Compile Include="Vsto\BoGestionClauseDto.cs" />
+    <Compile Include="Vsto\BoGestionClauseEmplacementDto.cs" />
+    <Compile Include="Vsto\BoGestionClauseMotCleDto.cs" />
+    <Compile Include="Vsto\BoGestionClauseParametreDto.cs" />
+    <Compile Include="Vsto\BoGestionClauseScriptDto.cs" />
+    <Compile Include="Vsto\BoGestionClauseSignetDto.cs" />
+    <Compile Include="Vsto\BoGestionClauseSignetRubriqueDto.cs" />
+    <Compile Include="_DTO_Base.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Branches\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ExcelDto\RS\DtoGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DtoGenerator2.cs</LastGenOutput>
+    </None>
+    <None Include="ExcelDto\RS\MultiFileHelper.ttinclude" />
+    <None Include="ExcelDto\tst\DtoGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DtoGenerator.j.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj">
+      <Project>{a98a2815-a24c-4e02-891e-8b802ee892ea}</Project>
+      <Name>ALBINGIA.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Albingia.Kheops.Common\Albingia.Kheops.Common.csproj">
+      <Project>{7919E1A0-1894-4262-BE0C-71CC06369408}</Project>
+      <Name>Albingia.Kheops.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OP.Application\Albingia.Kheops.OP.Domain\Albingia.Kheops.OP.Domain.csproj">
+      <Project>{E00E8B1D-08A8-4A8D-B086-6517E83262B4}</Project>
+      <Name>Albingia.Kheops.OP.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

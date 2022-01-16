@@ -1,0 +1,60 @@
+﻿.LCIWidth
+{
+    width: 85px;
+}
+
+.HeightEngagementGroup
+{
+    height: 355px;
+}
+
+.tdHeaderTraite
+{
+    width: 150px;
+    text-align: left;
+}
+
+.tdHeaderEngagement
+{
+    width: 75px;
+}
+
+.tdNomTraite
+{
+    width: 144px;
+    text-decoration: underline;
+}
+
+.tdEngagement
+{
+    padding-right: 5px;
+    text-align: right;
+    width: 69px;
+}
+
+.mainDiv
+{
+    height: 386px !important;
+}
+
+.divTraite
+{
+    height: 285px;
+    overflow: auto;
+}
+
+.divButton
+{
+    height: 38px;
+    padding-right: 5px;
+    width: 1017px;
+    float: left;
+}
+
+#tblHeadTraite {
+    width: 970px;
+}
+
+#tblTraite {
+    width: 970px;
+}

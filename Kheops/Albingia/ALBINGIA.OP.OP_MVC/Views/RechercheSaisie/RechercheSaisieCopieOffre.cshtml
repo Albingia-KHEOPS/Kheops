@@ -1,0 +1,12 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRecherchePage
+@{
+    MetaModelsBase layoutModel = (MetaModelsBase)Model;
+    Layout = "~/Views/Shared/LayoutCopieOffre.cshtml";
+}
+@Html.Partial("~/Views/Shared/LayoutPage/LayoutHideInput.cshtml", layoutModel)
+@Html.HiddenNoName("selectedOffreContrat", string.Empty)
+
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/LayoutMenu")
+@AlbAddCssJsScripts.AddScriptBundle("~/Scripts/LayoutMenu")
+@Html.Partial("BodyRechercheSaisie", layoutModel)

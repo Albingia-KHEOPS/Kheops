@@ -1,0 +1,101 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.Totaux
+<div>
+    <table id="tblHeaderTotaux" class="trHeight">
+        <tr>
+            <td class="col_titre_detailsTotaux"></td>
+            <td class="tablePersoHead col_mainHeader_detailsTotaux">
+                <table style="width: 100%">
+                    <tr>
+                        <td colspan="3" class="col_mainHeader_detailsTotaux">Totaux
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_header_detailsTotaux">HT (€)
+                        </td>
+                        <td class="col_header_detailsTotaux">Taxe (€)
+                        </td>
+                        <td class="col_header_detailsTotaux">TTC (€)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table id="tblBodyDetailsTotaux" class="trHeight">
+        <tr>
+            <td class="col_titre_detailsTotaux">Total hors CATNAT
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.TotalHorsCatNatHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.TotalHorsCatNatTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.TotalHorsCatNatTTC</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col_titre_detailsTotaux">CATNAT
+            </td>
+            <td class="col_row_detailsTotaux">
+               <span albmask="decimal">@Model.CatNatHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.CatNatTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.CatNatTTC</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col_titre_detailsTotaux">Total hors frais
+            </td>
+            <td class="col_row_detailsTotaux">
+                 <span albmask="decimal">@Model.TotalHorsFraisHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.TotalHorsFraisTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.TotalHorsFraisTTC</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col_titre_detailsTotaux">Frais
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.FraisHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.FraisTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.FraisTTC</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col_titre_detailsTotaux" colspan="2">FGA
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.FGATaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.FGATTC</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col_titre_detailsTotaux">Total
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.TotalHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.TotalTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                  <span albmask="decimal">@Model.TotalTTC</span>
+            </td>
+        </tr>
+    </table>
+</div>

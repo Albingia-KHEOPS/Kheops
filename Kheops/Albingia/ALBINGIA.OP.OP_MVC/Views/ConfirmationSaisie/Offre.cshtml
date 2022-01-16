@@ -1,0 +1,215 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleConfirmationSaisiePage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vConfirmationSaisie.css", "albRechercherBlackList.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albRechercherBlackList.js", "albConfirmationSaisie.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+@Html.HiddenFor(m => m.CodeOffre)
+@Html.HiddenFor(m => m.Version)
+@Html.HiddenFor(m => m.Type)
+@Html.HiddenNoName("idBlacklistedPartenaire", string.Empty)
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+    <div class="CommonForm FloatLeft">
+        <!--Informations saisie-->
+        <div class="nGroupFull nGroupWithBorder FloatLeft" @*style="width: 1204px ! important; padding-right: 7px;"*@>
+            <div class="nHorizontalFullWithGroup" @*style="width: 1199px;"*@>
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">N° Saisie attribué</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" value="@(Model.InfoSaisieNoSaisieAttribuee)" id="InfoSaisieNoSaisieAttribuee" name="InfoSaisieNoSaisieAttribuee" readonly="readonly" class="readonly" tabindex="22" />
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" value="@(Model.InfoSaisieNoAliment)" id="InfoSaisieNoAliment" name="InfoSaisieNoAliment" readonly="readonly" class="readonly inputDate" tabindex="23" />
+                        </div>
+                        @*   <div class="FloatLeft">@Html.AlbLabelFor(m => m.InfoSaisieDateSaisie, "Block")</div>
+                            <div class="FloatLeft">
+                                @Html.AlbDateFormat(m => m.InfoSaisieDateSaisie, new { @readonly = "readonly", @class = "readonly inputDate", @tabindex = "24" })
+                            </div>
+                            <div class="FloatLeft">@Html.AlbLabelFor(m => m.InfoSaisieBrancheNom, "Block")</div>
+                            <div class="FloatLeft">
+                                <input type="text" id="InfoSaisieBrancheNom" name="InfoSaisieBrancheNom" readonly="readonly" class="readonly" tabindex="25" value="@(Model.InfoSaisieBrancheNom)" />
+                            </div>*@
+                        <div class="FloatRight PaddingRight">
+                            <div id="dvModifInfoBase" class="FloatLeft CursorPointer TxtLink">Informations de saisie</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection divInfoApporteur">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("inInvalidCourtierApporteur", string.Empty)
+                            <label><u>Courtier Apporteur</u></label>
+                        </div>
+                        @if (Model.Offre != null && Model.Offre.CabinetApporteur != null && Model.Offre.CabinetApporteur.EstValide == false && Model.Offre.CabinetApporteur.Code > 0) {
+                            <div id="CourtierApporteurInvalideDiv" class="FloatLeft error PaddingLeft">Code fermé</div>
+                        }
+                        else {
+                            <div id="CourtierApporteurInvalideDiv" class="FloatLeft error PaddingLeft"></div>
+                        }
+
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Code</label>
+                        </div>
+                        <div class="divDataApporteurCode FloatLeft">
+                            <input type="text" id="ApporteurCourtierCode" name="ApporteurCourtierCode" readonly="readonly" class="readonly inputDate" tabindex="1" value="@(Model.Offre.CabinetApporteur != null ? Model.Offre.CabinetApporteur.Code.ToString() : string.Empty)" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Nom</label>
+                        </div>
+                        <div class="divDataApporteur">
+                            <input type="text" id="ApporteurCourtierNom" name="ApporteurCourtierNom" readonly="readonly" class="readonly inputApporteur" tabindex="1" value="@(Model.ApporteurCourtierNom)" />
+                        </div>
+                        <div class="divAdresse">
+                            @Html.Partial("../DetailsObjetRisque/ObjetAdresse", Model.ApporteurAdresse)
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft EmptyColLeft">
+                            <label class="Block">Inspecteur</label>
+                        </div>
+                        <div class="divDataApporteur">
+                            <input type="text" id="ApporteurCourtierInspecteur" name="ApporteurCourtierInspecteur" readonly="readonly" class="readonly inputApporteur" tabindex="10" value="@(Model.ApporteurCourtierInspecteur)" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Délégation</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="ApporteurCourtierDelegation" name="ApporteurCourtierDelegation" readonly="readonly" class="readonly inputApporteur" tabindex="11" value="@(Model.ApporteurCourtierDelegation)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection divInfoPreneur">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("inInvalidPreneurAssu", string.Empty)
+                            <label><u>Preneur Assurance</u></label>
+                        </div>
+                        @if (Model.Offre != null && Model.Offre.PreneurAssurance != null && Model.Offre.PreneurAssurance.EstActif == false && Convert.ToInt32(Model.Offre.PreneurAssurance.Code) > 0)
+                        {
+                            <div id="PreneurAssuInvalideDiv" class="FloatLeft error PaddingLeft">Inactif</div>
+                        }
+                        else
+                        {
+                            <div id="PreneurAssuInvalideDiv" class="FloatLeft error PaddingLeft"></div>
+                        }
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Code</label>
+                        </div>
+                        <div class="divDataPreneurCode FloatLeft">
+                            <input type="text" id="PreneurCode" name="PreneurCode" readonly="readonly" class="readonly inputDate" tabindex="1" value="@(Model.Offre.PreneurAssurance != null ? Model.Offre.PreneurAssurance.Code : string.Empty)" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Nom</label>
+                        </div>
+                        <div class="divDataApporteur">
+                            <input type="text" id="PreneurNom" name="PreneurNom" readonly="readonly" class="readonly inputApporteur" tabindex="12" value="@(Model.PreneurNom)" />
+                        </div>
+                        <div class="divAdresse">
+                            @Html.Partial("../DetailsObjetRisque/ObjetAdresse", Model.PreneurAdresse)
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection">
+                    @if (!Model.IsReadOnly) {
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label><u>@Model.GroupActionsARealiserTitle</u></label>
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                @if (Model.ConfirmationSaisie || Convert.ToBoolean(@ViewData["IsCanevas"])) {
+                                    <input type="radio" id="ConfirmationSaisie" name="ConfirmationSaisie" value="True"
+                                           tabindex="26" checked="checked" />
+                                }
+                                else {
+                                    <input type="radio" id="ConfirmationSaisie" name="ConfirmationSaisie" value="True"
+                                           tabindex="26" />
+                                }
+                                @*@Html.RadioButtonFor(m => m.ConfirmationSaisie, true, new { @tabindex = "26" })*@
+                                <label class="AutoWidth">
+                                    Accepter
+                                </label>
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft PaddingRight">
+                                <input type="radio" id="AttenteSaisie" name="ConfirmationSaisie" value="@Model.AttenteSaisie.ToString()" tabindex="27" />
+
+                                <label class="AutoWidth">
+                                    Mettre en attente pour le motif suivant :
+                                </label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => m.MotifAttente, Model.MotifsAttente, "MotifAttente", htmlAttributes: new { @id = "MotifAttente", @tabindex = "28", @albCFList = "motifRefus" }, generateTitle: true)
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft PaddingRight">
+                                @if (!Model.ConfirmationSaisie && !Convert.ToBoolean(@ViewData["IsCanevas"])) {
+                                    <input type="radio" id="RefusSaisie" name="ConfirmationSaisie" value="False"
+                                           tabindex="29" checked="checked" />
+                                }
+                                else {
+                                    <input type="radio" id="RefusSaisie" name="ConfirmationSaisie" value="False"
+                                           tabindex="29" />
+                                }
+                                <label class="AutoWidth">
+                                    Refus immédiat saisie
+                                </label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => m.MotifRefus, Model.MotifsRefus, "MotifRefus", htmlAttributes: new { @id = "MotifRefus", @tabindex = "30", @albCFList = "motifRefus" }, generateTitle: true)
+                            </div>
+                        </div>
+                    }
+                    else {
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label><u>Situation actuelle</u></label>
+                            </div>
+                        </div>
+                        <div class="HeightRow" style="height: 80px;">
+                            <div class="FloatLeft">
+                                <label class="Block">Motif :</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="AutoWidth">@(!string.IsNullOrEmpty(Model.MotifAttente) ? Model.MotifAttente : !string.IsNullOrEmpty(Model.MotifRefus) ? Model.MotifRefus : string.Empty)</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight">
+            <div class="nActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnFin" type="button" albshortcut="true" data-accesskey="t" tabindex="29" albtargetscreen="mainCreationSaisie"><u>T</u>erminer</button>
+                @if (!Model.IsReadOnly && Model.ConfirmationSaisie || Convert.ToBoolean(@ViewData["IsCanevas"])) {
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="p" tabindex="29" albtargetscreen="mainCreationSaisie"><u>P</u>oursuivre</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dvInformationsBase" class="None">
+    @Html.HiddenNoName("jobInfoBase", "Offre")
+    @Html.HiddenNoName("cibleInfoBase", "ConfirmationSaisie")
+    <div class="overlay-background" style="z-index:2" ></div>
+    <div id="dvDataInformationsBase"></div>
+</div>
+

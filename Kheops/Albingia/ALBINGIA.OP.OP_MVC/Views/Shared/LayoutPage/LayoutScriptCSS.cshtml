@@ -1,0 +1,32 @@
+﻿@using ALBINGIA.Framework.Common.Extensions
+<script type="text/javascript">
+    var scriptVersion = "@(ALBINGIA.Framework.Common.Constants.AlbOpConstants.JsCsVersion)";
+    var imgUrls = {
+        boutonRefresh: {
+            active: '@Url.Content("/Content/Images/boutonRefresh_3232.png")',
+            disabled: '@Url.Content("/Content/Images/boutonRefresh_gris3232.png")'
+        }
+    };
+    var defaultPageSize = @(System.Configuration.ConfigurationManager.AppSettings["PageSize"].ParseInt(20).Value);
+</script>
+@{
+    if (!int.TryParse(System.Configuration.ConfigurationManager.AppSettings["FileSize"], out int fileSize))
+    {
+        fileSize = 500000;
+    };
+}
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/root.css")
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/fancybox/all.css")
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/themes/base/all.css")
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/CLEditor/all.css")
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/common.css")
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/paging.css")
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/select2.css")
+
+@AlbAddCssJsScripts.AddScriptBundle("~/Scripts/scripts.js")
+<script>
+        window.common = window.common || {};
+        window.common.appSettings = window.common.appSettings || {};
+        window.common.appSettings.maxFileSize = @fileSize;
+        window.common.appSettings.maxFileSizeString = "@Html.Raw(fileSize.ToString("n0",new System.Globalization.CultureInfo("fr-fr")))";
+</script>

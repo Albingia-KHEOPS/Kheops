@@ -1,0 +1,54 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleRechercheAvancee
+
+<div class="GroupFull GroupWithBorder TotalWidth" id="dialogGrid" style="height: 495px;">
+    <div id="divRechercherResultPreneur">
+        <div class="scroll ">
+            <div class="GroupTitle">
+                Recherche de preneurs d'assurance
+            </div>
+            <div class="FieldRow">
+                <div class="NomPreneurAssuranceLabel">
+                    <label class="AutoWidth">Code du Preneur</label>
+                </div>
+                <div class="NomCabinetTextBox">
+                    @Html.HiddenNoName("RechercheAvanceePreneurAssuContexte", (Model.Contexte))
+                    <input type="text" class="numerique" albMask="numericCodePreneur" id="CodePreneurAssuranceRecherche" name="CodePreneurAssuranceRecherche" value="@(Model.CodePreneurAssuranceRecherche)" />
+                </div>
+                <div class="NomCabinetLabel">
+                    <label class="AutoWidth">Nom du Preneur</label>
+                </div>
+                <div class="NomCabinetTextBox">
+                    <input type="text" class="DoubleInput" id="NomPreneurAssuranceRecherche" name="NomPreneurAssuranceRecherche" value="@(Model.NomPreneurAssuranceRecherche)" />
+                </div>
+
+                <div class="NomCabinetLabel">
+                    <label class="AutoWidth">CP</label>
+                </div>
+                <div class="NomCabinetTextBox">
+                    <input type="text" class="numerique" id="CPPreneurAssuranceRecherche" name="CPPreneurAssuranceRecherche" value="@(Model.CPPreneurAssuranceRecherche)" maxlength="5" />
+                </div>
+
+                <div class="FloatRight">
+                    <button type="button" id="RechercherPreneursAssuranceButton" albshortcut="true" data-accesskey="r">
+                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" class="paddingLoupe" />
+                    </button>
+                    <button type="button" id="RechercherPreneursAssuranceRAZ" albshortcut="true" data-accesskey="l" style="height: 25px; padding-top: 5px;">Réinitia<u>l</u>iser</button>
+                </div>
+            </div>
+            <div id="PreneursAssuranceRechercherResultDialogDiv">
+                @Html.Partial("/Views/RechercheSaisie/ResultRechercheAvanceePreneurAssurance.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+    <div id="LoadingDivSearchPreneur" class="FloatLeft">
+        <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+    </div>
+    <div style="padding-top: 15px; float: left;">
+        <span id="MsgAffinementPreneurAssurance" style="display: none" class="errorRechAvancee"></span>
+    </div>
+    <div class="ActionButtons ActionButtonsSearchRight ActionButtonRight">
+        <button type="button" id="btnCloseAdvanced" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿<div class="panel-heading clearfix" id="divOptions">
+
+    <div class="pull-left">
+        <div class="form-inline">
+            <div class="form-group lg-margin-right">
+                <label for="gestionCalque" class="control-label">Afficher/Masquer des calques &nbsp;</label>
+                <div class="width200">
+                    <select class="form-control selectpicker" id="gestionCalque" multiple title="Choisir calque">
+                        @*<option value="ZUS">ZUS</option>
+                            <option value="TEMPETE">Tempête</option>
+                            <option value="INCENDIE">Incendie</option>
+                            <option value="INONDATION">Inondation</option>*@
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" pull-right">
+        <button type="button" class="btn btn-sismic btn-layer desactivate-option " id="btnSismiciteOverlay" title="Source MEDDE en vigueur depuis 2011">
+            Zones sismiques
+        </button>
+        <button type="button" class="btn btn-flood btn-layer desactivate-option " id="btnInondationOverlay" title="Source CCR, données récoltées entre 1998 et 2015">
+            Zones inondables
+        </button>
+        <button type="button" class="btn btn-drought btn-layer desactivate-option " id="btnSecheresseOverlay" title="Source BRGM 2015">
+            Zones de sécheresse
+        </button>
+        <button type="button" class="btn btn-zus btn-layer desactivate-option " id="btnZUSOverlay" title="Source IGN 2015">
+            ZUS
+        </button>
+        <button type="button" class="btn btn-type btn-layer desactivate-option " id="btnTypeOverlay" title="Source IGN 2017">
+            Type de batiment
+        </button>
+        <div class="divider" style=""></div>
+        <button type="button" class="btn btn-default" id="btnLegend">
+            Afficher/Masquer légende
+        </button>
+    </div>
+</div>

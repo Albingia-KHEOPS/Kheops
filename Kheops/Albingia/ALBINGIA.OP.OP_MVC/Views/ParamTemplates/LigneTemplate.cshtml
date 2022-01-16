@@ -1,0 +1,18 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamTemplates.ModeleLigneTemplate
+<input type="hidden" id="@("clbRef_" + @Model.GuidId)" value="@Model.CibleRef" />
+<td class="col_CodeTemplate" name="@(Model.Situation == "V" ? (Model.TypeTemplate == "P" ? "linkWinOpen" : "linkWinOpenOrigine") : "codeTemplate")" albparam="@(Model.CodeTemplate + "_0_" + Model.TypeTemplate)">
+    <label id="@("lblCode_" + @Model.GuidId)" class="@(Model.Situation == "V" ? "TxtLink CursorPointer" : string.Empty)">@Model.CodeTemplate</label>
+</td>
+<td class="col_DescriptionTemplate" title="@Model.DescriptionTemplate">
+    <label id="@("lblDescription_" + @Model.GuidId)" class="col_DescriptionTemplate">@Model.DescriptionTemplate</label>
+</td>
+<td class="col_TypeTemplate" title="@(Model.TypeTemplate == "P" ? "C - Contrat" : "O - Offre")">
+    <label id="@("lblType_" + @Model.GuidId)">@(Model.TypeTemplate == "P" ? "C" : Model.TypeTemplate)</label>
+</td>
+<td class="col_Action">
+    <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSuppr_" + @Model.GuidId)" alt="Supprimer" title="Supprimer" class="Action CursorPointer" name="btnSupprimer" />
+</td>
+<td class="col_Action">
+    <img src="@Url.Content("/Content/Images/arrow-refresh.png")" id="@("btnReg_" + @Model.CodeTemplate)" alt="Régénérer" title="Régénérer" class="Action CursorPointer" name="btnRegenerate" />
+</td>
+

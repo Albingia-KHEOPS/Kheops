@@ -1,0 +1,22 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesGestionDocumentContrat.ModeleLigneDocument>
+@{
+    if (Model != null && Model.Count > 0)
+    {
+        foreach (var ligne in Model)
+        {
+    <tr>
+        <td class="tdDocDateEnvoi">@(ligne.DDateEnvoi == null || !ligne.DDateEnvoi.HasValue ? string.Empty : ligne.DDateEnvoi.Value.ToString("dd/MM/yyyy"))</td>
+        <td class="tdDocDocument @(ligne.TypeEdition == "O" ? "navig" : ligne.TypeEdition == "C" ? "navigCopie" : ligne.TypeEdition == "D" ? "navigDuplicata" : "navigOther")" albPathFile="@ligne.CheminFichier" title="@(ligne.NomFichier + "\nService : " + ligne.Service + "\nCréation : " + (ligne.DateCreation != null && ligne.DateCreation.HasValue ? ligne.DateCreation.Value.ToString("dd/MM/yyyy") : string.Empty) + "\nModification : " + (ligne.DateModification != null && ligne.DateModification.HasValue ? ligne.DateModification.Value.ToString("dd/MM/yyyy") : string.Empty) + "\nTampon : " + ligne.Tampon + "\nType : " + ligne.TypeOrigine)">@(ligne.LibelleDocument)</td>
+        <td class="tdDocTypeDocument" title="@ligne.NomDocument">@(ligne.TypeDocumentCode + " - " + ligne.TypeDocumentLib)</td>
+        <td class="tdDocTypeDiffusion">@(ligne.TypeDiffusion)</td>
+        <td class="tdDocDestinataire" title="@(ligne.CodeDestinataire + " - " + ligne.NomDestinataire)"><div class="ellipsisDestinataire">@(ligne.CodeDestinataire + " - " + ligne.NomDestinataire)</div></td>
+        <td class="tdDocLot">@(ligne.Lot)</td>
+        <td class="tdDocAvenant">@(ligne.NumAvenant)</td>
+        <td class="tdDocPJ @(ligne.NbPieceJointe > 0 ? "navig" : string.Empty)" id="@("pj_" + ligne.GuidId)">@(ligne.NbPieceJointe)</td>
+        <td class="tdDocUtilisateur">@(ligne.Utilisateur)</td>
+        <td class="tdDocAction">
+            <img src="@Url.Content("/Content/Images/Entity16_4202.png")" id="@("envoyer_" + ligne.GuidId)" alt="Envoyer" title="Envoyer" class="Action" name="btnEnvoyer"/></td>
+    </tr>
+        }
+    }
+}

@@ -1,0 +1,22 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause
+<div class="GroupFull GroupWithBorder" id="divDataVisu">
+
+    @Html.HiddenNoName("ClauseId", Model.Id)
+    <div class="GroupTitle">
+        @Model.Titre
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin HeightClauseVisu">
+        <div class="GradientSection">      
+            <div style="width: 995px; height: 325px; margin-left: 5px; margin-bottom: 5px; border: 1px solid #cdcdcd; background-color: #f5f5f5;">
+                @Html.Raw(@Model.TexteClauseLibre)
+            </div>         
+        </div>
+    </div>
+    <div class="HeightSmallRow"></div>
+    <div class="HeightRow">
+        <div class="FloatRight">
+            <button id="transverseBtnFermerVisualisation" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+            @*  <button id="transverseBtnModifierTexte" type="button" albShortcut="true" data-accesskey="v"><u>V</u>alider</button>  *@
+        </div>
+    </div>
+</div>

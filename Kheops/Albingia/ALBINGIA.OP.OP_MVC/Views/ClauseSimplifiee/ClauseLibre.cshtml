@@ -1,0 +1,51 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClauseLibreSimp
+<div class="GroupFull GroupWithBorder" id="divData">
+    @Html.HiddenFor(m => m.CodeEtapeAjout)
+    @Html.HiddenFor(m => m.CodeRisqueObjet)
+    @Html.Hidden("CodeFormuleApplique", string.Empty)
+    <div class="GroupTitle">
+        Clause libre
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin HeightClauseLibre">
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="FloatLeft PaddingRight">
+                    <label>Libellé de la clause*</label>
+                </div>
+                <div class="FloatLeft PaddingRight">
+                    <input id="inLibelleClauseLibre" class="LargeDoubleColumn" />
+                </div>
+                @if (!string.IsNullOrEmpty(Model.CodeEtapeAjout) && (Model.CodeEtapeAjout == "RSQ" || Model.CodeEtapeAjout == "OPT" || Model.CodeEtapeAjout == "GAR")) {
+                    <div class="FloatLeft PaddingRight">
+                        <label id="LabelObjetRisque">S'applique à *</label>
+                    </div>
+                    <div class="FloatLeft PaddingRight">
+                        @* @if (Model.ObjetsRisqueAll != null && Model.ObjetsRisqueAll.Objets != null && Model.ObjetsRisqueAll.Objets.Count == 1)
+                            {
+                                <input type="text" id="ObjetRisque" name="ObjetRisque" value="@(string.Format("{0} - {1}", Model.ObjetsRisqueAll.Objets[0].Code, Model.ObjetsRisqueAll.Objets[0].Designation))" />
+                            }
+                        *@
+                        @if (Model.CodeEtapeAjout == "RSQ" && Model.NbrRisques == 1) {
+                            <input type="text" id="AppliqueA" name="AppliqueA" readonly="readonly" class="readonly" value="@Model.RisqueObjet" />
+                        }
+                        else {
+                            <input type="text" id="AppliqueA" name="AppliqueA" readonly="readonly" class="readonly" value="" />
+                        }
+
+                    </div>
+                    <div id="divBtnMultiObj" name="btnMultiObj" class="FloatLeft CursorPointer">
+                        <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                    </div>
+                }
+
+            </div>
+            <div class="LargeRow">
+                <textarea id="ClauseLibreEdit" name="Observations" class="SuperInput" rows="20"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="FloatRight">
+        <button id="btnAnnulerClauseLibre" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+        <button id="btnValiderClauseLibre" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+    </div>
+</div>

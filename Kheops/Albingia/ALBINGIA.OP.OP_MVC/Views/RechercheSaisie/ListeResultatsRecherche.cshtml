@@ -1,0 +1,103 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleListResultRecherche>
+@using ALBINGIA.Framework.Common.Constants
+@Html.HiddenNoName("selectedOffreContrat", string.Empty)
+@*<table id="tblResultatsBody" class="divListRecherche trHeight">*@
+<table id="tblResultatsBody" class="trHeight">
+    @{
+        var i = 0;
+        foreach (var ligne in Model)
+        {
+            var msgSuspension = string.Empty;
+
+            if (ligne.HasSusp && !ligne.DateFinSusp.HasValue)
+            {
+                msgSuspension = "Attention, le contrat est suspendu.";
+            }
+            else if (ligne.HasSusp && ligne.DateFinSusp.HasValue && ligne.DateFinSusp.Value >= DateTime.Now.Date.AddYears(-1))
+            {
+                msgSuspension = "Il existe des périodes de suspension sur le contrat.";
+            }
+            string textColor = ligne.Situation == "X" ? "textRed" : 
+                (!string.IsNullOrEmpty(msgSuspension)) ? "textDarkCyan" : 
+                (ligne.Situation == "W" || ligne.Situation == "N") ? "textLightGrey" :
+                (ligne.Etat == "V" || ligne.Etat == "R") ? "textGreen" :
+                (ligne.Etat != "V") ? "textBlack" : 
+                "textBlack";
+
+        <tr class="affair-row @textColor @(i % 2 == 0 ? "odd" : "even")" albContext="@(ligne.OffreContratNum.Trim() + "_" + ligne.Version + "_" + ligne.Type + "_" + ligne.NumAvenant)" albmsgsuspension="@msgSuspension" albcontextmenu="O">
+            <td class="tdExpender" name="radiotd">&nbsp;
+                <input type="hidden" name="Periodicite" albContext="@(ligne.OffreContratNum.Trim() + "_" + ligne.Version + "_" + ligne.Type + "_" + ligne.NumAvenant)" value="@(ligne.Periodicite)" />
+                <input type="hidden" name="TypeContratMere" albContext="@(ligne.OffreContratNum.Trim() + "_" + ligne.Version + "_" + ligne.Type + "_" + ligne.NumAvenant)" value="@ligne.ContratMere" />
+                <input type="radio" id="SelectRow@(ligne.i)" name="RadioRow" value="@(ligne.OffreContratNum.Trim())_@(ligne.Version)_@(ligne.Type)_@(ligne.NumAvenant)" albDescription="@(ligne.DescriptifRisque)" albtypeavt="@(ligne.TypeAvt)" albtypeaccord="@(ligne.TypeAccord)" 
+                       albkheopsstatut="@(ligne.KheopsStatut)" albmotifrefus="@(ligne.MotifRefus)" albgenerdoc="@(ligne.GenerDoc)" albnumavnext="@(ligne.NumAvnExterne)" albdatefineffet="@(ligne.DateFinEffetStr) @(ligne.HeureFinEffetStr)" 
+                       alblastregulid="@ligne.RegulId"/>
+                &nbsp;
+            </td>
+            @{ var ctx = ligne.OffreContratNum.Trim().Trim() + "_" + ligne.Version + "_" + ligne.Type + "_" + ligne.NumAvenant; }
+            <td class="tdIcone" name="clickableCol" albContext="@ctx">
+                @if ((ligne.Type == AlbConstantesMetiers.TYPE_CONTRAT) && (ligne.ContratMere != "A") && (ligne.ContratMere != "M"))
+                { 
+                    <img name="typeOverview" albContext="@ctx" src="@Url.Content("/Content/Images/type_C_16.png")" title="Contrat standard" />
+                }
+                else if (ligne.Type == AlbConstantesMetiers.TYPE_OFFRE)
+                {
+                    if (ligne.HasDoubleSaisie)
+                    {
+                    <img name="typeOverview" albContext="@ctx" src="@Url.Content("/Content/Images/type_OO_16.png")" title="Double Saisie"/>
+                    }
+                    else
+                    {
+                    <img name="typeOverview" albContext="@ctx" src="@Url.Content("/Content/Images/type_O_16.png")" title="Offre"/>
+                    }
+                }
+                else if ((ligne.Type == AlbConstantesMetiers.TYPE_CONTRAT) && (ligne.ContratMere == "M"))
+                { 
+                    <img name="typeOverview" albContext="@ctx" src="@Url.Content("/Content/Images/type_M_16.png")" title="Contrat mère"/>
+                }
+                else if ((ligne.Type == AlbConstantesMetiers.TYPE_CONTRAT) && (ligne.ContratMere == "A"))
+                {
+                    <img name="typeOverview" albContext="@ctx" src="@Url.Content("/Content/Images/type_A_16.png")" title="Aliment"/>
+                }
+            </td>
+            <td class="tdNo textAlignDroite" albContext="@ctx" name="clickableCol">@(ligne.OffreContratNum.Trim())</td>
+            <td class="tdVersion" albContext="@ctx"  name="clickableCol">@(ligne.VersionLabel)</td>
+            <td class="tdAvenant"  albContext="@ctx" name="clickableCol">@(ligne.NumAvenant)</td>
+            @if (ligne.TypeDate == AlbConstantesMetiers.TypeDateRecherche.Saisie)
+            {  
+                <td class="tdDate"  albContext="@ctx" name="clickableCol">@(ligne.DateSaisie.HasValue ? ligne.DateSaisie.Value.ToString("dd/MM/yyyy") : string.Empty)</td>            
+            }
+            else if (ligne.TypeDate == AlbConstantesMetiers.TypeDateRecherche.MAJ)
+            {  
+                <td class="tdDate"  albContext="@ctx" name="clickableCol">@(ligne.DateMaj.HasValue ? ligne.DateMaj.Value.ToString("dd/MM/yyyy") : string.Empty)</td>            
+            }
+            else if (ligne.TypeDate == AlbConstantesMetiers.TypeDateRecherche.Effet)
+            {  
+                <td class="tdDate"  albContext="@ctx" name="clickableCol">@(ligne.DateEffet.HasValue ? ligne.DateEffet.Value.ToString("dd/MM/yyyy") : string.Empty)</td>            
+            }
+            else if (ligne.TypeDate == AlbConstantesMetiers.TypeDateRecherche.Creation)
+            {  
+                <td class="tdDate" albContext="@ctx" name="clickableCol">@(ligne.DateCreation.HasValue ? ligne.DateCreation.Value.ToString("dd/MM/yyyy") : string.Empty)</td>            
+            }
+            <td class="tdBranche" albContext="@ctx" name="clickableCol" title="@ligne.BrancheLib">@(ligne.Branche)</td>
+            <td class="tdCible" albContext="@ctx" name="clickableCol" title="@ligne.CibleLib">
+                <div class="divCibleRechercheSaisie">@(ligne.Cible)</div>
+            </td>
+            <td class="tdEtat" albContext="@ctx" name="clickableCol" title="@ligne.EtatLib">@(ligne.Etat)</td>
+            <td class="tdSituation" albContext="@ctx" name="clickableCol" title="@ligne.SituationLib">@(ligne.Situation)</td>
+            <td class="tdQualite" albContext="@ctx" name="clickableCol" title="@ligne.QualiteLib">@(ligne.Qualite)</td>
+            <td class="tdDescriptifRisque" albContext="@ctx" name="clickableCol" title="@ligne.DescriptifRisque">
+                <div class="divDescriptifRisqueRechercheSaisie">@(ligne.DescriptifRisque)</div>
+            </td>
+            <td class="tdPreneurAssurance" albContext="@ctx" name="clickableCol" title="@(!string.IsNullOrEmpty(ligne.PreneurAssuranceNom) ? ligne.PreneurAssuranceNum + " - " + ligne.PreneurAssuranceNom + "\n" + ligne.PreneurAssuranceCP + " " + ligne.PreneurAssuranceVille : string.Empty)">
+                <div class="divPreneurNomRechercheSaisie">@(ligne.PreneurAssuranceNom)</div>
+            </td>
+            <td class="tdCodePostal" albContext="@ctx" name="clickableCol">@(ligne.PreneurAssuranceCP)</td>
+            <td class="tdCourtierGestionnaireNom" albContext="@ctx" name="clickableCol" title="@(!string.IsNullOrEmpty(ligne.CourtierGestionnaireNom) ? ligne.CourtierGestionnaireNum + " - " + ligne.CourtierGestionnaireNom + "\n" + ligne.CourtierGestionnaireCP + " " + ligne.CourtierGestionnaireVille : string.Empty)">
+                <div class="divCourtierNomRechercheSaisie">&nbsp;@(ligne.CourtierGestionnaireNom)</div>
+            </td>
+            <td class="tdCourtierGestionnaireCP" albContext="@ctx" name="clickableCol">@(ligne.CourtierGestionnaireCP)</td>
+        </tr>
+            i++;
+        }
+    }
+</table>

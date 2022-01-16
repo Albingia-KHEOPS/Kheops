@@ -1,0 +1,122 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamISReferencePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamISReference.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamISReference.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @Html.HiddenNoName("actionParameter", string.Empty)
+    @Html.HiddenNoName("selectedRow", string.Empty)
+    @Html.HiddenNoName("idLigneVide", ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST)
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    <div class="CommonForm FloatLeft">
+        <div class="GroupFull GroupWithBorder TotalWidth">
+            <div class="GroupTitle">
+                Param IS Référence
+            </div>
+            <div class="HorizontalFullWithGroup TotalWidth">
+                <div class="GradientSection HeightListeReferences">
+                    <div id="divLstISReferenciel">
+                        <div id="divReferencesHeader" class="PaddingLeft">
+                            <table id="tblReferencesHeader" class="trHeight">
+                                <tr>
+                                    <th class="col_NomInterne tablePersoHead" title="Nom interne">
+                                        Nom Int.
+                                    </th>
+                                    <th class="col_Description tablePersoHead" title="Description">
+                                        Descr.
+                                    </th>
+                                    <th class="col_Libelle tablePersoHead paddingReadonly" title="Libellé affiché">
+                                        Lib.
+                                    </th>
+                                    <th class="col_TypeZone tablePersoHead paddingReadonly" title="Type de zone">
+                                        Typ. Zone
+                                    </th>
+                                    <th class="col_LongueurZone tablePersoHead paddingReadonly" title="Longueur de zone">
+                                        Taille
+                                    </th>
+                                    <th class="col_Mappage tablePersoHead paddingReadonly" title="Mappage">
+                                        Map.
+                                    </th>
+                                    <th class="col_Conversion tablePersoHead paddingReadonly" title="Type de conversion">
+                                        Conv.
+                                    </th>
+                                    <th class="col_Presentation tablePersoHead paddingReadonly" title="Type de présentation">
+                                        Pres.
+                                    </th>
+                                    <th class="col_UI tablePersoHead " title="Type UI de contrôle">
+                                        Type UI
+                                    </th>
+                                    <th class="col_Obligatoire tablePersoHead paddingReadonly" title="Obligatoire">
+                                        Req.
+                                    </th>
+                                    <th class="col_ScriptAffichage tablePersoHead paddingReadonly" title="Présence script affichage">
+                                        Aff.
+                                    </th>
+                                    <th class="col_ScriptControle tablePersoHead paddingReadonly" title="Présence script contrôle">
+                                        Ctrl.
+                                    </th>
+                                    <th class="col_Observation tablePersoHead" title="Observation">
+                                        Observation
+                                    </th>
+                                    <th class="col_ValeurDefaut tablePersoHead" title="Valeur par défaut">
+                                        Défaut
+                                    </th>
+                                    <th class="col_Tcon tablePersoHead" title="Concept">
+                                        Conc.
+                                    </th>
+                                    <th class="col_Tfam tablePersoHead" title="Famille">
+                                        Fam.
+                                    </th>
+                                    <th class="col_Action tablePersoHead">
+                                        <img class="CursorPointer Action" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="ajouterReference" />
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divReferencesBody" class="PaddingLeft">
+                            <div id="divReferencesBodyEmptyLine">
+                                <table id="tblReferencesBodyEmptyLine" class="trHeight">
+                                    @{  
+                                        <tr id="@("referenceIS_" + ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST)" name="lineReference">
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                            <div id="divReferencesBodyLines">
+                                @if ((Model.ListeReferentiels != null) && (Model.ListeReferentiels.Count > 0))
+                                {
+                                    @Html.Partial("ListeISReferentiels", Model.ListeReferentiels)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+            <div class="ButtonLeft">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="t"><u>T</u>erminer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreen">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataEditPopIn" class="padding5">
+        <div class="HorizontalHalfWithGroupAdmin">
+            <div class="GradientSection padding5">
+                @Html.HiddenNoName("codeLigne", string.Empty)
+                <textarea class="txtArea" id="txtAreaObservation" maxlength="5000" cols="188" rows="14"></textarea>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight paddingLeft5">
+            <div class="ButtonRight">
+                <button id="btnTerminerObservation" type="button">Terminer</button>
+            </div>
+        </div>
+    </div>
+</div>

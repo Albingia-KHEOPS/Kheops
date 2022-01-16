@@ -1,0 +1,9 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamConcepts.ModeleLigneConcept>
+<table id="tblConceptsBody" class="trHeight">
+    @foreach (var ligne in Model)
+    {
+        <tr name="ligneConcept" id="@("ligneConcept_" + @ligne.CodeConcept)">
+            @Html.Partial("LigneConcept", @ligne)
+        </tr>
+    }
+</table>

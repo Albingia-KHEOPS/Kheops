@@ -1,0 +1,52 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesConnexite.ModeleAjoutConnexite
+<div class="GroupFull GroupWithBorder" id="divDialogAjoutConnexite">
+    @Html.HiddenNoName("CodeTypeConnexite", Model.CodeTypeConnexite)
+    @Html.HiddenNoName("NumConnexite", Model.NumConnexite)
+    @*    @Html.HiddenNoName("PleinEcran", Model.PleinEcran.ToString())*@
+    @if (Model.CodeTypeConnexite == "20") {
+        <div class="GroupTitle">Ajout d'une connexité d'engagement</div>
+    }
+    @if (Model.CodeTypeConnexite == "01") {
+        <div class="GroupTitle">Ajout d'une connexité de remplacement</div>
+    }
+    @if (Model.CodeTypeConnexite == "10") {
+        <div class="GroupTitle">Ajout d'une connexité d'information</div>
+    }
+    @if (Model.CodeTypeConnexite == "30") {
+        <div class="GroupTitle">Ajout d'une connexité de résiliation</div>
+    }
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection paddingLeft paddingBottom">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label>N° contrat*</label>
+                    <input type="text" id="connexiteEngagementContrat" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="paddingLeft">Aliment*</label>
+                    <input class="TinyInput numerique" id="connexiteEngagementAliment" value="0" albmask="numeric" />
+                </div>
+                <div class="FloatLeft Loupe">
+                    <img src="@Url.Content("/Content/Images/loupe.png")" id="RechercherContrat" alt="" class="CursorPointer" />
+                </div>
+                <div class="FloatLeft paddingLeft">
+                    <input class="readonly largeInput" id="connexiteContratMere" readonly="readonly" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <label class="Block">Commentaires</label>
+            </div>
+            <div>
+                <textarea id="Commentaire" rows="10" cols="130" class="resizeNone NonReprisCP">@Model.Commentaire</textarea>
+            </div>
+        </div>
+    </div>
+    <div id="msgErreurDiv" class="error msgErreur">
+    </div>
+    <div class="ActionButtons ActionButtonRight">
+        <div class="HeightRow">
+            <button id="btnAnnulerAjout" type="button" albshortcut="true" albtargetscreen="rechercheContrat" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+            <button id="btnAjouter" type="button" albshortcut="true" albtargetscreen="rechercheContrat" data-accesskey="j" tabindex="28">A<u>j</u>outer</button>
+        </div>
+    </div>
+</div>

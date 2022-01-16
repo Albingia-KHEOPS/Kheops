@@ -1,0 +1,56 @@
+﻿
+<div class="ko-cloak conceal">
+    <div class="container container-details">
+        <div class="page-results">
+            <!-- ko ifnot: initialized -->
+            <div class="padding5">Chargement en cours ...</div>
+            <!-- /ko -->
+            <!-- ko if: initialized -->
+            <!-- ko ifnot: hasResults -->
+            <div class="padding5">Aucun sinstre déclaré</div>
+            <!-- /ko -->
+            <!-- ko if: hasResults -->
+            <div class="flex-table pad7">
+                <div class="flex-header vertical-gradient">
+                    <span class="cell short">Branche</span>
+                    <span class="cell long">N° Contrat</span>
+                    <span class="cell short">Aliment</span>
+                    <span class="cell longer">N° Sinistre</span>
+                    <span class="cell long">Date d'effet contrat</span>
+                    <span class="cell long">Date ouv. sinistre</span>
+                    <span class="cell long">Statut sinistre</span>
+                    <span class="cell long">Chargement Total</span>
+                    <!--<span class="cell tiny"></span>-->
+                </div>
+                <div class="flex-body scroll">
+                    <!-- ko foreach: Sinistres -->
+                    <div class="alternate-bg-color grid thin">
+                        <div class="cell short center-text" data-bind="text: Contrat.Branche"></div>
+                        <div class="cell long center-text" data-bind="text: Contrat.Code"></div>
+                        <div class="cell short center-text" data-bind="text: Contrat.Version"></div>
+                        <div class="cell longer rpad right-text">
+                            <span data-bind="text: numeroMetier"></span>
+                        </div>
+                        <div class="cell long center-text" data-bind="text: Contrat.Effet"></div>
+                        <div class="cell long center-text" data-bind="text: Ouverture"></div>
+                        <div class="cell long center-text" data-bind="text: Situation"></div>
+                        <div class="cell long right-text rpad" data-bind="autoNumeric: { value: ChargementTotal, min: -999999999.99, max: 999999999.99 }" albMask="decimal"></div>
+                        <!--<div class="cell tiny center-text" title="Visualisation du sinistre">
+                        <i data-bind="click: navigate, css: { loading: urlGrp2() === '', 'grp-link': urlGrp2, 'citrix-link': urlGrp2() === null }"></i></div>-->
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+            <div data-bind="visible: hasResults, attr: { name: paging.buttons.componentName }, component: { name: paging.buttons.componentName, params: { pageSize: PageSize(), listName: ListName() } }"></div>
+        </div>
+        <!-- ko if: hasResults -->
+        <div class="main-big-title" data-bind="visible: !montantUnavailable()">
+            Montant total sinistres : 
+            <span class="bold" data-bind="autoNumeric: { value: MontantTotal, min: -99999999999.99, max: 99999999999.99 }, visible: montantAvailable" albMask="decimal"></span>
+            <span class="loading" data-bind="visible: montantComputing"></span>&nbsp;<span class="bold">€</span>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesVolets.ModeleVolet>
+<table id="tblVolet" class="trHeight widthTableVolet">
+    @foreach (var item in Model)
+    {
+        var linkCode = "";
+        if (!string.IsNullOrEmpty(item.GuidId))
+        {
+            linkCode = item.GuidId;
+        }
+        else
+        {
+            linkCode = item.Code;
+        }
+        <tr id="@("tr_" + @linkCode)" class="@(item.IsVoletGeneral == "O" ? "textBlue" : string.Empty)" title="@(item.IsVoletGeneral == "O" ? "Volet général" : string.Empty)">
+            <td class="modifVolet tdBodyEditVolet">
+                <img id="@("edt_" + @linkCode)" src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" name="modifVolet" />
+            </td>
+            <td class="colOrder tdBodyEditVolet" name="ordreVolet">@item.OrdreVolet
+            </td>
+            <td id="@("cod_" + @linkCode)" name="codeVolet" class="linkVolet tdBodyCodeVolet" title="@item.Code">
+                @item.Code
+            </td>
+            @if (string.IsNullOrEmpty(item.Caractere))
+            { 
+                <td class="tdBodyImgVolet">
+                    @if (item.IsVoletGeneral == "O")
+                    {
+                        <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="General" title="Volet général" />
+                    }
+                    else
+                    {
+                        @Html.Raw("&nbsp");
+                    }
+                </td>
+            }
+            <td class="linkVolet tdBodyDescVolet" title="@item.Description">
+                @item.Description
+            </td>
+            @if (!string.IsNullOrEmpty(item.Caractere))
+            { 
+                <td class="linkVolet tdBodyCaracVolet" name="caractereVolet" title="Caractère">
+                    @item.Caractere
+                </td>
+            }
+            <td class="supprVolet tdBodyImgVolet">
+                <img id="@("suppr_" + @linkCode)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprVolet" />
+            </td>
+        </tr>
+    }
+</table>

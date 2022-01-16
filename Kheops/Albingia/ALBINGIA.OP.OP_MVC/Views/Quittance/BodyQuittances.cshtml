@@ -1,0 +1,234 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleQuittancePage
+@using ALBINGIA.Framework.Common.Constants
+@Html.HiddenFor(m => m.EffetAnnee)
+@Html.HiddenNoName("hiddenInputId", string.Empty)
+@Html.HiddenFor(m => m.PeriodiciteContrat)
+@Html.Hidden("NatureContrat", (Model.Contrat != null ? Model.Contrat.NatureContrat : string.Empty), new { id = "NatureContrat" })
+<input type="hidden" id="ModeAffichage" name="ModeAffichage" value="@Model.ModeAffichage" albcontext="@(Model.ModeAffichage == "Visu" ? "quitTrans" : string.Empty)" />
+@Html.Hidden("numQuittanceVisu", (Model.NumQuittance))
+@Html.HiddenNoName("ReguleId", (Model.ReguleId))
+@Html.Hidden("ModeAvt", Model.ModAvt)
+@Html.HiddenNoName("MntCalcul", string.Empty)
+<input type="hidden" id="DateDebEffetContrat" value="@(Model.DateDebEffetContrat.HasValue ?  Model.DateDebEffetContrat.Value.ToShortDateString() : string.Empty)" />
+<input type="hidden" id="DateFinEffetContrat" value="@(Model.DateFinEffetContrat.HasValue ?  Model.DateFinEffetContrat.Value.ToShortDateString(): string.Empty)" />
+
+
+
+
+<div class="nGroupFull nGroupWithBorder FloatLeft" @(Model.ModeAffichage == "Visu" ? "style=\"height:450px;margin-left:5px;margin-top:5px;\"" : string.Empty)>
+    <div class="nHorizontalFullWithGroup">
+        <div class="nGradientSection HeightFormules">
+            <div class="HeightRow">
+                <div class="TripleColumnsGroup FloatLeft">
+                    <div class="FloatLeft">
+                        <label class="Block">Périodicité</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="Periodicite" name="Periodicite" tabindex="1" title="@Model.Periodicite" value="@Model.Periodicite" readonly="readonly" class="readonly" />
+                    </div>
+                </div>
+                <div class="TripleColumnsGroup FloatLeft">
+                    <div class="FloatLeft">
+                        <label class="Block">Opération</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="Operation" name="Operation" tabindex="2" title="@Model.Operation" value="@Model.Operation" readonly="readonly" class="readonly" />
+                    </div>
+                </div>
+
+
+                <div class="TripleColumnsGroup FloatLeft">
+                    <div class="FloatLeft">
+                        <label class="Block">Indice</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="Indice" name="Indice" tabindex="3" value="@Model.Indice" readonly="readonly" class="readonly decimal" albMask="decimal" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="TripleColumnsGroup FloatLeft">
+                    <input type="hidden" id="ModifPeriode" value="@(Model.ModifPeriode ? "1" : "0")" />
+                    <input type="hidden" id="IsModifDateFin" value="@(Model.IsModifDateFin ? "1" : "0")" />
+                    <input type="hidden" id="DateAvn" value="@(Model.Contrat != null ? ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertDateToStr(Model.Contrat.DateEffetAvenant) : string.Empty)" />
+                    <div class="FloatLeft">
+                        <label class="Block">Période du</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ModifPeriode)
+                        {
+                            <input type="text" id="PeriodeDebut" name="PeriodeDebut" tabindex="4" value="@Model.PeriodeDebut" class="datepicker" />
+                        }
+                        else
+                        {
+                            <input type="text" id="PeriodeDebut" name="PeriodeDebut" tabindex="4" value="@Model.PeriodeDebut" readonly="readonly" class="readonly" />
+                        }
+                    </div>
+                </div>
+                <div class="TripleColumnsGroup FloatLeft">
+                    <div class="FloatLeft">
+                        <label class="Block">au</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ModifPeriode || Model.IsModifDateFin)
+                        {
+                            <input type="text" id="PeriodeFin" name="PeriodeFin" tabindex="5" value="@Model.PeriodeFin" class="datepicker" />
+                        }
+                        else
+                        {
+                            <input type="text" id="PeriodeFin" name="PeriodeFin" tabindex="5" value="@Model.PeriodeFin" readonly="readonly" class="readonly" />
+                        }
+                    </div>
+                </div>
+                <div class="TripleColumnsGroup FloatLeft">
+                    @Html.Hidden("ExistEcheancier", Model.ExistEcheancier.ToString())
+                    @if (Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGUL
+                         || (Model.TypeAvt == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_REGUL))
+                    {
+                        <div class="FloatLeft">
+
+                             <div class="@((Model.PeriodiciteContrat == "E" || Model.IsEcheanceNonTraite) ? "warningButton" : "") FloatLeft">
+                                <button id="GererEcheancier" type="button" name="GererEcheancier" albContext="@(Model.ModeAffichage == "Visu" ? "quitTrans" : "")" disabled="@(!(Model.PeriodiciteContrat == "E" || Model.PeriodiciteContrat == "U"))">
+                                    Echéancier
+                                </button>
+                            </div>
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 20px;">
+                            <input type="text" id="TxtComptantTotal" disabled="disabled" class="readonly" value="@Model.TypeCalcul" style="width:80px;text-align:center" />
+                        </div>
+                    }
+                    @*TODO ECM 2015-06-25 : à afficher lorsqu'on aura les specs techniques de FDU*@
+                    @if (Model.ActeGestion == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_RESIL && Model.DisplayEch)
+                    {
+                        <div class="FloatLeft">
+                            <input type="checkbox" id="chckEcheance" name="chckEcheance" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label id="lblEcheance" class="Block">A échéance</label>
+                        </div>
+                        <div id="divInfoEcheance" class="None">
+                            <div class="overlay-background" style="z-index:6" >
+                            </div>
+                            <div id="divDataInfoEcheance" class="dvDataInfoEcheance">
+                                ************
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div id="ListFormules">
+                @Html.Partial("QuittanceListFormules", Model.Formules)
+            </div>
+        </div>
+        <div class="nGradientSection HeightCommission FloatLeft HalfGroup">
+            <div id="divCommissionsQuittance">
+                @Html.Partial("QuittanceCommissions", Model.FormulesInfo.Commission)
+            </div>
+        </div>
+        <div class="nGradientSection HeightCommission FloatLeft HalfGroup">
+            @Html.Partial("QuittanceTotaux", Model)
+            @*@Html.Partial("QuittanceTotaux", Model.FormulesInfo.Totaux)*@
+        </div>
+    </div>
+</div>
+@if (Model.ModeAffichage == "Visu")
+{
+
+    <div class="FloatLeft GroupFull GroupWithBorder ButtonsHeight" style="margin-left: 5px;">
+        <div class="ActionButtons ActionButtonLeft">
+            <div class="FloatLeft PaddingLeftButtonActionRight">
+            </div>
+            <div class="FloatLeft PaddingLeftButtonActionRight">
+            </div>
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+
+            <div class="FloatLeft PaddingLeftButtonActionLeft">
+                <button type="button" id="btnDetails" albcontext="quitTrans" albshortcut="true" data-accesskey="d">
+                    <img class="FloatLeft MarginLeftButton" title="BackOffice" alt="BackOffice" src="@Url.Content("/Content/Images/Quittance/détails_primes.png")" />
+                    <span class="spanText FloatLeft CursorPointer"><u>D</u>étails cotisation</span>
+                </button>
+            </div>
+            <div class="FloatLeft PaddingLeftButtonActionLeft">
+                <button type="button" id="btnFermerVisuDetails">Fermer</button>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        @*@if (Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGUL)*@
+        @if (Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGUL
+                        || (Model.TypeAvt == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_REGUL))
+        {
+            <div class="ActionButtons ActionButtonLeft">
+                <div class="FloatLeft PaddingLeftButtonActionRight">
+                    <button type="button" id="btnFraisAccess" albshortcut="true" data-accesskey="f" disabled="@(Model.ModeCalculForce)">
+                        <img class="FloatLeft MarginLeftButton" title="BackOffice" alt="BackOffice" src="@Url.Content("/Content/Images/Quittance/frais.png")" />
+                        <span class="spanText FloatLeft  @(Model.ModeCalculForce ? "CursorDefault" : "CursorPointer")"><u>F</u>rais accessoires</span>
+                    </button>
+                </div>
+                <div class="FloatLeft PaddingLeftButtonActionRight" disabled="@(Model.ModeCalculForce)">
+                    <div id="divButtonCourtier" class="FloatLeft">
+                        <button id="btnDetailCot" type="button" albshortcut="true" data-accesskey="o" disabled="@(Model.ModeCalculForce)">C<u>o</u>mmissions</button>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="ActionButtons ActionButtonRight">
+            @if (!Model.IsModifHorsAvenant)
+            {
+
+                <div class="FloatLeft PaddingLeftButtonActionLeft">
+                    <button type="button" id="btnDetails" albcontext="" albshortcut="true" data-accesskey="d">
+                        <img class="FloatLeft MarginLeftButton" title="BackOffice" alt="BackOffice" src="@Url.Content("/Content/Images/Quittance/détails_primes.png")" />
+                        <span class="spanText FloatLeft CursorPointer"><u>D</u>étails cotisation</span>
+                    </button>
+                </div>
+            }
+            @if (Model.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_REGUL && !Model.IsModifHorsAvenant)
+            {
+
+                <div class="FloatLeft PaddingLeftButtonActionLeft">
+                    @if (Model.Formules != null && Model.Formules.Formules != null && Model.Formules.Formules.Where(formule => (formule.Ttc != "0" && !string.IsNullOrEmpty(formule.Ttc))).Count() > 0)
+                    {
+                        <button type="button" id="btnCalculForce" albshortcut="true" data-accesskey="c" disabled="@(Model.PeriodiciteContrat == "E" || Model.IsEcheanceNonTraite)">
+                            <img class="FloatLeft MarginLeftButton" title="BackOffice" alt="BackOffice" src="@Url.Content("/Content/Images/Quittance/calcul_forcé.gif")" />
+                            <span class="spanText FloatLeft CursorPointer"><u>C</u>alcul forcé</span>
+                        </button>
+                    }
+                    </div>
+            }
+            @if (!Model.IsReadOnly && !string.IsNullOrEmpty(Model.NumAvenantPage) && Model.NumAvenantPage != "0" && Model.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_REGUL && !Model.IsModifHorsAvenant)
+            {
+                <div class="@(Model.DisplayEmission ? "FloatLeft PaddingLeftEmission" : "FloatLeft PaddingLeftEmission None")" title="à décocher si la cotisation ne doit pas être émise">
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="chkEmission" name="chkEmission" checked="@(Model.AEmission )" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block lblEmission">A émettre</label>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+    </div>
+}
+<div id="divEcheancier">
+    <div class="overlay-background" style="z-index:34" >
+    </div>
+    <div id="divDataEcheancier">
+    </div>
+</div>
+<div id="divFraisAccessoires">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataFraisAccessoires">
+    </div>
+    @*<div id="divDataFraisAccessoiresAvn">
+        </div>*@
+</div>
+@Html.HiddenNoName("hiddenActionQuitt", string.Empty)
+

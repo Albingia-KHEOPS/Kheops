@@ -1,0 +1,137 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamISAssocier.ParamISLigneModele
+<td class="col_Action_line">
+    <div class="col_Action_in" name="colReadOnly_@(Model.GuidId)">
+        <img id="deleteModele_@(Model.GuidId)" name="deleteModele" title="Supprimer la ligne modèle" alt="Supprimer la ligne modèle" class="CursorPointer Action paddingReadonly" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        <img id="saveModele_@(Model.GuidId)" name="saveLigneModele" alt="Sauvegarder la ligne modèle" title="Sauvegarder la ligne modèle" src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer ImgSave Action paddingReadonly" />
+    </div>
+</td>
+<td class="col_code_line FloatLeft" name="selectableCol" id="col_Code_@(Model.GuidId)">
+    <div class="col_code_in" name="colReadOnly_@(Model.GuidId)" title="Détails référentiel">
+        @if (!string.IsNullOrEmpty(Model.Referentiel))
+        {
+            <img id="infoReferentiel_@(Model.GuidId)" name="infoReferentiel" class="deferredto-lazy" alt="Informations" src="/Content/Images/alertes/notif_icn_info16.png" />
+        }
+    </div>
+    <div class="colEdition col_code_in" name="colEdition_@(Model.GuidId)">
+    </div>
+</td>
+<td class="col_Referentiel_line" name="selectableCol" id="col_Referentiel_@(Model.GuidId)">
+    <input type="hidden" id="typeUI_@(Model.GuidId)" value="@Model.TypeUI"/>
+    <div class="col_Referentiel_in" name="colReadOnly_@(Model.GuidId)" title="@Model.Referentiel">
+        @Model.Referentiel
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        @*  @Html.AlbDropDownListFor(m => Model.Referentiel, Model.ListReferentiel, "dvReferentiel", generateTitle: true, htmlAttributes: new { @id = "drlReferentiel_" + Model.GuidId, @class = "col_Referentiel_in " }, replaceHtmlName: "drlReferentiel")*@
+        <input id="drlReferentiel_@(Model.GuidId)" class="col_Referentiel_in" name="drlReferentiel" value="@Model.Referentiel" />
+    </div>
+</td>
+<td class="col_Libelle_line" name="selectableCol" id="col_Libelle_@(Model.GuidId)">
+    <div class="col_Libelle_in paddingReadonly" name="colReadOnly_@(Model.GuidId)" title="@Model.Libelle">
+        @Model.Libelle
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        <input id="libelle_@(Model.GuidId)" class="col_Libelle_in" name="libelle" value="@Model.Libelle" />
+    </div>
+</td>
+<td class="col_NumAff_line" name="selectableCol" id="col_NumAff_@(Model.GuidId)">
+    <div class="col_NumAff_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.NumOrdreAffichage
+    </div>
+    <div class="colEdition paddingEdition" name="colEdition_@(Model.GuidId)">
+        <input id="numAff_@(Model.GuidId)" class="col_NumAff_in decimal" albMask="decimal" name="numAffichage" value="@Model.NumOrdreAffichage" />
+    </div>
+</td>
+<td class="col_SautLigne_line" name="selectableCol" id="col_SautLigne_@(Model.GuidId)">
+    <div class="col_SautLigne_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.SautDeLigne
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        <input class="col_SautLigne_in  decimal" albMask="numeric" id="sautLigne_@(Model.GuidId)" name="sautLigne" value="@Model.SautDeLigne"/>
+    </div>
+</td>
+<td class="col_Modifiable_line" name="selectableCol" id="col_Modifiable_@(Model.GuidId)">
+    <div class="col_Modifiable_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @(Model.ListModifiable.FirstOrDefault(el => el.Value == Model.Modifiable) == null ? string.Empty : Model.ListModifiable.FirstOrDefault(el => el.Value == Model.Modifiable).Text)
+    </div>
+    <div class="colEdition paddingEdition" name="colEdition_@(Model.GuidId)">
+        @Html.AlbDropDownListFor(m => Model.Modifiable, Model.ListModifiable, "dvModifiable", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlModifiable_" + Model.GuidId, @class = "col_Modifiable_in" })
+    </div>
+</td>
+<td class="col_Obligatoire_line" name="selectableCol" id="col_Obligatoire_@(Model.GuidId)">
+    <div class="col_Obligatoire_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @(Model.ListObligatoire.FirstOrDefault(el => el.Value == Model.Obligatoire) == null ? string.Empty : Model.ListObligatoire.FirstOrDefault(el => el.Value == Model.Obligatoire).Text)
+    </div>
+    <div class="colEdition paddingEdition" name="colEdition_@(Model.GuidId)">
+        @Html.AlbDropDownListFor(m => Model.Obligatoire, Model.ListObligatoire, "dvObligatoire", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlObligatoire_" + Model.GuidId, @class = "col_Obligatoire_in" })
+    </div>
+</td>
+<td class="col_Tcon_line" name="selectableCol" id="col_Tcon_@(Model.GuidId)">
+    <div class="col_Tcon_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Tcon
+    </div>
+    <div class="colEdition paddingEdition" name="colEdition_@(Model.GuidId)">
+        <input id="tcon_@(Model.GuidId)" class="col_tcon_in " name="tcon" value="@Model.Tcon" />
+    </div>
+</td>
+<td class="col_Tfam_line" name="selectableCol" id="col_Tfam_@(Model.GuidId)">
+    <div class="col_Tfam_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Tfam
+    </div>
+    <div class="colEdition paddingEdition" name="colEdition_@(Model.GuidId)">
+        <input id="tfam_@(Model.GuidId)" class="col_tfam_in " name="tfam" value="@Model.Tfam" />
+    </div>
+</td>
+<td class="col_Presentation_line" name="selectableCol" id="col_Presentation_@(Model.GuidId)">
+    <div class="col_Presentation_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @(Model.ListPresentation.FirstOrDefault(el => el.Value == Model.Presentation) == null ? string.Empty : Model.ListPresentation.FirstOrDefault(el => el.Value == Model.Presentation).Text)
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        @Html.AlbDropDownListFor(m => Model.Presentation, Model.ListPresentation, "dvPresentation", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_Presentation_in", @id = "drlPresentation_" + Model.GuidId })
+    </div>
+</td>
+<td class="col_ScriptAffichage_line" name="selectableCol" id="col_ScriptAffichage_@(Model.GuidId)">
+    <div class="col_ScriptAffichage_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @(Model.ListAffichage.FirstOrDefault(el => el.Value == Model.Affichage) == null ? string.Empty : Model.ListAffichage.FirstOrDefault(el => el.Value == Model.Affichage).Text)
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        @Html.AlbDropDownListFor(m => Model.Affichage, Model.ListAffichage, "dvAffichage", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_ScriptAffichage_in", @id = "drlAffichage_" + Model.GuidId })
+    </div>
+</td>
+<td class="col_ScriptControle_line" name="selectableCol" id="col_ScriptControle_@(Model.GuidId)">
+    <div class="col_ScriptControle_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @(Model.ListControle.FirstOrDefault(el => el.Value == Model.Controle) == null ? string.Empty : Model.ListControle.FirstOrDefault(el => el.Value == Model.Controle).Text)
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        @Html.AlbDropDownListFor(m => Model.Controle, Model.ListControle, "dvControle", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @class = "col_ScriptControle_in", @id = "drlControle_" + Model.GuidId })
+    </div>
+</td>
+<td class="col_LienParent_line" name="selectableCol" id="col_LienParent_@(Model.GuidId)">
+    <div class="col_LienParent_in" name="colReadOnly_@(Model.GuidId)" title="@Model.LienParentLibelle">
+        @Model.LienParentLibelle
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        @*        @Html.AlbDropDownListFor(m => Model.LienParent, Model.ListLinkBehaviour, "dvLien", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @class = "col_LienParent_in", @id = "lienParent_" + Model.GuidId })*@
+        <input type="hidden" id="lienParent_@(Model.GuidId)"   value="@Model.LienParent"/>
+        <input id="lienParentLib_@(Model.GuidId)" class="col_LienParent_in" name="lienParent" title="@Model.LienParentLibelle" value="@Model.LienParentLibelle" />
+    </div>
+</td>
+<td class="col_ParentComportement_line" name="selectableCol" id="col_ParentComportement_@(Model.GuidId)">
+    <div class="col_ParentComportement_in" name="colReadOnly_@(Model.GuidId)">
+        @Model.ParentComportement
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        <input id="parentComportement_@(Model.GuidId)" class="col_ParentComportement_in" name="parentComportement" value="@Model.ParentComportement"/>
+    </div>
+</td>
+<td class="col_ParentEvt_line" name="selectableCol" id="col_ParentEvt_@(Model.GuidId)">
+    <div class="col_ParentEvt_in" name="colReadOnly_@(Model.GuidId)">
+        @Model.ParentEvenement
+    </div>
+    <div class="colEdition" name="colEdition_@(Model.GuidId)">
+        <input id="parentEvenement_@(Model.GuidId)" class="col_ParentEvt_in" name="parentEvenement" value="@Model.ParentEvenement"/>
+    </div>
+</td>
+
+

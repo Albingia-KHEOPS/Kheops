@@ -1,0 +1,64 @@
+﻿body
+{
+}
+
+.DoubleGenericColumn
+{
+    width: 340px;
+    float: left;
+}
+
+.GenericColumn
+{
+    width: 300px;
+    float: left;
+}
+
+.TextAreaReadOnly
+{
+    width: 487px;
+    height: 124px;
+    border: 1px solid #cdcdcd;
+    color: #cdcdcd;
+    background-color: white;
+}
+
+.divAntedecent
+{
+    margin-right: 30px;
+}
+
+.labelValidite
+{
+    width: 120px;
+    display: block;
+}
+
+.divValidite
+{
+    float: left;
+    margin-right: 30px;
+}
+
+.inputValidite
+{
+    width: 50px !important;
+}
+
+.labelRelance
+{
+    display: block;
+    width: 60px;
+}
+
+.labelRelanceVal
+{
+    width: 10px;
+    display: block;
+}
+
+.labelPreavis
+{
+    display: block;
+    width: 140px;
+}

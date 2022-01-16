@@ -1,0 +1,338 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.DetailsQuittance
+<div class="GroupFull GroupWithBorder" id="divDetailsQuittance">
+    <input type="hidden" id="ModeAffichage" value="@Model.ModeAffichage" albcontext="detailquitt" />
+    <input type="hidden" id="numQuittanceVisu" value="@Model.NumQuittanceVisu" albcontext="detailquitt" />
+    <input type="hidden" id="codeNatureContrat" value="@Model.CodeNatureContrat" albcontext="detailquitt" />
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                <div class="FloatLeft">Détails de la cotisation</div>
+                <div class="FloatLeft paddingLeft50" id="divComplementTitre">
+                    <label class="titleBold">@Model.ComplementTitre</label>
+                </div>
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="HeightRow">
+                    @if (Model.CodeNatureContrat == "A" || Model.CodeNatureContrat == "E")
+                    {
+                        <div id="tabDetails" class="SmallMediumGenericColumn CursorPointer onglet-actif">
+                            <label>Détails</label>
+                        </div>
+                        <div id="tabVentilationDetaillee" class="SmallMediumGenericColumn CursorPointer onglet">
+                            <div>
+                                <label>Ventilation détaillée</label>
+                            </div>
+                        </div>
+                        <div id="tabVentilationCommission" class="SmallMediumGenericColumn CursorPointer onglet">
+                            <div>
+                                <label>Ventilation des commissions</label>
+                            </div>
+                        </div>
+                        <div id="tabPartAlbingia" class="SmallMediumGenericColumn CursorPointer onglet">
+                            <div>
+                                <label>Part Albingia</label>
+                            </div>
+                        </div>
+                        <div id="tabVentilationCoassureurs" class="SmallMediumGenericColumn CursorPointer onglet">
+                            <div>
+                                <label>Ventilation des coassureurs</label>
+                            </div>
+                        </div>
+                        <div class="onglet-vide-tiny">
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="tabDetails" class="GenericColumn CursorPointer onglet-actif">
+                            <label>Détails</label>
+                        </div>
+                        <div id="tabVentilationDetaillee" class="GenericColumn CursorPointer onglet">
+                            <div>
+                                <label>Ventilation détaillée</label>
+                            </div>
+                        </div>
+                        <div id="tabVentilationCommission" class="GenericColumn CursorPointer onglet">
+                            <div>
+                                <label>Ventilation des commissions</label>
+                            </div>
+                        </div>
+                        <div class="onglet-vide">
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Nature contrat</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="NatureContrat" value="@Model.NatureContrat" readonly="readonly" class="RightAlign readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="MediumGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Part</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Part" value="@Model.Part" readonly="readonly" class="DetailSmallInput readonly numerique" />
+                    </div>
+                </div>
+                <div class="MediumGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Avenant</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Avenant" value="@Model.Avenant" readonly="readonly" class="DetailSmallInput readonly numerique" />
+                    </div>
+                </div>
+                <div class="MediumGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Devise</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Devise" value="@Model.Devise" readonly="readonly" class="DetailSmallInput readonly" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Opération</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Operation" value="@Model.Operation" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="MediumGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Capital</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Capital" value="@Model.Capital" readonly="readonly" class="DetailSmallInput readonly numerique" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Périodicité</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Periodicite" value="@Model.Periodicite" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    <div class="FloatLeft">
+                        <input id="DebutPeriodicite" value="@Model.DateDebutPeriodicite" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block TinyLabel">au</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="FinPeriodicite" value="@Model.DateFinPeriodicite" readonly="readonly" class="readonly DetailInputSmaller" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    &nbsp;
+                </div>
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Valeur indice</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="ValeurIndice" value="@Model.ValeurIndice" readonly="readonly" albMask="decimal" class="readonly DetailInput decimal" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Emission</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Emission" value="@Model.Emission" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    <div class="FloatLeft">
+                        <input id="DateEmission" value="@Model.DateEmission" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    &nbsp;
+                </div>
+                <div class="SmallGenericColumn">
+                    &nbsp;
+                </div>
+                <div class="GenericColumn None">
+                    <div class="FloatLeft">
+                        <label class="Block">Accord</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Accord" value="@Model.Accord" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label>Echéance</label>
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    <div class="FloatLeft">
+                        <input id="Echeance" value="@Model.DateEcheance" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    &nbsp;
+                </div>
+                <div class="SmallGenericColumn">
+                    &nbsp;
+                </div>
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Type de mouvement</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Mouvement" value="@Model.Mouvement" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Situation</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Situation" value="@Model.Situation" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    <div class="FloatLeft">
+                        <input id="DateSituation" value="@Model.DateSituation" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Dernière relance</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="CodeRelance" value="@Model.CodeRelance" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    <div class="FloatLeft">
+                        <input id="DateRelance" value="@Model.DateRelance" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    &nbsp;
+                </div>
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Comptabilisé</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Comptabilise" value="@Model.Comptabilise" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+                <div class="SmallGenericColumn">
+                    <div class="FloatRight">
+                        <input id="DateComptabilise" value="@Model.DateComptabilise" readonly="readonly" class="readonly DetailInput" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="FloatLeft">
+                @Html.Partial("DetailsQuittanceCommission", Model.Commission)
+            </div>
+            <div class="FloatLeft PadLeft">
+                @Html.Partial("DetailsQuittanceTotaux", Model.Totaux)
+            </div>
+            <div class="FloatLeft PadLeft">
+                <div class="SpaceTop">
+                    <table id="tblHeaderTTC" class="trHeight tableHeaderTTC">
+                        <tr>
+                            <td class="colHeaderTTC"></td>
+                            <td class="tablePersoHead colHeaderTTC">
+                                TTC (€)
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="tblDetailsBodyTTC" class="trHeight tableBodyTTC">
+                        <tr>
+                            <td class="colBodyTTC">
+                                A régler
+                            </td>
+                            <td class="colBodyTTCValue">
+                                <span albmask="decimal">@Model.ARegler</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="colBodyTTC">
+                                Réglé
+                            </td>
+                            <td class="colBodyTTCValue">
+                                <span albmask="decimal">@Model.Regle</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="colBodyTTC">
+                                Rester à régler
+                            </td>
+                            <td class="colBodyTTCValue">
+                                <span albmask="decimal">@Model.ResteARegler</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="TripleTotalWidth FloatLeft">
+                    <div class="FloatLeft">
+                        <label class="Block">Courtier comptable</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="CourtierComptable" value="@(Model.CourtierComptable != "0" ? Model.CourtierComptable : string.Empty)" title="@(Model.CourtierComptable != "0" ? Model.CourtierComptableCompet : string.Empty)" readonly="readonly" class="readonly DetailLargeInput" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="TripleTotalWidth">
+                    <div class="FloatLeft">
+                        <label class="Block">Encaissement</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="Encaissement" value="@Model.Encaissement" readonly="readonly" class="readonly" />
+                    </div>
+                    <div class="FloatLeft">
+                        @*@if (Model.Icone || (Model.NombreCocourtier > 1))*@  @*Vu avec FDU 2015-11-27 : ne s'occuper uniquement du nombre d'enregistrement dans YPOCOUR*@
+                        @if ((Model.NombreCocourtier > 1))
+                        {
+                            <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn.png")" title="Attention : co-courtage" class="iconeAlerte" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: right">
+        <img src="@Url.Content("/Content/Images/u153_original.png")" title="Créé par @Model.UserCreation le @Model.DateCreation&#13;Modifié par @Model.UserUpdate le @Model.DateUpdate" class="iconeHistorique" />
+        <button id="btnFermerQuittance" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+
+</div>
+

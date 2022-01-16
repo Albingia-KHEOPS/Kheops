@@ -1,0 +1,35 @@
+﻿@model ALBINGIA.Framework.Common.Models.FileModel.FileDescription
+<div class="CommonForm FloatLeft">
+    <div class="GroupFull GroupWithBorder GroupFullSuiviDoc">
+        <div class="GroupTitle">Liste des PJ</div>
+        <div class="HorizontalFullWithGroup HorizontalFullWithGroupSuiviDoc">
+            <div class="GradientSection PaddingLeft SectionSuiviDoc">
+                <div id="divHeaderListPJ">
+                    <table id="tblHeaderListPJ" class="trHeight">
+                        <tr>
+                            <th class="tablePersoHead thDesi">Désignation</th>
+                            <th class="tablePersoHead thDoc">Document</th>
+                            <th class="tablePersoHead thSize">Taille (Ko)</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divBodyListPJ">
+                    <table id="tblBodyListPJ" class="trHeight tabBodyListPJ">
+                        <tr class="odd">
+                            <td class="trDesi" title="@Model.LibDoc">@Model.LibDoc</td>
+                            <td class="trDoc" title="@Model.Name">
+                                @Html.ActionLink(Html.Raw(Model.Name).ToHtmlString(), "DownloadFile", "CommonNavigation", new { fileName = Model.Name.Trim(), fullNameFile = Model.FullName, pathFile = Model.FilePath.Replace(Model.Name.Trim(), "") }, new { @target = "_blank" })
+                            </td>
+                            <td class="trSize">@Model.Size</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight GroupFullSuiviDoc">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFancyAnnuler" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>

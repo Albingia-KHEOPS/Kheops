@@ -1,0 +1,18 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModeleInfoSaisieCible
+<div class="FloatLeft">
+    <label class="labelCible Block">Cible*</label>
+</div>
+<div class="divSouscripteur">
+    @if (((Model.CopyMode || Model.IsReadOnly || Model.IsConfirmation) && !Model.LoadTemplateMode) || (Model.IsReadOnlyDisplay))
+    {
+        @Html.Hidden("InformationSaisie.InformationCible.Cible", (Model.Cible), new { id = "InformationSaisie_InformationCible_Cible" })
+        <input type="text" id="InformationSaisie_InformationCible_CibleText" name="InformationSaisie.InformationCible.CibleText" readonly="readonly" class="readonly inputCible" value="@(Model.CibleLibelle)" title="@Model.CibleLibelle" />
+    }
+    else
+    {
+  
+   @Html.AlbDropDownListFor(m => m.Cible, Model.Cibles, "InformationSaisie_InformationCible_Cible", htmlAttributes: new { id = "InformationSaisie_InformationCible_Cible", @tabindex = "2", @class = "inputCible" }, generateTitle: true, replaceHtmlName: "InformationSaisie.InformationCible.Cible")
+
+   }
+    </div>
+ 

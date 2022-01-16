@@ -1,0 +1,23 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamInventaire.LigneInventaires>
+<table id="tblInventaireBody" class="trHeight tableInventaireHeader">
+    @foreach (var item in Model)
+    {      
+        <tr id="@("tr_" + @item.GuidId)" idAlbLine="@(item.Code + "_" + item.Libelle)">
+            <td id="@("codeInventaire_" + item.GuidId)" name="codeInventaire" class="CursorPointer col_CodeInventaire" title="@item.Code">
+                @item.Code
+            </td>
+            <td id="@("libelleInventaire_" + item.GuidId)" name="libelleInventaire" class="CursorPointer col_LibelleInventaire" title="@item.Libelle">
+                @item.Libelle
+            </td>
+            <td id="@("kagtmapInventaire_" + item.GuidId)" class="None ">
+                @item.Kagtmap
+            </td>
+            <td id="@("codefiltreInventaire_" + item.GuidId)" class="None ">
+                @item.CodeFiltre
+            </td>
+            <td class="CursorPointer col_SupprimerInventaire">
+                <img id="@("suppr_" + item.GuidId)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprInventaire" />
+            </td>
+        </tr>
+    }
+</table>

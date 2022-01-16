@@ -1,0 +1,62 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesConnexite.ModeleRegularisation
+@Html.HiddenNoName("NumConnexiteRegularisation", Model.NumConnexiteRegularisation)
+@Html.Hidden("commentairesRegularisation", Model.CodeObservationRegularisation, new { id = "CodeObservationRegularisation", albcontext = "commentairesRegularisation" })
+@Html.Hidden("observation", Model.ObservationRegularisation, new { id = "ObservationRegularisation", albcontext = "commentairesRegularisation" })
+@Html.HiddenNoName("IdeConnexiteRegularisation", Model.IdeConnexiteRegularisation)
+<table id="tblRegularisationBody">
+    @if ((Model.ConnexitesRegularisation != null) && (Model.ConnexitesRegularisation.Count > 0))
+    {
+
+        foreach (var ligne in Model.ConnexitesRegularisation)
+        {
+            string textColor = (ligne.Situation == "W" || ligne.Situation == "N") ? "textLightGrey" :
+          (ligne.Situation != "X" && ligne.Situation != "W" && ligne.Situation != "N" && (ligne.Etat == "V" || ligne.Etat == "R")) ? "textGreen" :
+          (ligne.Situation != "X" && ligne.Situation != "W" && ligne.Situation != "N" && ligne.Etat != "V") ? "textBlack" :
+          (ligne.Situation == "X" && ligne.Etat == "V") ? "textRed" :
+          (ligne.Situation == "X" && ligne.Etat != "V") ? "textOrange" : "textBlack";
+            
+        <tr id="@("tr_" + @ligne.GuidId)" class="@textColor">
+            <td name="linkWinOpen" albparam="@(ligne.Contrat.Replace('-', '_'))_PReadOnly" class="col_Contrat_Body TxtLink CursorPointer" title="@ligne.DescriptionContrat" albcontext="reg">
+                @ligne.Contrat
+            </td>
+            <td class="col_Branche_Body" title="@ligne.LibelleBranche">
+                @ligne.Branche
+            </td>
+            <td class="col_Cible_Body" title="@(ligne.Cible + " - " + ligne.LibelleCible)">
+                @ligne.Cible
+            </td>
+            <td class="col_Commentaires_Body" title="@ligne.Commentaire" albcontext="@("commentairesRegularisation_" + ligne.GuidId)">
+                <div class="FloatLeft" id="divCommentaires">
+                    <div class="FloatLeft ">
+                        <div id="zoneTxtArea" class="FloatLeft divTextArea ColCommentaire NonReprisCP" albcontext="@("commentairesRegularisation_" + ligne.GuidId)" title="@ligne.Commentaire">@Html.Raw(!string.IsNullOrEmpty(ligne.Commentaire) ? !string.IsNullOrEmpty(ligne.Commentaire.Split('\n')[0]) ? ligne.Commentaire.Split('\n')[0] : string.Empty : string.Empty)</div>
+                        <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="@("commentairesRegularisation_" + ligne.GuidId)">
+                            <img src="@Url.Content("/Content/Images/moreinfo.png")" width="20" height="20" />
+                        </div>
+                        <div id="txtArea" albcontext="@("commentairesRegularisation_" + ligne.GuidId)">
+                            <div class="FloatLeft">
+                                @if (Model.IsConnexiteReadOnly)
+                                {
+                                    <div id="@("commentairesRegularisation_" + ligne.GuidId)" style="width: 500px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(ligne.Commentaire)</div>
+                                }
+                                else
+                                {
+                                    <textarea id="@("commentairesRegularisation_" + ligne.GuidId)" name="txtCommentaires" class="SuperInputConnexite" style="margin-bottom: 5px; overflow-y: auto;" tabindex="6">@ligne.Commentaire</textarea>                                   
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="col_Preneur_Body" title="@ligne.PreneurInfo">
+                @ligne.Preneur
+            </td>
+            <td class="col_Action_Body">
+                @if (Model.ContratTraite != ligne.Contrat || !Model.IsConnexiteReadOnly)
+                {
+                    <img src="@Url.Content("~/Content/Images/poubelle1616.png")" id="@("suppr_" + @ligne.GuidId)" alt="Supprimer" title="Supprimer" class="Action marginLeftSuppr CursorPointer" name="btnSupprimer" albcontext="reg"/>
+                }
+            </td>
+        </tr>
+        }
+    }
+</table>

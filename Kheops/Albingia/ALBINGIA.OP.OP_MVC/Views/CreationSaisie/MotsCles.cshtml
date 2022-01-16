@@ -1,0 +1,16 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModeleDescription
+<div class="FloatLeft">
+    <label class="Block">Mots-clés</label>
+</div>
+@if (Model.IsReadOnlyDisplay)
+{
+    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef1, Model.MotsClefs1, "MotClef1", htmlAttributes: new { @id = "MotClef1", @tabindex = "16", @class = "inputMotCle NonReprisCP readonly", @albCFList = "motscles", @disabled = "disabled" }, generateTitle: true, replaceHtmlName: "Description.MotClef1")</div>
+    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef2, Model.MotsClefs2, "MotClef2", htmlAttributes: new { @id = "MotClef2", @tabindex = "17", @class = "inputMotCle NonReprisCP readonly", @albCFList = "motscles", @disabled = "disabled" }, generateTitle: true, replaceHtmlName: "Description.MotClef2")</div>
+    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef3, Model.MotsClefs3, "MotClef3", htmlAttributes: new { @id = "MotClef3", @tabindex = "18", @class = "inputMotCle NonReprisCP readonly", @albCFList = "motscles", @disabled = "disabled" }, generateTitle: true, replaceHtmlName: "Description.MotClef3")</div>
+}
+else
+{
+    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef1, Model.MotsClefs1, "MotClef1", htmlAttributes: new { @id = "MotClef1", @tabindex = "16", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" }, generateTitle: true, replaceHtmlName: "Description.MotClef1")</div>
+    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef2, Model.MotsClefs2, "MotClef2", htmlAttributes: new { @id = "MotClef2", @tabindex = "17", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" }, generateTitle: true, replaceHtmlName: "Description.MotClef2")</div>
+    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef3, Model.MotsClefs3, "MotClef3", htmlAttributes: new { @id = "MotClef3", @tabindex = "18", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" }, generateTitle: true, replaceHtmlName: "Description.MotClef3")</div>
+}

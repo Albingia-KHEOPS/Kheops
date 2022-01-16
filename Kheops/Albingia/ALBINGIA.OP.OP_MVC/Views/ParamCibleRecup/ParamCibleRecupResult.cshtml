@@ -1,0 +1,36 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamCibleRecupPage
+@if (!string.IsNullOrEmpty(Model.Erreur))
+{ 
+    <div id="ErrorMessage" class="errMessage HeightRow">
+        <p>@Model.Erreur</p>
+    </div>
+}
+else
+{
+    <div id="dvCibleRecup" class="HeightRow">
+        <div class="FloatLeft marGinTop">
+            <label class="">Cible Recup.  </label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="CibleRecupLabel" name="CibleRecupLabel" class="readonly" readonly="readonly" value="@(Model.CodeCibleRecupLabel)" />
+            <input type="hidden" id="CibleRecup" name="CibleRecup" class="readonly" readonly="readonly" value="@(Model.CodeCibleRecup)"  />
+            <input type="hidden" id="TypeOffre" name="TypeOffre" class="readonly" readonly="readonly" value="@(Model.Type)"  />
+        </div>
+        <div class="FloatLeft marGinTop">
+            <label class="">Cible   </label>
+        </div>
+        <div class="FloatLeft">
+            @Html.AlbDropDownListFor(m => m.Cible, Model.Cibles, "Cible", htmlAttributes: new { id = "Cible", @tabindex = "2", @class = "inputCible" }, generateTitle: true)
+        </div>
+        <div class="FloatLeft">
+            <button id="MigrateCible" name="MigrateCible" albshortcut="true" data-accesskey="M" title="Utilisez la combinaison Alt + M pour accéder à la fonctionnalité"><u>M</u>igrer vers la cible</button>
+        </div>
+    </div>
+    if (Model.MultiObj)
+    {
+    <div class="errMessage HeightRow">
+        <p>@(string.Format("Cette {0} est multi-risques", Model.Type == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_CONTRAT ? "affaire nouvelle" : "offre"))
+        </p>
+    </div>
+    }
+}

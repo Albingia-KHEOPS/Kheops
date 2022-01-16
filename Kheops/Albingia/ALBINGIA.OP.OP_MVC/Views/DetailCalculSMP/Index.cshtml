@@ -1,0 +1,142 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleDetailCalculSMPPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vDetailCalculSMP.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albDetailCalculSMP.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.HiddenNoName("IdRisque", (Model.IdRisque))
+            @Html.HiddenNoName("IdVolet", (Model.IdVolet))
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Nom du traité</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="NomTraite" value="@(Model.Entete.NomTraite)" readonly="readonly" class="readonly" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Risque</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Risque" value="@(Model.Entete.Risque)" readonly="readonly" class="readonly" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Ventilation</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Volet" value="@(Model.Entete.Ventilation)" readonly="readonly" class="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection">
+                    <div id="divEntete" style="margin-left: 5px; margin-right: 10px;">
+                        <table id="tblEntete" style="text-align: center" border="0" class="trHeight">
+                            <tr>
+                                <td class="tablePersoHead tdHeaderImg">&nbsp;</td>
+                                <td class="tablePersoHead tdHeaderGarantie">&nbsp;</td>
+                                <td class="tablePersoHead tdHeaderLCISMP">&nbsp;</td>
+                                <td class="tablePersoHead tdHeaderLCISMP">&nbsp;</td>
+                                <td class="tablePersoHead" colspan="2">SMP Forcé</td>
+                                <td class="tablePersoHead tdHeaderLCISMP">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="tablePersoHead tdHeaderImg">&nbsp;</td>
+                                <td class="tablePersoHead tdHeaderGarantie">Garanties</td>
+                                <td class="tablePersoHead tdHeaderLCISMP">LCI (€)</td>
+                                <td class="tablePersoHead tdHeaderLCISMP">SMP calculé (€)</td>
+                                <td class="tablePersoHead tdHeaderSMPForce">Type</td>
+                                <td class="tablePersoHead tdHeaderSMPForce">Valeur</td>
+                                <td id="col6" class="tablePersoHead tdHeaderLCISMP">SMP retenu (€)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    @Html.Partial("LigneGarantie", Model.ListeGarantie)
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+
+            <div id="divCommentForce" class="FloatLeft dvCommentForce">
+                @Html.Hidden("MontantForce", Model.MontantForce ? 1 : 0)
+                <div class="FloatLeft">
+                    <label class="Block">Commentaires</label>
+                </div>
+                <div id="zoneTxtArea" class="FloatLeft divTextArea ZoneTextAreaWidth" albcontext="CommentForce">@Html.Raw(!string.IsNullOrEmpty(Model.CommentForce) ? Model.CommentForce.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+                <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="CommentForce">
+                    <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                </div>
+                <div id="txtArea" albcontext="CommentForce" class="TextAreaLeft">
+                    <div class="FloatLeft">
+                        @if (Model.IsReadOnly)
+                        {
+                            <div id="CommentForce" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.CommentForce)</div>                                    
+                        }
+                        else
+                        {
+                            <textarea id="CommentForce" name="CommentForce" class="" style="margin-bottom: 5px; width: 357px;" tabindex="6">@Model.CommentForce</textarea>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="ActionButtonsComment ActionButtonRight">
+                @*  <div class="ActionButtonsComment ActionButtonLeft">*@
+                @if (Model.IsReadOnly)
+                {
+                    <div id="divReset" class="FloatLeft" style="margin-top: -4px;">
+                        <img id="btnReset" src="@Url.Content("/Content/Images/reset_formgris32.png")" alt="RAZ" title="RAZ" />
+                    </div>
+                }
+                else
+                {
+                    <div id="divReset" class="FloatLeft CursorPointer" style="margin-top: -4px;">
+                        <img id="btnReset" src="@Url.Content("/Content/Images/reset_form32.png")" alt="RAZ" title="RAZ" />
+                    </div>
+                }
+                <div id="divRefresh" class="FloatLeft PaddingLeft" style="margin-top: -4px;">
+                    <img id="btnRefresh" src="@Url.Content("/Content/Images/boutonRefresh_gris3232.png")" alt="Rechargement" title="Rechargement" />
+                </div>
+                @* </div>*@
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>

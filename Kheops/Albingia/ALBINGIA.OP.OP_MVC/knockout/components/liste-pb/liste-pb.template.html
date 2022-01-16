@@ -1,0 +1,61 @@
+﻿
+<div class="HeightRow">
+    <div class="FloatLeft PaddingLeft">
+        Participation aux bénéfices du contrat :
+    </div>
+</div>
+<div class="HeightInfoRegul">
+    <div class="FloatLeft">
+        <div id="dvHeaderRegul">
+            <table id="tblHeaderRegule" class="trHeight">
+                <tr>
+                    <th class="tablePersoHead thNumAvnRegule">N° Int.</th>
+                    <th class="tablePersoHead thTraitementRegule">Type de traitement</th>
+                    <th class="tablePersoHead thPeriodeRegule">Période régularisée PB</th>
+                    <th class="tablePersoHead thSituationRegule">Situation</th>
+                    <th class="tablePersoHead thQuittanceRegule">N° quittance</th>
+                    <th class="tablePersoHead thAvisQuittanceRegule">N° Avis</th>
+                    <th class="tablePersoHead thActionRegule">Action</th>
+                    <th class="tablePersoHead thBtnRegule">
+                        <!-- ko if: canAddPB -->
+                        <img id="btnAddRegule" class="CursorPointer" src="/Content/Images/plusajouter1616.png" data-bind="click : create" />
+                        <!-- /ko -->
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div id="dvBodyRegule" class="divBodyRegule">
+            <table id="tblBodyRegule" class="tableBodyRegule trHeight">
+                <tbody>
+                    <!-- ko foreach: Regularisations -->
+                    <tr>
+                        <td class="tdNumAvnRegule" data-bind="text: CodeAvn"></td>
+                        <td class="tdTraitementRegule" data-bind="text: RegulMode, attr: { title: CodeTraitement() + ' - ' + LibTraitement() }"></td>
+                        <td class="tdDateRegule" data-bind="text: PeriodeDebut"></td>
+                        <td class="tdDateRegule" data-bind="text: PeriodeFin"></td>
+                        <td class="tdEtatRegule" data-bind="text: CodeEtat() + ' - ' + CodeSituation(), attr: { title: CodeEtat() + ' - ' + CodeSituation() }"></td>
+                        <td class="tdDateRegule" data-bind="text: DateSituation"></td>
+                        <td class="tdNumQuittanceRegule" data-bind="text: NumQuittance() > 0 ? NumQuittance : '', css: { navig: NumQuittance() > 0 }, attr: { id: 'num_' + NumQuittance(), albreguleid: NumRegule, albnumavn: CodeAvn }" name="linkVisuRegule"></td>
+                        <td class="tdLibQuittanceRegule" data-bind="text: LibEtatQuitt, attr: { title: CodeEtatQuitt() + ' - ' + LibEtatQuitt() }"></td>
+                        <td class="tdAvisQuittanceRegule" data-bind="text: Avis() > 0 ? Avis : '', attr: { title: Avis }"></td>
+
+                        <td class="tdActionRegule CursorPointer">
+                            <img name="consulter-regule" src="/Content/Images/ContextMenu/m_consulter.png" data-bind="attr: { albreguleid: NumRegule, albreguletype: CodeTraitement, albcodeavn: CodeAvn, 'data-regulmode': RegulMode, 'data-regultype': RegulType, 'data-regulniv': RegulNiv, 'data-regulavn': RegulAvn }, click: $parent.consult"
+                                 title="Consulter" />
+                        </td>
+                        <td class="tdActionRegule" data-bind="css: { CursorPointer: CodeEtat != ' V' }">
+                            <!-- ko if: CodeEtat() != "V" -->
+                            <img id="btnUpdateRegule" src="/Content/Images/ContextMenu/m_modifier.png" data-bind="attr: { albreguleid: NumRegule, albreguletype: CodeTraitement, albcodeavn: CodeAvn, 'data-regulmode': RegulMode, 'data-regultype': RegulType, 'data-regulniv': RegulNiv, 'data-regulavn': RegulAvn }, click: $parent.edit" title="Modifier" />
+                            <!-- /ko -->
+                            <!-- ko ifnot: CodeEtat() != "V" -->
+                            &nbsp;
+                            <!-- /ko -->
+                        </td>
+                        <td class="tdUpdateTypeRegule"></td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

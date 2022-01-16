@@ -1,0 +1,21 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleFraisAccessoiresPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vFraisAccessoires.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albFraisAccessoires.js" }, "~/Scripts/AlbingiaJS/")
+
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<input type="hidden" id="SplitChar" name="SplitChar" value ="@(ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)" />
+
+<div>
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+</div>
+
+
+@Html.Partial("Body", Model)
+
+
+
+
+

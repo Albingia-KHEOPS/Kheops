@@ -1,0 +1,42 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleFormVolAffNouvPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vFormVolAffNouv.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albFormVolAffNouv.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div class="FullWidth FloatLeft">
+        @Html.HiddenFor(m => m.CodeContrat)
+        @Html.HiddenFor(m => m.VersionContrat)
+        <div class="nGroupFull nGroupWithBorder TotalWidth">
+            @*<div class="GroupTitle">
+                Sélection des Formules et Volets
+            </div>*@
+            <div class="nHorizontalFullWithGroup TotalWidth">
+                <div class="nGradientSection">
+                    <div class="HeightListFormVol">
+                        @Html.Partial("LstFormVolAffNouv", Model.Risques)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button type="button" id="btnAnnuler" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>
+                <button type="button" id="btnSuivant" tabindex="30" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+        <div id="divNouveauContrat">
+            <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2;
+                filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+            </div>
+            <div id="divDataNouveauContrat">
+            </div>
+        </div>
+    </div>
+</div>

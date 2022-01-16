@@ -1,0 +1,17 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.EditFamilleReassurance
+<td class="col_Br" id="Branche">
+    @Html.Partial("DDLBranches", Model.DDLBranches)
+</td>
+<td class="col_SsBr" id="SousBranche">
+    @Html.Partial("DDLSousBranche", Model.DDLSousBranche)
+</td>
+<td class="col_Cat" id="Categorie">
+    @Html.Partial("DDLCategories", Model.DDLCategories)
+</td>
+<td class="col_Famille" id="Famille">
+    @Html.Partial("DDLFamilles", Model.DDLFamilles)
+</td>
+
+<td class="col_ButtonsFamillesReassurace">
+    <img name="updateFamilleReassurance" id="@("update_" + Model.CodeBrancheEdited + "_" + Model.CodeSousBrancheEdited + "_" + Model.CodeCategorieEdited + "_" + Model.CodeFamilleEdited)" src="@Url.Content("/Content/Images/editer1616.png")" class="CursorPointer" name="enregistrerFamilleReassurance" alt="Enregistrer" title="Enregistrer"/>
+</td>

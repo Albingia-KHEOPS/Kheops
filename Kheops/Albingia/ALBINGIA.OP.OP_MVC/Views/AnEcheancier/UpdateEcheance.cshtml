@@ -1,0 +1,94 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesEcheance.ModeleEcheance
+<div class="FloatLeft">
+    <div class="GroupFull GroupWithBorder" style="width: 710px; padding: 5px;">
+
+        @if (Model.Guid == 0)
+        {
+            <div class="GroupTitle">
+                Ajouter une échéance
+            </div>
+        }
+        else
+        {
+            <div class="GroupTitle">
+                Modifier une échéance
+            </div>
+        }
+        <div class="nHorizontalFullWithGroup" style="width: 695px;">
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block WidthLabelDivFlottante">Date échéance</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.Guid == 0)
+                            {
+                                @Html.AlbDateFormat(m => m.EcheanceDate, new { @class = "datepicker", @tabindex = "1" })
+                            }
+                            else
+                            {
+                                <input type="text" id="EcheanceDate" name="EcheanceDate" class="readonly" readonly="readonly" value="@Model.EcheanceDate.Value.ToShortDateString()" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block WidthLabelDivFlottante">Montant échéance HT (€)</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="MontantEcheanceHT" value="@Model.MontantEcheanceHT" class="decimal" albMask="decimal" tabindex="2" />
+                        </div>
+                    </div>
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block">ou % prime</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="PourcentagePrime" value="@Model.PourcentagePrime" class="decimal PrimePourcent" albMask="pourcentnumeric" tabindex="3" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block WidthLabelDivFlottante">Frais accessoires (€)</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="FraisAccessoire" value="@Model.FraisAccessoire" class="decimal" albMask="decimal" tabindex="4" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block WidthLabelDivFlottante">FGA</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="checkbox" id="TaxeAttentat" name="TaxeAttentat" checked="@(Model.TaxeAttentat)"  tabindex="6"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="msgErreurDiv" class="error msgErreur">
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder" style="width: 710px;">
+        <div class="ActionButtons ActionButtonRight">
+            <div class="HeightRow">
+                <button id="btnAnnulerDivFlottante" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                @if (Model.Guid == 0)
+                {
+                    <button id="btnAjouter" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+                }
+                else
+                {
+                    <button id="btnModifier" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VentilationCoassureur
+<div class="GroupFull GroupWithBorder" id="divDetailsQuittance">
+    @Html.HiddenNoName("ModeAffichage", Model.ModeAffichage)
+    @Html.HiddenNoName("numQuittanceVisu", Model.NumQuittanceVisu)
+    @Html.HiddenNoName("codeNatureContrat", (Model.NatureContrat))
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                Détails de la cotisation
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div id="tabDetails" class="SmallMediumGenericColumn CursorPointer onglet">
+                    <label>Détails</label>
+                </div>
+                <div id="tabVentilationDetaillee" class="SmallMediumGenericColumn CursorPointer onglet">
+                    <div>
+                        <label>Ventilation détaillée</label>
+                    </div>
+                </div>
+                <div id="tabVentilationCommission" class="SmallMediumGenericColumn CursorPointer onglet">
+                    <div>
+                        <label>Ventilation des commissions</label>
+                    </div>
+                </div>
+                <div id="tabPartAlbingia" class="SmallMediumGenericColumn CursorPointer onglet">
+                    <div>
+                        <label>Part Albingia</label>
+                    </div>
+                </div>
+                <div id="tabVentilationCoassureurs" class="SmallMediumGenericColumn CursorPointer onglet-actif">
+                    <div>
+                        <label>Ventilation des coassureurs</label>
+                    </div>
+                </div>
+                <div class="onglet-vide-tiny">
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>
+            <div class="GradientSection">
+                <div id="divVentilationCoassHeader" style="text-align: center;">
+                    <table id="tblVentilationCoassHeader" class="trHeight">
+                        <tr>
+                            <th colspan="4"></th>
+                            <th class="col_VentDetailSmallColumn tablePersoHead" colspan="3">Hors Taxes
+                            </th>
+                            <th class="col_VentDetailSmallColumn tablePersoHead" colspan="3">Commission
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="width20">&nbsp</th>
+                            <th class="width320 tablePersoHead">Coassureurs</th>
+                            <th class="width40 tablePersoHead">Part (%)</th>
+                            <th class="width80 tablePersoHead">Frais apérition</th>
+                            <th class="width80 tablePersoHead">Hors CatNat</th>
+                            <th class="width80 tablePersoHead">CatNat</th>
+                            <th class="width80 tablePersoHead">Total</th>
+                            <th class="width80 tablePersoHead">Hors CatNat</th>
+                            <th class="width80 tablePersoHead">CatNat</th>
+                            <th class="width80 tablePersoHead">Total</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divVentilationCoassBody">
+                    @Html.Partial("VentilationCoassureurCoassureurs", Model.ListeCoAssureurs)
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>
+        </div>
+    </div>
+    <div style="text-align: right">
+        <button id="btnFermerQuittance" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+</div>

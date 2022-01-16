@@ -1,0 +1,122 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VentilationCommission
+<div class="GroupFull GroupWithBorder" id="divDetailsQuittance">
+    @Html.HiddenNoName("ModeAffichage", Model.ModeAffichage)
+    @Html.HiddenNoName("numQuittanceVisu", Model.NumQuittanceVisu)
+    @Html.HiddenNoName("codeNatureContrat", (Model.NatureContrat))
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                Détails de la cotisation
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="HeightRow">
+                @if (Model.NatureContrat == "A" || Model.NatureContrat == "E")
+                {
+                    <div id="tabDetails" class="SmallMediumGenericColumn CursorPointer onglet-actif">
+                        <label>Détails</label>
+                    </div>
+                    <div id="tabVentilationDetaillee" class="SmallMediumGenericColumn CursorPointer onglet">
+                        <div>
+                            <label>Ventilation détaillée</label>
+                        </div>
+                    </div>
+                    <div id="tabVentilationCommission" class="SmallMediumGenericColumn CursorPointer onglet">
+                        <div>
+                            <label>Ventilation des commissions</label>
+                        </div>
+                    </div>      
+                    <div id="tabPartAlbingia" class="SmallMediumGenericColumn CursorPointer onglet">
+                        <div>
+                            <label>Part Albingia</label>
+                        </div>
+                    </div>    
+                    <div id="tabVentilationCoassureurs" class="SmallMediumGenericColumn CursorPointer onglet">
+                        <div>
+                            <label>Ventilation des coassureurs</label>
+                        </div>
+                    </div>               
+                    <div class="onglet-vide-tiny">
+                    </div>
+                }
+                else
+                {
+                    <div id="tabDetails" class="GenericColumn CursorPointer">
+                        <label>Détails</label>
+                    </div>
+                    <div id="tabVentilationDetaillee" class="GenericColumn CursorPointer">
+                        <div>
+                            <label>Ventilation détaillée</label>
+                        </div>
+                    </div>
+                    <div id="tabVentilationCommission" class="GenericColumn CursorPointer">
+                        <div>
+                            <label>Ventilation des commissions</label>
+                        </div>
+                    </div>
+                    <div class="onglet-vide">
+                    </div>
+                }
+            </div>
+            <div class="HeightRow">
+            </div>
+            <div class="GradientSection">
+                <div id="divVentilationCommissionCourtierHeader" style="text-align: center;">
+                    <table id="tblVentilationCommissionCourtierHeader" class="trHeight">
+                        <tr>
+                            <th class="col_VentDetailDoubleColumn tablePersoHead">Par courtier
+                            </th>
+                            <th class="col_VentDetailSmallColumn tablePersoHead">Répartition
+                            </th>
+                            <th class="col_VentDetailSmallColumn tablePersoHead">Hors CATNAT
+                            </th>
+                            <th class="col_VentDetailSmallColumn tablePersoHead">CATNAT
+                            </th>
+                            <th class="col_VentDetailSmallColumn tablePersoHead">Total
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divVentilationCommissionCourtierBody">
+                    <table id="tblVentilationCommissionCourtierBody" class="trHeight">
+                        @Html.Partial("VentilationCommissionCourtier", Model.Courtiers)
+                    </table>
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>
+            @if (Model.Garanties != null)
+            {
+                <div class="GradientSection">
+                    <div id="divVentilationCommissionGarantieHeader" style="text-align: center;">
+                        <table id="tblVentilationCommissionGarantieHeader" class="trHeight">
+                            <tr>
+                                <th class="col_VentDetailDoubleColumn tablePersoHead">Par garantie
+                                </th>
+                                <th class="col_VentDetailSmallColumn tablePersoHead">Hors CATNAT
+                                </th>
+                                <th class="col_VentDetailSmallColumn tablePersoHead">CATNAT
+                                </th>
+                                <th class="col_VentDetailSmallColumn tablePersoHead">Total
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divVentilationCommissionGarantieBody">
+                        <table id="tblVentilationCommissionGarantieBody" class="trHeight">
+                            @Html.Partial("VentilationCommissionGarantie", Model.Garanties)
+                        </table>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div id="divSpaceVentilationCommission">
+                </div>
+            }
+        </div>
+    </div>
+    <div style="text-align: right">
+        <button id="btnFermerQuittance" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+</div>

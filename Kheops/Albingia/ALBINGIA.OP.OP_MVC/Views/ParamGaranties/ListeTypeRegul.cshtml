@@ -1,0 +1,32 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties
+@model List<ModeleGarTypeRegul>
+    <table id="tblGarTypeRegulBody" class="trHeight">
+
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var typeRegul in Model)
+            {
+                <tr>
+                    <td class="col_TypeRegul_CodeTypeRegul">@typeRegul.CodeTypeRegul</td>
+                    <td class="col_TypeRegul_Libelle">@typeRegul.Libelle</td>
+                    <td class="col_TypeRegul_Grille">@typeRegul.Grille</td>
+                    <td class="col_TypeRegul_Action">
+                        <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSupprTypeRegul_" + typeRegul.CodeTypeRegul)" albcodetyperegul="@typeRegul.CodeTypeRegul" alt="Supprimer" title="Supprimer" class="Action CursorPointer" name="btnSupprimerTypeRegul" />
+                    </td>
+                </tr>
+            }
+
+
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="col_TypeRegul_EmptyResult">
+                    Aucun type de régularisation associé à cette garantie.
+                </td>
+            </tr>
+        }
+    </table>
+
+
+

@@ -1,0 +1,20 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamTemplateNomenclature.ModeleLigneTemplateNomenclature>
+<table id="tblNomenclaturesBody" class="trHeight tableCibleHeader">
+    @foreach (var item in Model)
+    {      
+        <tr id="@("tr_" + @item.GuidId)">
+            <td id="@("branche_" + item.GuidId)" name="clickableCol" class="col_branche" title="@item.Branche">
+                @item.Branche
+            </td>
+            <td id="@("cible_" + item.GuidId)"  name="clickableCol" class="col_cible" title="@item.Cible">
+                @item.Cible
+            </td>
+            <td id="@("nomenclature_" + item.GuidId)"  name="clickableCol" class="col_libelleNomenclature" title="@item.Libelle">
+              @*  @item.Libelle*@
+            </td>
+            <td class="col_Action">
+                <img id="@("supprNomenclature_" + item.GuidId)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprCible" />
+            </td>
+        </tr>
+    }
+</table>

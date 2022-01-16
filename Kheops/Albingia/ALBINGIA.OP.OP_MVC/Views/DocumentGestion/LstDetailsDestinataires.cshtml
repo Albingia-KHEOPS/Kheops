@@ -1,0 +1,126 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.ModifierDocumentModele
+@*@model List<ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.DestinataireLigne>*@
+@{
+    //#region Nouveau Destinataire
+    if (Model != null && Model.NewDestinataire.Count > 0)
+    {
+    <div id="divDestinataireNew" class="None PaddingLeft divHeightDestinataires">
+        <table class="trHeight" id="@(Model.NewDestinataire.Count > 1 ? "tblDestinatairesBody" : Model.NewDestinataire.Count == 1 && Model.NewDestinataire.FirstOrDefault().GuidId < 0 ? string.Empty : "tblDestinatairesBody")">
+
+            @{
+        var i = 0;
+        foreach (var ligne in Model.NewDestinataire)
+        {
+                <tr class="@(i % 2 == 0 ? "odd" : "even")">
+                    @if (Model.IsDocLibre)
+                    {
+                        <td class="tdDestinataire" id="@("destinataire_" + ligne.GuidId)">
+                            <input type="hidden" id="@("INTypeDestinataireCode_" + ligne.GuidId)" value="@ligne.CodeTypeDestinataire" />
+                            @Html.AlbDropDownListFor(m => ligne.CodeTypeDestinataire, ligne.ListeTypesDestinataire, "DDLTypeDestinataire", htmlAttributes: new { @id = string.Format("DDLTypeDestinataire_{0}", ligne.GuidId), @class = "DDLDestinataire readonly", @disabled = "disabled" }, generateTitle: true, genEmptyLine: true, replaceHtmlName: "DDLTypeDestinataire")
+                        </td>
+                        <td id="@("divCodeLabelDest_" + ligne.GuidId)">
+                            @Html.Partial("CodeLabelDestinataireRO", ligne)
+                        </td>
+                        <td class="tdInterlocuteur" id="@("nomInterlocuteur_" + ligne.GuidId)">
+                            <input type="hidden" id="@("INCodeInterlocuteur_" + ligne.GuidId)" value="@ligne.IdInterlocuteur" albcontext="@ligne.GuidId"/>
+                            <input type="text" id="@("INNomInterlocuteur_" + ligne.GuidId)" value="@ligne.NomInterlocuteur" class="INNomInterlocuteur readonly" readonly="readonly" albcontext="@ligne.GuidId"/>
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="tdDestinataire" id="@("destinataire_" + ligne.GuidId)">
+                            <input type="hidden" id="@("INTypeDestinataireCode_" + ligne.GuidId)" value="@ligne.CodeTypeDestinataire" />
+                            @Html.AlbDropDownListFor(m => ligne.CodeTypeDestinataire, ligne.ListeTypesDestinataire, "DDLTypeDestinataire", htmlAttributes: new { @id = string.Format("DDLTypeDestinataire_{0}", ligne.GuidId), @class = "DDLDestinataire" }, generateTitle: true, genEmptyLine: true, replaceHtmlName: "DDLTypeDestinataire")
+                        </td>
+                        <td id="@("divCodeLabelDest_" + ligne.GuidId)">
+                            @Html.Partial("CodeLabelDestinataire", ligne)
+                        </td>
+                        <td class="tdInterlocuteur" id="@("nomInterlocuteur_" + ligne.GuidId)">
+                            <input type="hidden" id="@("INCodeInterlocuteur_" + ligne.GuidId)" value="@ligne.IdInterlocuteur" albcontext="@ligne.GuidId"/>
+                            <input id="@("INNomInterlocuteur_" + ligne.GuidId)" value="@ligne.NomInterlocuteur" class="INNomInterlocuteur" albcontext="@ligne.GuidId"/>
+                        </td>
+                    }
+                    <td class="tdTypeEnvoi" id="@("typeEnvoi_" + ligne.GuidId)">
+                        @Html.AlbDropDownListFor(m => ligne.TypeEnvoi, ligne.ListeTypesEnvoi, "DDLTypeEnvoi", htmlAttributes: new { @id = string.Format("DDLTypeEnvoi_{0}", ligne.GuidId), @class = "DDLTypeEnvoi" }, generateTitle: true, genEmptyLine: true)
+                    </td>
+                    <td class="tdNbExr" id="@("nbEx_" + ligne.GuidId)">
+                        <input id="@("INNbEx_" + ligne.GuidId)" value="@ligne.NombreExemplaire" class="@(ligne.GuidId > 0 ? "INNbEx readonly" : "INNbEx")" readonly="@(ligne.GuidId > 0 )"/>
+                    </td>
+                    <td class="tdTampon" id="@("tampon_" + ligne.GuidId)">
+                        @Html.AlbDropDownListFor(m => ligne.Tampon, ligne.ListeTampons, "DDLTampon", htmlAttributes: new { @id = string.Format("DDLTampon_{0}", ligne.GuidId), @class = "DDLTampon" }, generateTitle: true, genEmptyLine: true)
+                    </td>
+                    <td class="tdDocAction Action">
+                    </td>
+                </tr>
+                    i++;
+        }
+            }
+        </table>
+    </div>
+    }
+    //#endregion
+
+
+    //#region Liste Destinataires
+    if (Model != null && Model.ListeDestinataire.Count > 0)
+    {
+    <div id="divDestinatairesBody" class="PaddingLeft divHeightDestinataires">
+        <table class="trHeight" id="@(Model.ListeDestinataire.Count > 1 ? "tblDestinatairesBody" : Model.ListeDestinataire.Count == 1 && Model.ListeDestinataire.FirstOrDefault().GuidId < 0 ? string.Empty : "tblDestinatairesBody")">
+
+            @{
+        var i = 0;
+        foreach (var ligne in Model.ListeDestinataire)
+        {
+                <tr class="@(i % 2 == 0 ? "odd" : "even")">
+                    @if (Model.IsDocLibre)
+                    {
+                        <td class="tdDestinataire" id="@("destinataire_" + ligne.GuidId)">
+                            <input type="hidden" id="@("INTypeDestinataireCode_" + ligne.GuidId)" value="@ligne.CodeTypeDestinataire" />
+                            @Html.AlbDropDownListFor(m => ligne.CodeTypeDestinataire, ligne.ListeTypesDestinataire, "DDLTypeDestinataire", htmlAttributes: new { @id = string.Format("DDLTypeDestinataire_{0}", ligne.GuidId), @class = "DDLDestinataire readonly", @disabled = "disabled" }, generateTitle: true, genEmptyLine: true, replaceHtmlName: "DDLTypeDestinataire")
+                        </td>
+                        <td id="@("divCodeLabelDest_" + ligne.GuidId)">
+                            @Html.Partial("CodeLabelDestinataireRO", ligne)
+                        </td>
+                        <td class="tdInterlocuteur" id="@("nomInterlocuteur_" + ligne.GuidId)">
+                            <input type="hidden" id="@("INCodeInterlocuteur_" + ligne.GuidId)" value="@ligne.IdInterlocuteur" albcontext="@ligne.GuidId"/>
+                            <input type="text" id="@("INNomInterlocuteur_" + ligne.GuidId)" value="@ligne.NomInterlocuteur" class="INNomInterlocuteur readonly" readonly="readonly" albcontext="@ligne.GuidId"/>
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="tdDestinataire" id="@("destinataire_" + ligne.GuidId)">
+                            <input type="hidden" id="@("INTypeDestinataireCode_" + ligne.GuidId)" value="@ligne.CodeTypeDestinataire" />
+                            @Html.AlbDropDownListFor(m => ligne.CodeTypeDestinataire, ligne.ListeTypesDestinataire, "DDLTypeDestinataire", htmlAttributes: new { @id = string.Format("DDLTypeDestinataire_{0}", ligne.GuidId), @class = "DDLDestinataire" }, generateTitle: true, genEmptyLine: true, replaceHtmlName: "DDLTypeDestinataire")
+                        </td>
+                        <td id="@("divCodeLabelDest_" + ligne.GuidId)">
+                            @Html.Partial("CodeLabelDestinataire", ligne)
+                        </td>
+                        <td class="tdInterlocuteur" id="@("nomInterlocuteur_" + ligne.GuidId)">
+                            <input type="hidden" id="@("INCodeInterlocuteur_" + ligne.GuidId)" value="@ligne.IdInterlocuteur" albcontext="@ligne.GuidId"/>
+                            <input id="@("INNomInterlocuteur_" + ligne.GuidId)" value="@ligne.NomInterlocuteur" class="INNomInterlocuteur" albcontext="@ligne.GuidId"/>
+                        </td>
+                    }
+                    <td class="tdTypeEnvoi" id="@("typeEnvoi_" + ligne.GuidId)">
+                        @Html.AlbDropDownListFor(m => ligne.TypeEnvoi, ligne.ListeTypesEnvoi, "DDLTypeEnvoi", htmlAttributes: new { @id = string.Format("DDLTypeEnvoi_{0}", ligne.GuidId), @class = "DDLTypeEnvoi" }, generateTitle: true, genEmptyLine: true)
+                    </td>
+                    <td class="tdNbExr" id="@("nbEx_" + ligne.GuidId)">
+                        <input id="@("INNbEx_" + ligne.GuidId)" value="@ligne.NombreExemplaire" class="@(ligne.GuidId > 0 ? "INNbEx readonly" : "INNbEx")" readonly="@(ligne.GuidId > 0 )"/>
+                    </td>
+                    <td class="tdTampon" id="@("tampon_" + ligne.GuidId)">
+                        @Html.AlbDropDownListFor(m => ligne.Tampon, ligne.ListeTampons, "DDLTampon", htmlAttributes: new { @id = string.Format("DDLTampon_{0}", ligne.GuidId), @class = "DDLTampon" }, generateTitle: true, genEmptyLine: true)
+                    </td>
+
+                    <td class="tdDocAction Action">
+
+                    </td>
+                </tr>
+                    i++;
+        }
+            }
+        </table>
+    </div>
+    }
+    //#endregion
+
+
+}

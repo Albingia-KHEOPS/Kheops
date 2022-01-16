@@ -1,0 +1,44 @@
+﻿CREATE TABLE ZALBINKHEO.KPOFTAR ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KPOFTAR de ZALBINKHEO ignoré. 
+--  SQL1506   30   Clé ou attribut ignoré pour KPOFTAR de ZALBINKHEO. 
+	KFKPOG CHAR(9) CCSID 297 NOT NULL DEFAULT '' , 
+	KFKALG NUMERIC(4, 0) NOT NULL DEFAULT 0 , 
+--  SQL150D   10   EDTCDE ignoré pour la colonne KFKALG. 
+	KFKIPB CHAR(9) CCSID 297 NOT NULL DEFAULT '' , 
+	KFKALX NUMERIC(4, 0) NOT NULL DEFAULT 0 , 
+--  SQL150D   10   EDTCDE ignoré pour la colonne KFKALX. 
+	KFKFOR NUMERIC(5, 0) NOT NULL DEFAULT 0 , 
+	KFKOPT NUMERIC(5, 0) NOT NULL DEFAULT 0 , 
+	KFKGARAN CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KFKNUMTAR NUMERIC(2, 0) NOT NULL DEFAULT 0 , 
+	KFKKDGID NUMERIC(15, 0) NOT NULL DEFAULT 0 , 
+	KFKSEL CHAR(1) CCSID 297 NOT NULL DEFAULT '' )   
+	RCDFMT FPOFTAR    ; 
+  
+LABEL ON TABLE ZALBINKHEO.KPOFTAR 
+	IS 'Contrat à établir Tarif                        KFK' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KPOFTAR 
+( KFKPOG IS 'N° de contrat généré' , 
+	KFKALG IS 'N° Aliment généré' , 
+	KFKIPB IS 'Offre (Code)' , 
+	KFKALX IS 'Offre (Version)' , 
+	KFKFOR IS 'Formule' , 
+	KFKOPT IS 'Option' , 
+	KFKGARAN IS 'Garantie' , 
+	KFKNUMTAR IS 'Numéro Tarif' , 
+	KFKKDGID IS 'Lien KPGARTAR' , 
+	KFKSEL IS 'Sélection' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KPOFTAR 
+( KFKPOG TEXT IS 'N° de contrat généré' , 
+	KFKALG TEXT IS 'N° Aliment généré' , 
+	KFKIPB TEXT IS 'Offre (Code)' , 
+	KFKALX TEXT IS 'Offre (Version)' , 
+	KFKFOR TEXT IS 'Formule' , 
+	KFKOPT TEXT IS 'Option' , 
+	KFKGARAN TEXT IS 'Garantie' , 
+	KFKNUMTAR TEXT IS 'Numéro TARIF' , 
+	KFKKDGID TEXT IS 'Lien KPGARTAR' , 
+	KFKSEL TEXT IS 'Sélection' ) ; 
+  

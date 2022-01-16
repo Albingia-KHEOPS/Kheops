@@ -1,0 +1,89 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamGarantiesPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamGaranties.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamGaranties.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @Html.HiddenNoName("idGarantieSuppr", string.Empty)
+    @Html.HiddenNoName("AdditionalParam", Model.AdditionalParam)
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder GroupBackOffice ">
+                    <div class="HorizontalHalfWithGroupAdmin ">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div class="FloatLeft PaddingLeft10">
+                                    <div class="PaddingLeft5">
+                                        <label>Code :</label>
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft5">
+                                        <input id="RechercheCode" maxlength="10" albautocomplete="autoCompCodeGarantie" />
+                                    </div>
+                                </div>
+                                <div class="FloatLeft PaddingLeft10">
+                                    <div class="PaddingLeft5">
+                                        <label>Désignation :</label>
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft5">
+                                        <input id="RechercheDesignation" class="searchField" maxlength="60" albautocomplete="autoCompDesignationGarantie" />
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft" id="btnRechercherGaranties">
+                                        <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div id="divLstGaranties">
+                                <div id="divGarantiesHeader">
+                                    <table id="tblGarantiesHeader">
+                                        <tr>
+                                            <th class="col_HeaderCodeGarantie tablePersoHead">Code
+                                            </th>
+                                            <th class="col_HeaderDesignationGarantie tablePersoHead">Désignation
+                                            </th>
+                                            <th class="col_HeaderAction tablePersoHead">
+                                                @if (Model.AdditionalParam == "**")
+                                                {
+                                                    <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouterGarantie" />
+                                                }
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divGarantiesBody" class="divHeight">
+                                    @if (Model.ListeGaranties != null)
+                                    {
+                                        @Html.Partial("ListeGaranties", Model.ListeGaranties)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="VoletDetails" class="GroupFull GroupWithBorder GroupBackOffice GroupHeight FloatLeft">
+                    <div id="divGarantieDetails">
+                    </div>
+                </div>
+                <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <button id="btnAnnulerRetour" type="button" albshortcut="true" data-accesskey="t">Re<u>t</u>our</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

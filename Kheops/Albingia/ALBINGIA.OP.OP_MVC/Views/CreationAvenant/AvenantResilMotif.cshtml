@@ -1,0 +1,10 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.ModelesCreationAvenant
+
+@model ModeleAvenantResiliation
+
+@Html.AlbDropDownListFor(
+    m => Model.MotifAvt,
+    Model.Motifs,
+    "MotifAvt",
+    htmlAttributes: new { id = "MotifAvt", albCFList = "motifavt", albhorsavn = string.Empty },
+    generateTitle: true)

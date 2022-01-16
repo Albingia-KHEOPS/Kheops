@@ -1,0 +1,1387 @@
+﻿.onglet { /* onglets inactifs */
+    border: solid 1px #DDDDDD;
+    border-left: none;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 5px 5px;
+    text-align: center;
+    background-color: #F6F5F5;
+}
+
+.onglet-actif { /*l'onglet actif */
+    border: solid 1px #DDDDDD;
+    border-width: 1px 1px medium;
+    border-bottom: none;
+    border-left: none;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    /*background-color: #C6C6C6;*/
+}
+
+.onglet-vide {
+    border-bottom: solid 1px #DDDDDD;
+    border-top: none;
+    border-left: none;
+    padding: 21px 2px 2px;
+    float: left;
+    width: 234px;
+}
+
+.tabFichier {
+    width: 995px;
+}
+
+    .tabFichier tr {
+        height: 1px !important;
+    }
+
+.tablePersoHead {
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.TablePersoTdHead {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.TablePersoTdBody {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.GroupeHeight {
+    height: 50px;
+}
+
+.TablePersoTd1a {
+    width: 50px;
+}
+
+.tdHead1 {
+    width: 28px;
+}
+
+.tdHead2 {
+    width: 349px;
+}
+
+.tdHead4 {
+    width: 98px;
+}
+
+.tdHead7 {
+    width: 48px;
+}
+
+.TablePersoTd1 {
+    width: 50px;
+}
+
+.TablePersoTd2 {
+    width: 350px;
+}
+
+.TablePersoTd3 {
+    width: auto;
+}
+
+.TablePersoTd4 {
+    width: 100px;
+}
+
+.TablePersoTd5 {
+    width: 100px;
+}
+
+.TablePersoTd6 {
+    width: 100px;
+}
+
+.TablePersoTd7Head {
+    width: 50px;
+}
+
+.TablePersoTd7Body {
+    width: 50px;
+}
+
+.HorizontalFullWithGroup {
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 80px;
+    padding-top: 0px !important;
+    padding-left: 5px !important;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+}
+
+.HorizontalQuarterWithGroup {
+    border-radius: 5px;
+    float: right;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 90%;
+    height: 40px;
+    padding-top: 0px;
+    padding-left: 5px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+}
+
+.GroupSplitQuarter {
+    width: 221px;
+    margin-right: 10px;
+    float: left;
+}
+
+.GroupSplitQuarterFin {
+    width: 221px;
+    float: left;
+}
+
+.divFichier {
+    overflow-y: auto;
+    max-height: 290px;
+}
+
+.ValidationPlus {
+    float: left;
+}
+
+#fancybox-overlay {
+    opacity: 0.3 !important;
+}
+
+.LargeurTotal {
+    width: 855px !important;
+}
+
+.LargeurTotalInterieur {
+    width: 850px !important;
+}
+
+.LargeurDemi {
+    width: 405px !important;
+}
+
+.LargeurDemiInterieur {
+    width: 418px !important;
+}
+
+.AvenantModif {
+    height: 108px !important;
+}
+
+.Marge {
+    margin-left: 30px;
+}
+
+.block {
+    float: none;
+    display: block !important;
+}
+
+.Titre {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.HeightClauseLibre {
+    height: 309px;
+}
+
+.HeightClauseVisu {
+    height: 344px;
+}
+
+.HeightSmallRow {
+    height: 8px;
+}
+
+#divData {
+    height: 385px;
+    width: 1030px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#divDataVisu {
+    height: 410px;
+    width: 1030px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.dvDataFullScreen {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 11;
+    background-color: White;
+    height: 653px;
+    width: 1043px;
+}
+
+.dvEditClauseLibre {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 71;
+    background-color: White;
+    height: 406px;
+    width: 1055px;
+}
+
+.dvVisualiserClause {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 51;
+    background-color: White;
+    height: 431px;
+    width: 1055px;
+}
+
+.dvDetailsClause {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 61;
+    background-color: White;
+    height: 552px;
+    width: 872px;
+}
+
+#divDetailsClauseTransverse {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 536px;
+    width: 872px;
+}
+
+.LargeDoubleColumn {
+    /*width: 747px;*/
+    width: 593px !important;
+    /*float: left;*/
+}
+
+.LargeRow {
+    height: 270px;
+}
+
+.LstClause {
+    height: 267px;
+}
+
+.Height15 {
+    clear: both;
+    height: 15px;
+}
+
+#FullScreen {
+    width: 80px;
+    margin: 0px auto;
+}
+
+#dvLinkClose {
+    margin: 0 auto;
+    width: 100px;
+}
+
+.InputContexteCible {
+    margin-left: 80px;
+    width: 177px !important;
+}
+
+.InputEtapeCible {
+    margin-left: 5px;
+    width: 177px !important;
+}
+
+.ZoneAjoutContexte {
+    height: 78px;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    padding-left: 5px;
+    padding-top: 12px;
+    width: 256px;
+}
+
+.TdROF {
+    width: 30px;
+}
+
+#divTransverseDataVisualiserClause {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 430px;
+    width: 1055px;
+}
+
+#divDataClauseLibre {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 430px;
+    width: 1055px;
+}
+
+.InputDDL {
+    width: 230px !important;
+}
+
+.ColumnFilter {
+    float: left;
+    width: 345px;
+}
+
+.ColumnContexte {
+    float: left;
+    width: 360px;
+}
+
+#divTransverseLstClauses {
+    height: 387px;
+    margin-bottom: 3px;
+    width: 1013px;
+}
+
+.FiltreTansverseColumn {
+    float: left;
+    width: 392px;
+}
+
+.InputCible {
+    width: 361px !important;
+}
+
+/*#divLstObj {
+    display: none;
+}*/
+
+#divDataLstObj {
+    position: absolute;
+    top: 40px;
+    left: 859px;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 10px;
+    width: 275px;
+    height: 275px;
+}
+
+.divSelectedObjetsDim {
+    overflow: auto;
+    max-height: 200px;
+    width: 338px;
+}
+
+.DivRisques {
+    width: 318px;
+    max-height: 251px;
+    overflow-y: auto;
+}
+
+.PaddingValidation {
+    left: 60px;
+    padding-top: 20px;
+    position: absolute;
+    top: 243px;
+}
+
+.dvDataClausier {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 41;
+    background-color: White;
+    height: 583px;
+    width: 1042px;
+}
+
+.spanText {
+    /*float: right; */
+    /*margin-top: 5px; */
+    margin-left: 10px;
+}
+
+/*#divBodyClausier {
+    overflow: auto;
+    max-height: 354px;
+}*/
+
+/*#tblBodyClausier {
+    table-layout: fixed;
+    width: 980px;
+}*/
+
+/*#tblHeaderClausier {
+    width: 1014px;
+}*/
+
+.LargeurDemi {
+    width: auto !important;
+}
+
+.LargeurDemiInterieur {
+    width: 400px !important;
+}
+
+.HorizontalQuarterWithGroup {
+    border-radius: 5px;
+    float: right;
+    margin-left: 10px; /*margin-top: 10px;*/
+    margin-bottom: 5px;
+    width: 80%;
+    height: 40px;
+    padding-top: 0px;
+    padding-left: 5px;
+    border: 1px #ddd inset; /*background-color: #ddd;*/
+}
+
+.GroupSplitQuarter {
+    width: 221px;
+    margin-right: 10px;
+    float: left;
+}
+
+.GroupSplitQuarterFin {
+    width: 221px;
+    float: left;
+}
+
+.PartieElement {
+    float: left;
+}
+
+.divClause {
+    width: 100%;
+    border: solid 1px;
+    height: 100%;
+}
+
+#dvRechercheGeneral {
+    display: none;
+}
+
+#dvTabClauses {
+    overflow-y: auto;
+    height: 87%;
+    border: solid 0px;
+}
+
+.TableauClauses {
+    width: 100%;
+    background-color: White;
+}
+
+/*.tdEmpty {
+    width: 45px;
+}*/
+
+/*.tdEmptyBody {
+    width: 39px;
+}*/
+
+/*.tdEmptyHistoBody {
+    width: 26px;
+}*/
+
+#TableFichier {
+    width: 100%;
+    height: 90%;
+    background-color: White;
+}
+
+.float {
+    float: right;
+}
+
+.margin {
+    margin-top: 10px;
+}
+
+#TableEntete {
+    border: solid 0px;
+}
+
+.colHisto1 {
+    width: 50px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.colHisto2 {
+    width: 75px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.Valider {
+    text-align: right;
+}
+
+.ColumnMotCle {
+    float: left;
+    width: 150px;
+}
+
+.ButonChercher {
+    float: left;
+    padding-left: 89px;
+}
+/* Liste de clauses Clausiers*/
+
+
+/*.col_HeaderRubrique {
+    width: 93px;
+}*/
+
+/*.col_HeaderSousRubrique {
+    width: 100px;
+}*/
+
+/*.col_HeaderSequence {
+    width: 50px;
+    text-align: center;
+}*/
+
+/*.col_HeaderVersion {
+    width: 44px;
+    text-align: center;
+}*/
+
+/*.col_HeaderLibelle {
+    width: 690px;
+    text-align: center;
+}*/
+
+/*.col_RubriqueBody {
+    width: 92px;
+    text-align: center;
+}*/
+
+/*.col_SousRubriqueBody {
+    width: 95px;
+    text-align: center;
+}*/
+
+/*.col_SequenceBody {
+    width: 59px;
+    text-align: center;
+}*/
+
+/*.col_VersionBody {
+    width: 46px;
+    text-align: center;
+}*/
+
+/*.col_LibelleBody {
+    width: 611px;
+}*/
+
+#divDataVisualisationClause {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 231px;
+}
+
+#divDataHistoriqueClause {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 449px;
+}
+
+#divDataHistoriqueClauseInvalide {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 525px;
+}
+
+.tblHistorique {
+    width: 502px;
+}
+
+./*col_HeaderHistoVersion {
+    width: 212px;
+    text-align: center;
+}
+
+.col_HeaderHistoDateDeb {
+    width: 142px;
+    text-align: center;
+}
+
+.col_HeaderHistoDateFin {
+    width: 142px;
+    text-align: center;
+}
+
+.col_BodyHistoVersion {
+    width: 214px;
+    text-align: center;
+}
+
+.col_BodyHistoDateDeb {
+    width: 144px;
+    text-align: center;
+}
+
+.col_BosyHistoDateFin {
+    width: 144px;
+    text-align: center;
+}*/
+
+#divHistoriqueBody {
+    max-height: 235px;
+    overflow: auto;
+}
+
+#tblHistoriqueHeader tr, #tblHistoriqueBody tr {
+    height: 1px;
+}
+
+.ActionButtonsHisto {
+    display: block;
+    margin-top: 10px;
+    padding-top: 6px;
+    width: 400px;
+}
+
+.GroupWithBorderHistorique {
+    background-color: #EEEEEE;
+    float: left;
+    height: 204px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+    border: 1px outset #EEEEEE;
+    border-radius: 10px;
+}
+
+.PaddingTitreHisto {
+    padding-left: 140px;
+}
+
+.BackgroundColorTitreHisto {
+    background-color: #EBEBE4;
+}
+
+.ClauseValide {
+    background-color: #0094FF !important;
+}
+
+.Alerte {
+    margin: 8px 10px 5px 14px;
+}
+
+.MsgAlerte {
+    font-weight: bold;
+    padding-left: 10px !important;
+    padding-top: 0 !important;
+}
+
+.DivContexte {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.MarginLeftButton {
+    margin-left: -6px;
+}
+
+/*#divLstObj {
+    display: none;
+}*/
+
+#divDataLstObj {
+    position: absolute;
+    top: 123px;
+    left: 1075px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 10px;
+    width: 275px;
+    height: 275px;
+}
+
+.LabelObjetRisque {
+    width: 171px;
+    padding-left: 22px;
+    padding-top: 5px;
+}
+
+.TxtObjetRisque {
+    width: 300px !important;
+}
+
+.col_ObjetDesignation {
+    width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_CheckBoxObjet {
+    width: 25px;
+}
+
+#tblObjets {
+    margin-left: 50px;
+    table-layout: fixed;
+    width: 200px;
+}
+
+.divListRsqObj {
+    max-height: 170px;
+    overflow-y: auto;
+}
+
+.LibelleBandeau {
+    font-weight: bold;
+    width: 80px;
+}
+
+.CheckRsq {
+    margin-right: 10px;
+}
+
+.PaddingValidation {
+    left: 60px;
+    padding-top: 20px;
+    position: absolute;
+    top: 243px;
+}
+
+.DivRsqTitle {
+    font-weight: bold;
+}
+
+.DivObjTitle {
+    font-weight: bold;
+    margin-top: 3px;
+    margin-left:40px;
+}
+
+.columnObjetRisque {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 180px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.tblInfo {
+    table-layout: fixed;
+    width: 1030px;
+}
+
+    .tblInfo tr {
+        height: 1px;
+    }
+
+.columnRisque {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 130px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.columnOffre {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 170px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.columnLabelOffre {
+    width: 103px;
+}
+
+.columnLabelRisque {
+    width: 103px;
+}
+
+.labelRisque {
+    padding-left: 12px;
+}
+
+.labelOffre {
+    width: 97px !important;
+}
+
+.columnFormule {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 250px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.labelFormule {
+    padding-left: 12px;
+}
+
+.ZoneRechercheHeight {
+    height: 448px;
+}
+
+.Ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 250px;
+}
+
+.RsqColumn {
+    float: left;
+    width: 301px;
+}
+
+.SelectedObjetsEllipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+}
+
+.PaddingBottom {
+    padding-bottom: 5px;
+}
+
+.spanText {
+    /*float: right; */
+    /*margin-top: 5px; */
+    margin-left: 10px;
+}
+
+.btn {
+    width: 400px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+/*#divBodyClausier {
+    overflow: auto;
+    max-height: 354px;
+}*/
+
+/*#tblBodyClausier {
+    table-layout: fixed;
+    width: 980px;
+}*/
+
+.LargeurDemi {
+    width: auto !important;
+}
+
+.LargeurDemiInterieur {
+    width: 400px !important;
+}
+
+.HorizontalQuarterWithGroup {
+    border-radius: 5px;
+    float: right;
+    margin-left: 10px; /*margin-top: 10px;*/
+    margin-bottom: 5px;
+    width: 80%;
+    height: 40px;
+    padding-top: 0px;
+    padding-left: 5px;
+    border: 1px #ddd inset; /*background-color: #ddd;*/
+}
+
+.GroupSplitQuarter {
+    width: 221px;
+    margin-right: 10px;
+    float: left;
+}
+
+.GroupSplitQuarterFin {
+    width: 221px;
+    float: left;
+}
+
+.PartieElement {
+    float: left;
+}
+
+.divClause {
+    width: 100%;
+    border: solid 1px;
+    height: 100%;
+}
+
+#dvRechercheGeneral {
+    display: none;
+}
+
+#dvTabClauses {
+    overflow-y: auto;
+    height: 87%;
+    border: solid 0px;
+}
+
+.TableauClauses {
+    width: 100%;
+    background-color: White;
+}
+
+/*.tdEmpty {
+    width: 45px;
+}*/
+
+/*.tdEmptyBody {
+    width: 39px;
+}*/
+
+/*.tdEmptyHistoBody {
+    width: 26px;
+}*/
+
+#TableFichier {
+    width: 100%;
+    height: 90%;
+    background-color: White;
+}
+
+.float {
+    float: right;
+}
+
+.margin {
+    margin-top: 10px;
+}
+
+#TableEntete {
+    border: solid 0px;
+}
+
+.colHisto1 {
+    width: 50px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.colHisto2 {
+    width: 75px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.Valider {
+    text-align: right;
+}
+
+.ColumnMotCle {
+    float: left;
+    width: 150px;
+}
+
+.ButonChercher {
+    float: left;
+    padding-left: 89px;
+}
+/* Liste de clauses Clausiers*/
+
+
+/*.col_HeaderRubrique {
+    width: 93px;
+}*/
+
+/*.col_HeaderSousRubrique {
+    width: 100px;
+}*/
+
+/*.col_HeaderSequence {
+    width: 50px;
+    text-align: center;
+}*/
+
+/*.col_HeaderVersion {
+    width: 44px;
+    text-align: center;
+}*/
+
+/*.col_HeaderLibelle {
+    width: 690px;
+    text-align: center;
+}*/
+
+/*.col_RubriqueBody {
+    width: 92px;
+    text-align: center;
+}*/
+
+/*.col_SousRubriqueBody {
+    width: 95px;
+    text-align: center;
+}*/
+
+/*.col_SequenceBody {
+    width: 59px;
+    text-align: center;
+}*/
+
+/*.col_VersionBody {
+    width: 46px;
+    text-align: center;
+}*/
+
+/*.col_LibelleBody {
+    width: 611px;
+}*/
+
+#divDataVisualisationClause {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 231px;
+}
+
+#divDataHistoriqueClause {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 449px;
+}
+
+#divDataHistoriqueClauseInvalide {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 525px;
+}
+
+.tblHistorique {
+    width: 502px;
+}
+
+.col_HeaderHistoVersion {
+    width: 212px;
+    text-align: center;
+}
+
+.col_HeaderHistoDateDeb {
+    width: 142px;
+    text-align: center;
+}
+
+.col_HeaderHistoDateFin {
+    width: 142px;
+    text-align: center;
+}
+
+.col_BodyHistoVersion {
+    width: 214px;
+    text-align: center;
+}
+
+.col_BodyHistoDateDeb {
+    width: 144px;
+    text-align: center;
+}
+
+.col_BosyHistoDateFin {
+    width: 144px;
+    text-align: center;
+}
+
+#divHistoriqueBody {
+    max-height: 235px;
+    overflow: auto;
+}
+
+#tblHistoriqueHeader tr, #tblHistoriqueBody tr {
+    height: 1px;
+}
+
+.ActionButtonsHisto {
+    display: block;
+    margin-top: 10px;
+    padding-top: 6px;
+    width: 400px;
+}
+
+.GroupWithBorderHistorique {
+    background-color: #EEEEEE;
+    float: left;
+    height: 204px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+    border: 1px outset #EEEEEE;
+    border-radius: 10px;
+}
+
+.PaddingTitreHisto {
+    padding-left: 140px;
+}
+
+.BackgroundColorTitreHisto {
+    background-color: #EBEBE4;
+}
+
+.ClauseValide {
+    background-color: #0094FF !important;
+}
+
+.Alerte {
+    margin: 8px 10px 5px 14px;
+}
+
+.MsgAlerte {
+    font-weight: bold;
+    padding-left: 10px !important;
+    padding-top: 0 !important;
+}
+
+.DivContexte {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.MarginLeftButton {
+    margin-left: -6px;
+}
+
+/*#divLstObj {
+    display: none;
+}*/
+
+#divDataLstObj {
+    position: absolute;
+    top: 123px;
+    left: 1075px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 10px;
+    width: 275px;
+    height: 275px;
+}
+
+.LabelObjetRisque {
+    width: 171px;
+    padding-left: 13px;
+    padding-top: 5px;
+}
+
+.TxtObjetRisque {
+    width: 300px !important;
+}
+
+.col_ObjetDesignation {
+    width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.divListRsqObj {
+    max-height: 170px;
+    overflow-y: auto;
+}
+
+.LibelleBandeau {
+    font-weight: bold;
+    width: 80px;
+}
+
+.CheckRsq {
+    margin-right: 10px;
+}
+
+.PaddingValidation {
+    left: 60px;
+    padding-top: 20px;
+    position: absolute;
+    top: 243px;
+}
+
+.DivRsqTitle {
+    font-weight: bold;
+}
+
+.columnObjetRisque {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 180px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.tblInfo {
+    table-layout: fixed;
+    width: 1030px;
+}
+
+    .tblInfo tr {
+        height: 1px;
+    }
+
+.columnRisque {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 130px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.columnLabelOffre {
+    width: 103px;
+}
+
+.columnLabelRisque {
+    width: 103px;
+}
+
+.labelRisque {
+    padding-left: 12px;
+}
+
+.labelOffre {
+    width: 97px !important;
+}
+
+.columnFormule {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 250px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.labelFormule {
+    padding-left: 12px;
+}
+
+.ZoneRechercheHeight {
+    height: 448px;
+}
+
+.Ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 250px;
+}
+
+.RsqColumn {
+    float: left;
+    width: 301px;
+}
+
+.SelectedObjetsEllipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+}
+
+.PaddingBottom {
+    padding-bottom: 5px;
+}
+
+#divLstRisques {
+    display: none;
+}
+
+#divDataLstRisques {
+    position: absolute;
+    top: 86px;
+    left: 793px;
+    display: block;
+    z-index: 80;
+    background-color: White;
+    padding: 10px;
+    width: 326px;
+    height: 275px;
+}
+
+#divLstFormules {
+    display: none;
+}
+
+#divDataLstFormules {
+    position: absolute;
+    top: 86px;
+    left: 793px;
+    display: block;
+    z-index: 80;
+    background-color: White;
+    padding: 10px;
+    width: 326px;
+    height: 275px;
+}
+
+.DivRisques {
+    margin-left: 5px;
+}
+
+.DivFormuleTitle {
+    font-weight: bold;
+    margin-left: 3px;
+    margin-top: 3px;
+}

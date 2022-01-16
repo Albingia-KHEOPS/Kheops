@@ -1,0 +1,274 @@
+﻿body .flex-table .flex-body.connexites > div:nth-child(odd) {
+  background-color: #FFF;
+}
+body .flex-table .flex-body.connexites > div:nth-child(even) {
+  background-color: #EDEEFF;
+}
+body .connexites-engagements {
+  display: inline-block;
+  min-width: 800px;
+  max-width: 1100px;
+  height: 360px;
+}
+body .connexites-engagements .scroll-y {
+  overflow-y: auto;
+}
+body .connexites-engagements .scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+body .connexites-engagements .scroll-x-hidden {
+  overflow-x: hidden;
+}
+body .connexites-engagements .left {
+  flex: none;
+  width: 600px;
+}
+body .connexites-engagements .traites {
+  flex: none;
+  min-width: 110px;
+}
+body .connexites-engagements .commands {
+  flex: none;
+  width: 88px;
+}
+body .connexites-engagements .left span,
+body .connexites-engagements .traites span,
+body .connexites-engagements .left .line div,
+body .connexites-engagements .traites .line div {
+  flex: 3;
+}
+body .connexites-engagements .left span.flex-short,
+body .connexites-engagements .traites span.flex-short,
+body .connexites-engagements .left .line div.flex-short,
+body .connexites-engagements .traites .line div.flex-short {
+  flex: 2;
+}
+body .connexites-engagements .left span.flex-long,
+body .connexites-engagements .traites span.flex-long,
+body .connexites-engagements .left .line div.flex-long,
+body .connexites-engagements .traites .line div.flex-long {
+  flex: 5;
+}
+body .connexites-engagements .left span.flex-pretty-long,
+body .connexites-engagements .traites span.flex-pretty-long,
+body .connexites-engagements .left .line div.flex-pretty-long,
+body .connexites-engagements .traites .line div.flex-pretty-long {
+  flex: 6;
+}
+body .connexites-engagements .left span.flex-min,
+body .connexites-engagements .traites span.flex-min,
+body .connexites-engagements .left .line div.flex-min,
+body .connexites-engagements .traites .line div.flex-min {
+  width: 100px;
+}
+body .connexites-engagements .title {
+  height: 32px;
+  display: flex;
+  margin: 0 0 7px 0;
+  padding: 0;
+}
+body .connexites-engagements .title h1,
+body .connexites-engagements .title div {
+  line-height: 32px;
+  height: 32px;
+  padding-left: 2px;
+  margin: 0;
+}
+body .connexites-engagements .title div.radios-inline {
+  margin-left: 20px;
+}
+body .connexites-engagements .title h1:first-child {
+  font-weight: bold;
+  font-size: larger;
+}
+body .connexites-engagements .header {
+  display: flex;
+  height: 32px;
+  line-height: 32px;
+  font-weight: bold;
+}
+body .connexites-engagements .header .pdl3 {
+  padding: 0 3px;
+}
+body .connexites-engagements .header .left,
+body .connexites-engagements .header .traites,
+body .connexites-engagements .header .commands {
+  display: flex;
+}
+body .connexites-engagements .header .traites {
+  max-width: 270px;
+}
+body .connexites-engagements .header .traites .flex-min {
+  flex: auto;
+  min-width: 95px;
+}
+body .connexites-engagements .header span {
+  text-align: center;
+  width: inherit;
+  height: 32px;
+  line-height: 32px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#DDDDDD', GradientType=0);
+  background-image: -webkit-gradient(linear, center top, center bottom, color-stop(0, #fff), color-stop(1, #ddd));
+  background-image: -moz-linear-gradient(top, #fff, #ddd);
+  background-image: linear-gradient(to bottom, #fff, #ddd);
+  /*-pie-background: linear-gradient(#EEFF99, #66EE33);*/
+  background-color: #eee;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  box-sizing: border-box;
+}
+body .connexites-engagements .header span.add-img-cell {
+  background: url('../../Images/plusajouter1616.png') no-repeat center center, -webkit-gradient(linear, center top, center bottom, color-stop(0, #fff), color-stop(1, #ddd));
+  background: url('../../Images/plusajouter1616.png') no-repeat center center, -moz-linear-gradient(top, #fff, #ddd);
+  /*-pie-background: linear-gradient(#EEFF99, #66EE33);*/
+  background-image: url('../../Images/plusajouter1616.png'), linear-gradient(to bottom, #fff, #ddd);
+  background-color: #eee;
+  cursor: pointer;
+  width: inherit;
+  height: 32px;
+  line-height: 32px;
+  padding: 0;
+}
+body .connexites-engagements .header span.auto-shorten {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+body .connexites-engagements .header span.masked {
+  background: none;
+}
+body .connexites-engagements .line {
+  height: 30px;
+}
+body .connexites-engagements .lines {
+  margin: 0;
+  padding: 0;
+  max-height: 102px;
+  display: flex;
+  overflow-x: hidden;
+}
+body .connexites-engagements .lines .line {
+  display: flex;
+}
+body .connexites-engagements .lines .line div {
+  line-height: 30px;
+}
+body .connexites-engagements .lines .line div.center {
+  text-align: center;
+}
+body .connexites-engagements .lines .line div.lpad {
+  padding-left: 5px;
+}
+body .connexites-engagements .lines .line div.auto-shorten {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+body .connexites-engagements .lines .line div.masked {
+  background-color: #FFF;
+}
+body .connexites-engagements .lines .line div.currency-align,
+body .connexites-engagements .lines .line input.currency-align {
+  text-align: right;
+  padding: 0 3px;
+  box-sizing: border-box;
+}
+body .connexites-engagements .lines .traites {
+  height: fit-content;
+}
+body .connexites-engagements .lines .traites .line {
+  min-width: 100px;
+  max-width: 270px;
+}
+body .connexites-engagements .lines .traites .line.fx-bas > div {
+  flex-basis: 110px;
+}
+body .connexites-engagements .lines .traites input {
+  width: 90px;
+}
+body .connexites-engagements .lines .commands .line i {
+  height: inherit;
+}
+body .connexites-engagements .lines .left .line:nth-child(odd),
+body .connexites-engagements .lines .traites .line:nth-child(odd),
+body .connexites-engagements .lines .commands .line:nth-child(odd) {
+  background-color: #FFF;
+}
+body .connexites-engagements .lines .left .line:nth-child(odd) > *,
+body .connexites-engagements .lines .traites .line:nth-child(odd) > *,
+body .connexites-engagements .lines .commands .line:nth-child(odd) > * {
+  background-color: #FFF;
+}
+body .connexites-engagements .lines .left .line:nth-child(even),
+body .connexites-engagements .lines .traites .line:nth-child(even),
+body .connexites-engagements .lines .commands .line:nth-child(even) {
+  background-color: #EDEEFF;
+}
+body .connexites-engagements .lines .left .line:nth-child(even) > *,
+body .connexites-engagements .lines .traites .line:nth-child(even) > *,
+body .connexites-engagements .lines .commands .line:nth-child(even) > * {
+  background-color: #EDEEFF;
+}
+body .connexites-engagements .lines .left .line:nth-child(even) > *.masked,
+body .connexites-engagements .lines .traites .line:nth-child(even) > *.masked,
+body .connexites-engagements .lines .commands .line:nth-child(even) > *.masked {
+  background-color: #FFF;
+}
+body .connexites-engagements .scrollbar {
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  display: flex;
+  /*.line {
+                height: auto;
+                min-height: 0;
+                max-height: 30px;
+
+                .invisible {
+                    visibility: hidden;
+                    height: 0px;
+                }
+            }*/
+}
+body .connexites-engagements .scrollbar .left,
+body .connexites-engagements .scrollbar .traites,
+body .connexites-engagements .scrollbar .commands {
+  display: flex;
+}
+body .connexites-engagements .scrollbar .traites {
+  max-width: 270px;
+}
+body .connexites-engagements .scrollbar .invisible {
+  visibility: hidden;
+  height: 0px;
+}
+body .connexites-engagements .scrollbar .invisible input {
+  width: 100px;
+}
+body .connexites-engagements .connexites .traites .line .flex-min {
+  flex: none;
+  min-width: 90px;
+  max-width: 95px;
+}
+body .connexites-engagements .periodes .header .commands .empty {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+body .connexites-engagements .periodes .lines {
+  min-height: 95px;
+}
+body .connexites-engagements .periodes .lines .commands {
+  min-width: 78px;
+}
+body .connexites-engagements .periodes .lines .commands .line.img20 i {
+  width: 16px;
+  height: 32px;
+  margin: 0 3px;
+}
+body .connexites-engagements .periodes .lines .traites .line .flex-min {
+  flex: none;
+  min-width: 90px;
+  max-width: 95px;
+}

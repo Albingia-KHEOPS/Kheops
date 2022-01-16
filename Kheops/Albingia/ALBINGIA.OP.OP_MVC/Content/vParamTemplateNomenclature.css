@@ -1,0 +1,60 @@
+﻿
+.col_HBrancheNomenclature {
+    width: 100px;
+}
+
+.col_HCibleNomenclature {
+    width: 100px;
+}
+
+.col_HLibelleNomenclature {
+    width: 270px;
+}
+
+.col_HAction {
+    width: 80px;
+}
+
+.col_BrancheNomenclature {
+    width: 100px;
+}
+
+.col_CibleNomenclature {
+    width: 100px;
+}
+
+.col_LibelleNomenclature {
+    width: 270px;
+}
+
+.col_Action {
+    width: 80px;
+}
+
+.divHeight {
+    height: 475px;
+    overflow-y: auto;
+}
+
+#VoletDetails {
+    display: none;
+}
+
+.PaddingLeft5
+{
+    padding-left: 10px;
+}
+
+.GroupHeight
+{
+    height: 575px;
+    margin-left: 12px;
+}
+
+.Validation
+{
+    clear: both;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    text-align: right;
+}

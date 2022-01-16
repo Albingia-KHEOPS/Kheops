@@ -1,0 +1,142 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRechercheOffreRapidePage
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml"; 
+}
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vRechercheOffreRapide.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albRechercheOffreRapide.js" }, "~/Scripts/AlbingiaJS/")
+<div>
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+</div>
+
+<div class="CommonForm TotalWidth">
+    <div id="divSearchContainer" calss="GroupFull GroupWithBorder TotalWidth">
+        <div id="divSearchCriteria" class="nHorizontalFullWithGroup SearchCriteria nHorizontalTotalWidth">
+            <div class="nGradientSection nDivSearch">
+                <div id="divOffreContratTitle" class="SubGroupTitleSearch">
+                    <div id="divGroupOffreContratTitle">
+                        @Html.Raw("Offre / Contrat")
+                    </div>
+                </div>
+                <div id="divOffreContratMenu" class="HeightRow">
+                    <div class="FloatLeft PaddingLeftCheck">
+                        <input type="checkbox" id="CheckOffre" name="CheckOffre" checked="checked" tabindex="1" albgroup="OffreContrat" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block labelCheckWidth" for="CheckOffre">Offre</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="CheckContrat" name="CheckContrat" checked="checked" tabindex="2" albgroup="OffreContrat" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block labelContrat" for="CheckContrat">Contrat</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block labelCodeOffre">N°</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="CodeOffre" name="CodeOffre" tabindex="3" albgroup="OffreContrat" />
+                    </div>
+
+                    <div class="FloatLeft PaddingLeft5">
+                        <input type="text" id="Version" name="Version" tabindex="4" albmask="numeric" albgroup="OffreContrat" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="nGradientSection nDivSearch">
+                <div id="divAdvancedTitle" class="SubGroupTitleSearch">
+                    <div>Recherche Avancé</div>
+                </div>
+                <div id="divAdvancedMenu">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Numéro Avenant</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="CodeAvenant" class="inputRechercheRapide" name="CodeAvenant" tabindex="5" title="" />
+                        </div>
+
+                        <div class="FloatLeft">
+                            <label class="Block">Type Traitement</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => Model.TypeTraitement, Model.TypeTraitements, "TypeTraitement", htmlAttributes: new {@id = "TypeTraitement", @tabindex = "6", @albGroup = "Advanced", @class = "inputRechercheRapide", @albEmplacement = "recherche", @albCFList = "branche"}, generateTitle: true)
+                        </div>
+
+
+                    </div>
+
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Date effet entre le</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.DateEffetAvnDebut, new {@class = "datepicker inputRechercheRapide", @tabindex = "7", @albGroup = "Advanced"})
+                        </div>
+                        <div class="FloatLeft">
+                            <label>et le</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.DateEffetAvnFin, new {@class = "datepicker inputRechercheRapide", @tabindex = "8", @albGroup = "Advanced"})
+                        </div>
+
+                        <div class="FloatLeft">
+                            <label class="Block">Crèe par</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="UserCrea" class="inputRechercheRapide" name="UserCrea" tabindex="12" title="" />
+                        </div>
+
+                        <div class="FloatLeft">
+                            <label class="Block">Mis à jour par</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="UserMaj" class="inputRechercheRapide" name="UserMaj" tabindex="13" title="" />
+                        </div>
+                    </div>
+
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Branche</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => Model.CodeBranche, Model.Branches, "Branches", htmlAttributes: new {@id = "CodeBranche", @tabindex = "9", @albGroup = "Advanced", @class = "FieldBranche inputRechercheRapide", @albEmplacement = "recherche", @albCFList = "branche"}, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Cible</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => Model.CodeCible, Model.Cibles, "CodeCible", htmlAttributes: new {@id = "CodeCible", @tabindex = "10", @albGroup = "Advanced", @class = "FieldBranche inputRechercheRapide", @albEmplacement = "recherche", @albCFList = "branche"}, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Periodicité</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => Model.CodePeriodicite, Model.Periodicites, "CodePeriodicite", htmlAttributes: new {@id = "CodePeriodicite", @tabindex = "11", @albGroup = "Advanced", @class = "FieldBranche inputRechercheRapide", @albEmplacement = "recherche", @albCFList = "branche"}, generateTitle: true)
+                        </div>
+
+                    </div>
+
+                    <div class="HeightRow">
+                        <div class="FloatRight actionbuttons">
+                            <button id="btnRechercher" type="button">
+                                <img id="imgRecherche" src='@Url.Content("/Content/Images/AffaireNouvelle/bouton_recherche_police_normal.png")' />Rechercher</button>&nbsp;&nbsp;
+                            <button id="btnRefresh" type="button">Réinitialiser</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div id="divResult" class="GroupFull GroupWithBorder TotalWidth">
+        @Html.Partial("ListeOffresRapides", Model.Result)
+    </div>
+    <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnAnnulerRetour" type="button" albshortcut="true" data-accesskey="t">Re<u>t</u>our</button>
+        </div>
+    </div>
+</div>

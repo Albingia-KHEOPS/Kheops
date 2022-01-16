@@ -1,0 +1,27 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationAttestationPage
+<div class="HeightRow">
+    <div id="tabPeriode" class="GenericColumn CursorPointer onglet-actif">
+        <label>Sélection des périodes</label>
+    </div>
+    <div id="tabRisqueObjet" class="@(Model.Contrat.Branche == " RC" ? "GenericColumn CursorPointer onglet None" : "GenericColumn CursorPointer onglet" )">
+        <label>Sélection risques/objets</label>
+    </div>
+    <div id="tabGarantie" class="@(Model.Contrat.Branche == " RC" ? "GenericColumn CursorPointer onglet None" : "GenericColumn CursorPointer onglet" )">
+        <label>Sélection garanties</label>
+    </div>
+    <div class="onglet-vide"></div>
+</div>
+<div class="HeightInfoAttes PaddingTop">
+    <div id="dvAttesPeriode">
+        <div class="FloatLeft dvAttestation">
+            @*nGradientSection *@
+            @Html.Partial("AttesPeriode", Model)
+        </div>
+        <div class="FloatLeft dvAlertAttes" data-min-height="203" data-max-height="406">
+            @*nGradientSection *@
+            @Html.Partial("/Views/CreationAvenant/AvenantAlerte.cshtml", Model.Alertes)
+        </div>
+    </div>
+    <div id="dvAttesRsqObj" class="dvAttestationRsqObjGar None"></div>
+    <div id="dvAttesGar" class="dvAttestationRsqObjGar None"></div>
+</div>

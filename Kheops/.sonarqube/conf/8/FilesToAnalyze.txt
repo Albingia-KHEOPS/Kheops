@@ -1,0 +1,2 @@
+﻿C:\Users\ifall\Documents\IFALL\Recette\Kheops\RestContracts\IWebAvenant.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\RestContracts\Properties\AssemblyInfo.cs

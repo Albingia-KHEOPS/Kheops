@@ -1,0 +1,220 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.InformationBase
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block">Branche*</label>
+    </div>
+    <div class="labelSpace">
+        @if (!Model.EditMode && !Model.TemplateMode && !Model.CopyMode || Model.LoadTemplateMode)
+        {
+            @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "Branche", htmlAttributes: new { @id = "Branche", @tabindex = "1", @albEmplacement = "creation", @class = "inputBranche", @albCFList = "branche" }, generateTitle: true, genEmptyLine: true)
+        }
+        else
+        {
+            @Html.Hidden("Branche", (Model.Branches.Find(elm => elm.Value == Model.Branche) != null ? Model.Branches.Find(elm => elm.Value == Model.Branche).Value : Model.Branche), new { id = "InformationBase_Branche" })
+            <input type="text" id="InformationBase_BrancheText" name="BrancheText" readonly="readonly" tabindex="1" class="readonly inputBranche" albCFList="branche" value="@(Model.Branches.Find(elm => elm.Value == Model.Branche) != null ? Model.Branches.Find(elm => elm.Value == Model.Branche).Text : Model.Branche)" title="@(Model.Branches.Find(elm => elm.Value == Model.Branche) != null ? Model.Branches.Find(elm => elm.Value == Model.Branche).Text : Model.Branche)" />
+        }
+    </div>
+    @Html.Hidden("hideCible", Model.Cible_InformationBase.Cible)
+    <div id="cibleDiv" class="Column divCible">
+        @Html.Partial("Cible_InfoBase", Model.Cible_InformationBase)
+    </div>
+    <div id="templateDiv" class="Column divTemplate" style="margin-top: -3px;">
+        @if (Model.InformationTemplate != null)
+        {
+            @Html.Partial("Template_InfoBase", Model.InformationTemplate)
+        }
+    </div>
+    <div class="FloatLeft">
+        <label class="labelEffet">Effet*</label>
+    </div>
+    <div class="labelSpace">
+        @if (!Model.EditMode)
+        {
+            @Html.AlbDateFormat(m => m.DateEffet, new { @tabindex = "3", @class = "datepicker inputDate" })
+            @Html.ValidationMessageFor(m => m.DateEffet, String.Empty, new { @style = "display: none" })
+        }
+        else
+        {
+            <input type="text" id="DateEffet" name="DateEffet" readonly="readonly" tabindex="3" class="readonly inputDate" value="@(Model.DateEffet.HasValue ? Model.DateEffet.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+        }
+    </div>
+    <div class="FloatLeft">
+        @if (!Model.EditMode)
+        {
+            @Html.AlbTimePicker(m => m.HeureEffet, "HeureEffet", new { @class = "HourMinute", @tabindex = "4" })
+        }
+        else
+        {
+            @Html.AlbTimePicker(m => m.HeureEffet, "HeureEffet", new { @class = "readonly HourMinute", @disabled = "disabled", @tabindex = "4" })
+        }
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <div class="FloatLeft">
+            <label class="Block">Type de contrat*</label>
+        </div>
+        <div class="FloatLeft">
+            @if (!Model.EditMode)
+            {
+                @Html.AlbDropDownListFor(m => m.TypeContrat, Model.TypesContrat, "InformationBase.TypeContrat", htmlAttributes: new { @id = "InformationBase_TypeContrat", @class = "inputTypeContrat", @tabindex = "6" }, generateTitle: true, genEmptyLine: false)
+            }
+            else
+            {
+                @Html.Hidden("TypeContrat", Model.TypeContrat, new { id = "InformationBase_TypeContrat" })
+                <input type="text" readonly="readonly" tabindex="6" class="readonly inputTypeContrat" value="@(Model.TypesContrat.Find(elm => elm.Value == Model.TypeContrat) != null ? Model.TypesContrat.Find(elm => elm.Value == Model.TypeContrat).Text : Model.TypeContrat)" title="@(Model.TypesContrat.Find(elm => elm.Value == Model.TypeContrat) != null ? Model.TypesContrat.Find(elm => elm.Value == Model.TypeContrat).Text : Model.TypeContrat)"/>
+            }
+        </div>
+    </div>
+    <div class="FloatLeft" style="padding-left: 19px; width: 243px;">
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="width: 73px;">Contrat mère</label>
+        </div>
+        <div class="FloatLeft" style="padding-left: 5px">
+            @if (Model.TypeContrat == "A" && !Model.EditMode)
+            {
+                <input type="text" id="InformationBase_ContratMere" name="ContratMere" tabindex="7" value="@(string.IsNullOrEmpty(Model.ContratMereParam) ? string.Empty : Model.ContratMereParam.ToUpper()) " style="text-transform:uppercase;" />
+            }
+            else
+            {
+                <input type="text" id="InformationBase_ContratMere" name="ContratMere" disabled="disabled" tabindex="7" class="readonly" value="@(Model.TypeContrat == "A" && !string.IsNullOrEmpty(Model.ContratMere) ? Model.ContratMere.ToUpper() : string.Empty)" style="text-transform:uppercase;" />
+            }
+        </div>
+
+    </div>
+    <div class="FloatLeft">
+        <div class="FloatLeft LblNumAliment">
+            <label class="Block">N° Aliment</label>
+        </div>
+        <div class="FloatLeft PaddingNumAliment">
+            @if (Model.TypeContrat == "A" && !Model.EditMode)
+            {
+                <input type="text" id="InformationBase_NumAliment" name="NumAliment" tabindex="8" class="numerique" albmask="numeric" style="width: 35px" />
+            }
+            else
+            {
+                <input type="text" id="InformationBase_NumAliment" name="NumAliment" disabled="disabled" tabindex="8" class="readonly numerique" albmask="numeric" value="@(Model.TypeContrat == "A" && !string.IsNullOrEmpty(Model.NumAliment) ? Model.NumAliment : string.Empty)" style="width: 35px"/>
+            }
+        </div>
+        <div class="FloatLeft">
+            @if (Model.TypeContrat == "A" && !Model.EditMode)
+            {
+                <img id="btnRechPolice" src="@Url.Content("/Content/Images/loupe.png")" alt="" class="CursorPointer" />
+            }
+            else
+            {
+                <img id="btnRechPolice" src="@Url.Content("/Content/Images/loupegris.png")" alt="" />
+            }
+        </div>
+    </div>
+    <div class="FloatLeft">
+        <div class="FloatLeft" style="padding-left: 40px">
+            <label class="Block labelDateAccord">Accord*</label>
+        </div>
+        <div class="FloatLeft" style="padding-left: 4px">
+            @if (!Model.EditMode)
+            {
+                @Html.AlbDateFormat(m => m.DateAccord, new { @tabindex = "5", @class = "datepicker inputDate" })
+                @Html.ValidationMessageFor(m => m.DateAccord, String.Empty, new { @style = "display: none" })
+            }
+            else
+            {
+                <input type="text" id="DateAccord" name="DateAccord" readonly="readonly" tabindex="5" class="readonly inputDate" value="@(Model.DateAccord.HasValue ? Model.DateAccord.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+            }
+        </div>
+    </div>
+
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <div class="FloatLeft">
+            <label class="Block">Identification*</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="InformationContrat_Descriptif" albhorsavn name="Descriptif" tabindex="12" class="MaxInput NonReprisCP" maxlength="40" value="@(Model.Descriptif)" />
+        </div>
+        <div class="FloatLeft">
+            <label class="Block">Contrat remplacé</label>
+        </div>
+        <div class="FloatLeft">
+            @if (Model.ContratRemplace)
+            {
+                if (!Model.EditMode)
+                {
+                <input type="checkbox" id="ContratRemplace" name="ContratRemplace" value="true" tabindex="9" checked="checked" />
+                }
+                else
+                {
+                <input type="checkbox" id="ContratRemplace" name="ContratRemplace" value="true" tabindex="9" checked="checked" disabled="disabled" class="readonly" />
+                }
+            }
+            else
+            {
+                if (!Model.EditMode)
+                {
+                <input type="checkbox" id="ContratRemplace" name="ContratRemplace" value="true" tabindex="9" />
+                }
+                else
+                {
+                <input type="checkbox" id="ContratRemplace" name="ContratRemplace" value="true" tabindex="9" disabled="disabled" class="readonly" />
+                }
+            }
+        </div>
+        <div class="ColumnContratRemplace FloatLeft">
+            <div class="FloatLeft">
+                @if (Model.ContratRemplace)
+                {
+                    <input type="text" id="InformationBase_NumContratRemplace" name="NumContratRemplace" value="@Model.NumContratRemplace" tabindex="10" />
+                }
+                else
+                {
+                    <input type="text" id="InformationBase_NumContratRemplace" name="NumContratRemplace" value="@Model.NumContratRemplace" disabled="disabled" tabindex="10" class="readonly" />
+                }
+            </div>
+        </div>
+        <div class="FloatLeft">
+            <div class="FloatLeft">
+                @if (Model.ContratRemplace)
+                {
+                    <input type="text" id="InformationBase_NumAlimentRemplace" name="NumAlimentRemplace" value="@Model.NumAlimentRemplace" tabindex="11" class="numerique" albmask="numeric" style="width: 60px" />
+                }
+                else
+                {
+                    <input type="text" id="InformationBase_NumAlimentRemplace" name="NumAlimentRemplace" value="@Model.NumAlimentRemplace" disabled="disabled" tabindex="11" class="readonly numerique" albmask="numeric" style="width: 60px" />
+                }
+            </div>
+            <div class="FloatLeft ImgRech">
+                @* <input type="button" id="btnRechContrat" class="btnRechDisabled" disabled="disabled" />*@
+                @if (Model.ContratRemplace && Model.EditMode)
+                {
+                    <img id="btnRechContrat" src="@Url.Content("/Content/Images/loupe.png")" alt="" />
+                }
+                else
+                {
+                    <img id="btnRechContrat" src="@Url.Content("/Content/Images/loupegris.png")" alt="" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="HeightRow">
+    @Html.Hidden("SouscripteurSelect", Model.SouscripteurCode, new { id = "InformationBase_SouscripteurSelect", albAutoComplete = "autoCompSouscripteurSelect" })
+    @Html.HiddenFor(m => m.SouscripteurCode, new { albAutoComplete = "autoCompSouscripteurCode" })
+    <div class="FloatLeft">
+        <label class="Block">Souscripteur*</label>
+    </div>
+    <div class="divSouscripteur">
+        <input type="text" albhorsavn id="InformationBase_SouscripteurNom" name="SouscripteurNom" tabindex="13" value="@Model.SouscripteurNom" class="MaxInput" albAutoComplete="autoCompSouscripteurNom" />
+        @Html.ValidationMessageFor(m => m.SouscripteurNom, "", new { @style = "display:none;" })
+    </div>
+    @Html.Hidden("GestionnaireSelect", Model.GestionnaireCode, new { id = "InformationBase_GestionnaireSelect", albAutoComplete = "autoCompGestionnaireSelect" })
+    @Html.HiddenFor(m => m.GestionnaireCode, new { albAutoComplete = "autoCompGestionnaireCode" })
+    <div class="FloatLeft">
+        <label class="Block">Gestionnaire*</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" albhorsavn id="InformationBase_GestionnaireNom" name="GestionnaireNom" tabindex="14" value="@Model.GestionnaireNom" class="MaxInput" albAutoComplete="autoCompGestionnaireNom" />
+        @Html.ValidationMessageFor(m => m.GestionnaireNom, "", new { @style = "display:none;" })
+    </div>
+</div>

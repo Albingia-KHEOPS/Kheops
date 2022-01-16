@@ -1,0 +1,30 @@
+﻿CREATE TABLE ZALBINKHEO.KINVTYP ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KINVTYP de ZALBINKHEO ignoré. 
+--  SQL1506   30   Clé ou attribut ignoré pour KINVTYP de ZALBINKHEO. 
+	KAGID NUMERIC(15, 0) NOT NULL DEFAULT 0 , 
+	KAGTYINV CHAR(20) CCSID 297 NOT NULL DEFAULT '' , 
+	KAGDESC CHAR(40) CCSID 297 NOT NULL DEFAULT '' , 
+	KAGTMAP NUMERIC(2, 0) NOT NULL DEFAULT 0 , 
+	KAGTABLE CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KAGKGGID NUMERIC(15, 0) NOT NULL DEFAULT 0 )   
+	RCDFMT FINVTYP    ; 
+  
+LABEL ON TABLE ZALBINKHEO.KINVTYP 
+	IS 'Inventaire référentiel                         KAG' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KINVTYP 
+( KAGID IS 'ID unique' , 
+	KAGTYINV IS 'Code inventaire' , 
+	KAGDESC IS 'Description' , 
+	KAGTMAP IS 'Typologie Grille' , 
+	KAGTABLE IS 'Table de détail' , 
+	KAGKGGID IS 'Lien KFILTRE' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KINVTYP 
+( KAGID TEXT IS 'ID unique' , 
+	KAGTYINV TEXT IS 'Code inventaire' , 
+	KAGDESC TEXT IS 'Description' , 
+	KAGTMAP TEXT IS 'Typologie Grille de saisie' , 
+	KAGTABLE TEXT IS 'Table de détail' , 
+	KAGKGGID TEXT IS 'Lien KFILTRE' ) ; 
+  

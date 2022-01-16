@@ -1,0 +1,215 @@
+﻿.HeightTextArea
+{
+    height: 95px;
+}
+
+.HeightDetailInfo
+{
+    height: 491px;
+}
+
+.tBodyLCIFRH
+{
+    table-layout: fixed;
+    width: 383px;
+}
+
+.bodyLCIFRH
+{
+    height: 203px;
+    overflow-y: auto;
+}
+
+.RefTotalWidth
+{
+    width: 1193px !important;
+}
+
+.RefListWidth
+{
+    width: 400px;
+    height: 535px;
+}
+
+.RefDetailWidth
+{
+    width: 779px;
+    height: 535px;
+}
+
+.dvListHeight
+{
+    height: 237px;
+}
+
+.thExpCode
+{
+    width: 60px;
+}
+
+.thExpLib
+{
+    width: 253px;
+}
+
+.thExpImg
+{
+    width: 50px;
+}
+
+.tdExpCode
+{
+    padding-left: 5px;
+    width: 58px;
+}
+
+.tdExpLib
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px;
+    width: 251px;
+}
+
+.tdExpImg
+{
+    text-align: center;
+    width: 52px;
+}
+
+.lblCodeExpr
+{
+    display: block;
+    width: 70px;
+}
+
+.inCodeExpr
+{
+    width: 12px !important;
+    text-align: center;
+    /*Mise en commentaire le 2015-03-30 réduction du nombre de caractères de l'expression complexe*/
+    /*width: 30px !important;*/
+}
+
+.lblLibExpr
+{
+    display: block;
+    width: 45px;
+}
+
+.inLibExpr
+{
+    width: 450px !important;
+}
+
+.lblModifExpr
+{
+    display: block;
+    width: 60px;
+}
+
+.lblDescrExpr
+{
+    display: block;
+    width: 45px;
+}
+
+.txtDescrExpr
+{
+    width: 760px;
+}
+
+.HeightTabDetail
+{
+    height: 280px;
+    width: 662px;
+}
+
+.tabHeaderDetail
+{
+    width: 643px;
+}
+
+.tabBodyDetail
+{
+    width: 643px;
+    table-layout: fixed;
+}
+
+.thValLCI
+{
+    width: 158px;
+}
+
+.thValMinMax
+{
+    width: 99px;
+}
+
+.thUnitType
+{
+    width: 65px;
+}
+
+.thDebFin
+{
+    width: 72px;
+}
+
+.thImg
+{
+    width: 22px;
+}
+
+.tdValLCI
+{
+    width: 155px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.tdValMinMax
+{
+    width: 96px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.tdUnitType
+{
+    width: 67px;
+    text-align: center;
+}
+
+.tdDebFin
+{
+    text-align: center;
+    width: 74px;
+}
+
+.tdImg
+{
+    width: 24px;
+    text-align: center;
+}
+
+.inValLCI
+{
+    width: 157px !important;
+}
+
+.inValMinMax
+{
+    width: 96px !important;
+}
+
+.inUnitType
+{
+    width: 64px !important;
+}
+
+.inDebFin
+{
+    width: 70px !important;
+}

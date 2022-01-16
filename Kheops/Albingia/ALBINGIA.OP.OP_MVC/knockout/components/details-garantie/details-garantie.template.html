@@ -1,0 +1,298 @@
+﻿
+<div class="ko-cloak conceal">
+    <div class="container container-details">
+        <div class="main-title" data-bind="text: title"></div>
+        <div class="container-lines">
+            <div>
+                <div class="input-line n-data-inline">
+                    <div>
+                        <label class="block-line">Caractère</label>
+                        <input type="text" data-bind="readonly: true, value: CodeCaractere" />
+                    </div>
+                    <div>
+                        <label class="block-line">Nature standard</label>
+                        <input type="text" data-bind="readonly: true, value: CodeNature" />
+                    </div>
+                    <div>
+                        <label class="block-line">Nature retenue</label>
+                        <input type="text" data-bind="readonly: true, value: NatureRetenue.Code_Label" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-lines">
+            <div>
+                <div class="sub-title">Plage de dates possibles :</div>
+
+                <div class="input-line date-time">
+                    <div class="date">
+                        <label class="block-line">Début</label>&nbsp;
+                        <input type="text" title="Date début standard" data-bind="readonly: true, value: dateDebutStd, css :{'invalid-value': isDateDebutInvalid }" />
+                    </div>
+                    <div class="time">
+                        <label>à</label>&nbsp;
+                        <select disabled title="Heure début standard" class="readonly" data-bind="css :{'invalid-value': isDateDebutInvalid }">
+                            <option selected value="heureDebutStd().substr(0, 2)"><!-- ko text: heureDebutStd().substr(0, 2) --><!-- /ko --></option>
+                        </select>
+                        :
+                        <select disabled title="Minutes début standard" class="readonly" data-bind="css :{'invalid-value': isDateDebutInvalid }">
+                            <option selected value="heureDebutStd().substr(3, 2)"><!-- ko text: heureDebutStd().substr(3, 2) --><!-- /ko --></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-line date-time">
+                    <div class="date">
+                        <label class="block-line">Fin</label>&nbsp;
+                        <input type="text" title="Date fin standard" data-bind="readonly: true, value: dateFinStd, css: {'invalid-value': isDateFinInvalid }" />
+                    </div>
+                    <div class="time">
+                        <label>à</label>&nbsp;
+                        <select disabled title="Heure fin standard" class="readonly"  data-bind="css :{'invalid-value': isDateFinInvalid }">
+                            <option selected value="heureFinStd().substr(0, 2)"><!-- ko text: heureFinStd().substr(0, 2) --><!-- /ko --></option>
+                        </select>
+                        :
+                        <select disabled title="Minutes fin standard" class="readonly" data-bind="css :{'invalid-value': isDateFinInvalid }">
+                            <option selected value="heureFinStd().substr(3, 2)"><!-- ko text: heureFinStd().substr(3, 2) --><!-- /ko --></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sub-title">Dates de la garantie :</div>
+                <div class="input-line date-time">
+                    <div class="date">
+                        <label class="block-line">Début</label>&nbsp;
+                        <input type="text" data-bind="readonly: cannotEditDateDebut, disable: cannotEditDateDebut, dateselector: { value: dateDebut, pickerOptions: { dateFormat: 'dd/mm/yy' }, onlyTriggerChange: true },css: { 'invalid-value': isDateDebutInvalid }" title="Date début forcée" />
+                    </div>
+                    <div class="time">
+                        <label>à</label>&nbsp;
+                        <select data-bind="disable: cannotEditDateDebut, value: heuresDebut, options: hours, valueAllowUnset: true, optionsCaption: '', css: { 'invalid-value': !heuresDebut.requireState.isValid() || isDateDebutInvalid() }" title="Heures début forcée"></select>
+                        :
+                        <select data-bind="disable: cannotEditDateDebut, value: minutesDebut, options: minutes, valueAllowUnset: true, optionsCaption: '', css: { 'invalid-value': !minutesDebut.requireState.isValid() || isDateDebutInvalid() }" title="Minutes début forcée"></select>
+                    </div>
+                </div>
+                <div class="input-line date-time">
+                    <div class="date">
+                        <label class="block-line">
+                            <input type="checkbox" data-bind="checked: enterDateFin, disable: isReadonly, css: { readonly: isReadonly }" />
+                            Fin
+                        </label>&nbsp;
+                        <input type="text" data-bind="readonly: isReadonly || isDateFinImplied(), disable: isReadonly, dateselector: { value: dateFin, pickerOptions: { dateFormat: 'dd/mm/yy', showOn: isDateFinEntered }, onlyTriggerChange: true }, css: { 'invalid-value': !dateFin.requireState.isValid() || isChampDateFinInvalid()}" title="Date fin forcée" />
+                    </div>
+                    <div class="time">
+                        <label>à</label>&nbsp;
+                        <select title="Heures fin forcées" data-bind="disable: isReadonly || isDateFinImplied() || isFinEmpty(), valueAllowUnset: true, value: heuresFin, options: hours, optionsCaption: '', css: { 'invalid-value': !heuresFin.requireState.isValid() || isChampDateFinInvalid(), 'readonly': isReadonly || isDateFinImplied() || isFinEmpty()  }"></select>
+                        :
+                        <select title="Minutes fin forcées" data-bind="disable: isReadonly || isDateFinImplied() || isFinEmpty(), valueAllowUnset: true, value: minutesFin, options: minutes, optionsCaption: '', css: { 'invalid-value': !minutesFin.requireState.isValid() || isChampDateFinInvalid(), 'readonly': isReadonly || isDateFinImplied() || isFinEmpty() }"></select>
+                    </div>
+                </div>
+                <div class="input-line duration">
+                    <label class="block-line">
+                        <input type="checkbox" data-bind="checked: enterDuree, disable: isReadonly, css: { readonly: isReadonly }" />
+                        Durée
+                    </label>&nbsp;
+                    <input class="value" type="text" title="Durée" data-bind="readonly: isReadonly || isDureeIgnored(), disable: isReadonly, autoNumeric: { value: Duree, allowNull: true, min: 1 }, css: { 'invalid-value': !Duree.requireState.isValid() || isChampDureeInvalid() }" />
+                    <select class="unit" type="text" data-bind="disable: isReadonly || isDureeIgnored(), valueAllowUnset: true, value: DureeUnite, options: DureeUnites, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', css: { 'invalid-value': !DureeUnite.requireState.isValid() || isChampDureeInvalid(), 'readonly': isReadonly || isDureeIgnored() }"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-lines flex-it">
+            <div class="flex1-3">
+                <div>
+                    <label>
+                        <input type="checkbox" data-bind="checked: IsGarantieIndexee, disable: cannotChangeGarantieIndexee, css: { readonly: cannotChangeGarantieIndexee }" title="Garantie indexée" />
+                        Garanties indexée
+                    </label>
+                </div>
+                <div class="big-tab-right">
+                    <label>
+                        <input type="checkbox" data-bind="checked: HasLCI, disable: true, css: { readonly: isReadonly }" title="LCI" />
+                        LCI
+                    </label>
+                </div>
+
+                <div class="big-tab-right">
+                    <label>
+                        <input type="checkbox" data-bind="checked: HasFranchise, disable: true, css: { readonly: isReadonly }" title="Franchise" />
+                        Franchise
+                    </label>
+                </div>
+
+                <div class="big-tab-right">
+                    <label>
+                        <input type="checkbox" data-bind="checked: HasAssiette, disable: true, css: { readonly: isReadonly }" title="Assiette" />
+                        Assiette
+                    </label>
+                </div>
+            </div>
+            <div class="flex2-3">
+                <div class="input-line children-fill">
+                    <div>
+                        <label class="block-line">Soumis CATNAT</label>
+                        <input type="checkbox" data-bind="checked: HasCATNAT, disable: cannotChangeCATNAT, css: { readonly: cannotChangeCATNAT }" title="Soumis CATNAT" />
+                    </div>
+                    <div>
+                        <!-- ko if: IsTemporaire -->
+                        <div><b>Temporaire : pour la durée de la garantie et au comptant</b></div>
+                        <!-- /ko -->
+                        <!-- ko ifnot: IsTemporaire -->
+                        <label class="block-line">Application</label>
+                        <select data-bind="options: Applications, value: CodeTypeApplication, valueAllowUnset: true, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', disable: isReadonly, css: { readonly: isReadonly }"></select>
+                        <!-- /ko -->
+                    </div>
+                </div>
+
+                <div class="input-line children-fill">
+                    <div>
+                        <label class="block-line">Incl. montant réf</label>
+                        <input type="checkbox" data-bind="checked: InclusMontant, disable: isReadonly, css: { readonly: isReadonly }" title="Inclus montant référence" />
+                    </div>
+                    <!-- ko ifnot: IsTemporaire -->
+                    <div>
+                        <label class="block-line">Type d'émission</label>
+                        <select data-bind="options: TypesEmissions, value: CodeTypeEmission, valueAllowUnset: true, optionsValue: 'Code', optionsText: 'Code_Label', disable: isReadonly, css: { readonly: isReadonly }"></select>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <div class="input-line children-fill">
+                    <div>
+                        <label class="block-line">Régularisation</label>
+                        <input type="checkbox" data-bind="checked: Regularisable, disable: true" />
+                    </div>
+                    <!-- ko ifnot: IsTemporaire -->
+                    <div>
+                        <label class="block-line">Grille</label>
+                        <input type="text" title="Grille" data-bind="value: GrilleRegul, readonly: true" />
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container-lines">
+            <div>
+                <div class="input-line n-data-inline">
+                    <div>
+                        <label class="block-line">Code Taxe</label>
+                        <select data-bind="options: CodesTaxes, value: CodeTaxe, valueAllowUnset: true, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', disable: isReadonly, css: { readonly: isReadonly }"></select>
+                    </div>
+                    <div>
+                        <label class="block-line">Définition garantie</label>
+                        <input type="text" data-bind="value: Definition, readonly: true" title="Définition garantie" />
+                    </div>
+                    <div>
+                        <label class="block-line">Alimentation</label>
+                        <select data-bind="options: AlimentationsAssiettes, value: CodeAlimentationAssiette, valueAllowUnset: true, optionsValue: 'Code', optionsText: 'Code_Label', disable: isReadonly, css: { readonly: isReadonly }"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container container-foot">
+        <div class="input-line">
+            <div class="flex1-19">
+                <img id="infoDetail" src="/Content/Images/alertes/notif_icn_info16.png" alt="Informations" class="CursorPointer" data-bind="click: showHideDetailsValeurs" />
+            </div>
+
+            <div class="textRouge flex14-19">
+                <span data-bind="if: isObligatoire">Attention la garantie est obligatoire, la modification des dates risque de créer des incohérences.</span>
+            </div>
+
+            <div class="flex4-19">
+                <!-- ko if: isReadonly -->
+                <button type="button" albshortcut="true" accesskey="f" data-bind="click: cancelEdit"><u>F</u>ermer</button>
+                <!-- /ko -->
+                <!-- ko ifnot: isReadonly -->
+                <button type="button" albshortcut="true" accesskey="a" data-bind="click: cancelEdit"><u>A</u>nnuler</button>
+                <button type="button" albshortcut="true" accesskey="v" data-bind="click: validateEdit"><u>V</u>alider</button>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="infosValeursGarantie" class="ko-component-popup" title="Details des valeurs">
+    <div class="container container-details main-area" data-bind="with: DetailsValeurs">
+        <div class="main-title"><!-- ko text: labelGarantie --><!-- /ko --></div>
+        <div class="container-lines">
+            <div>
+                <table id="tblInfoDetail1" class="trHeight infos-table">
+                    <tr>
+                        <td class="labelInfo1">Type de contrôle</td>
+                        <td class="PaddingLeft"><!-- ko text: typeControle --><!-- /ko --></td>
+                    </tr>
+                    <tr>
+                        <td class="labelInfo1">Groupe alternatif</td>
+                        <td class="PaddingLeft"><!-- ko text: GroupeAlternatif --><!-- /ko --></td>
+                    </tr>
+                    <tr>
+                        <td class="labelInfo1">Type appli prime</td>
+                        <td class="PaddingLeft"><!-- ko text: TypeApplication --><!-- /ko --></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container-lines">
+            <div>
+                <table id="tblInfoDetail2" class="trHeight infos-table">
+                    <tr>
+                        <th class="labelInfo2">&nbsp;</th>
+                        <th class="valeur">Valeur</th>
+                        <th>Unité</th>
+                        <th>Base</th>
+                        <th>MAJ</th>
+                        <th>Obli.</th>
+                    </tr>
+                    <tr>
+                        <td class="labelInfo2">Franchise</td>
+                        <td class="valeur">
+                            <span data-bind="attr: { albMask: uniteFormat('Franchise') }"><!-- ko text: valeurReelle("Franchise") --><!-- /ko --></span>
+                        </td>
+                        <td><!-- ko text: FranchiseUnite --><!-- /ko --></td>
+                        <td><!-- ko text: FranchiseType --><!-- /ko --></td>
+                        <td><!-- ko text: FranchiseMAJ  --><!-- /ko --></td>
+                        <td><!-- ko text: FranchiseOblig --><!-- /ko --></td>
+                    </tr>
+                    <tr>
+                        <td class="labelInfo2">LCI</td>
+                        <td class="valeur">
+                            <span data-bind="attr: { albMask: uniteFormat('LCI') }"><!-- ko text: valeurReelle("LCI") --><!-- /ko --></span>
+                        </td>
+                        <td><!-- ko text: LCIUnite  --><!-- /ko --></td>
+                        <td><!-- ko text: LCIType --><!-- /ko --></td>
+                        <td><!-- ko text: LCIMAJ --><!-- /ko --></td>
+                        <td><!-- ko text: LCIOblig --><!-- /ko --></td>
+                    </tr>
+                    <tr>
+                        <td class="labelInfo2">Assiette</td>
+                        <td class="valeur">
+                            <span data-bind="attr: { albMask: uniteFormat('Assiette') }"><!-- ko text: valeurReelle("Assiette") --><!-- /ko --></span>
+                        </td>
+                        <td><!-- ko text: AssietteUnite --><!-- /ko --></td>
+                        <td><!-- ko text: AssietteType --><!-- /ko --></td>
+                        <td><!-- ko text: AssietteMAJ --><!-- /ko --></td>
+                        <td><!-- ko text: AssietteOblig --><!-- /ko --></td>
+                    </tr>
+                    <tr>
+                        <td class="labelInfo2">Prime</td>
+                        <td class="valeur">
+                            <span data-bind="attr: { albMask: uniteFormat('Prime') }"><!-- ko text: valeurReelle("Prime") --><!-- /ko --></span>
+                        </td>
+                        <td><!-- ko text: PrimeUnite --><!-- /ko --></td>
+                        <td><!-- ko text: PrimeType --><!-- /ko --></td>
+                        <td><!-- ko text: PrimeMAJ --><!-- /ko --></td>
+                        <td><!-- ko text: PrimeOblig --><!-- /ko --></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container container-foot bottom-area">
+        <div class="input-line-right padding5">
+            <button id="btnCloseInfoDetail" type="button" albshortcut="true" accesskey="m" data-bind="click: closeDetailsValeurs">Fer<u>m</u>er</button>
+        </div>
+    </div>
+</div>

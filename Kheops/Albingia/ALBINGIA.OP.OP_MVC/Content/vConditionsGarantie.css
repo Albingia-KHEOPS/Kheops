@@ -1,0 +1,562 @@
+﻿/*.Height15
+{
+    clear: both;
+    height: 15px;
+    margin-bottom: 5px;
+}*/
+
+#areaConditionsGaranties {
+    position: relative;
+}
+
+    #areaConditionsGaranties #overlayCG {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0;
+        margin: 0;
+        border: none;
+        z-index: 2000;
+        background-color: rgba(0, 0, 0, 0.125);
+    }
+
+.LCIWidth {
+    width: 85px;
+}
+
+.SuperInput
+{
+    width: 385px !important;
+}
+
+#ConteneurFull
+{
+    height: 371px;
+}
+
+#divTabCondition
+{
+    width: 1000px;
+}
+
+#tblHeaderCondition
+{
+    width: 983px;
+}
+
+#tblConditions
+{
+    width: 983px;
+}
+
+#tblHeaderCondition tr
+{
+    height: 1px;
+}
+
+#tblConditions tr, #tblConditions2 tr
+{
+    height: 20px !important;
+}
+
+.maxHeight
+{
+    overflow: auto;
+    max-height: 293px;
+}
+
+.maxHeight.with-gareat {
+    overflow: auto;
+    max-height: 250px;
+}
+
+.maxHeightFull
+{
+    overflow: auto;
+    max-height: 567px;
+}
+
+/*Style pour le tableau des conditions de garantie*/
+.td20
+{
+    width: 20px;
+}
+
+.td53
+{
+    width: 53px;
+}
+
+.td108
+{
+    width: 108px;
+}
+
+.td226
+{
+    width: 226px;
+}
+
+#tblConditions input
+{
+    width: 105px;
+}
+
+#tblConditions select
+{
+    width: 51px;
+}
+/*------------------------------------------------*/
+
+/*Style pour la div flottante du full screen*/
+
+#divFullScreen
+{
+    display: none;
+}
+
+#divDataFullScreen
+{
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; 
+    height: 671px;
+}
+
+
+/*------------------------------------------*/
+
+/*Style pour la div flottante des expressions complexes*/
+#divExprComplexe
+{
+    display: none;
+}
+
+#divDataExprComp
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}
+
+.GlobalWidthComplexe
+{
+    width: 699px;
+}
+
+.WidthComplexe
+{
+    width: 680px;
+}
+
+.WidthInfoComplexe
+{
+    width: 676px !important;
+}
+
+#tblHeaderExpr, #tblInfoExpr, #tblHeaderLCI, #tblHeaderFranchise, #tblDetail
+{
+    width: 643px;
+}
+
+    #tblHeaderExpr tr, #tblHeaderLCI tr, #tblHeaderFranchise tr
+    {
+        height: 1px !important;
+    }
+
+.divInfoExpr
+{
+    width: 660px;
+    max-height: 107px;
+    overflow: auto;
+}
+
+.divInfoExprMax
+{
+    width: 660px;
+    max-height: 442px;
+    overflow: auto;
+}
+
+#divDetail
+{
+    width: 661px;
+    max-height: 100px;
+    overflow: auto;
+}
+
+.td33
+{
+    width: 33px;
+}
+
+.td64
+{
+    width: 64px;
+}
+
+.td72
+{
+    width: 72px;
+}
+
+.td83
+{
+    width: 83px;
+}
+
+.td109
+{
+    width: 109px;
+}
+
+.td284
+{
+    width: 284px;
+}
+
+.LargeInput
+{
+    width: 378px !important;
+}
+
+.FullTextarea
+{
+    width: 631px;
+}
+
+.HeightTextarea
+{
+    height: 90px;
+}
+
+.HeightExpr
+{
+    padding-bottom: 5px;
+}
+
+.DetailInput
+{
+    width: 80px !important;
+}
+
+.DetailSelect
+{
+    width: 64px !important;
+}
+
+.SmallInput
+{
+    width: 29px !important;
+}
+/*------------------------------------------------*/
+
+#tblConditionGar td, #tblConditionName td
+{
+    border-top: 0px;
+    border-right: 2px solid #e7e7e7;
+    border-left: 2px solid #e7e7e7;
+    border-bottom: 0px;
+}
+
+.nameGarantie
+{
+    font-weight: bold;
+    width: 853px;
+}
+
+.thImg
+{
+    width: 22px;
+    text-align: center;
+}
+
+.thTitleType
+{
+    text-align: center;
+    width: 347px;
+}
+
+.thOrigine
+{
+    width: 98px;
+    text-align: center;
+}
+
+.thModif
+{
+    width: 60px;
+    text-align: center;
+}
+
+
+.thCode
+{
+    width: 78px;
+    text-align: center;
+}
+
+.tdImg
+{
+    width: 24px;
+    text-align: center;
+}
+
+.tdTitleExpr
+{
+    padding-left: 5px;
+    width: 345px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tdCodeExpr
+{
+    text-align: center;
+    width: 80px;
+}
+
+.tdOrigine
+{
+    width: 100px;
+    text-align: center;
+}
+
+.tdModif
+{
+    width: 62px;
+    text-align: center;
+}
+
+.tdValMinMaxTitleFRH
+{
+    width: 99px;
+    text-align: center;
+}
+
+.tdDateTitleFRH
+{
+    width: 72px;
+    text-align: center;
+}
+
+.tdValTitleLCI
+{
+    width: 158px;
+    text-align: center;
+}
+
+.tdUnitTypeTitle
+{
+    width: 65px;
+    text-align: center;
+}
+
+.tdImgTitle
+{
+    width: 22px;
+    text-align: center;
+}
+
+.tdValLCI
+{
+    width: 160px;
+}
+
+.tdValFRH
+{
+    width: 101px;
+}
+
+.inputValLCI
+{
+    width: 157px !important;
+}
+
+.inputValFRH
+{
+    width: 96px !important;
+}
+
+.tdUnitTypeVal
+{
+    width: 67px;
+}
+
+.tdConcurVal
+{
+    width: 158px;
+}
+
+.tdDate
+{
+    width: 74px;
+}
+
+.tdConcurUnitType
+{
+    width: 65px;
+}
+
+.LabelLCIGenerale
+{
+    margin-left: 5px;
+    margin-right: 41px;
+    margin-top: 3px;
+}
+
+.LabelFranchiseGenerale
+{
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.LabelLCIRisque
+{
+    margin-left: 5px;
+    margin-right: 54px;
+    margin-top: 3px;
+}
+
+
+.LabelFranchiseRisque
+{
+    margin-right: 23px;
+    margin-top: 3px;
+}
+
+.DivLienCpx
+{
+    background-color: #EBEBE4;
+    border-color: #FFFFFF;
+    border-style: ridge hidden hidden ridge;
+    margin-left: 65px;
+    width: 55px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.ColumnUniteType_Generale
+{
+    float: left;
+    width: 123px;
+}
+
+.ColumnUniteType_Risque
+{
+    float: left;
+    width: 253px;
+}
+
+#InfoConditionGarantie
+{
+    height: 482px;
+}
+
+.tblLstExprComp
+{
+    table-layout: fixed;
+    width: 652px;
+}
+
+.thSelExpr
+{
+    width: 20px;
+}
+
+.thTypeExpr
+{
+    width: 60px;
+}
+
+.thLibExpr
+{
+    width: 475px;
+}
+
+.thModifExpr
+{
+    width: 70px;
+}
+
+.tdSelExpr
+{
+    width: 22px;
+    text-align: center;
+}
+
+.tdTypeExpr
+{
+    padding-left: 5px;
+    width: 58px;
+}
+
+.tdLibExpr
+{
+    padding-left: 5px;
+    width: 472px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdModifExpr
+{
+    width: 72px;
+    text-align: center;
+}
+
+.dvDataInfoDetail
+{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 61;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 293px;
+}
+
+/*#region Div Ajout Expr Complexe*/
+
+.AddDivExpr
+{
+    background-color: white;
+    padding: 2px;
+}
+
+/*#endregion*/
+
+.divInfoEpxrMax
+{
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.dvNonTempo {
+    float: left;
+    padding-left: 124px;
+}
+
+.dvTempo {
+    float: right;
+    padding-right: 5px;
+    padding-top: 2px;
+}
+.divBodyLstExprCompRef 
+{
+    overflow:scroll;
+    max-height:374px;
+}

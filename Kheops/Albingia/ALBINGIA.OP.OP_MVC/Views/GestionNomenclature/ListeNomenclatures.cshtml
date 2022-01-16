@@ -1,0 +1,37 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestionNomenclaturePage
+@{
+    var splitCharHtml = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+}
+<div id="divHeaderNomenclature" class="dvHeaderNomenclature">
+    <table id="tblHeaderNomenclature" class="trHeight tblNomenclature">
+        <tr>
+            <th class="tablePersoHead thOrdre">Ordre</th>
+            <th class="tablePersoHead thCode">Code</th>
+            <th class="tablePersoHead thLibelle">Libellé</th>
+            <th class="tablePersoHead thBranche">Branche</th>
+            <th class="tablePersoHead thCible">Cible</th>
+            <th class="tablePersoHead thTypologie">Typologie</th>
+            <th class="tablePersoHead thImg">
+                <img id="addNomenclature" name="addNomenclature" class="CursorPointer" alt="AddNomenclature" title="Ajouter une nomenclature" src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+            </th>
+        </tr>
+    </table>
+</div>
+<div id="divBodyNomenclature" class="dvBodyNomenclature">
+    <table id="tblBodyNomenclature" class="trHeight tblNomenclature">
+        @foreach (var item in Model.Nomenclatures)
+        {
+            <tr>
+                <td class="tdOrdre" id="ordreNomen@(splitCharHtml)@(item.Id)" albOpenNomen="@(item.Id)">@item.Ordre</td>
+                <td class="tdCode" albOpenNomen="@(item.Id)" title="@(item.Code)">@item.Code</td>
+                <td class="tdLibelle" albOpenNomen="@(item.Id)" title="@(item.Libelle)">@item.Libelle</td>
+                <td class="tdBranche" albOpenNomen="@(item.Id)" title="@(item.Branche != null && !string.IsNullOrEmpty(item.Branche.Code) ? string.Format("{0} - {1}", item.Branche.Code, item.Branche.Nom) : string.Empty)">@(item.Branche != null && !string.IsNullOrEmpty(item.Branche.Code) ? string.Format("{0} - {1}", item.Branche.Code, item.Branche.Nom) : string.Empty)</td>
+                <td class="tdCible" albOpenNomen="@(item.Id)" title="@(item.Branche != null && item.Branche.Cible != null && !string.IsNullOrEmpty(item.Branche.Cible.Code) ? string.Format("{0} - {1}", item.Branche.Cible.Code, item.Branche.Cible.Nom) : string.Empty)">@(item.Branche != null && item.Branche.Cible != null && !string.IsNullOrEmpty(item.Branche.Cible.Code) ? string.Format("{0} - {1}", item.Branche.Cible.Code, item.Branche.Cible.Nom) : string.Empty)</td>
+                <td class="tdTypologie" albOpenNomen="@(item.Id)" title="@(item.Typologie != null ? string.Format("{0} - {1}", item.Typologie.Code, item.Typologie.Libelle) : string.Empty)">@(item.Typologie != null ? string.Format("{0} - {1}", item.Typologie.Code, item.Typologie.Libelle) : string.Empty)</td>
+                <td class="tdImg">
+                    &nbsp;@*<img id="updNomenclature@(splitCharHtml)@(item.Id)" name="updNomenclature" class="CursorPointer" alt="UpdNomenclature" title="Mise à jour nomenclature" src="@Url.Content("/Content/Images/editer1616.png")" />*@
+                </td>
+            </tr>
+        }
+    </table>
+</div>

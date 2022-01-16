@@ -1,0 +1,114 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause
+<tr class="trFichier" id="@(Model.Id)">
+    <td style="width: 20px" class="TablePersoTdHead colSuppr paddingLeftCol">
+        @if (!Model.IsReadOnlyMode && Model.Origine != "Systeme" && !Model.IsModifHorsAvenant)
+        {
+            <img id="Supp@(Model.Id)" name="suppression" alt="" src="@(Url.Content("/Content/Images/invalide.png"))" title="Supprimer" />
+        }
+        else
+        {
+            <span>&nbsp;</span>
+        }
+    </td>
+    <td class="TablePersoTdHead CursorPointer colDetail paddingLeftCol" name="linkDetail" AlbLinkId="@(Model.Id)" albparam="" title="Détails">
+        <img name="details" alt="" src="@(Url.Content("/Content/Images/details1616.png"))" />
+        @Html.HiddenNoName($"EtatTitre_{Model.Id}", Model.EtatTitre)
+        @Html.HiddenNoName($"IsCheckOrigine_{Model.Id}", Model.IsCheckHistorique)
+    </td>
+    <td class="TablePersoTdHead colNumAvn paddingLeftCol">
+
+        @{
+            var displayInternalAvn = Model.IsCheck && Model.NumAvenantPage != 0;
+        }
+        <label class="@( Model.IsCheck && Model.IsModifAvenant ? "textRouge" : !displayInternalAvn ? "textInvisible" : "textnoir")" id="@("lblNumAvn_" + Model.Id)" title="@(Model.DateAvenantModification.HasValue ? Model.DateAvenantModification.Value.ToString("dd/MM/yyyy") : string.Empty)">
+            @(!string.IsNullOrEmpty(Model.NumeroAvenantModification) ? Model.NumeroAvenantModification : !string.IsNullOrEmpty(Model.NumeroAvenantHisto) ? Model.NumeroAvenantHisto : string.Empty)
+        </label>
+
+        @Html.HiddenNoName($"NumAvnHisto_{Model.Id}", Model.NumeroAvenantHisto)
+
+    </td>
+    <td class="TablePersoTdHead colRsq paddingLeftCol" title="@(Model.CodeRisque != "0" ? !string.IsNullOrEmpty(Model.DescRisque) ? Model.CodeRisque + "-" + Model.DescRisque : Model.CodeRisque : "")">
+        @if (Model.CodeRisque != "0")
+        {
+            @Model.CodeRisque
+        }
+    </td>
+    <td class="TablePersoTdHead colObj paddingLeftCol" title="@(Model.CodeObjet != "0" ? !string.IsNullOrEmpty(Model.DescObjet) ? Model.CodeObjet + "-" + Model.DescObjet : Model.CodeObjet : "")">
+        @if (Model.CodeObjet != "0")
+        {
+            @Model.CodeObjet
+        }
+    </td>
+    <td class="TablePersoTdHead colFor paddingLeftCol" title="@(Model.CodeFormule != "0" ? !string.IsNullOrEmpty(Model.LettreFormule) ? Model.CodeFormule + "-" + Model.LettreFormule + "-" + Model.DescFormule : Model.CodeFormule + "-" + Model.DescFormule : Model.DescFormule)">
+        @if (!string.IsNullOrEmpty(Model.LettreFormule))
+        {
+            @Model.LettreFormule
+        }
+    </td>
+    <td class="TablePersoTdBody colTitreClause paddingLeftCol">
+        <div class="FloatLeft">
+            <div class="FloatLeft" style="width: 20px;">
+                <input type="checkbox" id="IsCheck_@(Model.Id)" name="IsCheck" checked="@(Model.IsCheck)" disabled="@(Model.EtatTitre == "O" || Model.IsReadOnlyMode )" />
+            </div>
+            @if (Model.Extension == ".doc" || Model.Extension == ".docx" || string.IsNullOrEmpty(Model.FileName) || string.IsNullOrEmpty(Model.FullFileName))
+            {
+                <div class="@(Model.IsModif && Model.IsClauseLibre ? "FloatLeft navigorange titreClauseColonne" : "FloatLeft navig titreClauseColonne")" name="linkVisu" albContext="@(Model.Origine == "PJ" ? "docJoint" : "clause")" AlbLinkId="visu_@(Model.Id)" AlbIsLibre="@(Model.IsClauseLibre.ToString())" AlbOrigine="@Model.Origine" title="@Model.Titre" albdocfullpath="@(Model.FullFileName)">
+
+                    @if (!string.IsNullOrEmpty(Model.Rubrique) && !string.IsNullOrEmpty(Model.SousRubrique) && !string.IsNullOrEmpty(Model.Sequence))
+                    {
+                        @(Model.Rubrique + " - " + Model.SousRubrique + " - " + Model.Sequence + " - " + Model.Titre)
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(Model.Titre))
+                        {
+                            @(Model.Id + " - " + Model.Contexte + " (texte libre)")
+                        }
+                        else
+                        {
+                            @Model.Titre
+                        }
+                    }
+                </div>
+            }
+            else
+            {
+                @Html.ActionLink(Html.Raw(string.IsNullOrEmpty(Model.Titre) ? Model.FileName : Model.Titre).ToHtmlString(), "DownloadFile", "CommonNavigation", new { fileName = Model.FileName, fullNameFile = Model.FullFileName, pathFile = Model.FullFileName }, new { @target = "_blank" })
+            }
+            <span class="spanImgVBM" name="spanImg">
+                @if (Model.IsModifAvenant)
+                {
+                    <img name="modifAvt" id="@("imgVoyant_" + Model.Id)" src="@(Url.Content("/Content/Images/voyant_rouge_petit.png"))" />
+                }
+                else
+                {
+                    <img name="modifAvt" id="@("imgVoyant_" + Model.Id)" src="@(Url.Content("/Content/Images/voyant_blank_petit.png"))" />
+                }
+            </span>
+        </div>
+    </td>
+    <td class="TablePersoTdBody colContexte paddingLeftCol">
+        <label title="@Model.ContexteLabel" albCFList="contexte">@Model.Contexte</label>
+    </td>
+    <td class="TablePersoTdBody colGarantie paddingLeftCol">
+        <div class="titreGarantieClauseColonne">
+            <label title="@(Model.CodeGarantie + (string.IsNullOrEmpty(Model.CodeGarantie) ? string.Empty : " - ") + Model.LibelleGarantie)">@(Model.CodeGarantie + (string.IsNullOrEmpty(Model.CodeGarantie) ? string.Empty : " - ") + Model.LibelleGarantie)</label>
+        </div>
+    </td>
+    <td class="TablePersoTdBody colOrigine paddingLeftCol" title="@Model.Origine">
+        @if (Model.Origine != "Systeme")
+        {
+            @Model.Origine
+        }
+        else
+        {
+            <span>&nbsp;</span>
+        }
+    </td>
+    <td class="TablePersoTdBody colEdition paddingLeftCol" title="@Model.Edition">
+        <div class="titreEditionColonne">
+            <label>@Model.Edition</label>
+        </div>
+    </td>
+</tr>
+

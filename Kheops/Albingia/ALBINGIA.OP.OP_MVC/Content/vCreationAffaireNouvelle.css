@@ -1,0 +1,168 @@
+﻿#divNouveauContrat
+{
+    display: none;
+}
+
+#divDataNouveauContrat
+{
+    position: absolute;
+    top: 43px;
+    left: 442px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 320px;
+}
+
+#ConfirmationCodeContrat
+{
+    color: red;
+    font-weight:bold;
+}
+
+#divConfirmation
+{
+    text-align:center;
+}
+
+#divDataConfirmation
+{
+    background-color: White;
+    display: block;
+    left: 520px;
+    top: 220px;
+    z-index: 7;
+    width: 380px;
+    padding: 5px;
+    position: absolute;
+    height: 189px;
+}
+
+.ConfimationButtons 
+{
+    text-align:right;
+}
+
+.Column1
+{
+    width: 400px;
+    float: left;
+}
+
+.Column2
+{
+    width: 300px;
+    float: left;
+}
+
+.Column3
+{
+    width: 250px;
+    float: left;
+}
+
+.ColumnSpan23
+{
+    width: 500px;
+    float: left;
+}
+
+.colHCodeContrat
+{
+    width:92px;
+}
+
+.colHType
+{
+    width:122px;
+}
+
+.colHDateEffet
+{
+    width:82px;
+}
+
+.colHDateAccord
+{
+    width:82px;
+}
+
+.colHContratRemplace
+{
+    width:102px;
+}
+
+.colHSouscripteur
+{
+    width:177px;
+}
+
+.colHGestionnaire
+{
+    width:177px;
+}
+
+.colHEtat
+{
+    width:112px;
+}
+
+.colCodeContrat
+{
+    width:90px;
+}
+
+.colType
+{
+    width:120px;
+}
+
+.colDateEffet
+{
+    width:80px;
+}
+
+.colDateAccord
+{
+    width:80px;
+}
+
+.colContratRemplace
+{
+    width:100px;
+}
+
+.colSouscripteur
+{
+    width:175px;
+}
+
+.colGestionnaire
+{
+    width:175px;
+}
+
+.colEtat
+{
+    width:110px;
+}
+
+.ParamHeight
+{
+    height: 321px;
+}
+#divRechercheContrat {
+    display: none;
+}
+#divDataRechercheContrat {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: block;
+    z-index: 10;
+    background-color: White;
+    height: 362px;
+    width: 1240px;
+}
+

@@ -1,0 +1,71 @@
+﻿@using System.Globalization
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@{
+    var layoutModel = (MetaModelsBase)Model;
+    var isModeNavigHisto = (layoutModel.ModeNavig == ModeConsultation.Historique.AsCode());
+    var avn = layoutModel.Bandeau != null ? layoutModel.Bandeau.NumAvenant.ToString(CultureInfo.InvariantCulture) : string.Empty;
+    var envParam = System.Configuration.ConfigurationManager.AppSettings["envParam"] == "true";
+}
+@{
+    Layout = Url.Content("~/Views/Shared/Layout.cshtml");
+}
+<div class="CommonForm TotalWidth">
+    <div class="GroupFull GroupWithBorderEntete DimEntete">
+        <div class="PaddingLeft nImageWidth FloatLeft">
+            <div class="PaddingTop">
+                <img src="@Url.Content("/Content/Images/logoalbingia.png")" alt="Accueil" id="linkAccueil" class="exit-step" width="48px" height="32px" title="Accueil" style="cursor:pointer" />
+            </div>
+        </div>
+        @if (layoutModel.AfficherBandeau && layoutModel.EtapeEcran != AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE) {
+            <div class="@(envParam ? "nEnvironnementParam" : (layoutModel.PageEnCours == NomsInternesEcran.RechercheSaisie.ToString()) ? "nEnvironnementBackOfficeDev" : isModeNavigHisto ? "nEnvironnementHisto" : "nEnvironnementTest")">
+                @(envParam ? "PARAM" : ALBINGIA.OP.OP_MVC.MvcApplication.ENVIRONMENT_NAME)
+                @if (isModeNavigHisto) {
+                    <label title="Avenant @(avn)">Avn : @(avn)</label>
+                }
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(layoutModel.ScreenType) && layoutModel.PageEnCours.ToLower() != "recherchesaisie") {
+            switch (layoutModel.ScreenType) {
+                case AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+                    <div class="nActeGest" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper()</div>
+                    break;
+                case AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                    <div class="nActeGestContrat" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper()</div>
+                    break;
+                case AlbConstantesMetiers.SCREEN_TYPE_ATTES:
+                    <div class="nActeGest" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper()</div>
+                    break;
+                case AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+                    <div class="nActeGest" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper()</div>
+                    break;
+                case AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+                    <div class="nActeGest" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper()</div>
+                    break;
+                default:
+                    <div class="nActeGestAvenant" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper() <span style="font-size: 10px;">@((layoutModel.LayoutModeAvt == "CREATE" && !string.IsNullOrEmpty(layoutModel.LayoutModeAvt) || (layoutModel.NumAvenantPage == "0")) || layoutModel.ScreenType.ToUpper() == "PB" || layoutModel.ScreenType.ToUpper() == "BNS" || layoutModel.ScreenType.ToUpper() == "BURNER" ? string.Empty : string.Concat("N°", layoutModel.NumAvenantPage))</span></div>
+
+                    break;
+
+            }
+        }
+        @if (layoutModel.AfficherBandeau) {
+
+            if (layoutModel.EtapeEcran != AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE) {
+                if (layoutModel.Bandeau != null) {
+                    <div class="nBandeau">
+                        @Html.Partial("~/Views/Shared/Entete/Bandeau.cshtml", layoutModel.Bandeau)
+                    </div>
+                }
+            }
+            else {
+                <div class="@(envParam ? "nEnvironnementParam" : "nEnvironnementBackOfficeDev")">@(envParam ? "PARAM" : ALBINGIA.OP.OP_MVC.MvcApplication.ENVIRONMENT_NAME)</div>
+            }
+        }
+    </div>
+</div>
+<div id="LayoutEntete" class="CommonForm TotalWidth">
+    @RenderBody()
+</div>

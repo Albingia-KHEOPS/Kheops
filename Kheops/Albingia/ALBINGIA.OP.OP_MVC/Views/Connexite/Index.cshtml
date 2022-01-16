@@ -1,0 +1,262 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleConnexitePage>
+@{
+    Layout = "~/Views/Shared/LayoutHome.cshtml";
+}
+@Html.HiddenNoName("SplitString", Model.CaractereSplit)
+@Html.HiddenNoName("connexiteBranche", Model.Branche)
+@Html.HiddenNoName("connexiteSousBranche", Model.SousBranche)
+@Html.HiddenNoName("connexiteCategorie", Model.Categorie)
+@Html.Hidden("hiddenInputId", string.Empty)
+@Html.HiddenNoName("PleinEcran", string.Empty)
+@Html.HiddenNoName("typAffichage", (Model.TypeAffichage))
+@Html.HiddenNoName("IsConnexiteReadonly", Model.IsConnexiteReadOnly.ToString())
+<div class="CommonForm FloatLeft">
+    <div class="GroupFull GroupWithBorder">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        <div class="GroupTitle">Connexités du contrat</div>
+        <div class="HorizontalFullWithGroup" style="height: 533px; overflow-y: scroll;">
+            <div class="GradientSection paddingLeft paddingBottom">
+                <div  class="@(string.IsNullOrEmpty(Model.TypeAffichage) ? "GradientSection paddingLeft paddingBottom" : "GradientSection paddingLeft paddingBottom HeightFixe")">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label>Connexités d'engagement</label>
+                        </div>
+                        <div id="FullScreenEngagement" class=" CursorPointer TxtLink FloatRight" albcontext="eng" style="padding-right: 450px;">
+                            @if (string.IsNullOrEmpty(Model.TypeAffichage))
+                            {
+                                <label>^ Plein écran ^</label>
+                            }
+                        </div>
+                    </div>
+                    <div class="FloatRight" style="padding-right: 90px;">
+                        <div id="commentaireEng" class="HeightRow">
+
+
+                            <div class="FloatLeft" style="padding-right: 10px;">
+                                <label>Commentaires</label>
+                            </div>
+                            @if (string.IsNullOrEmpty(Model.TypeAffichage))
+                            {
+                                <div id="zoneTxtArea" class="FloatLeft divTextArea  NonReprisCP" albcontext="commentairesEng">@Html.Raw(!string.IsNullOrEmpty(Model.Engagement.ObservationEngagement) ? Model.Engagement.ObservationEngagement.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+                                <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="commentairesEng">
+                                    <img src="@Url.Content("/Content/Images/moreinfo.png")" width="20" height="20" />
+                                </div>
+                                <div id="txtArea" albcontext="commentairesEng" class="FloatLeft">
+                                    <div class="FloatLeft">
+
+                                        <div id="commentairesEng" style="width: 357px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Engagement.ObservationEngagement)</div>
+
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div id="zoneTxtArea" class="FloatLeft divTextArea  NonReprisCP" albcontext="commentairesEngagement">@Html.Raw(!string.IsNullOrEmpty(Model.Engagement.ObservationEngagement) ? Model.Engagement.ObservationEngagement.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+                                <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="commentairesEngagement">
+                                    <img src="@Url.Content("/Content/Images/moreinfo.png")" width="20" height="20" />
+                                </div>
+                                <div id="txtArea" albcontext="commentairesEngagement" class="FloatLeft">
+                                    <div class="FloatLeft">
+                                        @if (Model.IsConnexiteReadOnly)
+                                        {
+                                            <div id="commentairesEngagement" style="width: 357px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Engagement.ObservationEngagement)</div>
+                                        }
+                                        else
+                                        {
+                                            <textarea id="commentairesEngagement" name="txtCommentaires" class="" style="margin-bottom: 5px; width: 357px" tabindex="6">@Model.Engagement.ObservationEngagement</textarea>
+                                        }
+
+                                    </div>
+                                </div>
+                            }
+
+
+
+                            <div class="FloatRight paddingRight10" style="padding-left: 5px;">
+                                @if (string.IsNullOrEmpty(Model.TypeAffichage))
+                                {
+                                    <button id="btnGestion">Gestion</button>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divEngagement" albtypeaff="@(!string.IsNullOrEmpty(Model.TypeAffichage) ? "GESTION" : "CONSULT")">
+                        @Html.Partial("/Views/Connexite/ListeConnexiteEngagement.cshtml", Model.Engagement)
+                    </div>
+                </div>
+            </div>
+            @if (string.IsNullOrEmpty(Model.TypeAffichage))
+            {
+                <div class="GradientSection paddingLeft paddingBottom">
+                    <div id="divHeaderRemplacement">
+                        <table id="tblHeaderRemplacement">
+                            <tr>
+                                <td colspan="6">
+                                    <div class="FloatLeft">
+                                        <label class="labelTableau">Connexités de remplacement</label>
+                                    </div>
+                                    <div class="FloatRight Padding marginRightAjouter">
+                                    </div>
+                                    <div id="FullScreenRemplacement" class="CursorPointer TxtLink FloatRight CenterPaddingRemplacement">
+                                        ^ Plein écran ^
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="col_Contrat"></th>
+                                <th class="col_Branche"></th>
+                                <th class="col_Cible"></th>
+                                <th class="col_Commentaires"></th>
+                                <th class="col_Preneur"></th>
+                                <th class="col_Action"></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyRemplacement">
+                        @Html.Partial("/Views/Connexite/ListeConnexiteRemplacement.cshtml", Model.Remplacement)
+                    </div>
+                </div>
+                <div class="GradientSection paddingLeft paddingBottom">
+                    <div id="divHeaderInformation">
+                        <table id="tblHeaderInformation">
+                            <tr>
+                                <th class="col_Contrat"></th>
+                                <th class="col_Branche"></th>
+                                <th class="col_Cible"></th>
+                                <th class="col_Commentaires"></th>
+                                <th class="col_Preneur"></th>
+                                <th class="col_Action"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="FloatLeft">
+                                        <label class="labelTableau">Connexités d'information</label>
+                                    </div>
+                                    @if ((Model.IsReadOnly && !Model.IsModifHorsAvenant) || Model.IsConnexiteReadOnly)
+                                    {
+                                        <div class="FloatRight">
+                                            <img class="marginRightAjouter" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="FloatRight">
+                                            <img class="CursorPointer Action marginRightAjouter" src="@Url.Content("/Content/Images/plusajouter1616.png")" name="btnAjouter" alt="Ajouter" title="Ajouter une connexité" id="AjouterInformation" albcontext="inf"/>
+                                        </div>
+                                    }
+                                    <div id="FullScreenInformation" class="CursorPointer TxtLink FloatRight CenterPadding" albcontext="inf">
+                                        ^ Plein écran ^
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyInformation">
+                        @Html.Partial("/Views/Connexite/ListeConnexiteInformation.cshtml", Model.Information)
+                    </div>
+                </div>
+                <div class="GradientSection paddingLeft paddingBottom">
+                    <div id="divHeaderResiliation">
+                        <table id="tblHeaderResiliation">
+                            <tr>
+                                <th class="col_Contrat"></th>
+                                <th class="col_Branche"></th>
+                                <th class="col_Cible"></th>
+                                <th class="col_Commentaires"></th>
+                                <th class="col_Preneur"></th>
+                                <th class="col_Action"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="FloatLeft">
+                                        <label class="labelTableau">Connexités de résiliation</label>
+                                    </div>
+                                    @if ((Model.IsReadOnly && !Model.IsModifHorsAvenant) || Model.IsConnexiteReadOnly)
+                                    {
+                                        <div class="FloatRight">
+                                            <img class="marginRightAjouter" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="FloatRight ">
+                                            <img class="CursorPointer Action marginRightAjouter" src="@Url.Content("/Content/Images/plusajouter1616.png")" name="btnAjouter" alt="Ajouter" title="Ajouter une connexité" id="AjouterResiliation" albcontext="res"/>
+                                        </div>
+                                    }
+                                    <div id="FullScreenResiliation" class="CursorPointer TxtLink FloatRight CenterPadding" albcontext="res">
+                                        ^ Plein écran ^
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyResiliation">
+                        @Html.Partial("/Views/Connexite/ListeConnexiteResiliation.cshtml", Model.Resiliation)
+                    </div>
+                </div>
+                <div class="GradientSection paddingLeft paddingBottom">
+                    <div id="divHeaderRegularisation">
+                        <table id="tblHeaderRegularisation">
+                            <tr>
+                                <th class="col_Contrat"></th>
+                                <th class="col_Branche"></th>
+                                <th class="col_Cible"></th>
+                                <th class="col_Commentaires"></th>
+                                <th class="col_Preneur"></th>
+                                <th class="col_Action"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="FloatLeft">
+                                        <label class="labelTableau">Connexités de régularisation</label>
+                                    </div>
+                                    @if ((Model.IsReadOnly && !Model.IsModifHorsAvenant) || Model.IsConnexiteReadOnly)
+                                    {
+                                        <div class="FloatRight">
+                                            <img class="marginRightAjouter" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="FloatRight ">
+                                            <img class="CursorPointer Action marginRightAjouter" src="@Url.Content("/Content/Images/plusajouter1616.png")" name="btnAjouter" alt="Ajouter" title="Ajouter une connexité" id="AjouterRegularisation" albcontext="reg"/>
+                                        </div>
+                                    }
+                                    <div id="FullScreenRegularisation" class="CursorPointer TxtLink FloatRight CenterPadding" albcontext="reg">
+                                        ^ Plein écran ^
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyRegularisation">
+                        @Html.Partial("/Views/Connexite/ListeConnexiteRegularisation.cshtml", Model.Regularisation)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder ButtonsHeight">
+
+    <div id="LoadingDiv" class="FloatLeft">
+        <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+    </div>
+    <div class="ActionButtons ActionButtonRight">
+        <button id="@(string.IsNullOrEmpty(Model.TypeAffichage) ? "btnFermerConnexite" : "btnFermerConnexiteEng")" type="button" albshortcut="true" albtargetscreen="ajouterConnexite" data-accesskey="t"><u>T</u>erminer</button>
+    </div>
+</div>
+
+@if (ALBINGIA.Framework.Common.Constants.AlbOpConstants.ClientWorkEnvironment == ALBINGIA.Framework.Common.Constants.AlbOpConstants.OPENV_DEV)
+{
+    @Html.Hidden("paramWinOpen", string.Empty)
+}
+else
+{
+<form id="formWinOpen" method="post" action="/" target="newWin">
+    @Html.Hidden("paramWinOpen", string.Empty)
+</form>
+}
+

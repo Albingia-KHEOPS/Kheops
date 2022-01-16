@@ -1,0 +1,114 @@
+﻿
+@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModeleTransverse.LTA>
+<div class="nGroupFull nGroupWithBorder" style="height:100px; width: 835px;">
+    <div class="HeightRow PaddingTop">
+        <label>Informations LTA</label>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Début LTA</label>
+        </div>
+        <div style="float: left; margin-right: 15px;">
+            @if (Model.ReadOnly)
+            {
+                @Html.AlbDateFormat(m => m.DateDebLTA, new { @class = "inputDate readonly", @disabled = "disabled" })
+            }
+            else
+            {
+                @Html.AlbDateFormat(m => m.DateDebLTA, new { @class = "datepicker inputDate" })
+            }
+        </div>
+        <div class="divHeure">
+            @if (Model.ReadOnly)
+            {
+                @Html.AlbTimePicker(m => m.HeureDebLTA, "HeureDebLTA", new { @class = "HourMinute readonly", @disabled = "disabled" })
+            }
+            else
+            {
+                @Html.AlbTimePicker(m => m.HeureDebLTA, "HeureDebLTA", new { @class = "HourMinute" })
+            }
+        </div>
+        @Html.Hidden("EffetLTACheck", Model.EffetLTACheck.ToString(), new { id = "inputEffetLTA" })
+        <div class="FloatLeft" style="width: 110px;">
+            @if (Model.ReadOnly)
+            {
+                @Html.CheckBoxFor(m => m.EffetLTACheck, new { @disabled = "disabled", @class = "readonly" })
+            }
+            else
+            {
+                @Html.CheckBoxFor(m => m.EffetLTACheck)
+            }
+            <label id="divLTAEffet" class="AutoWidth">Fin effet</label>
+        </div>
+        @Html.Hidden("DureeLTACheck", Model.DureeLTACheck.ToString(), new { id = "inputDureeLTA" })
+        <div style="width: 110px; float: left;">
+            @if (Model.ReadOnly)
+            {
+                @Html.CheckBoxFor(m => m.DureeLTACheck, new { @disabled = "disabled", @class = "readonly" })
+            }
+            else
+            {
+                @Html.CheckBoxFor(m => m.DureeLTACheck)
+            }
+            <label id="divLTADuree" class="AutoWidth">Durée</label>
+        </div>
+        <div id="divDataFinEffetLTA" class="@(Model.EffetLTACheck && !Model.DureeLTACheck ? "FloatLeft" : "FloatLeft None")">
+            <div style="float: left; margin-right: 15px;">
+                @if (Model.ReadOnly)
+                {
+                    @Html.AlbDateFormat(m => m.DateFinLTA, new { @class = "readonly inputDate", @disabled = "disabled" })
+                }
+                else
+                {
+                    @Html.AlbDateFormat(m => m.DateFinLTA, new { @class = "datepicker inputDate" })
+                }
+            </div>
+            <div class="divHeure">
+                @if (Model.ReadOnly)
+                {
+                    @Html.AlbTimePicker(m => m.HeureFinLTA, "HeureFinLTA", new { @class = "HourMinute readonly", @disabled = "disabled" })
+                }
+                else
+                {
+                    @Html.AlbTimePicker(m => m.HeureFinLTA, "HeureFinLTA", new { @class = "HourMinute" })
+                }
+            </div>
+        </div>
+        <div id="divDataDureeLTA" class="@(Model.DureeLTACheck ? "FloatLeft" : "FloatLeft None")">
+            <div style="float: left; margin-right: 15px;">
+                <input type="text" id="DureeLTA" name="DureeLTA" class="@(Model.ReadOnly ? "inputDate numerique readonly" : "inputDate numerique")" albMask="numericDuree" value="@Model.DureeLTA" readonly="@(Model.ReadOnly )" />
+            </div>
+            <div class="FloatLeft">
+                @if (Model.ReadOnly)
+                {
+                    @Html.AlbDropDownListFor(m => m.DureeLTAString, Model.Durees, "DureeLTAString", htmlAttributes: new { @id = "DureeLTAString", @class = "inputDuree readonly", @disabled = "disabled", @albCFList = "uniteDuree" }, generateTitle: true)
+                }
+                else
+                {
+                    @Html.AlbDropDownListFor(m => m.DureeLTAString, Model.Durees, "DureeLTAString", htmlAttributes: new { @id = "DureeLTAString", @class = "inputDuree", @albCFList = "uniteDuree" }, generateTitle: true)
+                }
+            </div>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Seuil S/P (%)</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="SeuilLTA" class="@(Model.ReadOnly ? "inputDate decimal readonly" : "inputDate decimal")" value="@Model.SeuilLTA" ablmask="decimal" readonly="@(Model.ReadOnly )" />
+        </div>
+    </div>
+</div>
+<div class="nGroupFull nGroupWithBorder ButtonsHeight" style="width: 835px;">
+    <div class="nActionButtons ActionButtonRight">
+        @if (Model.ReadOnly)
+        {
+            <button id="btnCancelLTA" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+        }
+        else
+        {
+            <button id="btnCancelLTA" type="button" albshortcut="true" data-accesskey="n">A<u>n</u>nuler</button>
+            <button id="btnSaveLTA" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        }
+    </div>
+</div>

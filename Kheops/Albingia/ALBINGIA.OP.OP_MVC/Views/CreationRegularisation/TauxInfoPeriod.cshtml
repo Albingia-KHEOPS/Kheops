@@ -1,0 +1,56 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleSaisieRegulGarantie.InfoInitSaisieRegul
+<div class="FloatRight " style="padding-right: 20px">
+
+    <div class="FloatLeft ">
+        @if (Model.TypeGrille == "PB")
+        {
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Nombre d'années</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class=" readonly inAss" id="NbrAnneeID"  name ="NbrAnneeID" class="readonly Input" value="@(Model.NbYearRsq_PB)" />
+                </div>
+            </div>
+        }
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Ristourne %</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" class=" readonly inAss"  id="RistourneID"   name ="RistourneID" class="readonly Input" value="@(Model.TxRistRsq_PB)" />
+            </div>
+        </div>
+        @*<div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Ristourne anticipée</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" class=" readonly inAss"  id="RistourneAnID"   name ="RistourneAnID" class="readonly Input" value="@(Model.RistAnticipee_PB)" />
+            </div>
+        </div>*@
+
+    </div>
+    <div class="FloatRight ">
+
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Seuil S/P %</label>
+            </div>
+            <div class="FloatLeft" style="padding-left: 15px;">
+                <input type="text" class="readonly inAss" id="SeuilID"  name ="SeuilID" class="readonly Input" value="@(Model.TypeGrille == "PB" ? Model.TSeuilSp_PB : Model.TypeReguleGar_STD.Trim() == "BN" ? 0 : Model.TSeuilSp_PB)" />
+            </div>
+
+        </div>
+
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block" style="width: 120px;">Cotisation retenue %</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" class=" readonly inAss"  id="CotisationRetenusID"   name ="CotisationRetenusID" class="readonly Input" value="@(Model.TxCotisRetRsq_PB)" />
+            </div>
+
+        </div>
+    </div>
+</div>

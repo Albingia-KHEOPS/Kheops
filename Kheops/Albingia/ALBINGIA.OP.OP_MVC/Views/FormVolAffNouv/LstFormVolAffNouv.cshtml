@@ -1,0 +1,83 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesCreationAffaireNouvelle.ModeleFormVolAffNouvRsq>
+@if (Model != null && Model.Count > 0)
+{
+    <table id="tblFormVol">
+        @foreach (var rsq in Model)
+        {
+            <tr class="rsq">
+                <td style="width: 49px;">
+                    &nbsp;
+                </td>
+                <td class="PaddingRsqLib">
+                    <b>Risque @rsq.CodeRisque - @rsq.DescRisque</b>
+                </td>
+            </tr>
+            if (rsq.Formules != null && rsq.Formules.Count > 0)
+            {
+                foreach (var form in rsq.Formules)
+                {
+            <tr class="form">
+                <td style="width: 49px;">
+                    @if (form.CheckRow)
+                    {
+                        <input type="checkbox" id="checkForm_@(form.CodeForm)_@(form.GuidForm)" name="checkForm_@(form.CodeForm)_@(form.GuidForm)" checked="checked" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="checkForm_@(form.CodeForm)_@(form.GuidForm)" name="checkForm_@(form.CodeForm)_@(form.GuidForm)" />
+                    }
+                </td>
+                <td class="PaddingFormLib">
+                    Formule @form.LettreForm - @form.DescFormule
+                </td>
+            </tr>
+                    if (form.Options != null && form.Options.Count > 0)
+                    {
+                        foreach (var opt in form.Options)
+                        {
+            <tr class="odd" name="trOpt_@(form.CodeForm)_@(form.GuidForm)">
+                <td style="width: 23px; padding-left: 27px;">
+                    @if (opt.CheckRow)
+                    { 
+                        <input type="radio" id="checkOpt_@(form.CodeForm)_@(form.GuidForm)_@(opt.CodeOpt)_@(opt.GuidOpt)" name="checkOpt_@(form.CodeForm)_@(form.GuidForm)" checked="checked" />
+                    }
+                    else
+                    { 
+                        <input type="radio" id="checkOpt_@(form.CodeForm)_@(form.GuidForm)_@(opt.CodeOpt)_@(opt.GuidOpt)" name="checkOpt_@(form.CodeForm)_@(form.GuidForm)" />
+                    }
+                </td>
+                <td class="PaddingOptLib">
+                    @*Option @(opt.CodeOpt == 1 ? "de base" : opt.CodeOpt.ToString())*@
+                    Option @(opt.CodeOpt.ToString())
+                </td>
+            </tr>
+                    if (opt.Volets != null && opt.Volets.Count > 0)
+                    {
+                        foreach (var vol in opt.Volets)
+                        {
+            <tr class="even" name="trVol_@(form.CodeForm)_@(form.GuidForm)">
+                <td style="width: 23px; padding-left: 27px;">
+                    @if (vol.CheckRow)
+                    { 
+                        <input type="checkbox" id="checkVol_@(form.CodeForm)_@(form.GuidForm)_@(opt.CodeOpt)_@(opt.GuidOpt)_@(vol.GuidVolet)" name="checkVol_@(form.CodeForm)_@(form.GuidForm)_@(opt.CodeOpt)_@(opt.GuidOpt)_@(vol.GuidVolet)" checked="checked" />
+                    }
+                    else
+                    { 
+                        <input type="checkbox" id="checkVol_@(form.CodeForm)_@(form.GuidForm)_@(opt.CodeOpt)_@(opt.GuidOpt)_@(vol.GuidVolet)" name="checkVol_@(form.CodeForm)_@(form.GuidForm)_@(opt.CodeOpt)_@(opt.GuidOpt)_@(vol.GuidVolet)" />
+                    }
+                </td>
+                <td class="PaddingVolLib">
+                    Volet @(vol.CodeVolet)
+                    - @(vol.DescVolet)
+                </td>
+            </tr>
+                        }
+                    }
+
+                        }
+                    }
+                }
+            }
+        }
+    </table>
+}

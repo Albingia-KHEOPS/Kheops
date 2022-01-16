@@ -1,0 +1,21 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.AnInformationsGeneralesPage
+<div class="DoubleGenericColumn @(Model.NatureContrat == "A" || Model.NatureContrat == "E" || string.IsNullOrEmpty(Model.NatureContrat) ? "None" : string.Empty)" id="dvAperiteur">
+    <div class="FloatLeft">
+        <label class="Block">Apériteur</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.Hidden("AperiteurSelect", string.Empty, new { albautocomplete = "autoCompAperiteurSelect" })
+        @Html.HiddenFor(m => m.AperiteurCode, new { albautocomplete = "autoCompAperiteurCode" })
+        <input type="text" id="AperiteurNom" name="AperiteurNom" value="@(Model.AperiteurNom)" tabindex="23" class="SuperInputLight" albAutoComplete="autoCompAperiteurNom" />
+
+        @Html.HiddenFor(m => m.PartAperiteur)
+        @Html.HiddenFor(m => m.IdInterlocuteurAperiteur)
+        @Html.HiddenNoName("libInterlocuteurAperiteur", Model.NomInterlocuteurAperiteur)
+        @Html.HiddenFor(m => m.ReferenceAperiteur)
+        @Html.HiddenFor(m => m.FraisAccAperiteur)
+        @Html.HiddenFor(m => m.CommissionAperiteur)
+    </div>
+    <div class="FloatLeft PaddingLeft PaddingTopLittle">
+        <img alt="Informations" src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" class="CursorPointer  " albAutoComplete="autoCompImgAperiteur" albIdInfo="@Model.AperiteurCode" id="imgInfoAperiteur"/>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <button id="test">TEST AJAX</button>
+        <input type="checkbox" id="script">TEST AJAX</input>
+    </div>
+    <script src="/Scripts/Jquery/jquery-1.8.2.js"></script>
+    <script>
+        $("#test").click(() => {
+            let s = $("#script").attr('checked') != null;
+            let opt = { url: './TestJS', method: "POST", data: {}, success: () => { debugger; } };
+            if (s) opt.dataType = 'script';
+            $.ajax(opt);
+        });
+    </script>
+</body>
+</html>

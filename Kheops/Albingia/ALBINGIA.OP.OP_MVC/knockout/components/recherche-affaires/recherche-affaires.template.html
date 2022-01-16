@@ -1,0 +1,190 @@
+﻿
+<div class="ko-cloak conceal">
+    <div class="container container-details">
+        <div class="search-filters" data-bind="visible: !showAnyResult()">
+            <div class="container-lines space-it" data-bind="css: { 'id-search': searchById }">
+                <div>
+                    <div class="sub-title">Offre / Contrat</div>
+                    <div class="input-line divs">
+                        <div class="minw80" data-bind="visible: !preventFilterOffre()">
+                            <label class="input"><input type="checkbox" id="typeOffreCheck" name="typeOffreCheck" data-bind="checked: typeOffreChecked" /> Offre</label>
+                        </div>
+                        <div class="minw80">
+                            <label class="input"><input type="checkbox" id="typeContratCheck" name="typeContratCheck" data-bind="checked: typeContratChecked" /> Contrat</label>
+                        </div>
+                        <div class="auto-width"><label for="codeAffaire">N°</label></div>
+                        <div class="input"><input id="codeAffaire" name="codeAffaire" class="code-affaire" type="text" data-bind="textInput: Code" maxlength="9" /></div>
+                        <div class="input auto-width"><input type="text" class="tiny" data-bind="autoNumeric: { value: Version, allowNull: true, stuckAllDigits: true }" maxlength="2" /></div>
+                        <div data-bind="visible: !preventFilterHistory()">
+                            <span>Mode de recherche</span>
+                            <label class="input">
+                                <input type="radio" name="modeRecherche" value="S" data-bind="checked: Mode" /> Standard
+                            </label>
+                            <label class="input">
+                                <input type="radio" name="modeRecherche" value="H" data-bind="checked: Mode" /> Historique
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-lines space-it">
+                <div>
+                    <div class="sub-title">Recherche Avancée</div>
+                    <div class="input-line divs">
+                        <div><label for="searchText">Recherche</label></div>
+                        <div class="input"><input id="searchText" name="searchText" type="text" data-bind="textInput: Text, disable: searchById" /></div>
+                        <div class="minw60"><label for="nomSouscripteur">Souscripteur</label></div>
+                        <div class="input"><input id="nomSouscripteur" name="nomSouscripteur" class="large" type="text" data-bind="uiAutoComplete: { type: 'Souscripteur', value: Souscripteur }, disable: searchById" /></div>
+                        <div class="minw60"><label for="nomGestionnaire">Gestionnaire</label></div>
+                        <div class="input"><input id="nomGestionnaire" name="nomGestionnaire" class="large" type="text" data-bind="uiAutoComplete: { type: 'Gestionnaire', value: Gestionnaire }, disable: searchById" /></div>
+                    </div>
+                    <div class="input-line divs">
+                        <div><label for="listTypesDates">Date de</label></div>
+                        <div class="select"><select id="listTypesDates" name="listTypesDates" data-bind="options: TypesDates, optionsValue: 'Code', optionsText: 'Label', value: CodeTypeDate, disable: searchById"></select></div>
+                        <div class="minw60"><label for="dateMin">Entre le</label></div>
+                        <div class="input"><input id="dateMin" name="dateMin" type="text" data-bind="dateselector: { value: DateMin, pickerOptions: { dateFormat: 'dd/mm/yy' } }, disable: searchById" /></div>
+                        <div class="minw60"><label for="dateMax">et le</label></div>
+                        <div class="input"><input id="dateMax" name="dateMax" type="text" data-bind="dateselector: { value: DateMax, pickerOptions: { dateFormat: 'dd/mm/yy' } }, disable: searchById" /></div>
+                    </div>
+                    <div class="input-line divs">
+                        <div><label for="listBranches">Branche/Cible</label></div>
+                        <div class="multi">
+                            <select id="listBranches" name="listBranches" data-bind="valueAllowUnset: true, options: Branches, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', value: CodeBranche, disable: searchById"></select>
+                            <select data-bind="options: filteredCibles, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', value: CodeCible, disable: searchById"></select>
+                        </div>
+                        <div class="auto-width"><label for="listEtats">Etat</label></div>
+                        <div class="auto-width"><label class="input"><input type="checkbox" data-bind="checked: ExcludeCodeEtat, disable: searchById" /> Excepté</label></div>
+                        <div class="select"><select id="listEtats" name="listEtats" data-bind="options: Etats, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', value: CodeEtat, disable: searchById"></select></div>
+                    </div>
+                    <div class="input-line divs">
+                        <div class="minw80"><label for="listSituations">Situation</label></div>
+                        <div class="multi">
+                            <label><input type="radio" name="typeSituation" data-bind="checked: filtreSituation" value="actif" /> En Cours</label>
+                            <label data-bind="visible: !preventFilterInactif()"><input type="radio" name="typeSituation" data-bind="checked: filtreSituation, disable: preventFilterInactif" value="inactif" /> Inactif</label>
+                            <input type="radio" name="typeSituation" data-bind="checked: filtreSituation" value="" />
+                            <select id="listSituations" name="listSituations" data-bind="valueAllowUnset: true, options: Situations, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', value: CodeSituation, disable: cannotFilterSituation"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-lines space-it">
+                <div>
+                    <div class="sub-title">Preneur d'Assurance</div>
+                    <div class="input-line divs">
+                        <div class="minw80"><label for="codePreneur">Code</label></div>
+                        <div class="input auto-width"><input id="codePreneur" name="codePreneur" class="slight" type="text" data-bind="autoNumeric: { value: codePreneurAssurance, allowNull: true, stuckAllDigits: true }, hasFocus: editingCodePreneur, disable: searchById" maxlength="7" /></div>
+                        <div class="auto-width"><label for="nomPreneur">Nom</label></div>
+                        <div class="input"><input id="nomPreneur" name="nomPreneur" class="large" type="text" data-bind="uiAutoComplete: { type: 'PreneurAssurance', value: PreneurAssurance }, disable: searchById" /></div>
+                        <div><i></i></div>
+                    </div>
+                    <div class="input-line divs">
+                        <div class="minw80"><label for="villePreneur">Dép. / C.P.</label></div>
+                        <div class="input"><input id="villePreneur" name="villePreneur" type="text" data-bind="uiAutoComplete: { type: 'CodePostal', value: PreneurAssuranceVille }, disable: searchById" /></div>
+                        <div class="minw60"><label for="sirenPreneur">SIREN</label></div>
+                        <div class="input"><input id="sirenPreneur" name="sirenPreneur" type="text" class="large" data-bind="textInput: Siren, disable: searchById" /></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-lines space-it">
+                <div>
+                    <div class="sub-title">Courtier</div>
+                    <div class="input-line divs">
+                        <div class="auto-width"><label>N°</label></div>
+                        <div class="input auto-width"><input type="text" class="short" data-bind="autoNumeric: { value: numeroCourtier, allowNull: true, stuckAllDigits: true }, hasFocus: editingNumeroCourtier, disable: searchById" maxlength="32" /></div>
+                        <div class="auto-width"><label>Nom</label></div>
+                        <div><input type="text" class="large" data-bind="uiAutoComplete: { type: 'Courtier', value: Courtier }, disable: searchById" /></div>
+                        <div class="auto-width"><i></i></div>
+                        <div class="auto-width"><label class="input"><input type="checkbox" id="typeApporteurCheck" name="typeApporteurCheck" data-bind="checked: typeApporteurChecked, disable: searchById" /> Apporteur</label></div>
+                        <div class="auto-width"><label class="input"><input type="checkbox" id="typeGestionnaireCheck" name="typeGestionnaireCheck" data-bind="checked: typeGestionnaireChecked, disable: searchById" /> Gestionnaire</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-lines space-it">
+                <div>
+                    <div class="sub-title">Adresse</div>
+                    <div class="input-line divs">
+                        <div><label>Bât. / Voie / Dist.</label></div>
+                        <div class="input"><input type="text" data-bind="textInput: TexteAdresse, disable: searchById" /></div>
+                        <div class="minw80"><label>Dép. / C.P.</label></div>
+                        <div class="input"><input type="text" data-bind="uiAutoComplete: { type: 'CodePostal', value: AdresseVille }, disable: searchById" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-results" data-bind="visible: showAnyResult">
+            <!-- ko ifnot: hasResults -->
+            <div>Aucun résultat</div>
+            <!-- /ko -->
+            <!-- ko if: hasResults -->
+            <div class="flex-table">
+                <div class="flex-header vertical-gradient">
+                    <span class="cell tiny"></span>
+                    <span class="cell tiny"></span>
+                    <span class="cell longer">N°</span>
+                    <span class="cell short"></span>
+                    <span class="cell short">Avt.</span>
+                    <span class="cell">Date S/A</span>
+                    <span class="cell short">Br.</span>
+                    <span class="cell short">Cible</span>
+                    <span class="cell short">Etat</span>
+                    <span class="cell short">Sit.</span>
+                    <span class="cell short">Qual.</span>
+                    <span class="cell">Descriptif</span>
+                    <span class="cell">Pren. Ass.</span>
+                    <span class="cell short">C.P.</span>
+                    <span class="cell">Courtier Gest.</span>
+                    <span class="cell short">C.P.</span>
+                </div>
+                <div class="flex-body scroll">
+                    <!-- ko foreach: resultList -->
+                    <div class="alternate-bg-color grid thin">
+                        <div class="cell tiny">
+                            <input type="radio" name="result-selection" data-bind="event: { change: resultSeleted }" />
+                        </div>
+                        <div class="cell tiny center-text"><i class="icon" data-bind="class: typImgClass, attr: { title: typImgTitle }"></i></div>
+                        <div class="cell longer right-text" data-bind="text: OffreContratNum"></div>
+                        <div class="cell short right-text" data-bind="text: VersionLabel"></div>
+                        <div class="cell short center-text" data-bind="text: NumAvenant"></div>
+                        <div class="cell center-text" data-bind="text: date"></div>
+                        <div class="cell short center-text" data-bind="text: Branche, attr: { title: BrancheLib }"></div>
+                        <div class="cell short center-text" data-bind="text: Cible, attr: { title: CibleLib }"></div>
+                        <div class="cell short center-text" data-bind="text: Etat, attr: { title: EtatLib }"></div>
+                        <div class="cell short center-text" data-bind="text: Situation, attr: { title: SituationLib }"></div>
+                        <div class="cell short center-text" data-bind="text: Qualite, attr: { title: QualiteLib }"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell short center-text"></div>
+                        <div class="cell"></div>
+                        <div class="cell short center-text"></div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    
+    <div class="container container-foot">
+        <div class="input-line" data-bind="visible: !showAnyResult()">
+            <div class="flex5-10"></div>
+            <div class="flex5-10">
+                <button type="button" data-bind="click: showResultsAgain, visible: canShowResult">Rafficher les résultats</button>
+                <button type="button" data-bind="click: cancel">Annuler</button>
+                <button type="button" data-bind="click: resetFilter">Réinitialiser</button>
+                <button type="button" data-bind="disable: isFilterMissing, click: search">Rechercher</button>
+            </div>
+        </div>
+        <div class="input-line" data-bind="visible: showAnyResult">
+            <div class="flex8-10"></div>
+            <div class="flex2-10">
+                <button type="button" data-bind="enable: selectedAffair, visible: selectedAffair, click: terminate">Valider la sélection</button>
+                <button type="button" data-bind="click: backToFilters">Retour</button>
+            </div>
+        </div>
+    </div>
+</div>

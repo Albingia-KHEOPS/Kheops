@@ -1,0 +1,50 @@
+﻿.divInfoContrat {
+    width: 1023px;
+    height: 185px;
+}
+
+.divInfoLeft {
+    width: 45%;
+}
+
+.cssCodeOffre {
+    width: 75px !important;
+}
+
+.cssVersion {
+    width: 40px !important;
+    text-align: right;
+}
+
+.lblContrat {
+    width: 80px !important;
+}
+
+.inputAvenant {
+    width: 335px !important;
+}
+
+.lblAvenant {
+    width: 150px;
+}
+
+.lblDateAu {
+    width: 20px;
+}
+
+.inputPeriodicite {
+    width: 256px !important;
+}
+
+.dvPrime {
+    background-color: #eee;
+    height: 100%;
+    width: 1023px;
+    border: 1px #ddd outset;
+    overflow-y: auto;
+    /* width: 650px; */
+}
+
+.divHeightVisuquittances {
+    height: 345px !important;
+}

@@ -1,0 +1,13 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleTransverse.ModeleCommonCabinetPreneur
+<div id="BoiteDialogCourtierApporteurPayeur" class="nInfoBandeau">
+    <div class="GradientSection BlocDialogInfoGenLight FloatLeft">
+        <div class="HeightRow">
+            <label class="titleBoiteDiag">Informations Courtier</label>
+        </div>
+        @Html.Partial("BoitesDialogueDetails/InfosGeneralesEntite", Model)       
+    </div>   
+    <div class="TinyHeightRow"></div>
+    <div class="GradientSection BlocDialogDelegationSmall">
+        @Html.Partial("BoitesDialogueDetails/InfosDelegation", Model)
+    </div>
+</div>

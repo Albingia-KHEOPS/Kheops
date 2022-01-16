@@ -1,0 +1,111 @@
+﻿<div id="designationSearchBox" style="padding:15px 15px;display:none;">
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label>Recherche</label>
+        </div>
+        <div class="col-md-3 float-left">
+            <label class="radio-inline"><input type="checkbox" name="optDesignations" id="optContrats" checked="checked" style="vertical-align:text-bottom;">&nbsp;Contrat</label>
+            <label class="radio-inline"><input type="checkbox" name="optDesignations" id="optOffres" checked="checked" style="vertical-align:text-bottom;">&nbsp;Offre</label>
+            <label class="radio-inline" id="lblSinistres"><input type="checkbox" name="optDesignations" id="optSinistres" style="vertical-align:text-bottom;">&nbsp;Sinistre</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="code" class="control-label code-label">N°</label>
+                    <input class="form-control code-input" id="code" type="text">
+                </div>
+                <div class="form-group form-group">
+                    <input class="form-control verison-input" id="version" type="text" onkeypress='validate(event)'>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label>Désignation</label>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" id="designationSearch" maxlength="50" />
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px" id="divFilterBrancheSearchDesignation">
+        <div class="col-md-1">
+            <label>Branche</label>
+        </div>
+        <div class="col-md-3 float-left">
+            <select class="selectpicker form-control cbbSearchByDesignation" id="cbbBrancheSearchDesignation" multiple title="Choisir branche">
+                @foreach (var branche in (List<Hexavia.Models.CodeLibelle>)ViewBag.Branches)
+                {
+                    <option value="@branche.Code">@branche.Code - @branche.Libelle</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-1">
+            <label>Département</label>
+        </div>
+        <div class="col-md-3 float-left">
+            <select class="selectpicker form-control cbbSearchByDesignation" id="cbbDepartement" multiple title="Choisir département">
+                @for (int i = 1; i < 99; i++)
+                {
+                    <option value="@i.ToString("00")">@i.ToString("00")</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px" id="divFilterEtatSituation">
+        <div class="col-md-1">
+            <label>Etat</label>
+        </div>
+        <div class="col-md-3 float-left">
+            <select class="selectpicker form-control cbbSearchByDesignation" id="cbbEtat" multiple title="Choisir etat">
+                @foreach (var etat in (List<Hexavia.Models.CodeLibelle>)ViewBag.Etats)
+                {
+                    <option value="@etat.Code">@etat.Libelle</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-1">
+            <label>Situation</label>
+        </div>
+        <div class="col-md-3">
+            <select class="selectpicker form-control cbbSearchByDesignation" id="cbbSituation" multiple title="Choisir situation">
+                @foreach (var situation in (List<Hexavia.Models.CodeLibelle>)ViewBag.Situations)
+                {
+                    <option value="@situation.Code">@situation.Libelle</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px" id="divFilterGarantie">
+        <div class="col-md-1">
+            <label>Garantie</label>
+        </div>
+        <div class="col-md-3 float-left">
+            <select class="selectpicker form-control cbbSearchByDesignation" id="cbbGarantie" multiple title="Choisir garantie">
+                <option value="ATTANN">ATTANN - Annulation Attentat</option>
+                <option value="INTEMP">INTEMP - Annulation pour intempérie</option>
+            </select>
+        </div>
+        <div class="col-md-1 evenementDiv">
+            <label>Evenement</label>
+        </div>
+        <div class="col-md-3 float-left evenementDiv">
+            <select class="selectpicker form-control cbbSearchByDesignation" id="cbbEvenement" multiple title="Choisir évènement de réassurance">
+                @foreach (var evenement in (List<Hexavia.Models.CodeLibelle>)ViewBag.Evenements)
+                {
+                    <option value="@evenement.Code">@evenement.Libelle</option>
+                }
+            </select>
+        </div>
+    </div>
+    <hr />
+    <div class="row" style="margin-top:5px">
+        <div class="offset-md-1">
+            <button type="button" class="btn btn-light" id="btnNettoyerDesignation">Réinitialiser la recherche</button>
+        </div>
+        <div class="offset-md-7">
+            <button type="button" class="btn second-color" style="margin-left:3px" disabled id="btnSearchByDesignation">Lancer la recherche</button>
+        </div>
+
+    </div>
+</div>

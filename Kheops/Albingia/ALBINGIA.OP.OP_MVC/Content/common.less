@@ -1,0 +1,787 @@
+﻿body {
+    .valeur-unite-type-taxe {
+        .valeur {
+            width: 130px;
+            text-align: right;
+            margin: 2px;
+        }
+
+        .unites, .taxe {
+            width: 65px;
+            margin: 2px;
+        }
+
+        .types {
+            width: 100px;
+            margin: 2px;
+        }
+    }
+
+    .padding5 {
+        padding: 5px;
+    }
+
+    .margin5 {
+        margin: 5px;
+    }
+
+    .required_dt {
+        margin: 5px;
+        border: 1px solid red !important;
+        background-color: #fee !important;
+    }
+
+    .mgl85 {
+        margin-left: 85px;
+    }
+
+    .ui-widget {
+        font-family: inherit;
+    }
+
+    .center-content {
+        text-align: center;
+    }
+
+    .align-right {
+        float: right;
+    }
+
+    .top-away {
+        margin-top: 15px;
+    }
+
+    label.block-line {
+        width: 105px;
+        display: inline-block;
+    }
+
+    label.block-long-line {
+        width: 200px;
+        display: inline-block;
+    }
+
+    label.block-line input[type='checkbox'],
+    label.block-long-line input[type='checkbox'] {
+        margin: 0;
+    }
+
+    div.clear-float::after {
+        clear: both;
+        display: block;
+        content: '';
+    }
+
+    .inline-w100p {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .inline-w95p {
+        width: 95%;
+        display: inline-block;
+    }
+
+    .block-w100p {
+        width: 100%;
+        display: block;
+    }
+
+    .center-content {
+        text-align: center;
+        align-items: center;
+    }
+
+    .center-content * {
+        margin: auto;
+    }
+
+    i.add-img-cell {
+        height: 32px;
+        display: inline-block;
+    }
+
+    i, th, td, span, div {
+        &.add-img-cell {
+            background-image: url('./Images/plusajouter1616.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 32px;
+
+            &.disabled {
+                background: url('./Images/plusajouter_gris1616.jpg') no-repeat center center, -webkit-gradient(linear, center top, center bottom, color-stop(0, #fff), color-stop(1, #ddd)) !important;
+                background: url('./Images/plusajouter_gris1616.jpg') no-repeat center center, -moz-linear-gradient(top, #fff, #ddd) !important;
+                cursor: none;
+                pointer-events: none;
+            }
+        }
+    }
+
+    span.add-img-cell.disableAddItem {
+        background: url('./Images/plusajouter_gris1616.jpg') no-repeat center center, -webkit-gradient(linear, center top, center bottom, color-stop(0, #fff), color-stop(1, #ddd)) !important;
+        background: url('./Images/plusajouter_gris1616.jpg') no-repeat center center, -moz-linear-gradient(top, #fff, #ddd) !important;
+        cursor: none;
+        pointer-events: none;
+    }
+
+    i, th, td, span, div {
+        &.info-img {
+            background-image: url('./Images/alertes/notif_icn_info16.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 32px;
+        }
+
+        &.save-img-cell {
+            background-image: url('./Images/Save_16.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 32px;
+        }
+
+        &.delete-img-cell {
+            background-image: url('./Images/poubelle1616.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 32px;
+        }
+
+        &.cancel-img-cell {
+            background-image: url('./Images/cancel.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 32px;
+        }
+
+        &.reset-img-cell {
+            background-image: url('./Images/reset.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 32px;
+        }
+
+        &.pen-img-cell, &.edit-img-cell {
+            background-image: url('./Images/editer1616.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 32px;
+        }
+
+        &.disable-img-cell {
+            background-image: url('./Images/desactiver.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 32px;
+
+            &.disabled {
+                background-image: url('./Images/desactiverOFF.png');
+            }
+        }
+
+        &.error-img-cell {
+            background-image: url('./Images/alertes/notif_icn_crit16.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 16px;
+        }
+
+        &.expanded-img-cell {
+            background-image: url('./Images/Op.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 16px;
+        }
+
+        &.collapsed-img-cell {
+            background-image: url('./Images/Cl.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 16px;
+        }
+
+        &.grp-link {
+            background-image: url('./Images/favicon-grp2011.ico');
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 22px;
+            height: 15px;
+            display: inline-block;
+        }
+
+        &.loading {
+            background-image: url('./Images/ajax-loader.gif');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: auto 75%;
+            cursor: pointer;
+            background-color: transparent;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        &.citrix-link {
+            background-image: url('./Images/citrix.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: auto 75%;
+            cursor: pointer;
+            background-color: transparent;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        &.png {
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+
+            &.png24 {
+                width: 24px;
+                height: 24px;
+                background-size: auto 75%;
+            }
+
+            &.refresh {
+                background-image: url('./Images/refresh.png');
+            }
+
+            &.move-right {
+                background-image: url('./Images/deplacer32.png');
+            }
+
+            &.move-left {
+                background-image: url('./Images/deplacer-gauche32.png');
+            }
+
+            &.merge {
+                background-image: url('./Images/fusionner32.png');
+            }
+        }
+
+        &.png24 {
+        }
+
+        &.type-affaire {
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: transparent;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            background-image: url('./Images/type_C_16.png');
+
+            &.contrat {
+            }
+
+            &.offre {
+                background-image: url('./Images/type_O_16.png');
+            }
+
+            &.mere {
+                background-image: url('./Images/type_M_16.png');
+            }
+
+            &.aliment {
+                background-image: url('./Images/type_A_16.png');
+            }
+
+            &.dbloffre {
+                background-image: url('./Images/type_OO_16.png');
+            }
+        }
+    }
+
+    .left-img {
+        cursor: pointer;
+        display: block;
+        padding-left: 25px;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: left center;
+
+        &.clock-history {
+            background-image: url("./Images/Clock-History-Frame-16.png");
+        }
+
+        &.text-file {
+            background-image: url("./Images/LayoutArbre/u100_original.gif");
+        }
+
+        &.connexites {
+            background-image: url("./Images/connexite16.png");
+        }
+
+        &.frais-quittance {
+            background-image: url("./Images/Quittance/frais.png");
+        }
+
+        &.observations {
+            background-image: url("./Images/u408_normal.gif");
+        }
+
+        &.alertes {
+            background-image: url("./Images/ControleFin/A.png");
+        }
+
+        &.citrix {
+            background-image: url("./Images/citrix.png");
+            background-size: auto 75%;
+        }
+    }
+
+    input[type=text] {
+        &.xl {
+            width: 615px;
+        }
+
+        &.short {
+            width: 30px;
+        }
+
+        &.alert {
+            border-color: red;
+        }
+    }
+
+    .observations-readonly {
+        width: 385px;
+        height: 50px;
+        border: 1px solid #cdcdcd;
+        color: #cdcdcd;
+        background-color: white;
+        overflow-y: auto;
+    }
+
+    .textarea-position {
+        position: absolute;
+        margin-top: 7px;
+        margin-left: -7px;
+    }
+
+    textarea.observations700-50 {
+        width: 700px;
+        height: 50px;
+        margin-bottom: 5px;
+    }
+
+    .observations-apercu {
+        background-color: white;
+        border: 1px solid #CDCDCD;
+        color: #CDCDCD;
+        height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 676px;
+        padding-top: 2px;
+        padding-left: 2px;
+    }
+
+    .radios-inline {
+        height: 40px;
+        margin: 0;
+        padding: 2px 0;
+    }
+
+    .flex-table-container {
+        &:after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+    }
+
+    .pad7 {
+        padding: 7px;
+    }
+
+    .flex-table {
+        h1:first-child {
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        span.cell, div.cell {
+            padding: 0;
+            margin: 2px 1px;
+            width: 90px;
+
+            &.full {
+                width: 100%;
+            }
+
+            &.flex1 {
+                width: auto;
+                flex: 1;
+            }
+
+            &.flex2 {
+                width: auto;
+                flex: 2;
+            }
+
+            &.flex3 {
+                width: auto;
+                flex: 3;
+            }
+
+            &.flex4 {
+                width: auto;
+                flex: 4;
+            }
+
+            &.tiny {
+                width: 30px;
+            }
+
+            &.short {
+                width: 50px;
+            }
+
+            &.longer {
+                width: 105px;
+            }
+
+            &.long {
+                width: 130px;
+            }
+
+            &.pretty-long {
+                width: 250px;
+            }
+
+            &.very-long {
+                width: 500px;
+            }
+
+            &.extremely-long {
+                width: 800px;
+            }
+
+            &.no-space {
+                margin: 0;
+            }
+
+            .pad21-lf {
+                padding-left: 21px;
+            }
+
+            &.lpad {
+                padding-left: 5px;
+            }
+
+            &.rpad {
+                padding-right: 5px;
+            }
+
+            &.auto-shorten {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+
+        .flex-header {
+            display: flex;
+
+            .cell {
+                height: 30px;
+                line-height: 30px;
+            }
+
+            &.thin {
+                .cell {
+                    height: 20px;
+                    line-height: 20px;
+                }
+            }
+
+            &.thick {
+                .cell {
+                    height: 40px;
+                    line-height: 40px;
+                }
+            }
+
+            & > span.cell {
+                font-weight: bold;
+                text-align: center;
+
+                &.text-wrap {
+                    line-height: normal;
+                }
+            }
+
+            &.vertical-gradient {
+                & > span.cell {
+                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd');
+                    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #fff),color-stop(1, #ddd));
+                    background-image: -moz-linear-gradient(top, #fff, #ddd);
+                    -pie-background: linear-gradient(#FFF, #DDD);
+                    background-color: #eee;
+                    background-image: linear-gradient(to bottom, #FFF, #DDD);
+                }
+
+                & > span.add-img-cell {
+                    background: url('./Images/plusajouter1616.png') no-repeat center center, -webkit-gradient(linear,center top,center bottom,color-stop(0, #fff),color-stop(1, #ddd));
+                    background: url('./Images/plusajouter1616.png') no-repeat center center, -moz-linear-gradient(top, #fff, #ddd);
+                    //background-attachment: fixed !important;
+                    -pie-background: linear-gradient(#EEFF99, #66EE33);
+                    background-color: #eee;
+                    cursor: pointer;
+                    width: 32px;
+                    height: 30px;
+                    line-height: 30px;
+                    padding: 0;
+                    margin: 2px 1px;
+                }
+            }
+
+            &.w90p {
+                width: 90%;
+            }
+        }
+
+        .flex-body {
+            display: inline-block;
+
+            &.full-block {
+                display: block;
+            }
+
+            &.no-scroll {
+                overflow: hidden;
+            }
+
+            &.scroll {
+                max-height: 210px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                width: auto;
+
+                &.w90p {
+                    width: 90%;
+                }
+            }
+
+            &.small-scroll {
+                max-height: 100px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            &.big-scroll {
+                max-height: 500px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            & > div {
+                flex: 1;
+                display: flex;
+
+                &.hide-it {
+                    display: none;
+                }
+
+                .cell {
+                    height: 30px;
+                    line-height: 30px;
+                }
+
+                &.thin {
+                    .cell {
+                        height: 20px;
+                        line-height: 20px;
+                    }
+                }
+
+                &.auto-height {
+                    .cell {
+                        height: auto;
+                        line-height: 20px;
+                    }
+                }
+
+                &.thick {
+                    .cell {
+                        height: 40px;
+                        line-height: 40px;
+                    }
+                }
+
+                &.alternate-bg-color {
+                    &:nth-child(odd) {
+                        background-color: #FFF;
+                    }
+
+                    &:nth-child(even) {
+                        background-color: #EDEEFF;
+                    }
+                }
+
+                &.grid {
+                    div.cell {
+                        border-left: 1px solid #DDD;
+                        box-sizing: border-box;
+
+                        &:nth-child(1) {
+                            border-left: none;
+                        }
+                    }
+                }
+
+                &.content-right {
+                    justify-content: flex-end;
+                    min-height: 32px;
+                }
+
+                div.cell {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+
+                    &.flex1 {
+                        width: auto;
+                        flex: 1;
+                    }
+
+                    &.flex2 {
+                        width: auto;
+                        flex: 2;
+                    }
+
+                    &.flex3 {
+                        width: auto;
+                        flex: 3;
+                    }
+
+                    &.flex4 {
+                        width: auto;
+                        flex: 4;
+                    }
+
+                    input[type='text'], select {
+                        width: 100%;
+
+                        &.block-margin {
+                            display: block;
+                            margin: 1px 5px;
+                            width: 90%;
+                        }
+                    }
+
+                    .link, .link:visited, .link:hover, .link:link, .link:active {
+                        color: #000;
+                        text-decoration: underline;
+                        text-transform: uppercase;
+                    }
+
+                    &.single-input {
+                        text-align: center;
+
+                        select, input, textarea {
+                            width: 90%;
+                        }
+                    }
+
+                    &.center-text {
+                        text-align: center;
+                    }
+
+                    &.right-text {
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+
+    .ko-cloak {
+        &.hide {
+            display: none;
+        }
+
+        &.conceal {
+            visibility: hidden;
+        }
+    }
+
+    .inner-right {
+        display: flex;
+        align-items: flex-end;
+
+        .push-right {
+            flex: 4;
+            display: flex;
+            align-self: flex-end;
+        }
+
+        .empty-zone {
+            flex: 12;
+        }
+    }
+
+    .flex-display {
+        display: flex;
+
+        .flex1 {
+            flex: 1;
+        }
+
+        .flex2 {
+            flex: 2;
+        }
+
+        .flex3 {
+            flex: 3;
+        }
+
+        .flex4 {
+            flex: 4;
+        }
+
+        .flex5 {
+            flex: 5;
+        }
+
+        .flex6 {
+            flex: 6;
+        }
+    }
+
+    .no-cross-close .ui-dialog-titlebar-close {
+        display: none;
+    }
+}

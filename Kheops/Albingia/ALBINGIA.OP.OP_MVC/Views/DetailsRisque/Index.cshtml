@@ -1,0 +1,266 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleDetailsRisquePage>
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@section stylesheets {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbDetailsRisque")
+}
+
+@section scripts {
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbDetailsRisque")
+}
+<div id="GestionErreur">
+</div>
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        <input type="hidden" id="TypePolice" value="@(Model.Contrat != null ? Model.Contrat.TypePolice : "")" />
+        <input type="hidden" id="Periodicite" value="@(Model.Contrat != null ? Model.Contrat.PeriodiciteCode : Model.Offre != null ? Model.Offre.Periodicite.Code : string.Empty)" />
+
+        @Html.HiddenFor(m => m.Code)
+        @Html.HiddenFor(m => m.Branche)
+        @Html.HiddenFor(m => m.MonoObjet)
+        @Html.HiddenFor(m => m.ChronoDesi)
+        @Html.HiddenFor(m => m.RisqueObj)
+        @Html.HiddenFor(m => m.CibleMonoObjet)
+        @Html.HiddenFor(m => m.OpenObjet)
+        @Html.HiddenFor(m => m.CountRsq)
+        @Html.Hidden("dateDebOffre", (Model.DateDebStr))
+        @Html.Hidden("heureDebOffre", (Model.HeureDebStr))
+        @Html.Hidden("minuteDebOffre", (Model.MinuteDebStr))
+        @Html.Hidden("dateFinOffre", (Model.DateFinStr))
+        @Html.Hidden("heureFinOffre", (Model.HeureFinStr))
+        @Html.Hidden("minuteFinOffre", (Model.MinuteFinStr))
+
+
+        @Html.Hidden("dateDebMinObjet", (Model.DateDebMinObj))
+
+        @Html.Hidden("heureDebMinObjet", (Model.HeureDebMinObj))
+        @Html.Hidden("minuteDebMinObjet", (Model.MinuteDebMinObj))
+        @Html.Hidden("dateDebMaxObjet", (Model.DateDebMaxObj))
+        @Html.Hidden("heureDebMaxObjet", (Model.HeureDebMaxObj))
+        @Html.Hidden("minuteDebMaxObjet", (Model.MinuteDebMaxObj))
+
+        @Html.Hidden("dateFinMaxObjet", (Model.DateFinMaxObj))
+        @Html.Hidden("heureFinMaxObjet", (Model.HeureFinMaxObj))
+        @Html.Hidden("minuteFinMaxObjet", (Model.MinuteFinMaxObj))
+        @Html.Hidden("dateFinMinObjet", (Model.DateFinMinObj))
+        @Html.Hidden("heureFinMinObjet", (Model.HeureFinMinObj))
+        @Html.Hidden("minuteFinMinObjet", (Model.MinuteFinMinObj))
+        @Html.Hidden("DateMinModifObjet", (Model.ObjetsRisqueMetaData.DateMinModificationObjet))
+        
+        @Html.Hidden("dateDebObjetAvn", (Model.DateDebMinObjAvn))
+        @Html.Hidden("heureDebObjetAvn", (Model.HeureDebMinObjAvn))
+        @Html.Hidden("minuteDebObjetAvn", (Model.MinuteDebMinObjAvn))
+
+        @Html.Hidden("dateFinObjetAvn", (Model.DateFinMaxObjAvn))
+        @Html.Hidden("heureFinObjetAvn", (Model.HeureFinMaxObjAvn))
+        @Html.Hidden("minuteFinObjetAvn", (Model.MinuteFinMaxObjAvn))
+
+        @Html.Hidden("hasFormules", Model.HasFormules.ToString())
+        @Html.HiddenFor(m => m.CodeApeMonoObjet)
+        @Html.HiddenFor(m => m.CodeTreMonoObjet)
+        @Html.HiddenFor(m => m.CodeClasseMonoObjet)
+        @Html.HiddenFor(m => m.TerritorialiteMonoObjet)
+        @Html.HiddenFor(m => m.Nomenclature1MonoObjet)
+        @Html.HiddenFor(m => m.NatureLieux)
+        @Html.HiddenFor(m => m.TypeRisque)
+        @Html.HiddenFor(m => m.TypeMateriel)
+        @Html.HiddenFor(m => m.RedirectRisque)
+
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+            <div class="nHorizontalFullWithGroup">
+                @Html.HiddenFor(m => m.IsModeAvenant)
+                @if (Model.IsModeAvenant)
+                {
+                    @Html.HiddenFor(m => m.DateEffetAvenantModificationLocaleCopy)
+                    @Html.HiddenFor(m => m.DateSortieGarantieCopy)
+                    <div class="nGradientSection" id="divModeAvenant">
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label>Date d'effet de l'avenant</label>
+                                <input id="DateEffetAvenant" class="inputDate" name="DateEffetAvenant" value="@(Model.DateEffetAvenant.HasValue ? Model.DateEffetAvenant.Value.ToString("dd/MM/yyyy") : string.Empty)" disabled="disabled" />
+                            </div>
+                            <div class="FloatLeft" style="padding-left: 480px;">
+                                <input type="hidden" id="ProchEch" value="@(Model.Contrat.ProchaineEchAnnee != 0 && Model.Contrat.ProchaineEchMois != 0 && Model.Contrat.ProchaineEchJour != 0 ? string.Format("{0}/{1}/{2}", Model.Contrat.ProchaineEchJour.ToString().PadLeft(2, '0'), Model.Contrat.ProchaineEchMois.ToString().PadLeft(2, '0'), Model.Contrat.ProchaineEchAnnee) : string.Empty)" />
+                                @Html.Hidden("IsAvenantModificationLocale", Model.IsAvenantModificationLocale.ToString())
+                                @Html.Hidden("IsTraceAvnExist", Model.IsTraceAvnExist.ToString())
+                                <input type="checkbox" id="chkModificationAVN" name="CheckModificationAVN" data-avn-datalock checked="@(Model.IsAvenantModificationLocale )" disabled="@(Model.IsModeConsultationEcran || Model.IsTraceAvnExist || Model.IsModifHorsAvenant )" />
+                                @Html.HiddenFor(m => m.DateDebHisto)
+                                @Html.HiddenFor(m => m.HeureDebHisto)
+                                <label>Modification du risque dans l'avenant au</label>
+                                @if (Model.IsAvenantModificationLocale)
+                                {
+                                    @Html.AlbDateFormat(m => m.DateEffetAvenantModificationLocale, new { @id = "DateEffetAvenantModificationLocale", @class = "inputDate datepicker", @name = "DateEffetAvenantModificationLocale" }, htmlName: "DateEffetAvenantModificationLocale")
+                                }
+                                else
+                                {
+                                    @Html.AlbDateFormat(m => m.DateEffetAvenantModificationLocale, new { @id = "DateEffetAvenantModificationLocale", @class = Model.IsAvenantModificationLocale ? "inputDate" : "inputDate readonly", @disabled = "disabled", @name = "DateEffetAvenantModificationLocale" }, htmlName: "DateEffetAvenantModificationLocale")
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="nGradientSection">
+                    @* @Html.EditorFor(m => m.InformationsGeneralesMetaData, "InformationsGenerales_DetailsRisque")*@
+                    @Html.Partial("/Views/DetailsRisque/InformationsGeneralesDetailsRisque.cshtml", Model.InformationsGenerales)
+                </div>
+                <div class="nGradientSection" style="@(!Model.IsModeAvenant ? "height: 222px;" : "height: 182px;")">
+                    <div class="HeightRow FloatLeft">
+                        @Html.Partial("ObjetsRisque", Model.ObjetsRisqueMetaData)
+                        <hr />
+                        <div id="divInfosReport" class="FloatRight">
+                            @Html.HiddenFor(m => m.ReportValeur)
+                            @Html.HiddenFor(m => m.ReportObligatoire)
+                            <div class="FloatLeft" style="width: 120px;">
+                                <label class="Block" style="width: 115px;">Valeur Totale Risque</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Valeur" name="Valeur" class="numerique inputValeur" albMask="numeric" value="@(Model.Valeur != 0 ? Model.Valeur.ToString() : string.Empty)" />
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => m.Unite, Model.Unites, "Unite", htmlAttributes: new { @id = "Unite", @class = "lstUnite", @albCFList = "unite" }, generateTitle: true)
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => m.Type, Model.Types, "Type", htmlAttributes: new { @id = "Type", @class = "lstType", @albCFList = "type" }, generateTitle: true)
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => m.ValeurHT, Model.ValeursHT, "ValeurHT", htmlAttributes: new { @id = "ValeurHT", @class = "lstTaux" }, generateTitle: true)
+                            </div>
+                        </div>
+                        <div id="divAdresse" class="FloatLeft">
+                            @if (Model.ContactAdresse != null)
+                            {
+                                @Html.Partial("RisqueAdresse", Model.ContactAdresse)
+                            }
+                        </div>
+                        <div class="FloatLeft" style="width: 279px;">
+                            <input id="ActiverReport" type="checkbox" name="ActiverReport" value="@Model.ActiverReport" checked="@(Model.ActiverReport)" disabled="disabled" />
+                            <label>Reporter la valeur des objets sur le risque</label>
+                        </div>
+                        <div class="FloatRight">
+                            <div class="FloatLeft" style="width: 120px;">
+                                <div class="FloatLeft">
+                                    <label class="Block" style="width: 90px;">Total des objets</label>
+                                </div>
+                                @if (Model.IsModeAvenant && Model.IsAlertePeriode)
+                                {
+                                    <div class="FloatLeft">
+                                        <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")" title="Attention le total est donné à titre indicatif car le calcul ne tient pas compte des périodes des objets et des éventuelles indexations." />
+                                    </div>
+                                }
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="ValeurObjets" name="ValeurObjets" class="readonly numerique" albMask="numeric" readonly="readonly" value="@(Model.ValeurObjets)" style="width: 120px;" />
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="UniteObjets" name="UniteObjets" class="readonly" readonly="readonly" value="@(Model.UniteObjets)" style="text-align: center; width: 55px;" />
+                            </div>
+                            <div class="FloatLeft">
+                                @if (!string.IsNullOrEmpty(Model.EnsembleType))
+                                {
+                                    @Html.AlbDropDownListFor(m => m.TypeObjets, Model.TypesLstObjets, "TypeObjets", htmlAttributes: new { @id = "TypeObjets", @class = "lstUnite" }, generateTitle: true);
+                                }
+                                else
+                                {
+                                    <input type="text" id="TypeObjets" name="TypeObjets" class="readonly" readonly="readonly" value="@(Model.TypeObjets)" style="text-align: center; width: 55px;" />
+                                }
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="ValeurHTObjets" name="ValeurHTObjets" class="readonly" readonly="readonly" value="@(Model.ValeurHTObjets)" style="text-align: center; width: 50px;" />
+                                @Html.HiddenFor(m => m.EnsembleType)
+                            </div>
+                            @*<br />
+                            <div class="FloatLeft inputCoutM2" style="width: 120px;">
+                                <label class="Block" style="width: 115px;">Cout/m²</label>
+                            </div>
+                            <div class="FloatLeft inputCoutM2">
+                                <input type="text" id="CoutM2" name="CoutM2" class="numerique" albMask="numeric" value="@(Model.CoutM2 != 0 ? Model.CoutM2.ToString() : string.Empty)" />
+                            </div>*@
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+                @if ((Model.IsModeAvenant && Model.AvnCreationRsq.ToString() == Model.NumAvenantPage || !Model.IsModeAvenant) && !Model.IsModifHorsAvenant)
+                {
+                    <button id="btnSupprimerDtlRsq" type="button" albshortcut="true" data-accesskey="p" tabindex="30">Su<u>p</u>primer</button>
+                }
+            </div>
+            <div id="FullScreen" class="FloatLeft" style="padding-top: 6px;">
+                <button id="fullScreenObjet" type="button" class="CursorPointer FullScreenBtn" title="Plein écran">
+                    <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+                </button>
+            </div>
+            <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnSuivant" class="next-step" type="button" albshortcut="true" data-accesskey="s" tabindex="28"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreenObjets">
+    <div class="overlay-background" style="z-index:3">
+    </div>
+    <div id="divDataPleinEcranObjets">
+        @Html.Partial("ObjetsRisquePleinEcran", Model.ObjetsRisqueMetaData)
+    </div>
+</div>
+
+<div id="divInformationsSpecifiquesRisque">
+    <div class="overlay-background" style="z-index:2">
+    </div>
+    <div id="divDataInformationsSpecifiquesRisque">
+    </div>
+</div>
+
+@Html.HiddenNoName("hiddenActionRsq", string.Empty)
+<div id="fancyConfirmRsq" style="display: none;">
+    <table>
+        <tr>
+            <td style="background-color: #EDEDED;" colspan="2">
+                <b>Message de Confirmation</b><br />
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2" valign="middle">
+                <img src="/Content/Images/alertes/notif_icn_warn.png" alt="" />
+            </td>
+            <td>
+                <div id="msgConfirmRsq" class="FloatLeft FancyTextCenter">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <button type="button" id="btnConfirmCancelRsq" value="Non" data-accesskey="n"><u>N</u>on</button>
+                <button type="button" id="btnConfirmOkRsq" value="Oui" data-accesskey="o"><u>O</u>ui</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="divRechercheActivite" albname="divRechercheActivite">
+    <div class="overlay-background" style="z-index:22">
+    </div>
+    <div id="divDataRechercheActivite" albname="divDataRechercheActivite"></div>
+</div>

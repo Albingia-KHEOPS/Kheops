@@ -1,0 +1,7 @@
+﻿@model List<ALBINGIA.Framework.Common.Extensions.AlbSelectListItem>
+@foreach (var item in Model)
+{
+    <div class="HeightRow PadLeft">
+        <input type="checkbox"  name="checkboxIS" value="@item.Text">@item.Text
+    </div>
+}

@@ -1,0 +1,365 @@
+﻿.divInfoContrat
+{
+    width: 1023px;
+    height: 140px;
+}
+
+.divInfoLeft
+{
+    width: 615px;
+}
+
+.cssCodeOffre
+{
+    width: 75px !important;
+}
+
+.cssVersion
+{
+    width: 40px !important;
+    text-align: right;
+}
+
+.lblDateAu
+{
+    width: 20px;
+}
+
+.dvAlert
+{
+    width: 449px;
+    /*width: 369px;*/
+    height: 294px;
+}
+
+.lblAttestation
+{
+    width: 115px !important;
+}
+
+.inputAttestation
+{
+    width: 285px !important;
+}
+
+.lblPart
+{
+    width: 97px !important;
+}
+
+.inPart
+{
+    width: 50px!important;
+}
+
+.inNatureContrat
+{
+    width: 90px !important;
+}
+
+.HeightInfoAttes
+{
+    height: 307px;
+}
+
+.dvAttestation
+{
+    height: 406px;
+    width: 645px;
+    margin-left: 5px;
+}
+
+.dvAttestationRsqObjGar
+{
+    height: 306px;
+    margin-left: 5px;
+}
+
+.dvAlertAttes
+{
+    height: 406px;
+    width: 364px;
+    margin-right: 5px;
+    border-left: 1px solid grey;
+}
+
+.onglet
+{ /* onglets inactifs */
+    border: solid 1px #DDDDDD;
+    border-left: none;
+    border-bottom: 1px solid grey;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+    background-color: #DDDDDD;
+}
+
+.onglet-orange
+{ /* onglets inactifs */
+    border: solid 1px #DDDDDD;
+    border-left: none;
+    border-bottom: 1px solid grey;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+    background-color: #DDDDDD;
+    color: orange;
+    font-weight: bold;
+}
+
+.onglet-actif
+{ /*l'onglet actif */
+    border: 1px solid grey;
+    border-bottom: none;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    background-color: #FCFCFC;
+}
+
+.onglet-actif-orange
+{ /*l'onglet actif */
+    border: 1px solid grey;
+    border-bottom: none;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    background-color: #FCFCFC;
+    color: orange;
+    font-weight: bold;
+}
+
+.onglet-vide
+{
+    border-bottom: 1px solid grey;
+    border-top: none;
+    border-left: none;
+    padding: 21px 2px 2px;
+    float: left;
+    width: 234px;
+}
+
+.onglet-vide-tiny
+{
+    border-bottom: 1px solid grey;
+    border-top: none;
+    border-left: none;
+    padding: 21px 2px 2px;
+    float: left;
+    width: 83px;
+}
+
+.thExercice
+{
+    width: 52px;
+}
+
+.thPeriode
+{
+    width: 149px;
+}
+
+.inExercice
+{
+    width: 50px !important;
+}
+
+.inTypeAttes
+{
+    width: 213px !important;
+}
+
+.TabPeriode
+{
+    height: 40px;
+}
+
+.HeightIntegralite
+{
+    height: 30px;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.dvPeriodeAttes
+{
+    width: 250px;
+}
+
+.thAllCheck
+{
+    width: 20px;
+}
+
+.thRisques
+{
+    width: 300px;
+}
+
+.thDates
+{
+    width: 200px;
+}
+
+.thCible
+{
+    width: 200px;
+}
+
+.thValeur
+{
+    width: 248px;
+}
+
+.divRsqObj
+{
+    max-height: 220px;
+    overflow: auto;
+}
+
+.tblRsqObj
+{
+    width: 1000px;
+    table-layout: fixed;
+}
+
+.tdCheck
+{
+    width: 22px;
+    text-align: center;
+}
+
+.tdRsq
+{
+    width: 298px;
+    padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tdObj
+{
+    width: 298px;
+    padding-left: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tdDates
+{
+    width: 99px;
+    text-align: center;
+}
+
+.tdCible
+{
+    width: 200px;
+    text-align: center;
+}
+
+.tdValeur
+{
+    width: 250px;
+    text-align: center;
+}
+
+.inSearchGar
+{
+    width: 250px;
+}
+
+.PaddingFiltreRsq
+{
+    padding-left: 69px;
+}
+
+.PaddingCourtGest
+{
+    padding-left: 200px;
+}
+
+.thGarRsq
+{
+    width: 60px;
+}
+
+.thGarObj
+{
+    width: 60px;
+}
+
+.thGarFor
+{
+    width: 60px;
+}
+
+.thGarantie
+{
+    width: 406px;
+}
+
+.thGarValeur
+{
+    width: 150px;
+}
+
+.divGarantie 
+{
+    /*max-height: 194px;*/
+    max-height: 290px;
+    overflow: auto;
+}
+
+.tblGarantie
+{
+    width: 1000px;
+    table-layout: fixed;
+}
+
+.tdGarRsq
+{
+    width: 62px;
+    text-align: center;
+}
+
+.tdGarObj
+{
+    width: 62px;
+    text-align: center;
+}
+
+.tdGarFor
+{
+    width: 62px;
+    text-align: center;
+}
+
+.tdGarantie
+{
+    width: 404px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 5px;
+}
+
+.tdGarValeur
+{
+    width: 152px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.paddingleft150
+{
+    padding-left: 150px;
+}
+
+.divInfoAttestationContratDetailedDisplay {
+    width: 1023px;
+    height: 180px;
+}

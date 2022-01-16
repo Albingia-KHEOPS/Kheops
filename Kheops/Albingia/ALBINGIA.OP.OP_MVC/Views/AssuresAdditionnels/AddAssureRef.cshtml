@@ -1,0 +1,93 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.AssuresAdditionnels.AssuresRef
+<div id="divAddAssureRef" class="CommonForm FloatLeft" style="width: 790px;">
+    @Html.Hidden("ModeAddAssu", "Ref")
+    @Html.Hidden("ModeEdit", Model.CodeAssure != 0 ? 1 : Model.CodeAssure)
+    <div class="GroupFull GroupWithBorder" style="width: 775px;">
+        <div class="GroupTitle">
+            Ajout / Modification d'un assuré
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 770px">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Code*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.CodeAssure != 0) {
+                                <input type="text" id="CodeAssure" name="CodeAssure" value="@(Model.CodeAssure)" readonly="readonly" class="readonly" albAutoComplete="autoCompCodeAssure" albcontext="assureAdd"  maxlength="7"/>
+                            }
+                            else {
+                                <input type="text" id="CodeAssure" name="CodeAssure" value="" albautocomplete="autoCompCodeAssure" albcontext="assureAdd" maxlength="7"/>
+                            }
+                        </div>
+                    </div>
+                    <div class="DoubleGenericColumnSmaller">
+                        <div class="FloatLeft">
+                            <label class="Block">Nom*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.CodeAssure != 0) {
+                                <input type="text" id="NomAssure" name="NomAssure" value="@(Model.NomAssure)" readonly="readonly" class="DoubleInputSmaller readonly" albAutoComplete="autoCompNomAssure" albcontext="assureAdd" />
+                            }
+                            else {
+                                <input type="text" id="NomAssure" name="NomAssure" value="@(Model.NomAssure)" class="DoubleInputSmaller" albAutoComplete="autoCompNomAssure" albcontext="assureAdd" />
+                            }
+                        </div>
+                    </div>
+                    <div class="FloatLeft Loupe">
+                        <img src="@Url.Content("/Content/Images/loupe.png")" id="RechercheAvanceePreneurAssuranceAssuAdd" alt="" class="CursorPointer" albcontext="assureAdd" />
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColum">
+                        <div class="FloatLeft">
+                            <label class="Block">Qualités</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.CodeQualite1, Model.Qualites1, "CodeQualite1", htmlAttributes: new { @id = "CodeQualite1", @albCFList = "qualite" }, generateTitle: true)</div>
+                    </div>
+                    <div class="GenericColum">
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.CodeQualite2, Model.Qualites2, "CodeQualite2", htmlAttributes: new { @id = "CodeQualite2", @albCFList = "qualite" }, generateTitle: true)</div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.CodeQualite3, Model.Qualites3, "CodeQualite3", htmlAttributes: new { @id = "CodeQualite3", @albCFList = "qualite" }, generateTitle: true)</div>
+                    </div>
+                </div>
+                <div class="HeightRowDesi">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Autre</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="QualiteAutre" name="QualiteAutre" value="@(Model.QualiteAutre)" />
+                        </div>
+                    </div>
+                    <div class="DoubleGenericColumnSmaller">
+                        <div class="FloatLeft">
+                            <label class="Block">Désignation</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("idDesi", Model.IdDesi)
+                            <div id="zoneTxtArea" class="FloatLeft divTextArea2 ColCommentaire" albcontext="AssureAddCom">@Html.Raw(!string.IsNullOrEmpty(Model.Designation) ? Model.Designation.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+                            <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="AssureAddCom">
+                                <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                            </div>
+                            <div id="txtArea" albcontext="AssureAddCom">
+                                <div class="FloatLeft">
+                                    <textarea id="AssureAddCom" name="txtCommentaires" class="" style="margin-bottom: 5px; overflow-y:auto; width:500px;" tabindex="6">@Model.Designation</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 775px">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <input type="button" id="btnFancyAnnuler" value="Annuler" tabindex="29" />
+            <input type="button" id="btnFancyValider" value="Valider" tabindex="28" />
+        </div>
+    </div>
+</div>

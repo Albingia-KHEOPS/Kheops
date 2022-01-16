@@ -1,0 +1,40 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.CoAssureurGarantie>
+@{   
+    double totalHTHCatnat = 0;
+    double totalHTCatnat = 0;
+    double totalHTTotal = 0;
+    double totalCommHCatnat = 0;
+    double totalCommCatnat = 0;
+    double totalCommTotal = 0;
+}
+<table id="tblVentilationCoassGarantieBody" class="trHeight">
+    @foreach (ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.CoAssureurGarantie garantie in Model)
+    {    
+        <tr>
+            <td class="width470 smallPaddingLeft">@(garantie.Code + " - " + garantie.Libelle)</td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(garantie.HTHCatnat.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(garantie.HTCatnat.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(garantie.HTTotal.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(garantie.CommHCatnat.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(garantie.CommCatnat.ToString())</span></td>
+            <td class="width80 numerique"><span albmask="@(garantie.CommTotal > 0 ? "decimal" : string.Empty)">@(garantie.CommTotal.ToString())</span></td>
+        </tr>  
+        totalHTHCatnat += garantie.HTHCatnat;
+        totalHTCatnat += garantie.HTCatnat;
+        totalHTTotal += garantie.HTTotal;
+        totalCommHCatnat += garantie.CommHCatnat;
+        totalCommCatnat += garantie.CommCatnat;
+        totalCommTotal += garantie.CommTotal;
+    }
+</table>
+<table id="tblVentilationCoassGarantieTotal" class="trHeight">
+    <tr>
+        <td class="tablePersoHead width470 titleBold">Total</td>
+        <td class="width80 smallPaddingLeft backgroundWhite numerique titleBold"><span albmask="decimal">@(totalHTHCatnat.ToString())</span></td>
+        <td class="width80 smallPaddingLeft backgroundWhite numerique titleBold"><span albmask="decimal">@(totalHTCatnat.ToString())</span></td>
+        <td class="width80 smallPaddingLeft backgroundWhite numerique titleBold"><span albmask="decimal">@(totalHTTotal.ToString())</span></td>
+        <td class="width80 smallPaddingLeft backgroundWhite numerique titleBold"><span albmask="decimal">@(totalCommHCatnat.ToString())</span></td>
+        <td class="width80 smallPaddingLeft backgroundWhite numerique titleBold"><span albmask="decimal">@(totalCommCatnat.ToString())</span></td>
+        <td class="width80 backgroundWhite numerique titleBold"><span albmask="decimal">@(totalCommTotal.ToString())</span></td>
+    </tr>
+</table>

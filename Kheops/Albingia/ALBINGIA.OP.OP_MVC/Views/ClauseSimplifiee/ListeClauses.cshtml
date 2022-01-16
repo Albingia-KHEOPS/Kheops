@@ -1,0 +1,7 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause>         
+<table class="tabFichier" id="tblTableFichier">
+    @foreach (var item in Model)
+    {
+        @Html.Partial("LigneClause", item)
+    }
+</table>

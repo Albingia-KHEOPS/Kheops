@@ -1,0 +1,50 @@
+﻿<#@ template language="C#" hostspecific="True"#>
+<#@ Assembly Name="Microsoft.CSharp.dll" #>
+<#@ Assembly name="C:\work\Clients\Albingia\OutilsMetierVS2012\OutilsMetier - VS2012\Albingia\ALBINGIA.Framework.Common\bin\Debug\ALBINGIA.Framework.Common.dll" #>
+<#@ Import Namespace="ALBINGIA.Framework.Common.ExcelXmlMap" #>
+<#@ output extension=".cs" #>
+
+<#
+ 
+    var model= ALBINGIA.Framework.Common.ExcelXmlMap.CommonExcel.GetControlsFromXml(@"C:\Parametrage\","OffreSimple");
+    foreach(var c in model.InfosExcel)  
+{       
+
+#>
+using System;
+using System.Data.Linq.Mapping;
+using System.Runtime.Serialization;
+namespace OP.WSAS400.DTO.ExcelDto.tst {
+//Class Dto générée 
+//[KnownType(typeof(<#=c.Name #>))]
+[DataContract]
+public class <#=c.Name #> 
+{
+<#
+       foreach(var p in c.LignesInfosOut)
+        {
+		if(1!=1){
+		   continue;}#>
+		
+	[DataMember]
+    [Column(Name = "<#=                    p.DbMapCol #>")]
+    public <#=                    p.Type #> <#=                    p.Lib #>  {get;set;}
+	
+	
+<#            
+}
+#>
+<#
+       foreach(var p in c.LignesInfosOut)
+        {
+		if(1!=1){
+		   continue;}#>
+	[DataMember]
+	public string Cells<#=                    p.Lib #> {get;set;}
+	
+<#            
+}
+#>
+}}<#
+// manager.EndBlock(); 
+ }#>

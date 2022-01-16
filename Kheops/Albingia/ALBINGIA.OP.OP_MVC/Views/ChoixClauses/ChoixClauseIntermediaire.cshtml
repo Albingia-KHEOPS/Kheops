@@ -1,0 +1,153 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleChoixClause>
+@*SAB24042016: Pagination clause  *@
+
+@{
+    var prov = Model.Provenance.Split('/')[1];
+    var divHeight = (Model.FullScreen ? "height:652px;" : ((prov == "InformationsSpecifiquesRisques" || prov == "InformationsSpecifiquesGarantie") ? "height: 418px;" : (prov == "InformationsSpecifiquesBranche" ? "height: 445px;" : (prov == "ConditionsGarantie" ? "height: 391px;" : "height: 445px;"))));
+}
+<div class="@(Model.FullScreen ? "GradientSection" : "nGradientSection")" id="divLstClause" style="@(divHeight)">
+    @Html.Hidden("modeLstClause", Model.FullScreen)
+    @Html.Hidden("ChangeClause", string.Empty)
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <div class="FloatLeft">
+        <div class="HeightRow">
+            <div class="ColumnFilter">
+                <div class="FloatLeft">
+                    <label class="Block">Etape</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.Provenance.Contains(ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_CLAUSE_PROVENANCE_CONDITION))
+                    {
+                                @Html.AlbDropDownListFor(m => m.Etape, Model.Etapes, "Etapes", htmlAttributes: new { @id = "Etapes", @class = "InputDDL", @albCFList = "etape", @disabled = "disabled" }, generateTitle: true, genEmptyLine: true)
+
+                    }
+                    else
+                    {
+                                @Html.AlbDropDownListFor(m => m.Etape, Model.Etapes, "Etapes", htmlAttributes: new { @id = "Etapes", @class = "InputDDL readonly", @disabled = "disabled", @albCFList = "etape" }, generateTitle: true, genEmptyLine: true)
+                    }
+                    @Html.HiddenNoName("Etape", Model.Etape)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnFilter">
+                <div class="FloatLeft">
+                    <label class="Block">Filtrer</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.Filtre, Model.Filtres, "Filtre", htmlAttributes: new { @id = "Filtre", @class = "InputDDL", @albhorsavn="albhorsavn" }, generateTitle: true, genEmptyLine: false)
+                </div>
+            </div>
+            <div class="ColumnContexte">
+                <div class="FloatLeft">
+                    <label class="Block">Contexte</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.Contexte, Model.Contextes, "Contexte", htmlAttributes: new { @id = "Contexte", @class = "InputDDL", @albCFList = "contexte", @albhorsavn = "albhorsavn" }, generateTitle: true, genEmptyLine: false)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+        </div>
+    </div>
+    <div class="FloatLeft">
+        <div id="divAjoutContexte" class="nGroupWithBorder ZoneAjoutContexte">
+            <div class="HeightRow">
+                <div class="FloatLeft">Ajouter dans* </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.ContextesCibles, Model.ContextesCibles, "ContexteCible", htmlAttributes: new { @id = "ContexteCible", @class = "InputContexteCible", @albCFList = "contexte" }, generateTitle: true, genEmptyLine: true)
+                    @Html.AlbDropDownListFor(m => m.ContextesCiblesCode, Model.ContextesCiblesCode, "ContexteCibleCode", htmlAttributes: new { @id = "ContexteCibleCode", @class = "None" }, generateTitle: true, genEmptyLine: true)
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    @*<button id="toto" style="padding: 0; margin: 0; width: 20px; height: 20px;">*@
+                    <img class="CursorPointer" id="btnCtxtMenuClause" src="@Url.Content("/Content/Images/expand-red-right.png")" style="border: 1px solid gray;" />
+                    @*</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    @*SAB24042016: Pagination clause  *@
+    @* <div id="dvTableauxChoixClauses">
+            @Html.Partial("ListClauses", Model.ListClauses)
+        </div>*@
+    <table>
+        <tr id="headerTableau">
+            <th class="tablePersoHead colSuppr">
+                &nbsp;
+            </th>
+            <th class="tablePersoHead colDetail">
+                &nbsp;
+            </th>
+            <th class="tablePersoHead TablePersoTdHead CursorPointer colNumAvn" name="headerTri" albcontext="NumInterne" id="4" title="AVT MODIF">
+                <span class="Block spImg FloatLeft PaddingTop">AVT</span>
+                <span class="Block spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="NumInterne" />
+                </span>
+            </th>
+
+            <th class="tablePersoHead TablePersoTdHead CursorPointer colRsq" name="headerTri" albcontext="Risque" id="3" title="Risque">
+                <span class="Block spImg FloatLeft PaddingTop">R</span>
+                <span class="Block spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Risque" />
+                </span>
+            </th>
+            <th class="tablePersoHead colObj" id="4" title="Objet">O</th>
+            <th class="tablePersoHead colFor" id="5" title="Formule">
+                F
+            </th>
+            <th class="tablePersoHead TablePersoTdHead CursorPointer colTitreClause" name="headerTri" albcontext="Titre" id="6">
+                <span class="Block spImg FloatLeft PaddingTop" style="width: 415px;">Titre Clause</span>
+                <span class="Block spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Titre" />
+                </span>
+            </th>
+            <th class="tablePersoHead TablePersoTdHead CursorPointer colContexte" name="headerTri" albcontext="Contexte" id="7">
+                <span class="Block spImg FloatLeft PaddingTop" style="width: 69px;">Contexte</span>
+                <span class="Block spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_asc.png")" albcontext="Contexte" />
+                </span>
+            </th>
+            <th class="tablePersoHead colGarantie" id="9">Garantie</th>
+            <th class="tablePersoHead colOrigine" id="10">
+                Origine
+            </th>
+            @*  <th class="tablePersoHead TablePersoTdHead tdHead4 CursorPointer" name="headerTri" albcontext="Edition" id="11">Edition<span class="spImg" style="float: right;"><img class="imageTri"
+                                                alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Edition"/></span>
+                </th>*@
+            <th class="tablePersoHead colEdition" id="10">
+                Edition
+            </th>
+        </tr>
+    </table>
+    <div class="@(Model.FullScreen ? "divFichierPleinEcran" : "divFichierClauses")" id="dvTableauxChoixClauses">
+
+@if (Model.TableauClauses != null)
+        {
+        @Html.Partial("ListeChoixClauses", Model.TableauClauses);
+    }
+
+    </div>
+
+</div>
+
+@*  @if (Model.ListClauses.FullScreen) *@
+@if (Model.FullScreen)
+{
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="margin-top: 2px; width: 1036px;">
+        <div class="ActionButtons ActionButtonLeft">
+        </div>
+        <div id="dvLinkClose" class="FloatLeft" style="padding-top: 6px;">
+            <button id="btnNoFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Fermer le plein écran">
+                <img src="@Url.Content("/Content/Images/window_nofullscreen.png")" alt="Fermer" />
+            </button>
+        </div>
+        <div class="ActionButtons ActionButtonRight" style="width: 300px;">
+            <button id="btnFSSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+        </div>
+    </div>
+}
+<div id="divPieceJointesClauses" class="None">
+    <div class="overlay-background" style="z-index:6" >
+    </div>
+    <div id="divDataPieceJointesClauses"></div>
+</div>

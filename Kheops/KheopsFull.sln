@@ -1,0 +1,322 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebServices", "WebServices", "{44FE53B1-5252-48F8-B1FA-D964A3C642BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Front", "Front", "{FE980F3A-6CD6-4FD5-9154-01D088E9EE88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{4F8634C3-0C12-4E94-AFC1-0F6DCDB4FC89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBINGIA.Framework.Common", "Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj", "{A98A2815-A24C-4E02-891E-8B802EE892EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBINGIA.OP.OP_MVC", "Albingia\ALBINGIA.OP.OP_MVC\ALBINGIA.OP.OP_MVC.csproj", "{A30944B8-8881-4532-BE12-E04F45285A41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeViewer", "Albingia\OfficeViewer\OfficeViewer.csproj", "{568B3B98-B227-46C9-816C-0CB585916507}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPServiceContract", "ServiceMetierOP\OPServiceContract\OPServiceContract.csproj", "{51915333-F540-4663-AEB6-4C84CD955300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.DataAccess", "ServiceMetierOP\OP.DataAccess\OP.DataAccess.csproj", "{DBED05E2-773D-4B40-B704-3359823BFFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.Services", "ServiceMetierOP\OP.Services\OP.Services.csproj", "{A0581548-B430-479F-A38A-397259278639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.IOWebService", "ServiceMetierOP\OP.IOWebService\OP.IOWebService.csproj", "{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.WSAS400.DTO", "ServiceMetierOP\OP.WSAS400.DTO\OP.WSAS400.DTO.csproj", "{583328B5-C77A-40B6-A9CC-E74BDB583AFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.Services.Excel", "ServiceMetierOP\OP.Services.Excel\OP.Services.Excel.csproj", "{71215CB6-7A59-4D96-8979-FCAFB1583A83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{6C674336-2E38-4B6F-AEA9-5F3F6B76980F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DB", "DataBase\DB.shproj", "{0DA7F465-AEFA-4E32-94B7-EBB3490584B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{ADBFBCAB-1E7F-459F-81D0-E32133819358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Application", "OP.Application\Albingia.Kheops.OP.Application\Albingia.Kheops.OP.Application.csproj", "{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Domain", "OP.Application\Albingia.Kheops.OP.Domain\Albingia.Kheops.OP.Domain.csproj", "{E00E8B1D-08A8-4A8D-B086-6517E83262B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.DataAdapter", "OP.Application\Albingia.Kheops.OP.DataAdapter\Albingia.Kheops.OP.DataAdapter.csproj", "{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Service", "OP.Application\Albingia.Kheops.OP.Service\Albingia.Kheops.OP.Service.csproj", "{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DC237719-CFC3-4CCE-953E-10F0C30502DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Albingia.Kheops.OP.Domain", "OP.Application\Test.Albingia.Kheops.OP.Domain\Test.Albingia.Kheops.OP.Domain.csproj", "{CB0E739C-D468-43F0-84EF-2B636F0E947A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AssemblyVersion", "OP.Application\AssemblyVersion\AssemblyVersion.shproj", "{653F5E47-AAA6-4B76-99D4-7CD4029A8BD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{D4AB6FD2-098D-4435-99EC-09961AA6E7DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Albingia.Kheops.OP.DataAdapter", "OP.Application\Test.Albingia.Kheops.OP.DataAdpater\Test.Albingia.Kheops.OP.DataAdapter.csproj", "{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Test", "OP.Application\Albingia.Kheops.OP.Console\Albingia.Kheops.OP.Test.csproj", "{B97EB061-45D6-4784-9059-A9CE6ADF369E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.OP.Services", "Test.OP.Services\Test.OP.Services.csproj", "{723ECA4F-863F-45D1-9223-F6099D639261}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.Common", "Framework\Albingia.Kheops.Common\Albingia.Kheops.Common.csproj", "{7919E1A0-1894-4262-BE0C-71CC06369408}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.IOWebService.LightInject", "ServiceMetierOP\OP.IOWebService.LightInject\OP.IOWebService.LightInject.csproj", "{9265E249-6A77-4A7D-B96B-82E068AAB6B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Application.Contracts", "OP.Application\Albingia.Kheops.OP.Application.Contracts\Albingia.Kheops.OP.Application.Contracts.csproj", "{4E616268-D872-424B-9FC6-6F89A7310FA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestContracts", "RestContracts\RestContracts.csproj", "{3EE9F5D7-7716-44C1-B852-6E8AB5FE2A38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandore", "Pandore\Pandore.csproj", "{6EBE5072-8F90-46DD-B7C4-6D337DE47F97}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		DataBase\DB.projitems*{0da7f465-aefa-4e32-94b7-ebb3490584b0}*SharedItemsImports = 13
+		OP.Application\AssemblyVersion\AssemblyVersion.projitems*{653f5e47-aaa6-4b76-99d4-7cd4029a8bd8}*SharedItemsImports = 13
+		OP.Application\AssemblyVersion\AssemblyVersion.projitems*{8ebc1eb5-0c73-4857-906a-cf38d5dadaa6}*SharedItemsImports = 4
+		OP.Application\AssemblyVersion\AssemblyVersion.projitems*{94e19a5f-60ac-48b8-a8e1-b67c0ddfc53c}*SharedItemsImports = 4
+		OP.Application\AssemblyVersion\AssemblyVersion.projitems*{e00e8b1d-08a8-4a8d-b086-6517e83262b4}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB0E739C-D468-43F0-84EF-2B636F0E947A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB0E739C-D468-43F0-84EF-2B636F0E947A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B97EB061-45D6-4784-9059-A9CE6ADF369E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B97EB061-45D6-4784-9059-A9CE6ADF369E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723ECA4F-863F-45D1-9223-F6099D639261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723ECA4F-863F-45D1-9223-F6099D639261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7919E1A0-1894-4262-BE0C-71CC06369408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7919E1A0-1894-4262-BE0C-71CC06369408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7919E1A0-1894-4262-BE0C-71CC06369408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7919E1A0-1894-4262-BE0C-71CC06369408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9265E249-6A77-4A7D-B96B-82E068AAB6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9265E249-6A77-4A7D-B96B-82E068AAB6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9265E249-6A77-4A7D-B96B-82E068AAB6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9265E249-6A77-4A7D-B96B-82E068AAB6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E616268-D872-424B-9FC6-6F89A7310FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E616268-D872-424B-9FC6-6F89A7310FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E616268-D872-424B-9FC6-6F89A7310FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E616268-D872-424B-9FC6-6F89A7310FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE9F5D7-7716-44C1-B852-6E8AB5FE2A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE9F5D7-7716-44C1-B852-6E8AB5FE2A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE9F5D7-7716-44C1-B852-6E8AB5FE2A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE9F5D7-7716-44C1-B852-6E8AB5FE2A38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EBE5072-8F90-46DD-B7C4-6D337DE47F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBE5072-8F90-46DD-B7C4-6D337DE47F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBE5072-8F90-46DD-B7C4-6D337DE47F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBE5072-8F90-46DD-B7C4-6D337DE47F97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A98A2815-A24C-4E02-891E-8B802EE892EA} = {4F8634C3-0C12-4E94-AFC1-0F6DCDB4FC89}
+		{A30944B8-8881-4532-BE12-E04F45285A41} = {FE980F3A-6CD6-4FD5-9154-01D088E9EE88}
+		{568B3B98-B227-46C9-816C-0CB585916507} = {FE980F3A-6CD6-4FD5-9154-01D088E9EE88}
+		{51915333-F540-4663-AEB6-4C84CD955300} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{DBED05E2-773D-4B40-B704-3359823BFFB9} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{A0581548-B430-479F-A38A-397259278639} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{0DA7F465-AEFA-4E32-94B7-EBB3490584B0} = {6C674336-2E38-4B6F-AEA9-5F3F6B76980F}
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6} = {ADBFBCAB-1E7F-459F-81D0-E32133819358}
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4} = {ADBFBCAB-1E7F-459F-81D0-E32133819358}
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C} = {ADBFBCAB-1E7F-459F-81D0-E32133819358}
+		{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2} = {ADBFBCAB-1E7F-459F-81D0-E32133819358}
+		{DC237719-CFC3-4CCE-953E-10F0C30502DC} = {ADBFBCAB-1E7F-459F-81D0-E32133819358}
+		{CB0E739C-D468-43F0-84EF-2B636F0E947A} = {DC237719-CFC3-4CCE-953E-10F0C30502DC}
+		{653F5E47-AAA6-4B76-99D4-7CD4029A8BD8} = {D4AB6FD2-098D-4435-99EC-09961AA6E7DA}
+		{D4AB6FD2-098D-4435-99EC-09961AA6E7DA} = {ADBFBCAB-1E7F-459F-81D0-E32133819358}
+		{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902} = {DC237719-CFC3-4CCE-953E-10F0C30502DC}
+		{B97EB061-45D6-4784-9059-A9CE6ADF369E} = {ADBFBCAB-1E7F-459F-81D0-E32133819358}
+		{723ECA4F-863F-45D1-9223-F6099D639261} = {DC237719-CFC3-4CCE-953E-10F0C30502DC}
+		{7919E1A0-1894-4262-BE0C-71CC06369408} = {4F8634C3-0C12-4E94-AFC1-0F6DCDB4FC89}
+		{9265E249-6A77-4A7D-B96B-82E068AAB6B9} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{4E616268-D872-424B-9FC6-6F89A7310FA0} = {ADBFBCAB-1E7F-459F-81D0-E32133819358}
+		{3EE9F5D7-7716-44C1-B852-6E8AB5FE2A38} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{6EBE5072-8F90-46DD-B7C4-6D337DE47F97} = {FE980F3A-6CD6-4FD5-9154-01D088E9EE88}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E80A4A75-9681-44A1-9314-EAC0F9CE4BB3}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 27
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2018/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Framework\\ALBINGIA.Framework.Common\\ALBINGIA.Framework.Common.csproj
+		SccProjectTopLevelParentUniqueName1 = KheopsFull.sln
+		SccProjectName1 = Framework/ALBINGIA.Framework.Common
+		SccLocalPath1 = Framework\\ALBINGIA.Framework.Common
+		SccProjectUniqueName2 = Albingia\\ALBINGIA.OP.OP_MVC\\ALBINGIA.OP.OP_MVC.csproj
+		SccProjectTopLevelParentUniqueName2 = KheopsFull.sln
+		SccProjectName2 = Albingia/ALBINGIA.OP.OP_MVC
+		SccLocalPath2 = Albingia\\ALBINGIA.OP.OP_MVC
+		SccProjectUniqueName3 = ServiceMetierOP\\OPServiceContract\\OPServiceContract.csproj
+		SccProjectTopLevelParentUniqueName3 = KheopsFull.sln
+		SccProjectName3 = ServiceMetierOP/OPServiceContract
+		SccLocalPath3 = ServiceMetierOP\\OPServiceContract
+		SccProjectUniqueName4 = ServiceMetierOP\\OP.DataAccess\\OP.DataAccess.csproj
+		SccProjectTopLevelParentUniqueName4 = KheopsFull.sln
+		SccProjectName4 = ServiceMetierOP/OP.DataAccess
+		SccLocalPath4 = ServiceMetierOP\\OP.DataAccess
+		SccProjectUniqueName5 = ServiceMetierOP\\OP.Services\\OP.Services.csproj
+		SccProjectTopLevelParentUniqueName5 = KheopsFull.sln
+		SccProjectName5 = ServiceMetierOP/OP.Services
+		SccLocalPath5 = ServiceMetierOP\\OP.Services
+		SccProjectUniqueName6 = ServiceMetierOP\\OP.WSAS400.DTO\\OP.WSAS400.DTO.csproj
+		SccProjectTopLevelParentUniqueName6 = KheopsFull.sln
+		SccProjectName6 = ServiceMetierOP/OP.WSAS400.DTO
+		SccLocalPath6 = ServiceMetierOP\\OP.WSAS400.DTO
+		SccProjectUniqueName7 = ServiceMetierOP\\OP.Services.Excel\\OP.Services.Excel.csproj
+		SccProjectTopLevelParentUniqueName7 = KheopsFull.sln
+		SccProjectName7 = ServiceMetierOP/OP.Services.Excel
+		SccLocalPath7 = ServiceMetierOP\\OP.Services.Excel
+		SccProjectUniqueName8 = OP.Application\\Albingia.Kheops.OP.Application\\Albingia.Kheops.OP.Application.csproj
+		SccProjectTopLevelParentUniqueName8 = KheopsFull.sln
+		SccProjectName8 = OP.Application/Albingia.Kheops.OP.Application
+		SccLocalPath8 = OP.Application\\Albingia.Kheops.OP.Application
+		SccProjectUniqueName9 = OP.Application\\Albingia.Kheops.OP.Domain\\Albingia.Kheops.OP.Domain.csproj
+		SccProjectTopLevelParentUniqueName9 = KheopsFull.sln
+		SccProjectName9 = OP.Application/Albingia.Kheops.OP.Domain
+		SccLocalPath9 = OP.Application\\Albingia.Kheops.OP.Domain
+		SccProjectUniqueName10 = OP.Application\\Albingia.Kheops.OP.DataAdapter\\Albingia.Kheops.OP.DataAdapter.csproj
+		SccProjectTopLevelParentUniqueName10 = KheopsFull.sln
+		SccProjectName10 = OP.Application/Albingia.Kheops.OP.DataAdapter
+		SccLocalPath10 = OP.Application\\Albingia.Kheops.OP.DataAdapter
+		SccProjectUniqueName11 = Albingia\\OfficeViewer\\OfficeViewer.csproj
+		SccProjectTopLevelParentUniqueName11 = KheopsFull.sln
+		SccProjectName11 = Albingia/OfficeViewer
+		SccLocalPath11 = Albingia\\OfficeViewer
+		SccProjectUniqueName12 = ServiceMetierOP\\OP.IOWebService\\OP.IOWebService.csproj
+		SccProjectTopLevelParentUniqueName12 = KheopsFull.sln
+		SccProjectName12 = ServiceMetierOP/OP.IOWebService
+		SccLocalPath12 = ServiceMetierOP\\OP.IOWebService
+		SccProjectUniqueName13 = OP.Application\\Albingia.Kheops.OP.Service\\Albingia.Kheops.OP.Service.csproj
+		SccProjectTopLevelParentUniqueName13 = KheopsFull.sln
+		SccProjectName13 = OP.Application/Albingia.Kheops.OP.Service
+		SccLocalPath13 = OP.Application\\Albingia.Kheops.OP.Service
+		SccProjectUniqueName14 = OP.Application\\Test.Albingia.Kheops.OP.Domain\\Test.Albingia.Kheops.OP.Domain.csproj
+		SccProjectTopLevelParentUniqueName14 = KheopsFull.sln
+		SccProjectName14 = OP.Application/Test.Albingia.Kheops.OP.Domain
+		SccLocalPath14 = OP.Application\\Test.Albingia.Kheops.OP.Domain
+		SccProjectUniqueName15 = OP.Application\\Test.Albingia.Kheops.OP.DataAdpater\\Test.Albingia.Kheops.OP.DataAdapter.csproj
+		SccProjectTopLevelParentUniqueName15 = KheopsFull.sln
+		SccProjectName15 = OP.Application/Test.Albingia.Kheops.OP.DataAdpater
+		SccLocalPath15 = OP.Application\\Test.Albingia.Kheops.OP.DataAdpater
+		SccProjectUniqueName16 = OP.Application\\Albingia.Kheops.OP.Console\\Albingia.Kheops.OP.Test.csproj
+		SccProjectTopLevelParentUniqueName16 = KheopsFull.sln
+		SccProjectName16 = OP.Application/Albingia.Kheops.OP.Console
+		SccLocalPath16 = OP.Application\\Albingia.Kheops.OP.Console
+		SccProjectUniqueName17 = Framework\\Albingia.Kheops.Common\\Albingia.Kheops.Common.csproj
+		SccProjectTopLevelParentUniqueName17 = KheopsFull.sln
+		SccProjectName17 = Framework/Albingia.Kheops.Common
+		SccLocalPath17 = Framework\\Albingia.Kheops.Common
+		SccProjectUniqueName18 = ServiceMetierOP\\OP.IOWebService.LightInject\\OP.IOWebService.LightInject.csproj
+		SccProjectTopLevelParentUniqueName18 = KheopsFull.sln
+		SccProjectName18 = ServiceMetierOP/OP.IOWebService.LightInject
+		SccLocalPath18 = ServiceMetierOP\\OP.IOWebService.LightInject
+		SccProjectUniqueName19 = OP.Application\\Albingia.Kheops.OP.Application.Contracts\\Albingia.Kheops.OP.Application.Contracts.csproj
+		SccProjectTopLevelParentUniqueName19 = KheopsFull.sln
+		SccProjectName19 = OP.Application/Albingia.Kheops.OP.Application.Contracts
+		SccLocalPath19 = OP.Application\\Albingia.Kheops.OP.Application.Contracts
+		SccProjectUniqueName20 = RestContracts\\RestContracts.csproj
+		SccProjectTopLevelParentUniqueName20 = KheopsFull.sln
+		SccProjectName20 = RestContracts
+		SccLocalPath20 = RestContracts
+		SccProjectUniqueName21 = Test.OP.Services\\Test.OP.Services.csproj
+		SccProjectTopLevelParentUniqueName21 = KheopsFull.sln
+		SccProjectName21 = Test.OP.Services
+		SccLocalPath21 = Test.OP.Services
+		SccProjectUniqueName22 = DataBase\\DB.shproj
+		SccProjectTopLevelParentUniqueName22 = KheopsFull.sln
+		SccProjectName22 = DataBase
+		SccLocalPath22 = DataBase
+		SccProjectUniqueName23 = OP.Application\\AssemblyVersion\\AssemblyVersion.shproj
+		SccProjectTopLevelParentUniqueName23 = KheopsFull.sln
+		SccProjectName23 = OP.Application/AssemblyVersion
+		SccLocalPath23 = OP.Application\\AssemblyVersion
+		SccProjectUniqueName24 = OP.Application\\AssemblyVersion\\AssemblyVersion.projitems
+		SccProjectTopLevelParentUniqueName24 = KheopsFull.sln
+		SccProjectName24 = OP.Application/AssemblyVersion
+		SccLocalPath24 = OP.Application\\AssemblyVersion
+		SccProjectUniqueName25 = DataBase\\DB.projitems
+		SccProjectTopLevelParentUniqueName25 = KheopsFull.sln
+		SccProjectName25 = DataBase
+		SccLocalPath25 = DataBase
+		SccProjectUniqueName26 = Pandore\\Pandore.csproj
+		SccProjectTopLevelParentUniqueName26 = KheopsFull.sln
+		SccProjectName26 = Pandore
+		SccLocalPath26 = Pandore
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ALBINGIA1.vsmdi
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = OP.vsmdi
+	EndGlobalSection
+EndGlobal

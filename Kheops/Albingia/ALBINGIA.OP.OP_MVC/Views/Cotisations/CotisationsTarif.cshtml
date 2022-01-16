@@ -1,0 +1,60 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesCotisations.ModeleInfoTarif
+<div id="cotisTarif" class="CommonForm FloatLeft" style="width: 450px;">
+    <div class="GroupFull GroupWithBorder" style="width: 435px;">
+        <div class="GroupTitle">
+            @Model.NomGarantie</div>
+        <div class="HorizontalFullWithGroup" style="width: 430px;">
+            <div class="GradientSection">
+                <table style="width: 420px;" class="trHeight">
+                    <tr>
+                        <td>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="tablePersoHead" style="width: 30px; text-align: center;">
+                                        Tarif
+                                    </td>
+                                    <td class="tablePersoHead" style="width: 100px; text-align:center;">
+                                        LCI
+                                    </td>
+                                    <td class="tablePersoHead" style="width: 100px; text-align:center;">
+                                        Franchise
+                                    </td>
+                                    <td class="tablePersoHead" style="width: 100px; text-align:center;">
+                                        Taux
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table id="tblTarif" style="width: 100%" class="trHeight">
+                                @foreach (var tarif in Model.Tarifs)
+                                {
+                                    <tr id="newTarif¤@(tarif.CodeTarif)" class="CursorPointer">
+                                        <td style="width: 32px; text-align: center;">@tarif.CodeTarif
+                                        </td>
+                                        <td style="width: 100px; text-align:right; padding-right:5px;">@(tarif.LCIValeur + " " + tarif.LCIUnite)
+                                        </td>
+                                        <td style="width: 100px; text-align:right; padding-right:5px;">@(tarif.FranchiseValeur + " " + tarif.FranchiseUnite)
+                                        </td>
+                                        <td style="width: 100px; text-align:right; padding-right:5px;">@(tarif.TauxValeur + " " + tarif.TauxUnite)
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 435px">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <input type="button" id="btnFancyAnnuler" value="Fermer" tabindex="29" />
+        </div>
+    </div>
+</div>

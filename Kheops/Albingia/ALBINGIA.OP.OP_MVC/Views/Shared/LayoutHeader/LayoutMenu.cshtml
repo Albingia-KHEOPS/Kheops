@@ -1,0 +1,200 @@
+﻿@using Albingia.Common
+@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+@{
+    MetaModelsBase layoutModel = (MetaModelsBase)Model;
+    Guid? tab = Guid.TryParse(layoutModel.TabGuid.Replace(PageParamContext.TabGuidKey, string.Empty), out var g) ? g : default(Guid?);
+    Layout = Url.Content("LayoutEntete.cshtml");
+}
+
+@if (layoutModel.EtapeEcran != AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE && layoutModel.PageEnCours != NomsInternesEcran.RechercheSaisie.ToString()) {
+    @*Ajouter les bundles*@
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/LayoutMenu")
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/LayoutMenu")
+
+}
+<div class="GroupMenu">
+    @Html.Hidden("txtSaveCancel", 0)
+    @Html.Hidden("txtParamRedirect", string.Empty)
+    @if (layoutModel.AfficherNavigation && layoutModel.Navigation.Etape < 6 && layoutModel.Navigation.Etape != 0) {
+        if (layoutModel.IsReadOnly && !layoutModel.IsModifHorsAvenant) {
+            <div class="FloatLeft NoSaveInfo" style="padding-right: 2px; margin-bottom: 7px;">
+                @Html.HiddenNoName("SavePath", "Rechercher")
+            </div>
+        }
+        else {
+            <div class="FloatLeft CursorPointer SaveInfo save-exit-step" style="padding-right: 2px; margin-bottom: 7px;" id="btnSaveCancel">
+                @Html.HiddenNoName("SavePath", "Rechercher")
+            </div>
+        }
+    }
+    else {
+        if (layoutModel.PageEnCours == "Recherche") {
+            <div class="FloatLeft CursorPointer" style="padding-right: 2px; margin-bottom: 7px;" id="btnCleanSession">
+                <img src="@Url.Content("/Content/Images/cleansession.png")" alt="" id="btnSave" title="" />
+            </div>
+        }
+        else {
+            <div class="FloatLeft" style="padding-right: 2px; margin-bottom: 7px;" id="dvBackOfficeMenu">
+
+                @if (layoutModel.EtapeEcran == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE) {
+
+                    <input id="FormatDecimalInput" type="hidden" value="{ digitGroupSeparator: '', decimalCharacter: ',', decimalPlacesOverride: 2, maximumValue: '99999999999.99' }" />
+                    <div id="BackOfficeMenu" class="MenuBackOffice CursorPointer">Menu</div>
+
+                }
+                else {
+                    <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="btnSave" title="" />
+                }
+            </div>
+        }
+    }
+
+    <div class="PageTitle" title="@layoutModel.TitleInfoBulle">
+        <div class="FloatLeft">
+            @if (layoutModel.Navigation != null && layoutModel.Navigation.Etape == 1) {
+                if (layoutModel.ContratInfoBase != null && !string.IsNullOrEmpty(layoutModel.ContratInfoBase.CodeContrat)) {
+                    @(layoutModel.PageTitle + " : ")
+                    <u>
+                        @if (layoutModel.ContratInfoBase.Type == "P" && layoutModel.ContratInfoBase.VersionContrat > 0) {
+                            @(layoutModel.ContratInfoBase.CodeContrat + "-" + layoutModel.ContratInfoBase.VersionContrat)
+                        }
+                        else {
+                            @(layoutModel.ContratInfoBase.CodeContrat)
+                        }
+                    </u>
+                }
+                else if (@layoutModel.Offre != null && @layoutModel.PageEnCours == "Création saisie" && !string.IsNullOrEmpty(@layoutModel.Offre.CodeOffre)) {
+                    @(layoutModel.PageTitle + " : ") <u>@(layoutModel.Offre.CodeOffre + "-" + layoutModel.Offre.Version)</u>
+                }
+                else {
+                    @layoutModel.PageTitle
+                }
+            }
+            else {
+                @layoutModel.PageTitle
+            }
+        </div>
+        <div id="divOffreLocked" class="FloatRight PaddingRight">
+            @if (ALBINGIA.OP.OP_MVC.Common.AlbTransverse.HasUserOffreLocked(tab)) {
+                <img class="CursorPointer" src="@(Url.Content("/Content/Images/stock_lock.png"))" title="Offres Verrouillées" id="imgOffreLocked" />
+            }
+        </div>
+        <div id="divGestDoc" class="FloatRight PaddingRight">
+            <img class="CursorPointer" src="@(Url.Content("/Content/Images/u410_normal.gif"))" title="Suivi des documents" id="imgGestDoc" />
+        </div>
+    </div>
+
+    @if (layoutModel.AfficherNavigation && layoutModel.Navigation.Etape != 0) {
+        if (layoutModel.Navigation.Etape < 6) {
+            if (!layoutModel.IsReadOnly && (layoutModel.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_REGUL && layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_REGUL || layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_REGUL && layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF)) {
+                <div style="margin-left: 2px; margin-bottom: 7px;" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranInfoGene && !layoutModel.IsValidation && (layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_RESIL || layoutModel.IsReadOnly) ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranInfoGene ? "InfoGenSelected" : "InfoGen") : "InfoGenUnactive")" id="btnInfoGen">
+                    @*<input type="hidden" value="@(layoutModel.Offre != null ? "ModifierOffre" : (layoutModel.Contrat != null ? "AnInformationsGenerales" : "ModifierOffre"))" id="InfoGenPath" />*@
+                    <input type="hidden" value="@(layoutModel.Offre != null ? "ModifierOffre" : "AnInformationsGenerales")" id="InfoGenPath" />
+                </div>
+                <div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranRisqueGarantie && !layoutModel.IsValidation && (layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_RESIL || layoutModel.IsReadOnly) ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranRisqueGarantie ? "InfoRsqGarSelected" : "InfoRsqGar") : "InfoRsqGarUnactive")" id="btnRsqGar">
+                    <input type="hidden" value="MatriceRisque" id="InfoRsqGarPath" />
+                </div>
+                <div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranEngagements && !layoutModel.IsValidation ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranEngagements ? "InfoEngageSelected" : "InfoEngage") : "InfoEngageUnactive")" id="btnEngage">
+                    <input type="hidden" value="Engagements" id="InfoEngagePath" />
+                </div>
+                <div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranCotisations && !layoutModel.IsValidation && (Model.ModeNavig == ModeConsultation.Standard.AsCode()) ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranCotisations ? "InfoCotisSelected" : "InfoCotis") : "InfoCotisUnactive")" id="btnCotis">
+                    <input type="hidden" value="@(layoutModel.TypePolicePage == "O" ? "Cotisations" : "Quittance")" id="InfoCotisPath" />
+                </div>
+                <div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranInfoFin ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranInfoFin ? "InfoFinSelected" : "InfoFin") : "InfoFinUnactive")" id="btnFin">
+                    <input type="hidden" value="ControleFin" id="InfoFinPath" />
+                </div>
+            }
+            else {
+                <div class="FloatLeft" style="padding-left: 2px; width: 288px; margin-bottom: 7px;">
+                    <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="290px" height="32px;" />
+                </div>
+                <div class="FloatLeft" style="padding-left: 2px; width: 428px; margin-bottom: 7px;">
+                    <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="430px" height="32px;" style="border-top-right-radius:5px;border-bottom-right-radius:5px;" />
+                </div>
+                @*<div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranRegules && !layoutModel.IsValidation ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranRegules ? "InfoReguleSelected" : "InfoRegule") : "InfoReguleUnactive")" id="btnRegule">
+                        <input type="hidden" value="CreationRegularisation" id="InfoRegulePath" />
+                    </div>*@
+
+            }
+        }
+        else if (layoutModel.Navigation.Etape < 8) {
+            <div class="FloatLeft" style="padding-left: 2px; width: 428px; margin-bottom: 7px;">
+                <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="430px" height="32px;" />
+            </div>
+
+            if (layoutModel.TypePolicePage == "O") {
+                <div class="FloatLeft" style="margin-left: 3px;">
+                    <div class="@(layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranSaisie ? "SaisieActive" : "SaisieInactive")">
+                        &nbsp;
+                    </div>
+
+                    <div class="@(layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranConfirmation ? "ConfirmationActive" : "ConfirmationInactive")">
+                        &nbsp;
+                    </div>
+                </div>
+
+            }
+            else {
+                <div class="FloatLeft" style="padding-left: 2px; width: 288px; margin-bottom: 7px">
+                    <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="288px" height="32px;" style="border-top-right-radius:5px;border-bottom-right-radius:5px;" />
+                </div>
+
+
+            }
+        }
+        else {
+            <div class="FloatLeft" style="padding-left: 2px; width: 141px; margin-bottom: 7px;">
+                <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="143px" height="32px;" />
+            </div>
+            <div class="FloatLeft" style="margin-left: 3px;">
+                <div class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranAffaireNouvelle ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranAffaireNouvelle ? "ContratActive" : "ContratInactive") : "ContratBlack")">
+                    &nbsp;
+                </div>
+                <div class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranRsqObjAffNouv ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranRsqObjAffNouv ? "RsqObjActive" : "RsqObjInactive") : "RsqObjBlack")">
+                    &nbsp;
+                </div>
+                <div class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranFormVolAffNouv ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranFormVolAffNouv ? "FormGaranActive" : "FormGaranInactive") : "FormGaranBlack")">
+                    &nbsp;
+                </div>
+                <div class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranOptTarAffNouv ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranOptTarAffNouv ? "OptTarActive" : "OptTarInactive") : "OptTarBlack")">
+                    &nbsp;
+                </div>
+            </div>
+        }
+    }
+    else {
+        <div class="FloatLeft" style="padding-left: 2px; width: 720px; margin-bottom: 7px">
+            <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="720px" height="32px;" style="border-top-right-radius:5px;border-bottom-right-radius:5px;" />
+        </div>
+    }
+</div>
+<div id="MenuLayout" class="FloatLeft">
+    @RenderBody()
+</div>
+<div id="divUserOffreLocked" class="None">
+    <div class="overlay-background" style="z-index:14" >
+    </div>
+    <div id="divDataUserOffreLocked" class="dvDataUserOffreLocked">
+    </div>
+</div>
+
+<div id="divQuickSearch" class="nGradientRechercheTransverse QuickSearchByCode None">
+    <div class="FloatLeft PaddingLeft PaddingTop">N°</div>
+    <div class="FloatLeft PaddingLeft" style="padding-top: 2px;">
+        <input type="text" id="idRechercheDossier" />
+    </div>
+    <div class="FloatLeft">
+        <button type="button" id="btnSearchTransverse" albshortcut="true" data-accesskey="r" style="height: 25px; width: 34px;">
+            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+        </button>
+    </div>
+    <div class="FloatLeft PaddingLeft PaddingTop"><a class="navig" id="detailsRecherche">Recherche avancée</a></div>
+</div>
+
+<div id="divRechercheRapide" albname="divRechercheRapide" class="None">
+    <div class="overlay-background" style="z-index:22" >
+    </div>
+    <div id="divDataRechercheRapide" albname="divDataRechercheRapide"></div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.SelectionRisquesObjets
+
+@Html.Hidden("_RisquesAffaireNouvelleIsValid", ViewContext.ViewData.ModelState.IsValid && Model.IsValid)
+@Html.HiddenFor(m => m.Folder.CodeOffre)
+@Html.HiddenFor(m => m.Folder.Version)
+@Html.HiddenFor(m => m.Folder.Type)
+@Html.HiddenFor(m => m.CodeAffaireNouvelle)
+
+@for (int x = 0; x < Model.Risques.Count; x++) {
+    <div>
+        @Html.HiddenFor(m => m.Risques[x].Name)
+        @Html.DisplayFor(m => m.Risques[x].Name) @Html.CheckBoxFor(m => m.Risques[x].Selected)
+    </div>
+    for (int y = 0; y < Model.Risques[x].Objets.Count; y++) {
+        <div style="margin-left: 7px;">
+            @Html.HiddenFor(m => m.Risques[x].Objets[y].Name)
+            @Html.DisplayFor(m => m.Risques[x].Objets[y].Name) @Html.CheckBoxFor(m => m.Risques[x].Objets[y].Selected)
+        </div>
+    }
+}
+@Html.ValidationMessageFor(m => m.Risques)

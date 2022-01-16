@@ -1,0 +1,375 @@
+﻿/*#region Index*/
+
+.divInfoContratRegularisation {
+    width: 1023px;
+}
+
+
+.CommonForm .divGlobalRegulGroup {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 6px;
+    width: 1027px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+    height: 495px;
+}
+
+.divOverflowHeight {
+    overflow-y: auto;
+}
+
+
+.divPeriodeAlertRegularisation {
+    width: 1023px;
+    height: 453px;
+    max-height: 453px;
+    min-height: 248px;
+    background-color: transparent;
+}
+
+
+.divRegularisationRCInfoGen {
+    width: 1025px;
+    /*height: 220px;*/
+    background-color: transparent;
+    display: block;
+}
+
+
+.divInfoContratLightDisplay {
+    width: 1023px;
+    height: 20px;
+}
+
+.divInfoContratDetailedDisplay {
+    width: 1023px;
+    height: 235px;
+}
+
+/* Region : collapse Div*/
+
+.divInfoLeftLightDisplay {
+    width: 1023px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.divInfoBandeau {
+    height: 15px;
+}
+
+.divDetailedContratInfo {
+    max-height: 0;
+    display: none;
+    transition: max-height 0.9s ease-out;
+    width: 1023px;
+    height: 185px;
+}
+
+/*Endregion*/
+
+
+
+
+.cssCodeOffre {
+    width: 75px !important;
+}
+
+.cssSpanCodeOffre {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 180px;
+}
+
+
+.cssVersion {
+    width: 40px !important;
+    text-align: right;
+}
+
+.cssSpanVersion {
+    font-size: small;
+    font-weight: bold;
+    padding-right: 125px;
+}
+
+
+.cssSpanIdentificationLightDisplay {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cssSpanDateDebutEffet {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.cssSpanDateFinEffet {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.lblDateAu {
+    width: 20px;
+}
+
+.lblRegularisation {
+    width: 115px !important;
+}
+
+.inputRegularisation {
+    width: 285px !important;
+}
+
+.lblPart {
+    width: 97px !important;
+}
+
+.inPart {
+    width: 50px !important;
+}
+
+.inNatureContrat {
+    width: 90px !important;
+}
+
+.PaddingCourtGest {
+    padding-left: 200px;
+}
+
+.divInfoAddRegule {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 6;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 550px;
+}
+
+.WidthAddRegule {
+    width: 530px !important;
+}
+
+.dvDataInfoSaisieGar {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 580px;
+    width: 1046px;
+}
+
+.dvDataUpdateRegul {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 159px;
+    width: 619px;
+}
+
+
+.dvDataRegulSimplifiee {
+    position: absolute;
+    top: 280px;
+    left: 500px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 159px;
+    width: 619px;
+}
+
+.dvDataConfirmMntRegul {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 26;
+    background-color: White;
+    height: 232px;
+    width: 526px;
+    padding: 5px;
+}
+
+/*#endregion*/
+
+/*#region Regule Courtier*/
+
+.divInfoChoixCourtier {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 6;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 695px;
+}
+
+.WidthCourtierRegule {
+    width: 675px !important;
+}
+
+.lblRegule {
+    width: 160px !important;
+}
+
+.inCourtier {
+    width: 306px !important;
+}
+
+.inCATNAT {
+    width: 50px !important;
+}
+
+/*#endregion*/
+
+/*#region Creation Regule*/
+
+.reguleWarning {
+    width: 400px;
+    font-style: italic;
+}
+
+.dvWarning {
+    height: 38px;
+}
+
+.dvDesc {
+    height: 46px;
+}
+
+.TabPeriode {
+    height: 40px;
+}
+
+.thExercice {
+    width: 52px;
+}
+
+.thPeriode {
+    width: 149px;
+}
+
+.width-periode-date {
+    width: 75px;
+}
+
+.thBlank {
+    width: 35px;
+}
+
+.inExercice {
+    width: 50px !important;
+}
+
+.cssType {
+    width: 40px !important;
+}
+
+.inputNumInterne {
+    width: 40px !important;
+    text-align: right;
+}
+
+.dvAlertRegule {
+    background-color: #eee;
+    width: 459px;
+    /*width: 369px;*/
+    height: 100%;
+    border: 1px #ddd outset;
+}
+
+.dvRegule {
+    background-color: #eee;
+    height: 100%;
+    width: 560px;
+    border: 1px #ddd outset;
+    overflow-y: auto;
+}
+
+/* Scroll Bar*/
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+/* end */
+
+.paddingleft150 {
+    padding-left: 150px;
+}
+
+.dvAlertes {
+    overflow: auto;
+    max-height: 285px;
+    padding-left: 5px;
+    width: 440px;
+}
+
+.tblAlertes {
+    width: 425px;
+    table-layout: fixed;
+}
+
+.tdImgAlerte {
+    width: 30px;
+    text-align: center;
+}
+
+.tdMsgAlerte {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdLinkAlerte {
+    text-align: center;
+    width: 120px;
+}
+/*#endregion*/
+
+
+/*#region Saisie Periode*/
+
+/*.thExercice {
+    width : 168px;
+}
+
+#ddlExercices {
+    width: 170px;
+}*/
+
+/*#endregion*/

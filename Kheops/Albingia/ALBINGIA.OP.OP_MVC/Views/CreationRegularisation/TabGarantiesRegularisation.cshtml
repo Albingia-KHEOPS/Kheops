@@ -1,0 +1,25 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegularisation.ModeleGarantie>
+<table id="tblBodyGarRegularisation" class="trHeight tableGarRegule">
+    @{
+        var i = 0;
+        foreach (var gar in Model.OrderBy(x => x.CodeFormule))
+        {
+        <tr class="@(i % 2 == 0 ? "odd" : "even")">
+            <td name="tdFormuleRegule" class="tdFormule navig" albcodefor="@(gar.IdFormule)">@(gar.CodeFormule) - @(gar.LibFormule)</td>
+            <td class="tdGarantie">
+                <table class="tableTDGar">
+                    <tr>
+                        <td name="tdImgGar" class="tdImgGar CursorPointer" albcodegar="@(gar.SeqGaran)" albcodefor="@(gar.IdFormule)" albcodeopt="@(gar.IdOption)">
+                            <img src="@(Url.Content("/Content/Images/Edit_16.png"))" /></td>
+                        <td id="tdGarantieRegule" name="tdGarantieRegule" class="@(gar.IsUsed ? "tdInfoGar navigvisited" : "tdInfoGar navig")" albcodefor="@(gar.IdFormule)" albcodeopt="@(gar.IdOption)" albidgar="@(gar.IdRCFR == default(long) ? gar.IdGarantie : gar.IdRCFR)" albcodgar="@(gar.CodeGarantie)" alblibgar="@(gar.LibGarantie)">@(gar.CodeGarantie) - @(gar.LibGarantie)</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="tdDates">@(gar.EntreeGarantieStr)</td>
+            <td class="tdDates">@(gar.SortieGarantieStr)</td>
+            <td class="tdTypeRegule">@(gar.LibTypeRegule)</td>
+        </tr>
+            i++;
+        }
+    }
+</table>

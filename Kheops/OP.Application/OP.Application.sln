@@ -1,0 +1,118 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Application", "Albingia.Kheops.OP.Application\Albingia.Kheops.OP.Application.csproj", "{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Domain", "Albingia.Kheops.OP.Domain\Albingia.Kheops.OP.Domain.csproj", "{E00E8B1D-08A8-4A8D-B086-6517E83262B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.DataAdapter", "Albingia.Kheops.OP.DataAdapter\Albingia.Kheops.OP.DataAdapter.csproj", "{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Service", "Albingia.Kheops.OP.Service\Albingia.Kheops.OP.Service.csproj", "{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DC237719-CFC3-4CCE-953E-10F0C30502DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Albingia.Kheops.OP.Domain", "Test.Albingia.Kheops.OP.Domain\Test.Albingia.Kheops.OP.Domain.csproj", "{CB0E739C-D468-43F0-84EF-2B636F0E947A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AssemblyVersion", "AssemblyVersion\AssemblyVersion.shproj", "{653F5E47-AAA6-4B76-99D4-7CD4029A8BD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{D4AB6FD2-098D-4435-99EC-09961AA6E7DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Albingia.Kheops.OP.DataAdpater", "Test.Albingia.Kheops.OP.DataAdpater\Test.Albingia.Kheops.OP.DataAdpater.csproj", "{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Kheops.OP.Test", "Albingia.Kheops.OP.Console\Albingia.Kheops.OP.Test.csproj", "{B97EB061-45D6-4784-9059-A9CE6ADF369E}"
+EndProject
+Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AssemblyVersion\AssemblyVersion.projitems*{653f5e47-aaa6-4b76-99d4-7cd4029a8bd8}*SharedItemsImports = 13
+		AssemblyVersion\AssemblyVersion.projitems*{8ebc1eb5-0c73-4857-906a-cf38d5dadaa6}*SharedItemsImports = 4
+		AssemblyVersion\AssemblyVersion.projitems*{94e19a5f-60ac-48b8-a8e1-b67c0ddfc53c}*SharedItemsImports = 4
+		AssemblyVersion\AssemblyVersion.projitems*{e00e8b1d-08a8-4a8d-b086-6517e83262b4}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E00E8B1D-08A8-4A8D-B086-6517E83262B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F08DD84-5DF7-48D4-86F6-57FDBDD5DCE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB0E739C-D468-43F0-84EF-2B636F0E947A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB0E739C-D468-43F0-84EF-2B636F0E947A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB0E739C-D468-43F0-84EF-2B636F0E947A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB0E739C-D468-43F0-84EF-2B636F0E947A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B97EB061-45D6-4784-9059-A9CE6ADF369E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B97EB061-45D6-4784-9059-A9CE6ADF369E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B97EB061-45D6-4784-9059-A9CE6ADF369E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B97EB061-45D6-4784-9059-A9CE6ADF369E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CB0E739C-D468-43F0-84EF-2B636F0E947A} = {DC237719-CFC3-4CCE-953E-10F0C30502DC}
+		{653F5E47-AAA6-4B76-99D4-7CD4029A8BD8} = {D4AB6FD2-098D-4435-99EC-09961AA6E7DA}
+		{CDCF2688-6DBF-46AD-AC2C-3C6A70E8E902} = {DC237719-CFC3-4CCE-953E-10F0C30502DC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40CFFFAC-47E0-4ADD-9E26-D60BFA79E7A1}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2018/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Albingia.Kheops.OP.Application\\Albingia.Kheops.OP.Application.csproj
+		SccProjectName1 = Albingia.Kheops.OP.Application
+		SccLocalPath1 = Albingia.Kheops.OP.Application
+		SccProjectUniqueName2 = Albingia.Kheops.OP.Console\\Albingia.Kheops.OP.Test.csproj
+		SccProjectName2 = Albingia.Kheops.OP.Console
+		SccLocalPath2 = Albingia.Kheops.OP.Console
+		SccProjectUniqueName3 = Albingia.Kheops.OP.DataAdapter\\Albingia.Kheops.OP.DataAdapter.csproj
+		SccProjectName3 = Albingia.Kheops.OP.DataAdapter
+		SccLocalPath3 = Albingia.Kheops.OP.DataAdapter
+		SccProjectUniqueName4 = Albingia.Kheops.OP.Domain\\Albingia.Kheops.OP.Domain.csproj
+		SccProjectName4 = Albingia.Kheops.OP.Domain
+		SccLocalPath4 = Albingia.Kheops.OP.Domain
+		SccProjectUniqueName5 = Albingia.Kheops.OP.Service\\Albingia.Kheops.OP.Service.csproj
+		SccProjectName5 = Albingia.Kheops.OP.Service
+		SccLocalPath5 = Albingia.Kheops.OP.Service
+		SccProjectUniqueName6 = AssemblyVersion\\AssemblyVersion.projitems
+		SccProjectTopLevelParentUniqueName6 = OP.Application.sln
+		SccProjectName6 = AssemblyVersion
+		SccLocalPath6 = AssemblyVersion
+		SccProjectUniqueName7 = AssemblyVersion\\AssemblyVersion.shproj
+		SccProjectTopLevelParentUniqueName7 = OP.Application.sln
+		SccProjectName7 = AssemblyVersion
+		SccLocalPath7 = AssemblyVersion
+		SccProjectUniqueName8 = Test.Albingia.Kheops.OP.DataAdpater\\Test.Albingia.Kheops.OP.DataAdpater.csproj
+		SccProjectTopLevelParentUniqueName8 = OP.Application.sln
+		SccProjectName8 = Test.Albingia.Kheops.OP.DataAdpater
+		SccLocalPath8 = Test.Albingia.Kheops.OP.DataAdpater
+		SccProjectUniqueName9 = Test.Albingia.Kheops.OP.Domain\\Test.Albingia.Kheops.OP.Domain.csproj
+		SccProjectTopLevelParentUniqueName9 = OP.Application.sln
+		SccProjectName9 = Test.Albingia.Kheops.OP.Domain
+		SccLocalPath9 = Test.Albingia.Kheops.OP.Domain
+	EndGlobalSection
+EndGlobal

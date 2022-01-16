@@ -1,0 +1,60 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleMontantReferencePage
+@{
+    if (Model.MontantsReference != null && Model.MontantsReference.Count > 0)
+    {
+        foreach (var mntRef in Model.MontantsReference)
+        {
+            <tr>
+                <td class="col_Formule" title="@mntRef.LibFormule">
+                    @mntRef.LettreForm
+                </td>
+                <td class="col_Risque" title="@mntRef.LibRisque">
+                    @mntRef.LibRisque
+                </td>
+                <td class="col_MontantCalcule decimal">
+                    <span albmask="decimal">@mntRef.MontantCalcule</span>
+                </td>
+                @*  SLA (18/09/14) : désactivation sur Spec "- Contrat - montant de référence-V3.docx " du 04/09/14  *@
+                <td class="col_MontantForce decimal">
+                    <span albmask="decimal" id="mntForce_@(mntRef.CodeRsq + "_" + mntRef.CodeForm)">@mntRef.MontantForce</span>
+                </td>
+                <td class="col_Acquis decimal">
+                    <span albmask="decimal" id="mntAcquis_@(mntRef.CodeRsq + "_" + mntRef.CodeForm)">@mntRef.MontantAcquis</span>
+                </td>
+                <td class="col_BtnMntProv">
+                    <img id="mntProv_@(mntRef.CodeRsq + "_" + mntRef.CodeForm)" name="mntProvFormule" alt="Modifier" class="@(mntRef.MontantProvisionnel == "O" ? "CursorPointer ImgModif" : "CursorPointer ImgModif None")" src="@(Url.Content("/Content/Images/Checkmark-16.png"))" />
+                </td>
+                <td class="col_Buttons">
+                    <img id="modif_@(mntRef.CodeRsq + "_" + mntRef.CodeForm)" name="modifMontantFormule" title="Modifier" alt="Modifier" class="CursorPointer ImgModif" src="@Url.Content("/Content/Images/editer1616.png")" />
+                </td>
+            </tr>
+        }
+        <tr class="TrTotal">
+            <td class="col_Formule"></td>
+            <td class="col_Risque LabelMntTotal">
+                Montant de référence total
+            </td>
+            <td class="col_MontantCalcule decimal">
+                <span id="spanMntCalcule" albmask="totaldecimal">@Model.TotalMntCalcule</span>
+            </td>
+            @*SLA (18/09/14) : désactivation sur Spec "- Contrat - montant de référence-V3.docx " du 04/09/14 *@
+            <td class="col_MontantForce decimal">
+                <span id="spanMntForce" albmask="totaldecimal">@Model.TotalMntForce</span>
+            </td>
+            <td class="col_Acquis decimal">
+                @*    SLA (09/02/15) desactivation (voir bug 1280)*@
+                @*<span id="spanTotalAcquis" albmask="totalnumeric">@Model.TotalMntAcquis</span>*@
+                <span id="spanTotalAcquis" albmask="totaldecimal">@Model.TotalMntAcquis</span>
+            </td>
+
+            <td class="col_BtnMntProv">
+                <img id="mntProv" name="mntProv" class="@(Model.TotalMntProvi == "O" ? "CursorPointer ImgModif" : "CursorPointer ImgModif None")" src="@Url.Content("/Content/Images/Checkmark-16.png")" />
+            </td>
+
+            <td class="col_Buttons">
+                @*SLA (18/09/14) : désactivation sur Spec "- Contrat - montant de référence-V3.docx " du 04/09/14*@
+                <img id="modif" name="modifMontantTotal" title="Modifier" alt="Modifier" class="CursorPointer ImgModif" src="@Url.Content("/Content/Images/editer1616.png")" />
+            </td>
+        </tr>
+    }
+}

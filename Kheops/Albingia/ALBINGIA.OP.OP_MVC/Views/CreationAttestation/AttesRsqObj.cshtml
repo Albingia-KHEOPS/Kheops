@@ -1,0 +1,96 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationAttestation.ModeleAttestationRsqObj
+<div class="HeightRow">
+    <input type="hidden" id="rsqobjAttestId" value="@(Model.LotId)" />
+    <div class="FloatLeft dvPeriodeAttes">
+        <label class="AutoWidth"><b>Période de l'attestation</b></label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PeriodeDeb" class="inputDate readonly" readonly="readonly" value="@(Model.PeriodeDeb)" />
+    </div>
+    <div class="FloatLeft" style="width: 40px; text-align: center;">
+        <label class="AutoWidth"><b>au :</b></label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PeriodeFin" class="inputDate readonly" readonly="readonly" value="@(Model.PeriodeFin)" />
+    </div>
+</div>
+<div class="HeightRow">
+    <b>Liste des risques du contrat sur la période</b> :
+</div>
+<div id="dvHeaderRsqObj">
+    <table id="tblHeaderRsqObj" class="trHeight">
+        <tr>
+            <th class="tablePersoHead thAllCheck">
+                <input type="checkbox" id="checkAllRsqObj" />
+            </th>
+            <th class="tablePersoHead thRisques">Risques</th>
+            <th class="tablePersoHead thDates">Dates</th>
+            <th class="tablePersoHead thCible">Cible</th>
+            <th class="tablePersoHead thValeur">Valeur-Unité</th>
+        </tr>
+    </table>
+</div>
+<div id="dvBodyRsqObj" class="divRsqObj" data-min-height="100" data-max-height="220" >
+    <table id="tblBodyRsqObj" class="trHeight tblRsqObj">
+        @{
+            var i = 0;
+            foreach (var rsq in Model.Risques)
+            {
+            <tr id="trRsq_@(rsq.Code)" class="@(i % 2 == 0 ? "odd" : "even")" style="font-weight: bold;">
+                <td class="tdCheck">
+                    @if (rsq.IsUsed)
+                    {
+                        <input type="checkbox" id="checkRsq_@(rsq.Code)" name="checkRsqObj" checked="checked" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="checkRsq_@(rsq.Code)" name="checkRsqObj" />
+                    }
+                </td>
+                <td class="tdRsq">
+                    <table>
+                        <tr>
+                            <td>
+                                @if (rsq.IsUsed)
+                                {
+                                    <img id="ExpandRsq_@(rsq.Code)" name="ExpandRsq" class="CursorPointer" src="@(Url.Content("/Content/Images/Op.png"))" albExpCol="collapse"/>
+                                }
+                                else
+                                {
+                                    <img id="ExpandRsq_@(rsq.Code)" name="ExpandRsq" class="CursorPointer" src="@(Url.Content("/Content/Images/Cl.png"))" albExpCol="expand"/>
+                                }
+                            </td>
+                            <td>R@(rsq.Code) - @(rsq.Designation)</td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="tdDates">@(rsq.EntreeGarantieStr)</td>
+                <td class="tdDates">@(rsq.SortieGarantieStr)</td>
+                <td class="tdCible">@(rsq.Cible.Code)</td>
+                <td class="tdValeur" title="@(!string.IsNullOrEmpty(rsq.Unite.Code) ? string.Format("{0} - {1}", rsq.Unite.Code, rsq.Unite.Libelle) : string.Empty)"><span albmask="numeric">@(rsq.Valeur != "0" ? rsq.Valeur : string.Empty)</span></td>
+            </tr>
+                                foreach (var obj in rsq.Objets)
+                                {
+            <tr id="trObj_@(rsq.Code)_@(obj.Code)" class="@(i % 2 == 0 ? rsq.IsUsed ? "odd" : "odd None" : rsq.IsUsed ? "even" : "even None")">
+                <td class="tdCheck">
+                    @if (obj.IsUsed)
+                    {
+                        <input type="checkbox" id="checkObj_@(rsq.Code)_@(obj.Code)" name="checkRsqObj" checked="checked" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="checkObj_@(rsq.Code)_@(obj.Code)" name="checkRsqObj" />
+                    }
+                </td>
+                <td class="tdObj">O@(obj.Code) - @(obj.Designation)</td>
+                <td class="tdDates">@(obj.EntreeGarantieStr)</td>
+                <td class="tdDates">@(obj.SortieGarantieStr)</td>
+                <td class="tdCible">@(obj.Cible.Code)</td>
+                <td class="tdValeur" title="@(!string.IsNullOrEmpty(obj.Unite.Code) ? string.Format("{0} - {1}", obj.Unite.Code, obj.Unite.Libelle) : string.Empty)"><span albmask="numeric">@(obj.Valeur != "0" ? obj.Valeur : string.Empty)</span></td>
+            </tr>
+                                }
+                                i++;
+            }
+        }
+    </table>
+</div>

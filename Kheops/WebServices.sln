@@ -1,0 +1,180 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebServices", "WebServices", "{44FE53B1-5252-48F8-B1FA-D964A3C642BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{4F8634C3-0C12-4E94-AFC1-0F6DCDB4FC89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBINGIA.Framework.Common", "Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj", "{A98A2815-A24C-4E02-891E-8B802EE892EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPServiceContract", "ServiceMetierOP\OPServiceContract\OPServiceContract.csproj", "{51915333-F540-4663-AEB6-4C84CD955300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.DataAccess", "ServiceMetierOP\OP.DataAccess\OP.DataAccess.csproj", "{DBED05E2-773D-4B40-B704-3359823BFFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.Services", "ServiceMetierOP\OP.Services\OP.Services.csproj", "{A0581548-B430-479F-A38A-397259278639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.IOWebService", "ServiceMetierOP\OP.IOWebService\OP.IOWebService.csproj", "{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.WSAS400.DTO", "ServiceMetierOP\OP.WSAS400.DTO\OP.WSAS400.DTO.csproj", "{583328B5-C77A-40B6-A9CC-E74BDB583AFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.Services.Excel", "ServiceMetierOP\OP.Services.Excel\OP.Services.Excel.csproj", "{71215CB6-7A59-4D96-8979-FCAFB1583A83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{6C674336-2E38-4B6F-AEA9-5F3F6B76980F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DB", "DataBase\DB.shproj", "{B5F6A875-443D-4EF3-B401-D260561AD4DD}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		DataBase\DB.projitems*{b5f6a875-443d-4ef3-b401-d260561ad4dd}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|x86.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|x86.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|x86.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|x86.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|x86.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|x86.Build.0 = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|x86.ActiveCfg = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|x86.ActiveCfg = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|x86.ActiveCfg = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|x86.ActiveCfg = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A98A2815-A24C-4E02-891E-8B802EE892EA} = {4F8634C3-0C12-4E94-AFC1-0F6DCDB4FC89}
+		{51915333-F540-4663-AEB6-4C84CD955300} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{DBED05E2-773D-4B40-B704-3359823BFFB9} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{A0581548-B430-479F-A38A-397259278639} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+		{B5F6A875-443D-4EF3-B401-D260561AD4DD} = {6C674336-2E38-4B6F-AEA9-5F3F6B76980F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E80A4A75-9681-44A1-9314-EAC0F9CE4BB3}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2018/defaultcollection
+		SccProjectUniqueName0 = Framework\\ALBINGIA.Framework.Common\\ALBINGIA.Framework.Common.csproj
+		SccProjectTopLevelParentUniqueName0 = WebServices.sln
+		SccProjectName0 = Framework/ALBINGIA.Framework.Common
+		SccLocalPath0 = Framework\\ALBINGIA.Framework.Common
+		SccProjectUniqueName1 = ServiceMetierOP\\OPServiceContract\\OPServiceContract.csproj
+		SccProjectTopLevelParentUniqueName1 = WebServices.sln
+		SccProjectName1 = ServiceMetierOP/OPServiceContract
+		SccLocalPath1 = ServiceMetierOP\\OPServiceContract
+		SccProjectUniqueName2 = ServiceMetierOP\\OP.WSAS400.DTO\\OP.WSAS400.DTO.csproj
+		SccProjectTopLevelParentUniqueName2 = WebServices.sln
+		SccProjectName2 = ServiceMetierOP/OP.WSAS400.DTO
+		SccLocalPath2 = ServiceMetierOP\\OP.WSAS400.DTO
+		SccProjectUniqueName3 = ServiceMetierOP\\OP.DataAccess\\OP.DataAccess.csproj
+		SccProjectTopLevelParentUniqueName3 = WebServices.sln
+		SccProjectName3 = ServiceMetierOP/OP.DataAccess
+		SccLocalPath3 = ServiceMetierOP\\OP.DataAccess
+		SccProjectUniqueName4 = ServiceMetierOP\\OP.Services.Excel\\OP.Services.Excel.csproj
+		SccProjectTopLevelParentUniqueName4 = WebServices.sln
+		SccProjectName4 = ServiceMetierOP/OP.Services.Excel
+		SccLocalPath4 = ServiceMetierOP\\OP.Services.Excel
+		SccProjectUniqueName5 = ServiceMetierOP\\OP.Services\\OP.Services.csproj
+		SccProjectTopLevelParentUniqueName5 = WebServices.sln
+		SccProjectName5 = ServiceMetierOP/OP.Services
+		SccLocalPath5 = ServiceMetierOP\\OP.Services
+		SccProjectUniqueName6 = ServiceMetierOP\\OP.IOWebService\\OP.IOWebService.csproj
+		SccProjectTopLevelParentUniqueName6 = WebServices.sln
+		SccProjectName6 = ServiceMetierOP/OP.IOWebService
+		SccLocalPath6 = ServiceMetierOP\\OP.IOWebService
+		SccProjectUniqueName7 = DataBase\\DB.shproj
+		SccProjectTopLevelParentUniqueName7 = WebServices.sln
+		SccProjectName7 = DataBase
+		SccLocalPath7 = DataBase
+		SccProjectUniqueName8 = DataBase\\DB.projitems
+		SccProjectTopLevelParentUniqueName8 = WebServices.sln
+		SccProjectName8 = DataBase
+		SccLocalPath8 = DataBase
+		SccLocalPath9 = .
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ALBINGIA1.vsmdi
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = OP.vsmdi
+	EndGlobalSection
+EndGlobal

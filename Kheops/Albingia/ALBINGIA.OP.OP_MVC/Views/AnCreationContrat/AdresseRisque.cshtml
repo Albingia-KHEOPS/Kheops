@@ -1,0 +1,79 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaData.ContactAddresse_MetaData
+@Html.Hidden("ContactAddresseMetaData.NoChrono", Model.NoChrono.GetValueOrDefault(), new { id = "ContactAddresseMetaData_NoChrono" })
+@Html.Hidden("UrlHexavia", ALBINGIA.OP.OP_MVC.MvcApplication.URL_HEXAVIA, new { @id = "UrlHexavia" })
+@Html.Hidden("UrlBackHexavia", ALBINGIA.OP.OP_MVC.MvcApplication.URL_BACKHEXAVIA, new { @id = "UrlBackHexavia" })
+@Html.Hidden("ContactAddresseMetaData.MatriculeHexavia", (Model.MatriculeHexavia), new { id = "ContactAddresseMetaData_MatriculeHexavia" })
+<div id="divErrorHexavia" class="FieldRow MsgErrorHexavia">
+    <div>
+        Adresse non valide</div>
+</div>
+<div class="DoubleGenericColumn">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Bâtiment | ZI</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAddresseMetaData_Batiment" name="ContactAddresseMetaData.Batiment" class="@(Model.ReadOnly ? "readonly DoubleInputHalfBlock" : "DoubleInputHalfBlock")" readonly="readonly" tabindex="@(Model.FirstIndex)" value="@(Model.Batiment)" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">N° | Ext | Voie</label>
+        </div>
+        <div class="FloatLeft PaddingRight">
+            <input type="text" id="ContactAddresseMetaData_No" name="ContactAddresseMetaData.No" class="@(Model.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 1)" value="@(Model.No + (string.IsNullOrEmpty(Model.No2) ? "" : "/" + Model.No2))"/>
+        </div>
+        <div class="FloatLeft PaddingRight">
+            <input type="text" id="ContactAddresseMetaData_Extension" name="ContactAddresseMetaData.Extension" class="@(Model.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 2)" value="@(Model.Extension)"/>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAddresseMetaData_Voie" name="ContactAddresseMetaData.Voie" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 3)" value="@(Model.Voie)"/>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Distribution</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAddresseMetaData_Distribution" name="ContactAddresseMetaData.Distribution" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 4)" value="@(Model.Distribution)"/>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">CP | Ville</label>
+        </div>
+        <div class="FloatLeft PaddingRight">
+            <input type="text" id="ContactAddresseMetaData_CodePostal" name="ContactAddresseMetaData.CodePostal" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 5)" value="@(Model.CodePostal)"/>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAddresseMetaData_Ville" name="ContactAddresseMetaData.Ville" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 6)" value="@(Model.Ville)"/>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">CP | Ville (Cedex)</label>
+        </div>
+        <div class="FloatLeft PaddingRight">
+            <input type="text" id="ContactAddresseMetaData_CodePostalCedex" name="ContactAddresseMetaData.CodePostalCedex" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 6)" value="@(Model.CodePostalCedex)"/>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAddresseMetaData_VilleCedex" name="ContactAddresseMetaData.VilleCedex" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 7)" value="@(Model.VilleCedex)"/>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Pays</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAddresseMetaData_Pays" name="ContactAddresseMetaData.Pays" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 8)" value="@(Model.Pays)"/>
+        </div>
+    </div>
+</div>
+@if (Model.SaisieHexavia)
+{ 
+    <div class="FieldRow">
+        <div class="Validation PaddingRight">
+            <input type="button" id="btnAdresse" value="Saisir Adresse" />
+        </div>
+    </div>
+}

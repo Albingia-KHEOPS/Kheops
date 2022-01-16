@@ -1,0 +1,21 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesGarantieModeles.ModeleGarantieModele>
+<table id="tblModele" class="trHeight widthTableModele">
+    @foreach (var item in Model)
+    {
+        <tr id="@("tr-" + item.Code)">
+            <td class="modifModelesGarantie tdBodyEditModele">
+                <img class="CursorPointer" id="@("edt-" + item.Code)" src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" name="modifModele" />
+            </td>
+            <td name="codeModele" class="tdBodyCodeModele linkModelesGarantie" title="@item.Code">
+                @item.Code
+            </td>
+            <td class="tdBodyDescModele linkModelesGarantie" title="@item.Description">
+                @item.Description
+            </td>
+            <td class="supprModelesGarantie tdBodyImgModele">
+                <img class="CursorPointer" id="@("suppr-" + item.Code)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprModele" />
+            </td>
+        </tr>
+    }
+</table>
+

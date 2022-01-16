@@ -1,0 +1,74 @@
+﻿.MarginLeft {
+    margin-left: 20px !important;
+}
+
+#LibelleFormule {
+    width: 300px !important;
+}
+
+
+.columnFormule {
+    width: 65px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.columnLabelFormule {
+    width: 103px !important;
+}
+.columnLabelFormuleNew {
+    width: 80px !important;
+}
+
+
+.labelFormule {
+    margin-left: 5px;
+    width: 83px !important;
+}
+
+.columnLettre {
+    width: 65px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+.columnLettre1 {
+    width: 20px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.columnLabelLettre {
+    width: 103px !important;
+}
+
+.labelLettre {
+    margin-left: 20px;
+    width: 83px !important;
+}
+
+
+.columnLibelle {
+    width: 400px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.columnLabelLibelle {
+    width: 103px !important;
+}
+.columnLabelLibelleNew {
+    width: 80px !important;
+}
+
+.labelLibelle {
+    margin-left: 20px;
+    width: 83px !important;
+}
+
+.tblInfo {
+    table-layout: fixed;
+    width: 950px;
+}

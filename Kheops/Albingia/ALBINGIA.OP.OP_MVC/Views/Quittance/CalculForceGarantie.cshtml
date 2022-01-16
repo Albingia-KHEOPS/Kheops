@@ -1,0 +1,109 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.QuittanceForceGarantie
+<div class="CommonForm FloatLeft">
+    <div class="GroupWithBorder WidthDivCalculForce MainDivCalculForce">
+        <div class="nHorizontalFullWithGroup WidthGroupCalculForce">
+            <div class="nGradientSection PaddingLeft" style="height: 475px;">
+                <div class="HeightRow">
+                    <div class="FloatLeft">Vous allez forcer le montant <b>HT</b> des garanties</div>
+                </div>
+                <div class="HeightRow">
+                    @Html.Hidden("IdForGaranForce", (Model.FormuleId))
+                    @Html.Hidden("CodeForGaranForce", (Model.Formule.CodeFor))
+                    @Html.Hidden("CodeRsqGaranForce", (Model.Formule.CodeRsq))
+                    <div class="FloatLeft" style="width: 100px;">Formule :</div>
+                    <div class="FloatLeft">
+                        <input type="text" id="Formule" name="Formule" value="@(Model.Formule.FormLettre) - @(Model.Formule.FormDesc)" title="@(Model.Formule.FormLettre) - @(Model.Formule.FormDesc)" readonly="readonly" class="readonly DoubleInput" />
+                    </div>
+                    <div class="FloatLeft" style="width: 100px; padding-left: 40px;">Risque :</div>
+                    <div class="FloatLeft">
+                        <input type="text" id="Risque" name="Risque" value="@(Model.Formule.CodeRsq) - @(Model.Formule.RsqDesc)" title="@(Model.Formule.CodeRsq) - @(Model.Formule.RsqDesc)" readonly="readonly" class="readonly DoubleInput" />
+                    </div>
+                </div>
+                <div class="FloatLeft" style="width: 620px;">
+                    <div style="width: 600px;">
+                        <table class="trHeight" style="width: 100%;">
+                            <tr>
+                                <th class="tablePersoHead" style="width: 185px; text-align: center;">Garantie</th>
+                                <th class="tablePersoHead" style="width: 100px; text-align: center;">CATNAT</th>
+                                <th class="tablePersoHead" style="width: 185px; text-align: center;">HT</th>
+                                <th class="tablePersoHead" style="width: 100px; text-align: center;">Taxe</th>
+                                <th class="tablePersoHead" style="width: 30px;">&nbsp;</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="width: 620px; max-height: 310px; overflow-y: auto;">
+                        <table id="tblListForceGarantie" class="trHeight" style="width: 600px;">
+                            @foreach (var item in Model.ListGaranties)
+                            {
+                                <tr>
+                                    <td id="forceGaranInfo" albGaranId="@(item.CodeGarantie)" style="width: 173px; padding-left:5px;" title="@(item.CodeGarantie) - @(item.LibGarantie)">@(item.CodeGarantie)</td>
+                                    <td style="width: 99px; text-align: center;">
+                                        <input type="hidden" id="forceGarCatNat" name="forceGarCatNat" albGaranId="@(item.CodeGarantie)" value="@(item.CatNat ? "O" : "N")" />
+                                        @if (item.CatNat)
+                                        {
+                                            <img src="@Url.Content("/Content/Images/Checkmark-16.png")" />
+                                        }
+                                    </td>
+                                    <td style="width: 171px; text-align: right; padding-right: 5px;">
+                                        <span id="forceGarMontantCal" albGaranId="@(item.CodeGarantie)" albmask="calculdecimal">@(item.MontantCal)</span>
+                                    </td>
+                                    <td  id="forceGarMontantForce" albGaranId="@(item.CodeGarantie)"style="width: 97px; text-align: center" title="@(item.CodeTaxe) - @(item.LibTaxe)">
+                                        <input type="hidden" id="forceGarTaxe" name="forceGarTaxe" albGaranId="@(item.CodeGarantie)" value="@(item.CodeTaxe)" />
+                                        @(item.CodeTaxe)
+                                    </td>
+                                    <td style="width: 30px; text-align: center;">
+                                        <img id="updGaran@(item.CodeGarantie)" name="updGaran" albGaranId="@(item.CodeGarantie)" src="@Url.Content("/Content/Images/editer1616.png")" class="CursorPointer" />
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+                <div id="dvInfoGarantieForce" class="FloatRight None" style="padding: 10px 10px 3px 10px; border: 1px solid #ccc; border-radius: 10px; margin-right: 10px;">
+                    @Html.Hidden("SelectGaranForce", string.Empty)
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="width: 110px;">Garantie</div>
+                        <div class="FloatLeft">
+                            <input type="text" id="GarantieInfoForce" name="GarantieInfoForce" value="" readonly="readonly" class="readonly" />
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="width: 110px;">HT</div>
+                        <div class="FloatLeft">
+                            <input type="text" id="MontantGarHT" name="MontantGarHT" value="" class="decimal" albmask="calculdecimal" />
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="width: 110px;">CATNAT</div>
+                        <div class="FloatLeft">
+                            <input type="checkbox" id="CATNATGar" name="CATNATGar" value="" />
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="width: 110px;">Code Taxe</div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.CodeTaxe, Model.CodesTaxe, "CodeTaxe", htmlAttributes: new { id = "CodeTaxe" }, generateTitle: true)
+                        </div>
+                    </div>
+                    <div style="padding-top: 10px; height: 30px;">
+                        <div class="FloatLeft">
+                            <button type="button" id="btnCancelCalculForceGar" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                        </div>
+                        <div class="FloatRight">
+                            <button type="button" id="btnValidCalculForceGar" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupWithBorder ButtonsHeight WidthDivCalculForce">
+        <div class="ActionButtons ActionButtonLeft" style="width: 150px;">
+            @*<button type="button" id="btnResetGaranCalculForce" albshortcut="true" data-accesskey="i">Ré<u>i</u>nitialiser</button>*@
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button type="button" id="btnCancelGaranCalculForce" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+            <button type="button" id="btnValidGaranCalculForce" albshortcut="true" data-accesskey="v" disabled="disabled"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿
+<div class="CommonForm FloatLeft">
+    <div class="GroupWithBorder WidthDivCalculForce MainDivCalculForce">
+        <div class="nHorizontalFullWithGroup WidthGroupCalculForce">
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="FloatLeft PaddingLeft"><u><b>Calcul Forcé</b></u></div>
+                </div>
+            </div>
+            <div class="nGradientSection">
+                @Html.HiddenNoName("inCalculForce", string.Empty)
+                <div class="HeightRow">
+                    <div class="FloatLeft PaddingLeft">Sélectionner les valeurs à forcer :</div>
+                    <div class="FloatLeft" style="padding-left: 67px;" albtypeforce="formule">
+                        <input type="radio" id="valFormule" name="typeVal" value="formule" />
+                    </div>
+                    <div class="FloatLeft PaddingLeft CalculForceFirstRadio" albtypeforce="formule"><label>par formule</label></div>
+                    <div class="FloatLeft" albtypeforce="montant">
+                        <input type="radio" id="valMontant" name="typeVal" value="montant" />
+                    </div>
+                    <div class="FloatLeft PaddingLeft CalculForceSecondRadio"><label>montant total</label></div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft" style="padding-left: 250px;">
+                        <input type="radio" id="valHT" name="typeHTTTC" disabled="disabled" value="HT" />
+                    </div>
+                    <div class="FloatLeft PaddingLeft CalculForceFirstRadio"><label>HT</label></div>
+                    <div class="FloatLeft">
+                        <input type="radio" id="valTTC" name="typeHTTTC" disabled="disabled" value="TTC" />
+                    </div>
+                    <div class="FloatLeft PaddingLeft CalculForceSecondRadio"><label>TTC</label></div>
+                </div>
+            </div>
+            <div id="dvCalculForceData" class="nGradientSection PaddingLeft" style="height: 377px;"></div>
+        </div>
+    </div>
+    <div class="GroupWithBorder ButtonsHeight WidthDivCalculForce">
+        <div class="ActionButtons ActionButtonLeft" style="width: 150px;">
+            <button type="button" id="btnResetCalculForce" albshortcut="true" data-accesskey="i">Ré<u>i</u>nitialiser</button>
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button type="button" id="btnCancelCalculForce" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+            <button type="button" id="btnValidCalculForce" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>

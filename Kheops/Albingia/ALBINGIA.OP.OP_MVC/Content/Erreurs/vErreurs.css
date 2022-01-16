@@ -1,0 +1,77 @@
+﻿#imgErreurBrowser
+{
+    float: left;
+    padding-top: 23px;
+    padding-left: 20px;
+    padding-right: 50px;
+}
+
+#msgPrincipalBrowser
+{
+    text-align: center;
+    float: left;
+    padding-top: 10px;
+    word-break: break-all;
+    width: 1000px;
+}
+
+#msgSecondaireBrowser
+{
+    text-align: center;
+    float: left;
+    word-break: break-all;
+    width: 1000px;
+}
+
+#msgSecondaireAccesBrowser
+{
+    text-align: center;
+    /*float: left;*/
+    word-break: break-all;
+    width: 1000px;
+    /*position: absolute;*/
+    left: 326px;
+    top: 180px;
+}
+
+.GroupFull
+{
+    width: 1025px;
+    padding-bottom: 15px;
+    background: #fff;
+    -pie-background: linear-gradient(#EEFF99, #66EE33);
+    background-attachment: fixed !important;
+    background-image: -moz-linear-gradient(top, #fff, #ddd);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #fff),color-stop(1, #ddd));
+    background-attachment: fixed !important;
+    zoom: 1;
+    height: 1%; /*For IE7*/
+}
+.GroupWithBorder
+{
+    border: 1px #00F solid;
+    border-radius: 10px;
+}
+
+.TotalWidth
+{
+    width: 1200px !important;
+}
+
+.HorizontalFullWithGroup
+{
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    width: 1020px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+    height: 1%;
+}
+.HorizontalTotalWidth
+{
+    width: 1195px !important;
+}

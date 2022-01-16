@@ -1,0 +1,13 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using Albingia.Common
+@{
+    var layoutModel = Model as MetaModelsBase;
+    string codeKey = "idOffreVersionType";
+    string universalContratCode = string.Empty;
+    if (layoutModel != null) {
+        universalContratCode = layoutModel.GetUniversalContratCode();
+        <input id="idOffreVersionType" type="hidden" value="@(codeKey + universalContratCode + codeKey)" />
+        @Html.Hidden("tabGuid", (PageParamContext.TabGuidKey + layoutModel.TabGuid + PageParamContext.TabGuidKey), new { id = "tabGuid" })
+    }
+}
+

@@ -1,0 +1,16 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRecherchePage
+
+@Html.Partial("_AlertesPreneur", Model)
+
+<script type="text/javascript">
+    window.modelRelances = @Html.Raw(MetaModelsBase.GetJsonFromData(Model.ListeRelances));
+</script>
+
+@Url.IncludeKoComponent("liste-relances")
+
+@AlbAddCssJsScripts.AlbAddJsToViews(
+    new UrlHelper(ViewContext.RequestContext),
+    new[] { "affaire-relances.js" },
+    "~/Scripts/AlbingiaJS/",
+    false)

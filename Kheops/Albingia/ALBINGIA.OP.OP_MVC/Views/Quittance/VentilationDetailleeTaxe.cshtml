@@ -1,0 +1,14 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VentilationDetailleeTaxe>
+@{
+    foreach (var taxe in Model)
+    {
+    <tr>
+        <td class="col_VentDetailDoubleColumn ">@taxe.LibelleTaxe
+        </td>
+        <td class="col_VentDetailSmallColumn ">@taxe.BaseTaxable
+        </td>
+        <td class="col_VentDetailSmallColumn ">@taxe.MontantTaxes
+        </td>
+    </tr>        
+    }
+}

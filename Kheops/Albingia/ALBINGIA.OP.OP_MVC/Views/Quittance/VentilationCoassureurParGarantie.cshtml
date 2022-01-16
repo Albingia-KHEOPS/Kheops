@@ -1,0 +1,45 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VentilationCoassureurParGarantie
+<div class="GroupFull GroupWithBorder" id="divVentilationCoassGarantie">
+    <div class="HorizontalHalfWithGroupAdmin">        
+        <div class="GradientSection">       
+            <div class="HeightRow">  
+                <div class="FloatLeft">
+                    <label class="FloatLeft Block">Coassureur</label>
+                    <input class="FloatLeft width350 readonly" value="@(Model.Code + " - " + Model.Libelle)" disabled="disabled"/>
+                    <label class="FloatLeft Block">Part (%)</label>
+                    <input class="FloatLeft width80 readonly" value="@Model.Part" disabled="disabled"/>
+                </div>
+            </div>
+            <div class="GradientSection">
+                <div id="divVentilationCoassGarantieHeader" style="text-align: center;">
+                    <table id="tblVentilationCoassGarantieHeader" class="trHeight">
+                        <tr>
+                            <th></th>                        
+                            <th class="col_VentDetailSmallColumn tablePersoHead" colspan="3">Hors Taxes
+                            </th>
+                            <th class="col_VentDetailSmallColumn tablePersoHead" colspan="3">Commission
+                            </th>                       
+                        </tr>
+                        <tr>
+                            <th class="tablePersoHead width470">Garantie</th>
+                            <th class="width80 tablePersoHead">Hors CatNat</th>
+                            <th class="width80 tablePersoHead">CatNat</th>
+                            <th class="width80 tablePersoHead">Total</th>
+                            <th class="width80 tablePersoHead">Hors CatNat</th>
+                            <th class="width80 tablePersoHead">CatNat</th>
+                            <th class="width80 tablePersoHead">Total</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divVentilationCoassGarantieBody">                   
+                        @Html.Partial("VentilationCoassureurParGarantieLigne", Model.ListeGaranties)                    
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>        
+        </div>
+    </div>
+    <div style="text-align: right">
+        <button id="btnFermerDetailsCoassGarantie" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+</div>

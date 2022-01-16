@@ -1,0 +1,71 @@
+﻿.styled tr:nth-child(odd) {
+    background: rgba(254, 254, 254, 1);
+}
+
+.styled tr:nth-child(even) {
+    background: rgba(236, 237, 254, 1);
+}
+
+.styled tr:hover {
+    background: #FFDFDF;
+    font-size: 1em;
+    margin: 0 5px;
+}
+
+#tblHeaderParam th{
+    width:102px;
+}
+
+#statOffreContratTable {
+ table-layout:fixed;
+ width:700px;
+}
+
+#statOffreContratTable td{
+    width:104px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+
+.BlockInLine div{
+    float:left;
+    margin-left:5px;
+}
+
+.fullWidth {
+    width:100%;
+}
+
+.BlockDate div{
+display:inline-block;
+}
+
+.DateInput{
+width:35px;
+}
+
+.filtreCol input,select{
+float:right;
+width:100px;
+margin-right:50px;
+}
+
+#LigneCount {
+color:red;
+text-align:right;
+padding-right:15px;
+}
+
+
+
+.xsmallcol {
+width:40px !important;
+}
+.smallcol {
+width:44px !important;
+}
+
+#Branche {
+    width:200px !important;
+}

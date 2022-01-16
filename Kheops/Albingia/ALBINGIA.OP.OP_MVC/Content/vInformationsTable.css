@@ -1,0 +1,41 @@
+﻿.ColumnEnvironnement ,.ColumnTable{
+    margin-top: 20px;
+}
+
+.lblTable {
+    padding-left: 20px;
+}
+#btnRechercher {
+    margin-left: 10px;
+}
+
+#Environnement, #Table {
+    width: 260px;
+}
+
+.RechFiltre {
+    height: 60px;
+}
+
+.thName,.thType,.thLength ,.thScale ,.thIsNullable {
+    width: 100px;
+}
+
+.tdScale,.tdIsNullable,.tdLength,.tdType,.tdName{
+    width: 102px;
+}
+
+
+.tdDescription, .thDescription {
+    width: 620px;
+}
+
+#divBodyListeColonnes {
+    height: 300px;
+    overflow-y: scroll;
+    width: 1175px;
+}
+
+.WidthBody {
+    width: 1195px !important;
+}

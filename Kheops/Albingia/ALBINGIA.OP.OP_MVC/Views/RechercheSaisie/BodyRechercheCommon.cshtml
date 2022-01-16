@@ -1,0 +1,344 @@
+﻿@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRecherchePage
+<div id="GestionErreur">
+    @Html.HiddenNoName("offreVerouille", Model.OffreVerrouille)
+    @Html.HiddenNoName("versionVerouille", Model.VersionVerrouille)
+    @Html.HiddenNoName("typeVerouille", Model.TypeVerrouille)
+    @Html.HiddenNoName("numAvnVerouille", Model.AvnVerrouille)
+    @Html.HiddenNoName("addParamVerouille", Model.AddParamVerrouille)
+
+    @Html.HiddenNoName("userVerouille", Model.UserVerrouille)
+    @Html.HiddenNoName("connectedUser", AlbSessionHelper.ConnectedUser)
+    @Html.HiddenNoName("loadParamOffre", Model.LoadParamOffre)
+</div>
+<div id="GestionRechercheDivFlottante">
+    @Html.HiddenFor(m => m.CritereParam)
+    @Html.HiddenNoName("provenanceParam", Model.ProvenanceParam)
+    @Html.HiddenNoName("situationParam", Model.SituationParam)
+    @Html.HiddenNoName("albEmplacement", Model.AlbEmplacement, new { albEmplacement = Model.AlbEmplacement })
+    @Html.HiddenNoName("searchInTemplate", Model.SearchInTemplate)
+    @Html.HiddenNoName("typeEcranRecherche", string.Empty)
+    @Html.HiddenNoName("resultSorting", string.Empty)
+</div>
+<div class="CommonForm TotalWidth FloatLeft">
+    <div id="divSearchContainer" class="GroupFull GroupWithBorder TotalWidth">
+        <input type="hidden" name="modeNavigation" id="modeNavigation" value="@(ModeConsultation.Standard.AsCode())" />
+        <input type="hidden" name="typeAvt" id="TypeAvt" value="" />
+        <input type="hidden" name="ModeAvt" id="ModeAvt" value="" />
+        <input type="hidden" name="ignoreReadonly" id="ignoreReadonly" value="" />
+        <div id="divSearchCriteria" class="nHorizontalFullWithGroup SearchCriteria nHorizontalTotalWidth">
+            <div class="nGradientSection nDivSearch" data-search-area="main">
+                <div id="divOffreContratTitle" class="SubGroupTitleSearch">
+                    <div id="divGroupOffreContratTitle" class="FloatLeft TxtMenuTitle">
+                        @if (Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard) {
+                            @Html.Raw("Offre / Contrat")
+                        }
+                        else if (Model.CritereParam == AlbConstantesMetiers.CriterParam.ContratOnly) {
+                            @Html.Raw("Contrat")
+                        }
+                        else if (Model.CritereParam == AlbConstantesMetiers.CriterParam.CopyOffre) {
+                            @Html.Raw("Offre")
+                        }
+                    </div>
+                    <div id="divOffreContratEllipsis" class="FloatLeft TxtMenuTitle None">...</div>
+                </div>
+                <div id="divOffreContratMenu" class="HeightRow">
+                    <div class="@(Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard ? "FloatLeft PaddingLeftCheck" : "FloatLeft None")">
+                        <input type="checkbox" id="CheckOffre" name="CheckOffre" data-search-filter="advanced" tabindex="1" checked="@((Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard || Model.CritereParam == AlbConstantesMetiers.CriterParam.CopyOffre) && Model.IsCheckOffre)" albgroup="OffreContrat" />
+                    </div>
+                    <div class="@(Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard ? "FloatLeft" : "FloatLeft None")">
+                        <label class="Block labelCheckWidth">Offre</label>
+                    </div>
+                    <div class="@(Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard ? "FloatLeft" : "FloatLeft None")">
+                        <input type="checkbox" id="CheckContrat" name="CheckContrat" data-search-filter="advanced" tabindex="2" checked="@((Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard || Model.CritereParam == AlbConstantesMetiers.CriterParam.ContratOnly) && Model.IsCheckContrat)" albgroup="OffreContrat" />
+                    </div>
+                    <div class="@(Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard ? "FloatLeft" : "FloatLeft None")">
+                        <label class="Block labelContrat">Contrat</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block labelNumWidth">N°</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="TxtRechercheSaisie" id="OffreId" name="OffreId" tabindex="3" value="@(Model.OffreId)" albGroup="OffreContrat" />
+                    </div>
+                    <div class="FloatLeft PaddingLeft5">
+                        <input type="text" class="WidthFieldCode" id="NumAliment" name="NumAliment" tabindex="3" albmask="numeric" albgroup="OffreContrat" />
+                    </div>
+
+                    @if (Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard) {
+                        <div class="FloatRight" style="padding-right: 20px;">
+                            <div class="FloatLeft" style="padding-top: 2px;">
+                                <label>Mode de recherche</label>
+                            </div>
+                            <div class="PaddingLeft FloatLeft">
+                                <input type="radio" id="modeStandard" name="modeNavigation" value="S" checked="checked" />
+                            </div>
+                            <div class="PaddingLeft FloatLeft" style="padding-top: 2px;">
+                                <label>Standard</label>
+                            </div>
+                            <div class="PaddingLeft FloatLeft">
+                                <input type="radio" id="modeHisto" name="modeNavigation" value="H" />
+                            </div>
+                            <div class="PaddingLeft FloatLeft" style="padding-top: 2px;">
+                                <label>Historique</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="nGradientSection nDivSearch" data-search-area="advanced">
+                <div id="divAdvancedTitle" class="SubGroupTitleSearch">
+                    <div class="FloatLeft TxtMenuTitle">Recherche Avancée</div>
+                    <div id="divAdvancedEllipsis" class="FloatLeft TxtMenuTitle None">...</div>
+                </div>
+                <div id="divAdvancedMenu">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Recherche</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="TxtRechercheSaisie" id="MotsClefs" name="MotsClefs" tabindex="4" value="@(Model.MotsClefs)" title="Les informations renseignées dans ce champ seront recherchées dans le descriptif, les observations, les mots-clés et la cible" albGroup="Advanced" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="labelSearch">Souscripteur</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="hidden" id="SouscripteurSelect" name="SouscripteurSelect" value="" albautocomplete="autoCompSouscripteurSelect" albemplacement="recherche" />
+                            <input type="hidden" id="SouscripteurCode" name="SouscripteurCode" value="@(Model.SouscripteurCode)" albAutoComplete="autoCompSouscripteurCode" albEmplacement="recherche" />
+                            <input type="text" class="TxtRechercheSaisie" id="SouscripteurNom" name="SouscripteurNom" tabindex="5" value="@(Model.SouscripteurNom)" albAutoComplete="autoCompSouscripteurNom" albEmplacement="recherche" albGroup="Advanced" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="labelSearch">Gestionnaire</label>
+                        </div>
+                        <div>
+                            <input type="hidden" id="GestionnaireSelect" name="GestionnaireSelect" value="" albautocomplete="autoCompGestionnaireSelect" albemplacement="recherche" />
+                            <input type="hidden" id="GestionnaireCode" name="GestionnaireCode" value="@(Model.GestionnaireCode)" albAutoComplete="autoCompGestionnaireCode" albEmplacement="recherche" />
+                            <input type="text" class="TxtRechercheSaisie" id="GestionnaireNom" name="GestionnaireNom" tabindex="6" value="@(Model.GestionnaireNom)" albAutoComplete="autoCompGestionnaireNom" albEmplacement="recherche" albGroup="Advanced" />
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Date de</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.DateType, Model.DateTypes, "DateType", htmlAttributes: new { @id = "DateType", @tabindex = "7", @albGroup = "Advanced", @class = "SelectRechercheSaisie" }, genEmptyLine: false, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="labelSearch">Entre le</label>
+                        </div>
+                        <div class="PeriodeEntreLMeDateDebut">@Html.AlbDateFormat(m => m.DateDebut, new { @class = "datepicker", @tabindex = "8", @albGroup = "Advanced" })</div>
+                        <div class="PeriodeEtLe">
+                            <label class="Block LabelEtLe">et le</label>
+                        </div>
+                        <div class="PeriodeEtLeDateFin">@Html.AlbDateFormat(m => m.DateFin, new { @class = "datepicker", @tabindex = "9", @albGroup = "Advanced" })</div>
+                        <div class="FloatLeft mgl85">
+                            <input type="checkbox" id="chkActif" checked="@(Model.IsCheckEnCours)" />
+                            <label class="PaddingRightLarge">En cours</label>
+                            <input type="checkbox" id="chkInactif" checked="@(Model.IsCheckInactif)" />
+                            <label class="PaddingRightLarge">Inactif</label>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Branche/Cible</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "Branche", htmlAttributes: new { @id = "Branche", @tabindex = "10", @albGroup = "Advanced", @class = "FieldBranche", @albEmplacement = "recherche", @albCFList = "branche" }, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft" id="divCibles">
+                            @Html.Partial("/Views/RechercheSaisie/ListeCibles.cshtml", Model.ModeleCibles)
+                        </div>
+                        <div class="FloatLeft">
+                            <div class="Block">
+                                <label class="labelSearch">Etat</label>
+                            </div>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="checkbox" id="chkSauf" checked="@(Model.IsCheckEtat)" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="PaddingSauf">Sauf</label>
+                            @Html.AlbDropDownListFor(m => m.Etat, Model.Etats, "Etat", htmlAttributes: new { @id = "Etat", @tabindex = "11", @albGroup = "Advanced", @class = "FieldEtat" }, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="labelSearch">Situation</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Situation, Model.Situations, "Situation", htmlAttributes: new { @id = "Situation", @tabindex = "12", @albGroup = "Advanced", @class = "FieldSituation" }, generateTitle: true)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nGradientSection nDivSearch" data-search-area="advanced">
+                <div id="divPreneurTitle" class="SubGroupTitleSearch">
+                    <div class="FloatLeft TxtMenuTitle">Preneur d'Assurance</div>
+                    <div id="divPreneurEllipsis" class="FloatLeft TxtMenuTitle None">...</div>
+                </div>
+                <div id="divPreneurMenu" class="">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <input type="hidden" id="PreneurAssuranceId" name="PreneurAssuranceId" value="@(Model.PreneurAssuranceId)" albAutoComplete="autoCompCodeAssure" albEmplacement="recherche" maxlength="7" />
+                            <label class="Block">Code</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="WidthFieldCode numerique" id="PreneurAssuranceCode" name="PreneurAssuranceCode" tabindex="13" value="@(Model.PreneurAssuranceId)" albAutoComplete="autoCompCodeAssure" albMask="numeric" albcontext="adressePreneur" albEmplacement="recherche" albGroup="Preneur" maxlength="7" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="labelSearch">Nom</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="WidthLargeField" id="PreneurAssuranceNom" name="PreneurAssuranceNom" tabindex="13" value="@(Model.PreneurAssuranceNom)" albAutoComplete="autoCompNomAssure" albcontext="adressePreneur" albEmplacement="recherche" albGroup="Preneur" />
+                        </div>
+                        <div class="FloatLeft Loupe">
+                            <img src="@Url.Content("/Content/Images/loupe.png")" id="RechercherPreneurAssuranceImg" alt="" class="CursorPointer" name="advancedSearch" albcontext="adressePreneur" />
+                        </div>
+                        <div class="FloatLeft hide-it">
+                            <i id="linkAlertesPreneur" class="alerte-impayes-sinistres"></i>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Dép. / C.P.</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="WidthFieldCode numerique" id="PreneurAssuranceCP" name="PreneurAssuranceCP" tabindex="14" value="@(Model.PreneurAssuranceCP)" albGroup="Preneur" albcontext="adressePreneur" albAutoComplete="autoCompCodePostalAssure" albAutoCompleteComplement="autoCompCodePostal" albNotDeleteAutoComp="true" maxlength="5"/>
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="labelSearch">SIREN</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="TxtRechercheSaisie" id="PreneurAssuranceSIREN" name="PreneurAssuranceSIREN" tabindex="16" value="@(Model.PreneurAssuranceSIREN)" maxlength="9" albGroup="Preneur" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nGradientSection nDivSearch" data-search-area="advanced">
+                <div id="divCourtierTitle" class="SubGroupTitleSearch">
+                    <div class="FloatLeft TxtMenuTitle">Courtier</div>
+                    <div id="divCourtierEllipsis" class="FloatLeft TxtMenuTitle None">...</div>
+                </div>
+                <div id="divCourtierMenu" class="">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">N°</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("selectedCabinetCode", string.Empty)
+                            <input type="text" class="numerique WidthFieldCode" albMask="numeric" id="CabinetCourtageId" name="CabinetCourtageId" tabindex="17" value="@(Model.CabinetCourtageId)" albAutoComplete="autoCompCodeCourtier" albEmplacement="recherche" albGroup="Courtier" albcontext="@Model.ListCabinetCourtage.Contexte" albname="codeCourtier" maxlength="5"/>
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="labelSearch">Nom</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="WidthLargeField" id="CabinetCourtageNom" name="CabinetCourtageNom" tabindex="18" value="@(Model.CabinetCourtageNom)" albAutoComplete="autoCompNomCourtier" albEmplacement="recherche" albGroup="Courtier" albcontext="@Model.ListCabinetCourtage.Contexte" albname="nomCourtier" />
+                        </div>
+                        <div class="FloatLeft Loupe">
+                            <img src="@Url.Content("/Content/Images/loupe.png")" id="RechercherCabinetCourtageImg" alt="" class="CursorPointer" name="advancedSearch" albcontext="@Model.ListCabinetCourtage.Contexte" />
+                        </div>
+                        <div class="FloatLeft PaddingLeftLarge">
+                            <input type="checkbox" id="chkApporteur" checked="@(Model.IsCheckApporteur)" />
+                            <label class="PaddingRightLarge">Apporteur</label>
+                            <input type="checkbox" id="chkGestionnaire" checked="@(Model.IsCheckGestionnaire)" />
+                            <label class="PaddingRightLarge">Gestionnaire</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nGradientSection nDivSearch" data-search-area="advanced">
+                <div id="divAddressTitle" class="SubGroupTitleSearch">
+                    <div class="FloatLeft TxtMenuTitle">Adresse</div>
+                    <div id="divAddressEllipsis" class="FloatLeft TxtMenuTitle None">...</div>
+                </div>
+                <div id="divAddressMenu" class="">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Bât. / Voie / Dist.</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="TxtBatVoie" id="AdresseRisqueVoie" name="AdresseRisqueVoie" tabindex="19" value="@(Model.AdresseRisqueVoie)" albGroup="Address" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="labelSearch">Dép. / C.P.</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="WidthFieldCode numerique" id="AdresseRisqueCP" name="AdresseRisqueCP" tabindex="20" value="@(Model.AdresseRisqueCP)" albGroup="Address" albcontext="adresseOffreContrat" albAutoComplete="autoCompCodePostal" maxlength="5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard) {
+        @Html.Partial("/Views/RechercheSaisie/BandeauRecherchePrincipale.cshtml")
+    }
+    else if (Model.CritereParam == AlbConstantesMetiers.CriterParam.ContratOnly) {
+        @Html.Partial("/Views/RechercheSaisie/BandeauRechercheContrat.cshtml")
+    }
+    else if (Model.CritereParam == AlbConstantesMetiers.CriterParam.CopyOffre) {
+        @Html.Partial("/Views/RechercheSaisie/BandeauRechercheOffre.cshtml")
+    }
+
+</div>
+<div id="divRecherche">
+    <div class="overlay-background" style="z-index:11" >
+    </div>
+    <div id="divDataRecherche">
+    </div>
+</div>
+<div id="divRefusOffre">
+    <div class="overlay-background" style="z-index:18" >
+    </div>
+    <div id="divDataRefusOffre">
+        <table width="99%">
+            <tr>
+                <td style="background-color: #EDEDED;" colspan="2">
+                    <b>&nbsp;Refus d'une offre</b><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        Motif - @Html.AlbDropDownListFor(m => m.Refus, Model.ListRefus, "Refus", htmlAttributes: new { @id = "Refus", @class = "SelectRechercheSaisie" }, generateTitle: true)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <input type="button" id="btnRefusAnnuler" value="Annuler" />
+                </td>
+                <td style="text-align: right;">
+                    <input type="button" id="btnRefusValider" value="Valider" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="divReadOnlyOffre">
+    <div class="overlay-background" style="z-index:18" >
+    </div>
+    <div id="divDataReadOnlyOffre">
+        <table width="99%">
+            <tr>
+                <td style="background-color: #EDEDED;" colspan="2">
+                    <b>&nbsp;Information</b><br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <div id="divReadOnlyMsg"></div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <input type="button" id="btnReadonlyAnnuler" value="Annuler" />
+                </td>
+                <td style="text-align: right;">
+                    <input type="button" id="btnReadonly" value="Lecture seule" />
+                    <input type="button" id="btnNewVersion" value="Nouvelle version" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

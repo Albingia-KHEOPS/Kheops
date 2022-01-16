@@ -1,0 +1,11 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamTemplateNomenclature.ModeleListeCibles
+<div class="FloatLeft">
+    @if (Model.ModeSaisie == "Update")
+    {
+        @Html.AlbDropDownListFor(m => Model.Cible, Model.Cibles, "dvCibleNomenclature", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlCibleEdit", @disabled = "disabled", @class = "readonly" }, replaceHtmlName: "dvCible");
+    }
+    else if (Model.ModeSaisie == "Insert")
+    {
+        @Html.AlbDropDownListFor(m => Model.Cible, Model.Cibles, "dvCibleNomenclature", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlCibleEdit" }, replaceHtmlName: "dvCible")
+    }
+</div>

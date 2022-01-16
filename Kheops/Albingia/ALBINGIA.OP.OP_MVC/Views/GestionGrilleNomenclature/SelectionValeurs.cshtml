@@ -1,0 +1,103 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGestionNomenclature.ModeleSelectionValeurs
+@{
+    var splitHtmlChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML; 
+}
+<div class="CommonForm FloatLeft">
+    <div class="nGroupFull nGroupWithBorder widthSelectionValeur">
+        <div class="nHorizontalFullWithGroup widthSelectionValeurGroup">
+            <div class="nGradientSection">
+                @Html.Hidden("CodeGrilleValeur", (Model.Code))
+                @Html.Hidden("TypologieValeur", (Model.Typologie))
+                @Html.Hidden("NiveauValeur", (Model.Niveau))
+                @Html.Hidden("LienValeur", (Model.Lien))
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label><b>Grille : </b></label>
+                    </div>
+                    <div class="PaddingLeft FloatLeft">
+                        @(string.Format("{0} - {1}", Model.Code, Model.Libelle))
+                    </div>
+                </div>
+                <fieldset class="fieldsetNomenclature">
+                    <legend class="legendNomenclature">Niveaux</legend>
+                    <div class="PaddingLeft dvListNiveau">
+                        <table class="trHeight">
+                            @{
+                                var maxDropDownList = 0;
+                                foreach (var item in Model.Typologies)
+                                {
+                                <tr>
+                                    @if (!string.IsNullOrEmpty(item.Code))
+                                    {
+@*if (item.Niveau.ToString() != Model.Niveau)
+                                        {
+                                        <td>
+                                            <b>@(item.Lien != "I" ? string.Format("Niveau {0} : ", item.Lien) : "Indépendante : ")</b><span class="navig" albnivinfo="@(item.Niveau)" albtypoinfo="@(item.Code)">@(string.Format("{0} - {1}", item.Code, item.Libelle))</span>
+                                        </td>
+                                        }
+                                        else
+                                        {*@
+                                        maxDropDownList += 1;
+                                        <td id="tdCodeTypo@(splitHtmlChar)@(item.Niveau)" name="tdCodeTypo" class="@(item.Niveau.ToString() == Model.Niveau ? "selectedTypo" : "")" albtypologie="@(item.Code)">
+                                            <b>@(item.Lien != "I" ? string.Format("Niveau {0} : ", item.Lien) : "Indépendante : ")</b><span>@(string.Format("{0} - {1}", item.Code, item.Libelle))</span>
+                                        </td>
+@*}*@
+                                        <td id="tdLstValeur@(splitHtmlChar)@(item.Niveau)" name="tdLstValeur" albidddl="@maxDropDownList">@Html.Partial("ListeDeroulanteValeurs", item)</td>
+                                    }
+                                </tr>
+                                }
+                            }
+                        </table>
+                        @Html.Hidden("MaxDDL", (maxDropDownList - 1), new { id = "MaxDDL" })
+                    </div>
+                </fieldset>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Afficher</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.Filtre, Model.Filtres, "Filtre", htmlAttributes: new { @id = "Filtre" }, generateTitle: true, genEmptyLine: false)
+                    </div>
+                    <div class="PaddingLeft FloatLeft">
+                        <label class="Block">Filtre</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="SearchFiltre" name="SearchFiltre" value="@Model.Filtre" class="inputSearchFiltre" />
+                    </div>
+                    <div class="FloatLeft">
+                        <button id="btnSearchFiltre" class="btnSearch">
+                            <img src="@Url.Content("/Content/Images/loupe1616.png")" width="16" height="16" />
+                        </button>
+                    </div>
+                </div>
+                <div id="divHeaderValeur" class="PaddingLeft">
+                    <table id="tblHeaderValeur" class="trHeight tableHeaderValeur">
+                        <tr>
+                            <th class="tablePersoHead thCheck">
+                                <input type="checkbox" id="checkAll" name="checkAll" />
+                            </th>
+                            <th class="tablePersoHead">Valeurs
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divBodyValeur" class="PaddingLeft dvBodyValeur">
+                    <table id="tblBodyValeur" class="trHeight tableBodyValeur">
+                        @Html.Partial("ListeSelectionValeurs", Model)
+                    </table>
+                </div>
+                <div class="PaddingTop HeightRow">
+                    <div class="FloatRight PaddingRight">
+                        <button id="btnSelValSave" type="button" albshortcut="true" data-accesskey="g">Enre<u>g</u>istrer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight widthSelectionValeur">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnSelValCancel" type="button" albshortcut="true" data-accesskey="m">Fer<u>m</u>er</button>
+        </div>
+    </div>
+</div>
+<div id="divValNomenclature" class="None" style="background-color: white; border: 1px solid black;"></div>

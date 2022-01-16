@@ -1,0 +1,2 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamNomenclature.ModeleListeFamille
+@Html.AlbDropDownListFor(m => Model.SelectedValue, Model.ListeFamilles, "dvFamilles" + Model.Id, generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_" + Model.Id, @class = "drlEnteteWidth" }, replaceHtmlName: "dvFamilles")

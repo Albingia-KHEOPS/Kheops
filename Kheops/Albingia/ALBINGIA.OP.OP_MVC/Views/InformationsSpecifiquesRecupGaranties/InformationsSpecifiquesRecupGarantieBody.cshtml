@@ -1,0 +1,45 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsSpecifiquesRecupGarantiesPage>  
+@Html.HiddenNoName("CodeFormule", (Model.CodeFormule))
+@Html.HiddenNoName("CodeOption", (Model.CodeOption))
+@Html.HiddenNoName("LibelleFormule", (Model.LibelleFormule))
+@Html.HiddenNoName("LettreLibelleFormule", (Model.LettreLibelleFormule))
+@Html.HiddenNoName("Code", 1)
+@Html.HiddenNoName("CodeObjet", 1)
+
+<input type="hidden" id="Params" albContext="@Model.AlbContext" value="@(Model.Parameters)" />
+<input type="hidden" id="SpecificParams" albContext="@Model.AlbContext" value="@(Model.SpecificParameters)" />
+@Html.HiddenNoName("splitChar", ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)
+<div class="nGradientSection">
+    <table class="trHeight tblInfo">
+        <tr>
+            <td class="columnLabelFormule">
+                <label class="Block labelFormule">Formule</label>
+            </td>
+
+            <td class="columnLabelLettre">
+                <label class="Block labelLettre">Lettre</label>
+            </td>
+            <td class="readonly columnLettre">
+                @Model.LettreLibelleFormule
+            </td>
+            <td class="columnLabelLibelle">
+                <label class="Block labelLibelle">Libellé</label>
+            </td>
+            <td class="readonly columnLibelle" title="@Model.LibelleFormule">
+                @Model.LibelleFormule
+            </td>
+        </tr>
+    </table>
+</div>
+@if (Model.AlbContext == "OffreSimpGarantie")
+{
+    <div class="FloatLeft">
+        <div id="dvISGtiesResult" albContext="@Model.AlbContext" class="dvISGtiesResultGarantie">
+        </div>
+    </div>
+}
+else
+{
+    <div id="dvISGtiesResult" albContext="@Model.AlbContext">
+    </div>
+}

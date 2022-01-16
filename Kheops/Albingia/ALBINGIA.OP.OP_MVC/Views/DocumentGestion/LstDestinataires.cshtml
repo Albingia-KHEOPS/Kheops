@@ -1,0 +1,24 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.LigneSelectionDestinataire>
+@{
+    if (Model != null && Model.Count > 0)
+    {
+    <table id="tblDestinataireSelectionBody" class="trHeight">
+        @foreach (var ligne in Model)
+        {
+
+            <tr>
+                <td class="tdSelection" id="@("destinataireSelect_" + ligne.GuidId)">
+                    <input id="@("chkSelect_" + ligne.GuidId)" type="radio" checked="@(ligne.IsSelected )" name="radioSelectDestinataire"/></td>
+                <td class="tdCodeLibelle" id="@("codeLibelleDestinataire_" + ligne.GuidId)">
+                    <input type="hidden" id="@("INDestCode_" + ligne.GuidId)" value="@ligne.Code" />
+                    <input type="hidden" id="@("INDestLibelle_" + ligne.GuidId)" value="@ligne.Libelle" />
+                    <label>@(ligne.Code + " - " + ligne.Libelle)</label>
+                </td>
+                <td class="tdRole" id="@("roleDestinataire_" + ligne.GuidId)">
+                    <label>@ligne.Role</label>
+                </td>
+            </tr>
+        }
+    </table>
+    }
+}

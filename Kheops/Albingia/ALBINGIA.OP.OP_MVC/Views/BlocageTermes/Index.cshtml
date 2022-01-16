@@ -1,0 +1,107 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleBlocageTermesPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vBlocageTermes.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albBlocageTermes.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @Html.HiddenNoName("niveauDroit", Model.NiveauDroit.ToString())
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Début d'effet</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="dateDebutEffet" readonly="readonly" value="@(Model.DateDebutEffet.HasValue ? Model.DateDebutEffet.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Fin d'effet</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="dateFinEffet" readonly="readonly" value="@(Model.DateFinEffet.HasValue ? Model.DateFinEffet.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Périodicité</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="periodicite" readonly="readonly" value="@Model.Periodicite" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Ech. principale</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="echeancePrincipale" readonly="readonly" value="@(Model.EcheancePrincipale.HasValue ? Model.EcheancePrincipale.Value.ToString("dd/MM") : string.Empty)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Dernière période du</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="dernierePeriodeDebut" readonly="readonly" value="@(Model.DernierePeriodeDebut.HasValue ? Model.DernierePeriodeDebut.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">au</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="dernierePeriodeFin" readonly="readonly" value="@(Model.DernierePeriodeFin.HasValue ? Model.DernierePeriodeFin.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Prochaine éch.</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="prochaineEcheance" readonly="readonly" value="@(Model.ProchaineEcheance.HasValue ? Model.ProchaineEcheance.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection divHeightBlocage">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Zone STOP</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("zoneStopCode", Model.ZoneStop)
+                            @Html.AlbDropDownListFor(m => m.ZoneStop, Model.ZonesStop, "ZoneStop", htmlAttributes: new { @id = "ZoneStop", @class = "ZoneStopWidth" }, generateTitle: true, genEmptyLine: false)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreen">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataDeblocage">
+    </div>
+</div>
+
+

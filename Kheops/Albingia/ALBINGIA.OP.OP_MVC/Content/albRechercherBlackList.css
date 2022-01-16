@@ -1,0 +1,8 @@
+﻿body {
+}
+
+a.lnkBlackList {
+    /*float: right;*/
+    color: mediumvioletred;
+    display:none;
+}

@@ -1,0 +1,108 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleOption3Page
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vOption3.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albOption3.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+@Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+<div class="FullWidth">
+    <div class="CommonForm FloatLeft">
+        @Html.Hidden("Offre_CodeOffre", Model.Offre.CodeOffre)
+        @Html.Hidden("Offre_Version", Model.Offre.Version)
+        @Html.Hidden("Offre_Type", Model.Offre.Type)
+        <div class="GroupFull GroupWithBorder">
+            <div class="GroupTitle">
+                Création d'une option de formule de garantie
+            </div>
+            <div class="HorizontalFullWithGroup">
+                <div class="GradientSection">
+                    <div class="HeightRow">
+                        <div class="LargeColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Branche</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="inBranche" readonly="readonly" value="@Model.Offre.Branche.Nom" />
+                            </div>
+                        </div>
+
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Cible</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="inCible" readonly="readonly" value="@Model.Offre.Branche.Cible.Code" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="GradientSection">
+                    <div class="HeightRow">
+                        <div class="LargeColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Option n°</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly" id="inOption" readonly="readonly" value="@Model.Option" />
+                            </div>
+                        </div>
+                        <div class="DoubleLargeColumn">
+                            <div class="HalfColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Libellé formule</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input class="readonly SmallColumn" id="inLibelleFormule" readonly="readonly" value="@Model.LibelleFormule" />
+                                </div>
+                            </div>
+                            <div class="LargeColumn">
+                                <div class="FloatLeft">
+                                    <input id="inNomFormule"  class="CustomLargeColumn" value="@Model.NomFormule" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="PadLargeColumn DoubleLargeColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">s'applique</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input  class="LargerColumn readonly" id="inApplique" readonly="readonly" value="@Model.Applique" />
+                            </div>
+                        </div>
+                        <div class="FloatLeft padLeft" id="btnEditerOption">
+                            <img src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" class="Action" name="btnEditer" />
+                        </div>
+                    </div>
+                </div>
+                <div class="GradientSection divHeight">
+                    <div class="FloatLeft">
+                        <label class="Block">Description</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <textarea id="Description" name="Description" class="SuperInput" rows="20"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ButtonRight">
+                <input id="btnAnnuler" type="button" value="Annuler" class="ButtonPrecedent" />
+                <input id="btnSuivant" type="button" value="Valider" class="ButtonSuivant">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreen" style="display: none">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divEditOption" class="GroupFull GroupWithBorder">
+        @if (Model.ObjetsRisquesAll != null)
+        { 
+            @Html.Partial("ListeRisques", Model.ObjetsRisquesAll)    
+        }
+    </div>
+</div>
+

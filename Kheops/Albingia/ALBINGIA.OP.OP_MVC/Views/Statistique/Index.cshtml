@@ -1,0 +1,21 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleStatistiqueOffreContratPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vStatOffreContrat.css" }, "~/Content/")
+
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div>
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+</div>
+
+<div id="BodyContainer" class="GroupFull GroupWithBorder">
+    <div class="GroupTitle">
+        Statistique Offre/Contrat
+    </div>
+    @Html.Partial("BodySatatOffreContrat", Model)
+</div>
+
+
+
+

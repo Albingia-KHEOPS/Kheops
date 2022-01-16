@@ -1,0 +1,93 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleVoletPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vVolets.css", "themes/base/jquery.ui.all.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albVolets.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            @Html.Hidden("SupprVolet", string.Empty)
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder GroupHeightVolets GroupBackOffice" style="margin-right: 12px;">
+                    <div class="GroupTitle">
+                        Recherche de volets
+                    </div>
+                    <div class="HorizontalHalfWithGroupAdmin GroupHeightVoletsInterieur">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block labelVolet">Code</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="RechercheVolets_Code" value="@Model.RechercheVolets.Code" />
+                                </div>
+                                <div class="FloatLeft">
+                                    <label class="Block">Description</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="RechercheVolets_Description" value="@Model.RechercheVolets.Description" />
+                                </div>
+                                <div class="FloatLeft PaddingLeft">
+                                    <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div id="divLstVolets">
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <th class="tablePersoHead tdHeaderEditVolet">&nbsp;
+                                            </th>
+                                            <th class="tablePersoHead tdHeaderCodeVolet">Code Volet
+                                            </th>
+                                            <th class="tablePersoHead tdHeaderImgVolet" title="Volet général">Gen.</th>
+                                            <th class="tablePersoHead tdHeaderDescVolet">Description
+                                            </th>
+                                            <th class="tablePersoHead tdHeaderImgVolet">
+                                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" onclick="javascript:ajouterVolet();" />
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBodyVolets" class="divHeight">
+                                    @Html.Partial("ParametreVBM/ListVolets", Model.Volets)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divInfoVolet" class="GroupFull GroupWithBorder GroupHeightVoletsFixe FloatLeft GroupBackOffice">
+                </div>
+                <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+
+<div style="display: none; float: left;">
+    <div id="FancyAlert">
+        <div id="divMsg">
+            Code déjà existant
+        </div>
+        <div id="divBtn">
+            <input type="button" id="btnOK" value="OK" />
+        </div>
+    </div>
+</div>

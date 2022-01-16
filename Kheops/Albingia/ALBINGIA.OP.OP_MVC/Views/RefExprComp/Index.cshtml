@@ -1,0 +1,89 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRefExprCompPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vRefExprComp.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albRefExprComp.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft TotalWidth">
+        <div class="GroupFull GroupWithBorder TotalWidth GroupNoTitle">
+            <div class="HorizontalFullWithGroup RefTotalWidth">
+                <div class="GradientSection FloatLeft RefListWidth">
+                    @Html.Hidden("currentType", string.Empty)
+                    @Html.Hidden("currentId", string.Empty)
+                    <div class="PaddingLeft"><u>Liste des expressions complexes</u></div>
+                    <div class="HeightRow PaddingTop">
+                        <div class="FloatLeft">
+                            <input type="radio" id="searchCheckLCI" name="searchCheck" value="LCI" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="AutoWidth" style="display: block; padding-top: 4px;">LCI</label>
+                        </div>
+                        <div class="FloatLeft PaddingLeft">
+                            <input type="radio" id="searchCheckFRH" name="searchCheck" value="Franchise" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="AutoWidth" style="display: block; padding-top: 4px;">Franchise</label>
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 40px;">
+                            <input type="text" id="searchExpr" name="searchExpr" value="" style="text-transform: uppercase; width: 40px;" maxlength="3" />
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 60px;">
+                            <button id="btnExprSearch" type="button" albshortcut="true" data-accesskey="o"><u>O</u>K</button>
+                        </div>
+                        <div class="FloatLeft PaddingLeft">
+                            <button id="btnExprRAZ" type="button" albshortcut="true" data-accesskey="z">RA<u>Z</u></button>
+                        </div>
+                    </div>
+                    <div id="lstLCIComp" class="PaddingTop dvListHeight">
+                        <div id="dvHeaderLCI">
+                            <table id="tblHeaderLCI" class="trHeight">
+                                <tr>
+                                    <th class="tablePersoHead thExpCode">LCI</th>
+                                    <th class="tablePersoHead thExpLib">Libellé</th>
+                                    <th class="tablePersoHead thExpImg">
+                                        <img id="imgAddLCI" src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" />
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="dvBodyLCI" class="bodyLCIFRH">
+                            @Html.Partial("ListLCI", Model.ListeLCI)
+                        </div>
+                    </div>
+                    <div id="lstFRHComp" class="PaddingTop dvListHeight">
+                        <div id="dvHeaderFRH">
+                            <table id="tblHeaderFRH" class="trHeight">
+                                <tr>
+                                    <th class="tablePersoHead thExpCode">Franchise</th>
+                                    <th class="tablePersoHead thExpLib">Libellé</th>
+                                    <th class="tablePersoHead thExpImg">
+                                        <img id="imgAddFRH" src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" />
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="dvBodyFRH" class="bodyLCIFRH">
+                            @Html.Partial("ListFRH", Model.ListeFranchise)
+                        </div>
+                    </div>
+                </div>
+                <div id="divDetailExpComp" class="GradientSection FloatLeft RefDetailWidth">
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <input type="button" id="btnCancel" value="Retour" tabindex="29" />
+            </div>
+        </div>
+    </div>
+</div>

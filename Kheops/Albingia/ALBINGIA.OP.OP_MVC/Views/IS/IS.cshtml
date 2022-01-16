@@ -1,0 +1,166 @@
+﻿@model ALBINGIA.OP.OP_MVC.Controllers.IS.ISController.ISModel
+@using ALBINGIA.OP.OP_MVC.DynamicGuiIS.Common
+@using ALBINGIA.Framework.Common.Tools
+
+<div>
+    @foreach (var ligneInfo in Model.hiddenInfos)
+    {
+        <input id="map_@(ligneInfo.InternalPropertyName)" type="hidden" value="@(Model._keyValuePairList.FirstOrDefault(x => x.Key.Equals(ligneInfo.InternalPropertyName)).Value ?? "")" />
+    }
+    <input id="Branche" type="hidden" value="@Model.branche" />
+    <input id="section" type="hidden" value="@Model.section" />
+    <input id="jsSplitChar" type="hidden" value="@Model._splitString" />
+    <input id="parameters" type="hidden" value="@Model._strParameters" />
+</div>
+
+@*//CreateTableMenuIs*@
+
+<table class="nGradientSection FloatLeft Padding" cellpadding="10" name="albISTable">
+    @{
+        bool display = false;
+        foreach (var ligneInfo in Model.shownInfos)
+        {
+            if (ligneInfo.HierarchyOrder == 1)
+            {
+                var titleLevel1 = Model.GetTitleById(ligneInfo.Code);
+                var displayLevel1 = String.Equals(titleLevel1?.Afficher ?? "O", "O", StringComparison.InvariantCultureIgnoreCase);
+                var displayClass = displayLevel1 ? "None" : "";
+                display = displayLevel1;
+                <tr class="@displayClass">
+                    <td class="titreIS @(displayClass)" colspan="2">
+                        @if (displayLevel1)
+                        {
+                            <div id="lnk@(ligneInfo.InternalPropertyName)">@(ligneInfo.TextLabel)</div>
+                        }
+                        else
+                        {
+                            @(ligneInfo.TextLabel)
+                        }
+                    </td>
+                </tr>
+            }
+            else if (ligneInfo.HierarchyOrder == 2)
+            {
+                var titleLevel2 = Model.GetTitleById(ligneInfo.Code);
+                var displayLevel2 = display && String.Equals(titleLevel2?.Afficher ?? "O", "O", StringComparison.InvariantCultureIgnoreCase);
+                var displayClass = displayLevel2 ? "None" : "";
+                display = displayLevel2;
+                <tr class="@displayClass">
+                    <td class="titre2 @(displayClass)" colspan="2">
+                        @(ligneInfo.TextLabel)
+                    </td>
+                </tr>
+            }
+            else if (ligneInfo.HierarchyOrder == 3)
+            {
+                var disabled = (ligneInfo.Disabled.Equals("N") ? "disabled" : string.Empty);
+                var maxLength = " maxlength='" + ligneInfo.LongueurType + "' ";
+                var numMask = string.Empty;
+                var displayClass = display ? "None" : "";
+                <tr class="@displayClass">
+                    <td style="width:300px">
+                        @if (display)
+                        {
+                            @(ligneInfo.TextLabel)
+                        }
+                    </td>
+                    <td @if (display) { <text> albrequired="@(ligneInfo.Required)" </text> }>
+                        @switch (ligneInfo.TypeUIControl)
+                        {
+                            case "Text":
+                                break;
+                            case "Textarea":
+                                break;
+                            case "Select":
+                                break;
+                            case "Date":
+                                break;
+                            case "Checkbox":
+                                break;
+                        }
+                    </td>
+                </tr>
+            }
+            if (ligneInfo.LineBreak > 1)
+            {
+                @Html.Raw(@"</table><class=""nGradientSection FloatLeft Padding"" cellpadding=""10"" name=""albISTable"">")
+            }
+        }
+    }
+</table>
+
+@helper Date(ParamISLigneInfo ligneInfo, bool display)
+{
+    var required = Required(ligneInfo, display);
+    var dateClass = (!display ? " None":string.Empty);
+                        var disabled = ligneInfo.Disabled.Equals("N");
+
+    var date = string.Empty;
+    if (!Model.OnlyPreview)
+    {
+        date = AlbConvert.ConvertIntToDate(int.Parse(Model.GetValueByName(ligneInfo.InternalPropertyName)))?.ToShortDateString() ?? "";
+    }
+    <input @required id="map_@(ligneInfo.InternalPropertyName)" class="datepicker@(dateClass)"
+           data-val="true" data-val-regex="La date doit suivre la forme 24/11/2030"
+           data-val-regex-pattern="^\\d{2}/\\d{2}/\\d{4}$" type="text"
+           value="@date" disabled="@disabled"
+           @behaviours(ligneInfo) />
+
+}
+
+
+@helper Text(ParamISLigneInfo ligneInfo)
+{
+
+}
+
+
+@helper TextArea(ParamISLigneInfo ligneInfo)
+{
+
+}
+
+
+@helper Select(ParamISLigneInfo ligneInfo, bool display)
+{
+    var selectClass = string.Format("\"class{0}\" ",!display?" None":string.Empty);
+    var chekClass = !display ? "None" : string.Empty;
+    var disabled = ligneInfo.Disabled.Equals("N");
+
+    var required = Required(ligneInfo, display);
+
+    <select required="@required" id="map_@(ligneInfo.InternalPropertyName)" class ="class @chekClass" disabled="@disabled"  @behaviours(ligneInfo) >
+        @foreach (var option in Model.GetDDLValues(ligneInfo))
+        {
+            <option selected="@option.selected" value="@option.id">@option.label</option>
+        }
+    </select>
+}
+
+@helper Checkbox(ParamISLigneInfo ligneInfo, bool display)
+{
+    var required = Required(ligneInfo, display);
+    var chekClass = !display ? "None" : string.Empty;
+    var disabled = ligneInfo.Disabled.Equals("N");
+
+    var checkedInput = !Model.OnlyPreview && display && Model.GetValueByName(ligneInfo.InternalPropertyName).Equals("VRAI");
+    <input @required class="@chekClass" id="map_@(ligneInfo.InternalPropertyName)"
+           disabled="@disabled" checked="@checkedInput" type="checkbox" @behaviours(ligneInfo) />
+
+}
+
+@helper behaviours(ParamISLigneInfo ligneInfo)
+{
+    var linkBehaviour = String.Empty;
+    if (!String.IsNullOrEmpty(ligneInfo.LinkBehaviour)) { linkBehaviour = $@"linkBehaviour=""{ligneInfo.LinkBehaviour}"""; }
+    var behaviour = String.Empty;
+    if (!String.IsNullOrEmpty(ligneInfo.Behaviour)) { behaviour = $@"behaviour=""{ligneInfo.Behaviour}"""; }
+    var eventBehaviour = String.Empty;
+    if (!String.IsNullOrEmpty(ligneInfo.EventBehaviour)) { eventBehaviour = $@"linkBehaviour=""{ligneInfo.EventBehaviour}"""; }
+    @linkBehaviour @behaviour @eventBehaviour
+}
+
+@functions{
+    string Required(ParamISLigneInfo ligneInfo, Boolean display) => display ? " albrequired='" + ligneInfo.Required + "'" : string.Empty;
+}
+

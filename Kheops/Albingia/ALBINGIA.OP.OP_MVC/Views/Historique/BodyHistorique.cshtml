@@ -1,0 +1,50 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleHistoriquePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vHistorique.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albHistorique.js" }
+                   , "~/Scripts/AlbingiaJS/")
+<div class="CommonForm FloatLeft">
+    <div class="nGroupFull nGroupWithBorder" style="width: 1200px;">
+        <div class="nHorizontalFullWithGroup" style="width: 1200px;">
+            @Html.Hidden("CodeAffaireHisto", (Model.CodeAffaire))
+            @Html.Hidden("VersionHisto", (Model.Version))
+            @Html.Hidden("TypeHisto", (Model.Type))
+            @Html.Hidden("currentAvt", string.Empty)
+            @Html.HiddenNoName("selectedRowHisto", string.Empty)
+            @Html.HiddenNoName("oldSelectedRowHisto", string.Empty)
+            @Html.HiddenNoName("isLoadingBandeauHisto", 0)
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block" style="width: 150px;">Historique contractuel</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="inIsContractuel" name="inIsContractuel" checked="@(Model.IsContractuel )" />
+                    </div>
+                </div>
+            </div>
+            <div id="dvListHisto" class="nGradientSection">
+                @Html.Partial("ListHistorique", Model)
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 1200px;">
+        <div class="ActionButtons ActionButtonRight">
+            @if (Model.IsModeDivFlottante)
+            {
+                <button id="btnFermerHisto" type="button" albshortcut="true" tabindex="29" data-accesskey="f"><u>F</u>ermer</button>
+            }
+            else
+            {
+                <button id="btnRetourAccueilHisto" type="button" albshortcut="true" tabindex="29" data-accesskey="r"><u>R</u>etour</button>
+            }
+        </div>
+    </div>
+
+    <div id="dvFlotted" class="None">
+        <div class="overlay-background" style="z-index:60" >
+        </div>
+        <div id="dvDataFlotted" style="position: absolute; top: 5px; left: 12px; display: block; z-index: 61; background-color: White; height: 603px; width: 1050px;"></div>
+    </div>
+</div>
+
+<div id="divConteneurBandeauRechercheHisto"></div>

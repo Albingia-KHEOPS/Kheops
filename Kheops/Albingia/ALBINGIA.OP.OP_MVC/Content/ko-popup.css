@@ -1,0 +1,347 @@
+﻿.ko-component-popup,
+.default-container {
+  display: block;
+  font-size: 12px;
+}
+.ko-component-popup .container,
+.default-container .container {
+  border-radius: 10px;
+  background-color: #eee;
+  border: 1px #eee outset;
+  margin-bottom: 7px;
+}
+.ko-component-popup .container .big-tab-right,
+.default-container .container .big-tab-right {
+  margin-left: 70px;
+}
+.ko-component-popup .container .has-changed,
+.default-container .container .has-changed {
+  background-color: aliceblue;
+  color: blue;
+  border-color: blue;
+}
+.ko-component-popup .container .invalid-value,
+.default-container .container .invalid-value,
+.ko-component-popup .container .invalid-date,
+.default-container .container .invalid-date {
+  border: 1px solid red;
+  background-color: #FEE;
+}
+.ko-component-popup .container-details .main-title,
+.default-container .container-details .main-title {
+  font-weight: bold;
+  padding: 15px 5px 5px 5px;
+  margin: 2px;
+}
+.ko-component-popup .container-details .main-big-title,
+.default-container .container-details .main-big-title {
+  color: #800000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-style: italic;
+  font-weight: normal;
+  padding: 7px 13px;
+}
+.ko-component-popup .container-details .main-big-title .bold,
+.default-container .container-details .main-big-title .bold {
+  font-weight: bold;
+}
+.ko-component-popup .container-details .container-lines,
+.default-container .container-details .container-lines {
+  border-radius: 5px;
+  margin: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  border: 1px #ddd inset;
+  background-color: #ccc;
+}
+.ko-component-popup .container-details .container-lines.space-it .input-line,
+.default-container .container-details .container-lines.space-it .input-line,
+.ko-component-popup .container-details .container-lines.space-it .sub-title,
+.default-container .container-details .container-lines.space-it .sub-title {
+  margin-bottom: 5px;
+}
+.ko-component-popup .container-details .container-lines.flex-it,
+.default-container .container-details .container-lines.flex-it {
+  display: flex;
+}
+.ko-component-popup .container-details .container-lines.flex-it .flex1-3,
+.default-container .container-details .container-lines.flex-it .flex1-3 {
+  flex: 1;
+}
+.ko-component-popup .container-details .container-lines.flex-it .flex2-3,
+.default-container .container-details .container-lines.flex-it .flex2-3 {
+  flex: 2;
+}
+.ko-component-popup .container-details .container-lines > div,
+.default-container .container-details .container-lines > div {
+  border-radius: 5px;
+  margin-right: 5px;
+  border: 1px #ddd outset;
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #eee;
+}
+.ko-component-popup .container-details .container-lines > div .sub-title,
+.default-container .container-details .container-lines > div .sub-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  margin-top: 5px;
+}
+.ko-component-popup .container-details .container-lines > div .sub-title:first-child,
+.default-container .container-details .container-lines > div .sub-title:first-child {
+  margin-top: 0;
+}
+.ko-component-popup .container-details .container-lines > div .input-line,
+.default-container .container-details .container-lines > div .input-line {
+  display: flex;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.children-fill div,
+.default-container .container-details .container-lines > div .input-line.children-fill div {
+  flex: 1;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div,
+.default-container .container-details .container-lines > div .input-line.divs div {
+  min-width: 120px;
+  height: 20px;
+  padding: 0;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.auto-width,
+.default-container .container-details .container-lines > div .input-line.divs div.auto-width {
+  min-width: auto;
+  width: auto;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.minw60,
+.default-container .container-details .container-lines > div .input-line.divs div.minw60 {
+  min-width: 60px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.minw80,
+.default-container .container-details .container-lines > div .input-line.divs div.minw80 {
+  min-width: 80px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.multi input,
+.default-container .container-details .container-lines > div .input-line.divs div.multi input,
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.multi select,
+.default-container .container-details .container-lines > div .input-line.divs div.multi select {
+  margin: 0 4px 0 0;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div label,
+.default-container .container-details .container-lines > div .input-line.divs div label {
+  display: inline-block;
+  width: auto;
+  padding: 0 5px;
+  line-height: 20px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div label.input input[type=checkbox],
+.default-container .container-details .container-lines > div .input-line.divs div label.input input[type=checkbox] {
+  width: 25px;
+  line-height: 20px;
+  margin: 0;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.input,
+.default-container .container-details .container-lines > div .input-line.divs div.input {
+  padding: 0;
+  margin: 0;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.input input,
+.default-container .container-details .container-lines > div .input-line.divs div.input input {
+  line-height: normal;
+  width: 110px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.input input.large,
+.default-container .container-details .container-lines > div .input-line.divs div.input input.large {
+  width: 200px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.input input.short,
+.default-container .container-details .container-lines > div .input-line.divs div.input input.short {
+  width: 70px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.input input.slight,
+.default-container .container-details .container-lines > div .input-line.divs div.input input.slight {
+  width: 50px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.input input.tiny,
+.default-container .container-details .container-lines > div .input-line.divs div.input input.tiny {
+  width: 25px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.select,
+.default-container .container-details .container-lines > div .input-line.divs div.select {
+  padding: 0;
+  margin: 0;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.divs div.select select,
+.default-container .container-details .container-lines > div .input-line.divs div.select select {
+  line-height: normal;
+  width: 110px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.date-time,
+.default-container .container-details .container-lines > div .input-line.date-time {
+  padding: 2px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.date-time .date,
+.default-container .container-details .container-lines > div .input-line.date-time .date {
+  padding-left: 5px;
+  padding-top: 2px;
+  width: 255px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.date-time .time,
+.default-container .container-details .container-lines > div .input-line.date-time .time {
+  padding-left: 2px;
+  padding-top: 2px;
+  width: 255px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.date-time .time select,
+.default-container .container-details .container-lines > div .input-line.date-time .time select {
+  width: 62px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.date-time .time .text-hour,
+.default-container .container-details .container-lines > div .input-line.date-time .time .text-hour {
+  padding-left: 5px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.duration,
+.default-container .container-details .container-lines > div .input-line.duration {
+  width: 255px;
+  padding-left: 7px;
+  padding-top: 2px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.duration .value,
+.default-container .container-details .container-lines > div .input-line.duration .value,
+.ko-component-popup .container-details .container-lines > div .input-line.duration .unit,
+.default-container .container-details .container-lines > div .input-line.duration .unit {
+  width: 60px;
+  margin-left: 3px;
+  margin-right: 4px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.n-data-inline div,
+.default-container .container-details .container-lines > div .input-line.n-data-inline div {
+  flex: 1;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.n-data-inline div input,
+.default-container .container-details .container-lines > div .input-line.n-data-inline div input,
+.ko-component-popup .container-details .container-lines > div .input-line.n-data-inline div select,
+.default-container .container-details .container-lines > div .input-line.n-data-inline div select {
+  width: 130px;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.text-img32 span,
+.default-container .container-details .container-lines > div .input-line.text-img32 span {
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  margin: 0;
+  padding: 0;
+}
+.ko-component-popup .container-details .container-lines > div .input-line.text-img32 i,
+.default-container .container-details .container-lines > div .input-line.text-img32 i,
+.ko-component-popup .container-details .container-lines > div .input-line.text-img32 img,
+.default-container .container-details .container-lines > div .input-line.text-img32 img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.ko-component-popup .container-foot,
+.default-container .container-foot {
+  padding: 15px 3px;
+}
+.ko-component-popup .container-foot .input-line,
+.default-container .container-foot .input-line {
+  display: flex;
+}
+.ko-component-popup .container-foot .input-line .single-button-center,
+.default-container .container-foot .input-line .single-button-center {
+  align-content: center;
+}
+.ko-component-popup .container-foot .input-line .flex1-12,
+.default-container .container-foot .input-line .flex1-12,
+.ko-component-popup .container-foot .input-line .flex1-19,
+.default-container .container-foot .input-line .flex1-19,
+.ko-component-popup .container-foot .input-line .flex1-23,
+.default-container .container-foot .input-line .flex1-23 {
+  text-align: center;
+  flex: 1;
+}
+.ko-component-popup .container-foot .input-line .flex11,
+.default-container .container-foot .input-line .flex11 {
+  flex: 11;
+}
+.ko-component-popup .container-foot .input-line .flex8-12,
+.default-container .container-foot .input-line .flex8-12,
+.ko-component-popup .container-foot .input-line .flex8-10,
+.default-container .container-foot .input-line .flex8-10 {
+  text-align: center;
+  flex: 8;
+}
+.ko-component-popup .container-foot .input-line .flex9-12,
+.default-container .container-foot .input-line .flex9-12 {
+  text-align: center;
+  flex: 9;
+}
+.ko-component-popup .container-foot .input-line .flex2-12,
+.default-container .container-foot .input-line .flex2-12,
+.ko-component-popup .container-foot .input-line .flex2-10,
+.default-container .container-foot .input-line .flex2-10 {
+  text-align: center;
+  flex: 2;
+}
+.ko-component-popup .container-foot .input-line .flex14-19,
+.default-container .container-foot .input-line .flex14-19 {
+  text-align: center;
+  flex: 14;
+}
+.ko-component-popup .container-foot .input-line .flex17-23,
+.default-container .container-foot .input-line .flex17-23 {
+  text-align: center;
+  flex: 17;
+}
+.ko-component-popup .container-foot .input-line .flex18-23,
+.default-container .container-foot .input-line .flex18-23 {
+  text-align: center;
+  flex: 18;
+}
+.ko-component-popup .container-foot .input-line .flex5-23,
+.default-container .container-foot .input-line .flex5-23,
+.ko-component-popup .container-foot .input-line .flex5-10,
+.default-container .container-foot .input-line .flex5-10 {
+  text-align: center;
+  flex: 5;
+}
+.ko-component-popup .container-foot .input-line .flex4-12,
+.default-container .container-foot .input-line .flex4-12,
+.ko-component-popup .container-foot .input-line .flex4-19,
+.default-container .container-foot .input-line .flex4-19,
+.ko-component-popup .container-foot .input-line .flex4-23,
+.default-container .container-foot .input-line .flex4-23 {
+  text-align: center;
+  flex: 4;
+}
+.ko-component-popup .container-foot .input-line.ok-cancel,
+.default-container .container-foot .input-line.ok-cancel {
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+.ko-component-popup .container-foot .input-line.ok-cancel .empty-zone,
+.default-container .container-foot .input-line.ok-cancel .empty-zone {
+  flex: 15;
+}
+.ko-component-popup .container-foot .input-line.ok-cancel .button-zone,
+.default-container .container-foot .input-line.ok-cancel .button-zone {
+  flex: 4;
+}
+.ko-component-popup .container-foot .input-line.ok-cancel .button-zone button,
+.default-container .container-foot .input-line.ok-cancel .button-zone button,
+.ko-component-popup .container-foot .input-line.ok-cancel .button-zone input[type="button"],
+.default-container .container-foot .input-line.ok-cancel .button-zone input[type="button"] {
+  margin: 0 2px;
+}
+.ko-component-popup .container-foot .input-line-right,
+.default-container .container-foot .input-line-right {
+  text-align: right;
+}
+#divWinListRsqObj div:first-child {
+  overflow: auto;
+  max-height: 400px;
+}

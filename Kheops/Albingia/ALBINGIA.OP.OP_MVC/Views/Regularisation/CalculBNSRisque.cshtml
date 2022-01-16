@@ -1,0 +1,82 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+
+@model ModeleRegularisationPage
+
+<script type="text/html" id="infos_contrat_template">
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/knockout/templates/regularisation/infos-contrat-periode.html")))
+</script>
+<script type="text/html" id="formule_template">
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/knockout/templates/regularisation/infos-formule-BNS.html")))
+</script>
+<script type="text/html" id="donnees_template">
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/knockout/templates/regularisation/donnees-regul-BNS.html")))
+</script>
+
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "global.css" }, "~/Content/less/regularisation/")
+
+@{
+    ViewBag.Title = "CreationRegule";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = 0 })
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+    <div id="regul_data" class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup dvHorizontal">
+                <div class="">
+                    <!-- ko template: { name: 'infos_contrat_template', data: infosContrat } -->
+                    <!-- /ko -->
+                    <!-- ko template: { name: 'formule_template', data: infosFormule } -->
+                    <!-- /ko -->
+                    <!-- ko template: { name: 'donnees_template', data: donneesRegul } -->
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight">
+                <div class="FloatRight">
+                    <button id="btnRegulePrec" type="button" albshortcut="true" data-accesskey="P" data-bind="click: back"><u>A</u>nnuler</button>
+                    <button id="btnReguleSuivant" type="button" albshortcut="true" data-accesskey="s" data-bind="click: forward, enable: canGoNext"><u>S</u>uivant</button>
+                </div>
+
+                <div id="divRefresh" class="FloatRight PaddingRight" style="margin-top: -3px;">
+                    <img id="btnRefresh" src="@Url.Content("/Content/Images/boutonRefresh_gris3232.png")" alt="Calcul" title="Calcul"
+                         data-bind="click: compute, visible: showCompute, css: { CursorPointer: canCompute() }, attr: { src: canCompute() ? '@Url.Content("/Content/Images/boutonRefresh_3232.png")' : '@Url.Content("/Content/Images/boutonRefresh_gris3232.png")' }" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divInfoSaisieGar" class="None">
+    <div class="overlay-background" style="z-index:15" >
+    </div>
+    <div id="divDataInfoSaisieGar" class="dvDataInfoSaisieGar"></div>
+</div>
+<div id="divConfirmMntRegul" class="None">
+    <div class="overlay-background" style="z-index:25" >
+    </div>
+    <div id="divDataConfirmMntRegul" class="dvDataConfirmMntRegul">
+    </div>
+</div>
+<div id="divUpdateRegul" class="None">
+    <div class="overlay-background" style="z-index:15" >
+    </div>
+    <div id="divDataUpdateRegul" class="dvDataUpdateRegul"></div>
+</div>
+
+<script type="text/javascript">
+    @{
+        string context = Newtonsoft.Json.JsonConvert.SerializeObject(Model.Context, Newtonsoft.Json.Formatting.None);
+    }
+
+    window.context = @Html.Raw(context);
+    window.sessionStorage[regul.regulKey] = JSON.stringify(window.context);
+</script>
+
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "regularisation-calcul-BNS.js" }, "~/knockout/templates/regularisation/", false)

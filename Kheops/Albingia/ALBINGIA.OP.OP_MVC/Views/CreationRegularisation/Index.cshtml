@@ -1,0 +1,126 @@
+﻿@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+
+@model ModeleRegularisationPage
+
+@Url.IncludeKoComponent("entete-contrat")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css", "vCreationAvenant.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/albCreationRegularisation.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.ChoixMode })
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="divGlobalRegulGroup">
+                @Html.HiddenNoName("attestId", string.Empty)
+                @Html.HiddenNoName("ModeAvt", Model.AvnMode)
+                @Html.HiddenNoName("hiddenInputId", string.Empty)
+                @Html.HiddenNoName("modeConsult", string.Empty)
+                @Html.HiddenNoName("periodicite", Model.Contrat.PeriodiciteCode)
+                @Html.HiddenNoName("FinEffetHeure", Model.FinEffetHeure)
+                @Html.Hidden("CodePeriodicite", (Model.Contrat.PeriodiciteCode))
+                @Html.HiddenNoName("SouscripteurCode", (Model.Contrat.SouscripteurCode))
+                @Html.HiddenNoName("GestionnaireCode", (Model.Contrat.GestionnaireCode))
+
+                <entete-contrat></entete-contrat>
+
+                <div id="divInfoRegul" class="nGradientSection divListRisquesRegularisation">
+                    @Html.Partial("ListeRegularisations", Model)
+                    <div id="divInfoRegul2" class="None"></div>
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnFermer" type="button" class="string.Empty" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+                <button id="btnReguleCancel" type="button" class="None" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnRegulePrec" type="button" class="None" albshortcut="true" data-accesskey="P"><u>P</u>récedent</button>
+                <button id="btnReguleSuivant" type="button" class="None" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dvAddRegule" class="None">
+    <div class="overlay-background" style="z-index:5">
+    </div>
+    <div id="dvInfoAddRegule" class="divInfoAddRegule">
+        <div class="nGroupFull nGroupWithBorder WidthAddRegule">
+            <div class="nHorizontalFullWithGroup WidthAddRegule">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft PaddingLeft"><u>Sélectionnez le mode de régularisation que vous souhaitez effectuer</u> :</div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <div class="divTypeRegul">
+                                @Html.AlbDropDownListFor(m => m.CodeTypeRegul, Model.TypeReguls, "CodeTypeRegul", htmlAttributes: new { @id = "CodeTypeRegul", @class = "InputDDL DDLTypeRegul" }, generateTitle: true, genEmptyLine: false)
+                            </div>
+
+                        </div>
+                        <div class="FloatLeft">
+
+                            <input type="radio" id="rdReguleSeule" name="typeRegule" value="S" />
+                            <label id="rdReguleSeuleLabel" class="AutoWidth">Régularisation seule</label>
+
+                            <br />
+                            <input type="radio" id="rdReguleModif" name="typeRegule" value="M" />
+
+                            <label id="rdReguleModifLabel" class="AutoWidth">Régularisation puis avenant</label>
+
+                        </div>
+
+                    </div>
+                    <br />
+                    <br />
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="AutoWidth">Niveau de régularisation : </label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="radio" id="rdNiveauReguleEntete" name="niveauRegule" value="E" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label id="rdNiveauLabelEntete" class="AutoWidth">Contrat</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="radio" id="rdNiveauReguleRisque" name="niveauRegule" value="R" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label id="rdNiveauLabelRisque" class="AutoWidth">Risque</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="radio" id="rdNiveauReguleManuel" name="niveauRegule" value="M" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label id="rdNiveauLabelManuel" class="AutoWidth">Garanties</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft WidthAddRegule">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnCancelAdd" type="button">Annuler</button>
+                <button id="btnValidAdd" type="button">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divUpdateRegul" class="None">
+    <div class="overlay-background" style="z-index:5">
+    </div>
+    <div id="divDataUpdateRegul" class="dvDataUpdateRegul"></div>
+</div>
+
+<script type="text/javascript">
+    window.context = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Context, Newtonsoft.Json.Formatting.Indented));
+</script>
+

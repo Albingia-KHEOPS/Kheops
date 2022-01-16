@@ -1,0 +1,45 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.FormuleGarantie
+
+@{
+    var _model = Model.affaire as NouvelleAffaire;
+    var nameOfTag = Model.namePrefix as string;
+    int[] subIds = null;
+    var garantie = Model.garantie as Garantie;
+    var parentStack = new Stack<(Garantie g, int index)>();
+    bool start = true;
+}
+
+@while (start || parentStack.Any()) {
+    if (start) {
+        start = false;
+        parentStack.Push((garantie, -1));
+    }
+    var parent = parentStack.Pop();
+    string prefix = string.Empty;
+    if (parent.index == -1) {
+        subIds = parentStack.Select(v => v.index).ToArray();
+        if (subIds.Any()) {
+            prefix = $".{nameof(garantie.SousGaranties)}[" + string.Join($"].{nameof(garantie.SousGaranties)}[", subIds) + "]";
+        }
+        @Html.Partial("_GarantieAffaireNouvelle", new { namePrefix = nameOfTag + prefix, garantie = parent.g })
+    }
+
+    var list = parent.g.SousGaranties?.ToArray();
+    if (list != null) {
+        Garantie nextParent = null;
+        int x = parent.index + 1;
+        prefix += $".{nameof(garantie.SousGaranties)}";
+        for (; x < list.Length && nextParent == null; x++) {
+            if (list[x].SousGaranties?.Any() ?? false) {
+                nextParent = list[x];
+            }
+            else {
+                @Html.Partial("_GarantieAffaireNouvelle", new { namePrefix = $"{nameOfTag}{prefix}[{x}]", garantie = list[x] })
+            }
+        }
+        if (nextParent != null) {
+            parentStack.Push((parent.g, (x - 1)));
+            parentStack.Push((nextParent, -1));
+        }
+    }
+}

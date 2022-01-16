@@ -1,0 +1,200 @@
+﻿@using System.Web.Mvc.Ajax
+@using ALBINGIA.OP.OP_MVC
+@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.MetaModels.Inventaire_MetaModel>
+
+<div class="CommonForm FloatLeft">
+    @Html.HiddenNoName("hiddenInputId", string.Empty)
+    @Html.HiddenFor(m => m.CodeRisque)
+    @Html.HiddenFor(m => m.CodeObjet)
+    @Html.HiddenFor(m => m.Code)
+    @Html.HiddenFor(m => m.IsAvnDisabled)
+    @Html.Hidden("dateDebOffre", (Model.DateDebStr))
+    @Html.Hidden("dateFinOffre", (Model.DateFinStr))
+    @Html.Hidden("heureDebOffre", (Model.HeureDebStr))
+    @Html.Hidden("minuteDebOffre", (Model.MinuteDebStr))
+    @Html.Hidden("heureFinOffre", (Model.HeureFinStr))
+    @Html.Hidden("minuteFinOffre", (Model.MinuteFinStr))
+    @Html.HiddenFor(m => m.Branche)
+    @Html.HiddenFor(m => m.Cible)
+    @Html.HiddenFor(m => m.CodeFormule)
+    @Html.HiddenFor(m => m.CodeGarantie)
+    @Html.HiddenFor(m => m.EcranProvenance)
+    @Html.HiddenFor(m => m.CodeOption)
+    @Html.HiddenFor(m => m.FormGen)
+    @Html.Hidden("TypeInventaire", (Model.InventaireType))
+    @Html.Hidden("IdGaran", (Model.IdGarantie))
+    @Html.Hidden("InvenSpec", (Model.InventSpecifique))
+    @Html.Hidden("TypeAlim", (Model.TypeAlimentation))
+    @Html.Hidden("NewInvenForm", (Model.NewInven.ToString()))
+    @Html.Hidden("TypeAlim", (Model.CodePbmer), new { id = "CodePbmer" })
+    @Html.Hidden("NewInvenForm", (Model.CodePbr), new { id = "CodePbr" })
+
+    <div class="nGroupFull nGroupWithBorder">
+        <div class="nHorizontalFullWithGroup">
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="DescriptifColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Libellé*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.IsReadOnly || Model.IsAvnDisabled == true) {
+                                <input type="text" id="Descriptif" name="Descriptif" tabindex="1" class="InputDescriptif readonly" readonly="readonly" value="@(Model.Descriptif)" maxlength="40" />
+                            }
+                            else {
+                                <input type="text" id="Descriptif" name="Descriptif" tabindex="1" class="InputDescriptif" value="@(Model.Descriptif)" maxlength="40" />
+                            }
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Type</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Type" name="Type" class="readonly" readonly="readonly" tabindex="2" value="@(Model.Type)" title="@(Model.Type + " - " + Model.Descriptif)" />
+                        </div>
+                    </div>
+                </div>
+                <div id="divDataInventaires">
+                    @Html.Partial("InventaireGrid", Model)
+                </div>
+                <div style="height: 88px;">
+                    <div class="FloatLeft">
+                        <label class="Block">Description</label>
+                    </div>
+                    @*<div id="zoneTxtArea" class="FloatLeft divObservations" albcontext="Observations">@(!string.IsNullOrEmpty(Model.Description) ? Html.Raw(Model.Description.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "")) : Html.Raw(string.Empty))</div>
+                    <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="Observations">
+                        <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                    </div>
+                    <div id="txtArea" albcontext="Observations">*@
+                        <div class="FloatLeft">
+                            @if (Model.IsReadOnly || Model.IsAvnDisabled == true) {
+                                <div id="Observations" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Description)</div>
+                            }
+                            else {
+                                <textarea id="Observations" name="Observations" style="width: 700px; height: 50px; margin-bottom: 5px;" tabindex="6">@Model.Description</textarea>
+                            }
+                        </div>
+                    @*</div>*@
+                </div>
+            </div>
+            <div class="nGradientSection" style="height: 170px;">
+                <div class="FloatLeft PaddingLeft">
+                    @if (!Model.IsReadOnly && Model.IsAvnDisabled != true) {
+                        <div class="HeightRow">
+                            <div class="FloatRight PaddingRight">
+                                <input type="button" value="Recalculer" id="btnSum" title="Recalculer la somme des inventaires" />
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Valeur</label>
+                                </div>
+                                <div class="FloatLeft PaddingRight">
+                                    <input type="text" id="Valeur" name="Valeur" tabindex="4" class="decimal" albMask="@(Model.UniteLst == "%" ? "pourcentdecimal" : "decimal")" value="@(Model.Valeur)" />
+                                </div>
+                                <div class="FloatLeft">
+                                    @Html.AlbDropDownListFor(m => m.UniteLst, Model.UniteLsts, "UniteLst", htmlAttributes: new { @id = "UniteLst", @tabindex = "5", @class = "ControlLabel", @albCFList = "unite" }, generateTitle: true)
+                                </div>
+                                <div class="FloatLeft PaddingRight">
+                                    @Html.AlbDropDownListFor(m => m.TypeLst, Model.TypeLsts, "TypeLst", htmlAttributes: new { @id = "TypeLst", @tabindex = "6", @class = "UnitSelect", @albCFList = "type" }, generateTitle: true)
+                                </div>
+                                <div class="FloatLeft">
+                                    @Html.AlbDropDownListFor(m => m.TaxeLst, Model.TaxeLsts, "TaxeLst", htmlAttributes: new { @id = "TaxeLst", @tabindex = "7", @class = "ControlLabel" }, generateTitle: true)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="GenericColumn">
+                                <div class="FloatLeft">@Html.CheckBoxFor(m => m.ActiverReport, new { @tabindex = "7" })<label>Activer report</label></div>
+                            </div>
+                        </div>
+                        if (string.IsNullOrEmpty(Model.IdGarantie)) {
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block">Objet</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" value="@(!string.IsNullOrEmpty(Model.ValeurObjet) ? Model.ValeurObjet : string.Empty)" title="@(!string.IsNullOrEmpty(Model.ValeurObjet) ? Model.ValeurObjet : string.Empty)" class="readonly numerique" readonly="readonly" albmask="numeric" />
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="invenUniteObjet" value="@(!string.IsNullOrEmpty(Model.UniteObjet) ? Model.UniteObjet : string.Empty)" title="@(!string.IsNullOrEmpty(Model.UniteObjet) ? Model.UniteObjet : string.Empty)" class="readonly ControlLabel" readonly="readonly" albCFList="unite" />
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="invenTypeObjet" value="@(!string.IsNullOrEmpty(Model.TypeObjet) ? Model.TypeObjet : string.Empty)" title="@(!string.IsNullOrEmpty(Model.TypeObjet) ? Model.TypeObjet : string.Empty)" class="readonly UnitSelect" readonly="readonly" albCFList="type" />
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" value="@(!string.IsNullOrEmpty(Model.ValeurObjetHT) ? Model.ValeurObjetHT : string.Empty)" title="@(!string.IsNullOrEmpty(Model.ValeurObjetHT) ? Model.ValeurObjetHT : string.Empty)" class="readonly ControlLabel" readonly="readonly" />
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonLeft">
+            @if (Model.EcranProvenance == ALBINGIA.Framework.Common.Constants.NomsInternesEcran.FormuleGarantie.ToString()) {
+                if (!Model.IsReadOnly && Model.IsAvnDisabled != true) {
+                    <button id="btnSupprimerInventaire" name="btnSupprimerInventaire" type="button">Supprimer</button>
+                }
+            }
+        </div>
+        <div id="FullScreen" class="FloatLeft" style="padding-top: 6px;" albContext="Inventaire">
+            <button id="fullScreenObjet" type="button" class="CursorPointer FullScreenBtn" title="Plein écran">
+                <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+            </button>
+        </div>
+        <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+            @if (Model.EcranProvenance == ALBINGIA.Framework.Common.Constants.NomsInternesEcran.FormuleGarantie.ToString()) {
+                <button id="btnAnnulerInventaire" type="button">Annuler</button>
+                if (!Model.IsReadOnly && Model.IsAvnDisabled != true) {
+                    <button id="btnValiderInventaire" type="button">Valider</button>
+                }
+            }
+            else {
+                <button id="btnAnnuler" albcontext="RisqueInventaire" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" albcontext="RisqueInventaire" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+            }
+        </div>
+    </div>
+</div>
+<div id="divFullScreen">
+    <div id="divGray" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div id="divDataFullScreen">
+        <div id="divDataTab">
+        </div>
+        <!--</div>-->
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="dvLinkClose" class="FloatLeft" style="padding-top: 6px;" albContext="Inventaire">
+                <button id="fermerFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Fermer le plein écran">
+                    <img src="@Url.Content("/Content/Images/window_nofullscreen.png")" alt="Fermer" />
+                </button>
+            </div>
+            <div class="ActionButtons ActionButtonRight" style="width: 300px;">
+                <button id="btnFSAnnul" type="button">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divListeCPVille" style="display: none;">
+    @Html.Hidden("ligneId", string.Empty)
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataListeCPVille" class="dvDataListeCPVille">
+        <div id="divDataLst" class="FloatLeft">
+        </div>
+        <div class="PaddingLeft FloatLeft">
+            <button id="btnValidLst" type="button" albshortcut="true" data-accesskey="d">Vali<u>d</u>er</button>
+            <button id="btnCancelLst" type="button" albshortcut="true" data-accesskey="u">Ann<u>u</u>ler</button>
+        </div>
+    </div>
+</div>
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbRisqueInventaire")
+@AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbRisqueInventaire")

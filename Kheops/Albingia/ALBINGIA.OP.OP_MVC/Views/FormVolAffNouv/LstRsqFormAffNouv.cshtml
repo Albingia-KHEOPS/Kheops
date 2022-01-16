@@ -1,0 +1,50 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesCreationAffaireNouvelle.ModeleFormVolAffNouvRecap
+<div>
+    Vous allez créer l'affaire nouvelle @(Model.CodeContrat)
+    avec les éléments suivants :
+    <br />
+    <br />
+    <div>
+        @foreach (var rsq in Model.Risques)
+        {
+            <div>
+                - Risque @rsq.CodeRisque</div>
+        }
+        <br />
+        @foreach (var form in Model.Formules)
+        {
+            <div>
+                - Formule @form.LettreForm : option @(form.Options[0].CodeOpt == 1 ? "de base" : form.Options[0].CodeOpt.ToString())</div>
+        }
+    </div>
+    <br />
+    <br />
+    @if (Model.CountGarTar > 0)
+    { 
+        <div class="ConfirmationButtons">
+            <input type="button" id="btnConfAnnuler" value="Annuler" />
+            <input type="button" id="btnConfValider" value="Confirmer" style="font-weight: bold;" />
+        </div>
+    }
+    else
+    { 
+        <div><center><b>Vous allez finaliser la transformation de l'offre en affaire nouvelle.</b></center></div><br />
+        <div><center><b>Sélectionnez une action à réaliser :</b></center></div><br /><br />
+        <div class="ConfirmationButtons">
+            <div class="FloatLeft" style="position: absolute; bottom: 0px; padding-bottom: 10px;">
+                @*<input type="button" id="btnConfAnnuler" value="Annuler" />*@
+            </div>
+            <div class="FloatRight">
+                <div style="padding-bottom:5px;">
+                    <input type="button" id="btnConfHome" value="Retourner à l'accueil" />
+                </div>
+                <div style="padding-bottom:5px;">
+                    <input type="button" id="btnConfCreate" value="Créer un nouveau contrat" />
+                </div>
+                <div>
+                    <input type="button" id="btnConfContinue" value="Poursuivre la saisie du contrat" style="font-weight: bold;" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

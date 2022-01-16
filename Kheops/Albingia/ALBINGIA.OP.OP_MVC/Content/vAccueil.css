@@ -1,0 +1,12 @@
+﻿.MainMenu 
+{
+    margin-top:5px;    
+}
+#fancyClock
+{
+    display:none;
+	margin:40px auto;
+	height:100px;
+	border:1px outset #999;
+	width:600px;
+}

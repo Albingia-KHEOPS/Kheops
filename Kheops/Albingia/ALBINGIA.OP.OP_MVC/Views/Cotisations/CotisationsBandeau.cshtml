@@ -1,0 +1,102 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesCotisations.ModeleInfoGarantie
+<div class="nGradientSection FloatLeft HalfGroup" style="padding-bottom: 5px; height: 118px">
+    <div>
+        @Html.Partial("CotisationsCommission", Model.Commission)
+    </div>
+</div>
+<div class="nGradientSection FloatLeft HalfGroup" style="padding-bottom: 5px; height: 118px">
+    <div>
+        <table width="470" id="tblBodyCommissionR" cellspacing="0" class="trHeight">
+            <tr>
+                <td>Total hors frais
+                </td>
+                <td>
+                    <input type="text" id="TotalHorsFraisHT" name="TotalHorsFraisHT" value="@Model.TotalHorsFraisHT.ToString()" class="numerique inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )" />
+                    @Html.Hidden("TotalHorsFraisHTOld", Model.TotalHorsFraisHT.ToString())
+                </td>
+                <td>
+                    <input type="text" id="TotalHorsFraisTaxe" name="TotalHorsFraisTaxe" value="@Model.TotalHorsFraisTaxe.ToString()" readonly="readonly" class="numerique readonly inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                </td>
+                <td>
+                    <input type="text" id="TotalHorsFraisTTC" name="TotalHorsFraisTTC" value="@Model.TotalHorsFraisTTC.ToString()" readonly="readonly" class="numerique readonly inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                </td>
+            </tr>
+            <tr>
+                @if (Model.TypePart == "A" )
+                {//voir bug 1602
+                    <td>Frais accessoires
+                    </td>
+                }
+                else
+                {
+                    <td class="TxtLink CursorPointer" id="lnkFraisAcc">Frais accessoires
+                    </td>
+                }
+                <td>
+                    <input type="text" id="FraisHT" name="FraisHT" value="@Model.FraisHT.ToString()" readonly="readonly" class="numerique readonly inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                </td>
+                <td>
+                    <input type="text" id="FraisTaxe" name="FraisTaxe" value="@Model.FraisTaxe.ToString()" readonly="readonly" class="numerique readonly inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                </td>
+                <td>
+                    <input type="text" id="FraisTTC" name="FraisTTC" value="@Model.FraisTTC.ToString()" readonly="readonly" class="numerique readonly inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                </td>
+            </tr>
+            <tr>
+                 @if (Model.TypePart == "A" )
+                {//voir bug 1602
+                    <td colspan="2">FGA
+                    </td>
+                }
+                else
+                {
+                     <td colspan="2" class="TxtLink CursorPointer" id="lnkFGA">FGA
+                    </td>
+                }
+                <td>
+                    <input type="text" id="FGATaxe" name="FGATaxe" value="@Model.FGATaxe.ToString()" readonly="readonly" class="numerique readonly inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                </td>
+                <td>
+                    <input type="text" id="FGATTC" name="FGATTC" value="@Model.FGATTC" readonly="readonly" class="numerique readonly inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Total
+                </td>
+                <td>
+                    <input type="text" id="TotalHT" name="TotalHT" value="@Model.TotalHT.ToString()" class="numerique inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                    @Html.Hidden("TotalHTOld", Model.TotalHT.ToString())
+                </td>
+                <td>
+                    <input type="text" id="TotalTaxe" name="TotalTaxe" value="@Model.TotalTaxe" readonly="readonly" class="numerique readonly inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                </td>
+                <td>
+                    <input type="text" id="TotalTTC" name="TotalTTC" value="@Model.TotalTTC" class="numerique inputTotal" albMask="decimal" disabled="@(Model.IsReadonly )"/>
+                    @Html.Hidden("TotalTTCOld", Model.TotalTTC)
+                </td>
+            </tr>
+        </table>
+    </div>
+    @if (Model.NatureContrat == "A" || Model.NatureContrat == "E")
+    {
+        <div class="HeightRow" style="padding-top: 4px; padding-left: 82px;">
+            <div class="SmallGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block titleBold">Part Totale</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="radio" name="radioTypePart" id="rdPartTotale" checked="@(Model.TypePart == "T" )" />
+                </div>
+
+            </div>
+            <div class="SmallGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block titleBold">Part Albingia</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="radio" name="radioTypePart" id="rdPartAlbingia" checked="@(Model.TypePart == "A" )" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

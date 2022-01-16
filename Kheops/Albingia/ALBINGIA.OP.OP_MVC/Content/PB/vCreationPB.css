@@ -1,0 +1,346 @@
+﻿/*#region Index*/
+
+.divInfoContratRegularisation {
+    width: 1023px;
+}
+
+
+.CommonForm .divGlobalRegulGroup {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 6px;
+    width: 1027px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+    height: 495px;
+}
+
+.divListRisquesRegularisation {
+    width: 1023px;
+    height: 448px;
+    max-height: 448px;
+    min-height: 243px;
+}
+
+.divOverflowHeight {
+    overflow-y: auto;
+}
+
+
+.divPeriodeAlertRegularisation {
+    width: 1023px;
+    height: 453px;
+    max-height: 453px;
+    min-height: 248px;
+    background-color: transparent;
+}
+
+
+.divRegularisationRCInfoGen {
+    width: 1025px;
+    /*height: 220px;*/
+    background-color: transparent;
+    display: block;
+}
+
+
+.divInfoContratLightDisplay {
+    width: 1023px;
+    height: 20px;
+}
+
+.divInfoContratDetailedDisplay {
+    width: 1023px;
+    height: 235px;
+}
+
+/* Region : collapse Div*/
+
+.divInfoLeftLightDisplay {
+    width: 1023px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.divInfoBandeau {
+    height: 15px;
+}
+
+.divDetailedContratInfo {
+    max-height: 0;
+    display: none;
+    transition: max-height 0.9s ease-out;
+    width: 1023px;
+    height: 185px;
+}
+
+/*Endregion*/
+
+
+.divInfoLeft {
+    /*width: 615px;*/
+}
+
+
+
+.cssCodeOffre {
+    width: 75px !important;
+}
+
+.cssSpanCodeOffre {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 180px;
+}
+
+
+.cssVersion {
+    width: 40px !important;
+    text-align: right;
+}
+
+.cssSpanVersion {
+    font-size: small;
+    font-weight: bold;
+    padding-right: 125px;
+}
+
+
+.cssSpanIdentificationLightDisplay {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cssSpanDateDebutEffet {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.cssSpanDateFinEffet {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.lblDateAu {
+    width: 20px;
+}
+
+.lblRegularisation {
+    width: 115px !important;
+}
+
+.inputRegularisation {
+    width: 285px !important;
+}
+
+.lblPart {
+    width: 97px !important;
+}
+
+.inPart {
+    width: 50px !important;
+}
+
+.inNatureContrat {
+    width: 90px !important;
+}
+
+.PaddingCourtGest {
+    padding-left: 200px;
+}
+
+.divInfoAddRegule {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 6;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 550px;
+}
+
+.WidthAddRegule {
+    width: 530px !important;
+}
+
+.dvDataInfoSaisieGar {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 580px;
+    width: 1046px;
+}
+
+.dvDataUpdateRegul {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 159px;
+    width: 619px;
+}
+
+
+.dvDataRegulSimplifiee {
+    position: absolute;
+    top: 280px;
+    left: 500px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 159px;
+    width: 619px;
+}
+
+.dvDataConfirmMntRegul {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 26;
+    background-color: White;
+    height: 232px;
+    width: 526px;
+    padding: 5px;
+}
+
+/*#endregion*/
+
+/*#region Liste régularisations*/
+
+.HeightInfoRegul {
+    height: 266px;
+}
+
+.thNumAvnRegule {
+    width: 38px;
+}
+
+.thTraitementRegule {
+    width: 108px;
+}
+
+.thPeriodeRegule {
+    width: 142px;
+}
+
+.thSituationRegule {
+    width: 112px;
+}
+
+.thQuittanceRegule {
+    width: 122px;
+}
+
+.thAvisQuittanceRegule {
+    width: 97px;
+}
+
+.thActionRegule {
+    width: 66px;
+}
+
+.thBtnRegule {
+    width: 40px;
+    padding-top: 5px;
+}
+
+.divBodyRegule {
+    width: 825px;
+    max-height: 292px;
+    overflow: auto;
+}
+
+.tableBodyRegule {
+    table-layout: fixed;
+}
+
+#tblBodyRegule > tbody > tr:nth-child(odd) {
+    background-color: rgb(255, 255, 255);
+}
+
+#tblBodyRegule > tbody > tr:nth-child(even) {
+    background-color: rgb(237, 238, 255);
+}
+
+/*#endregion*/
+
+
+
+
+/*#region Lignes régularisations*/
+
+.tdNumAvnRegule {
+    width: 40px;
+    text-align: center;
+}
+
+.tdAvisQuittanceRegule {
+    width: 100px;
+    text-align: center;
+}
+
+.tdTraitementRegule {
+    width: 110px;
+    text-align: center;
+}
+
+.tdDateRegule {
+    width: 70px;
+    text-align: center;
+}
+
+.tdEtatRegule {
+    width: 40px;
+    text-align: center;
+}
+
+.tdNumQuittanceRegule {
+    width: 40px;
+    text-align: center;
+}
+
+.tdLibQuittanceRegule {
+    width: 80px;
+    text-align: center;
+}
+
+.tdActionRegule {
+    width: 32px;
+    text-align: center;
+}
+
+.tdUpdateTypeRegule {
+    width: 42px;
+    text-align: center;
+}
+
+/*#endregion*/
+
+
+
+
+
+
+

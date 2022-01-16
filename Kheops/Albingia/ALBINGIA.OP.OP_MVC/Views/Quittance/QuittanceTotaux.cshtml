@@ -1,0 +1,143 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleQuittancePage
+@*@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.Totaux*@
+@using ALBINGIA.Framework.Common.Constants
+<div>
+    <table id="tblHeaderTotauxBaseBis" class="col_mainHeader_detailsTotaux trHeight">
+        <tr>
+            @*<th class="" colspan="2"></th>*@
+            <th class="tablePersoHead colTotauxBase">
+                HT (€)
+            </th>
+            <th class="tablePersoHead colTotauxBase">
+                Taxe (€)
+            </th>
+            <th class="tablePersoHead colTotauxBase">
+                TTC (€)
+            </th>
+        </tr>
+    </table>
+    <table id="tblBodyDetailsTotauxBase" class="trHeight">
+        <tr>
+            <td class="col_titre_detailsTotaux" colspan="3">Total hors CATNAT</td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalHorsCatNatHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalHorsCatNatTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalHorsCatNatTTC</span>
+            </td>
+        </tr>
+        @if (Model.FormulesInfo.Totaux.GareatHT != decimal.Zero) {
+        <tr>
+            <td class="col_titre_detailsTotaux" colspan="3" style="padding-left: 20px;">dont GAREAT </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.GareatHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.GareatTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.GareatTTC</span>
+            </td>
+        </tr>
+        }
+        <tr>
+            <td class="col_titre_detailsTotaux" colspan="3">
+                CATNAT
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.CatNatHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.CatNatTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.CatNatTTC</span>
+            </td>
+        </tr>
+        <tr>
+
+            <td class="col_titre_detailsTotaux" colspan="3">
+                Total hors frais
+            </td>
+
+
+            <td class="col_row_detailsTotaux">
+                @Html.Hidden("TotalHorsFraisHT", Model.FormulesInfo.Totaux.TotalHorsFraisHT)
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalHorsFraisHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalHorsFraisTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalHorsFraisTTC</span>
+            </td>
+        </tr>
+        <tr>
+
+
+
+            @if (!Model.IsReadOnly && ((Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGUL
+                || (Model.TypeAvt == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.ActeGestionRegule == AlbConstantesMetiers.TYPE_AVENANT_REGUL))
+                || (Model.TypeAvt == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.ActeGestionRegule == AlbConstantesMetiers.TYPE_AVENANT_MODIF)
+                || Model.TypeAvt == AlbConstantesMetiers.TYPE_AVENANT_REGUL)) {
+                <td class="col_titre_detailsTotaux TxtLink CursorPointer" colspan="3" id="lnkFraisAccQuittance" albcontext="@(Model.ModeAffichage == "Visu" ? "quitTrans" : string.Empty)">
+                    Frais
+                </td>
+            }
+            else {
+                <td class="col_titre_detailsTotaux " colspan="3">
+                    Frais
+                </td>
+            }
+
+            <td class="col_row_detailsTotaux">
+                @Html.Hidden("FraisHT", Model.FormulesInfo.Totaux.FraisHT)
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.FraisHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.FraisTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.FraisTTC</span>
+            </td>
+        </tr>
+        <tr>
+
+            @if (!Model.IsReadOnly && ((Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGUL
+                || (Model.TypeAvt == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_REGUL)))) {
+                <td class="col_titre_detailsTotaux TxtLink CursorPointer" colspan="4" id="lnkFGAQuittance" albcontext="@(Model.ModeAffichage == "Visu" ? "quitTrans" : string.Empty)">
+                    FGA
+                </td>
+            }
+            else {
+                <td class="col_titre_detailsTotaux " colspan="4">
+                    FGA
+                </td>
+            }
+            <td class="col_row_detailsTotaux">
+                @Html.Hidden("FGATaxe", Model.FormulesInfo.Totaux.FGATaxe)
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.FGATaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.FGATTC</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col_titre_detailsTotaux" colspan="3">
+                Total
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalHT</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalTaxe</span>
+            </td>
+            <td class="col_row_detailsTotaux">
+                <span albmask="decimal">@Model.FormulesInfo.Totaux.TotalTTC</span>
+            </td>
+        </tr>
+    </table>
+</div>

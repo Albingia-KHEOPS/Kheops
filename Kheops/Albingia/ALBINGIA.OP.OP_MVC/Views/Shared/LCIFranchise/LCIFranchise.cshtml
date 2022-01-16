@@ -1,0 +1,53 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesLCIFranchise.ModeleLCIFranchise
+@using ALBINGIA.Framework.Common.Constants
+<input id="idLienCpx_@(Model.TypeVue + "" + Model.TypeAppel)" type="hidden" value="@Model.LienComplexe" name="@(Model.TypeVue + "" + Model.TypeAppel).LienComplexe" />
+<div class="GenericColumn">
+    @if (Model.TypeVue == AlbConstantesMetiers.ExpressionComplexe.Franchise) {
+        if (Model.TypeAppel == AlbConstantesMetiers.TypeAppel.Generale) {
+            <div class="FloatLeft LabelFranchiseGenerale">Franchise générale</div>
+        }
+        else if (Model.TypeAppel == AlbConstantesMetiers.TypeAppel.Risque) {
+            <div class="FloatLeft LabelFranchiseRisque">Franchise risque</div>
+        }
+    }
+    else if (Model.TypeVue == AlbConstantesMetiers.ExpressionComplexe.LCI) {
+        if (Model.TypeAppel == AlbConstantesMetiers.TypeAppel.Generale) {
+            <div class="FloatLeft LabelLCIGenerale">LCI générale</div>
+        }
+        else if (Model.TypeAppel == AlbConstantesMetiers.TypeAppel.Risque) {
+            <div class="FloatLeft LabelLCIRisque">LCI risque</div>
+        }
+    }
+
+    <div class="FloatLeft">
+        @if (Model.LienComplexe != "0") {
+            <input type="text" id="Valeur_@(Model.TypeVue + "" + Model.TypeAppel)" name="@(Model.TypeVue + "" + Model.TypeAppel).Valeur" value="@(!string.IsNullOrEmpty(Model.Valeur) && double.Parse(Model.Valeur) != 0D ? Model.Valeur : string.Empty)" albMask="decimal" class="readonly" readonly="readonly" />
+        }
+        else {
+            <input type="text" id="Valeur_@(Model.TypeVue + "" + Model.TypeAppel)" name="@(Model.TypeVue + "" + Model.TypeAppel).Valeur" value="@(!string.IsNullOrEmpty(Model.Valeur) && double.Parse(Model.Valeur) != 0D ? Model.Valeur : string.Empty)" albMask="decimal" />
+        }
+    </div>
+</div>
+<div class="ColumnUniteType_@(Model.TypeAppel)">
+    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.Unite, Model.Unites, "Unite_" + Model.TypeVue + "" + Model.TypeAppel, htmlAttributes: new { id = "Unite_" + Model.TypeVue + Model.TypeAppel, @class = "HalfInput", albCFList = Model.TypeVue == AlbConstantesMetiers.ExpressionComplexe.LCI ? "LCIUnite" : Model.TypeVue == AlbConstantesMetiers.ExpressionComplexe.Franchise ? "franchiseUnite" : string.Empty }, generateTitle: true, replaceHtmlName: Model.TypeVue + "" + Model.TypeAppel + ".Unite")</div>
+
+
+    <div class="@( (Model.LienComplexe == "0" || string.IsNullOrEmpty(Model.LienComplexe)) ? "FloatLeft" : "None")" id="divType_@(Model.TypeVue + "" + Model.TypeAppel)">
+        @Html.AlbDropDownListFor(m => m.Type, Model.Types, "Type_" + Model.TypeVue + "" + Model.TypeAppel, htmlAttributes: new { id = "Type_" + Model.TypeVue + Model.TypeAppel, @class = "HalfInput", albCFList = Model.TypeVue == AlbConstantesMetiers.ExpressionComplexe.LCI ? "franchiseLCI" : Model.TypeVue == AlbConstantesMetiers.ExpressionComplexe.Franchise ? "franchiseBase" : string.Empty }, generateTitle: true, replaceHtmlName: Model.TypeVue + "" + Model.TypeAppel + ".Type")
+    </div>
+
+    <div id="divLienCpx_@(Model.TypeVue + "" + Model.TypeAppel)" class="@(Model.LienComplexe == "0" || string.IsNullOrEmpty(Model.LienComplexe) ? "None" : "DivLienCpx")">
+        <span class="CursorPointer navig" albhref="#@(Model.LienComplexe != "0" ? Model.LienComplexe : string.Empty)" id="LienCpx_@(Model.TypeVue + "" + Model.TypeAppel)" name="LienComplexeGenRsq_@(Model.TypeVue + "" + Model.TypeAppel)" title="@Model.LibComplexe">
+            @(Model.LienComplexe == "0" ? string.Empty : Model.CodeComplexe)
+        </span>
+    </div>
+</div>
+<div class="FloatLeft">
+    @if (Model.TypeAppel == AlbConstantesMetiers.TypeAppel.Generale) {
+        <div class="FloatLeft">@Html.CheckBoxFor(m => m.IsIndexe, new { @id = "IsIndexe_" + Model.TypeVue + Model.TypeAppel })</div>
+        <div class="FloatLeft">
+            <label class="Block">Indexée</label>
+        </div>
+    }
+</div>
+

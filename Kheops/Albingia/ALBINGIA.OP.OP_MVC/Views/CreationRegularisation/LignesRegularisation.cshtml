@@ -1,0 +1,49 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegularisation.ModeleLigneRegularisation>
+@foreach (var regule in Model)
+{
+               <tr>
+                   <td class="tdNumAvnRegule">@regule.CodeAvn</td>
+                   @if (regule.RegulMode == "PB" || regule.RegulMode == "BNS" || regule.RegulMode == "BURNER")
+                    {                    
+                        <td class="@(regule.NumRegule <= 0 ? " tdTraitementRegule textRed" : "tdTraitementRegule")" title="@(string.Concat(regule.CodeTraitement, " - ", regule.LibTraitement))"> @regule.RegulMode</td>
+                    }
+                    else {
+                        <td class="@(regule.NumRegule <= 0 ? " tdTraitementRegule textRed" : "tdTraitementRegule")" title="@(string.Concat(regule.CodeTraitement, " - ", regule.LibTraitement))"> @regule.CodeTraitement</td>
+                    }
+                   <td class="tdDateRegule">@(ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertDateToStr(regule.PeriodeDebut))</td>
+                   <td class="tdDateRegule">@(ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertDateToStr(regule.PeriodeFin))</td>
+                   <td class="tdEtatRegule" title="@(string.Concat(regule.CodeSituation, " - ", regule.LibSituation))">@(string.Concat(regule.CodeEtat, " - ", regule.CodeSituation))</td>
+                   <td class="tdDateRegule">@(ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertDateToStr(@regule.DateSituation))</td>
+                   <td class="@(regule.NumQuittance > 0 ? "tdNumQuittanceRegule navig" : "tdNumQuittanceRegule")" id="num_@(regule.NumQuittance)" name="linkVisuRegule" albreguleid="@(regule.NumRegule)" albnumavn="@(regule.CodeAvn)">@(regule.NumQuittance > 0 ? regule.NumQuittance.ToString() : string.Empty)</td>
+                   <td class="tdLibQuittanceRegule" title="@(string.Concat(regule.CodeEtatQuitt, " - ", regule.LibEtatQuitt))">@regule.LibEtatQuitt</td>
+                   <td class="tdAvisQuittanceRegule" title="@(regule.Avis)">@(regule.Avis > 0 ? regule.Avis.ToString() : string.Empty)</td>
+
+                   <td class="tdActionRegule CursorPointer">
+                       <img name="consulter-regule" src="@(Url.Content("/Content/Images/ContextMenu/m_consulter.png"))" albreguleid="@(regule.NumRegule)" albreguletype="@(regule.CodeTraitement)" albcodeavn="@(regule.CodeAvn)"
+                            data-regulmode="@regule.RegulMode" data-regultype="@regule.RegulType" data-regulniv="@regule.RegulNiv" data-regulavn="@regule.RegulAvn"
+                            title="Consulter" />
+                   </td>
+                   <td class="@(regule.CodeEtat != "V" ? "tdActionRegule CursorPointer" : "tdActionRegule")">
+                       @if (regule.CodeEtat != "V")
+        {
+               <img id="btnUpdateRegule" src="@(Url.Content("/Content/Images/ContextMenu/m_modifier.png"))" albreguleid="@(regule.NumRegule)" albreguletype="@(regule.CodeTraitement)" albcodeavn="@(regule.CodeAvn)"
+                    data-regulmode="@regule.RegulMode" data-regultype="@regule.RegulType" data-regulniv="@regule.RegulNiv" data-regulavn="@regule.RegulAvn" title="Modifier" />
+}
+else
+{
+Html.Raw("&nbsp;");
+}
+                   </td>
+                   
+                   @if (regule.CodeEtat != "V" && (regule.CodeTraitement == "REGUL") && regule.RegulMode == "STAND")
+    {
+               <td class="tdUpdateTypeRegule CursorPointer">
+                   <img id="btnUpdateTypeRegule" src="@(Url.Content("/Content/Images/u462_original.png"))" title="Modifier Type" albreguleid="@(regule.NumRegule)" albdatefinavn="@(regule.PeriodeFin)" albcodeavn="@(regule.CodeAvn)" />
+               </td>
+}
+else
+{
+               <td class="tdUpdateTypeRegule"></td>
+}
+               </tr>
+}

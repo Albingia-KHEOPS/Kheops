@@ -1,0 +1,29 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesFraisAccessoires.FraisAccessoiresModel>
+
+@Html.HiddenNoName("deleteHiddenInput", string.Empty)
+<div id="listeFrais" class="GradientSection">
+    <div id="LigneCount">Nombre de lignes: @Model.Count</div>
+    <table id="tblHeaderParam">
+        <tr>
+            <th class="tablePersoHead" title="Branche">Branchee</th>
+            <th class="tablePersoHead" title="Sous branche">Sous branche</th>
+            <th class="tablePersoHead" title="Catégorie">Catégorie</th>
+            <th class="tablePersoHead" title="Année">Année</th>
+            <th class="tablePersoHead" title="Montant">Montant</th>
+            <th class="tablePersoHead" title="Frais accessoires en dessous du montant">Frais accessoires en dessous du montant </th>
+            <th class="tablePersoHead" title="Frais accessoires au dessu du montant">Frais accessoires au dessu du montant </th>
+            <th id="btnAjouter" class="CursorPointer tablePersoHead" title="Ajouter">
+                <img src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+            </th>
+        </tr>
+    </table>
+
+    <div id="divBodyParam" class="AlignCenter">
+        <table id="FraisTable" class="styled">
+            @foreach (var item in @Model)
+            {
+                @Html.Partial("Item", item)
+            }
+        </table>
+    </div>
+</div>

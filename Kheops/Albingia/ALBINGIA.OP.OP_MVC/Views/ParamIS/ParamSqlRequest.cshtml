@@ -1,0 +1,17 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamIS.ParamModeleSqlRequest
+<div class="GroupFull GroupWithBorder" id="divData">
+    @Html.HiddenNoName("TypeEditSql", Model.TypeEdit)
+    <div class="GroupTitle">
+        @Model.TypeEdit
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin HeightParamSqlRequest">
+        <div class="GradientSection">
+            <div class="textField">
+                <textarea class="inputSqlRequest" id="SqlEdit" rows="19" cols="60" style="resize: none">@Model.RequeteEdit</textarea>
+            </div>
+    </div>
+    </div>
+    <div class="FloatRight">
+        <input type="button" id="btnOKEditionSql" name="btnFancyOK" value="OK" />
+    </div>
+</div>

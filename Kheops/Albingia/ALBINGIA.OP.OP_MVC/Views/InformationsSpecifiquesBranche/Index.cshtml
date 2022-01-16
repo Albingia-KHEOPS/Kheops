@@ -1,0 +1,90 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.MetaModels.InformationsSpecifiquesBranche_MetaModel>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vInformationsSpecifiquesBranche.css", "vInformationsSpecifiques.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albInformationsSpecifiquesBranche.js", "albInformationsSpecifiques.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+        <div class="nGroupFull nGroupWithBorder">
+            @*            <div class="GroupTitle">
+                @(Model.Offre != null ? "Informations Spécifiques Offre" : "Informations Spécifiques Contrat")
+            </div>*@
+
+            @Html.HiddenNoName("etapeIS", (ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Etapes.InfoGenerale))
+            @Html.HiddenNoName("Params", (Model.Parameters))
+            @Html.HiddenNoName("SpecificParams", (Model.SpecificParameters))
+            @Html.HiddenNoName("splitChar", ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)
+            @Html.HiddenNoName("osMessageVersion", Model.IsMesageVersionSimpleFolder.ToString())
+            @Html.HiddenNoName("nouvelleVersion", 0)
+
+            @if (Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE)
+            {
+                @Html.HiddenNoName("ISCodeOffre", Model.Offre.CodeOffre)
+                <input type="hidden" id="ISVersion" value="@(Model.Offre.Version.HasValue ? Model.Offre.Version.Value : 0)" />
+                @Html.HiddenNoName("ISType", Model.Offre.Type)
+                @Html.HiddenNoName("Branche", (Model.Offre.Branche.Code))
+            }
+            else if (Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT)
+            {
+                @Html.HiddenNoName("ISCodeOffre", Model.Contrat.CodeContrat)
+                @Html.HiddenNoName("ISVersion", Model.Contrat.VersionContrat)
+                @Html.HiddenNoName("ISType", Model.Contrat.Type)
+                @Html.HiddenNoName("Branche", (Model.Contrat.Branche))
+            }
+
+            <div id="InfoBranche" class="nHorizontalFullWithGroup">
+
+                @*<iframe id="frameIS" src="@Url.Content("/ExcelWeb/InformationsSpecifiques/Template.aspx?" + @Model.Parameters)" width="600px" height="400px" frameborder="0"></iframe>*@
+                <div id="dvISGtiesResult">
+                </div>
+
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <div class="FloatRight">
+                    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+                </div>
+          
+            </div>
+        </div>
+    </div>
+    <div id="resultScript">
+    </div>
+</div>

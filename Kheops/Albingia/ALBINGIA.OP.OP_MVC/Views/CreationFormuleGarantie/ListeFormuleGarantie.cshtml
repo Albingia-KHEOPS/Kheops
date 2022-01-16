@@ -1,0 +1,35 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFormuleGarantie.ModeleFormuleGarantie
+@if (Model != null)
+{
+    @Html.Hidden("codeOptionFormule", (Model.CodeOption))
+    if (Model.FullScreen)
+    {
+        @*<div class="HeightRow Height15">
+                <div id="dvLinkClose" class="CursorPointer TxtLink">
+                    ^ Réduire écran ^
+                </div>
+            </div>*@
+        <div class="GradientSection" style="width: 1000px; height: 558px;">
+            <div style="max-height: 554px; overflow: auto;">
+                @Html.Partial("TableFormuleGarantie", Model)
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight" style="margin-top: 2px; width: 989px;">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="dvLinkClose" class="FloatLeft" style="padding-top: 6px;" albContext="Formule">
+                <button id="btnNoFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Fermer le plein écran">
+                    <img src="@Url.Content("/Content/Images/window_nofullscreen.png")" alt="Fermer" />
+                </button>
+            </div>
+            <div class="ActionButtons ActionButtonRight" style="width: 300px;">
+                <button id="btnFSAnnuler" type="button" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnFSSuivant" type="button" tabindex="28" disabled="disabled"><u>V</u>alider</button>
+            </div>
+        </div>
+    }
+    else
+    {
+        @Html.Partial("TableFormuleGarantie", Model)
+    }
+}

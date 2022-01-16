@@ -1,0 +1,151 @@
+﻿<div class="divInfoLeftLightDisplay" data-bind="click: displayOrNotDetailedInfo">
+    <div class="divInfoBandeau">
+        <div class="FloatLeft">
+            <label>N° Contrat</label>
+        </div>
+        <div class="FloatLeft">
+            <span class="cssSpanCodeOffre" data-bind="text: CodeContrat"></span>
+        </div>
+        <!--<div class="FloatLeft">
+            <span class="Block cssSpanVersion" data-bind="text: Version"></span>
+        </div>-->
+        <div class="FloatLeft">
+            <label>Identification</label>
+        </div>
+        <div class="FloatLeft">
+            <span class="cssSpanIdentificationLightDisplay" data-bind="text: Identification"></span>
+        </div>
+        <div class="FloatRight">
+            <span class="cssSpanDateFinEffet" data-bind="text: LblFinEffet"></span>
+        </div>
+        <div class="FloatRight">
+            <label class="lblDateAu">au</label>
+        </div>
+        <div class="FloatRight">
+           <span class="cssSpanDateDebutEffet" data-bind="text: LblDebutEffet"></span>
+        </div>
+        <div class="FloatRight">
+            <label class="lblAvenant">Effet contrat du</label>
+        </div>
+    </div>
+    <div title="Informations Complémentaires">
+        <img name="expandArbre" id="imgExpandInfo" src="/Content/Images/expand.png" />
+    </div>
+</div>
+<div class="divDetailedContratInfo" id="contentDetailedContratInfo">
+    <hr />
+    <div class="FloatLeft divInfoLeft">
+        
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblAttestation">N° Contrat / Alim</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CodeOffre" name="CodeOffre" class="readonly cssCodeOffre" readonly="readonly" data-bind="textInput: CodeContrat" />
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="Version" name="Version" class="readonly cssVersion" readonly="readonly" data-bind="textInput: Version" />
+            </div>
+            <div class="FloatLeft" style="padding-left: 60px;">
+                <!-- <input type="text" id="Type" name="Type" value="@(!string.IsNullOrEmpty(Model.LibTypeContrat) ? string.Format(" {0} - {1}", Model.Contrat.TypePolice, Model.LibTypeContrat) : Model.Contrat.TypePolice)" class="readonly inputTypeContrat" readonly="readonly" />-->
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblAttestation">Effet contrat du</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="DebutEffetContrat" name="DebutEffetContrat" class="readonly inputDate" readonly="readonly" disabled = "disabled" data-bind="textInput: DateDebutEffet" />
+            </div>
+            <!--<div class="FloatLeft">@Html.AlbDateFormat(m => m.EffetGaranties, new { @class = "readonly inputDate", @disabled = "disabled", @tabindex = "17" })</div>-->
+            <div class="FloatLeft">
+                <label class="Block lblDateAu">au</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="FinEffetContrat" name="FinEffetContrat" class="readonly inputDate" readonly="readonly" disabled = "disabled" data-bind="textInput: DateFinEffet" />
+                <!--@Html.AlbDateFormat(m => m.FinEffet, new { @class = "readonly inputDate", @disabled = "disabled", @tabindex = "17" })-->
+                <input type="hidden" id="FinEffetHeure" value="@Model.FinEffetHeure" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblAttestation">Périodicité</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="hidden" id="CodePeriodicite" name="CodePeriodicite" value="@(Model.Contrat.PeriodiciteCode)" />
+                <input type="text" id="NomPeriodicite" name="NomPeriodicite" readonly="readonly" class="readonly" data-bind="textInput: Periodicite"/>
+            </div>
+            <div class="FloatLeft">
+                <label class="Block">Nature de contrat</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="NatureContrat" name="NatureContrat" readonly="readonly" class="readonly inNatureContrat" data-bind="textInput: NatureContrat" />
+            </div>
+            <div class="FloatLeft">
+                <label class="Block lblPart">Part Albingia (%)</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="PartAlb" name="PartAlb" readonly="readonly" class="readonly inPart" data-bind="textInput: PartAlbingia"/>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblAttestation">Prochaine échéance</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="ProcEcheance" name="ProcEcheance" readonly="readonly" disabled = "disabled" class="readonly inputDate" data-bind="textInput: ProchainEcheance" />
+                <!--@Html.AlbDateFormat(m => m.Echeance, new { @class = "readonly inputDate", @disabled = "disabled", @tabindex = "17" })-->
+            </div>
+        </div>
+    </div>
+    <div class="FloatRight PaddingRight">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Régime de taxe</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="RegimeTaxe" name="RegimeTaxe" class="readonly inputAttestation" readonly="readonly" data-bind="textInput: RegimeTaxe" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Devise</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="Devise" name="Devise" class="readonly inputAttestation" readonly="readonly"  data-bind="textInput: Devise" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Souscripteur</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="SouscripteurNom" name="SouscripteurNom" class="readonly inputAttestation" readonly="readonly" data-bind="textInput: Souscripteur"/>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Gestionnaire</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="GestionnaireNom" name="GestionnaireNom" class="readonly inputAttestation" readonly="readonly" data-bind="textInput: Gestionnaire"/>
+            </div>
+        </div>
+    </div>
+    <div class="FloatLeft">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblAttestation">Courtier apporteur</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CourtierApp" name="CourtierApp" class="readonly inputAttestation" readonly="readonly" data-bind="textInput: Apporteur"/>
+            </div>
+            <div class="FloatLeft PaddingCourtGest">
+                <label class="Block lblAttestation">Courtier gestionnaire</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CourtierGest" name="CourtierGest" class="readonly inputAttestation" readonly="readonly" data-bind="textInput: CourtierGestionnaire"/>
+            </div>
+        </div>
+    </div>
+</div>

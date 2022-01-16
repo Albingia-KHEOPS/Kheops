@@ -1,0 +1,89 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause>
+<table class="tabFichier" id="tblTransverseTableFichier">
+    @foreach (ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause item in Model)
+    {
+        <tr class="trTransverse" id="@(item.Id)">
+            <td class="TablePersoTd1 TablePersoTdHead navig" name="TransverselinkDetail" AlbLinkId="code_@(item.Rubrique + "_" + item.SousRubrique + "_" + item.Sequence)" title="Détails">
+                <img name="details" alt="" src="@(Url.Content("/Content/Images/details1616.png"))" />
+                @Html.HiddenNoName($"EtatTitre_{item.Id}", item.EtatTitre)
+                @Html.HiddenNoName($"IsCheckOrigine_{item.Id}", item.IsCheckHistorique)
+            </td>
+
+            <td class="TablePersoTdHead TdROF">
+
+                @item.NumeroAvenantModification
+            </td>
+            <td class="TablePersoTdHead TdROF" title="@(item.CodeRisque != "0" ? !string.IsNullOrEmpty(item.DescRisque) ? item.CodeRisque + "-" + item.DescRisque : item.CodeRisque : "")">
+                @if (item.CodeRisque != "0")
+                {
+                    @item.CodeRisque
+                }
+            </td>
+            <td class="TablePersoTdHead TdROF" title="@(item.CodeObjet != "0" ? !string.IsNullOrEmpty(item.DescObjet) ? item.CodeObjet + "-" + item.DescObjet : item.CodeObjet : "")">
+                @if (item.CodeObjet != "0")
+                {
+                    @item.CodeObjet
+                }
+            </td>
+            <td class="TablePersoTdHead TdROF" title="@(item.CodeFormule != "0" ? !string.IsNullOrEmpty(item.LettreFormule) ? item.CodeFormule + "-" + item.LettreFormule + "-" + item.DescFormule : item.CodeFormule + "-" + item.DescFormule : item.DescFormule)">
+                @if (!string.IsNullOrEmpty(item.LettreFormule))
+                {
+                    @item.LettreFormule
+                }
+                else if (item.CodeFormule != "0")
+                {
+                    @item.CodeFormule
+                }
+
+            </td>
+            <td class="TablePersoTd2Transverse TablePersoTdBody">
+                <div class="FloatLeft">
+                    <input type="checkbox" id="IsCheck_@(item.Id)" name="IsCheck" checked="@(item.IsCheck )" disabled="disabled" />
+                </div>
+                    @{
+                        var classes = "FloatLeft titreClauseColonneTransverse navig";   
+                        var linkId = $"visu_{item.Id}_{item.CodeRisque}_{item.CodeFormule}";
+                    }
+                    <div class="FloatLeft @classes titreClauseColonneTransverse" name="TransverselinkVisu" AlbLinkId="@linkId" AlbIsLibre="@(item.IsClauseLibre)" title="@item.Titre">
+                        @if (!string.IsNullOrEmpty(item.Rubrique) && !string.IsNullOrEmpty(item.SousRubrique) && !string.IsNullOrEmpty(item.Sequence)) {
+                            @(item.Rubrique + " - " + item.SousRubrique + " - " + item.Sequence + " - " + item.Titre)
+                        }
+                        else {
+                            @item.Titre
+                        }
+                    </div>
+            </td>
+            <td class="TablePersoTd4Transverse TablePersoTdBody">
+                <label title="@item.ContexteLabel" albCFList="contexte">@item.Contexte</label>
+                @* <label>@item.Contexte</label>*@
+            </td>
+            <td class="TablePersoTd3 TablePersoTdBody">
+                <label title="@(item.CodeGarantie + (string.IsNullOrEmpty(item.LibelleGarantie) ? string.Empty : " - ") + item.LibelleGarantie)">@(item.CodeGarantie + (string.IsNullOrEmpty(item.LibelleGarantie) ? string.Empty : " - ") + item.LibelleGarantie)</label>
+                @*                @if (!string.IsNullOrEmpty(item.CodeGarantie))
+                {
+                    if (!string.IsNullOrEmpty(item.LibelleGarantie))
+                    {
+                    @(item.CodeGarantie + "-" + item.LibelleGarantie)
+                    }
+                    else
+                    {
+                    @item.CodeGarantie
+                    }
+                }*@
+            </td>
+            <td class="TablePersoTd5Transverse TablePersoTdBody" title="@item.Origine">
+                @if (item.Origine != "Systeme")
+                {
+                    @item.Origine
+                }
+                else
+                {
+                    <span>&nbsp;</span>
+                }
+            </td>
+            <td class="TablePersoTd6Transverse TablePersoTdBody" title="@item.Edition">
+                <label>@item.Edition</label>
+            </td>
+        </tr>
+    }
+</table>

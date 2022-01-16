@@ -1,0 +1,371 @@
+﻿#divAssociation, #divCategorie, #divVolet, #divBloc, #divModele, #divVoletAdd, #divBlocAdd, #divModeleAdd
+{
+    display: none;
+}
+
+#divModeleAdd
+{
+    float: right;
+    margin-right: 10px;
+}
+
+.tablePersoHead
+{
+    border: 1px solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.FieldRow
+{
+    clear: both;
+    height: 24px;
+    /*margin-bottom: 5px;*/
+}
+
+.DropDownDiv
+{
+    width: 270px;
+}
+
+.HorizontalGroupLeft
+{
+    border-radius: 5px;
+    float: left;
+    margin-left: 10px;
+    /*margin-bottom: 5px;*/
+    width: 140px;
+    /*padding-top: 5px;*/
+    padding-left: 5px;
+    border: 1px #ddd inset;
+    background-color: rgb(221, 221, 221) !important;
+    height: 1%; /*For IE7*/
+    height: 310px;
+}
+
+.HorizontalGroup
+{
+    border-radius: 5px;
+    float: left;
+    margin-left: 10px;
+    /*margin-bottom: 5px;*/
+    /*width: 385px;*/
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border: 1px #ddd inset;
+    background-color: rgb(221, 221, 221) !important;
+    height: 1%; /*For IE7*/
+    max-height: 310px;
+}
+
+.FieldLabelFor
+{
+    width: 70px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+.GroupLeftTitle
+{
+    float: left;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #800000;
+    font-size: 11pt;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.HorizontalRightGroup
+{
+    border-radius: 5px;
+    float: right;
+    margin-left: 5px;
+    margin-top: 10px;
+    /*margin-bottom: 5px;*/
+    width: 65%;
+    /*height: 30px;*/
+    /*padding-top: 10px;*/
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border: 1px #ddd inset;
+    background-color: rgb(221, 221, 221) !important;
+}
+
+.colorFond
+{
+    background-color: rgb(221, 221, 221) !important;
+}
+
+.linkCat, .linkVolet, .linkBloc
+{
+    cursor: pointer;
+    /*text-decoration: underline;*/
+}
+
+.divHeight
+{
+    overflow-y: auto;
+    height: 220px;
+}
+
+.divHeightCat
+{
+    overflow-y: auto;
+    height: 260px;
+}
+
+.divHeightModele
+{
+    overflow-y: auto;
+    height: 140px;
+    /*width: 526px;*/
+}
+
+.FieldLabelVBM
+{
+    padding-left: 5px;
+    width: 190px;
+}
+
+.FieldLabelVBM2
+{
+    padding-left: 5px;
+    width: 160px;
+}
+
+.labelDate
+{
+    width: 80px;
+}
+
+.inputDate
+{
+    width: 70px;
+}
+
+.ddlCarac
+{
+    width: 50px !important;
+}
+
+.FieldDropDown select
+{
+    width: 250px;
+}
+
+.BtnAdd
+{
+    padding-left: 10px;
+    padding-top: 15px;
+    cursor: pointer;
+}
+
+.modifVolet, .modifBloc, .modifModele, .supprVolet, .supprBloc, .supprModele
+{
+    cursor: pointer;
+}
+
+.GroupModeleHeight
+{
+    height: 160px !important;
+}
+
+.col1
+{
+    width: 30px;
+}
+
+.col2
+{
+    width: 110px;
+}
+
+.col2Head
+{
+    width: 125px;
+}
+
+.col3
+{
+    width: 195px;
+}
+
+.col4
+{
+    width: 40px;
+}
+
+.colAuto
+{
+    width: auto !important;
+}
+
+.selectLine
+{
+    background-color: #FFDFDF !important;
+}
+
+.widthAdjust
+{
+    width: 1190px !important;
+}
+
+.PaddingLeft
+{
+    padding-left: 30px;
+}
+
+.MarginRight
+{
+    margin-right: 20px;
+}
+
+.colOrder
+{
+    width: 40px;
+}
+
+.textBlue
+{
+    color: blue;
+}
+
+.HeightRowAdd
+{
+    height: 30px;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.tdHeaderEdit
+{
+    width: 18px;
+}
+
+.tdBodyEditVolet, .tdBodyEditModele
+{
+    width: 19px;
+    text-align: center;
+}
+
+.tdBodyEditBloc
+{
+    width: 19px;
+    text-align: center;
+}
+
+.tdHeaderCarac
+{
+    width: 38px;
+}
+
+.tdBodyCaracVolet
+{
+    width: 39px;
+    text-align: center;
+}
+
+.tdBodyCaracBloc
+{
+    width: 39px;
+    text-align: center;
+}
+
+.tdHeaderCode
+{
+    width: 64px;
+}
+
+.tdBodyCodeVolet, .bCode
+{
+    width: 64px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdBodyCodeBloc
+{
+    width: 64px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderDesc
+{
+    width: 220px;
+}
+
+.tdBodyDescVolet, .bDescr
+{
+    width: 216px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdBodyDescBloc
+{
+    width: 216px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderImg
+{
+    width: 16px;
+}
+
+.tdBodyImgVolet, .bImg
+{
+    width: 18px;
+}
+
+.tdBodyImgBloc
+{
+    width: 18px;
+}
+
+
+.tdHeaderDate
+{
+    width: 80px;
+}
+
+.bDate
+{
+    width: 82px;
+    text-align: center;
+}
+
+.tdHeaderTypo
+{
+    width: 30px;
+}
+
+.bTypo
+{
+    width: 32px;
+    text-align: center;
+}
+
+.widthTableVolet
+{
+    width: 496px;
+    table-layout: fixed;
+}
+
+.widthTableBloc
+{
+    width: 496px;
+    table-layout: fixed;
+}

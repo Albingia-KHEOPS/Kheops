@@ -1,0 +1,129 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModeleContactAdresse
+<input type="hidden" id="ContactAdresse_NoChrono" name="ContactAdresse.NoChrono" value="@(Model.NoChrono)" albContext="@Model.Context" />
+<input type="hidden" id="UrlHexavia" name="ContactAdresse.UrlHexavia" value="@ALBINGIA.OP.OP_MVC.MvcApplication.URL_HEXAVIA" albContext="@Model.Context" />
+<input type="hidden" id="UrlBackHexavia" name="ContactAdresse.UrlBackHexavia" value="@ALBINGIA.OP.OP_MVC.MvcApplication.URL_BACKHEXAVIA" albContext="@Model.Context" />
+<input type="hidden" id="ContactAdresse_MatriculeHexavia" name="ContactAdresse.MatriculeHexavia" value="@(Model.MatriculeHexavia)" albContext="@Model.Context" />
+<input type="hidden" id="ContactAdresse_Latitude" name="ContactAdresse.Latitude" value="@(Model.Latitude)" albcontext="@Model.Context" />
+<input type="hidden" id="ContactAdresse_Longitude" name="ContactAdresse.Longitude" value="@(Model.Longitude)" albcontext="@Model.Context" />
+
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label>Adresse :</label>
+    </div>
+    <div class="FloatLeft">
+        <div class="HeigthRowAdr">
+            <div class="FloatLeft">
+                <label id="lblInfoBatiment" albContext="@Model.Context">@Model.Batiment</label>
+            </div>
+            <div class="FloatLeft">
+                <label id="lblInfoNo" albContext="@Model.Context">@(!string.IsNullOrEmpty(Model.No) ? string.Format("{0}", Model.No + (string.IsNullOrEmpty(Model.No2) ? "" : "/" + Model.No2)) : string.Empty) </label>
+            </div>
+            <div class="FloatLeft">
+                <label id="lblInfoExtension" albContext="@Model.Context">@Model.Extension</label>
+            </div>
+            <div class="FloatLeft">
+                <label id="lblInfoVoie" albContext="@Model.Context">@Model.Voie</label>
+            </div>
+            <div class="FloatLeft">
+                <label id="lblInfoDistribution" albContext="@Model.Context">@Model.Distribution</label>
+            </div>
+        </div>
+        <div class="HeigthRowAdr">
+            <div class="FloatLeft">
+                <label id="lblInfoCodePostal" albContext="@Model.Context">
+                    @(!string.IsNullOrEmpty(Model.CodePostal) && Model.CodePostal != "00000" && Model.CodePostal != "000" && Model.CodePostal != "0" ?
+Model.CodePostal :
+!string.IsNullOrEmpty(Model.CodePostalCedex) && Model.CodePostalCedex != "00000" && Model.CodePostalCedex != "000" && Model.CodePostalCedex != "0" ? Model.CodePostalCedex : string.Empty)
+            </label>
+        </div>
+        <div class="FloatLeft">
+            <label id="lblInfoVille" albContext="@Model.Context">@(!string.IsNullOrEmpty(Model.VilleCedex) ? Model.VilleCedex : Model.Ville)</label>
+        </div>
+    </div>
+</div>
+<div name="btnAdresse" albContext="@Model.Context" class="@(Model.SaisieHexavia && (!Model.ReadOnly || Model.IsModifHorsAvn) && !Model.IsReadOnlyDisplay ? "FloatLeft CursorPointer" : "FloatLeft")" style="padding-left: 20px; margin-top: -4px;">
+    <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+</div>
+</div>
+
+
+<div id="divInfoAdr" name="divInfoAdr" albContext="@(Model.Context)" class="nInfoBandeau">
+    <div id="divErrorHexavia" name="divErrorHexavia" albContext="@(Model.Context)" class="FieldRow MsgErrorHexavia">
+        <div>
+            Adresse non valide
+        </div>
+    </div>
+
+    <div class="DoubleGenericColumn">
+        <div class="HeightRow nBGEntete1">
+            <div class="FloatLeft">
+                <label class="Block">Bâtiment | ZI</label>
+            </div>
+            <div class="FloatLeft">
+                <label id="lblBatiment">@Model.Batiment</label>
+                <input type="hidden" id="ContactAdresse_Batiment" name="ContactAdresse.Batiment" class="@(Model.ReadOnly ? "readonly DoubleInputHalfBlock" : "DoubleInputHalfBlock")" readonly="readonly" tabindex="@(Model.FirstIndex)" value="@(Model.Batiment)" albContext="@Model.Context" />
+            </div>
+        </div>
+        <div class="HeightRow nBGEntete2">
+            <div class="FloatLeft">
+                <label class="Block">N° | Ext | Voie</label>
+            </div>
+            <div class="FloatLeft PaddingRight">
+                <label id="lblNo" albContext="@Model.Context">@(Model.No + (string.IsNullOrEmpty(Model.No2) ? "" : "/" + Model.No2))</label>
+                <input type="hidden" id="ContactAdresse_No" name="ContactAdresse.No" class="@(Model.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 1)" value="@(Model.No  + (string.IsNullOrEmpty(Model.No2) ? "" : "/" + Model.No2))" albContext="@Model.Context" />
+            </div>
+            <div class="FloatLeft PaddingRight">
+                <label id="lblExtension" albContext="@Model.Context">@Model.Extension</label>
+                <input type="hidden" id="ContactAdresse_Extension" name="ContactAdresse.Extension" class="@(Model.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 2)" value="@(Model.Extension)" albContext="@Model.Context" />
+            </div>
+            <div class="FloatLeft">
+                <label id="lblVoie" albContext="@Model.Context">@Model.Voie</label>
+                <input type="hidden" id="ContactAdresse_Voie" name="ContactAdresse.Voie" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 3)" value="@(Model.Voie)" albContext="@Model.Context" />
+            </div>
+        </div>
+        <div class="HeightRow nBGEntete1">
+            <div class="FloatLeft">
+                <label class="Block">Distribution</label>
+            </div>
+            <div class="FloatLeft">
+                <label id="lblDistribution" albContext="@Model.Context">@Model.Distribution</label>
+                <input type="hidden" id="ContactAdresse_Distribution" name="ContactAdresse.Distribution" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 4)" value="@(Model.Distribution)" albContext="@Model.Context" />
+            </div>
+        </div>
+        <div class="HeightRow nBGEntete2">
+            <div class="FloatLeft">
+                <label class="Block">CP | Ville</label>
+            </div>
+            <div class="FloatLeft PaddingRight">
+                <label id="lblCodePostal" albContext="@Model.Context">@(!string.IsNullOrEmpty(Model.CodePostal) && Model.CodePostal != "00000" && Model.CodePostal != "000" && Model.CodePostal != "0" ? Model.CodePostal : string.Empty)</label>
+                <input type="hidden" id="ContactAdresse_CodePostal" name="ContactAdresse.CodePostal" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 5)" value="@(Model.CodePostal)" albContext="@Model.Context" />
+            </div>
+            <div class="FloatLeft">
+                <label id="lblVille" albContext="@Model.Context">@Model.Ville</label>
+                <input type="hidden" id="ContactAdresse_Ville" name="ContactAdresse.Ville" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 6)" value="@(Model.Ville)" albContext="@Model.Context" />
+            </div>
+        </div>
+        <div class="HeightRow nBGEntete1">
+            <div class="FloatLeft">
+                <label class="Block">CP | Ville (Cedex)</label>
+            </div>
+            <div class="FloatLeft PaddingRight">
+                <label id="lblCodePostalCedex" albContext="@Model.Context">@(!string.IsNullOrEmpty(Model.CodePostalCedex) && Model.CodePostalCedex != "00000" && Model.CodePostalCedex != "000" && Model.CodePostalCedex != "0" ? Model.CodePostalCedex : string.Empty)</label>
+                <input type="hidden" id="ContactAdresse_CodePostalCedex" name="ContactAdresse.CodePostalCedex" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 7)" value="@(Model.CodePostalCedex)" albContext="@Model.Context" />
+            </div>
+            <div class="FloatLeft">
+                <label id="lblVilleCedex" albContext="@Model.Context">@Model.VilleCedex</label>
+                <input type="hidden" id="ContactAdresse_VilleCedex" name="ContactAdresse.VilleCedex" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 8)" value="@(Model.VilleCedex)" albContext="@Model.Context" />
+            </div>
+        </div>
+        <div class="HeightRow nBGEntete2">
+            <div class="FloatLeft">
+                <label class="Block">Pays</label>
+            </div>
+            <div class="FloatLeft">
+                <label id="lblPays" albContext="@Model.Context">@Model.Pays</label>
+                <input type="hidden" id="ContactAdresse_Pays" name="ContactAdresse.Pays" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 9)" value="@(Model.Pays)" albContext="@Model.Context" />
+            </div>
+        </div>
+    </div>
+</div>

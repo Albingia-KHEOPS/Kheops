@@ -1,0 +1,31 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamCible.ModeleRechercheFamille
+<table id="tblFamillesHeader">
+    <tr>
+        <th class="col_HeaderCodeFamille tablePersoHead">Concept
+        </th>
+
+        <th class="col_HeaderCodeFamille tablePersoHead">Famille
+        </th>
+
+        <th class="col_HeaderDescription tablePersoHead">Description
+        </th>
+    </tr>
+</table>
+<div id="divBodyFam">
+    <table id="tblBodyFamilles" class="trHeight">
+        @foreach (var item in Model.ListFamilles)
+        {      
+            <tr id="@("tr_" + item.CodeFamille + "_" + item.LibelleFamille)" albactivite="@(item.CodeConcept)_@(item.CodeFamille)">
+                <td id="@("concept_" + item.CodeConcept)" class=" co_TdConcept">@**@
+                    @item.CodeConcept
+                </td>
+                <td id="@("codeFamille_" + item.CodeFamille)" class=" col_TdFamille">@**@
+                    @item.CodeFamille
+                </td>
+                <td id="@("libelleFamille_" + item.CodeFamille)" class=" col_TdDescription">@**@
+                    @item.LibelleFamille
+                </td>
+            </tr>
+        }
+    </table>
+</div>

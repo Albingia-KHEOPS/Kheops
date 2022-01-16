@@ -1,0 +1,160 @@
+﻿@using ALBINGIA.OP.OP_MVC
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleOffresVerrouilleesPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vOffresVerrouillees.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albOffresVerrouillees.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft">
+        <div id="contenu">
+            <div class="CommonForm TotalWidth">
+                @Html.Hidden("hiddenInputId", string.Empty)
+                @Html.HiddenNoName("spliChar", MvcApplication.SPLIT_CONST_HTML)
+                <div id="divBodyPage" class="GroupFull GroupWithBorder TotalWidth">
+                    <div class="GroupTitle">
+                        Offres verrouillées
+                    </div>
+                    <div class="HorizontalFullWithGroup ParamWidth">
+                        <div class="GradientSection RechFiltre">
+                            <div class="HeightRow">
+                                <div class="HeightRowTyeOffre">
+                                    <div class="FloatLeft" style="width: 103px; padding-left: 15px;">
+                                        <label>Type Offre :</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <label>Offre</label>
+                                    </div>
+                                    <div class="FloatLeft lblTypeOffre">
+                                        @Html.CheckBox("O")
+                                    </div>
+                                    <div class="FloatLeft lblTypeOffre">
+                                        <label>Contrat</label>
+                                    </div>
+                                    <div class="FloatLeft lblTypeOffre">
+                                        @Html.CheckBox("P")
+                                    </div>
+                                    <div class="FloatRight PaddingRight">
+                                        <button type="button" id="btnCache" alt="Verrouillage cache" albshortcut="true" data-accesskey="h">Cac<u>h</u>e</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="HeightRow">
+                                <div class="HeightRowTyeOffre">
+                                    <div class="FloatLeft" style="padding-left: 15px; width: 106px;">
+                                        <label>Numéro Offre :</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        @Html.TextBoxFor(m => m.NumeroOffreFiltre)
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft" style="width: 105px;">
+                                        <label>Version :</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        @Html.TextBoxFor(m => m.VersionFiltre)
+                                    </div>
+                                    <div class="FloatRight PaddingRight">
+                                        <label>Nombre offre dans le cache :</label>
+                                        <label id="lblNbCache">@Model.NbOffreCache</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="HeightRow">
+                                <div class="HeightRowTyeOffre">
+                                    <div class="FloatLeft" style="padding-left: 15px; width: 106px;">
+                                        <label>Utilisateur :</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        @Html.TextBoxFor(m => m.UtilisateurFiltre)
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft" style="width: 105px;">
+                                        <label>Date de début :</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        @Html.AlbDateFormat(m => m.DateDebutFiltre, new { @class = "datepicker" })
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft" style="width: 105px;">
+                                        <label>Date de fin :</label>
+                                    </div>
+                                    <div class="FloatLeft FiltreDateFin">
+                                        @Html.AlbDateFormat(m => m.DateFinFiltre, new { @class = "datepicker" })
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft">
+                                        <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                                        </button>
+                                    </div>
+                                    <div class="FloatRight PaddingRight">
+                                        <label>Nombre offre en base : </label>
+                                        <label id="lblNbBDD">@Model.NbOffreBdd</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="GradientSection ParamHeight">
+                            <div id="listParam" class="PaddingLeft">
+                                <div id="divHeaderParam">
+                                    <table id="tblHeaderParam">
+                                        <tr>
+                                            <th name="orderCol" class="colHTypeOffre tablePersoHead" id="th_1">Type Offre
+                                            </th>
+                                            <th name="orderCol" class="colHCodeOffre tablePersoHead" id="th_2">Code Offre<span class="spImg" style="float: right;">
+                                                <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" /></span>
+                                            </th>
+                                            <th name="orderCol" class="colHVersion tablePersoHead" id="th_3">Version<span class="spImg" style="float: right;">
+                                                <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" /></span>
+                                            </th>
+                                            <th class="colHAvenant tablePersoHead" id="th_4">Num AVN
+                                            </th>
+                                            <th name="orderCol" class="colHUtilisateur tablePersoHead" id="th_5">Utilisateur<span class="spImg" style="float: right; display: none;">
+                                                <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" /></span>
+                                            </th>
+                                            <th class="tablePersoHead" id="th_7" name="checkCol">
+                                                <input id="hCheckbox" type="checkbox" />
+                                            </th>
+                                            <th>
+                                                <input type="button" id="btnSupprimer" class="btnSupprimer" value="" />
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBodyParam" class="AlignCenter">
+                                    @if (Model.OffresVerrouillees == null)
+                                    {
+                                        <br />
+                                        <b>@Html.Raw("Aucune offre verrouillée")</b>
+                                        <br />
+                                        <br />
+                                    }
+                                    else
+                                    {
+                                        @Html.Partial("ListeOffresVerrouillees", Model.OffresVerrouillees)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+    <div id="divOffreSession" class="None">
+        <div class="overlay-background" style="z-index:14" >
+        </div>
+        <div id="divDataOffreSession" class="dvDataOffreSession">
+        </div>
+    </div>
+</div>

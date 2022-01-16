@@ -1,0 +1,27 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamTypesValeur.ModeleLigneTypeValeurCompatible>
+<table id="tblTypeValeurCompBody" class="trHeight">
+    @foreach (var ligne in Model)
+    {
+        <tr name="ligneTypeValeurComp" id="@("ligneTypeValeurComp_" + ligne.GuidId)">
+            <td class="col_Type" albClikable="selectableColTypeComp" name="@("typevalComp_" + ligne.GuidId)">
+                <div class="col_BType paddingReadonly" name="divReadOnly_@(ligne.GuidId)" >
+                    <label id="@("lblTypeValeurComp_" + ligne.GuidId)">@(ligne.Code + " - " + ligne.Description)</label>
+                </div>
+                <div class="colEdition col_BType paddingEdition" name="divEdition_@(ligne.GuidId)">
+                    @Html.AlbDropDownListFor(m => ligne.Code, ligne.ListeTypesCompatibles, "dvAction", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlType_" + ligne.GuidId, @class = "col_BType" })
+                </div>
+            </td>
+            <td class="col_Action">
+                <div class="col_BAction paddingReadonly" name="divReadOnly_@(ligne.GuidId)">
+                    @if (ligne.AdditionalParam == "**")
+                    {
+                        <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSupprTypeValeurComp_" + ligne.GuidId)" alt="Supprimer" title="Supprimer" class="Action CursorPointer" name="btnSupprimerTypeValeurComp"/>
+                    }
+                </div>
+                <div class="colEdition col_BAction paddingEdition" name="divEdition_@(ligne.GuidId)">
+                    <img src="@Url.Content("/Content/Images/Save_16.png")" id="@("btnEnregistrerTypeValComp_" + ligne.GuidId)" alt="Enregistrer" title="Enregistrer" class="Action CursorPointer" name="btnEnregistrerTypeValComp"/>
+                </div>
+            </td>
+        </tr>
+    }
+</table>

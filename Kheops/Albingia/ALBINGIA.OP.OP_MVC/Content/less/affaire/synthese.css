@@ -1,0 +1,173 @@
+﻿body #full_synthese {
+    height: 500px;
+    display: flex;
+    width: 1200px;
+    cursor: default;
+}
+body #partial_synthese {
+    height: 98%;
+    display: flex;
+    width: 100%;
+    cursor: default;
+}
+body #partial_synthese #divBlocsSynthese {
+  flex: 1;
+}
+body #divBlocsSynthese {
+    width: 80% !important;
+    /*flex: 11;*/
+    height: 100%;
+    border: 1px solid steelblue;
+    border-radius: 3px;
+    margin-left: 5px;
+    padding: 5px;
+    background-color: #F5F5F5;
+}
+body #divMenuSynthese {
+    width: 20% !important;
+    /*flex: 2;*/
+    border: 1px solid steelblue;
+    height: 100%;
+    border-radius: 3px;
+    margin-left: 5px;
+    padding: 5px;
+    background-color: #F5F5F5;
+}
+    body #divMenuSynthese > a {
+       /* width: 100px !important;*/
+        height: 25px;
+        line-height: 25px;
+        margin: 0 0 3px 5px;
+    }
+body #blocs_synthese .bloc-line {
+  display: flex;
+  min-height: 200px;
+}
+body #blocs_synthese .bloc-line.top {
+  min-height: 285px;
+}
+body #blocs_synthese .bloc-line .NW,
+body #blocs_synthese .bloc-line .NE {
+  min-height: 285px;
+  border-bottom: 2px solid steelblue;
+  margin: 0;
+  padding: 3px;
+}
+body #blocs_synthese .bloc-line .NW {
+  border-right: 2px solid steelblue;
+}
+body #blocs_synthese .bloc-line .SW,
+body #blocs_synthese .bloc-line .SE {
+  min-height: 190px;
+  margin: 0;
+  padding: 3px;
+}
+body #blocs_synthese .bloc-line .SW {
+  border-right: 2px solid steelblue;
+}
+body #blocs_synthese .bloc-line .SE {
+  position: relative;
+}
+body #blocs_synthese .bloc-line .SE .floating-alertes {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  height: 25px;
+  line-height: 25px;
+  width: 250px;
+  color: red;
+  cursor: auto;
+}
+body #blocs_synthese .bloc-line .title-affaire {
+  padding: 0 1px;
+  height: 25px;
+  font-weight: bold;
+  margin: 0;
+  color: steelblue;
+  line-height: 25px;
+}
+body #blocs_synthese .bloc-line .label-value {
+  padding: 0 1px;
+  height: 25px;
+  margin: 0;
+  display: flex;
+  line-height: 25px;
+}
+body #blocs_synthese .bloc-line .label-value .title {
+  flex: 11;
+  color: black;
+}
+body #blocs_synthese .bloc-line .label-value .text {
+  flex: 50;
+  color: steelblue;
+}
+body #blocs_synthese .bloc-line .bloc-synthese {
+  width: 100%;
+  table-layout: fixed;
+  color: steelblue;
+  border-collapse: collapse;
+  border: none;
+  margin: 0;
+}
+body #blocs_synthese .bloc-line .bloc-synthese tr {
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: auto;
+}
+body #blocs_synthese .bloc-line .bloc-synthese td {
+  padding: 1px;
+  margin: 0;
+  border: none;
+  height: 25px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+body #blocs_synthese .bloc-line .bloc-synthese td.label-width {
+  width: 90px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese td.label-big-width {
+  width: 123px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese td.icon-button {
+  width: 32px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese td.date-effet {
+  width: 92px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese td.short-width {
+  width: 20px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese td.long-value {
+  width: 110px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese td .citrix {
+  cursor: default;
+  height: 100%;
+  line-height: 25px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese .label {
+  color: black;
+}
+body #blocs_synthese .bloc-line .bloc-synthese .left-indent td:first-child {
+  padding-left: 30px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese .title-label-underline {
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+}
+body #blocs_synthese .bloc-line .bloc-synthese .title-label {
+  color: black;
+  font-weight: bold;
+}
+body #blocs_synthese .bloc-line .bloc-synthese .branche-cible {
+  font-weight: bold;
+  width: 200px;
+}
+body #blocs_synthese .bloc-line .bloc-synthese .offre-origine {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -1,0 +1,96 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleTransverse.ModeleCommonCabinetPreneur
+<div class="HeightRow">
+    <label class="titleBold">@Model.Nom</label>
+</div>
+@if (!string.IsNullOrEmpty(Model.Batiment))
+{    
+    <div class="HalfHeightRow">
+        <img alt="Adresse" src="@Url.Content("/Content/Images/adresse.gif")" class="PaddingLeft FloatLeft" title="Adresse"/>
+        <span class=" clipped DialogLabel">
+            <label class="FloatLeft" title="@Model.Batiment">@Model.Batiment</label>
+        </span>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.NumeroExt))
+{ 
+    <div class="HalfHeightRow">
+        @if (string.IsNullOrEmpty(Model.Batiment))
+        { 
+            <img alt="Adresse" src="@Url.Content("/Content/Images/adresse.gif")" class="FloatLeft PaddingLeft" title="Adresse"/>    
+        }
+         else
+        {
+              <div class="FloatLeft PaddingIndentation">&nbsp</div>
+        }
+        <span class="clipped DialogLabel">
+            <label class="FloatLeft" title="@Model.NumeroExt">@Model.NumeroExt</label>
+        </span>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.Distribution))
+{  
+    <div class="HalfHeightRow">
+        @if (string.IsNullOrEmpty(Model.Batiment) && string.IsNullOrEmpty(Model.NumeroExt))
+        { 
+            <img alt="Adresse" src="@Url.Content("/Content/Images/adresse.gif")" class="FloatLeft PaddingLeft" title="Adresse"/>    
+        }
+         else
+        {
+            <div class="FloatLeft PaddingIndentation">&nbsp</div>
+        }
+        <span class="clipped DialogLabel">
+            <label class="FloatLeft" title="@Model.Distribution">@Model.Distribution</label>
+        </span>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.CodePostal))
+{ 
+    <div class="HalfHeightRow">
+        @if (string.IsNullOrEmpty(Model.Batiment) && string.IsNullOrEmpty(Model.NumeroExt) && string.IsNullOrEmpty(Model.Distribution))
+        { 
+            <img alt="Adresse" src="@Url.Content("/Content/Images/adresse.gif")" class="FloatLeft PaddingLeft" title="Adresse"/>    
+        }
+         else
+        {
+            <div class="FloatLeft PaddingIndentation">&nbsp</div>
+        }
+        <span class="clipped DialogLabel">
+            <label class="FloatLeft " title="@(Model.CodePostal + " " + Model.Ville)">@(Model.CodePostal + " " + Model.Ville)</label>
+        </span>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.CodePostalCedex))
+{  
+    <div class="HalfHeightRow">
+        @if (string.IsNullOrEmpty(Model.Batiment) && string.IsNullOrEmpty(Model.NumeroExt) && string.IsNullOrEmpty(Model.Distribution) && string.IsNullOrEmpty(Model.CodePostal))
+        { 
+            <img alt="Adresse" src="@Url.Content("/Content/Images/adresse.gif")" class="FloatLeft PaddingLeft" title="Adresse"/>
+        }
+        else
+        {
+           <div class="FloatLeft PaddingIndentation">&nbsp</div>
+        }
+        <span class="clipped DialogLabel">
+            <label class="FloatLeft" title="@(Model.CodePostalCedex + " " + Model.VilleCedex)">@(Model.CodePostalCedex + " " + Model.VilleCedex)</label>
+        </span>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.TelephoneBureau))
+{       
+    <div class="HalfHeightRow">
+         <img alt="Telephone" src="@Url.Content("/Content/Images/telephone.gif")" class="PaddingLeft FloatLeft" title="Téléphone bureau"/>
+        <span class="clipped DialogLabel">
+            <label class="FloatLeft" title="@Model.TelephoneBureau">@Model.TelephoneBureau</label>
+        </span>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.EmailBureau))
+{       
+    <div class="HalfHeightRow">
+         <img alt="Email" src="@Url.Content("/Content/Images/email.gif")" class="PaddingLeft FloatLeft" title="Email bureau"/>
+        <span class="clipped DialogLabel">
+            <label class="FloatLeft" title="@Model.EmailBureau">@Model.EmailBureau</label>
+        </span>
+    </div>
+}
+

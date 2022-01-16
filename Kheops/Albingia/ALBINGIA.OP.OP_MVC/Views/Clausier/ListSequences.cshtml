@@ -1,0 +1,10 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleDDLSequence
+<div id="SequenceDiv">
+    <div class="FloatLeft PaddingLeft">
+        <label class="Block">Séquence</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDropDownListFor(m => m.Sequence, Model.Sequences, "Sequence", htmlAttributes: new { @id = "Sequence" }, generateTitle: true)
+    </div>
+</div>
+

@@ -1,0 +1,22 @@
+﻿
+
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModelSyntheseAffaire
+<div id="divMenuSynthese">
+    @if (Model.IsAvenant && Model.IsKheopsAffaire)
+    {
+        <a id="link_History" class="left-img clock-history">Historique du contrat</a>
+    }
+
+    <a id="link_Clauses" class="left-img text-file">Visu des clauses</a>
+    @if (!Model.IsOffre)
+    {
+        <a id="link_Connexites" class="left-img connexites">Visu des connexités</a>
+        <a id="link_Quittances" class="left-img frais-quittance">Visu des quittances</a>
+    }
+    <a id="link_Observations" class="left-img observations">Visu des observations</a>
+    @if (Model.HasAlertes)
+    {
+        <a id="link_Alertes" class="left-img alertes">Visu des alertes</a>
+        @Html.Partial("_Alertes", Model.AlertesAvenant)
+    }
+</div>

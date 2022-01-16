@@ -1,0 +1,15 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamISAssocier.ParamISLigneModele>
+<table id="tblLignesModeleBody">
+    @{    
+        if (Model != null && Model.Count > 0)
+        {
+            foreach (var ligne in Model)
+            {
+                <tr id="ligneModeleIS_@(ligne.GuidId)" name="lineReference">
+                     @Html.Partial("/Views/ParamISModeleAssocier/LigneModeleISReadOnly.cshtml", ligne)
+                </tr>
+            }
+        }    
+    }
+</table>
+

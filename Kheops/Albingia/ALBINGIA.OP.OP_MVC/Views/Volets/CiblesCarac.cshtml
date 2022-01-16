@@ -1,0 +1,6 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesVolets.ModeleCibleCarac
+           @if(Model!=null )
+           {
+ <div class="FloatLeftDiv FieldDropDown">@Html.AlbDropDownListFor(m => m.Cibles, Model.Cibles, "Cibles", htmlAttributes: new { @id = "ddlCibles" })</div>
+               <div class="FloatLeftDiv FieldDropDown">@Html.AlbDropDownListFor(m => m.Caracteres, Model.Caracteres, "Caractere", htmlAttributes: new { @id = "Caractere", @class = "ddlCarac" })</div>
+           }

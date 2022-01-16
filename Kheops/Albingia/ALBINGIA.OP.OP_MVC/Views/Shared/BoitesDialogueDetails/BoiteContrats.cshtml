@@ -1,0 +1,14 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModelSyntheseAffaire
+<div id="BoiteContratsOffre" class="nInfoBandeau">
+    <div class="GradientSection BlocDialogInfoGenLight FloatLeft" style="cursor: default;">
+        <div class="HeightRow">
+            <label class="titleBoiteDiag">Liste des contrats</label>
+        </div>
+        @foreach (var item in @Model.getLstContrat)
+        {
+            <!--<div style="padding-left: 5px;">@item</div>-->
+            <div style="padding-left: 5px;"><span name="linkOpenContratOrigine" albparam=@(item.CodeContrat +"_"+ item.VersionContrat+"_"+ item.TypeContrat) class="offre-origine">@(item.CodeContrat + "-" + item.VersionContrat)</span></div>
+            <div>@Model.TypeAffaire</div>   
+        }
+    </div>
+</div>

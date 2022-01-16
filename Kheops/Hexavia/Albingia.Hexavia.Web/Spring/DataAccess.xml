@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <object name="AdresseRepository"
+          type ="Albingia.Hexavia.DataAccess.AdresseRepository, Albingia.Hexavia.DataAccess"
+          autowire="constructor"/>
+
+  <object name="DataAccessManager"
+         type ="Albingia.Hexavia.DataAccess.DataAccessManager, Albingia.Hexavia.DataAccess"
+         autowire="constructor"/>
+
+  <object name="EasyComConnectionHelper"
+          type="Albingia.Hexavia.DataAccess.EasyComConnectionHelper, Albingia.Hexavia.DataAccess"
+          autowire="constructor"/>
+  
+  <object name="MemoryCache"
+          type="System.Runtime.Caching.MemoryCache, System.Runtime.Caching"
+          factory-method="get_Default"/>
+
+  <object name="ReferenceRepository"
+      type ="Albingia.Hexavia.DataAccess.ReferenceRepository, Albingia.Hexavia.DataAccess"
+      autowire="constructor"/>
+
+</objects>

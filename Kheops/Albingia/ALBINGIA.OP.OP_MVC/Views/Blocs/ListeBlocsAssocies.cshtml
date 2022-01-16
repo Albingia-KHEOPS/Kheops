@@ -1,0 +1,32 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesBlocs.ModeleLigneBloc>
+<table id="tblBlocsAssocies" class="widthSmallTable trHeight">
+    @foreach (var item in Model)
+    {        
+        <tr id="@("tr_" + item.GuidId)">
+            <td id="@("cod_" + item.GuidId))" albclikable="selectableCol" class="linkBloc CodeIncompAssoc" name="@("cod_" + item.GuidId)">
+                <div name="divReadOnly_@(item.GuidId)">
+                    @item.Code
+                </div>
+                <div name="divEdition_@(item.GuidId)"  class="colEdition">
+                    @item.Code
+                </div>
+            </td>
+            <td class="linkBloc LibIncompAssoc" albclikable="selectableCol" title="@item.Description" name="@("td_" + item.GuidId)">
+                <div class="colDescBloc " name="divReadOnly_@(item.GuidId)" >
+                    @item.Description
+                </div>
+                <div name="divEdition_@(item.GuidId)" class="colEdition">
+                    @Html.AlbDropDownListFor(m => item.GuidId, item.ListeReferentielBlocsAssocies, "dvAction", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlBlocAssocie_" + item.GuidId, @class = "col3" })
+                </div>
+            </td>
+            <td class="supprBloc ImgIncompAssoc">
+                <div name="divReadOnly_@(item.GuidId)">
+                    <img id="@("suppr_" + item.GuidId)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprBlocAssocie" class="paddingAction"/>
+                </div>
+                <div name="divEdition_@(item.GuidId)" class="colEdition">
+                    <img id="@("save_" + item.GuidId)" src="@Url.Content("/Content/Images/Save_16.png")" alt="Sauvegarder" title="Sauvegarder" name="saveBlocAssocie" class="paddingAction"/>
+                </div>
+            </td>
+        </tr>
+    }
+</table>

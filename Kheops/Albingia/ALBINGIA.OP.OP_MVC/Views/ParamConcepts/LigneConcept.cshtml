@@ -1,0 +1,17 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamConcepts.ModeleLigneConcept
+<td class="col_BCodeConcept">@*col_CodeConcept*@
+    <label id="@("lblCode_" + @Model.CodeConcept)">@Model.CodeConcept</label>
+</td>
+<td class="col_BDescriptionConcept">@*col_DescriptionConcept*@
+    <label id="@("lblDescription_" + @Model.CodeConcept)">@Model.DescriptionConcept</label>
+</td>
+<td class="col_BAction">@*col_Action*@
+    <img src="@Url.Content("/Content/Images/ico_16_formorder.png")" id="@("btnFamille_" + @Model.CodeConcept)" alt="Editer famille" title="Editer famille" class="Action CursorPointer" name="btnFamille"/>
+</td>
+<td class="col_BAction">
+    @if (Model.AdditionalParam == "**")
+    {
+        <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSuppr_" + @Model.CodeConcept)" alt="Supprimer" title="Supprimer" class="Action CursorPointer PaddingLeft" name="btnSupprimer"/>
+    }
+</td>
+

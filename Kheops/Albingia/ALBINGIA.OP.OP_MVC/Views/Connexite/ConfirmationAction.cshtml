@@ -1,0 +1,153 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesConnexite.ModeleConfirmationAction
+<div class="CommonForm FloatLeft">
+
+    @Html.HiddenNoName("NumOffreActuelle", Model.NumOffreActuelle)
+    @Html.HiddenNoName("VersionOffreActuelle", Model.VersionOffreActuelle)
+    @Html.HiddenNoName("TypeOffreActuelle", Model.TypeOffreActuelle)
+    @Html.HiddenNoName("BrancheActuelle", Model.BrancheOffreActuelle)
+    @Html.HiddenNoName("SousBrancheActuelle", Model.SousBrancheOffreActuelle)
+    @Html.HiddenNoName("CategorieActuelle", Model.CatOffreActuelle)
+    @Html.HiddenNoName("codeTypeConnexite", Model.codeTypeConnexite)
+    @Html.HiddenNoName("NumConnexiteActuelle", Model.NumConnexiteActuelle)
+    @Html.HiddenNoName("CodeObservationConnexiteActuelle", Model.CodeObservationConnexiteActuelle)
+    @Html.HiddenNoName("ObservationConnexiteActuelle", Model.ObservationConnexiteActuelle)
+    @Html.HiddenNoName("IdeConnexiteActuelle", Model.IdeConnexiteActuelle)
+
+    @Html.HiddenNoName("NumOffreOrigine", Model.NumOffreOrigine)
+    @Html.HiddenNoName("VersionOffreOrigine", Model.VersionOffreOrigine)
+    @Html.HiddenNoName("NumConnexiteOrigine", Model.NumConnexiteOrigine)
+    @Html.HiddenNoName("TypeOffreOrigine", Model.TypeOffreOrigine)
+    @Html.HiddenNoName("BrancheOrigine", Model.BrancheOffreOrigine)
+    @Html.HiddenNoName("SousBrancheOrigine", Model.SousBrancheOffreOrigine)
+    @Html.HiddenNoName("CategorieOrigine", Model.CatOffreOrigine)
+    @Html.HiddenNoName("CodeObservationConnexiteOrigine", Model.CodeObservationConnexiteOrigine)
+    @Html.HiddenNoName("ObservationConnexiteOrigine", Model.ObservationConnexiteOrigine)
+    @Html.HiddenNoName("IdeConnexiteOrigine", Model.IdeConnexiteOrigine)
+
+    <div class="GroupFull GroupWithBorder" style="width: 882px;">
+        <div class="GroupTitle">Ajout d'une connexité @Model.TypeConnexite</div>
+        <div class="Alerte">
+            <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")"  title="Attention" class="IconeAlerte" />
+            Le contrat sélectionné appartient déjà à un groupe de connexité.
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 878px;">
+            <div class="GradientSection paddingLeft paddingBottom">
+                <div class="HeightRow">
+                    <div class="ColumnContratAjoute FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block">Contrat à ajouter :</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="OffreOrigine" name="OffreOrigine" readonly="readonly" class="readonly InputOffreOrigine" value="@(Model.NumOffreOrigine + "-" + Model.VersionOffreOrigine)" />
+                        </div>
+                    </div>
+                    <div class="FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block">Contrat actuel :</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="OffreActuelle" name="OffreActuelle" readonly="readonly" class="readonly InputOffreActuelle" value="@(Model.NumOffreActuelle + "-" + Model.VersionOffreActuelle)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HorizontalFullWithGroup" style="height: 272px; width: 878px;">
+            <div class="GradientSection paddingLeft paddingBottom" style="height: 257px;">
+                <div class="HeightRow">
+                    <div class="ColumnGrpOrigine FloatLeft">
+                        <div class="GradientSection paddingLeft paddingBottom" style="height: 233px; width: 244px">
+                            Groupe de connexité d'origine:
+                     <div id="divHeaderGrpOrigine">
+                         <table id="tblHeaderGrpOrigine" class="trHeight">
+                             <tr>
+                                 <th class="col_Contrat tablePersoHeadConnexite">Contrat
+                                 </th>
+                                 <th class="col_Branche tablePersoHeadConnexite">Branche
+                                 </th>
+                                 <th class="col_Cible tablePersoHeadConnexite">Cible
+                                 </th>
+                             </tr>
+                         </table>
+                     </div>
+                            <div id="divBodyGrpOrigine">
+                                <table id="tblGrpOrigineBody">
+                                    @if (Model.GroupeConnexiteOrigine != null && Model.GroupeConnexiteOrigine.Count > 0)
+                                    {
+                                        foreach (var ligne in Model.GroupeConnexiteOrigine)
+                                        {
+                                        <tr id="@("tr_" + @ligne.GuidId)">
+                                            <td class="col_Contrat_Body  TxtLink">
+                                                <label class="@(ligne.Contrat == Model.NumOffreOrigine + "-" + Model.VersionOffreOrigine ? "CursorPointer Bold" : "CursorPointer")">@ligne.Contrat</label>
+                                            </td>
+                                            <td class="col_Branche_Body ">
+                                                <label>@ligne.Branche</label>
+                                            </td>
+                                            <td class="col_Cible_Body ">
+                                                <label>@ligne.Cible</label>
+                                            </td>
+                                        </tr>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="PaddingFusionDetach FloatLeft">
+                        <div class="HeightRowFusion">
+                            <button id="btnFusionner" type="button" albShortcut="true" albTargetScreen="connexite" title="Fusionner les deux groupes" data-accesskey="f"><u>F</u>usionner</button>
+                        </div>
+                        <div class="HeightRowDetacher">
+                            <button id="btnDetacher" type="button" albShortcut="true" albTargetScreen="connexite" title="Détacher le contrat sélectionné pour le rattacher uniquement au groupe actuel" data-accesskey="d"><u>D</u>étacher</button>
+                        </div>
+                    </div>
+                    <div class="ColumnGrpCible FloatLeft">
+                        <div class="GradientSection paddingLeft paddingBottom" style="height: 233px; width: 244px">
+                            Groupe de connexité Cible:
+                    <div id="divHeaderGrpActuel">
+                        <table id="tblHeaderGrpActuel" class="trHeight">
+                            <tr>
+                                <th class="col_Contrat tablePersoHeadConnexite">Contrat
+                                </th>
+                                <th class="col_Branche tablePersoHeadConnexite">Branche
+                                </th>
+                                <th class="col_Cible tablePersoHeadConnexite">Cible
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                            <div id="divBodyGrpActuel">
+                                <table id="tblGrpActuelBody">
+                                    @if (Model.GroupeConnexiteActuel != null && Model.GroupeConnexiteActuel.Count > 0)
+                                    {
+                                        foreach (var ligne in Model.GroupeConnexiteActuel)
+                                        {
+                                        <tr id="@("tr_" + @ligne.GuidId)">
+                                            <td class="col_Contrat_Body  TxtLink">
+                                                <label class="@(ligne.Contrat == Model.NumOffreActuelle + "-" + Model.VersionOffreActuelle ? "CursorPointer Bold" : "CursorPointer")">@ligne.Contrat</label>
+                                            </td>
+                                            <td class="col_Branche_Body ">
+                                                <label>@ligne.Branche</label>
+                                            </td>
+                                            <td class="col_Cible_Body ">
+                                                <label>@ligne.Cible</label>
+                                            </td>
+                                        </tr>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 878px;">
+            <div class="GradientSection" style="height: 30px;">
+                <div id="LoadingDiv" class="FloatLeft">
+                    <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+                </div>
+                <button id="btnAnnulerConfirmation" type="button" albShortcut="true" data-accesskey="a" class="FloatRight"><u>A</u>nnuler</button>
+            </div>
+        </div>
+    </div>

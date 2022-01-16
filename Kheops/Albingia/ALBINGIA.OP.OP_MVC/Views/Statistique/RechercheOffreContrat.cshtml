@@ -1,0 +1,88 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleStatisque.StatOffreContratFiltreModel
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albStatOffreContrat.js" }, "~/Scripts/AlbingiaJS/")
+
+<table id="RechercheStatOffreContrat" class="GradientSection rPanel fullWidth" albcontext="@Model.Albcontext">
+    <tr>
+
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Type :</label>
+            @Html.AlbDropDownListFor(m => m.Type, Model.Types, "Type", htmlAttributes: new
+                                                           {
+                                                               @id = "Type",
+                                                               @tabindex = "2",
+                                                               @class = "FieldType",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+        </td>
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Branche :</label>
+            @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "Branche", htmlAttributes: new
+                                                           {
+                                                               @id = "Branche",
+                                                               @tabindex = "1",
+                                                               @class = "FieldBranche",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+        </td>
+        
+
+        <td>
+            <div class="BlockDate">
+                <div class="" albcontext="@Model.Albcontext">
+                    <label>Annee :</label>
+                    <input name="Annee" id="Annee" tabindex="3" albmask="numeric" class="numerique DateInput" value="@Model.Annee" albcontext="Model.Albcontext" />
+                </div>
+                <div class="" albcontext="@Model.Albcontext">
+                    <label>Mois :</label>
+                    <input name="Mois" id="Mois" tabindex="4" albmask="numeric" class="numerique DateInput" value="@Model.Mois" albcontext="Model.Albcontext" />
+                </div>
+                <div class="" albcontext="@Model.Albcontext">
+                    <label>Jour :</label>
+                    <input name="Jour" id="Jour" tabindex="5" albmask="numeric" class="numerique DateInput" value="@Model.Jour" albcontext="Model.Albcontext" />
+                </div>
+            </div>
+        </td>
+        <td></td>
+
+    </tr>
+    <tr>
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Etat :</label>
+            @Html.AlbDropDownListFor(m => m.Etat, Model.Etats, "Etat", htmlAttributes: new
+                                                           {
+                                                               @id = "Etat",
+                                                               @tabindex = "6",
+                                                               @class = "FieldEtat",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+
+        </td>
+
+
+        <td class="" albcontext="@Model.Albcontext">            
+            <span>
+                <label>Kheops Production :</label>
+                <input name="Categorie" id="Categorie" type="checkbox" tabindex="7" @Html.Raw(@Model.Categorie == "2" ? "checked" : "") albcontext="Model.Albcontext" />
+                <label>Hors Kheops Production :</label>
+                <input name="NonKhe" id="NonKhe" type="checkbox" tabindex="7" albcontext="Model.Albcontext" />
+            </span>
+        </td>
+        <td></td>
+        <td class="BlockInLine">
+            <div class="" albcontext="@Model.Albcontext" tabindex="4">
+                <span id="btnRechercherStatOffreContrat" tabindex="9"  albcontext="@Model.Albcontext">
+                    <img class="CursorPointer" id="RechercherImg" alt="" src="/Content/Images/loupe.png">
+                </span>
+            </div>
+
+            <div class="" albcontext="@Model.Albcontext" tabindex="10">
+                <button tabIndex="" title="" id="btnInitialize"  type="button" albcontext="@Model.Albcontext" >Ré<u>i</u>nitialiser</button>
+            </div>
+            <div class="" albcontext="@Model.Albcontext" tabindex="11">
+                <a id="exportExcel" href="javascript:ExportToCSV()">
+                    <img id="imgExportExcel" alt="Export Excel" title="Export Excel" src="@(Url.Content("~/Content/Images/exportExcel3232.png"))" class="CursorPointer" />
+                </a>
+            </div>
+        </td>
+    </tr>
+</table>

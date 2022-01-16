@@ -1,0 +1,73 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGestionNomenclature.ModeleNomenclature
+<div class="FloatLeft">
+    @Html.Hidden("IdNomenclature", (Model.Id))
+    <div class="nGradientSection widthAddNomenclature">
+        <div class="HeightRow">
+            @if (Model.Id == 0)
+            {
+                <div class="PaddingLeft FloatLeft"><u>Ajout d'une nomenclature</u></div>
+            }
+            else
+            {
+                <div class="PaddingLeft FloatLeft"><u>Modification de la nomenclature @(Model.Code) - @(Model.Libelle)</u></div>
+            }
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelNomenclature">Code</label>
+            </div>
+            <div class="FloatLeft">
+                @if (Model.Id == 0)
+                {
+                    <input type="text" id="CodeNomenclature" name="CodeNomenclature" value="@(Model.Code)" class="inputCodeNomenclature" maxlength="15" />
+                }
+                else
+                {
+                    <input type="text" id="CodeNomenclature" name="CodeNomenclature" value="@(Model.Code)" class="readonly inputCodeNomenclature" readonly="readonly" />
+                }
+            </div>
+            <div class="FloatLeft">
+                <label class="labelNomenclature">Ordre</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="OrdreNomenclature" name="OrdreNomenclature" value="@(Model.Ordre)" class="decimal" albMask="decimal" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelTypologie">Typologie</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="TypologieNomenclature" name="TypologieNomenclature" value="@(Model.Typologie.Code) - @(Model.Typologie.Libelle)" class="readonly inputTypologie" readonly="readonly" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelNomenclature">Libellé</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="LibelleNomenclature" name="LibelleNomenclature" value="@(Model.Libelle)" class="inputLibelle" maxlength="60" />
+            </div>
+        </div>
+        <div class="dvBtnNomenclature">
+            @if (Model.Id != 0 && Model.Grilles.Count == 0)
+            {
+                <div class="FloatLeft PaddingLeft">
+                    <button id="btnNomenclatureSupprimer" type="button" albshorcut="true" data-accesskey="s"><u>S</u>upprimer</button>
+                </div>
+            }
+            <div class="ActionButtonRight PaddingRight">
+                <button id="btnNomenclatureAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnNomenclatureValider" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+    <div class="nGradientSection widthAddNomenclature">
+        <div class="HeightRow">
+            <div class="PaddingLeft FloatLeft"><u>Nomenclature utilisée dans les grilles suivantes</u></div>
+        </div>
+        <div class="PaddingLeft dvListGrilles">
+            @Html.Partial("ListeGrilles", Model)
+        </div>
+    </div>
+</div>

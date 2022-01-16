@@ -1,0 +1,105 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleSyntheseDocumentsPage
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albSyntheseDocuments.js" }, "~/Scripts/AlbingiaJS/")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vSyntheseDocuments.css" }, "~/Content/")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    var splitHtmlChar = "";
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection" style="height: 481px;">
+                    <div id="dvHeaderSyntheseDocument" class="PaddingLeft">
+                        <table id="tblHeaderSyntheseDocument" class="trHeight" style="width: 995px; table-layout: fixed;">
+                            <tr>
+                                <th class="tablePersoHead" style="width: 50px;">Ordre</th>
+                                <th class="tablePersoHead" style="width: 200px;">Destinataire</th>
+                                <th class="tablePersoHead" style="width: 200px;">Type d'envoi</th>
+                                <th class="tablePersoHead" style="width: 420px;">Document</th>
+                                <th class="tablePersoHead" style="width: 40px;">Nb. ex.</th>
+                                <th class="tablePersoHead" style="width: 45px;">Impr.</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="dvBodySyntheseDocument" class="PaddingLeft">
+                        <table id="tblBodySyntheseDocument" class="trHeight" style="width: 995px; table-layout: fixed;">
+                            @{
+                                var i = 0;
+                                foreach (var item in Model.Documents)
+                                {
+                                <tr class="@(i % 2 == 0 ? "odd" : "even")" albLotId="@item.LotId">
+                                    <td style="width: 52px;">
+                                        <input type="text" id="orderLot@(splitHtmlChar)@(item.LotId)" name="orderLot" value="@item.Ordre" class="decimal" style="width: 48px;" />
+                                    </td>
+                                    <td style="width: 198px; padding-left: 5px;" albtypedest="@item.TypeDestinataire.Trim()" albiddest="@item.DestinataireId">@(item.TypeDestinataire.Trim() == "CT" ? "Courtier gestionnaire" : item.TypeDestinataire.Trim() == "AS" ? "Preneur d'assurance" : "Autre courtier")</td>
+                                    <td style="width: 198px; padding-left: 5px;" title="@(!string.IsNullOrEmpty(item.TypeEnvoi.Trim()) ? string.Format("{0} - {1}", item.TypeEnvoi.Trim(), item.LibEnvoi.Trim()) : "")">@(!string.IsNullOrEmpty(item.TypeEnvoi.Trim()) ? string.Format("{0} - {1}", item.TypeEnvoi.Trim(), item.LibEnvoi.Trim()) : "")</td>
+                                    <td>
+                                        <table id="tblDocInfo" cellpadding="0" cellspacing="0">
+                                            @{
+                                    var j = 1;
+                                    foreach (var docInfo in item.DocInfos)
+                                    {
+                                                <tr class="@(i % 2 == 0 ? "odd" : "even")" albDocId="@docInfo.DocId" style="height: 20px;">
+                                                    <td style="@(j == item.DocInfos.Count ? "width: 420px; padding-left:5px; border-right: 1px solid #EEEEEE;" : "width: 420px; padding-left:5px; border-right: 1px solid #EEEEEE; border-bottom: 1px solid #EEEEEE;")" title="@docInfo.Document">@docInfo.Document</td>
+                                                    <td style="@(j == item.DocInfos.Count ? "width: 44px; text-align: center; border-right: 1px solid #EEEEEE;" : "width: 44px; text-align: center; border-right: 1px solid #EEEEEE; border-bottom: 1px solid #EEEEEE;")">@docInfo.NbExemp</td>
+                                                    <td style="@(j == item.DocInfos.Count ? "width: 50px; text-align: center;" : "width: 50px; text-align: center; border-bottom: 1px solid #EEEEEE;")">
+                                                        <input type="checkbox" id="checkDoc@(splitHtmlChar)@(docInfo.DocId)" name="checkDoc" checked="@(docInfo.Imprim == "O" )" />
+                                                    </td>
+                                                </tr>
+                                        j++;
+                                    }
+                                            }
+                                        </table>
+                                    </td>
+                                </tr>
+                                    i++;
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionLibelle ActionButtonLeft">
+                <button id="btnImprimer" type="button" albshortcut="true" tabindex="29" data-accesskey="p">Im<u>p</u>rimer</button>
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" tabindex="28" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divDestinataire" class="None" style="background-color: white; padding: 5px; border: 1px solid black; border-radius: 5px;">
+</div>

@@ -1,0 +1,130 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleMontantReferencePage>
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.Hidden("topMntForce", 0)
+            @Html.Hidden("topMntAcquis", 0)
+            @Html.Hidden("topMntForceTotal", 0)
+            @Html.HiddenNoName("codeCommentaireForce", Model.CodeCommentaire)
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="TripleColumnsGroup FloatLeft">
+                            <div class="FloatLeft">
+                                <label class="Block">Périodicité</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Periodicite" name="Periodicite" class="readonly" readonly="readonly" value="@Model.Periodicite" title="@Model.Periodicite" albCFList="periodicite" />
+                            </div>
+                        </div>
+                        <div class="TripleColumnsGroup FloatLeft">
+                            <div class="FloatLeft">
+                                <label class="Block">Ech. principale</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="EcheancePrincipale" name="EcheancePrincipale" class="readonly" readonly="readonly" value="@Model.EcheancePrincipale" />
+                            </div>
+                        </div>
+                        <div class="TripleColumnsGroup FloatLeft">
+                            <div class="FloatLeft">
+                                <label class="Block">Prochaine éch.</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDateFormat(m => m.ProchaineEcheance, new { @class = "readonly", @disabled = "disabled" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection HeightMontantsReference">
+                    <div id="divMontantsReferenceHeader">
+                        <table id="tblMontantsReferenceHeader">
+                            <tr>
+                                <th class="col_HeaderFormule tablePersoHead">
+                                    Formule
+                                </th>
+                                <th class="col_HeaderRisque tablePersoHead">
+                                    Risque
+                                </th>
+                                <th class="col_HeaderMontantCalcule tablePersoHead">
+                                    Mnt. calculé
+                                </th>
+                                @*  SLA (18/09/14) : désactivation sur Spec "- Contrat - montant de référence-V3.docx " du 04/09/14  *@
+                                <th class="col_HeaderMontantForce tablePersoHead">
+                                    Mnt. forcé
+                                </th>
+                                <th class="col_HeaderAcquis tablePersoHead">
+                                    Acquis
+                                </th>
+                                <th class="col_HeaderMntProv tablePersoHead">
+                                    Provisionnel
+                                </th>
+                                <th class="col_HeaderButtons tablePersoHead"></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divMontantsReferenceBody" class="dvMontantsReferenceBody">
+                        <table id="tblMontantsReferenceBody" class="tabMontantRef">
+                            @Html.Partial("ListeMontantsReference", Model)
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div id="divCommentForce" class="FloatLeft dvCommentForce">
+                @Html.Hidden("BoolMontantForce", Model.MontantForce ? 1 : 0)
+                <div class="FloatLeft">
+                    <label class="Block">Commentaires</label>
+                </div>
+                
+                <div class="FloatLeft">
+                    @if (Model.IsReadOnly)
+                    {
+                        <textarea disabled id="CommentForce" name="CommentForce" class="NonReprisCP heightAreaMntRef" tabindex="6">@Model.CommentForce</textarea>
+                    }
+                    else
+                    {
+                        <textarea albhorsavn id="CommentForce" name="CommentForce" class="NonReprisCP heightAreaMntRef" tabindex="6">@Model.CommentForce</textarea>
+                    }
+                </div>
+               
+            </div>
+            <div class="ActionButtonsComment ActionButtonRight">
+                @* <div class="ActionButtonsComment ActionButtonLeft">
+                    *@
+                    @*bug 1510 : suppression des flèches de rafraichissement*@
+                    @if (Model.IsReadOnly)
+                    {
+                    <div id="divReset" class="FloatLeft PaddingLeft" style="margin-top: -4px;">
+                        <img id="btnReset" src="@Url.Content("/Content/Images/reset_formgris32.png")" alt="RAZ" title="RAZ" />
+                    </div>
+                    }
+                    else
+                    {
+                    <div id="divReset" class="FloatLeft PaddingLeft CursorPointer" style="margin-top: -4px;">
+                        <img id="btnReset" src="@Url.Content("/Content/Images/reset_form32.png")" alt="RAZ" title="RAZ" />
+                    </div>
+                    }
+                    <div id="divRefresh" class="FloatLeft PaddingLeft" style="margin-top: -4px;">
+                        <img id="btnRefresh" src="@Url.Content("/Content/Images/boutonRefresh_gris3232.png")" alt="Rechargement" title="Rechargement" />
+                        @*
+                    </div>*@
+                </div>
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+    <div id="divModifMontantFormule">
+        <div class="overlay-background" style="z-index:2">
+        </div>
+        <div id="divDataModifMontantFormule">
+        </div>
+    </div>
+    <div id="divModifMontantTotal">
+        <div class="overlay-background" style="z-index:2">
+        </div>
+        <div id="divDataModifMontantTotal">
+        </div>
+    </div>

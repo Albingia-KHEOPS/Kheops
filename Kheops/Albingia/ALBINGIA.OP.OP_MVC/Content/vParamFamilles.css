@@ -1,0 +1,300 @@
+﻿.GroupFamilles
+{
+    height: 600px;
+    padding-top: 10px;
+    margin-right: 12px;
+}
+
+.InputConcept
+{
+    width: 380px !important;
+}
+
+#divRecherche
+{
+    margin-left: 5px;
+}
+
+#divLstFamilles
+{
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.col_HeaderCodeFamille
+{
+    width: 98px;
+}
+
+.col_CodeFamille
+{
+    width: 100px;
+}
+
+.col_HeaderDescriptionFamille
+{
+    width: 420px;
+}
+
+.col_DescriptionFamille
+{
+    width: 422px;
+}
+
+.col_HeaderButtons
+{
+    width: 46px;
+}
+
+.col_RowButtons
+{
+    width: 22px;
+}
+
+.col_Buttons
+{
+    width: 87px;
+}
+
+.HeightZoneDynamic
+{
+    height: 610px;
+}
+
+.divLstFamilles
+{
+    display: none;
+}
+
+#divBodyFamilles
+{
+    height: 475px;
+    overflow-y: auto;
+}
+
+.selectLine
+{
+    background-color: #FFDFDF !important;
+}
+
+.linkFamille
+{
+    cursor: pointer;
+}
+
+.InputFamille
+{
+    width: 380px !important;
+}
+
+.TitledivSection
+{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.LibelleCourtEntete
+{
+    margin-left: 50px;
+}
+
+.LibelleVariable
+{
+    width: 50px !important;
+}
+
+.InputDDL
+{
+    width: 50px !important;
+}
+
+.ColumnDDL
+{
+    float: left;
+    width: 53px;
+}
+
+.InputLibelleLong
+{
+    width: 248px !important;
+}
+
+.ColumnLibelleCourt
+{
+    float: left;
+    width: 193px;
+}
+
+.ColumnEnteteLibelleCourt
+{
+    float: left;
+    width: 190px;
+}
+
+.ColumnEnteteLibelleLong
+{
+    float: left;
+    width: 245px;
+}
+
+.ColumnEnteteTypeDecimal
+{
+    float: left;
+    width: 131px;
+}
+
+.LibelleEnteteType
+{
+    margin-right: 24px;
+}
+
+.PaddingEditValues
+{
+    padding-right: 10px;
+    padding-left: 23px;
+}
+
+#divBodyValeur
+{
+    height: 300px;
+    overflow-y: auto;
+}
+
+.divSectionValeursHeight
+{
+    height: 373px;
+}
+
+.col_HeaderCodeValeur
+{
+    width: 81px;
+}
+
+.col_CodeValeur
+{
+    width: 79px;
+    padding-left: 5px;
+}
+
+.col_HeaderLibelleValeur
+{
+    width: 328px;
+}
+
+.col_LibelleValeur
+{
+    width: 326px;
+    padding-left: 5px;
+}
+
+.col_HeaderFiltre
+{
+    width: 77px;
+}
+
+.col_Filtre
+{
+    overflow: hidden;
+    padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 75px;
+}
+
+.colBtn
+{
+    width: 43px;
+}
+
+.TitleValeursBackgroundColor
+{
+    background-color: #ECF3FF;
+}
+
+.TitleFamillesBackgroundColor
+{
+    background-color: #EDEEFF;
+}
+
+#divEditValeur
+{
+    display: none;
+}
+
+#divDataEditValeur
+{
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 431px;
+    width: 854px;
+}
+
+.ColumnLibelleCourtValeur
+{
+    float: left;
+    width: 140px;
+}
+
+.TxtAreaPosition
+{
+    left: 16.5px !important;
+    top: 148px !important;
+}
+
+.InputValVariable
+{
+    width: 200px !important;
+}
+
+.ColumnLibelleValeurVariable
+{
+    float: left;
+    width: 367px;
+}
+
+.HeightDivFlottante
+{
+    height: 369px;
+}
+
+#divButtons
+{
+    width: 838px;
+}
+
+#divSectionInfoValeur
+{
+    height: 369px;
+}
+
+.InputLibelleLongValeur
+{
+    width: 380px !important;
+}
+
+.InputLong
+{
+    width: 663px !important;
+}
+
+.linkValeur
+{
+    cursor: pointer;
+}
+
+.WidthLabelCodeVideAutorise
+{
+    width: 154px !important;
+}
+
+
+#tblBodyValeurs
+{
+    table-layout: fixed;
+    width: 553px;
+}

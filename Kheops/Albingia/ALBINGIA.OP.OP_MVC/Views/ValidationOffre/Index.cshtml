@@ -1,0 +1,361 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleValidationOffrePage>
+@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+@using ALBINGIA.Framework.Common.Constants
+
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbValidationOffre")
+@AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbValidationOffre")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    var model = Model as ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleValidationOffrePage;
+}
+
+<div class="FullWidth">
+    @switch (Model.ScreenType) {
+        case AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0) {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_REGULPB:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_REGULBNS:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_REGULBURNER:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0)
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        case AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR_NO_MODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            <input type="hidden" id="etatDossier" value="@Model.EtatDossier" />
+            @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+            @*<div class="GroupTitle">
+                    Informations de fin
+                </div>*@
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection">
+                    @if (Model.Offre != null) {
+                        <div class="HeightRow">
+                            <div class="SmallGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Date saisie</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @*<input id="DateStatistique" value="@(Model.Offre.DateSaisie.HasValue ? Model.Offre.DateSaisie.Value.ToString("dd/MM/yyyy") : string.Empty)" class="readonly" readonly="readonly" />*@
+                                    <input id="DateStatistique" value="@(Model.DateAccord.HasValue ? Model.DateAccord.Value.ToString("dd/MM/yyyy") : string.Empty)" class="readonly" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="GenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block mediumLabel">Montant de référence</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="MontantReference" value="@Model.MontantReference" class="readonly numerique" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="SmallGenericColumn">
+                                <div class="FloatLeft ">
+                                    <label class="Block smallLabel">Délégation</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="Delegation" value="@Model.DelegationOffre" class="readonly" readonly="readonly" title="@Model.DelegationOffre" />
+                                </div>
+                            </div>
+                            <div class="VeryLargeColumnSecteur">
+                                <div class="FloatLeft">
+                                    <label class="Block smallLabel">Secteur</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="Secteur" value="@Model.SecteurOffre" class="readonly MediumSecteur" readonly="readonly" title="@Model.SecteurOffre" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">
+                                    <label class="Block">Apporteur :</label>
+                                </div>
+                                <div class="FloatLeft LargeGenericColumn">
+                                    <label class="Block FloatLeft smallLabel">Délégation</label>
+                                    <input id="DelegationApporteur" value="@Model.DelegationApporteur" class="readonly FloatLeft" readonly="readonly" title="@Model.DelegationApporteur" />
+                                </div>
+                            </div>
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">
+                                    <label class="Block smallLabel">Secteur</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="SecteurApporteur" value="@Model.SecteurApporteur" class="readonly LargeSecteur" readonly="readonly" title="@Model.SecteurApporteur" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">
+                                    <label class="Block">Gestionnaire :</label>
+                                </div>
+                                <div class="FloatLeft LargeGenericColumn">
+                                    <label class="Block FloatLeft smallLabel">Délégation</label>
+                                    <input id="DelegationGestionnaire" value="@Model.DelegationGestionnaire" class="readonly FloatLeft" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">
+                                    <label class="Block smallLabel">Secteur</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="SecteurGestionnaire" value="@Model.SecteurGestionnaire" class="readonly LargeSecteur" readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Contrat != null) {
+                        <div class="HeightRow">
+                            <div class="GenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Date d'accord</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @*<input id="DateStatistique" value="@(Model.Contrat.DateAccordAnnee > 0 ? string.Format("{0}/{1}/{2}", Model.Contrat.DateAccordJour.ToString().PadLeft(2, '0'), Model.Contrat.DateAccordMois.ToString().PadLeft(2, '0'), Model.Contrat.DateAccordAnnee) : string.Empty)" class="readonly" readonly="readonly" />*@
+                                    <input id="DateStatistique" value="@(Model.DateAccord.HasValue ? Model.DateAccord.Value.ToString("dd/MM/yyyy") : string.Empty)" class="readonly" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="LargeGenericColumn">
+                                <div class="FloatLeft">
+                                    @* <label class="Block largeLabel">Montants de référence : &nbsp&nbsp&nbsp&nbsp calculé</label>*@
+                                    <label class="Block largeLabel">Montants de référence :</label>
+                                </div>
+                                <div class="FloatLeft PaddingLeft">
+                                    <input id="MontantReferenceCalcule" value="@Model.MontantReferenceCalcule" class="readonly montantField numerique" readonly="readonly" />
+                                </div>
+                            </div>
+                            @*         <div class="SmallColumnCalcul">
+                                    <div class="FloatLeft">
+                                        <label class="Block tinyLabel">forcé</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="MontantReferenceForce" value="@Model.MontantReferenceForce" class="readonly montantField numerique" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="SmallColumnCalcul">
+                                    <div class="FloatLeft tinyLabel">
+                                        <label class="Block">acquis</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="MontantReferenceAcquis" value="@Model.MontantReferenceAcquis" class="readonly montantField numerique" readonly="readonly" />
+                                    </div>
+                                </div>*@
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">
+                                    <label class="Block">Apporteur :</label>
+                                </div>
+                                <div class="FloatLeft LargeGenericColumn">
+                                    <label class="Block FloatLeft smallLabel">Délégation</label>
+                                    <input id="DelegationApporteur" value="@Model.DelegationApporteur" class="readonly FloatLeft" readonly="readonly" title="@Model.DelegationApporteur" />
+                                </div>
+                            </div>
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">
+                                    <label class="Block smallLabel">Secteur</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="SecteurApporteur" value="@Model.SecteurApporteur" class="readonly LargeSecteur" readonly="readonly" title="@Model.SecteurApporteur" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">
+                                    <label class="Block">Gestionnaire :</label>
+                                </div>
+                                <div class="FloatLeft LargeGenericColumn">
+                                    <label class="Block FloatLeft smallLabel">Délégation</label>
+                                    <input id="DelegationGestionnaire" value="@Model.DelegationGestionnaire" class="readonly FloatLeft" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">
+                                    <label class="Block smallLabel">Secteur</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="SecteurGestionnaire" value="@Model.SecteurGestionnaire" class="readonly LargeSecteur" readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        @*Model.ScreenType != AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF && *@
+                        @if (Model.ScreenType != AlbConstantesMetiers.SCREEN_TYPE_REGUL) {
+                            <div class="GenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">@(Model.Offre != null ? "Offre complète ?" : "Dossier complet ?")</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @if (Model.OffreComplete == "Non") {
+                                        <input type="text" id="OffreComplete" name="OffreComplete" value="@(Model.OffreComplete)" readonly="readonly" class="readonly" />
+                                    }
+                                    else {
+                                        @Html.AlbDropDownListFor(m => m.OffreComplete, Model.OffreCompletes, "OffreComplete", htmlAttributes: new { id = "OffreComplete" }, generateTitle: true, genEmptyLine: false)
+                                    }
+                                </div>
+                            </div>
+                            <div class="GenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Motif</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @if (Model.Motif == "SYS") {
+                                        <input type="hidden" id="Motif" value="@Model.Motif" />
+                                        <input type="text" id="MotifLabel" albCFList="motifRefus" name="Motif" value="@(Model.Motifs.Find(elm => elm.Value == Model.Motif) != null ? Model.Motifs.Find(elm => elm.Value == Model.Motif).Text : Model.Motif)" readonly="readonly" class="readonly" />
+                                    }
+                                    else {
+                                        @(Model.OffreComplete == "Non" ?
+                                                                                                                                            Html.AlbDropDownListFor(m => m.Motif, Model.Motifs, "Motif", htmlAttributes: new { id = "Motif", albCFList = "motifRefus" }, generateTitle: true) :
+                                                                                                                                            Html.AlbDropDownListFor(m => m.Motif, Model.Motifs, "Motif", htmlAttributes: new { id = "Motif", albCFList = "motifRefus", disabled = "disabled", @class = "readonly" }, generateTitle: true))
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else {
+                            <div style="width: 516px; float: left;">
+                                &nbsp;
+                            </div>
+                        }
+                        @* Bug 1713 : affichage du champ validable tout le temps *@
+                        @*<div class="GenericColumn @(Model.EtatDossier == "A" || (Model.OffreComplete == "Oui" && Model.IsControleOk) ? string.Empty : "None")">*@
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Validable</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Validable" value="@Model.Validable" readonly="readonly" class="readonly" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Pouvoir requis</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="ValidationRequise" name="ValidationRequise" readonly="readonly" class="readonly" value="@(Model.ValidationRequise)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="nGradientSection @(Model.Offre != null ? "CritereHeight" : "CritereHeightContrat")">*@
+                <div class="nGradientSection CritereHeightContrat">
+                    <div class="HeightRow">
+                        <div id="divDataVisuCotisations" class="PaddingLeft">
+                            @Html.Partial("VisuCotisations", Model.Docs)
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection blkObservations">
+                    <div id="divObservation" class="FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block">Observations</label>
+                            <input type="hidden" id="INCodeObservation" value="@Model.CodeObservation" />
+                        </div>
+                        @*<div id="zoneTxtArea" class="FloatLeft divTextArea2 ZoneTextAreaWidth" albcontext="Observation">@Html.Raw(!string.IsNullOrEmpty(Model.Observation) ? Model.Observation.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+                        <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="Observation">
+                            <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                        </div>
+                        <div id="txtArea" albcontext="Observation" class="TextAreaLeft">*@
+                    <div class="FloatLeft">
+                        @if (Model.IsReadOnly)
+                        {
+                            @*<div id="Observation" style="width: 502px; height: 100px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Observation)</div>*@
+                            <textarea id="Observation" disabled name="Observation" class="NonReprisCP heightAreaEngagement" style="margin-bottom: 5px;" tabindex="6">@Model.Observation</textarea>
+                        }
+                        else
+                        {
+                            <textarea id="Observation" name="Observation" class="NonReprisCP heightAreaEngagement" style="margin-bottom: 5px;" tabindex="6">@Model.Observation</textarea>
+                        }
+                    </div>
+                        @*</div>*@
+                    </div>
+                    @{
+                        var btnValid = Model.IsDocGener == "O" && Model.Validable == "Oui" && Model.EtatDossier == "A" && (!Model.IsReadOnly || Model.IsModifHorsAvenant) && Model.ActeGestion != AlbConstantesMetiers.TYPE_ATTESTATION && !Model.IsModifHorsAvenant;
+                        if (!Model.IsModifHorsAvenant && Model.ScreenType != AlbConstantesMetiers.SCREEN_TYPE_ATTES && !Model.IsReadOnly)
+                        {
+                        <div class="ActionButtonValider ActionButtonRight" id="divValidation">
+                            <button id="btnValider" @(btnValid ? string.Empty : "disabled=disabled") type="button" albshortcut="true" accesskey="v" tabindex="29"><u>V</u>alider</button>
+                        </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                @if (Model.ScreenType != AlbConstantesMetiers.SCREEN_TYPE_ATTES) {
+                    <button id="btnTerminer" type="submit" albshortcut="true" accesskey="t" tabindex="28" albcontext="terminer"><u>T</u>erminer</button>
+                }
+                @if (Model.IsDocEdit != "N" && Model.ScreenType != AlbConstantesMetiers.SCREEN_TYPE_ATTES) {
+                    <button id="btnSuivant" type="submit" albshortcut="true" accesskey="e" tabindex="28" albcontext="editer"><u>E</u>diter</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="detailNiveau">
+    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 4; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div id="divDataDetailNiv">
+    </div>
+</div>
+<div id="divEditionDocument" class="None">
+    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 4; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div id="divContainerEditionDocument" class="nGradientSection">
+        @* style="@(Model.TypePolicePage == "P" ? "height: 372px;" : "height: 272px;")">*@
+        <div id="divDataEditionDocument" class="PaddingLeft">
+        </div>
+    </div>
+</div>

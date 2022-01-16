@@ -1,0 +1,136 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGarantieModeles.ModeleGarantieModele
+@using (Html.BeginForm("Enregistrer", "GarantieModele", FormMethod.Post, new { @id = "frmMain" }))
+{
+    @Html.HiddenNoName("GuidId", Model.GuidId)
+    <div class="GroupTitle">
+        Consultation / Modification Modeles
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Code modèle</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (!Model.IsNew)
+                        {
+                            <input id="Code" class="readonly DoubleInput" readonly="readonly" value="@Model.Code" />
+                        }
+                        else
+                        {
+                            <input id="Code" class="DoubleInput" value="@Model.Code" />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Description</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            <input id="Description" class="readonly DoubleInput" readonly="readonly" value="@Model.Description" />
+                        }
+                        else
+                        {
+                            <input id="Description" class="DoubleInput" value="@Model.Description" />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow" id="CodeCopieRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Code modèle pour la copie</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="CodeCopie" class="DoubleInput" value="" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+
+                <div class="" style="text-align: right; padding-right: 5px;">
+                    @if (!Model.IsNew)
+                    {
+                        <input id="btnGarantieType" type="button" value="Garantie Type" title="Voir les garanties" />
+                    }
+                    @if (!Model.ReadOnly)
+                    {
+                        <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+                    }
+                    else
+                    {
+                        <input id="btnCopier" type="button" value="Copier" title="Copier le modèle de garantie" />
+                        <input id="btnValider" type="button" value="Valider" title="Valider la copie du modèle de garantie" />
+                        <input id="btnAnnuler" type="button" value="Annuler" title="Annuler la copie du modèle de garantie" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin heightDivList">
+        <div class="GradientSection heightDivListInterne">
+            @if (Model.LstModeleGarantie.Count > 0)
+            {
+                <div>
+                    Modèle utilisé dans les branches suivantes :
+                </div>
+                <div>
+                    <table class="trHeight">
+                        <tr>
+                            <th class="colHGeneric tablePersoHead">
+                                Branche
+                            </th>
+                            <th class="colHGeneric tablePersoHead">
+                                Cible
+                            </th>
+                            <th class="colHGeneric tablePersoHead">
+                                Volet
+                            </th>
+                            <th class="colHGeneric tablePersoHead">
+                                Bloc
+                            </th>
+                            <th class="colHGeneric tablePersoHead">
+                                Typologie
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="divListInfoBranche">
+                        <table id="tblListModeleGarantie" class="trHeight">
+                            @foreach (ALBINGIA.OP.OP_MVC.Models.ModelesGarantieModeles.ModeleGarantie MG in Model.LstModeleGarantie)
+                            {
+                                <tr>
+                                    <td class="colBGeneric">
+                                        @MG.Branche
+                                    </td>
+                                    <td class="colBGeneric">
+                                        @MG.Cible
+                                    </td>
+                                    <td class="colBGeneric">
+                                        @MG.Volet
+                                    </td>
+                                    <td class="colBGeneric">
+                                        @MG.Bloc
+                                    </td>
+                                    <td class="colBGeneric">
+                                        @MG.Typologie
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                    Modèle utilisé dans aucune branche.
+                </div>
+            }
+        </div>
+    </div>
+}

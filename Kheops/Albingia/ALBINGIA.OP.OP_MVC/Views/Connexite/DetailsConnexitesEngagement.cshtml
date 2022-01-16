@@ -1,0 +1,69 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesConnexite.ModeleDetailsConnexitesEng>
+<div class="CommonForm FloatLeft">
+    <div class="nGroupFull GroupWithBorder">
+        <div class="nHorizontalFullWithGroup">
+            <div class="nGradientSection HeightListeEngagementPeriodes"style="height:550px;">
+                <div class="HeightRow">
+                    <div class="FloatLeft PaddingLeft">
+                        <label class="Block" style="width: 60px !important;">Actif/Tous</label>
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        @Html.AlbDropDownListFor(m => m.ModeActif, Model.ListeModesActif, "ListeModesActif", htmlAttributes: new { id = "ListeModesActif" }, generateTitle: true, genEmptyLine: false)
+                    </div>
+                </div>
+                <div class="heightRow">
+                    <div id="divHeader">
+                        <table id="tblHeader">
+                            <tr style="height:1px;">
+                                <th class="col_HeaderActif tablePersoHead">Utilisée
+                                </th>
+                                <th class="col_HeaderDateDeb tablePersoHead">Début
+                                </th>
+                                <th class="col_HeaderDateFin tablePersoHead">Fin
+                                </th>
+
+                            </tr>
+                        </table>
+                    </div>
+                    @if ((Model.ConnexitesEngPeriodes != null) && (Model.ConnexitesEngPeriodes.Count > 0))
+                    {
+                        if ((Model.ConnexitesEngPeriodes[0].LstEngagmentTraite != null) && (Model.ConnexitesEngPeriodes[0].LstEngagmentTraite.Count > 0))
+                        {
+                        <div id="divHeaderEng" >
+                            <table id="tblHeaderEngagement2">
+                                <tr >
+                                    @foreach (var ligne in Model.ConnexitesEngPeriodes[0].LstEngagmentTraite)
+                                    {
+                                        <div class="widthCommun">
+                                            <th class=" widthCommun tablePersoHead">@ligne.CodeEngagement</th>
+                                        </div>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                        }
+                    }
+                  @*  <div id="divHeaderBtn" style="padding-top:13px;">
+                        <div class="FloatRight paddingRight">
+
+                            <img id="ajouterPeriod" title="Ajouter une période d'engagement" alt="Ajouter" name="ajouterPeriod" src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" />
+
+                        </div>
+                    </div>*@
+                </div>
+                <div class="HeightRow">
+                    <div id="">
+                            @Html.Partial("ListeEngagementPeriodesDetails", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="GroupFull GroupWithBorder ButtonsHeight">
+    <div class="ActionButtons ActionButtonRight">
+        <button id="btnFermer" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+</div>

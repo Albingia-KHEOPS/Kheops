@@ -1,0 +1,44 @@
+﻿@model IList<ALBINGIA.OP.OP_MVC.Models.ModeleInformationDatabase.ModeleColumnInfo>
+<div class="GradientSection">
+    <div id="divHeaderListeColonnes">
+        <table id="tblHeader" class="trHeight">
+            <tr>
+                <th class="thName tablePersoHead" id="th_1">Nom</th>
+                <th class="thType tablePersoHead" id="th_2">Type</th>
+                <th class="thLength tablePersoHead" id="th_3">Length</th>
+                <th class="thScale tablePersoHead" id="th_4">Scale</th>
+                <th class="thIsNullable tablePersoHead" id="th_5">IsNullable</th>
+                <th class="thDescription tablePersoHead" id="th_6">Description</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="divBodyListeColonnes">
+
+        @if (Model == null || Model.Count == 0)
+        {
+            <br />
+            <b>@Html.Raw("Aucun enregistrement")</b>
+            <br />
+            <br />
+        }
+        else
+        {
+            <table id="tblBody" class="trHeight">
+
+                @foreach (var col in Model)
+                {
+                    <tr>
+                        <td class="tdName">@col.Name</td>
+                        <td class="tdType">@col.Type</td>
+                        <td class="tdLength">@col.Length</td>
+                        <td class="tdScale">@col.Scale</td>
+                        <td class="tdIsNullable">@col.IsNullable</td>
+                        <td class="tdDescription">@col.Description</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,48 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsSpecifiquesObjetsPage
+@if (Model.Offre != null)
+{
+    <input id="CodeOffre" type="hidden" clientidmode="Static" value="@Model.Offre.CodeOffre"/>
+    <input id="Version" type="hidden" clientidmode="Static" value="@Model.Offre.Version"/>
+}
+else if (Model.Contrat != null)
+{
+    <input id="CodeOffre" type="hidden" clientidmode="Static" value="@Model.Contrat.CodeContrat"/>
+    <input id="Version" type="hidden" clientidmode="Static" value="@Model.Contrat.VersionContrat"/>
+}
+
+<input id="Code" type="hidden" clientidmode="Static" value="@Model.Code"/>
+
+<input id="CodeObjet" type="hidden" clientidmode="Static" value="@Model.CodeObjet"/>
+
+<input type="hidden" id="Params" albContext="Objet" value="@(Model.Parameters)" />
+<input type="hidden" id="SpecificParams" albContext="Objet" value="@(Model.SpecificParameters)" />
+<input type="hidden" id="splitChar" value="@ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML" />
+<div class="nGradientSection">
+    <table class="trHeight tblInfoOffreSimp">
+        <tr>
+            <td>
+                @Html.AlbLabelFor(m => m.CodeRisque, "Block")
+            </td>
+            <td class="ObjetRisque readonly" title="@Model.CodeRisque - @Model.LibelleRisque">
+                <input type="hidden" id="CodeLibelleRisque" value="@Model.CodeRisque - @Model.LibelleRisque"/>
+                @Model.CodeRisque - @Model.LibelleRisque
+            </td>
+            <td>
+                @Html.AlbLabelFor(m => m.CodeObjet, "Block")
+            </td>
+            <td class="ObjetRisque readonly" title="@Model.CodeObjet - @Model.LibelleObjet">
+                <input type="hidden" id="CodeLibelleObjet" value="@Model.CodeObjet - @Model.LibelleObjet"/>
+                @Model.CodeObjet - @Model.LibelleObjet
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <div class="FloatLeft RisqueIndexe">
+        @*<iframe id="frameIS" src="@Url.Content("/ExcelWeb/InformationsSpecifiques/Template.aspx?" + @Model.Parameters)" width="600px" height="400px" frameborder="0"></iframe>*@
+        <div id="dvISGtiesResult" albContext="Objet" class="dvISGtiesResultObjet">
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,25 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsListExprComplexe
+<div id="dvHeaderLstExprCompRef">
+    <table id="tblHeaderLstExprCompRef" class="trHeight tblLstExprComp">
+        <tr>
+            <th class="tablePersoHead thSelExpr">&nbsp;</th>
+            <th class="tablePersoHead thTypeExpr">@Model.Type</th>
+            <th class="tablePersoHead thLibExpr">Libellé</th>
+            <th class="tablePersoHead thModifExpr">Modifiable</th>
+        </tr>
+    </table>
+</div>
+<div id="dvBodyLstExprCompRef" class="divBodyLstExprCompRef">
+    <table id="tblBodyLstExprCompRef" class="trHeight tblLstExprComp">
+        @foreach (var expr in Model.ListExpressions)
+        {
+            <tr albExprId="@expr.Id">
+                <td class="tdSelExpr">
+                    <input type="radio" id="selExprRef@(expr.Id)" name="selExprRef" value="@expr.Id" /></td>
+                <td class="tdTypeExpr">@expr.Code</td>
+                <td class="tdLibExpr">@expr.Libelle</td>
+                <td class="tdModifExpr">@(expr.Modifiable ? "O" : "N")</td>
+            </tr>
+        }
+    </table>
+</div>

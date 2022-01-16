@@ -1,0 +1,51 @@
+﻿@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+
+@model ModeleRegularisationPage
+
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/albRegul_Step5_RegulContrat.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    ViewBag.Title = "CreationRegule";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Regularisation, RsqId = int.Parse(Model.SaisieRegulGarantiePage.codeRsq), GrId = long.Parse(Model.SaisieRegulGarantiePage.idGar) })
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    @Html.HiddenNoName("IsSimplifiedRegul", Model.SaisieRegulGarantiePage.modelInfoInitregul.IsSimplifiedRegul.ToString())
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.Partial("SaisiePeriodRegul", Model.SaisieRegulGarantiePage)
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnRegulePrec" type="button" albshortcut="true" data-accesskey="P"><u>P</u>récedent</button>
+                <button id="btnReguleSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+
+            <div id="divRefresh" class="FloatRight PaddingRight" style="margin-top: 4px; margin-right: 30px">
+                <img id="btnRefresh" src="@Url.Content("/Content/Images/boutonRefresh_gris3232.png")" alt="Calcul" title="Calcul" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divInfoSaisieGar" class="None">
+    <div class="overlay-background" style="z-index:15" >
+    </div>
+    <div id="divDataInfoSaisieGar" class="dvDataInfoSaisieGar"></div>
+</div>
+<div id="divConfirmMntRegul" class="None">
+    <div class="overlay-background" style="z-index:25" >
+    </div>
+    <div id="divDataConfirmMntRegul" class="dvDataConfirmMntRegul">
+    </div>
+</div>
+<div id="divUpdateRegul" class="None">
+    <div class="overlay-background" style="z-index:15" >
+    </div>
+    <div id="divDataUpdateRegul" class="dvDataUpdateRegul"></div>
+</div>
+

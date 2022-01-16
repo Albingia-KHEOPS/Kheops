@@ -1,0 +1,285 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsExprComplexe
+<div class="CommonForm FloatLeft GlobalWidthComplexe">
+    @Html.HiddenNoName("TypeExpressionComplexe", Model.Type)
+    @Html.HiddenNoName("TypeAppel", string.Empty)
+    @Html.HiddenNoName("isGenRsq", Model.isGenRsq)
+
+    @Html.Hidden("ExprReadOnly", Model.IsReadOnly)
+
+    <div class="GroupFull GroupWithBorder WidthComplexe GroupNoTitle">
+        <div style="padding-bottom: 20px;">
+            <div class="PaddingLeft FloatLeft">
+                <u>@Model.Type Complexe</u>
+            </div>
+            <div class="FloatRight None">
+                <div class="FloatLeft">
+                    <label style="display: block; width: 50px;">Ajout</label>
+                </div>
+                <div class="PaddingLeft FloatLeft">
+                    <input type="radio" id="ajoutManuel" name="modeAjout" value="man" checked="checked" />
+                </div>
+                <div class="FloatLeft">
+                    <label style="display: block; width: 50px;">manuel</label>
+                </div>
+                <div class="PaddingLeft FloatLeft">
+                    <input type="radio" id="ajoutModele" name="modeAjout" value="mdl" />
+                </div>
+                <div class="FloatLeft">
+                    <label style="display: block; width: 75px;">avec modèle</label>
+                </div>
+                <div class="PaddingLeft FloatLeft">
+                    <input type="radio" id="ajoutRef" name="modeAjout" value="ref" />
+                </div>
+                <div class="FloatLeft">
+                    <label style="display: block; width: 115px;">à partir du référentiel</label>
+                </div>
+            </div>
+        </div>
+        <div class="nHorizontalFullWithGroup WidthInfoComplexe">
+            <div class="nGradientSection HeightExpr">
+                @*<div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                        </div>
+                    </div>
+                </div>*@
+                <div id="divHeaderExpr">
+                    <table id="tblHeaderExpr">
+                        <tr>
+                            <th class="tablePersoHead" style="width: 22px;">&nbsp;
+                            </th>
+                            <th class="tablePersoHead thCode CursorPointer" name="headerTriExpr" albcontext="CodeExpr">
+                                <span class="Block spImg FloatLeft PaddingTop" style="width: 67px;">Code</span>
+                                <span class="Block spImg" style="float: right;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" albcontext="CodeExpr"/>
+                                </span>
+                            </th>
+                            <th class="tablePersoHead thTitleType CursorPointer" name="headerTriExpr" albcontext="LibelleExpr">
+                                <span class="Block spImg FloatLeft PaddingTop" style="width: 336px;">@Model.Type complexes</span>
+                                <span class="Block spImg" style="float: right;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="LibelleExpr"/>
+                                </span>
+                            </th>
+                            <th class="tablePersoHead thOrigine">Origine</th>
+                            <th class="tablePersoHead" style="width: 18px; text-align: center;">&nbsp;</th>
+                            <th class="tablePersoHead" style="width: 18px; text-align: center;">&nbsp;</th>
+                            <th class="tablePersoHead" style="width: 18px; text-align: center;">
+                                @if (!Model.IsReadOnly)
+                                {
+                                    <img id="imgAddExpr" name="imgAddExpr" class="CursorPointer" src="@(Url.Content("/Content/Images/plusajouter1616.png"))" />
+                                }
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divInfoExpr" class="divInfoEpxrMax">
+                    @Html.Partial("ConditionsExpressionComplexeLignes", Model)
+                </div>
+            </div>
+            <div id="divInfos" class="GradientSection None MarginBottom">
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">
+                                Libellé :</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.IsReadOnly)
+                            {
+                                <input type="text" id="LibelleInput" name="LibelleInput" class="LargeInput readonly" readonly="readonly" />
+                            }
+                            else
+                            {
+                                <input type="text" id="LibelleInput" name="LibelleInput" class="LargeInput" />
+                            }
+                            @Html.Hidden("IdExpression", string.Empty)
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    @if (Model.Type == "LCI")
+                    {
+                        <table id="tblHeaderLCI">
+                            <tr style="text-align: center">
+                                <td class="tablePersoHead" colspan="3">
+                                    @(Model.Type)
+                                </td>
+                                <td class="tablePersoHead" colspan="3">A Concurrence de (maxi de)
+                                </td>
+                                <td class="tablePersoHead tdImgTitle">&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tablePersoHead tdValTitleLCI">Valeur
+                                </td>
+                                <td class="tablePersoHead tdUnitTypeTitle">Unité
+                                </td>
+                                <td class="tablePersoHead tdUnitTypeTitle">Type
+                                </td>
+                                <td class="tablePersoHead tdValTitleLCI">Valeur
+                                </td>
+                                <td class="tablePersoHead tdUnitTypeTitle">Unité
+                                </td>
+                                <td class="tablePersoHead tdUnitTypeTitle">Type
+                                </td>
+                                <td class="tablePersoHead tdImgTitle">
+                                    @if (!Model.IsReadOnly)
+                                    {
+                                        <img class="CursorPointer" name="ajout" id="imgAjt" alt="" src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+                                    }
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                    else
+                    {
+                        <table id="tblHeaderFranchise">
+                            <tr style="text-align: center">
+                                <td class="tablePersoHead" colspan="5">
+                                    @(Model.Type)
+                                </td>
+                                <td class="tablePersoHead" colspan="2">Limite
+                                </td>
+                                <td class="tablePersoHead td20">&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tablePersoHead tdValMinMaxTitleFRH">Valeur
+                                </td>
+                                <td class="tablePersoHead tdUnitTypeTitle">Unité
+                                </td>
+                                <td class="tablePersoHead tdUnitTypeTitle">Type
+                                </td>
+                                <td class="tablePersoHead tdValMinMaxTitleFRH">Min
+                                </td>
+                                <td class="tablePersoHead tdValMinMaxTitleFRH">Max
+                                </td>
+                                <td class="tablePersoHead tdDateTitleFRH">Début
+                                </td>
+                                <td class="tablePersoHead tdDateTitleFRH">Fin
+                                </td>
+                                <td class="tablePersoHead tdImgTitle">
+                                    @if (!Model.IsReadOnly)
+                                    {
+                                        <img class="CursorPointer" name="ajout" id="imgAjt" alt="" src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+                                    }
+                                </td>
+                            </tr>
+                        </table> 
+                    }
+                </div>
+                <div id="divDetail">
+                    <table id="tblDetail">
+                    </table>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">
+                                Descriptif</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightTextarea PaddingLeft">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            @if (!Model.IsReadOnly)
+                            {
+                                <textarea cols="" rows="" id="descriptif" class="FullTextarea"></textarea>
+                            }
+                            else
+                            {
+                                <textarea cols="" rows="" id="descriptif" class="FullTextarea readonly" readonly="readonly"></textarea>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow PaddingRight">
+                    <div class="FloatRight">
+                        <div class="FloatLeft">
+                            @if (!Model.IsReadOnly)
+                            {
+                                <button id="cancelDetails" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                            }
+                            else
+                            {
+                                <button id="cancelDetails" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>                            
+                            }
+                        </div>
+                        <div class="FloatLeft PaddingLeft">
+                            @if (!Model.IsReadOnly)
+                            {
+                                <button id="saveDetails" type="button" albshortcut="true" data-accesskey="e"><u>E</u>nregistrer</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dvButton" class="GroupFull GroupWithBorder ButtonsHeight WidthComplexe">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            @if (!Model.isGenRsq)
+            {
+                <button id="btnCloseExpr" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+                if (!Model.IsReadOnly)
+                {
+                <button id="btnValideExpr" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>        
+                }
+            }
+            else
+            {
+                <button id="btnCloseExprGenRsq" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+                if (!Model.IsReadOnly)
+                {
+                <button id="btnValideExprGenRsq" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>            
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<div id="divLstExpression" class="None">
+    <div class="overlay-background" style="z-index:50" ></div>
+    <div id="divDataLstExpression" style="position: absolute; top: 0px; left: 0px; display: block; z-index: 51; background-color: White; padding: 5px 0 0 5px; height: 555px; width: 700px;">
+    </div>
+</div>
+
+<div id="dvAddMode" name="dvAddMode" class="None AddDivExpr" style="background-color: white; padding: 2px;">
+    <div class="nGradientSection" style="width: 160px;">
+        <div class="PaddingLeft">
+            <div class="HeighRow">
+                <div class="FloatLeft"><span class="Block">Ajout :</span></div>
+                <div id="dvCloseExpr" class="FloatRight PaddingRight CursorPointer"><b>X</b></div>
+            </div>
+            <div class="HeightRow PaddingTop">
+                <div class="FloatLeft">
+                    <input type="radio" id="manuelAddBtn" name="radAddBtn" value="man" />
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <label class="Block">manuel</label>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <input type="radio" id="modelAddBtn" name="radAddBtn" value="mdl" />
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <label class="Block">avec modèle</label>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <input type="radio" id="referentielAddBtn" name="radAddBtn" value="ref" />
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <label class="Block" style="width: 115px;">à partir du référentiel</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamFamilles.Famille
+<div class="GroupTitle TitleFamillesBackgroundColor">
+    Consultation / Modification famille
+</div>
+<div id="divSectionInfoBaseFamille" class="HorizontalHalfWithGroupAdmin">
+    @Html.HiddenFor(m => m.ModeOperation)
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Concept</label>
+            </div>
+            <div class="FloatLeft">
+                <input id="CodeLibelleConcept" type="text" class="InputFamille readonly" readonly="readonly" value="@(Model.CodeConcept + " - " + Model.LibelleConcept)" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Code famille*</label>
+            </div>
+            <div class="FloatLeft">
+                @if (!string.IsNullOrEmpty(Model.CodeFamille))
+                {
+                    <input id="CodeFamille" type="text" class="InputFamille readonly"  maxlength="5" readonly="readonly" value="@Model.CodeFamille" />
+                }
+                else
+                {
+                    <input id="CodeFamille" type="text" class="InputFamille" maxlength="5" value="@Model.CodeFamille" />
+                }
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Description*</label>
+            </div>
+            <div class="FloatLeft">
+                <input id="LibelleFamille" type="text" class="InputFamille"  maxlength="35" value="@Model.LibelleFamille" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Longueur</label>
+            </div>
+            @if (Model.nbvaleur > 0)
+            {
+                <div class="FloatLeft">
+                    <input class="InputDDL readonly" id="Longueur" tabindex ="3" readonly="readonly" value="@Model.Longueur" />
+                </div>
+            }
+            else
+            {
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.Longueur, Model.Longueurs, "Longueur", htmlAttributes: new { @id = "Longueur", @tabindex = "3", @class = "InputDDL" }, generateTitle: false, genEmptyLine: false)
+                </div>
+            }
+        </div>
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Type</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="radio" name="rbt" id="AlphaType" value="A" checked="@(Model.TypeCode == "A" )"/>
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Alpha</label>
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <input type="radio" name="rbt" id="NumType" value="N"  checked="@(Model.TypeCode == "N" )" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Num</label>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block WidthLabelCodeVideAutorise">Code valeur vide autorisé ?</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="checkbox" id="AcceptNullValue" checked="@(Model.AcceptNullValue)" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divSectionVariables" class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <label class="TitledivSection">Variables</label>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnEnteteLibelleCourt">
+                <div class="LibelleCourtEntete FloatLeft">
+                    <label class="Block">Libellé court</label>
+                </div>
+            </div>
+            <div class="ColumnEnteteLibelleLong">
+                <div class="FloatLeft">
+                    <label class="Block">Libellé long</label>
+                </div>
+            </div>
+            <div class="ColumnEnteteTypeDecimal">
+                <div class="FloatLeft">
+                    <label class="LibelleEnteteType">Type</label>
+                </div>
+                <div class="FloatLeft">
+                    <label class="">Déc</label>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnLibelleCourt">
+                <div class="FloatLeft">
+                    <label class="Block LibelleVariable">Num 1</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleCourtNum1" type="text"  maxlength="15" class="InputLibelleCourt" value="@Model.LibelleCourtNum1"  />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <input id="LibelleLongNum1" type="text"  maxlength="35" class="InputLibelleLong" value="@Model.LibelleLongNum1" />
+                </div>
+            </div>
+            <div class="ColumnDDL">
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.TypeNum1, Model.TypesNum1, "TypeNum1", htmlAttributes: new { @id = "TypeNum1", @tabindex = "8", @class = "InputDDL" }, generateTitle: true, genEmptyLine: true)
+                </div>
+            </div>
+            <div class="ColumnDDL">
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.NbrDecimal1, Model.NbrDecimals1, "NbrDecimal1", htmlAttributes: new { @id = "NbrDecimal1", @tabindex = "9", @class = "InputDDL" }, generateTitle: false, genEmptyLine: false)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnLibelleCourt">
+                <div class="FloatLeft">
+                    <label class="Block LibelleVariable">Num 2</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleCourtNum2" type="text" maxlength="15" class="InputLibelleCourt" value="@Model.LibelleCourtNum2" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <input id="LibelleLongNum2" type="text" maxlength="35" class="InputLibelleLong" value="@Model.LibelleLongNum2" />
+                </div>
+            </div>
+            <div class="ColumnDDL">
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.TypeNum2, Model.TypesNum2, "TypeNum2", htmlAttributes: new { @id = "TypeNum2", @tabindex = "12", @class = "InputDDL" }, generateTitle: true, genEmptyLine: true)
+                </div>
+            </div>
+            <div class="ColumnDDL">
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.NbrDecimal2, Model.NbrDecimals2, "NbrDecimal2", htmlAttributes: new { @id = "NbrDecimal2", @tabindex = "13", @class = "InputDDL" }, generateTitle: false, genEmptyLine: false)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnLibelleCourt">
+                <div class="FloatLeft">
+                    <label class="Block LibelleVariable">Alpha 1</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleCourtAlpha1" type="text" class="InputLibelleCourt" value="@Model.LibelleCourtAlpha1" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <input id="LibelleLongAlpha1" type="text" class="InputLibelleLong" value="@Model.LibelleLongAlpha1" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnLibelleCourt">
+                <div class="FloatLeft">
+                    <label class="Block LibelleVariable">Alpha 2</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleCourtAlpha2" type="text" class="InputLibelleCourt" value="@Model.LibelleCourtAlpha2" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <input id="LibelleLongAlpha2" type="text" class="InputLibelleLong" value="@Model.LibelleLongAlpha2" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Restriction</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.AlbDropDownListFor(m => m.Restriction, Model.Restrictions, "Restriction", htmlAttributes: new { @id = "Restriction", @tabindex = "18", @class = "InputDDL" }, generateTitle: true, genEmptyLine: false)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ActionButtons ActionButtonRight">
+    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="v"><u>A</u>nnuler</button>
+    <button id="btnValider" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+</div>
+

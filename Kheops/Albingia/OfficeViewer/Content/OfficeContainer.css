@@ -1,0 +1,25 @@
+﻿
+.WordErrorImage
+{
+    width: 20px;
+    padding-top: 47px;
+    padding-left: 373px;
+    float: left;
+    horiz-align: right;
+}
+
+.WordErrorTitleMessage
+{
+    width: 700px;
+    padding-top: 31px;
+    padding-left: 11px;
+    margin-left: 3px;
+    float: left;
+}
+
+.WordErrorMessage
+{
+    width: 1215px;
+    text-align: center;
+    float: left;
+}

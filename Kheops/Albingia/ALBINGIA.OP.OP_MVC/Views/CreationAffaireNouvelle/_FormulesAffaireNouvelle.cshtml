@@ -1,0 +1,109 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.FormuleGarantie
+@model ALBINGIA.OP.OP_MVC.Models.FormuleGarantie.NouvelleAffaire
+@{
+    var _model = Model as NouvelleAffaire;
+    string view = VirtualPath.Split('/').Last();
+    view = view.Substring(0, view.LastIndexOf(".cshtml"));
+    int indexF = -1;
+    int indexO;
+    int indexV;
+    int indexB;
+    int indexG;
+    string nameOfTag = nameof(_model.Formules);
+}
+@Html.Hidden(view + "IsValid", ViewContext.ViewData.ModelState.IsValid)
+
+
+@Html.HiddenFor(m => m.Code)
+@Html.HiddenFor(m => m.Version)
+@Html.Hidden("ConfirmationCodeContrat", Model.Code)
+@Html.HiddenFor(m => m.Offre.CodeOffre)
+@Html.HiddenFor(m => m.Offre.Version)
+@Html.HiddenFor(m => m.Offre.Type)
+
+<ul name="list-formules">
+@foreach (var formule in _model.Formules) {
+    indexF++;
+    nameOfTag = $"{nameof(_model.Formules)}[{indexF}]";
+    <li style="list-style-image: url('/Content/Images/@(formule.IsExpanded ? "Op.png" : "Cl.png")')" id="formule_@(formule.Numero)">
+    @Html.Hidden($"{nameOfTag}.{nameof(formule.Numero)}", formule.Numero)
+    @Html.Hidden($"{nameOfTag}.{nameof(formule.Libelle)}", formule.Libelle)
+    @Html.Hidden($"{nameOfTag}.{nameof(formule.IsExpanded)}", formule.IsExpanded)
+    
+    <label name="label-formule">@Html.CheckBox("Formules[" + indexF + "].IsSelected", formule.IsSelected.GetValueOrDefault()) @formule.Libelle</label>
+    
+    @{
+        indexO = -1;
+    }
+        <ul name="list-options" class="@(formule.IsExpanded && formule.IsExpanded ? "" : "hide-it")">
+            @foreach (var option in formule.Options) {
+                indexO++;
+                string optCode = formule.Numero + "_" + option.Numero;
+                nameOfTag = $"{nameof(_model.Formules)}[{indexF}].{nameof(formule.Options)}[{indexO}]";
+
+    <li style="list-style-image: url('/Content/Images/@(option.IsExpanded ? "Op.png" : "Cl.png")')" id="option_@(optCode)">
+        @Html.Hidden($"{nameOfTag}.{nameof(option.Numero)}", option.Numero)
+        @Html.Hidden($"{nameOfTag}.{nameof(option.IsExpanded)}", option.IsExpanded)
+        <label name="label-option">
+        @Html.RadioButtonFor(m => m.Formules[indexF].SelectedOptionNumber, option.Numero, new { @class = formule.Options.Count > 1 ? "" : "hide-it" })
+        Option @option.Numero
+        </label>
+        @{
+            indexV = -1;
+        }
+        <ul name="list-volets" class="@(formule.IsExpanded && option.IsExpanded ? "" : "hide-it")">
+            @foreach (var volet in option.Volets) {
+                indexV++;
+                string vlCode = optCode + "_" + volet.UniqueId;
+                nameOfTag = $"{nameof(_model.Formules)}[{indexF}].{nameof(formule.Options)}[{indexO}].{nameof(option.Volets)}[{indexV}]";
+
+                <li class="@(volet.IsChecked ? "" : "hide-it")" style="list-style-image: url('/Content/Images/@(volet.IsCollapsed ? "Cl.png" : "Op.png")')" id="volet_@(vlCode)">
+                    @Html.Hidden($"{nameOfTag}.{nameof(volet.IsChecked)}", volet.IsChecked)
+                    @Html.Hidden($"{nameOfTag}.{nameof(volet.UniqueId)}", volet.UniqueId)
+                    @Html.Hidden($"{nameOfTag}.{nameof(volet.Libelle)}", volet.Libelle)
+                    @Html.Hidden($"{nameOfTag}.{nameof(volet.IsCollapsed)}", volet.IsCollapsed)
+                    @volet.Libelle
+
+                    @{
+                        indexB = -1;
+                    }
+                    <ul name="list-blocs" class="@(formule.IsExpanded && option.IsExpanded && !volet.IsCollapsed && volet.IsChecked ? "" : "hide-it")">
+                    @foreach (var bloc in volet.Blocs) {
+                        indexB++;
+                        string blCode = vlCode + "_" + bloc.UniqueId;
+                        nameOfTag = $"{nameof(_model.Formules)}[{indexF}].{nameof(formule.Options)}[{indexO}].{nameof(option.Volets)}[{indexV}].{nameof(volet.Blocs)}[{indexB}]";
+                        <li class="@(bloc.IsChecked && volet.IsChecked ? "" : "hide-it")" id="bloc_@(blCode)" style="list-style-image: url('/Content/Images/@(bloc.IsCollapsed ? "Cl.png" : "Op.png")')">
+                            @Html.Hidden($"{nameOfTag}.{nameof(bloc.IsChecked)}", bloc.IsChecked)
+                            @Html.Hidden($"{nameOfTag}.{nameof(bloc.IsCollapsed)}", bloc.IsCollapsed)
+                            @Html.Hidden($"{nameOfTag}.{nameof(bloc.UniqueId)}", bloc.UniqueId)
+                            @Html.Hidden($"{nameOfTag}.{nameof(bloc.Libelle)}", bloc.Libelle)
+                            @bloc.Libelle
+
+                            <ul name="list-garanties" class="@(bloc.IsChecked && !bloc.IsCollapsed ? "" : "hide-it")">
+                                @{
+                                    indexG = -1;
+                                }
+                                @foreach (var g in bloc.Garanties) {
+                                    indexG++;
+                                    nameOfTag = $"{nameof(_model.Formules)}[{indexF}].{nameof(formule.Options)}[{indexO}].{nameof(option.Volets)}[{indexV}].{nameof(volet.Blocs)}[{indexB}].{nameof(bloc.Garanties)}[{indexG}]";
+                                    <li class="@(g.IsChecked ? "" : "hide-it")" style="list-style-image: none; list-style-type: none;">
+                                        @Html.Partial("_GarantiesAffaireNouvelle", new { affaire = _model, garantie = g, namePrefix = nameOfTag })
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    </ul>
+                </li>
+                
+            }
+        </ul>
+        
+    </li>
+    }
+        </ul>
+    </li>
+}
+</ul>
+
+@Html.ValidationSummary("", false)

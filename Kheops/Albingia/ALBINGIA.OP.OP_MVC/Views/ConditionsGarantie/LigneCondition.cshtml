@@ -1,0 +1,231 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsGarantie
+@{ 
+    if (Model.LstLigneGarantie != null)
+    {
+        var i = 0;
+        foreach (var ligne in Model.LstLigneGarantie)
+        {
+    <tr name="lock" id="@(ligne.Code)" albNiveau="@(ligne.Niveau)" data-codegar="@Model.Code" data-gareat="@Model.IsAttentatGareat" albGarantie="@(ligne.ReadOnly ? "O" : "M")" albVoletBloc="@(ligne.CVolet)_@(ligne.CBloc)_">
+        <td>
+            <table id="tblConditionGar" style="width: 983px; table-layout: fixed; border-collapse: collapse;">
+                <tr class="odd" albNiveau="@(ligne.Niveau)" albGarantie="@(ligne.ReadOnly ? "O" : "M")" albVoletBloc="@(ligne.CVolet)_@(ligne.CBloc)_">
+                    <td name="edit" id="vide¤@(ligne.Code)" style="width:20px; display: none;text-align:center;" title="Annuler">
+                        <img id="cancel¤@(ligne.Code)" name="cancel" class="CursorPointer" src="@Url.Content("/Content/Images/reset.png")" /><input id="IdLigne" type="hidden" value="@(ligne.Code)" /><input type="hidden" id="MAJ¤@(ligne.Code)" name="MAJ¤@(ligne.Code)" value="@(ligne.MAJ)" /></td>
+                    <td name="lock" id="vide¤@(ligne.Code)" style="width:20px;">&nbsp;<input id="IdLigne" type="hidden" value="@(ligne.Code)" /><input type="hidden" id="MAJ¤@(ligne.Code)" name="MAJ¤@(ligne.Code)" value="@(ligne.MAJ)" /></td>
+                    <td name="edit" id="tdFranchiseValeur¤@(ligne.Code)" style="width: 100px; display: none;">
+                        @if (ligne.FranchiseLectureSeule == "N" || ligne.FranchiseUnite == "CPX")
+                        {
+                            <input type="text" id="FranchiseValeur¤@(ligne.Code)" name="FranchiseValeur" albMask="decimal" value="@((ligne.FranchiseValeur == "0" || ligne.FranchiseValeur == "0,00")@* && (ligne.FranchiseUnite == "" || ligne.FranchiseUnite == "CPX")*@ ? "" : ligne.FranchiseValeur)" class="readonly decimal" readonly="readonly" style="width: 105px;" />
+                        }
+                        else
+                        {
+                            <input type="text" id="FranchiseValeur¤@(ligne.Code)" name="FranchiseValeur¤@(ligne.Code)" albMask="decimal" value="@((ligne.FranchiseValeur == "0" || ligne.FranchiseValeur == "0,00")@* && (ligne.FranchiseUnite == "" || ligne.FranchiseUnite == "CPX")*@ ? "" : ligne.FranchiseValeur)" class="decimal" />
+                        }
+                        <input type="hidden" id="FranchiseObligatoire¤@(ligne.Code)" name="FranchiseObligatoire¤@(ligne.Code)" value="@(ligne.FranchiseObligatoire == "O" ? "O" : "N")" />
+                        <input type="hidden" id="FranchiseLectureSeule¤@(ligne.Code)" name="FranchiseLectureSeule¤@(ligne.Code)" value="@(ligne.FranchiseLectureSeule)" />
+                    </td>
+                    <td name="lock" id="divFranchiseValeur¤@(ligne.Code)" style="width: 100px;" class="numerique">
+                        <span id="spanFranchiseValeur¤@(ligne.Code)" albMask="decimal">@Html.Raw((ligne.FranchiseValeur == "0" || ligne.FranchiseValeur == "0,00")@* && (ligne.FranchiseUnite == "" || ligne.FranchiseUnite == "CPX")*@ ? "" : ligne.FranchiseValeur)</span>
+                    </td>
+                    <td name="edit" id="tdFranchiseUnite¤@(ligne.Code)" style="width: 50px; display: none;">
+                        @if (ligne.FranchiseLectureSeule == "N" || ligne.FranchiseLectureSeule == "V")
+                        {
+                            @Html.AlbDropDownListFor(m => ligne.FranchiseUnite, Model.FranchiseUnites.Select(u => { u.Selected = (u.Value == ligne.FranchiseUnite ? true : false); return u; }).ToList(), "FranchiseUnite", htmlAttributes: new { @disabled = "disabled", @class = "readonly", @id = "FranchiseUnite¤" + ligne.Code, @albCFList = "franchiseUnite", @title = "toto" }, generateTitle: true)
+                        }
+                        else
+                        { 
+                            @Html.AlbDropDownListFor(m => ligne.FranchiseUnite, Model.FranchiseUnites.Select(u => { u.Selected = (u.Value == ligne.FranchiseUnite ? true : false); return u; }).ToList(), "FranchiseUnite", htmlAttributes: new { @id = "FranchiseUnite¤" + ligne.Code, @albCFList = "franchiseUnite" }, generateTitle: true)
+                        }
+                    </td>
+                    <td name="lock" id="divFranchiseUnite¤@(ligne.Code)" style="width: 50px; text-align: center;" title="@(Model.FranchiseUnites.Find(elm => elm.Value == ligne.FranchiseUnite) != null ? Model.FranchiseUnites.Find(elm => elm.Value == ligne.FranchiseUnite).Text : ligne.FranchiseUnite)">
+                        @Html.Raw(ligne.FranchiseUnite)
+                    </td>
+                    <td name="edit" id="tdFranchiseType¤@(ligne.Code)" albcode="@(ligne.LienFRHComplexe )" style="width: 50px; display: none; text-align: center;">
+                        <div name="OffFRHComplexe¤@(ligne.Code)" class="@(ligne.LienFRHComplexe != "0¤" ? "None" : string.Empty)">
+                            @if (ligne.FranchiseLectureSeule == "N" || ligne.FranchiseLectureSeule == "V" || ligne.FranchiseUnite == "C")
+                            {
+                                @Html.AlbDropDownListFor(m => ligne.FranchiseType, Model.FranchiseTypes.Select(u => { u.Selected = (u.Value == ligne.FranchiseType ? true : false); return u; }).ToList(), "FranchiseType", htmlAttributes: new { @disabled = "disabled", @class = "readonly", @id = "FranchiseType¤" + ligne.Code, @albCFList = "franchiseBase" }, generateTitle: true)
+                            }
+                            else
+                            { 
+                                @Html.AlbDropDownListFor(m => ligne.FranchiseType, Model.FranchiseTypes.Select(u => { u.Selected = (u.Value == ligne.FranchiseType ? true : false); return u; }).ToList(), "FranchiseType", htmlAttributes: new { @id = "FranchiseType¤" + ligne.Code, @albCFList = "franchiseBase" }, generateTitle: true)
+                            }
+                        </div>
+                        <div name="OnFRHComplexe¤@(ligne.Code)" class="@(ligne.LienFRHComplexe == "0¤" ? "None" : string.Empty)">
+                            <span class="CursorPointer navig" albHref="#@(ligne.LienFRHComplexe != "0¤" ? ligne.LienFRHComplexe : string.Empty)" id="EditLienFRHComplexe¤@(ligne.Code)" name="LienComplexe" title="@(ligne.LibFRHComplexe)">
+                                @(ligne.LienFRHComplexe == "0¤" ? string.Empty : ligne.LienFRHComplexe.Split('¤')[1])
+                            </span>
+                        </div>
+                    </td>
+                    <td name="lock" id="tdLockFranchiseType¤@(ligne.Code)" style="width: 50px;">
+                        <div id="divFranchiseType¤@(ligne.Code)" name="OffFRHComplexe¤@(ligne.Code)" class="@(ligne.LienFRHComplexe != "0¤" ? "None" : string.Empty)" style="text-align: center;" title="@(Model.FranchiseTypes.Find(elm => elm.Value == ligne.FranchiseType) != null ? Model.FranchiseTypes.Find(elm => elm.Value == ligne.FranchiseType).Text : ligne.FranchiseType)">
+                            @Html.Raw(ligne.FranchiseType)
+                        </div>
+                        <div name="OnFRHComplexe¤@(ligne.Code)" class="@(ligne.LienFRHComplexe == "0¤" ? "None" : string.Empty)" style="text-align: center;">
+                            <input type="hidden" id="oldLienFRHComplexe¤@(ligne.Code)" value="@(ligne.LienFRHComplexe)" />
+                            <input type="hidden" id="LienFRHComplexe¤@(ligne.Code)" value="@(ligne.LienFRHComplexe)" />
+                            <span class="CursorPointer navig" albHref="#@(ligne.LienFRHComplexe != "0¤" ? ligne.LienFRHComplexe : string.Empty)" id="LockLienFRHComplexe¤@(ligne.Code)" name="LienComplexe" title="@(ligne.LibFRHComplexe)">
+                                @(ligne.LienFRHComplexe == "0¤" ? string.Empty : ligne.LienFRHComplexe.Split('¤')[1])
+                            </span>
+                        </div>
+                    </td>
+                    <td name="edit" id="tdLCIValeur¤@(ligne.Code)" style="width: 100px; display: none;">
+                        @if (ligne.LCILectureSeule == "N" || ligne.LCIUnite == "CPX")
+                        {
+                            <input type="text" id="LCIValeur¤@(ligne.Code)" name="LCIValeur" albMask="decimal" value="@((ligne.LCIValeur == "0" || ligne.LCIValeur == "0,00")@* && (ligne.LCIUnite == "" || ligne.LCIUnite == "CPX")*@ ? "" : ligne.LCIValeur)" class="readonly decimal" readonly="readonly" style="width: 105px;" />
+                        }
+                        else
+                        {
+                            <input type="text" id="LCIValeur¤@(ligne.Code)" name="LCIValeur¤@(ligne.Code)" albMask="decimal" value="@((ligne.LCIValeur == "0" || ligne.LCIValeur == "0,00")@* && (ligne.LCIUnite == "" || ligne.LCIUnite == "CPX")*@ ? "" : ligne.LCIValeur)" class="decimal" style="width: 105px;" />
+                        }
+                        <input type="hidden" id="LCIObligatoire¤@(ligne.Code)" name="LCIObligatoire¤@(ligne.Code)" value="@(ligne.LCIObligatoire == "O" ? "O" : "N")" />
+                        <input type="hidden" id="LCILectureSeule¤@(ligne.Code)" name="LCILectureSeule¤@(ligne.Code)" value="@(ligne.LCILectureSeule)" />
+                    </td>
+                    <td name="lock" id="divLCIValeur¤@(ligne.Code)" style="width: 100px;" class="numerique">
+                        <span id="spanLCIValeur¤@(ligne.Code)" albMask="decimal">@Html.Raw((ligne.LCIValeur == "0" || ligne.LCIValeur == "0,00")@* && (ligne.LCIUnite == "" || ligne.LCIUnite == "CPX")*@ ? "" : ligne.LCIValeur)</span>
+                    </td>
+                    <td name="edit" id="tdLCIUnite¤@(ligne.Code)" class="unites" style="width: 50px; display: none;">
+                        @if (ligne.LCILectureSeule == "N" || ligne.LCILectureSeule == "V")
+                        {
+                            @Html.AlbDropDownListFor(m => ligne.LCIUnite, Model.LCIUnites.Select(u => { u.Selected = (u.Value == ligne.LCIUnite ? true : false); return u; }).ToList(), "LCIUnite", htmlAttributes: new { @disabled = "disabled", @class = "readonly", @id = "LCIUnite¤" + ligne.Code, @albCFList = "LCIUnite" }, generateTitle: true)
+                        }
+                        else
+                        { 
+                            @Html.AlbDropDownListFor(m => ligne.LCIUnite, Model.LCIUnites.Select(u => { u.Selected = (u.Value == ligne.LCIUnite ? true : false); return u; }).ToList(), "LCIUnite", htmlAttributes: new { @id = "LCIUnite¤" + ligne.Code, @albCFList = "LCIUnite" }, generateTitle: true)
+                        }
+                    </td>
+                    <td name="lock" id="divLCIUnite¤@(ligne.Code)" style="width: 50px; text-align: center;" title="@(Model.LCIUnites.Find(elm => elm.Value == ligne.LCIUnite) != null ? Model.LCIUnites.Find(elm => elm.Value == ligne.LCIUnite).Text : ligne.LCIUnite)">
+                        @Html.Raw(ligne.LCIUnite)
+                    </td>
+
+                    <td name="edit" id="tdLCIType¤@(ligne.Code)"  albcode="@(ligne.LienLCIComplexe )" style="width: 50px; display: none;">
+                        <div name="OffLCIComplexe¤@(ligne.Code)"    class="@(ligne.LienLCIComplexe != "0¤" ? "None" : string.Empty)">
+                            @if (ligne.LCILectureSeule == "N" || ligne.LCILectureSeule == "V" || ligne.LCIUnite == "C")
+                            {
+                                @Html.AlbDropDownListFor(m => ligne.LCIType, Model.LCITypes.Select(u => { u.Selected = (u.Value == ligne.LCIType ? true : false); return u; }).ToList(), "LCIType", htmlAttributes: new { @disabled = "disabled", @class = "readonly", @id = "LCIType¤" + ligne.Code, @albCFList = "franchiseLCI" }, generateTitle: true)
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => ligne.LCIType, Model.LCITypes.Select(u => { u.Selected = (u.Value == ligne.LCIType ? true : false); return u; }).ToList(), "LCIType", htmlAttributes: new { @id = "LCIType¤" + ligne.Code, @albCFList = "franchiseLCI" }, generateTitle: true)
+                            }
+                        </div>
+
+                        <div name="OnLCIComplexe¤@(ligne.Code)" class="@(ligne.LienLCIComplexe == "0¤" ? "None" : string.Empty)" style="text-align: center;">
+                            <span class="CursorPointer navig" albhref="#@(ligne.LienLCIComplexe != "0¤" ? ligne.LienLCIComplexe : string.Empty)" id="EditLienLCIComplexe¤@(ligne.Code)" name="LienComplexe" title="@(ligne.LibLCIComplexe)">
+                                @(ligne.LienLCIComplexe == "0¤" ? string.Empty : ligne.LienLCIComplexe.Split('¤')[1])
+                            </span>
+                        </div>
+                    </td>
+                    <td name="lock" id="tdLockLCIType¤@(ligne.Code)" style="width: 50px;">
+                        <div id="divLCIType¤@(ligne.Code)" name="OffLCIComplexe¤@(ligne.Code)" class="@(ligne.LienLCIComplexe != "0¤" ? "None" : string.Empty)" style=" text-align: center;" title="@(Model.LCITypes.Find(elm => elm.Value == ligne.LCIType) != null ? Model.LCITypes.Find(elm => elm.Value == ligne.LCIType).Text : ligne.LCIType)">
+                            @Html.Raw(ligne.LCIType)
+                        </div>
+                        <div name="OnLCIComplexe¤@(ligne.Code)" class="@(ligne.LienLCIComplexe == "0¤" ? "None" : string.Empty)" style="text-align: center;">
+                            <input type="hidden" id="oldLienLCIComplexe¤@(ligne.Code)" value="@(ligne.LienLCIComplexe)" />
+                            <input type="hidden" id="LienLCIComplexe¤@(ligne.Code)" value="@(ligne.LienLCIComplexe)" />
+                            <span class="CursorPointer navig" albhref="#@(ligne.LienLCIComplexe != "0¤" ? ligne.LienLCIComplexe : string.Empty)" id="LockLienLCIComplexe¤@(ligne.Code)" name="LienComplexe" title="@(ligne.LibLCIComplexe)">
+                                @(ligne.LienLCIComplexe == "0¤" ? string.Empty : ligne.LienLCIComplexe.Split('¤')[1])
+                            </span>
+                        </div>
+                    </td>
+                    <td name="edit" id="tdAssietteValeur¤@(ligne.Code)" style="width: 100px; display: none;">
+                        @if (ligne.AssietteLectureSeule == "N" || ligne.NumeroTarif != "1")
+                        {
+                            <input type="text" id="AssietteValeur¤@(ligne.Code)" name="AssietteValeur" albMask="@(ligne.AssietteUnite == "%" ? "pourcentdecimal" : "decimal")" value="@(ligne.AssietteValeur == "0" && ligne.AssietteUnite == "" ? "" : ligne.AssietteValeur)" class="readonly decimal" readonly="readonly" style="width: 105px;" />
+                        }
+                        else
+                        {
+                            <input type="text" id="AssietteValeur¤@(ligne.Code)" name="AssietteValeur¤@(ligne.Code)" albMask="@(ligne.AssietteUnite == "%" ? "pourcentdecimal" : "decimal")" value="@(ligne.AssietteValeur == "0" && ligne.AssietteUnite == "" ? "" : ligne.AssietteValeur)" class="decimal" style="width: 105px;" />
+                        }
+                        <input type="hidden" id="AssietteObligatoire¤@(ligne.Code)" name="AssietteObligatoire¤@(ligne.Code)" value="@(ligne.AssietteObligatoire == "O" ? "O" : "N")" />
+                        <input type="hidden" id="AssietteLectureSeule¤@(ligne.Code)" name="AssietteLectureSeule¤@(ligne.Code)" value="@(ligne.AssietteLectureSeule)" />
+                    </td>
+                    <td name="lock" id="divAssietteValeur¤@(ligne.Code)" style="width: 100px;" class="numerique" title="@ligne.AssietteValeur">
+                        <span id="spanAssietteValeur¤@(ligne.Code)" albMask="@(ligne.AssietteUnite == "%" ? "pourcentdecimal" : "decimal")">@Html.Raw(ligne.AssietteValeur == "0" && ligne.AssietteUnite == "" ? "" : ligne.AssietteValeur)</span>
+                    </td>
+                    <td name="edit" id="tdAssietteUnite¤@(ligne.Code)" style="width: 50px; display: none;">
+                        @if (ligne.AssietteLectureSeule == "N" || ligne.AssietteLectureSeule == "V" || ligne.NumeroTarif != "1")
+                        {
+                            @Html.AlbDropDownListFor(m => ligne.AssietteUnite, Model.AssietteUnites.Select(u => { u.Selected = (u.Value == ligne.AssietteUnite ? true : false); return u; }).ToList(), "AssietteUnite", htmlAttributes: new { @disabled = "disabled", @class = "readonly", @id = "AssietteUnite¤" + ligne.Code, @albCFList = "assietteUnite" }, generateTitle: true)
+                        }
+                        else
+                        { 
+                            @Html.AlbDropDownListFor(m => ligne.AssietteUnite, Model.AssietteUnites.Select(u => { u.Selected = (u.Value == ligne.AssietteUnite ? true : false); return u; }).ToList(), "AssietteUnite", htmlAttributes: new { @id = "AssietteUnite¤" + ligne.Code, @albCFList = "assietteUnite" }, generateTitle: true)
+                        }
+                        <input type="hidden" id="AssietteNumeroTarif¤@(ligne.Code)" name="AssietteNumeroTarif¤@(ligne.Code)" value="@(ligne.NumeroTarif)" />
+                    </td>
+                    <td name="lock" id="divAssietteUnite¤@(ligne.Code)" style="width: 50px; text-align: center;" title="@(Model.AssietteUnites.Find(elm => elm.Value == ligne.AssietteUnite) != null ? Model.AssietteUnites.Find(elm => elm.Value == ligne.AssietteUnite).Text : ligne.AssietteUnite)">
+                        @Html.Raw(ligne.AssietteUnite)
+                    </td>
+                    <td name="edit" id="tdAssietteType¤@(ligne.Code)" style="width: 50px; display: none;">@*ligne.AssietteLectureSeule == "N" || *@
+                        @if (ligne.AssietteLectureSeule == "V" || ligne.NumeroTarif != "1")
+                        {
+                            @Html.AlbDropDownListFor(m => ligne.AssietteType, Model.AssietteTypes.Select(u => { u.Selected = (u.Value == ligne.AssietteType ? true : false); return u; }).ToList(), "AssietteType", htmlAttributes: new { @disabled = "disabled", @class = "readonly", @id = "AssietteType¤" + ligne.Code, @albCFList = "assietteBase" }, generateTitle: true)
+                        }
+                        else
+                        { 
+                            @Html.AlbDropDownListFor(m => ligne.AssietteType, Model.AssietteTypes.Select(u => { u.Selected = (u.Value == ligne.AssietteType ? true : false); return u; }).ToList(), "AssietteType", htmlAttributes: new { @id = "AssietteType¤" + ligne.Code, @albCFList = "assietteBase" }, generateTitle: true)
+                        }
+                    </td>
+                    <td name="lock" id="divAssietteType¤@(ligne.Code)" style="width: 50px; text-align: center;" title="@(Model.AssietteTypes.Find(elm => elm.Value == ligne.AssietteType) != null ? Model.AssietteTypes.Find(elm => elm.Value == ligne.AssietteType).Text : ligne.AssietteType)">
+                        @Html.Raw(ligne.AssietteType)
+                    </td>
+                    <td name="edit" id="tdTauxForfaitHTValeur¤@(ligne.Code)" style="width: 100px; display: none;">
+                        @if (ligne.TauxForfaitHTLectureSeule == "N" || ligne.TauxPrimeAlim)
+                        {
+                            <input type="text" id="TauxForfaitHTValeur¤@(ligne.Code)" name="TauxForfaitHTValeur" albMask="@(ligne.TauxForfaitHTUnite == "%" ? "pourcentdecimal" : ligne.TauxForfaitHTUnite == "%0" ? "pourmilledecimal" : "decimal")" value="@(ligne.TauxForfaitHTValeur == "0" && ligne.TauxForfaitHTUnite == "" ? "" : ligne.TauxForfaitHTValeur)" class="readonly decimal" readonly="readonly" style="width: 105px;" />
+                        }
+                        else
+                        { 
+                            <input type="text" id="TauxForfaitHTValeur¤@(ligne.Code)" name="TauxForfaitHTValeur¤@(ligne.Code)" albMask="@(ligne.TauxForfaitHTUnite == "%" ? "pourcentdecimal" : ligne.TauxForfaitHTUnite == "%0" ? "pourmilledecimal" : "decimal")" value="@(ligne.TauxForfaitHTValeur == "0" && ligne.TauxForfaitHTUnite == "" ? "" : ligne.TauxForfaitHTValeur)" class="decimal" style="width: 105px;" />
+                        }
+                        <input type="hidden" id="TauxForfaitHTObligatoire¤@(ligne.Code)" name="TauxForfaitHTObligatoire¤@(ligne.Code)" value="@(ligne.TauxForfaitHTObligatoire == "O" ? "O" : "N")" />
+                        <input type="hidden" id="TauxForfaitHTLectureSeule¤@(ligne.Code)" name="TauxForfaitHTLectureSeule¤@(ligne.Code)" value="@(ligne.TauxForfaitHTLectureSeule)" />
+                    </td>
+                    <td name="lock" id="divTauxForfaitHTValeur¤@(ligne.Code)" style="width: 100px;" class="numerique">
+                        <span id="spanTauxForfaitHTValeur¤@(ligne.Code)" albMask="@(ligne.TauxForfaitHTUnite == "%" ? "pourcentdecimal" : ligne.TauxForfaitHTUnite == "%0" ? "pourmilledecimal" : "decimal")">@Html.Raw(ligne.TauxForfaitHTValeur == "0" && ligne.TauxForfaitHTUnite == "" ? "" : ligne.TauxForfaitHTValeur)</span>
+                    </td>
+                    <td name="edit" id="tdTauxForfaitHTUnite¤@(ligne.Code)" style="width: 50px; display: none;">
+                        @if (ligne.TauxForfaitHTLectureSeule == "N" || ligne.TauxForfaitHTLectureSeule == "V" || ligne.TauxPrimeAlim)
+                        {
+                            @Html.AlbDropDownListFor(m => ligne.TauxForfaitHTUnite, Model.TauxForfaitHTUnites.Select(u => { u.Selected = (u.Value == ligne.TauxForfaitHTUnite ? true : false); return u; }).ToList(), "TauxForfaitHTUnite", htmlAttributes: new { disabled = "disabled", @class = "readonly", id = "TauxForfaitHTUnite¤" + ligne.Code, @albCFList = "primeUnite" }, generateTitle: true)
+                        }
+                        else
+                        { 
+                            @Html.AlbDropDownListFor(m => ligne.TauxForfaitHTUnite, Model.TauxForfaitHTUnites.Select(u => { u.Selected = (u.Value == ligne.TauxForfaitHTUnite ? true : false); return u; }).ToList(), "TauxForfaitHTUnite", htmlAttributes: new { id = "TauxForfaitHTUnite¤" + ligne.Code, @albCFList = "primeUnite" }, generateTitle: true)
+                        }
+                    </td>
+
+                    <td name="lock" id="divTauxForfaitHTUnite¤@(ligne.Code)" style="width: 50px; text-align: center;" title="@(Model.TauxForfaitHTUnites.Find(elm => elm.Value == ligne.TauxForfaitHTUnite) != null ? Model.TauxForfaitHTUnites.Find(elm => elm.Value == ligne.TauxForfaitHTUnite).Text : ligne.TauxForfaitHTUnite)">
+                        @Html.Raw(ligne.TauxForfaitHTUnite)
+                    </td>
+                    <td name="edit" id="tdTauxForfaitHTMinimum¤@(ligne.Code)" style="width: 50px; display: none;">
+                        @if ((ligne.TauxForfaitHTLectureSeule == "N" || ligne.TauxForfaitHTUnite == "D") && !ligne.TauxPrimeAlim)
+                        {
+                            <input type="text" id="TauxForfaitHTMinimum¤@(ligne.Code)" name="TauxForfaitHTMinimum" value="@(ligne.TauxForfaitHTMinimum == "0" && ligne.TauxForfaitHTUnite == "" ? "" : ligne.TauxForfaitHTMinimum)" class="readonly decimal" readonly="readonly" style="width: 51px;" />
+                        }
+                        else
+                        { 
+                            <input type="text" id="TauxForfaitHTMinimum¤@(ligne.Code)" name="TauxForfaitHTMinimum¤@(ligne.Code)" value="@(ligne.TauxForfaitHTMinimum == "0" && ligne.TauxForfaitHTUnite == "" ? "" : ligne.TauxForfaitHTMinimum)" class="decimal" style="width: 51px;" />
+                        }
+                    </td>
+                    <td name="lock" id="divTauxForfaitHTMinimum¤@(ligne.Code)" style="width: 50px; text-overflow:ellipsis; overflow:hidden;white-space:nowrap;text-align:right;">
+                        <span albMask="decimal" name="spanTauxForfaitHTMinimum¤@(ligne.Code)" 
+                            title="@(ligne.TauxForfaitHTMinimum == "0" && ligne.TauxForfaitHTUnite == "" ? string.Empty : ligne.TauxForfaitHTMinimum)">@Html.Raw(ligne.TauxForfaitHTMinimum == "0" && ligne.TauxForfaitHTUnite == "" ? string.Empty : ligne.TauxForfaitHTMinimum)</span>
+                    </td>
+                    <td id="tdIndex¤@(ligne.Code)" name="TDpoubelle" style="width:20px;text-align: center">
+                        <input name="index" type="hidden" id="Index¤@(ligne.Code)" value="@(ligne.IndiceLigne)" />
+                        @if (i > 0 && !Model.ReadOnly)
+                        {
+                            <img id="pbl¤@(ligne.Code)" name="poubelle" alt="Supprimer" title="Supprimer" src="@(Url.Content("~/Content/Images/poubelle1616.png"))" width="16" height="16" class="CursorPointer" />
+                        }
+                        <img id="svgde¤@(ligne.Code)" name="svgde" alt="Sauvegarde" title="Sauvegarder" src="@(Url.Content("~/Content/Images/Save_16.png"))" width="16" height="16" class="CursorPointer" style="display:none;" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+                        i++;
+        }
+    }
+}

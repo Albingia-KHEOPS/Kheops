@@ -1,0 +1,56 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestUtilisateursPage
+@Html.Hidden("IsReadOnlyBody", Model.IsReadOnly, new { albcontext = Model.Albcontext })
+
+<div class="FullWidth" id="gestionUtlisateurScreen">
+
+    <div class="CommonForm FloatLeft">
+        <div id="contenu">
+
+            <div class="HeightRow">
+                <div class="CommonForm TotalWidth" albcontext="@Model.Albcontext" id="cForm">
+
+                    <div id="divBodyPage" class="@(Model.Albcontext == "Generale" ? "GroupFull GroupWithBorder TotalWidth GroupNoTitle" : "GroupFull GroupWithBorder DivWidth GroupNoTitle")" albcontext="@Model.Albcontext">
+                        <div class="FloatLeft PaddingLeft">
+                            @Model.PageTitle
+                        </div>
+                        <div class="DvBtnReinit">
+                            <button type="button" id="btnResetYutilis" albshortcut="true" data-accesskey="y" title="Réinitialiser le cache YUTILIS">Réinitialiser le cache <u>Y</u>utilis</button>
+                            <button type="button" id="btnResetUsrLogin" albshortcut="true" data-accesskey="l" title="Réinitialiser le cache des menus">Réinitia<u>l</u>iser le cache des menus</button>
+                            <button type="button" id="btnResetUsrRight" albshortcut="true" data-accesskey="r" title="Réinitialiser le cache de gestion des utilisateurs"><u>R</u>éinitialiser le cache de gestion d'utilisateur</button>
+                        </div>
+                        <div class="@(Model.Albcontext == "Generale" ? "HorizontalFullWithGroup ParamWidth" : "HorizontalFullWithGroup DivParamWidth")">
+
+                            @if (Model.RechercheActive)
+                            {
+                                @Html.Partial("RechercheUtlisateurWidget", Model)
+                            }
+
+                            @Html.Partial("GestUtlisateurList", Model)
+
+                        </div>
+                        <div class="fullScreenButtons">
+                            <div id="FullScreen" class="FloatLeft FullScreenContainer">
+                                <button id="btnFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Plein écran">
+                                    <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+                                </button>
+                            </div>
+
+                            <div id="CloseFullScreen" class="FloatLeft FullScreenContainer None">
+                                <button id="fermerFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Fermer le plein écran">
+                                    <img src="@Url.Content("/Content/Images/window_nofullscreen.png")" alt="Fermer" />
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div id="blockRetour" class="@(Model.Albcontext == "Generale" ? "GroupFull GroupWithBorder ButtonsHeight TotalWidth None" : "GroupFull GroupWithBorder ButtonsHeight DivWidth None")" albcontext="@Model.Albcontext" hidden>
+                        <div class="cancelBtn padB" albcontext="@Model.Albcontext">
+                            <input type="button" id="btnCancel" value="Retour" tabindex="29" />
+                        </div>
+                    </div>
+                </div>
+            </div>@*fin contenu*@
+        </div>
+    </div>
+</div>

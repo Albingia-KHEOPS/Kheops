@@ -1,0 +1,790 @@
+﻿.ContratActive {
+    background-image: url(/Content/Images/Contrat/contrat_actif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+.ContratInactive {
+    background-image: url(/Content/Images/Contrat/contrat_inactif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+.ContratBlack {
+    background-image: url(/Content/Images/Contrat/contrat_black.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.RsqObjActive {
+    background-image: url(/Content/Images/Contrat/rsqobj_actif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+.RsqObjInactive {
+    background-image: url(/Content/Images/Contrat/rsqobj_inactif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+.RsqObjBlack {
+    background-image: url(/Content/Images/Contrat/rsqobj_black.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.FormGaranActive {
+    background-image: url(/Content/Images/Contrat/formgaran_actif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+.FormGaranInactive {
+    background-image: url(/Content/Images/Contrat/formgaran_inactif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+.FormGaranBlack {
+    background-image: url(/Content/Images/Contrat/formgaran_black.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.OptTarActive {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url(/Content/Images/Contrat/opttar_actif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+.OptTarInactive {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url(/Content/Images/Contrat/opttar_inactif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+.OptTarBlack {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url(/Content/Images/Contrat/opttar_black.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.SaisieActive {
+    background-image: url(/Content/Images/Saisie/saisieactif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.SaisieInactive {
+    background-image: url(/Content/Images/Saisie/saisieinactif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.ConfirmationActive {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url(/Content/Images/Saisie/confirmactif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.ConfirmationInactive {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url(/Content/Images/Saisie/confirminactif.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.NoSaveInfo {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-image: url("/Content/Images/backSaveEmpty.png");
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 160px;
+}
+
+
+
+.SaveInfo {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-image: url(/Content/Images/enregistrer_off.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 160px;
+}
+
+    .SaveInfo:hover {
+        background-image: url(/Content/Images/enregistrer_on.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 160px;
+    }
+/*.SearchDetails {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+   background-image: url("/Content/Images/Search_on.png");
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 83px;
+}*/
+
+
+.InfoGen {
+    background-image: url(/Content/Images/InfoGen/ig_off.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoGen:hover {
+        background-image: url(/Content/Images/InfoGen/ig_on.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoGenSelected {
+    background-image: url(/Content/Images/InfoGen/ig_off_select.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoGenSelected:hover {
+        background-image: url(/Content/Images/InfoGen/ig_on_select.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoGenUnactive {
+    background-image: url(/Content/Images/InfoGen/ig_desactive.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.InfoRsqGar {
+    background-image: url(/Content/Images/InfoRsqGar/rg_off.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoRsqGar:hover {
+        background-image: url(/Content/Images/InfoRsqGar/rg_on.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoRsqGarSelected {
+    background-image: url(/Content/Images/InfoRsqGar/rg_off_select.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoRsqGarSelected:hover {
+        background-image: url(/Content/Images/InfoRsqGar/rg_on_select.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoRsqGarUnactive {
+    background-image: url(/Content/Images/InfoRsqGar/rg_desactive.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.InfoEngage {
+    background-image: url(/Content/Images/InfoEngage/eng_off.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoEngage:hover {
+        background-image: url(/Content/Images/InfoEngage/eng_on.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoEngageSelected {
+    background-image: url(/Content/Images/InfoEngage/eng_off_select.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoEngageSelected:hover {
+        background-image: url(/Content/Images/InfoEngage/eng_on_select.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoEngageUnactive {
+    background-image: url(/Content/Images/InfoEngage/eng_desactive.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.InfoCotis {
+    background-image: url(/Content/Images/InfoCotis/cot_off.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoCotis:hover {
+        background-image: url(/Content/Images/InfoCotis/cot_on.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoCotisSelected {
+    background-image: url(/Content/Images/InfoCotis/cot_off_select.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoCotisSelected:hover {
+        background-image: url(/Content/Images/InfoCotis/cot_on_select.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoCotisUnactive {
+    background-image: url(/Content/Images/InfoCotis/cot_desactive.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.InfoFin {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url(/Content/Images/InfoFin/fin_off.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoFin:hover {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background-image: url(/Content/Images/InfoFin/fin_on.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoFinSelected {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url(/Content/Images/InfoFin/fin_off_select.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoFinSelected:hover {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background-image: url(/Content/Images/InfoFin/fin_on_select.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoFinUnactive {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url(/Content/Images/InfoFin/fin_desactive.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.InfoRegule {
+    background-image: url(/Content/Images/InfoRegule/regule_off.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoRegule:hover {
+        background-image: url(/Content/Images/InfoRegule/regule_on.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoReguleSelected {
+    background-image: url(/Content/Images/InfoRegule/regule_off_select.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+    cursor: pointer;
+}
+
+    .InfoReguleSelected:hover {
+        background-image: url(/Content/Images/InfoRegule/regule_on_select.png);
+        background-repeat: no-repeat;
+        height: 32px;
+        width: 144px;
+        float: left;
+        cursor: pointer;
+    }
+
+.InfoReguleUnactive {
+    background-image: url(/Content/Images/InfoRegule/regule_desactive.png);
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 144px;
+    float: left;
+}
+
+.GroupMenu {
+    /*height: 150px;*/
+    width: 1212px;
+    padding-left: 2px;
+}
+
+#btnSave {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.PageTitle {
+    background-image: url(/Content/Images/backgroundBlack.png);
+    background-repeat: repeat-x;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    height: 32px;
+    padding-top: 7px;
+    width: 323px;
+    padding-left: 5px;
+    float: left;
+    /*white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;*/
+}
+
+.PageMenu {
+    background-image: url(/Content/Images/backgroundBlack.png);
+    background-repeat: repeat-x;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    height: 32px;
+    padding-top: 7px;
+    width: 160px;
+    padding-left: 5px;
+    float: left;
+}
+
+.Navig {
+    border-radius: 10px 10px 10px 10px;
+    width: 130px; /*height: 30px;*/
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 1px White;
+    margin-left: 5px;
+    background-color: White;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 12px;
+    color: #CC3333;
+}
+
+.NavigSelected {
+    border-radius: 10px 10px 10px 10px;
+    width: 130px; /*height: 30px;*/
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 1px White;
+    margin-left: 5px;
+    background-color: #FF6666; /*background-color: #FF717B;*/
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 12px;
+    color: Black;
+}
+
+/*.NavigSelected :hover { background-color:#fffaf0}*/
+
+.NavigUnderline {
+    border-radius: 10px 10px 10px 10px;
+    width: 130px; /*height: 30px;*/
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 1px White;
+    margin-left: 5px;
+    background-color: #FF6666; /*background-color: #FF717B;*/
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 12px;
+    color: White;
+    text-decoration: underline;
+}
+
+.NavigSelected A:link {
+    text-decoration: none;
+    color: Black;
+}
+
+.NavigSelected A:visited {
+    text-decoration: none;
+    color: Black;
+}
+
+.NavigSelected A:active {
+    text-decoration: none;
+    color: Black;
+}
+
+.NavigSelected A:hover {
+    text-decoration: none;
+    color: White;
+}
+
+
+
+.LigneNavig {
+    text-align: right;
+    width: 820px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+}
+
+.TdNavig {
+    float: right;
+    text-align: center;
+}
+
+.divNavig {
+    float: right;
+}
+
+.BandeauNavig {
+    background-color: Red;
+}
+
+.Bandeau {
+    border: solid 0px;
+    float: right;
+}
+
+.FieldBandeau {
+    float: left;
+    margin-right: 10px;
+}
+
+.WidthTd {
+    width: 125px !important;
+}
+
+.BiggerWidthTd {
+    width: 150px !important;
+}
+
+.SmallerWidthTdElliplis {
+    width: 90px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.WidthTdElliplis {
+    width: 150px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.SmallerWidthTd {
+    width: 90px !important;
+}
+
+.TinyWidthTd {
+    width: 50px !important;
+}
+
+.OneNbrTd {
+    width: 20px !important;
+}
+
+.FieldBandeauBold {
+    float: left;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.FieldBandeauBoldEntete {
+    float: left;
+    margin-right: 1px;
+    font-weight: bold;
+}
+
+.FieldBandeauBoldEnteteNoMargin {
+    float: left;
+    margin-right: 1px;
+    font-weight: bold;
+}
+
+.FieldBandeauItalic {
+    float: left;
+    margin-right: 6px;
+    font-style: italic;
+    text-align: right;
+}
+
+.Field {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 20px;
+}
+
+.FieldItalic {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 6px;
+    font-style: italic;
+    width: 117px;
+}
+
+.FieldDiv {
+    margin-top: 3px;
+    margin-bottom: 3px; /*float: right;*/
+}
+
+.FieldTableLegend {
+    border-spacing: 10px;
+}
+
+.FieldTableValeur {
+    margin-right: 10px;
+}
+
+.laTable {
+    font-size: 12px;
+}
+
+.mainDivBandeau {
+    border: 1px #00F solid;
+    border-radius: 10px;
+    min-width: 560px;
+    background: #fff;
+    -pie-background: linear-gradient(#EEFF99, #66EE33);
+    background-attachment: fixed !important;
+    background-image: -moz-linear-gradient(top, #fff, #ddd);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #fff),color-stop(1, #ddd));
+    background-attachment: fixed !important;
+    zoom: 1;
+    height: 1%; /*For IE7*/
+    float: left;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 12px;
+    padding-left: 12px;
+    border: 1px #eee outset;
+    background-color: #eee;
+    font-size: 12px;
+}
+
+.GroupNavigation {
+    background-attachment: fixed !important;
+    background-clip: border-box;
+    background-color: #CC3333; /*background-image: -moz-linear-gradient(center top , #FFFFFF, #E80000);*/
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    height: 1%;
+    padding-bottom: 15px;
+    width: 955px;
+}
+
+.GroupWithNavigation {
+    border-radius: 10px 10px 10px 10px;
+    background-color: #CC3333;
+    border: 1px outset #EEEEEE;
+    float: left;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+}
+
+.MarginAdjust {
+    margin-top: 0px !important;
+    width: 100px !important;
+}
+
+.QuickSearchByCode {
+    width: 305px;
+    height: 30px;
+}
+
+.nGradientRechercheTransverse {
+    margin-right: 2px;
+    /*border: 1px #F5A9BC outset;*/
+    border: 1px black solid;
+    margin-top: 2px;
+    padding-top: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-radius: 5px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#DBF0FF');
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#F5A9BC');*/
+    background-image: -webkit-gradient(linear,left bottom,right bottom,color-stop(0, #fff),color-stop(1, #DBF0FF));
+    /*background-image: -webkit-gradient(linear,left bottom,right bottom,color-stop(0, #fff),color-stop(1, #F5A9BC));*/
+    background-image: -moz-linear-gradient(top, #fff, #DBF0FF);
+    /*background-image: -moz-linear-gradient(top, #fff, #F5A9BC);*/
+    /*background-attachment: fixed !important;*/
+    -pie-background: linear-gradient(#EEFF99, #66EE33);
+    background-color: #F5A9BC;
+}
+
+#divDataRapide {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 12;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+}
+
+#divDataRechercheRapide {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 23;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+}
+
+#TinyTd td {
+    width: 12% !important;
+}

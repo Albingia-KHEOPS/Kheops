@@ -1,0 +1,230 @@
+﻿#divAjouterBloc {
+    clear: both;
+    padding-bottom: 10px;
+}
+
+.tablePersoHead {
+    border: 1px solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+   /* width: 133px;*/
+}
+
+.divHeight {
+    overflow-y: auto;
+    height: 470px;
+}
+.GroupBackOffice {
+    width: 1200px !important;
+}
+    .GroupHeightBlocs {
+    height: 600px;
+    max-height: 600px;
+}
+
+.GroupHeightBlocsFixe {
+    height: 600px;
+}
+
+.GroupHeightBlocsInterieur {
+    max-height: 560px;
+}
+
+#divBodyBlocs {
+    display: none;
+}
+
+#divInfoBloc {
+    display: none;
+}
+
+.divRechercheCode {
+    width: 105px;
+    float: left;
+}
+
+.divRecherche {
+    padding-top: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20px;
+    float: left;
+}
+
+.divRechercheDescr {
+    width: 255px;
+    float: left;
+}
+
+.FieldBlocsLabel {
+    width: 150px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.FieldBlocsCode input {
+    width: 100px;
+}
+
+.FieldBlocsDescr input {
+    width: 240px;
+}
+
+.FieldInfoLabel {
+    width: 100px;
+    float: left;
+}
+
+.linkBloc {
+    cursor: pointer;
+    width: 209px;
+    /*text-decoration: underline;*/
+}
+
+.modifBloc {
+    cursor: pointer;
+}
+
+.supprBloc {
+    cursor: pointer;
+    width: 82px ;
+}
+
+.col1 {
+    width: 112px;
+}
+
+.col2 {
+    width: 117px;
+}
+
+.col3 {
+    width: 117px;
+}
+
+.col4 {
+    width: 402px;
+}
+
+.col4Head {
+    width: 35px;
+}
+
+.PaddingLeft10 {
+    padding-left: 10px;
+}
+
+.widthSmallTable {
+    width: 280px;
+}
+
+.divHeightSmallTable {
+    height: 375px;
+}
+
+.drlListeBlocs {
+    width: 240px;
+}
+
+#divBlocsIncompatiblesLigneVide, #divBlocsAssociesLigneVide {
+    display: none;
+}
+
+.colDescBloc {
+    width: 178px;
+    max-width: 178px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.colEdition {
+    display: none;
+}
+
+.colOrder {
+    display: none;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.labelBloc {
+    width: 50px;
+}
+
+.hBranche {
+    width: 100px;
+}
+
+.hCible {
+    width: 100px;
+}
+
+.hNm1 {
+    width: 110px;
+}
+
+.hNm2 {
+    width: 115px;
+}
+
+.hNm3 {
+    width: 115px;
+}
+
+.hLibelleS {
+    width: 400px;
+}
+.hImg {
+    width: 82px;
+}
+
+.bBranche {
+    width: 102px;
+}
+
+.bCible {
+    width: 102px;
+}
+
+.bImg {
+    width: 82px;
+    text-align: center;
+}
+
+.HCodeIncompAssoc {
+    width: 60px;
+}
+
+.CodeIncompAssoc {
+    width: 62px;
+}
+
+.HLibIncompAssoc {
+    width: 177px;
+}
+
+.LibIncompAssoc {
+    width: 179px;
+}
+
+.HImgIncompAssoc {
+    width: 23px;
+}
+
+.ImgIncompAssoc {
+    width: 25px;
+    text-align: center;
+}
+
+.SelectBanche {
+    width: 100px !important;
+}
+
+.SelectCible {
+    width: 100px !important;
+}
+

@@ -1,0 +1,148 @@
+﻿.divInfoContratObs
+{
+    width: 1023px;
+}
+
+.divInfoLeft
+{
+    width: 615px;
+}
+
+.cssCodeOffre
+{
+    width: 75px !important;
+}
+
+.cssVersion
+{
+    width: 40px !important;
+    text-align: right;
+}
+
+.lblDateAu
+{
+    width: 20px;
+}
+
+.lblRegularisation
+{
+    width: 115px !important;
+}
+
+.inputRegularisation
+{
+    width: 285px !important;
+}
+
+.lblPart
+{
+    width: 75px !important;
+}
+
+.inPart
+{
+    width: 50px!important;
+}
+
+.inNatureContrat
+{
+    width: 90px !important;
+}
+
+.PaddingCourtGest
+{
+    padding-left: 200px;
+}
+
+.dvInfoRsqRegul
+{
+    width: 1023px;
+    height: 290px;
+}
+
+.dvBodyRsqRegularisation
+{
+    max-height: 173px;
+    overflow: auto;
+}
+
+.tdRsq
+{
+    width: 302px;
+}
+
+.tableTDRRsq
+{
+    width: 296px;
+    table-layout: fixed;
+}
+
+.tdImgRsq
+{
+    width: 10px;
+}
+
+.tdInfoRsq
+{
+    width: 286px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tdDates
+{
+    width: 99px;
+    text-align: center;
+}
+
+.tdCible
+{
+    width: 200px;
+    text-align: center;
+}
+
+.tdObj
+{
+    width: 277px;
+    padding-left: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tdTypeRegule
+{
+    width: 202px;
+    padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.thRsqObj
+{
+    width: 300px;
+}
+
+.thDates
+{
+    width: 200px;
+}
+
+.thCible
+{
+    width: 200px;
+}
+
+.thTypeRegule
+{
+    width: 204px;
+}
+
+.tableRsqRegule
+{
+    width: 930px;
+    table-layout: fixed;
+}
+

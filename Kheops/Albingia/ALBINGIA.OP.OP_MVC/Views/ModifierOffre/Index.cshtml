@@ -1,0 +1,296 @@
+﻿
+@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.MetaModels.ModifierOffre_Index_MetaModel>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vModifierOffre.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albModifierOffre.js" }, "~/Scripts/AlbingiaJS/")
+
+
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div id="GestionErreur">
+</div>
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        @Html.Hidden("Offre.CodeOffre", (Model.Offre.CodeOffre), new { id = "Offre_CodeOffre" })
+        @Html.Hidden("Offre.Version", (Model.Offre.Version), new { id = "Offre_Version" })
+        @Html.Hidden("Offre.Type", (Model.Offre.Type), new { id = "Offre_Type" })
+        @Html.Hidden("ModifInfoFin", string.Empty)
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Identification*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Descriptif" name="Descriptif" tabindex="1" class="SuperInput NonReprisCP" value="@Model.Descriptif" maxlength="40" />
+                            </div>
+                        </div>
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Cible</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Cible" name="Cible" readonly="readonly" class="readonly SuperInput" tabindex="2" value="@(Model.Cible + " - " + Model.CibleLib)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Mots-clés</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef1, Model.MotsClefs1, "MotClef1", htmlAttributes: new { @id = "MotClef1", @tabindex = "3", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" }, generateTitle: true)</div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef2, Model.MotsClefs2, "MotClef2", htmlAttributes: new { @id = "MotClef2", @tabindex = "4", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" }, generateTitle: true)</div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef3, Model.MotsClefs3, "MotClef3", htmlAttributes: new { @id = "MotClef3", @tabindex = "5", @class = "inputMotCle NonReprisCP", @albCFList = "motscles" }, generateTitle: true)</div>
+                    </div>
+                    <div class="HeightRow" style="height: 42px;">
+                        <div class="FloatLeft">
+                            <label class="Block">Observations</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.IsReadOnly)
+                            {
+                                <div id="Observations" style="width: 855px; height: 54px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto; ">@Html.Raw(Model.Observations)</div>
+                            }
+                            else
+                            {
+                                <textarea id="Observations" name="Observations" class="" style="margin-bottom: 5px; width: 855px; min-height: 54px !important;" tabindex="6">@Model.Observations</textarea>
+                            }
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Devise*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Devise, Model.Devises, "Devise", htmlAttributes: new { @id = "Devise", @tabindex = "7", @class = "inputDevise", @albCFList = "devise" }, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Regime de taxe</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.IsMonoRisque)
+                            {
+                                @Html.AlbDropDownListFor(m => m.RegimeTaxe, Model.RegimesTaxe, "RegimeTaxe", htmlAttributes: new { @id = "RegimeTaxe", @tabindex = "8", @disabled = "disabled", @class = "inputRegimesTaxe", @albCFList = "regimeTaxe" }, generateTitle: true)
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => m.RegimeTaxe, Model.RegimesTaxe, "RegimeTaxe", htmlAttributes: new { @id = "RegimeTaxe", @tabindex = "8", @class = "inputRegimesTaxe", @albCFList = "regimeTaxe" }, generateTitle: true)
+                            }
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">CATNAT possible</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.IsMonoRisque)
+                            {
+                                <input type="checkbox" id="SoumisCatNat" name="SoumisCatNat" value="@Model.SoumisCatNat" checked="@(Model.SoumisCatNat )" disabled="disabled" title="Catnat possible sur l'offre" />
+                            }
+                            else
+                            {
+
+                                <input type="checkbox" id="SoumisCatNat" name="SoumisCatNat" value="true" checked="@(Model.SoumisCatNat )" title="Catnat possible sur l'offre" />
+                            }
+                        </div>
+                    </div>
+                    <div class="HeightRow None">
+                        <div class="FloatLeft">
+                            <label class="Block">Date statistique</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.DateStatistique, new { @class = "datepicker inputDate" })
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------------------------------------->
+                <div class="nGradientSection">
+                    @Html.Partial("FinOffreInfos", Model.ModeleFinOffreInfos)
+                </div>
+
+
+
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Périodicité*</label>
+                        </div>
+                        <div class="inputPeriodicite">
+                            @Html.AlbDropDownListFor(m => m.Periodicite, Model.Periodicites, "Periodicite", htmlAttributes: new { @id = "Periodicite", @albCFList = "periodicite", @albhorsmodif = "" }, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Ech. principale</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDateFormat(m => m.EcheancePrincipale, new { @id = "EcheancePrincipale", @tabindex = "10", @class = "inputEcheance" }, "dd/MM")</div>
+                        <div class="FloatLeft">
+                            (JJ/MM)
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 200px;">
+                            @if (!string.IsNullOrEmpty(Model.PartBenef) && Model.PartBenef == "B")
+                            {
+                                <label class="blueUnderline">Présence de BNS</label>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.PartBenef) && Model.PartBenef == "O")
+                            {
+                                <label class="blueUnderline">Présence de PB</label>
+                            }
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 50px;">
+                            @if (Model.OppBenef)
+                            {
+                                <label class="blueUnderline">Présence d'opposition/bénéficiaire</label>
+                            }
+                        </div>
+                        @*  <div class="FloatLeft">
+                                <label class="Block">Participation Bénéficiaire</label>
+                            </div>*@
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Début d'effet</label>
+                        </div>
+                        <div class="divDate">@Html.AlbDateFormat(m => m.EffetGaranties, new { @class = "datepicker inputDate", @tabindex = "11" })</div>
+                        <div class="divHeure">@Html.AlbTimePicker(m => m.HeureEffet, "HeureEffet", new { @class = "HourMinute", @tabindex = "12" })</div>
+                        @Html.Hidden("EffetCheck", Model.EffetCheck.ToString(), new { id = "inputEffet" })
+                        <div class="FloatLeft" style="width: 110px;">
+                            @Html.CheckBoxFor(m => m.EffetCheck, new { @tabindex = "13" })
+                            <label class="AutoWidth">Fin effet</label>
+                        </div>
+                        @Html.Hidden("DureeCheck", Model.DureeCheck.ToString(), new { id = "inputDuree" })
+                        <div class="divDuree">
+                            @Html.CheckBoxFor(m => m.DureeCheck, new { @tabindex = "16" })
+                            <label class="AutoWidth">Durée</label>
+                        </div>
+                        <div id="divDataFinEffet" class="FloatLeft None">
+                            <div class="divDate">@Html.AlbDateFormat(m => m.FinEffet, new { @class = "datepicker readonly inputDate", @disabled = "disabled", @tabindex = "14" })</div>
+                            <div class="divHeure">@Html.AlbTimePicker(m => m.HeureFinEffet, "HeureFinEffet", new { @class = "readonly HourMinute", @disabled = "disabled", @tabindex = "15" })</div>
+                        </div>
+                        <div id="divDataDuree" class="FloatLeft None">
+                            <div class="divDate">
+                                <input type="text" id="Duree" name="Duree" class="readonly inputDate numerique" albMask="numericDuree" disabled="disabled" tabindex="16" value="@Model.Duree" />
+                            </div>
+                            <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.DureeString, Model.Durees, "DureeString", htmlAttributes: new { @id = "DureeString", @class = "readonly inputDuree", @disabled = "disabled", @tabindex = "18", @albCFList = "uniteDuree" }, generateTitle: true)</div>
+                        </div>
+                        <div class="FloatRight PaddingRightLarge None">
+                            @Html.CheckBoxFor(m => m.LTA)
+                            <label id="lnkLTA" class="@(Model.LTA ? "AutoWidth navig" : "AutoWidth")">LTA</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nGradientSection" style="height: 112px; ">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Indice référence</label>
+                            </div>
+                            <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.IndiceReference, Model.IndicesReference, "IndiceReference", htmlAttributes: new { @id = "IndiceReference", @tabindex = "19", @albCFList = "indiceReference" }, generateTitle: true)</div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Valeur</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Valeur" name="Valeur" readonly="readonly" class="readonly decimal" tabindex="20" value="@Model.Valeur" style="width: 60px;" />
+                            </div>
+                        </div>
+                        <div class="DoubleGenericColumn" id="dvAperiteur">
+                            <div class="FloatLeft">
+                                <label class="Block">Apériteur</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="hidden" id="AperiteurSelect" name="AperiteurSelect" value="" albautocomplete="autoCompAperiteurSelect" />
+                                <input type="hidden" id="AperiteurCode" name="AperiteurCode" value="@Model.AperiteurCode" albAutoComplete="autoCompAperiteurCode" />
+                                <input type="text" id="AperiteurNom" name="AperiteurNom" readonly="readonly" class="SuperInput readonly" tabindex="21" value="@Model.AperiteurNom" albAutoComplete="autoCompAperiteurNom" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Nature contrat*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => m.NatureContrat, Model.NaturesContrat, "NatureContrat", htmlAttributes: new { @id = "NatureContrat", @tabindex = "22", @albCFList = "natureContrat" }, generateTitle: true, genEmptyLine: false)
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Part Albingia (%)*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="PartAlbingia" name="PartAlbingia" value="@(Model.PartAlbingia)" readonly="readonly" class="readonly decimal" albMask="pourcentdecimal" tabindex="23" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn  @(Model.NatureContrat == "A" || Model.NatureContrat == "E" || string.IsNullOrEmpty(Model.NatureContrat) ? "None" : string.Empty)" id="dvFraisAperiteur">
+                            <div class="FloatLeft">
+                                <label class="Block">Comm. Apé. (%)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="FraisApe" name="FraisApe" readonly="readonly" class="readonly decimal" albMask="pourcentdecimal" tabindex="24" value="@Model.FraisApe" albCFList="fraisAperiteur" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Couverture (%)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Couverture" name="Couverture" readonly="readonly" class="readonly numerique" albMask="pourcentnumeric" tabindex="25" value="@Model.Couverture" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block InputIntercalaire">Intercalaire courtier ?</label>
+                            </div>
+                            <div class="FloatLeft">@Html.CheckBoxFor(m => m.Intercalaire, new { @tabindex = "26" })</div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Souscripteur*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="hidden" id="SouscripteurSelect" name="SouscripteurSelect" value="" albautocomplete="autoCompSouscripteurSelect" />
+                                <input type="hidden" id="SouscripteurCode" name="SouscripteurCode" value="@Model.SouscripteurCode" albAutoComplete="autoCompSouscripteurCode" />
+                                <input type="text" id="SouscripteurNom" name="SouscripteurNom" value="@(Model.SouscripteurNom)" tabindex="27" class="SuperInput" albAutoComplete="autoCompSouscripteurNom" />
+                            </div>
+                        </div>
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Gestionnaire*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="hidden" id="GestionnaireSelect" name="GestionnaireSelect" value="" albautocomplete="autoCompGestionnaireSelect" />
+                                <input type="hidden" id="GestionnaireCode" name="GestionnaireCode" value="@Model.GestionnaireCode" albAutoComplete="autoCompGestionnaireCode" />
+                                <input type="text" id="GestionnaireNom" name="GestionnaireNom" value="@(Model.GestionnaireNom)" tabindex="28" class="SuperInput" albAutoComplete="autoCompGestionnaireNom" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight">
+            <div class="nActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnSuivant" type="button" class="next-step" albshortcut="true" data-accesskey="s" tabindex="29"><u>S</u>uivant</button>
+            </div>
+        </div>
+        <div id="divLTA" class="None">
+            <div class="overlay-background" style="z-index:28">
+            </div>
+            <div id="divDataLTA" class="PaddingTop PaddingLeft">
+            </div>
+        </div>
+    </div>
+</div>

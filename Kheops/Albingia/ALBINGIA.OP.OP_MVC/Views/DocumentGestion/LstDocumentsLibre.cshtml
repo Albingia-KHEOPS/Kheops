@@ -1,0 +1,50 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.DocumentGestionDoc>
+<table id="tblBodyDocumentLibre" style="table-layout: fixed; width: 329px;" class="trHeight">
+    <tr>
+        <td class="tablePersoHead" style="width: 245px; text-align: center;">Document</td>
+        <td class="tablePersoHead" style="width: 15px;">&nbsp;</td>
+        <td class="tablePersoHead" style="width: 24px; text-align: center;">
+            <input type="checkbox" id="chckAllDoc" name="chckAllDoc" /></td>
+    </tr>
+    @{
+        var i = 0;
+        foreach (var item in Model)
+        {
+            if (item.FirstGeneration)
+            {
+                foreach (var docInfo in item.ListDocInfos)
+                {
+                    if (docInfo.IsLibre && docInfo.IdDoc > 0)
+                    {
+        <tr class="@(i % 2 == 0 ? "odd" : "even")">
+            <td albdocid="@(docInfo.IdDoc)" name="@(docInfo.Extension == ".doc" || docInfo.Extension == ".docx" || string.IsNullOrEmpty(docInfo.NomDoc.Trim()) ? "tdNomDocLibre" : "")" class="CursorPointer navig" style="width: 245px; padding-left: 5px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" title="@(string.Format("{0} - {1}", docInfo.TypeDoc.Trim(), !string.IsNullOrEmpty(docInfo.NomDoc.Trim()) ? docInfo.NomDoc.Trim() : !string.IsNullOrEmpty(docInfo.LibDoc) ? docInfo.LibDoc.Trim() : string.Empty))">
+                @if (docInfo.Extension == ".doc" || docInfo.Extension == ".docx" || string.IsNullOrEmpty(docInfo.NomDoc.Trim()))
+                {
+                    @(string.Format("{0} - {1}", docInfo.TypeDoc, docInfo.LibDoc))
+                }
+                else
+                {
+                    @Html.ActionLink(Html.Raw(string.Format("{0} - {1}", docInfo.TypeDoc.Trim(), docInfo.NomDoc.Trim())).ToHtmlString(), "DownloadFile", "CommonNavigation", new { fileName = docInfo.NomDoc.Trim(), fullNameFile = string.Concat(docInfo.Chemin.Trim(), docInfo.NomDoc.Trim()), pathFile = docInfo.Chemin.Trim() }, new { @target = "_blank" })
+                }
+            </td>
+            <td style="width: 15px;">
+                @if (docInfo.Statut == "G")
+                {
+                    <img id="icoVoyant@(docInfo.IdLotDetail)" name="icoVoyant" src="@Url.Content("/Content/Images/voyant_vert_petit.png")" />
+                }
+                else
+                {
+                    <img id="icoVoyant@(docInfo.IdLotDetail)" name="icoVoyant" src="@Url.Content("/Content/Images/voyant_rouge_petit.png")" />
+                }
+            </td>
+            <td style="width: 24px; text-align: center;">
+                <input type="checkbox" id="checkIdLibre@(docInfo.IdLotDetail)" name="checkDocLibre" albDocId="@(docInfo.IdDoc)" />
+            </td>
+        </tr>
+                i++;
+                    }
+                }
+            }
+        }
+    }
+</table>

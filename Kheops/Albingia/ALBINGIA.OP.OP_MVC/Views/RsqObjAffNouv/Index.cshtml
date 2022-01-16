@@ -1,0 +1,33 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRsqObjAffNouvPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vRsqObjAffNouv.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albRsqObjAffNouv.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div class="FullWidth FloatLeft">
+        <input type="hidden" id="CodeContrat" name="CodeContrat" value="@Model.CodeContrat" />
+        <input type="hidden" id="VersionContrat" name="VersionContrat" value="@Model.VersionContrat" />
+        <input type="hidden" id="TabGuid" name="TabGuid" value="@Model.TabGuid" />
+        <div class="nGroupFull nGroupWithBorder TotalWidth">
+            <div class="nHorizontalFullWithGroup TotalWidth">
+                <div class="nGradientSection">
+                    <div class="HeightListRsObj">
+                        @Html.Partial("LstRsqObjAffNouv", Model.ListRsqObj)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                @*<button type="button" id="btnAnnuler" tabindex="29" accesskey="a"><u>A</u>nnuler</button>*@
+                <button type="button" id="btnSuivant" tabindex="30" accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>

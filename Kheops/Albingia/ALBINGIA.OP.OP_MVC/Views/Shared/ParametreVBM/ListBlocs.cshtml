@@ -1,0 +1,37 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesBlocs.ModeleBloc>
+<table id="tblBloc" class="trHeight widthTableVolet">
+    @foreach (var item in Model)
+    {
+        var linkCode = "";
+        if (!string.IsNullOrEmpty(item.GuidId))
+        {
+            linkCode = item.GuidId;
+        }
+        else
+        {
+            linkCode = item.Code;
+        }
+        <tr id="@("tr_" + @linkCode)">
+            <td class="modifBloc tdBodyEditBloc">
+                <img id="@("edt_" + @linkCode)" src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" name="modifBloc" />
+            </td>
+            <td class="colOrder tdBodyEditBloc" name="ordreBloc">@item.OrdreBloc
+            </td>
+            <td id="@("cod_" + @linkCode)" name="codeBloc" class="linkBloc tdBodyCodeBloc" title="@item.Code">
+                @item.Code
+            </td>
+            <td class="linkBloc tdBodyDescBloc" title="@item.Description">
+                @item.Description
+            </td>
+            @if (item.Caractere != null && item.Caractere != "")
+            {
+                <td class="linkBloc tdBodyCaracBloc" name="caractereBloc" title="Caractère">
+                    @item.Caractere
+                </td>
+            }
+            <td class="supprBloc tdBodyImgBloc">
+                <img id="@("suppr_" + @linkCode)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprBloc" />
+            </td>
+        </tr>
+    }
+</table>

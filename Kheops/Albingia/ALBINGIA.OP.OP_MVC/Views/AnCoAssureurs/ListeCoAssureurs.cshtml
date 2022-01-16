@@ -1,0 +1,49 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CoAssureurs.CoAssureur>
+@{ Single total = 0; }
+<table id="tblCoAssureurs">
+    @foreach (var item in Model)
+    {
+        if (item.TypeOperation != "D")
+        {
+            total += item.PourcentPart;   
+        <tr id="@("tr_" + @item.GuidId)">
+            <td style="display: none">
+                <label id="@("lblGuidId_" + @item.GuidId)">@item.GuidId</label>
+            </td>
+            <td class="col_CodeCoAssureur ">
+                <label id="@("lblCode_" + @item.GuidId)">@item.Code</label>
+            </td>
+            <td class="col_NomCoAssureur ">
+                <label id="@("lblLibelle_" + @item.GuidId)">@item.Nom</label>
+            </td>
+            <td class="col_CodePostal ">
+                <label id="@("lblCodePostal_" + @item.GuidId)">@item.CodePostal</label>
+            </td>
+            <td class="col_Ville ">
+                <label id="@("lblVille_" + @item.GuidId)">@item.Ville</label>
+            </td>
+            <td class="col_PourcentPart numerique">
+                @*<label id="@("lblPourcentPart_" + @item.GuidId)">@item.PourcentPart</label>*@
+                <span class="decimal" albMask="pourcentdecimal" id="@("lblPourcentPart_" + @item.GuidId)">@item.PourcentPart</span>
+            </td>
+            @*  <td class="col_DateDebut ">
+                <label id="@("lblDateDebut_" + @item.GuidId)">@(@item.DateDebut == null ? string.Empty : @item.DateDebut.Value.ToString("dd/MM/yyyy"))</label>
+            </td>
+            <td class="col_DateFin ">
+                <label id="@("lblDateFin_" + @item.GuidId)">@(@item.DateFin == null ? string.Empty : @item.DateFin.Value.ToString("dd/MM/yyyy"))</label>
+            </td>*@
+            <td class="col_Action">
+                <img src="@Url.Content("/Content/Images/editer1616.png")" id="@("edt_" + @item.GuidId)" alt="Modifier" title="Modifier" class="Action" name="btnEditer" />&nbsp;&nbsp;&nbsp;
+                <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("suppr_" + @item.GuidId)" alt="Supprimer" title="Supprimer" class="Action" name="btnSupprimer"/>
+            </td>
+            <td style="display: none">
+                <a id="@("hrefLine_" + @item.GuidId)" href="#divDataEditPopIn"></a>
+            </td>
+        </tr>
+        }
+    }
+</table>
+
+@Html.HiddenNoName(nameof(total), total, new { albMask = "pourcentdecimal" })
+
+

@@ -1,0 +1,31 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsSpecifiquesRsqObjGarObjetPage
+<div class="HeightRow">
+    <div id="tabRisque" class="GenericColumn CursorPointer onglet">
+        <label>Informations spécifiques Risque</label>
+    </div>
+    <div id="tabObjet" class="GenericColumn CursorPointer onglet-actif">
+        <div>
+            <label>Informations spécifiques Objet</label>
+        </div>
+    </div>
+    <div id="tabGarantie" class="GenericColumn CursorPointer onglet">
+        <div>
+            <label>Informations spécifiques Garantie</label>
+        </div>
+    </div>
+    <div class="onglet-vide">
+    </div>
+</div>
+<div class="HeightRow DivListObjet">
+    <div class="FloatLeft">
+        <label class="Block">Objet</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDropDownListFor(m => m.Objet, Model.Objets, "Objet", htmlAttributes: new { @id = "Objet", @tabindex = "1", @class = "inputDDL", @name = "Objet" }, generateTitle: true, genEmptyLine: false)
+    </div>
+</div>
+<div class="HeightRow">
+    <div id="divDetailInfosSpecificsObjet">
+        @Html.Partial("/Views/InformationsSpecifiquesObjets/InformationsSpecifiquesObjetsBody.cshtml",Model.ModeleInformationsSpecifiquesObjetsPage)
+    </div>
+</div>

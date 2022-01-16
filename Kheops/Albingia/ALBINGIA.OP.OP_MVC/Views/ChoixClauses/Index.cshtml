@@ -1,0 +1,288 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleChoixClausesPage>
+@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+
+@*@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vChoixClauses.css" }, "~/Content/")
+  @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albChoixClauses.js" }, "~/Scripts/AlbingiaJS/")*@
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbChoixClauses")
+@AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbChoixClauses")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    var model = Model as ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleChoixClausesPage;
+}
+
+<div class="FullWidth">
+
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+            if (Model.ActeGestionRegule == "REGUL" && !string.IsNullOrWhiteSpace(model.ReguleId) )
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULPB:
+            if (Model.ActeGestionRegule == "REGUL" && !string.IsNullOrWhiteSpace(model.ReguleId))
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULBNS:
+            if (Model.ActeGestionRegule == "REGUL"&& !string.IsNullOrWhiteSpace(model.ReguleId))
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULBURNER:
+            if (Model.ActeGestionRegule == "REGUL"&& !string.IsNullOrWhiteSpace(model.ReguleId))
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+            if (Model.ActeGestionRegule == "REGUL"&& !string.IsNullOrWhiteSpace(model.ReguleId))
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            @*@Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)*@
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR_NO_MODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        <div class="GroupRisquePrincipal">
+            @Html.HiddenFor(m => m.RisqueObj)
+            @Html.HiddenFor(m => m.Provenance)
+            @Html.HiddenFor(m => m.CodeFormule)
+            @Html.HiddenFor(m => m.CodeOption)
+            @Html.HiddenFor(m => m.CodeRisque)
+            @Html.HiddenFor(m => m.ReguleId)
+            @Html.HiddenFor(m => m.TypeAvt)
+            @Html.Hidden("ModeAvt", Model.ModAvt)
+            @Html.Hidden("HasRisques", Model.NavigationArbre.Risques != null && Model.NavigationArbre.Risques.Count > 0)
+            @Html.Hidden("ChangeClause", string.Empty)
+            <div id="HiddenIS">
+                @Html.HiddenNoName("LibelleFormule", Model.LibelleFormule)
+                @Html.HiddenNoName("LettreLibelleFormule", Model.LettreLibelleFormule)
+            </div>
+            <div class="nGroupFull nGroupWithBorder">
+                @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+                <div class="nHorizontalFullWithGroup">
+                    <div class="nGradientSection">
+                        <div id="Contrat" class="HeightRow">
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Contrat</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="ContratIdentification" name="ContratIdentification" readonly="readonly" class="readonly DoubleInput" value="@(Model.ContratIdentification)" />
+                                </div>
+                            </div>
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Cible</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="ContratCible" name="ContratCible" readonly="readonly" class="readonly InputCible" value="@(Model.ContratCible + " - " + Model.ContratCibleLib)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Garantie" class="HeightRow">
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Formule</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="GarantieDescriptif" name="GarantieDescriptif" readonly="readonly" class="readonly DoubleInput" value="@(Model.GarantieDescriptif)" />
+                                </div>
+                            </div>
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Cible</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="GarantieCible" name="GarantieCible" readonly="readonly" class="readonly InputCible" value="@(Model.GarantieCible)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Condition" class="HeightRow">
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Condition</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="ConditionDescriptif" name="ConditionDescriptif" readonly="readonly" class="readonly DoubleInput" value="@(Model.ConditionDescriptif)" />
+                                </div>
+                            </div>
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Cible</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="ConditionCible" name="ConditionCible" readonly="readonly" class="readonly InputCible" value="@(Model.ConditionCible)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Risque" class="HeightRow">
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Risque</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="RisqueDescriptif" name="RisqueDescriptif" , readonly="readonly" class="readonly DoubleInput" value="@(Model.RisqueDescriptif)" />
+                                </div>
+                            </div>
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Cible</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="text" id="RisqueCible" name="RisqueCible" readonly="readonly" class="readonly InputCible" value="@(Model.RisqueCible + " - " + Model.RisqueCibleLib)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Objet" class="HeightRow">
+                            <div class="DoubleGenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Objet</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @Html.AlbDropDownListFor(m => m.ObjetDescriptif, Model.ObjetDescriptif, "ObjetDescriptif", htmlAttributes: new { @id = "ObjetDescriptif", @class = "DoubleInput" }, generateTitle: true)
+                                </div>
+                            </div>
+                            <div class="GenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Volet</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @Html.AlbDropDownListFor(m => m.Volet, Model.Volet, "Volet", htmlAttributes: new { @id = "Volet" }, generateTitle: true)
+                                </div>
+                            </div>
+                            <div class="GenericColumn">
+                                <div class="FloatLeft">
+                                    <label class="Block">Bloc</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @Html.AlbDropDownListFor(m => m.Bloc, Model.Bloc, "Bloc", htmlAttributes: new { @id = "Bloc" }, generateTitle: true)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*                </div>
+                </div>
+                <div class="GroupFull GroupWithBorder ">
+                    <div class="HorizontalFullWithGroup">*@
+                    @*         <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="GenericColumn FloatRight">
+                            <div class="FloatRight PaddingRight">
+                                <button id="AjoutClause" type="button" albshortcut="true" data-accesskey="c">Ajout <u>C</u>lause</button>
+                                <button id="ClauseLibre" type="button" albshortcut="true" data-accesskey="l">Clause <u>L</u>ibre</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+                    @*                </div>
+                <div class="Height15">
+                    <div id="FullScreen" class="CursorPointer TxtLink">
+                        ^ Plein écran ^
+                    </div>
+                </div>
+                <div class="HorizontalFullWithGroup">*@
+                    <div id="divChoixClause">
+                        @if (Model.ChoixClauseIntermediaire != null) {
+                            @Html.Partial("ChoixClauseIntermediaire", Model.ChoixClauseIntermediaire);
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            @*<div id="FullScreen" class="FloatLeft" style="padding-top: 6px;">
+                <button id="btnFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Plein écran">
+                    <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+                </button>
+            </div>*@
+            <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="r"><u>R</u>etour</button>
+
+                @if ((Model.ModeNavig != ModeConsultation.Historique.AsCode())
+                        || (Model.ModeNavig == ModeConsultation.Historique.AsCode()
+                                && Model.NavigationArbre.Etape != "Fin"))
+                {
+                    <button id="btnSuivant" type="button" class="next-step" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreen" style="display: none">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataFullScreen">
+    </div>
+</div>
+
+<div id="divFullScreenClauseLibre" style="display: none">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divEditClauseLibre">
+    </div>
+</div>
+
+<div id="divFullScreenDetailsClause" style="display: none">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDetailsClause">
+    </div>
+</div>
+
+<div id="divFullScreenVisualiserClause" style="display: none">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divVisualiserClause">
+    </div>
+</div>
+

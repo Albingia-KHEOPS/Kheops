@@ -1,0 +1,16 @@
+﻿<connectionStrings>
+  <!--<add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=ZKDEV;Password=ZKDEV;Init Libl=&quot;*LIBL;SYSIBM&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+  <add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=ZKALIF;Password=ZKALIF;Init Libl=&quot;*LIBL;SYSIBM&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />
+  <!--<add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.2;User Id=ZFORM;Password=ZFORM;Init Libl=&quot;*LIBL;SYSIBM&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+  <!--<add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=YALBIN;Password=YALBIN;Init Libl=&quot;ZALBINKFRM;ZALBINKMOD;LAUNCHER;YAlbinPgm;YALBIN400;Y£GDM_ALB;GENERALE&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+  <!--<add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=KPRE;Password=KPRE;Init Libl=&quot;*LIBL&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+  <!--<add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=ZKSPP;Password=ZKSPP;Init Libl=&quot;*LIBL&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+  <!--<add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=ZKFIX;Password=ZKFIX;Init Libl=&quot;*LIBL&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+
+  <!--<add name="PowershellScriptConnectionString" connectionString="Provider=IBMDA400;Data Source=10.1.2.36;User Id=ZKDEV;Password=ZKDEV"/>-->
+  <add name="PowershellScriptConnectionString" connectionString="Provider=IBMDA400;Data Source=10.1.2.36;User Id=ZKALIF;Password=ZKALIF"/>
+  <!--<add name="PowershellScriptConnectionString" connectionString="Provider=IBMDA400;Data Source=10.1.2.2;User Id=ZFORM;Password=ZFORM"/>-->
+  <!--<add name="PowershellScriptConnectionString" connectionString="Provider=IBMDA400;Data Source=10.1.2.2;User Id=KPRE;Password=KPRE"/>-->
+  <!--<add name="PowershellScriptConnectionString" connectionString="Provider=IBMDA400;Data Source=10.1.2.2;User Id=ZKSPP;Password=ZKSPP"/>-->
+  <!--<add name="PowershellScriptConnectionString" connectionString="Provider=IBMDA400;Data Source=10.1.2.2;User Id=ZKFIX;Password=ZKFIX"/>-->
+</connectionStrings>

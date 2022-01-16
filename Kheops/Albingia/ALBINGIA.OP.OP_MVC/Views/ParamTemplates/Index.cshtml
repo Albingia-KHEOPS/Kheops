@@ -1,0 +1,149 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamTemplatesPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamTemplates.css", "vCopyCanevas.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamTemplates.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <input type="hidden" id="idTemplateSuppr" />
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder GroupBackOffice ">
+                    <div class="HorizontalHalfWithGroupAdmin ">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div class="FloatLeft PaddingLeft10">
+                                    <div class="PaddingLeft5">
+                                        <label>Code contenant :</label>
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft5">
+                                        <input id="rechercheCode" maxlength="9" albautocomplete="autoCompCodeTemplate" />
+                                    </div>
+                                </div>
+                                <div class="FloatLeft PaddingLeft10">
+                                    <div class="PaddingLeft5">
+                                        <label>Description contenant :</label>
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft5">
+                                        <input id="rechercheDescription" class="searchField" maxlength="60" albautocomplete="autoCompLibTemplate" />
+                                    </div>
+                                </div>
+                                <div class="FloatLeft PaddingLeft10">
+                                    <div class="PaddingLeft5">
+                                        <label>De type :</label>
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft5">
+                                        @Html.AlbDropDownListFor(m => Model.SelectedTypeTemplate, Model.ListeTypesTemplate, "dvTypeTemplate", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlTypeTemplateRecherche", @albautocomplete = "autoCompTypeTemplate" }, replaceHtmlName: "dvTypeTemplate")
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft5" id="btnRechercherTemplates">
+                                        <button type="button" id="btnRechercher" albshortcut="true" accesskey="r">
+                                            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div id="divLstTemplates">
+                                <div id="divTemplatesHeader">
+                                    <table id="tblTemplatesHeader" class="trHeight">
+                                        <tr>
+                                            <th class="col_HeaderCodeTemplate tablePersoHead">
+                                                Code template
+                                            </th>
+                                            <th class="col_HeaderDescriptionTemplate tablePersoHead">
+                                                Description
+                                            </th>
+                                            <th class="col_HeaderTypeTemplate tablePersoHead">
+                                                Type
+                                            </th>
+                                            <th class="col_HeaderAction tablePersoHead">
+                                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouterTemplate" />
+                                            </th>
+                                            <th class="col_HeaderAction tablePersoHead">
+                                                &nbsp;
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divTemplatesBody" class="divHeight">
+                                    @if (Model.ListeTemplates != null)
+                                    {
+                                        @Html.Partial("ListeTemplates", Model.ListeTemplates)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="VoletDetails" class="GroupFull GroupWithBorder GroupBackOffice GroupHeight FloatLeft">
+                    <div id="divTemplateDetails">
+                    </div>
+                </div>
+                <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                        <button type="button" id="btnRegenCanevas"><u>R</u>egeneration canevas</button>
+                    </div>
+                    <div class="ActionButtons ActionButtonLeft">
+                        <button type="button" id="btnCopyCanevas"><u>C</u>opy canevas</button>
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <button type="button" id="btnCancel" accesskey="r" albshortcut="true"><u>R</u>etour</button>
+                    </div>
+                </div>
+                <div id="divTemplatesCaneva" class="GradientSection GroupWithBorder popup-overlay">
+                    <div class="HorizontalHalfWithGroupCopyCanevas">
+                        <div class="GradientSection popup-header">
+                            <span style="text-align:center; font-weight:bold;">Copie de canevas</span>
+                        </div>
+
+                        <div class="GradientSection popup-content">
+                            <div class="FloatLeft">
+                                <label class="Block Gras" style="display:inline; position:relative;">Environnement source</label>
+                            </div>
+                            <div  class="FloatLeft" style="padding-left:10px;">
+                                <select id="copyCanevasSource">
+                                    <option value="CONST">Construction</option>
+                                    <option value="RECETTE">Recette</option>
+                                    <option value="SUPPORT">Support</option>
+                                    <option value="FORM">Formation</option>
+                                    <option value="PPROD">Préprod</option>
+                                    <option value="PROD">Production</option>
+                                    <option value="FIX">Hot fix</option>
+                                </select>
+                            </div>
+                            <div class="FloatLeft" style="padding-left:10px;">
+                                <label class="Block Gras" style="display:inline;">Environnement cible</label>
+                            </div>
+                            <div class="FloatLeft" style="padding-left:10px; padding-right:10px;">
+                                <select id="copyCanevasCible" disabled="disabled">
+                                    <option value="CONST">Construction</option>
+                                    <option value="RECETTE">Recette</option>
+                                    <option value="SUPPORT">Support</option>
+                                    <option value="FORM">Formation</option>
+                                    <option value="PPROD">Préprod</option>
+                                    <option value="PROD">Production</option>
+                                    <option value="FIX">Hot fix</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="button" id="btnStartCopy" albshortcut="true" accesskey="D"><u>D</u>émarrer</button>
+                            </div>
+                        </div>
+                        <div class="GradientSection popup-footer">
+                            <button id="btnCloseCopyCanevas" class="FloatRight">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>

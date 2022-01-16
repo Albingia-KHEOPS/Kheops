@@ -1,0 +1,292 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleMatriceFormulePage
+<div id="divHeaderGen" class="PaddingLeft">
+    <div class="@(Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE ? "HeaderGen FloatLeft" : "HeaderGenContrat FloatLeft")">
+        <table id="tblHeaderInven" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                @if (Model.IsModeAvenant)
+                {
+                    <td class="tablePersoHead">
+                        <input type="checkbox" id="checkElemSortis" name="checkElemSortis" />
+                        <label>Afficher les risques et formules sortis</label>
+                    </td>
+                }
+                <td class="tablePersoHead tdInventaire">Inventaire
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="divHeadFormule" class="FloatLeft WidthMatriceFormule">
+        <div>
+            <table id="tblHeaderFormule" cellpadding="0" cellspacing="0" border="0" style="width:@(Model.Formules.Count * 170)px;">
+                <tbody style="border: 0px;">
+                    <tr>
+                        @foreach (var formule in Model.Formules)
+                        {
+                            <td id="formuleHover@(formule.Code)" class="@(formule.IsAlertePeriode && Model.IsModeAvenant ? "tablePersoHead WidthFormule borderNone CursorPointer None" : "tablePersoHead WidthFormule borderNone CursorPointer")" name="formuleHover_@(formule.Code)_@(formule.Libelle.Replace("Formule ", ""))" albShowAvt="@(formule.IsAlertePeriode ? "elemSorti" : "elem")" albRsq="@(formule.CodeRsq)" albBlockCondition="@(formule.BlockFormConditions.ToString())" albSupprFormule="@(formule.SupprForm.ToString())" albSorti="@(formule.IsAlertePeriode.ToString())">
+                                <table class="TableFormule" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;">
+                                    <tr>
+                                        <td valign="bottom" class="@(formule.IsAlertePeriode && Model.IsModeAvenant ? "BorderBlackLeft titleFormule Orange" : "BorderBlackLeft titleFormule")">@formule.Libelle
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="@(formule.IsAlertePeriode && Model.IsModeAvenant ? "BorderBlackLeft Orange ellipsis" : "BorderBlackLeft ellipsis")" title="@(formule.Designation)">@formule.Designation
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        @if (Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE)
+        {
+            <div>
+                <table id="tblHeaderOption" cellpadding="0" cellspacing="0" border="0" style="width:@(Model.Formules.Count * 170)px">
+                    <tr>
+                        @foreach (var formule in Model.Formules)
+                        {
+                            <td class="@(formule.IsAlertePeriode ? "tablePersoHead WidthOption None" : "tablePersoHead WidthOption")" albShowAvt="@(formule.IsAlertePeriode ? "elemSorti" : "elem")">
+                                <table class="TableOption" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        @{
+                                            int count = Albingia.Kheops.OP.Domain.Formule.Option.MaxNbByFormula;
+                                            string border = "BorderBlackLeft";
+                                            for (int x = 1; x <= count; x++) {
+                                                if (x > 1) {
+                                                    border = "BorderGrayLeft";
+                                                }
+                                                var opt = formule.Options.FirstOrDefault(o => o.Code == x.ToString());
+                                                if (opt == null) {
+                                                    <td class="@(border) titleOptionGray" name="option_@(x)">Opt @(x)</td>
+                                                }
+                                                else {
+                                                    <td class="@(border) titleOption CursorPointer" name="optionHover_@(formule.Code)_@(opt.Code)" albRsq="@(formule.CodeRsq)" albcontextmenu="O">@opt.Designation</td>
+                                                }
+                                            }
+
+                                        }
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+<div id="divBodyGen" class="PaddingLeft ClearBoth">
+    <div id="divRisque" class="@(Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT ? "divRisque FloatLeft" : "FloatLeft")">
+        <table id="tblBodyRisque" width="300px" cellpadding="0" cellspacing="0">
+            @{
+                var i = 0;
+                foreach (var risque in Model.Risques)
+                {
+                <tr class="@(risque.IsAlertePeriode && Model.IsModeAvenant ? (i % 2 == 0 ? "odd None" : "even None") : (i % 2 == 0 ? "odd" : "even"))" albShowAvt="@(risque.IsAlertePeriode ? "elemSorti" : "elem")">
+                    <td class="BorderGrayBottom cellEmpty">&nbsp;
+                    </td>
+                    <td class="@(risque.IsAlertePeriode && Model.IsModeAvenant ? (risque.isAffecte ? "PaddingLeft BorderGrayLeft BorderGrayBottom tdEllipsis Orange" : "PaddingLeft BorderGrayLeft BorderGrayBottom tdEllipsis NotAffecte Orange") : (risque.isAffecte ? "PaddingLeft BorderGrayLeft BorderGrayBottom tdEllipsis" : "PaddingLeft BorderGrayLeft BorderGrayBottom tdEllipsis NotAffecte"))" title="@risque.Designation">
+                        @risque.Designation
+                    </td>
+                    <td class="BorderGrayLeft BorderGrayBottom cellInventaire">&nbsp;
+                    </td>
+                </tr>
+                    if (risque.Objets.Count > 0)
+                    {
+                        foreach (var objet in risque.Objets)
+                        {
+                <tr class="@(objet.IsAlertePeriode && Model.IsModeAvenant ? (i % 2 == 0 ? "odd None" : "even None") : (i % 2 == 0 ? "odd" : "even"))" albShowAvt="@(objet.IsAlertePeriode ? "elemSorti" : "elem")">
+                    <td class="BorderGrayBottom cellEmpty">&nbsp;
+                    </td>
+                    <td class="@(objet.IsAlertePeriode && Model.IsModeAvenant ? (objet.isAffecte ? "BorderGrayLeft BorderGrayBottom Entete3 tdEllipsis Orange" : "BorderGrayLeft BorderGrayBottom Entete3 tdEllipsis NotAffecte Orange") : (objet.isAffecte ? "BorderGrayLeft BorderGrayBottom Entete3 tdEllipsis" : "BorderGrayLeft BorderGrayBottom Entete3 tdEllipsis NotAffecte"))" title="@objet.Designation">- @objet.Designation
+                    </td>
+                    <td class="PaddingRight BorderGrayLeft BorderGrayBottom WidthInventaire">
+                        @if (objet.hasInventaires)
+                        {
+                            <img src="@Url.Content("/Content/Images/check_1616.gif")" alt="Contient un inventaire" />
+                        }
+                    </td>
+                </tr>
+                        }
+                    }
+                    i++;
+                }
+            }
+        </table>
+    </div>
+    <div id="divFormule" class="@(Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT ? "divFormule FloatLeft" : "FloatLeft")">
+        <table id="tldBodyFormule" cellpadding="0" cellspacing="0" style="width:@(Model.Formules.Count * 170)px;">
+            @{
+                var j = 0;
+                foreach (var risque in Model.Risques)
+                {
+                <tr class="@(risque.IsAlertePeriode && Model.IsModeAvenant ? (j % 2 == 0 ? "odd None" : "even None") : (j % 2 == 0 ? "odd" : "even"))" albShowAvt="@(risque.IsAlertePeriode ? "elemSorti" : "elem")">
+                    @foreach (var formule in risque.Formules)
+                    {
+                        <td class="@(formule.IsAlertePeriode && Model.IsModeAvenant ? "BorderBlackLeft WidthFormule None" : "BorderBlackLeft WidthFormule")" albShowAvt="@(formule.IsAlertePeriode ? "elemSorti" : "elem")">
+                            <table style="width: 100%;" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    @{
+                        switch (Model.ScreenType)
+                        {
+                            case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+                            case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                            case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+                                        <td align="center" class="BorderGrayBottom">
+                                            @if (formule.Options[0].Icone == "C")
+                                            {
+                                                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                                            }
+                                            else if (formule.Options[0].Icone == "S")
+                                            {
+                                                <img src="@Url.Content("/Content/Images/Checkmark_2-16.png")" alt="" />
+                                            }
+                                        </td>
+                                            break;
+                            default:
+                                            int count = Albingia.Kheops.OP.Domain.Formule.Option.MaxNbByFormula;
+                                            string borders = string.Empty;
+                                            for (int x = 1; x <= count; x++) {
+                                                if (x > 1) {
+                                                    borders = "BorderGrayLeft";
+                                                }
+                                                var opt = formule.Options.FirstOrDefault(o => o.Code == x.ToString());
+                                                if (opt == null) {
+                                                    <td class="@(borders + " BorderGrayBottom") titleOption">&nbsp;</td>
+                                                }
+                                                else {
+                                                    <td align="center" class="@(borders + " BorderGrayBottom") titleOption">
+                                                        @if (opt.Icone == "C") {
+                                                            <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                                                        }
+                                                        else if (opt.Icone == "S") {
+                                                            <img src="@Url.Content("/Content/Images/Checkmark_2-16.png")" alt="" />
+                                                        }
+                                                    </td>
+                                                }
+                                            }
+
+
+                                            break;
+                        }
+
+
+
+                                    }
+                                </tr>
+                            </table>
+                        </td>
+                    }
+                </tr>
+                    foreach (var objet in risque.Objets)
+                    {
+                <tr class="@(objet.IsAlertePeriode && Model.IsModeAvenant ? (j % 2 == 0 ? "odd None" : "even None") : (j % 2 == 0 ? "odd" : "even"))" albShowAvt="@(objet.IsAlertePeriode ? "elemSorti" : "elem")">
+                    @foreach (var formule in objet.Formules)
+                    {
+                        <td class="@(formule.IsAlertePeriode && Model.IsModeAvenant ? "BorderBlackLeft WidthFormule None" : "BorderBlackLeft WidthFormule")" albShowAvt="@(formule.IsAlertePeriode ? "elemSorti" : "elem")">
+                            <table style="width: 100%;" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    @{
+                        switch (Model.ScreenType)
+                        {
+                            case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+                            case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                            case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+                                        <td align="center" class="BorderGrayBottom titleOption">
+                                            @if (formule.Options[0].Icone == "C")
+                                            {
+                                                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                                            }
+                                            else if (formule.Options[0].Icone == "S")
+                                            {
+                                                <img src="@Url.Content("/Content/Images/Checkmark_2-16.png")" alt="" />
+                                            }
+                                        </td>
+                                            break;
+                            default:
+
+
+                                            int count = Albingia.Kheops.OP.Domain.Formule.Option.MaxNbByFormula;
+                                            string borders = string.Empty;
+                                            for (int x = 1; x <= count; x++) {
+                                                if (x > 1) {
+                                                    borders = "BorderGrayLeft";
+                                                }
+                                                var opt = formule.Options.FirstOrDefault(o => o.Code == x.ToString());
+                                                if (opt == null) {
+                                                    <td class="@(borders + " BorderGrayBottom") titleOption">&nbsp;</td>
+                                                }
+                                                else {
+                                                    <td align="center" class="@(borders + " BorderGrayBottom") titleOption">
+                                                        @if (opt.Icone == "C") {
+                                                            <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                                                        }
+                                                        else if (opt.Icone == "S") {
+                                                            <img src="@Url.Content("/Content/Images/Checkmark_2-16.png")" alt="" />
+                                                        }
+                                                    </td>
+                                                }
+                                            }
+
+
+                                            break;
+                        }
+
+
+                                    }
+                                </tr>
+                            </table>
+                        </td>
+                    }
+                </tr>
+                    }
+                    j++;
+                }
+            }
+        </table>
+    </div>
+</div>
+<div id="subMenuOption">
+    <div id="updateOption" class="CursorPointer TxtLink" name="updateOption">
+        Modifier option
+    </div>
+    @if (!Model.IsReadOnly && !Model.IsModifHorsAvenant)
+    {
+        <div id="deleteOption" class="CursorPointer TxtLink" name="deleteOption">
+            Supprimer option
+        </div>
+    }
+</div>
+<div id="subMenuFormule" class="@(Model.IsReadOnly || Model.IsModifHorsAvenant ? "subMenuReadOnly" : Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT ? "subMenuFormuleContrat" : "")">
+    @if (!Model.IsReadOnly && !Model.IsModifHorsAvenant)
+    {
+        <div id="updateFormule" class="CursorPointer TxtLink" name="updateFormule">
+            Modifier formule
+        </div>
+        <div id="conditionFormule" class="CursorPointer TxtLink" name="conditionFormule">
+            Conditions formule
+        </div>
+        <div id="copyFormule" class="CursorPointer TxtLink" name="copyFormule">
+            Dupliquer formule
+        </div>
+        if (Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE)
+        {
+        <div id="createOption" class="CursorPointer TxtLink" name="createOption">
+            Créer option
+        </div>
+        }
+        <div id="deleteFormule" class="CursorPointer TxtLink" name="deleteFormule">
+            Supprimer formule
+        </div>
+    }
+    else
+    {
+        <div id="updateFormule" class="CursorPointer TxtLink" name="updateFormule">
+            Consulter formule
+        </div>
+        <div id="conditionFormule" class="CursorPointer TxtLink" name="conditionFormule">
+            Conditions formule
+        </div>
+    }
+</div>

@@ -1,0 +1,125 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VisualisationQuittances
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albQuittance.css" }, "~/Content/Quittance/")
+
+@Html.HiddenNoName("ReguleId", Model.ReguleId)
+<div id="divGestionIntervenantsConteneur" class='CommonForm FloatLeft @(Model.IsModifHorsAvenant? "quittances-conteneur-havn":string.Empty)'>
+    @Html.HiddenNoName("natureContratQuittance", string.Empty)
+    <input type="hidden" id="quittanceNavig" value="@(Model.IsHisto ? "H" : "S")" />
+    @Html.HiddenNoName("isOpenedFromHeader", Model.IsOpenedFromHeader.ToString())
+    <div class='GroupFull GroupWithBorder @(Model.IsModifHorsAvenant? "quittances-body-havn" : string.Empty)' id="divVisuQuittanceConteneur">
+        <div class="GroupTitle">
+            Visualisation des quittances
+        </div>
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection PaddingLeft">
+                <div class="HeightRow">
+                    <div class="FloatLeft visuQuittanceWidthTitleLabelLarge">
+                        <label class="Block FloatLeft visuQuittanceWidthLargelabel">Emissions à partir du</label>
+                        @Html.AlbDateFormat(m => m.DateEmission, new { @class = "datepicker inputDate", @id = "VisuQuittanceDateEmission" })
+                    </div>
+                    <div class="FloatLeft visuQuittanceWidthTitleLabelLarge">
+                        <label class="Block FloatLeft">Type d'opération</label>
+                        @Html.AlbDropDownListFor(m => m.TypeOperation, Model.TypesOperation, "VisuQuittanceTypeOperation", htmlAttributes: new { @id = "VisuQuittanceTypeOperation", @albCFList = "typeOperation" }, generateTitle: true, genEmptyLine: true)
+                    </div>
+                    <div class="FloatLeft visuQuittanceWidthTitleLabelLarge">
+                        <label class="Block FloatLeft">Situation</label>
+                        @Html.AlbDropDownListFor(m => m.Situation, Model.Situations, "VisuQuittanceSituation", htmlAttributes: new { @id = "VisuQuittanceSituation", @albCFList = "situation" }, generateTitle: true, genEmptyLine: false)
+                    </div>
+                    <div class="FloatLeft visuQuittanceWidthTitleLabel">
+                        <label class="Block FloatLeft visuQuittanceWidthSmalllabel">Période du</label>
+                        @Html.AlbDateFormat(m => m.PeriodeDebut, new { @class = "datepicker inputDate", @id = "VisuQuittancePeriodeDebut" })
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDateFormat(m => m.PeriodeFin, new { @class = "datepicker inputDate", @id = "VisuQuittancePeriodeFin" })
+                    </div>
+                </div>
+                <div class="divVisuQuittancesOverflow">
+                    <div class="divVisuQuittancesOverflow2">
+                        <div id="divVisuQuittancesHeader" class="PaddingLeft">
+                            <table id="tblVisuQuittancesHeader" class="trHeight">
+                                <tr>
+                                    <th class="tablePersoHead thHeadChkAnnul">&nbsp;</th>
+                                    <th class="tablePersoHead tdHeadQuittEmission">Emission</th>
+                                    <th class="tablePersoHead tdHeadQuittNum CursorPointer" name="headerTri" albcontext="QuittNum" albModeAff="@(Model.IsOpenedFromHeader ? "Visu" : string.Empty)">
+                                        <span class="Block spImg FloatLeft PaddingTop" style="width: 40px;">N° Qui</span>
+                                        <span class="Block spImg" style="float: right;">
+                                            <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" albcontext="QuittNum" albModeAff="@(Model.IsOpenedFromHeader ? "Visu" : string.Empty)" />
+                                        </span>
+                                    </th>
+                                    <th class="tablePersoHead tdHeadQuittAvis">Avis</th>
+                                    <th class="tablePersoHead tdHeadQuittDateDeb">Début Période</th>
+                                    <th class="tablePersoHead tdHeadQuittDateFin">Fin Période</th>
+                                    <!--<th class="tablePersoHead tdHeadQuittEcheance">Echéance</th>-->
+                                    <th class="tablePersoHead tdHeadQuittEcheance CursorPointer" name="headerTri" albcontext="DateEch" albModeAff="@(Model.IsOpenedFromHeader ? "Visu" : string.Empty)">
+                                        <span class="Block spImg FloatLeft PaddingTop" style="width: 40px;">Echéance</span>
+                                        <span class="Block spImg" style="float: right;">
+                                            <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="DateEch" albModeAff="@(Model.IsOpenedFromHeader ? "Visu" : string.Empty)" />
+                                        </span>
+                                    </th>
+
+                                    <th class="tablePersoHead tdHeadQuittAvn CursorPointer" name="headerTri" albcontext="QuittNumInt" albModeAff="@(Model.IsOpenedFromHeader ? "Visu" : string.Empty)">
+                                        <span class="Block spImg FloatLeft PaddingTop" style="width: 40px;">N° int</span>
+                                        <span class="Block spImg" style="float: right;">
+                                            <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="QuittNumInt" albModeAff="@(Model.IsOpenedFromHeader ? "Visu" : string.Empty)" />
+                                        </span>
+                                    </th>
+                                    <th class="tablePersoHead tdHeadQuittDel">Dem.</th>
+                                    <th class="tablePersoHead tdHeadQuittMvt">Mvt</th>
+                                    <th class="tablePersoHead tdHeadQuittOperation">Opération</th>
+                                    <th class="tablePersoHead tdHeadQuittSit">Sit</th>
+                                    <th class="tablePersoHead tdHeadQuittHT">HT</th>
+                                    <th class="tablePersoHead tdHeadQuittTTC">TTC</th>
+                                    <th class="tablePersoHead tdHeadQuittRegle">Réglé</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divVisuQuittancesBody" class="PaddingLeft">
+                            @if (Model.ListQuittances != null)
+                            {
+                                @Html.Partial("VisualisationQuittancesListe", Model.ListQuittances)
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        @if (!Model.IsModifHorsAvenant)
+        {
+            <div class="ActionButtons ActionButtonLeft">
+                <div class="FloatLeft PaddingLeftButtonActionRight">
+                    <button type="button" id="btnFraisAccess" albshortcut="true" data-accesskey="f">
+                        <img class="FloatLeft MarginLeftButton" title="BackOffice" alt="BackOffice" src="@Url.Content("/Content/Images/Quittance/frais.png")" />
+                        <span class="spanText FloatLeft CursorPointer"><u>F</u>rais accessoires</span>
+                    </button>
+                </div>
+                <div class="FloatLeft PaddingLeftButtonActionRight">
+                    <div id="divButtonCourtier" class="FloatLeft">
+                        <button id="btnDetailCot" type="button" albshortcut="true" data-accesskey="o">C<u>o</u>mmissions</button>
+                    </div>
+                </div>
+            </div>
+            <div id="divFraisAccessoires">
+                <div class="overlay-background" style="z-index:2">
+                </div>
+                <div id="divDataFraisAccessoires">
+                </div>
+            </div>
+
+            <div id="divCoCourtiers">
+                <div class="overlay-background" style="z-index:2">
+                </div>
+                <div id="divDataCoCourtiers">
+                </div>
+            </div>
+        }
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFermerVisualisationQuittance" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>
+

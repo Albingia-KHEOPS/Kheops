@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<configuration>
+  <!--
+    Pour obtenir une description des modifications de web.config pour .NET 4.5, voir http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    Les attributs suivants peuvent être définis dans la balise <httpRuntime>.
+      <system.Web>
+        <httpRuntime targetFramework="4.5" />
+      </system.Web>
+  -->
+  <system.web>
+    <compilation debug="true" targetFramework="4.5" />
+    <pages controlRenderingCompatibilityVersion="4.0" />
+  </system.web>
+  <system.data>
+    <DbProviderFactories>
+      <add name="EasyComSqlClient Data Provider" invariant="System.Data.EasycomClient" description="Easycom For .NET Client" type="System.Data.EasycomClient.EasycomClientFactory,System.Data.EasycomClient,Version=2.0.0.6, Culture=neutral, PublicKeyToken=32fd8354c170411b" />
+    </DbProviderFactories>
+  </system.data>
+  <system.diagnostics>
+    <sources>
+      <source name="System.ServiceModel.MessageLogging" switchValue="Verbose">
+        <listeners>
+          <add name="messages" type="System.Diagnostics.XmlWriterTraceListener" initializeData="c:\logs\messages.svclog" />
+        </listeners>
+      </source>
+    </sources>
+  </system.diagnostics>
+  <system.serviceModel>
+    <diagnostics>
+      <messageLogging logEntireMessage="true" logMalformedMessages="false" logMessagesAtServiceLevel="true" logMessagesAtTransportLevel="false" maxMessagesToLog="3000" maxSizeOfMessageToLog="2000" />
+    </diagnostics>
+    <services configSource="Configs\Dev\system.serviceModel.services.xml" />
+    <behaviors configSource="Configs\Dev\system.serviceModel.behaviors.xml" />
+    <bindings configSource="Configs\Dev\system.serviceModel.bindings.xml" />
+    <client configSource="Configs\Dev\system.serviceModel.clients.xml" />
+    <serviceHostingEnvironment multipleSiteBindingsEnabled="true" />
+  </system.serviceModel>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true" />
+    <security>
+      <authentication>
+        <anonymousAuthentication enabled="true" />
+      </authentication>
+    </security>
+  </system.webServer>
+  <connectionStrings configSource="Configs\Dev\configuration.connectionStrings.xml" />
+</configuration>

@@ -1,0 +1,123 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Web", "Hexavia\Hexavia.Web.csproj", "{130D0340-0EDB-4BBA-A205-3605988854BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLLs", "DLLs", "{F1127B97-9D60-4C3B-9F3F-2C4A0AC3ADB3}"
+	ProjectSection(SolutionItems) = preProject
+		DLLs\Easyco32.dll = DLLs\Easyco32.dll
+		DLLs\Easycom_core.dll = DLLs\Easycom_core.dll
+		DLLs\NLog.dll = DLLs\NLog.dll
+		DLLs\NLog.Extended.dll = DLLs\NLog.Extended.dll
+		DLLs\NLog.Extended.xml = DLLs\NLog.Extended.xml
+		DLLs\NLog.xml = DLLs\NLog.xml
+		DLLs\Rhino.Mocks.dll = DLLs\Rhino.Mocks.dll
+		DLLs\System.Data.EasycomClient.dll = DLLs\System.Data.EasycomClient.dll
+		DLLs\System.Data.SQLite.DLL = DLLs\System.Data.SQLite.DLL
+		DLLs\System.Data.SQLite.Linq.dll = DLLs\System.Data.SQLite.Linq.dll
+		DLLs\Telerik.Web.Design.dll = DLLs\Telerik.Web.Design.dll
+		DLLs\Telerik.Web.UI.dll = DLLs\Telerik.Web.UI.dll
+		DLLs\Telerik.Web.UI.XML = DLLs\Telerik.Web.UI.XML
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Web.Tests", "Hexavia.Web.Tests\Hexavia.Web.Tests.csproj", "{222FA843-569C-4C90-AF76-1CFF13975C8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Models", "Hexavia.Models\Hexavia.Models.csproj", "{263636C4-B1B7-49DF-B397-3B14232A32BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Repository", "Hexavia.Repository\Hexavia.Repository.csproj", "{625F2784-0B3C-4235-851A-B207D947AE40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Repository.Tests", "Hexavia.Repository.Tests\Hexavia.Repository.Tests.csproj", "{3459E3A5-753F-4134-A2C1-DC37BB2AD288}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Tools", "Hexavia.Tools\Hexavia.Tools.csproj", "{D6D1E361-1570-4196-8376-E3BDA06512C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Business", "Hexavia.Business\Hexavia.Business.csproj", "{682235B0-0A9C-4810-82CB-AF14CF3FE058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Business.Tests", "Hexavia.Business.Tests\Hexavia.Business.Tests.csproj", "{FD864792-FE30-4485-9F97-10BD136E85BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexavia.Console", "Hexavia.Console\Hexavia.Console.csproj", "{342C7A0B-6699-41CF-93C8-00E634B59D41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{130D0340-0EDB-4BBA-A205-3605988854BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{130D0340-0EDB-4BBA-A205-3605988854BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{130D0340-0EDB-4BBA-A205-3605988854BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{130D0340-0EDB-4BBA-A205-3605988854BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222FA843-569C-4C90-AF76-1CFF13975C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222FA843-569C-4C90-AF76-1CFF13975C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222FA843-569C-4C90-AF76-1CFF13975C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222FA843-569C-4C90-AF76-1CFF13975C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{263636C4-B1B7-49DF-B397-3B14232A32BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{263636C4-B1B7-49DF-B397-3B14232A32BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{263636C4-B1B7-49DF-B397-3B14232A32BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{263636C4-B1B7-49DF-B397-3B14232A32BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{625F2784-0B3C-4235-851A-B207D947AE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625F2784-0B3C-4235-851A-B207D947AE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625F2784-0B3C-4235-851A-B207D947AE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625F2784-0B3C-4235-851A-B207D947AE40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3459E3A5-753F-4134-A2C1-DC37BB2AD288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3459E3A5-753F-4134-A2C1-DC37BB2AD288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3459E3A5-753F-4134-A2C1-DC37BB2AD288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3459E3A5-753F-4134-A2C1-DC37BB2AD288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6D1E361-1570-4196-8376-E3BDA06512C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D1E361-1570-4196-8376-E3BDA06512C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D1E361-1570-4196-8376-E3BDA06512C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6D1E361-1570-4196-8376-E3BDA06512C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{682235B0-0A9C-4810-82CB-AF14CF3FE058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{682235B0-0A9C-4810-82CB-AF14CF3FE058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{682235B0-0A9C-4810-82CB-AF14CF3FE058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{682235B0-0A9C-4810-82CB-AF14CF3FE058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD864792-FE30-4485-9F97-10BD136E85BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD864792-FE30-4485-9F97-10BD136E85BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD864792-FE30-4485-9F97-10BD136E85BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD864792-FE30-4485-9F97-10BD136E85BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{342C7A0B-6699-41CF-93C8-00E634B59D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342C7A0B-6699-41CF-93C8-00E634B59D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342C7A0B-6699-41CF-93C8-00E634B59D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342C7A0B-6699-41CF-93C8-00E634B59D41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A4F3586-2E51-45C6-B921-8AEFC8EC5D98}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2018/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Hexavia.Business.Tests\\Hexavia.Business.Tests.csproj
+		SccProjectName1 = Hexavia.Business.Tests
+		SccLocalPath1 = Hexavia.Business.Tests
+		SccProjectUniqueName2 = Hexavia.Business\\Hexavia.Business.csproj
+		SccProjectName2 = Hexavia.Business
+		SccLocalPath2 = Hexavia.Business
+		SccProjectUniqueName3 = Hexavia.Models\\Hexavia.Models.csproj
+		SccProjectName3 = Hexavia.Models
+		SccLocalPath3 = Hexavia.Models
+		SccProjectUniqueName4 = Hexavia.Repository.Tests\\Hexavia.Repository.Tests.csproj
+		SccProjectName4 = Hexavia.Repository.Tests
+		SccLocalPath4 = Hexavia.Repository.Tests
+		SccProjectUniqueName5 = Hexavia.Repository\\Hexavia.Repository.csproj
+		SccProjectName5 = Hexavia.Repository
+		SccLocalPath5 = Hexavia.Repository
+		SccProjectUniqueName6 = Hexavia.Tools\\Hexavia.Tools.csproj
+		SccProjectName6 = Hexavia.Tools
+		SccLocalPath6 = Hexavia.Tools
+		SccProjectUniqueName7 = Hexavia.Web.Tests\\Hexavia.Web.Tests.csproj
+		SccProjectName7 = Hexavia.Web.Tests
+		SccLocalPath7 = Hexavia.Web.Tests
+		SccProjectUniqueName8 = Hexavia\\Hexavia.Web.csproj
+		SccProjectName8 = Hexavia
+		SccLocalPath8 = Hexavia
+		SccProjectUniqueName9 = Hexavia.Console\\Hexavia.Console.csproj
+		SccProjectName9 = Hexavia.Console
+		SccLocalPath9 = Hexavia.Console
+	EndGlobalSection
+EndGlobal

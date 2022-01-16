@@ -1,0 +1,254 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.MetaModels.ClausierRecherche_MetaModel>
+<div id="divHeader">
+    <table id="tblHeaderClausier">
+        <tr>
+            <th class="tablePersoHead tdEmptyHistoHeader">
+                &nbsp;
+            </th>
+            <th id="1" class="colonne1 tablePersoHead">
+                Titre <span class="spImg" style="display: none; float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" />
+                </span>
+            </th>
+            <th id="2" class="colonne2 tablePersoHead">
+                Code <span class="spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                </span>
+            </th>
+            <th id="3" class="colonne3 tablePersoHead">
+                Version <span class="spImg" style="display: none; float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" />
+                </span>
+            </th>
+            <th class="tablePersoHead tdEmptyHistoHeader">
+                &nbsp;
+            </th>
+            <th style="display: none">
+            </th>
+            <th style="display: none">
+            </th>
+            <th style="display: none">
+            </th>
+        </tr>
+    </table>
+</div>
+<div id="divBody">
+    <table id="tblBodyClausier">
+        @foreach (var item in Model)
+        {
+            <tr class="trFichier">
+                <td class="tdEmptyBody">
+                    @Html.RadioButton("rbt", item.Code + "_" + item.NumeroVersion, false, new { @class = "ChkClause" })
+                </td>
+                <td class="colonne1Body">
+                    <a href="#@(item.Code)detail" id="lnkDetail@(item.Code)detail" name="detail" class="lnkDetail">@item.Titre</a>
+                </td>
+                <td class="colonne2Body">
+                    @item.Code
+                </td>
+                <td class="colonne3Body">
+                    @item.NumeroVersion
+                </td>
+                <td class="tdEmptyBody">
+                    <a href="#Histo@(item.Code)" id="HistoLink_@(item.Code)">
+                        <img id="HistoLink_@(item.Code)" name="HistoLink" class="CursorPointer" src="@Url.Content("/Content/Images/Clock-History-Frame-16-green.png")" alt="Historique" title="Historique" />
+                    </a>@*<a href="#Histo@(item.Code)" id="HistoLink_@(item.Code)" class="histo" onclick="Historique('HistoLink_@(item.Code)'); return false;">
+                        Histo. </a>*@
+                </td>
+                <td style="display: none">
+                    <a href="#Histo@(item.Code)Div" id="HistoLink_@(item.Code)None"></a>
+                </td>
+                <td style="display: none">
+                    <div style="display: none; width: auto">
+                        <div id="Histo@(item.Code)Div" style="width: auto">
+                            <div class="CommonForm" style="width: auto">
+                                <div style="text-align: center">
+                                    Historique des versions</div>
+                                <div class="GroupFull GroupWithBorder GroupSplitInfo LargeurDemiInterieur" style="width: 410px !important;">
+                                    <div class="GroupTitle" style="white-space: normal !important;">
+                                        @item.Code - @item.Titre
+                                    </div>
+                                    <div class="HorizontalFullWithGroup LargeurDemiInterieur">
+                                        <div id="dvTabHistorique@(item.Code)">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        @Html.EditorFor(m => item.Historique, "ClausierHistorique")
+                                                    </td>
+                                                </tr>
+                                                <tr style="display: none">
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 410px !important;">
+                                <div id="LoadingDiv" class="FloatLeft">
+                                    <img src="/Content/Images/ajax-loader.gif" alt="" />
+                                </div>
+                                <div class="ActionButtons ActionButtonRight">
+                                    <input type="button" value="Fermer" id="btnFermer" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="display: none">
+                    <div style="display: none; width: auto">
+                        <div id="@(item.Code)detail" style="width: auto">
+                            <div class="CommonForm" style="width: auto">
+                                <div class="GroupFull GroupWithBorder GroupSplitInfo LargeurDemi Marge">
+                                    <div class="GroupTitle Titre">
+                                        <table>
+                                            <tr>
+                                                <td>@item.Code -
+                                                </td>
+                                                <td>@item.Titre
+                                                </td>
+                                            </tr>
+                                            <tr style="display: none">
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="HorizontalFullWithGroup LargeurDemiInterieur">
+                                        <br />
+                                        &nbsp;Texte de la clause.
+                                        <br />
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>                                               
+        }
+    </table>
+</div>
+@*<table id="tblTableEntete" class="TableauClauses" border="0">
+    <thead>
+        <tr>
+            <th id="1" class="colonne1 tablePersoHead" colspan="2">
+                Titre <span class="spImg" style="display: none; float: right;">
+                    <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                </span>
+            </th>
+            <th id="2" class="colonne2 tablePersoHead">
+                Code <span class="spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="../../Content/Images/tri_asc.png" />
+                </span>
+            </th>
+            <th id="3" class="colonne3 tablePersoHead">
+                Version <span class="spImg" style="display: none; float: right;">
+                    <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                </span>
+            </th>
+            <th style="display: none">
+            </th>
+            <th style="display: none">
+            </th>
+            <th style="display: none">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="trFichier">
+                <td>
+                    @Html.RadioButton("rbt", item.Code + "_" + item.NumeroVersion, false, new { @class = "ChkClause" })
+                </td>
+                <td>
+                    <a href="#@(item.Code)detail" id="lnkDetail@(item.Code)detail" name="detail" class="lnkDetail">@item.Titre</a>
+                </td>
+                <td class="colonne2">
+                    @item.Code
+                </td>
+                <td class="colonne3">
+                    <a href="#Histo@(item.Code)" id="HistoLink_@(item.Code)" class="histo" onclick="Historique('HistoLink_@(item.Code)'); return false;">
+                        Histo. </a>
+                </td>
+                <td style="display: none">
+                    <a href="#Histo@(item.Code)Div" id="HistoLink_@(item.Code)None"></a>
+                </td>
+                <td style="display: none">
+                    <div style="display: none; width: auto">
+                        <div id="Histo@(item.Code)Div" style="width: auto">
+                            <div class="CommonForm" style="width: auto">
+                                <div style="text-align: center">
+                                    Historique des versions</div>
+                                <div class="GroupFull GroupWithBorder GroupSplitInfo LargeurDemiInterieur" style="width: 410px !important;">
+                                    <div class="GroupTitle" style="white-space: normal !important;">
+                                        @item.Code - @item.Titre
+                                    </div>
+                                    <div class="HorizontalFullWithGroup LargeurDemiInterieur">
+                                        <div id="dvTabHistorique@(item.Code)">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        @Html.EditorFor(m => item.Historique, "ClausierHistorique")
+                                                    </td>
+                                                </tr>
+                                                <tr style="display: none">
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 410px !important;">
+                                <div id="LoadingDiv" class="FloatLeft">
+                                    <img src="/Content/Images/ajax-loader.gif" alt="" />
+                                </div>
+                                <div class="ActionButtons ActionButtonRight">
+                                    <input type="button" value="Fermer" id="btnFermer" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="display: none">
+                    <div style="display: none; width: auto">
+                        <div id="@(item.Code)detail" style="width: auto">
+                            <div class="CommonForm" style="width: auto">
+                                <div class="GroupFull GroupWithBorder GroupSplitInfo LargeurDemi Marge">
+                                    <div class="GroupTitle Titre">
+                                        <table>
+                                            <tr>
+                                                <td>@item.Code -
+                                                </td>
+                                                <td>@item.Titre
+                                                </td>
+                                            </tr>
+                                            <tr style="display: none">
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="HorizontalFullWithGroup LargeurDemiInterieur">
+                                        <br />
+                                        &nbsp;Texte de la clause.
+                                        <br />
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>                                               
+        }
+    </tbody>
+</table>*@ 

@@ -1,0 +1,67 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.FraisAccessoires
+<div class="CommonForm FloatLeft">
+    <div class="nHorizontalFullWithGroup WidthGroupFraisAccessoires">
+        <div class="nGradientSection FraisAccessoiresGradientSection">
+            <div class="HeightRow">
+                <label class="TitlesFraisAccessoires">Frais accessoires et FGA automatiques</label>
+            </div>
+            <div class="HeightRow">
+                <div class="ColumnTypesFrais">
+                    <div class="FloatLeft">
+                        <label class="Block">Type de frais</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.IsReadOnly)
+                        {
+                            @Html.AlbDropDownListFor(m => m.TypeFrais, Model.TypesFrais, "TypeFrais", htmlAttributes: new { @id = "TypeFrais", @class = "DDLTypesFrais readonly", @albCFList = "fraisAcc", @disabled = "disabled" }, generateTitle: true, genEmptyLine: false)
+                        }
+                        else
+                        {
+                            @Html.AlbDropDownListFor(m => m.TypeFrais, Model.TypesFrais, "TypeFrais", htmlAttributes: new { @id = "TypeFrais", @class = "DDLTypesFrais", @albCFList = "fraisAcc" }, generateTitle: true, genEmptyLine: false)
+                        }
+                    </div>
+                </div>
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Frais standards</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.TypeFrais == "S" && !string.IsNullOrEmpty(Model.ModifFraisStd) && !Model.IsReadOnly)
+                        {
+                            <input type="text" id="FraisStandards" name="FraisStandards" albMask="numeric" class="decimal" value="@(Model.FraisStandards)" albModifStd="@(Model.ModifFraisStd)" />
+                        }
+                        else
+                        {
+                            <input type="text" id="FraisStandards" name="FraisStandards" readonly="readonly" albMask="numeric" class="readonly decimal" value="@(Model.FraisStandards)" albModifStd="@(Model.ModifFraisStd)" />
+                        }
+                    </div>
+                </div>
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Frais retenus</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="@(Model.IsReadOnly ? "decimal readonly" : "decimal")" readonly="@(Model.IsReadOnly )" albMask="numeric" id="FraisRetenus" name="FraisRetenus" value="@(Model.FraisRetenus)" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+               @* bug2567*@
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="LabelTaxeAttentat">FGA</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="TaxeAttentat" name="TaxeAttentat"  checked="@(Model.TaxeAttentat )" disabled="@(Model.IsReadOnly )" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupWithBorder ButtonsHeight DivButtons">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFermerFraisAccessoires" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+            <button id="btnValiderFraisAccessoires" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>

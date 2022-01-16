@@ -1,0 +1,44 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamEngmentPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamEngment.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamEngment.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    @Html.Hidden("splitChar", (ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML))
+    <div class="CommonForm FloatLeft">
+        <div class="GroupFull GroupWithBorder">
+            <div class="GroupTitle">
+                Back-Office
+            </div>
+            <div class="HorizontalFullWithGroup">
+                <div class="GradientSection HeightEngment">
+                    <div class="HeightRow">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                <label class="AutoWidth">Famille de réassurance</label>
+                            </div>
+                            <div class="FloatLeft LargePaddingLeft">
+                                @Html.AlbDropDownListFor(m => m.Traite, Model.Traites, "Traite", htmlAttributes: new { @id = "Traite", @class = "lstTraite" }, generateTitle: true)
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divEngmentColonne"></div>
+                    <div id="divColonne"></div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="t">Re<u>t</u>our</button>
+            </div>
+        </div>
+    </div>
+</div>

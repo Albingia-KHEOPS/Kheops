@@ -1,0 +1,80 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleEngagements.ModeleEngagement
+@Html.HiddenNoName("elementSelected", string.Empty)
+@{
+    foreach (var engagement in Model.Engagements)
+    {
+    <tr id="tr_@(engagement.IdEngagaement)">
+        <td name="lock" class="col_ButonsMontant">
+            <img id="updateEngagement_@(engagement.IdEngagaement)" name="updateEngagement" title="Modifier l'engagement" alt="Modifier l'engagement" class="CursorPointer imgUpdate" src="@Url.Content("~/Content/Images/editer1616.png")" />
+            <img id="deactivateEngagement_@(engagement.IdEngagaement)" name="deactivateEngagement" title="Désactiver l'engagement" alt="Désactiver l'engagement" class="CursorPointer imgDesactivate" src="@Url.Content("~/Content/Images/desactiver.png")" />
+            <img id="deleteEngagement_@(engagement.IdEngagaement)" name="deleteEngagement" title="Supprimer la période d'engagement" alt="Supprimer la période d'engagement" class="CursorPointer" src="@Url.Content("~/Content/Images/poubelle1616.png")" />
+        </td>
+        <td name="edit" class="col_ButonsMontant">
+            <input type="button" id="saveEngagement_@(engagement.IdEngagaement)" class="butonSave" name="saveEngagement" alt="Sauvegarder l'engagement" title="Sauvegarder l'engagement" value="OK" />
+        </td>
+        <td name="lock" id="divStatut_@(engagement.IdEngagaement)" class="col_Statut">
+            @engagement.Statut
+        </td>
+        <td name="edit" id="tdStatut_@(engagement.IdEngagaement)" class="inputStatut"></td>
+
+        <td name="lock" id="divDateDeb_@(engagement.IdEngagaement)" class="col_DateDeb">
+            @engagement.DateDeb
+        </td>
+        <td name="edit" id="tdDateDeb_@(engagement.IdEngagaement)" class="col_DateDeb">
+            @engagement.DateDeb
+        </td>
+        <td name="lock" id="divDateFin_@(engagement.IdEngagaement)" class="col_DateFin">
+            @engagement.DateFin
+        </td>
+        <td name="edit" id="tdDateFin_@(engagement.IdEngagaement)" class="col_DateFin">
+            @engagement.DateFin
+        </td>
+
+
+        @foreach (var traite in engagement.ListCodeTraites)
+        {
+            var traiteEng = @engagement.Traites.Find(t => t.CodeTraite == traite.Code);
+            string engAlbingia = traiteEng != null ? traiteEng.EngagementAlbingia : "";
+            string engTotal = traiteEng != null ? traiteEng.EngagementTotal : "";
+
+            <td name="lock_partAlbingiaEng" id="divTraite_@(traite.Code)" class="col_Traite decimal">
+                @engAlbingia
+            </td>
+            if (traiteEng != null)
+            {
+            <td name="edit_partAlbingiaEng" id="tdTraite_@(traiteEng.CodeTraite)" class="col_Traite">
+                <input class="inputTraite decimal"  id="Traite_@(traiteEng.CodeTraite + "_" + traiteEng.IdTraite)" name="Traite" value="@(engAlbingia)" type="text" />
+            </td>
+            }
+            else
+            {
+            <td name="edit" id="tdTraite_@(traiteEng.CodeTraite)" class="col_Traite">
+                <input class="inputTraite readonly" readonly="readonly" id="Traite_@(traiteEng.CodeTraite + "_" + traiteEng.IdTraite)" name="Traite" value="" type="text" />
+            </td>
+            }
+        }
+    </tr>
+    }
+
+    var albIndexLst = ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST;
+    <tr id="newEngagementPeriode">
+        <td class="col_Buttons">
+            <input type="button" id="saveEngagement_@(albIndexLst)" class="butonSave" name="saveEngagement" alt="Sauvegarder l'engagement" title="Sauvegarder l'engagement" value="OK" />
+        </td>
+        <td class="col_Statut">
+            <input id="EngagementCode_@(albIndexLst)" name="EngagementCode" value="@(albIndexLst)" type="hidden" />
+        </td>
+        <td class="col_DateDeb">
+            <input class="inputDateDeb datepicker" id="DateDeb_@(albIndexLst)" name="DateDeb" value="" type="text" />
+        </td>
+        <td class="col_DateFin">
+            <input class="inputDateFin datepicker" id="DateFin_@(albIndexLst)" name="DateFin" value="" type="text" />
+        </td>
+        @foreach (var traite in Model.ListCodeTraites)
+        {
+            <td class="col_Traite">
+                <input class="inputTraite decimal" id="Traite_@(albIndexLst + "_" + traite.Code)" name="Traite" value="" type="text" />
+            </td>
+        }
+    </tr>
+}

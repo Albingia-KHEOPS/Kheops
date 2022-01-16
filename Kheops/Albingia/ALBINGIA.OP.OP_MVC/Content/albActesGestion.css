@@ -1,0 +1,107 @@
+﻿/*<td class="col_ActeDate">@acte.Date</td>
+        <td class="col_ActeHeure">@acte.Heure</td>
+        <td class="col_ActeNumero">@acte.Numero</td>
+        <td class="col_ActeTypeActe">@acte.TypeTraitement</td>
+        <td class="col_ActeLibelle">@acte.Libelle</td>
+        <td class="col_ActeDescription">@acte.Description</td>
+        <td class="col_ActeUtilisateur">@acte.Utilisateur</td>*/
+.col_HeaderActeDate
+{
+    width: 78px;
+}
+
+.col_HeaderActeHeure
+{
+    width: 48px;
+}
+
+.col_HeaderActeNumero
+{
+    width: 38px;
+}
+
+.col_HeaderActeTypeActe
+{
+    width: 108px;
+}
+
+.col_HeaderActeLibelle
+{
+    width: 279px;
+}
+
+.col_HeaderActeDescription
+{
+    width: 282px;
+}
+
+.col_HeaderActeUtilisateur
+{
+    width: 108px;
+}
+
+.col_ActeDate
+{
+    width: 80px;
+}
+
+.col_ActeHeure
+{
+    width: 50px;
+}
+
+.col_ActeNumero
+{
+    width: 40px;
+}
+
+.col_ActeTypeActe
+{
+    width: 110px;
+    text-align: center;
+}
+
+
+.col_ActeLibelle
+{
+    width: 280px;
+    text-align: center;
+}
+
+.col_ActeDescription
+{
+    width: 280px;
+    padding-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col_ActeUtilisateur
+{
+    width: 110px;
+}
+
+#divActesGestionBody
+{
+    width: 1002px;
+    max-height: 311px;
+    overflow-y: auto;
+}
+
+.HeightActesGestion
+{
+    height: 354px;
+    padding-left: 5px;
+}
+
+#tblActesGestionHeader
+{
+    /*width: 1000px;*/
+}
+
+.tableActGesBody
+{
+    width: 985px;
+    table-layout: fixed;
+}

@@ -1,0 +1,259 @@
+﻿/*span {
+    width: 100%;
+}*/
+
+.heightDivConsult {
+    height: 560px;
+}
+
+.heightDivConsultInterne {
+    height: 548px;
+}
+
+.HeightRowTable {
+    height: 170px;
+}
+
+.tablePersoHead {
+    border: 1px solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.GroupBackOfficeGarantieTypeList, .GroupBackOfficeGarantieTypeLien {
+    width: 701px !important;
+}
+
+.GroupBackOfficeGarantieTypeConsult {
+    width: 475px !important;
+}
+
+#tblType tr[data-niveau="2"] td:nth-child(3) {
+    padding-left: 5px;
+}
+
+#tblType tr[data-niveau="3"] td:nth-child(3) {
+    padding-left: 10px;
+}
+
+#tblType tr[data-niveau="4"] td:nth-child(3) {
+    padding-left: 15px;
+}
+
+.HeightRowTitle {
+    height: 18px;
+}
+
+.LabelLien {
+    width: 100%;
+    font-weight: bold;
+}
+
+.LabelWidth {
+    width: 90px;
+    padding-right: 5px;
+    margin-bottom: 5px;
+}
+
+.LabelWidthLien {
+    width: 80px;
+    padding-right: 5px;
+    margin-bottom: 5px;
+}
+
+.SmallLabelWidth {
+    width: 45px;
+    padding-right: 5px;
+    margin-bottom: 5px;
+}
+
+.LargeLabelWidth {
+    width: 180px;
+    padding-right: 5px;
+    margin-bottom: 5px;
+}
+
+.Input {
+    width: 90px !important;
+}
+
+.InputSelect {
+    width: 96px !important;
+}
+
+.InputSelectLien {
+    width: 110px;
+}
+
+.SmallInput {
+    width: 37px !important;
+}
+
+.TableInput {
+    width: 60px !important;
+}
+
+.SmallTableInput {
+    width: 40px !important;
+}
+
+.GroupBackOfficeLeft {
+    float: left;
+    width: 725px;
+}
+
+.divHeight {
+    overflow-y: auto;
+    height: 445px;
+    /*margin-bottom: 10px;*/
+}
+
+.GroupHeightGarantieType {
+    height: 600px;
+    max-height: 600px;
+}
+
+.GroupHeightGarantieTypeFixe {
+    height: 600px;
+}
+
+.GroupHeightGarantieTypeInterieur {
+    max-height: 560px;
+}
+
+.GroupHeightGarantieTypeLien {
+    height: 185px;
+    max-height: 345px;
+}
+
+.GroupHeightGarantieTypeLienInterieur {
+    margin-top: 5px;
+    height: 140px;
+}
+
+.divAssociation, .divDependance, .divIncompatibilite {
+    float: left;
+    width: 224px;
+    height: 130px;
+}
+
+.divIncompatibilite {
+    margin-right: 3px;
+}
+
+#divLstGarantieType {
+    display: none;
+}
+
+#divInfoGarantieType, #divInfoGarantieTypeLien {
+    display: none;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.labelCode {
+    width: 65px;
+}
+
+.widthTableType {
+    width: 625px;
+    table-layout: fixed;
+}
+
+.tdHeaderEditType {
+    width: 18px;
+}
+
+.tdBodyEditType {
+    width: 20px;
+    text-align: center;
+}
+
+.tdHeaderImgType {
+    width: 21px;
+}
+
+.tdBodyImgType, .tdBodyImgLien {
+    width: 27px;
+    text-align: center;
+}
+
+.tdHeaderSmall {
+    width: 23px;
+}
+
+.tdBodySmall {
+    width: 25px;
+}
+
+.tdHeaderCodeGarantie {
+    width: 88px;
+}
+
+.tdBodyCodeGarantie {
+    width: 90px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderDescription {
+    width: 213px;
+}
+
+.tdBodyDescription {
+    width: 220px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderTypePrime {
+    width: 44px;
+}
+
+.tdBodyTypePrime {
+    width: 50px;
+}
+
+.tdHeaderNature {
+    width: 98px;
+}
+
+.tdHeaderValeur, .tdHeaderUnite, .tdHeaderBase {
+    width: 63px;
+}
+
+.tdHeaderModi, .tdHeaderAlim {
+    width: 43px;
+}
+
+.tdBodyNature {
+    width: 100px;
+}
+
+.tdBodyValeur, .tdBodyUnite, .tdBodyBase {
+    width: 65px;
+}
+
+.tdBodyModi, .tdBodyAlim {
+    width: 45px;
+}
+
+.widthTableLien {
+    width: 190px;
+    margin-left: 5px;
+    table-layout: fixed;
+}
+.divHeightLien {
+    height: 80px;
+    width: 223px;
+    overflow-y: auto;
+}
+
+.tdBodyLienGarantie {
+    width: 140px;
+}

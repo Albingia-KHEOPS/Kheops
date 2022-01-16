@@ -1,0 +1,26 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleTransverse.ModeleCommonCabinetPreneur
+<div id="BoiteDialogCourtierGestionnaire" class="nInfoBandeau">
+    <div class="GradientSection BlocDialogInfoGen FloatLeft">
+        <div class="HeightRow">
+            <label class="titleBoiteDiag">Informations Courtier</label>
+        </div>
+        @Html.Partial("BoitesDialogueDetails/InfosGeneralesEntite", Model)
+        @if (!string.IsNullOrEmpty(Model.EncaissementCode))
+        {
+            <div class="HeightRow">
+                <label class="Block FloatLeft">Encaissement :</label>
+                <label class="Block FloatLeft">@(Model.EncaissementCode + " " + Model.EncaissementLibelle)</label>
+            </div>
+        }
+    </div>
+    <div class="GradientSection BlocDialogInterlocuteur FloatLeft">
+        <div class="HeightRow">
+            <label class="titleBoiteDiag">Informations Interlocuteur</label>
+        </div>
+        @Html.Partial("BoitesDialogueDetails/InfosInterlocuteur", Model)
+    </div>
+    <div class="TinyHeightRow"></div>
+    <div class="nGradientSection BlocDialogDelegationLarge">
+        @Html.Partial("BoitesDialogueDetails/InfosDelegation", Model)
+    </div>
+</div>

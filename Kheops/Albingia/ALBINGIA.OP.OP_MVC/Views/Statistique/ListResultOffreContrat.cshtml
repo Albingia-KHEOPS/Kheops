@@ -1,0 +1,26 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleStatisque.StatOffreContratModel>
+
+<div id="LigneCount">Nombre de lignes: @Model.Count</div>
+<div id="listeStatFoffreContrat" class="GradientSection">
+    <table id="tblHeaderParam">
+        <tr>
+            <th class="tablePersoHead">Numéros</th>
+            <th class="tablePersoHead xsmallcol" >Version   </th>
+            <th class="tablePersoHead xsmallcol" >Type  </th>
+            <th class="tablePersoHead">Reference  </th>
+            <th class="tablePersoHead">Gestionnaire  </th>
+            <th class="tablePersoHead">Souscripteur  </th>
+            <th class="tablePersoHead">Branche  </th>
+            <th class="tablePersoHead">Cible  </th>
+        </tr>
+    </table>
+
+    <div id="divBodyParam" class="AlignCenter">
+        <table id="statOffreContratTable" class="styled">
+            @foreach (var item in @Model)
+            {
+                @Html.Partial("OffreContratItem", item)
+            }
+        </table>
+    </div>
+</div>

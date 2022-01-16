@@ -1,0 +1,135 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegularisation.ModeleCreationRegule
+<div class="nGradientSection FloatLeft dvRegule">
+    @Html.Hidden("TypeAvt", Model.TypeAvt)
+    @Html.Hidden("erreurPGM", Model.ErreurPGM)
+    @Html.Hidden("deleteMod", string.Empty)
+    @Html.Hidden("cancelMod", string.Empty)
+    <div class="dvWarning">
+        @if (Model.ModeAvt == "CREATE" && Model.TypeAvt != ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF)
+        {
+            <div class="FloatLeft">
+                <label class="Block reguleWarning">Attention, vous allez créer un nouvel acte de gestion. Toutes les informations du contrat en cours vont être mises en historique.</label>
+            </div>
+        }
+        <div class="FloatRight PaddingRight">
+            <input type="text" id="NumInterne" name="NumInterne" value="@Model.NumAvt" readonly="readonly" class="readonly inputNumInterne" />
+        </div>
+        <div class="FloatRight PaddingLeft">
+            <label class="Block cssType">N° avt</label>
+        </div>
+    </div>
+    <div class="dvDesc">
+        <div class="FloatLeft">
+            <label class="Block">Réf. de gestion</label>
+        </div>
+        <div id="zoneTxtArea" class="FloatLeft divTextArea2 NonReprisCP" albcontext="Description">@Html.Raw(!string.IsNullOrEmpty(Model.DescriptionAvt) ? Model.DescriptionAvt.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+        <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="Description">
+            <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+        </div>
+        <div id="txtArea" class="None" albcontext="Description">
+            <div class="FloatLeft">
+                @if (Model.IsReadOnly)
+                {
+                    <div id="Description" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.DescriptionAvt)</div>
+                }
+                else
+                {                    
+                    <textarea id="Description" name="Description" albcontext="Description" class="textareaDesc">@Model.DescriptionAvt</textarea>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Motif*</label>
+        </div>
+        <div class="FloatLeft">
+            @Html.AlbDropDownListFor(m => Model.MotifAvt, Model.Motifs, "MotifAvt", htmlAttributes: new { @id = "MotifAvt", @albCFList = "motifavt" }, generateTitle: true)
+        </div>
+    </div>
+    <div class="PaddingLeft">
+        <b>Renseignez la période générale du contrat à régulariser</b> :
+    </div>
+
+    <div class="PaddingLeft PaddingTop">
+        <table id="tblAttesHeader" class="trHeight">
+            <tr>
+                <th class="tablePersoHead thExercice">Exercice</th>
+                <th class="tablePersoHead thPeriode">Période régularisation</th>
+                <th class="tablePersoHead thBlank">&nbsp;</th>
+            </tr>
+        </table>
+    </div>
+    <div class="PaddingLeft TabPeriode">
+        @Html.HiddenNoName("PeriodeValide", 0)
+        <table id="tblReguleBody" class="trHeight">
+            <tr>
+                <td>
+                    <input type="text" id="ExerciceRegule" class="inExercice numerique" albmask="year" value="@(Model.Exercice != "0" ? Model.Exercice : string.Empty)" maxlength="4" />
+                </td>
+                <td>@Html.AlbDateFormat(m => m.PeriodeDeb, new { @class = "inputDate datepicker", @id = "PeriodeDeb", @name = "PeriodeDeb" }, htmlName: "PeriodeDeb")</td>
+                <td>@Html.AlbDateFormat(m => m.PeriodeFin, new { @class = "inputDate datepicker", @id = "PeriodeFin", @name = "PeriodeFin" }, htmlName: "PeriodeFin")</td>
+                @if (Model.IsReadOnly)
+                {
+                    <td style="width: 36px;">
+                        @Html.Raw("&nbsp;")
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <img id="btnSaveRegule" class="CursorPointer" src="@Url.Content("/Content/Images/Save_16.png")" alt="Save" title="Enregistrer la régularisation" />
+                    </td>
+                    <td>
+                        <img id="btnDeleteRegule" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Delete" title="Supprimer la régularisation" />
+                    </td>
+                }
+            </tr>
+        </table>
+    </div>
+    <div id="dvReguleCourtier">
+        @Html.Partial("CreationReguleCourtier", Model)
+    </div>
+</div>
+<div class="nGradientSection FloatLeft dvAlert">
+    <div class="HeightRow paddingleft150">
+        <div class="FloatLeft">
+            <img src="@Url.Content("/Content/Images/ControleFin/A.png")" />
+        </div>
+        <div class="FloatLeft PaddingLeft"><u>Alertes</u></div>
+    </div>
+    <div class="dvAlertes">
+        <table id="tblAlerteAvenant" class="trHeight tblAlertes">
+            @foreach (var item in Model.Alertes)
+            {
+                <tr>
+                    <td class="PaddingTop tdImgAlerte">
+                        @if (item.TypeBloquante == "B")
+                        {
+                            <img src="@Url.Content("/Content/Images/ControleFin/B.png")" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("/Content/Images/ControleFin/A.png")" />
+                        }
+                    </td>
+                    <td class="PaddingTop tdMsgAlerte" title="@item.MessageAlerte">@item.MessageAlerte</td>
+                    @if (item.TypeBloquante == "B")
+                    {
+                    <td id="linkAlerte" class="navig PaddingTop tdLinkAlerte" albParam="@item.TypeAlerte">
+                        @Html.Hidden("inputAlerte", item.TypeAlerte, new { id = $"inputAlerte{item.TypeAlerte}" })
+                        @item.LienMessage
+                    </td>
+                    }
+                    else
+                    {
+                    <td id="linkAlerte" class="navig PaddingTop tdLinkAlerte" albParam="@item.TypeAlerte">
+                        @Html.Hidden("inputAlerte", string.Empty, new { id = $"inputAlerte{item.TypeAlerte}" })
+                        @item.LienMessage
+                    </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</div>

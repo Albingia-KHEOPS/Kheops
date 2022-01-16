@@ -1,0 +1,103 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDetailsRisque.ModeleRechercheActivite
+<table class="field-right Pagination" style="margin-top: -40px;">
+    <tr>
+        @if (Model.PageNumber > 1)
+        {
+            <td>
+                <img id="ActivitePaginationPremierePage" src="@Url.Content("/Content/Images/1340965186_pagination_1_first.png")" class="CursorPointer" />
+            </td>
+            <td>
+                <img id="ActivitePaginationPrecedent" src="@Url.Content("/Content/Images/1340965176_pagination_1_previous.png")" class="CursorPointer" />
+            </td>
+        }
+        else
+        {
+            <td>
+                <img src="@Url.Content("/Content/Images/1340965186_pagination_1_first_disabled.png")" />
+            </td>
+            <td>
+                <img src="@Url.Content("/Content/Images/1340965176_pagination_1_previous_disabled.png")" />
+            </td>
+        }
+        <td>
+            <span id="ActivitePaginationPageActuelle">@Model.PageNumber</span>
+        </td>
+        @if (Model.PageNumber * (Model.EndLigne - Model.StartLigne + 1) < Model.LineCount)
+        {
+            <td>
+                <img id="ActivitePaginationSuivant" src="@Url.Content("/Content/Images/1340965171_pagination_1_next.png")" class="CursorPointer" />
+            </td>
+            <td>
+                <img id="ActivitePaginationDernierePage" src="@Url.Content("/Content/Images/1340965180_pagination_1_last.png")" class="CursorPointer" />
+            </td>
+        }
+        else
+        {
+            <td>
+                <img src="@Url.Content("/Content/Images/1340965171_pagination_1_next_disabled.png")" />
+            </td>
+            <td>
+                <img src="@Url.Content("/Content/Images/1340965180_pagination_1_last_disabled.png")" />
+            </td>
+        }
+        <td class="PageSize"><span id="ActivitePaginationStart">@Html.DisplayFor(m => m.StartLigne)</span> - <span id="ActivitePaginationEnd">@Html.DisplayFor(m => m.EndLigne)</span>
+            [total : <span id="ActivitePaginationTotal">
+                @if (Model.NbCount > Model.LineCount)
+                {
+                    @Html.DisplayFor(m => m.LineCount)
+                }
+                else
+                {
+                    @Html.DisplayFor(m => m.NbCount)
+                }
+
+            </span>]
+        </td>
+    </tr>
+</table>
+<div id="divActiviteHeader">
+    <table id="tblActiviteHeader">
+        <tr>
+            <th class="tablePersoHeadActivite TablePersoActiviteTd1 TablePersoTdHead" id="1">Code</th>
+            <th class="tablePersoHeadActivite TablePersoActiviteTd2 TablePersoTdHead" id="2">Libellé court</th>
+            <th class="tablePersoHeadActivite TablePersoActiviteTd3 TablePersoTdHead" id="3">Libellé long</th>
+            <th class="tablePersoHeadActivite TablePersoActiviteTd4 TablePersoTdHead" id="4">Classe risque </th>
+            <th class="tablePersoHeadActivite TablePersoActiviteTd5 TablePersoTdHead" id="5">Classe tarif </th>
+            <th class="tablePersoHeadActivite TablePersoActiviteTd6 TablePersoTdHead" id="6">Description </th>
+        </tr>
+    </table>
+</div>
+<div id="divLstResultatActivite">
+    @if (Model.ListActivites != null && Model.ListActivites.Count > 0)
+    {
+        <div id="divActiviteBody">
+            <table id="tblActivite" class="trHeight" style="width: 1185px; table-layout: fixed;">
+                @foreach (var Ligne in Model.ListActivites)
+                {
+                    <tr albactivite="@(Ligne.Code)_@(Ligne.LibelleCourt)">
+                        <td class="TablePersoActiviteTd1">
+                            @Ligne.Code
+                        </td>
+                        <td class="TablePersoActiviteTd2">
+                            @Ligne.LibelleCourt
+                        </td>
+                        <td class="TablePersoActiviteTd3">
+                            @Ligne.LibelleLong
+                        </td>
+                        <td class="TablePersoActiviteTd4">
+                            @Ligne.ClassRsq
+                        </td>
+                        <td class="TablePersoActiviteTd5">
+                        @Ligne.ClassTarif
+                        <td class="TablePersoActiviteTd6">
+                            @Ligne.Description
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>         
+    }
+</div>
+<div class=" ligneRed" style="padding-top: 215px;">
+    <label class="AutoWidth " id="IdMessageLabel"></label>
+</div>

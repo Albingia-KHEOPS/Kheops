@@ -1,0 +1,126 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesVolets.ModeleVolet
+@using (Html.BeginForm("Enregistrer", "Volets", FormMethod.Post, new { @id = "frmMain" }))
+{
+    @Html.HiddenNoName("GuidId", Model.GuidId)
+    <div class="GroupTitle">
+        Consultation / Modification Volets
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Code Volet</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly || !string.IsNullOrEmpty(Model.GuidId))
+                        {
+                            <input id="Code" class="readonly DoubleInput" readonly="readonly" value="@Model.Code" />
+                        }
+                        else
+                        {
+                            <input id="Code" class="DoubleInput" value="@Model.Code" maxlength="10" />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Description</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            <input id="Description" class="readonly DoubleInput" readonly="readonly" value="@Model.Description" />
+                        }
+                        else
+                        {
+                            <input id="Description" class="DoubleInput" value="@Model.Description" maxlength="60"/>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Branche</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            @Html.AlbDropDownListFor(m => m.Branche, Model.Branche, "dvBranche", generateTitle: true, htmlAttributes: new { @id = "drlBranche", @disabled = "disabled", @class = "readonly DoubleInput" }, genEmptyLine: true)
+                        }
+                        else
+                        {
+                            @Html.AlbDropDownListFor(m => m.Branche, Model.Branche, "dvBranche", generateTitle: true, htmlAttributes: new { @id = "drlBranche", @class = "DoubleInput" }, genEmptyLine: true)
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Créé le</label>
+                    </div>
+                    <div>@Html.DisplayFor(m => m.DateCreation)</div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block"></label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="chkVoletGeneral" type="checkbox" checked="@(Model.IsVoletGeneral == "O")" disabled="@(Model.ReadOnly)"/>Volet Général
+                    </div>
+                    <div class="FloatLeft PaddingIndentation">
+                        <input id="chkVoletCollapse" type="checkbox" checked="@(Model.IsVoletCollapse =="RP")" disabled="@(Model.ReadOnly)" />Volet Replié
+                    </div>
+                    @if (!Model.ReadOnly)
+                    {
+                        <div class="" style="text-align: right; padding-right: 5px;">
+                            <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            @* <div class="FieldRow">
+                <div class="FieldLabelVBM">
+                    <a href="#" onclick="javascript:ShowLink();" title="Ajouter">Ajouter</a>
+                </div>
+            </div>*@
+            @if (Model.CategoriesVolet.Count > 0)
+            {
+                <div class="MarginLeft">
+                    Volet utilisé dans les branches suivantes :
+                </div>
+                <div>
+                    <table class="trHeight">
+                        <tr>
+                            <th class="hBranche tablePersoHead">Branche
+                            </th>
+                            <th class="hCible tablePersoHead">Cible
+                            </th>
+                            <th class="hCarac tablePersoHead">Carac.
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divListCategories" class="divHeightCat">
+                    @Html.Partial("ParametreVBM/ListCategories", Model.CategoriesVolet)
+                </div>
+            }
+            else
+            {
+                <div class="MarginLeft">
+                    Volet utilisé dans aucune branches.
+                </div>
+            }
+        </div>
+    </div>
+}

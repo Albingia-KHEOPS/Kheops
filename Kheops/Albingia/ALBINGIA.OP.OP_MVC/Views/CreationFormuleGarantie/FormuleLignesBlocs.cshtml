@@ -1,0 +1,552 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesVolets.ModeleVolet
+@using ALBINGIA.Framework.Common
+@foreach (var bloc in Model.Blocs)
+{
+    <tr id="@bloc.GuidId" name="volet_@(Model.Code)" style="display:@(Model.isChecked ? "block" : "none")">
+        <td class="tdImgCheckBox">
+            <img class="@(bloc.isChecked ? "CursorPointer" : "CursorPointer None")" src="@Url.Content("~/Content/Images/Op.png")" id="bloc_@(bloc.Code + "_" + Model.Code)" name="expandBloc" albExpand="1" />
+        </td>
+        <td class="tdImgCheckBox">
+            @Html.Hidden("Caractere", bloc.Caractere, new { id = $"Caractere_{bloc.Code}_{Model.Code}" })
+            @if (bloc.Caractere != "O" && !Model.IsReadOnly)
+            {
+                @Html.CheckBox("bloc_" + bloc.CodeOption, bloc.isChecked, new { @id = "bloc_" + bloc.Code + "_" + Model.Code, @albNiv = "bloc_" + Model.GuidId + "_" + bloc.GuidId, @albBlocAssocie = "bloc_" + bloc.BlocAssocie, @albBlocDependant = "bloc_" + bloc.BlocDependant, @albBlocIncompatible = "bloc_" + bloc.BlocIncompatible, @albBlocAlternatif = "bloc_" + bloc.BlocAlternatif })
+            }
+            else
+            { 
+                @Html.CheckBox("bloc_" + bloc.CodeOption, bloc.isChecked, new { @id = "bloc_" + bloc.Code + "_" + Model.Code, @albNiv = "bloc_" + Model.GuidId + "_" + bloc.GuidId, @albBlocAssocie = "bloc_" + bloc.BlocAssocie, @albBlocDependant = "bloc_" + bloc.BlocDependant, @albBlocIncompatible = "bloc_" + bloc.BlocIncompatible, @albBlocAlternatif = "bloc_" + bloc.BlocAlternatif, @disabled = "disabled" })
+            }
+        </td>
+        <td class="tdTitle" title="Bloc">B.
+        </td>
+        <td class="tdCombo">&nbsp;</td>
+        <td class="lgnNiv2" albModifAvt="libVBM" albblocdesc="bloc_@(bloc.Code)_@(Model.Code)">
+            <span class="spanLibVBM">@bloc.Code - @bloc.Description</span>
+            <span class="spanImgVBM" name="spanImg">
+                @if (bloc.ModifAvt)
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_rouge_petit.png"))" />
+                }
+                else
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_blank_petit.png"))" />
+                }
+            </span>
+        </td>
+        <td class="tdImgCheckBox"></td>
+        <td class="tdImgCheckBox"></td>
+        <td class="tdImgCheckBox"></td>
+    </tr>
+                foreach (var modele in bloc.Modeles)
+                {
+
+                    foreach (var garantieNiv1 in modele.Modeles)
+                    {
+                        var titleGar1 = !string.IsNullOrEmpty(garantieNiv1.NatureParam) ? string.Concat(garantieNiv1.NatureParam, " - ", AlbEnumInfoValue.GetEnumValue<ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Nature>(garantieNiv1.NatureParam)) : string.Concat(garantieNiv1.Nature, " - ", AlbEnumInfoValue.GetEnumValue<ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Nature>(garantieNiv1.Nature));
+    <tr id="@(modele.GuidId)_@(garantieNiv1.Code)" name="bloc_@(bloc.Code)_@(Model.Code)" style="display:@(Model.isChecked ? (bloc.isChecked ? "block" : "none") : "none")">
+        <td class="tdImgCheckBox">&nbsp;</td>
+        <td class="tdImgCheckBox">
+            <input type="hidden" name="Caractere" id="Caractere_@(garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv1.Caractere" />
+            <input type="hidden" name="Nature" id="Nature_@(garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv1.Nature" />
+            <input type="hidden" name="NatureParam" id="NatureParam_@(garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv1.NatureParam" />
+            <input type="hidden" name="ParamNatMod" id="ParamNatMod_@(garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv1.ParamNatMod" />
+            @if (garantieNiv1.Caractere != "O" && !Model.IsReadOnly)
+            {                                        
+                @Html.CheckBox("garantieNiv1_" + garantieNiv1.GuidGarantie, garantieNiv1.isChecked,
+                        new
+                        {
+                            @id = "garantie1_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code,
+                            @albNiv = "niv1_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie,
+                            @albCodeGarantie = garantieNiv1.Code,
+                            @albVoletBloc = bloc.Code + "_" + Model.Code,
+                            @albGarIncompatible = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv1.CodeGarantie + "_" + garantieNiv1.GarantieIncompatible,
+                            @albGarAssociee = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv1.CodeGarantie + "_" + garantieNiv1.GarantieAssociee,
+                            @albGarAlternative = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv1.CodeGarantie + "_" + garantieNiv1.GarantieAlternative.ToString(),
+                            @albGar = "garantieNiv1_" + garantieNiv1.FCTCodeGarantie,
+                            @albInfo = modele.GuidId + "_" + garantieNiv1.Code,
+                            @style = !garantieNiv1.CreateInAvt && garantieNiv1.isChecked ? "display:none" : "display:block",
+                            @title = garantieNiv1.Caractere
+                        })                    
+            }
+            else
+            {                     
+                @Html.CheckBox("garantieNiv1_" + garantieNiv1.GuidGarantie, garantieNiv1.isChecked,
+                        new
+                        {
+                            @id = "garantie1_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code,
+                            @albNiv = "niv1_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie,
+                            @albCodeGarantie = garantieNiv1.Code,
+                            @albVoletBloc = bloc.Code + "_" + Model.Code,
+                            @albGarIncompatible = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv1.CodeGarantie + "_" + garantieNiv1.GarantieIncompatible,
+                            @albGarAssociee = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv1.CodeGarantie + "_" + garantieNiv1.GarantieAssociee,
+                            @albGarAlternative = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv1.CodeGarantie + "_" + garantieNiv1.GarantieAlternative.ToString(),
+                            @disabled = "disabled",
+                            @albGar = "garantieNiv1_" + garantieNiv1.FCTCodeGarantie,
+                            @albInfo = modele.GuidId + "_" + garantieNiv1.Code,
+                            @style = !garantieNiv1.CreateInAvt && garantieNiv1.isChecked ? "display:none" : "display:block",
+                            @title = garantieNiv1.Caractere
+                        })
+            }
+            @if (!garantieNiv1.CreateInAvt && garantieNiv1.isChecked)
+            {
+                <img src="@(Url.Content("/Content/Images/Checkmark-16.png"))" />
+            }
+        </td>
+        <td class="tdTitle" title="Niveau @garantieNiv1.Niveau">
+            @garantieNiv1.Niveau
+        </td>
+        <td class="tdCombo">
+            @if (garantieNiv1.ParamNatMod == "O")
+            {
+                <input type="hidden" id="oldparamNatMod1_@(garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" name="@(garantieNiv1.ParamNatModVal)" />
+                if (!Model.IsReadOnly)
+                {
+                <input type="hidden" id="bddparamNatMod1_@(garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@(garantieNiv1.ParamNatModVal)"/>
+                @Html.AlbDropDownListFor(m => garantieNiv1.Nature, Model.ParamNatMods.Select(u => { u.Selected = (u.Value == garantieNiv1.ParamNatModVal ? true : false); return u; }).ToList(), "ParamNatMod", htmlAttributes: new { @id = "paramNatMod1_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code, @class = "lstParamNatMod", @albNiv = "niv1_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie, @albInfo = modele.GuidId + "_" + garantieNiv1.Code, @title = titleGar1 }, generateTitle: true, replaceHtmlName: "ParamNatMod")
+                }
+                else
+                {
+                @Html.Raw(garantieNiv1.ParamNatModVal)
+                }
+            }
+        </td>
+        <td class="lgnModeleNiv1" albModifAvt="libVBM" albgardesc="garantie1_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albInfo="@(modele.GuidId)_@(garantieNiv1.Code)" title="@(garantieNiv1.isChecked ? "Accordé" : string.Empty)">
+            <span class="spanLibVBM">@string.Format("{0} - {1}", garantieNiv1.FCTCodeGarantie, garantieNiv1.Description)</span>
+            <span class="spanImgVBM" name="spanImg">
+                @if (garantieNiv1.UpdateInAvt)
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_rouge_petit.png"))" />
+                }
+                else
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_blank_petit.png"))" />
+                }
+            </span>
+        </td>
+        <td name="detailGaran" class="@(garantieNiv1.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+            @if (garantieNiv1.FlagModif == "N")
+            {
+                <img src="@Url.Content("/Content/Images/Edit_16.png")" name="icoDetailGaran" alt="Détails" title="Détails" id="@(garantieNiv1.Code)" class="@(garantieNiv1.isChecked ? "" : "None")" albGarInfo="garInfo1_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv1_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)" albgarguid="@(garantieNiv1.GuidGarantie)"/>
+            }
+            else
+            {
+                <img src="@Url.Content("/Content/Images/Edit_2_16.png")" name="icoDetailGaran" alt="Détails" title="Détails" id="@(garantieNiv1.Code)" class="@(garantieNiv1.isChecked ? "" : "None")" albGarInfo="garInfo1_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv1_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)" albgarguid="@(garantieNiv1.GuidGarantie)"/>
+            }
+        </td>
+        <td name="addInven" class="@(garantieNiv1.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+            @if (garantieNiv1.isChecked)
+            {
+                if (garantieNiv1.InvenPossible == "O")
+                {
+                    if (garantieNiv1.CodeInven == 0)
+                    {
+                        if (!Model.IsReadOnly)
+                        {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv1.FCTCodeGarantie + "_" + garantieNiv1.TypeInven + "_" + garantieNiv1.CodeInven)" albNiv="niv1_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)" albOriginCodeInven="@garantieNiv1.CodeInven" albGar="@("garantieNiv1_" + garantieNiv1.FCTCodeGarantie)" />
+                        }
+                    }
+                    else
+                    {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616_on.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv1.FCTCodeGarantie + "_" + garantieNiv1.TypeInven + "_" + garantieNiv1.CodeInven)" albNiv="niv1_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)" albOriginCodeInven="@garantieNiv1.CodeInven" albGar="@("garantieNiv1_" + garantieNiv1.FCTCodeGarantie)" />
+                    }
+                }
+            }
+            else
+            {
+                if (garantieNiv1.InvenPossible == "O")
+                {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv1.FCTCodeGarantie + "_" + garantieNiv1.TypeInven + "_" + garantieNiv1.CodeInven)" albNiv="niv1_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)" albOriginCodeInven="@garantieNiv1.CodeInven" albGar="@("garantieNiv1_" + garantieNiv1.FCTCodeGarantie)" class="None" />
+                }
+            }
+        </td>
+        <td name="porteeGar" class="@(garantieNiv1.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+            @*FlagPortee*@
+            @if (string.IsNullOrEmpty(garantieNiv1.Action))
+            {
+                <img src="@Url.Content("/Content/Images/portee.png")" name="icoPorteeGar" alt="Portee" title="Définir la portée de la garantie" id="@(garantieNiv1.Code)" class="@(garantieNiv1.isChecked ? "" : "None")" albGarInfo="garInfo1_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv1_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)" />
+            }
+            else
+            {
+                <img src="@Url.Content("/Content/Images/portee_2.png")" name="icoPorteeGar" alt="Portee" title="Définir la portée de la garantie" id="@(garantieNiv1.Code)" class="@(garantieNiv1.isChecked ? "" : "None")" albGarInfo="garInfo1_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv1_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)" />
+            }
+        </td>
+        @*<td name="delInven" class="@(garantieNiv1.isExcluding ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+                @if (garantieNiv1.isExcluding)
+                { 
+                    <img src="@Url.Content("/Content/Images/exclureInventaire1616.png")" name="icoDelInven" alt="Exclure" title="Exclure" id="@(garantieNiv1.Code)" />
+                }
+            </td>*@
+    </tr>
+    
+            foreach (var garantieNiv2 in garantieNiv1.Modeles)
+            {
+                var titleGar2 = !string.IsNullOrEmpty(garantieNiv2.NatureParam) ? string.Concat(garantieNiv2.NatureParam, " - ", AlbEnumInfoValue.GetEnumValue<ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Nature>(garantieNiv2.NatureParam)) : string.Concat(garantieNiv2.Nature, " - ", AlbEnumInfoValue.GetEnumValue<ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Nature>(garantieNiv2.Nature));
+    <tr id="@(modele.GuidId)_@(garantieNiv2.Code)" name="garantie1_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" style="display:@(Model.isChecked ? (bloc.isChecked ? (garantieNiv1.isChecked ? "block" : "none") : "none") : "none")">
+        <td class="tdImgCheckBox">&nbsp;</td>
+        <td class="tdImgCheckBox">
+            <input type="hidden" name="Caractere" id="Caractere_@(garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv2.Caractere" />
+            <input type="hidden" name="Nature" id="Nature_@(garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv2.Nature" />
+            @if (garantieNiv2.Caractere != "O" && !Model.IsReadOnly)
+            {
+                @Html.CheckBox("garantieNiv2_" + garantieNiv2.GuidGarantie, garantieNiv2.isChecked,
+                        new
+                        {
+                            @id = "garantie2_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code,
+                            @albNiv = "niv2_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie,
+                            @albCodeGarantie = garantieNiv2.Code,
+                            @albVoletBloc = bloc.Code + "_" + Model.Code,
+                            @albGarIncompatible = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv2.GarantieIncompatible,
+                            @albGarAssociee = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv2.GarantieAssociee,
+                            @albGarAlternative = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv2.GarantieAlternative.ToString(),
+                            @albGar = "garantieNiv2_" + garantieNiv2.FCTCodeGarantie,
+                            @albInfo = modele.GuidId + "_" + @garantieNiv2.Code,
+                            @style = !garantieNiv2.CreateInAvt && garantieNiv2.isChecked ? "display:none" : "display:block",
+                            @title = garantieNiv2.Caractere
+                        })
+            }
+            else
+            { 
+                @Html.CheckBox("garantieNiv2_" + garantieNiv2.GuidGarantie, garantieNiv2.isChecked,
+                        new
+                        {
+                            @id = "garantie2_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code,
+                            @albNiv = "niv2_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie,
+                            @albCodeGarantie = garantieNiv2.Code,
+                            @albVoletBloc = bloc.Code + "_" + Model.Code,
+                            @albGarIncompatible = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv2.GarantieIncompatible,
+                            @albGarAssociee = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv2.GarantieAssociee,
+                            @albGarAlternative = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv2.GarantieAlternative.ToString(),
+                            @disabled = "disabled",
+                            @albGar = "garantieNiv2_" + garantieNiv2.FCTCodeGarantie,
+                            @albInfo = modele.GuidId + "_" + @garantieNiv2.Code,
+                            @style = !garantieNiv2.CreateInAvt && garantieNiv2.isChecked ? "display:none" : "display:block",
+                            @title = garantieNiv2.Caractere
+                        })
+            }
+            @if (!garantieNiv2.CreateInAvt && garantieNiv2.isChecked)
+            {
+                <img src="@(Url.Content("/Content/Images/Checkmark-16.png"))" />
+            }
+        </td>
+        <td class="tdTitle" title="Niveau @garantieNiv2.Niveau">
+            @garantieNiv2.Niveau
+        </td>
+        <td class="tdCombo">
+            @if (garantieNiv2.ParamNatMod == "O")
+            {
+                <input type="hidden" id="oldparamNatMod2_@(garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" name="@(garantieNiv2.ParamNatModVal)" />
+                if (!Model.IsReadOnly)
+                {
+                <input type="hidden" id="bddparamNatMod2_@(garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@(garantieNiv2.ParamNatModVal)"/>
+                @Html.AlbDropDownListFor(m => garantieNiv2.Nature, Model.ParamNatMods.Select(u => { u.Selected = (u.Value == garantieNiv2.ParamNatModVal ? true : false); return u; }).ToList(), "ParamNatMod", htmlAttributes: new { @id = "paramNatMod2_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code, @class = "lstParamNatMod", @albNiv = "niv2_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie, @albInfo = modele.GuidId + "_" + garantieNiv2.Code, @title = titleGar2 }, generateTitle: true, replaceHtmlName: "ParamNatMod")
+                }
+                else
+                {
+                @Html.Raw(garantieNiv2.ParamNatModVal)
+                }
+            }
+        </td>
+        <td class="lgnModeleNiv2" albModifAvt="libVBM" albgardesc="garantie2_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albInfo="@(modele.GuidId)_@(garantieNiv2.Code)" title="@(garantieNiv2.isChecked ? "Accordé" : string.Empty)">
+            <span class="spanLibVBM">@string.Format("{0} - {1}", garantieNiv2.FCTCodeGarantie, garantieNiv2.Description)</span>
+            <span class="spanImgVBM" name="spanImg">
+                @if (garantieNiv2.UpdateInAvt)
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_rouge_petit.png"))" />
+                }
+                else
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_blank_petit.png"))" />
+                }
+            </span>
+        </td>
+        <td name="detailGaran" class="@(garantieNiv2.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+            @if (garantieNiv2.FlagModif == "N")
+            {
+                <img src="@Url.Content("/Content/Images/Edit_16.png")" name="icoDetailGaran" alt="Détails" title="Détails" id="@(garantieNiv2.Code)" class="@(garantieNiv2.isChecked ? "" : "None")" albGarInfo="garInfo1_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv2_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)_@(garantieNiv2.GuidGarantie)" albgarguid="@(garantieNiv2.GuidGarantie)"/>
+            }
+            else
+            {
+                <img src="@Url.Content("/Content/Images/Edit_2_16.png")" name="icoDetailGaran" alt="Détails" title="Détails" id="@(garantieNiv2.Code)" class="@(garantieNiv2.isChecked ? "" : "None")" albGarInfo="garInfo1_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv2_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)_@(garantieNiv2.GuidGarantie)" albgarguid="@(garantieNiv2.GuidGarantie)"/>
+            }
+        </td>
+        <td name="addInven" class="@(garantieNiv2.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+            @if (garantieNiv2.isChecked && !Model.IsReadOnly)
+            {
+                if (garantieNiv2.InvenPossible == "O")
+                {
+                    if (garantieNiv2.CodeInven == 0)
+                    {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv2.FCTCodeGarantie + "_" + garantieNiv2.TypeInven + "_" + garantieNiv2.CodeInven)" albNiv="@("niv2_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie)" albOriginCodeInven="@garantieNiv2.CodeInven" albGar = "@("garantieNiv2_" + garantieNiv2.FCTCodeGarantie)" />                                                                                                                                                                                                                                                           
+                    }
+                    else
+                    {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616_on.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv2.FCTCodeGarantie + "_" + garantieNiv2.TypeInven + "_" + garantieNiv2.CodeInven)" albNiv="@("niv2_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie)" albOriginCodeInven="@garantieNiv2.CodeInven" albGar = "@("garantieNiv2_" + garantieNiv2.FCTCodeGarantie)"/>
+                    }
+                }
+            }
+            else
+            {
+                if (garantieNiv2.InvenPossible == "O")
+                {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv2.FCTCodeGarantie + "_" + garantieNiv2.TypeInven + "_" + garantieNiv2.CodeInven)" albNiv="@("niv2_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie)" albOriginCodeInven="@garantieNiv2.CodeInven" albGar = "@("garantieNiv2_" + garantieNiv2.FCTCodeGarantie)" class="None" />
+                }
+            }
+        </td>
+        @*<td name="delInven" class="@(garantieNiv2.isExcluding ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+                @if (garantieNiv2.isExcluding)
+                { 
+                    <img src="@Url.Content("/Content/Images/exclureInventaire1616.png")" name="icoDelInven" alt="Exclure" title="Exclure" id="@(garantieNiv2.Code)" />
+                }
+            </td>*@
+    </tr>
+    
+            foreach (var garantieNiv3 in garantieNiv2.Modeles)
+            {
+                var titleGar3 = !string.IsNullOrEmpty(garantieNiv3.NatureParam) ? string.Concat(garantieNiv3.NatureParam, " - ", AlbEnumInfoValue.GetEnumValue<ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Nature>(garantieNiv3.NatureParam)) : string.Concat(garantieNiv3.Nature, " - ", AlbEnumInfoValue.GetEnumValue<ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Nature>(garantieNiv3.Nature));
+    <tr id="@(modele.GuidId)_@(garantieNiv3.Code)" name="garantie2_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" style="display:@(Model.isChecked ? (bloc.isChecked ? (garantieNiv1.isChecked ? (garantieNiv2.isChecked ? "block" : "none") : "none") : "none") : "none")">
+        <td class="tdImgCheckBox">&nbsp;</td>
+        <td class="tdImgCheckBox">
+            <input type="hidden" name="Caractere" id="Caractere_@(garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv3.Caractere" />
+            <input type="hidden" name="Nature" id="Nature_@(garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv3.Nature" />
+            @if (garantieNiv3.Caractere != "O" && !Model.IsReadOnly)
+            {
+                @Html.CheckBox("garantieNiv3_" + garantieNiv3.GuidGarantie, garantieNiv3.isChecked,
+                        new
+                        {
+                            @id = "garantie3_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code,
+                            @albNiv = "niv3_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie,
+                            @albCodeGarantie = garantieNiv3.Code,
+                            @albVoletBloc = bloc.Code + "_" + Model.Code,
+                            @albGarIncompatible = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv3.GarantieIncompatible,
+                            @albGarAssociee = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv3.GarantieAssociee,
+                            @albGarAlternative = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv3.GarantieAlternative.ToString(),
+                            @albGar = "garantieNiv3_" + garantieNiv3.FCTCodeGarantie,
+                            @albInfo = modele.GuidId + "_" + garantieNiv3.Code,
+                            @style = !garantieNiv3.CreateInAvt && garantieNiv3.isChecked ? "display:none" : "display:block",
+                            @title = garantieNiv3.Caractere
+                        })
+            }
+            else
+            { 
+                @Html.CheckBox("garantieNiv3_" + garantieNiv3.GuidGarantie, garantieNiv3.isChecked,
+                        new
+                        {
+                            @id = "garantie3_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code,
+                            @albNiv = "niv3_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie,
+                            @albCodeGarantie = garantieNiv3.Code,
+                            @albVoletBloc = bloc.Code + "_" + Model.Code,
+                            @albGarIncompatible = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv3.GarantieIncompatible,
+                            @albGarAssociee = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv3.GarantieAssociee,
+                            @albGarAlternative = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv3.GarantieAlternative.ToString(),
+                            @disabled = "disabled",
+                            @albGar = "garantieNiv3_" + garantieNiv3.FCTCodeGarantie,
+                            @albInfo = modele.GuidId + "_" + garantieNiv3.Code,
+                            @style = !garantieNiv3.CreateInAvt && garantieNiv3.isChecked ? "display:none" : "display:block",
+                            @title = garantieNiv3.Caractere
+                        })
+            }
+            @if (!garantieNiv3.CreateInAvt && garantieNiv3.isChecked)
+            {
+                <img src="@(Url.Content("/Content/Images/Checkmark-16.png"))" />
+            }
+        </td>
+        <td class="tdTitle" title="Niveau @garantieNiv3.Niveau">
+            @garantieNiv3.Niveau
+        </td>
+        <td class="tdCombo">
+            @if (garantieNiv3.ParamNatMod == "O")
+            {
+                <input type="hidden" id="oldparamNatMod3_@(garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" name="@(garantieNiv3.ParamNatModVal)" />
+                if (!Model.IsReadOnly)
+                {
+                <input type="hidden" id="bddparamNatMod3_@(garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@(garantieNiv3.ParamNatModVal)"/>
+                @Html.AlbDropDownListFor(m => garantieNiv3.Nature, Model.ParamNatMods.Select(u => { u.Selected = (u.Value == garantieNiv3.ParamNatModVal ? true : false); return u; }).ToList(), "ParamNatMod", htmlAttributes: new { @id = "paramNatMod3_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code, @class = "lstParamNatMod", @albNiv = "niv3_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie, @albInfo = modele.GuidId + "_" + garantieNiv3.Code, @title = titleGar3 }, generateTitle: true, replaceHtmlName: "ParamNatMod")
+                }
+                else
+                {
+                @Html.Raw(garantieNiv3.ParamNatModVal)
+                }
+            }
+        </td>
+        <td class="lgnModeleNiv3" albModifAvt="libVBM" albInfo="@(modele.GuidId)_@(garantieNiv3.Code)" title="@(garantieNiv3.isChecked ? "Accordé" : string.Empty)">
+            <span class="spanLibVBM">@string.Format("{0} - {1}", garantieNiv3.FCTCodeGarantie, garantieNiv3.Description)</span>
+            <span class="spanImgVBM" name="spanImg">
+                @if (garantieNiv3.UpdateInAvt)
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_rouge_petit.png"))" />
+                }
+                else
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_blank_petit.png"))" />
+                }
+            </span>
+        </td>
+        <td name="detailGaran" class="@(garantieNiv3.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+            @if (garantieNiv3.FlagModif == "N")
+            {
+                <img src="@Url.Content("/Content/Images/Edit_16.png")" name="icoDetailGaran" alt="Détails" title="Détails" id="@(garantieNiv3.Code)" class="@(garantieNiv3.isChecked ? "" : "None")" albGarInfo="garInfo1_@(garantieNiv3.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv3_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)_@(garantieNiv2.GuidGarantie)_@(garantieNiv3.GuidGarantie)" albgarguid="@(garantieNiv3.GuidGarantie)"/>
+            }
+            else
+            {
+                <img src="@Url.Content("/Content/Images/Edit_2_16.png")" name="icoDetailGaran" alt="Détails" title="Détails" id="@(garantieNiv3.Code)" class="@(garantieNiv3.isChecked ? "" : "None")"  albGarInfo="garInfo1_@(garantieNiv3.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv3_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)_@(garantieNiv2.GuidGarantie)_@(garantieNiv3.GuidGarantie)" albgarguid="@(garantieNiv3.GuidGarantie)"/>
+            }
+        </td>
+        <td name="addInven" class="@(garantieNiv3.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+            @if (garantieNiv3.isChecked && !Model.IsReadOnly)
+            {
+                if (garantieNiv3.InvenPossible == "O")
+                {
+                    if (garantieNiv3.CodeInven == 0)
+                    {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv3.FCTCodeGarantie + "_" + garantieNiv3.TypeInven + "_" + garantieNiv3.CodeInven)" albNiv="@("niv3_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie)" albOriginCodeInven="@garantieNiv3.CodeInven" albGar = "@("garantieNiv3_" + garantieNiv3.FCTCodeGarantie)" />
+                    }
+                    else
+                    {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616_on.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv3.FCTCodeGarantie + "_" + garantieNiv3.TypeInven + "_" + garantieNiv3.CodeInven)" albNiv="@("niv3_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie)" albOriginCodeInven="@garantieNiv3.CodeInven" albGar = "@("garantieNiv3_" + garantieNiv3.FCTCodeGarantie)" />
+                    }
+                }
+            }
+            else
+            {
+                if (garantieNiv3.InvenPossible == "O")
+                {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv3.FCTCodeGarantie + "_" + garantieNiv3.TypeInven + "_" + garantieNiv3.CodeInven)" albNiv="@("niv3_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie)" albOriginCodeInven="@garantieNiv3.CodeInven" albGar = "@("garantieNiv3_" + garantieNiv3.FCTCodeGarantie)" class="None" />
+                }
+            }
+        </td>
+        @*<td name="delInven" class="@(garantieNiv3.isExcluding ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+                @if (garantieNiv3.isExcluding)
+                { 
+                    <img src="@Url.Content("/Content/Images/exclureInventaire1616.png")" name="icoDelInven" alt="Exclure" title="Exclure" id="@(garantieNiv3.Code)" />
+                }
+            </td>*@
+    </tr>
+    
+            foreach (var garantieNiv4 in garantieNiv3.Modeles)
+            {
+                var titleGar4 = !string.IsNullOrEmpty(garantieNiv4.NatureParam) ? string.Concat(garantieNiv4.NatureParam, " - ", AlbEnumInfoValue.GetEnumValue<ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Nature>(garantieNiv4.NatureParam)) : string.Concat(garantieNiv4.Nature, " - ", AlbEnumInfoValue.GetEnumValue<ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Nature>(garantieNiv4.Nature));
+    <tr id="@(modele.GuidId)_@(garantieNiv4.Code)" name="garantie3_@(garantieNiv3.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" style="display:@(Model.isChecked ? (bloc.isChecked ? (garantieNiv1.isChecked ? (garantieNiv2.isChecked ? (garantieNiv3.isChecked ? "block" : "none") : "none") : "none") : "none") : "none")">
+        <td class="tdImgCheckBox">&nbsp;</td>
+        <td class="tdImgCheckBox">
+            <input type="hidden" name="Caractere" id="Caractere_@(garantieNiv4.CodeGarantie + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv4.Caractere" />
+            <input type="hidden" name="Nature" id="Nature_@(garantieNiv4.CodeGarantie + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@garantieNiv4.Nature" />
+            @if (garantieNiv4.Caractere != "O" && !Model.IsReadOnly)
+            {
+                @Html.CheckBox("garantieNiv4_" + garantieNiv4.GuidGarantie, garantieNiv4.isChecked,
+                        new
+                        {
+                            @id = "garantie4_" + garantieNiv4.CodeGarantie + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code,
+                            @albNiv = "niv4_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie + "_" + garantieNiv4.GuidGarantie,
+                            @albCodeGarantie = garantieNiv4.Code,
+                            @albVoletBloc = bloc.Code + "_" + Model.Code,
+                            @albGarIncompatible = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv4.CodeGarantie + "_" + garantieNiv4.GarantieIncompatible,
+                            @albGarAssociee = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv4.CodeGarantie + "_" + garantieNiv4.GarantieAssociee,
+                            @albGarAlternative = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv4.CodeGarantie + "_" + garantieNiv4.GarantieAlternative.ToString(),
+                            @albGar = "garantieNiv4_" + garantieNiv4.FCTCodeGarantie,
+                            @albInfo = modele.GuidId + "_" + garantieNiv4.Code,
+                            @style = !garantieNiv4.CreateInAvt && garantieNiv4.isChecked ? "display:none" : "display:block",
+                            @title = garantieNiv4.Caractere
+                        })
+            }
+            else
+            { 
+                @Html.CheckBox("garantieNiv4_" + garantieNiv4.GuidGarantie, garantieNiv4.isChecked,
+                        new
+                        {
+                            @id = "garantie4_" + garantieNiv4.CodeGarantie + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code,
+                            @albNiv = "niv4_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie + "_" + garantieNiv4.GuidGarantie,
+                            @albCodeGarantie = garantieNiv4.Code,
+                            @albVoletBloc = bloc.Code + "_" + Model.Code,
+                            @albGarIncompatible = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv4.CodeGarantie + "_" + garantieNiv4.GarantieIncompatible,
+                            @albGarAssociee = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv4.CodeGarantie + "_" + garantieNiv4.GarantieAssociee,
+                            @albGarAlternative = "gar_" + bloc.Code + "_" + Model.Code + "_" + garantieNiv4.CodeGarantie + "_" + garantieNiv4.GarantieAlternative.ToString(),
+                            @disabled = "disabled",
+                            @albGar = "garantieNiv4_" + garantieNiv4.FCTCodeGarantie,
+                            @albInfo = modele.GuidId + "_" + garantieNiv4.Code,
+                            @style = !garantieNiv4.CreateInAvt && garantieNiv4.isChecked ? "display:none" : "display:block",
+                            @title = garantieNiv4.Caractere
+                        })
+            }
+            @if (!garantieNiv4.CreateInAvt && garantieNiv4.isChecked)
+            {
+                <img src="@(Url.Content("/Content/Images/Checkmark-16.png"))" />
+            }
+        </td>
+        <td class="tdTitle" title="Niveau @garantieNiv4.Niveau">
+            @garantieNiv4.Niveau
+        </td>
+        <td class="tdCombo">
+            @if (garantieNiv4.ParamNatMod == "O")
+            {
+                <input type="hidden" id="oldparamNatMod4_@(garantieNiv4.CodeGarantie + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" name="@(garantieNiv4.ParamNatModVal)" />
+                if (!Model.IsReadOnly)
+                {
+                <input type="hidden" id="bddparamNatMod4_@(garantieNiv4.CodeGarantie + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code)" value="@(garantieNiv4.ParamNatModVal)"/>
+                @Html.AlbDropDownListFor(m => garantieNiv4.Nature, Model.ParamNatMods.Select(u => { u.Selected = (u.Value == garantieNiv4.ParamNatModVal ? true : false); return u; }).ToList(), "ParamNatMod", htmlAttributes: new { @id = "paramNatMod4_" + garantieNiv4.CodeGarantie + "_" + garantieNiv3.CodeGarantie + "_" + garantieNiv2.CodeGarantie + "_" + garantieNiv1.CodeGarantie + "_" + bloc.Code + "_" + Model.Code, @class = "lstParamNatMod", @albNiv = "niv4_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie + "_" + garantieNiv4.GuidGarantie, @albInfo = modele.GuidId + "_" + garantieNiv4.Code, @title = titleGar4 }, generateTitle: true, replaceHtmlName: "ParamNatMod")
+                }
+                else
+                {
+                @Html.Raw(garantieNiv4.ParamNatModVal)
+                }
+            }
+        </td>
+        <td class="lgnModeleNiv4" albModifAvt="libVBM" albInfo="@(modele.GuidId)_@(garantieNiv4.Code)" title="@(garantieNiv4.isChecked ? "Accordé" : string.Empty)">
+            <span class="spanLibVBM">@string.Format("{0} - {1}", garantieNiv4.FCTCodeGarantie, garantieNiv4.Description)</span>
+            <span class="spanImgVBM" name="spanImg">
+                @if (garantieNiv4.UpdateInAvt)
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_rouge_petit.png"))" />
+                }
+                else
+                {
+                    <img name="modifAvt" src="@(Url.Content("/Content/Images/voyant_blank_petit.png"))" />
+                }
+            </span>
+        </td>
+        <td name="detailGaran" class="@(garantieNiv4.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+            @if (garantieNiv4.FlagModif == "N")
+            {
+                <img src="@Url.Content("/Content/Images/Edit_16.png")" name="icoDetailGaran" alt="Détails" title="Détails" id="@(garantieNiv4.Code)" class="@(garantieNiv4.isChecked ? "" : "None")"  albGarInfo="garInfo1_@(garantieNiv4.CodeGarantie)_@(garantieNiv3.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv4_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)_@(garantieNiv2.GuidGarantie)_@(garantieNiv3.GuidGarantie)_@(garantieNiv4.GuidGarantie)" albgarguid="@(garantieNiv4.GuidGarantie)"/>
+            }
+            else
+            {
+                <img src="@Url.Content("/Content/Images/Edit_2_16.png")" name="icoDetailGaran" alt="Détails" title="Détails" id="@(garantieNiv4.Code)" class="@(garantieNiv4.isChecked ? "" : "None")"  albGarInfo="garInfo1_@(garantieNiv4.CodeGarantie)_@(garantieNiv3.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv1.CodeGarantie)_@(bloc.Code)_@(Model.Code)" albNiv="niv4_@(Model.GuidId)_@(bloc.GuidId)_@(modele.GuidId)_@(garantieNiv1.GuidGarantie)_@(garantieNiv2.GuidGarantie)_@(garantieNiv3.GuidGarantie)_@(garantieNiv4.GuidGarantie)" albgarguid="@(garantieNiv4.GuidGarantie)"/>
+            }
+        </td>
+        <td name="addInven" class="@(garantieNiv4.isChecked ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+
+            @if (garantieNiv4.isChecked && !Model.IsReadOnly)
+            {
+                if (garantieNiv4.InvenPossible == "O")
+                {
+                    if (garantieNiv4.CodeInven == 0)
+                    {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv4.FCTCodeGarantie + "_" + garantieNiv4.TypeInven + "_" + garantieNiv4.CodeInven)" albNiv="@("niv4_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie + "_" + garantieNiv4.GuidGarantie)" albOriginCodeInven="@garantieNiv4.CodeInven" albGar = "@("garantieNiv4_" + garantieNiv4.FCTCodeGarantie)" />
+                    }
+                    else
+                    {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616_on.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv4.FCTCodeGarantie + "_" + garantieNiv4.TypeInven + "_" + garantieNiv4.CodeInven)" albNiv="@("niv4_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie + "_" + garantieNiv4.GuidGarantie)" albOriginCodeInven="@garantieNiv4.CodeInven" albGar = "@("garantieNiv4_" + garantieNiv4.FCTCodeGarantie)" />
+                    }
+                }
+            }
+            else
+            {
+                if (garantieNiv4.InvenPossible == "O")
+                {
+                <img src="@Url.Content("/Content/Images/ajouterInventaire1616.png")" name="icoAddInven" alt="Ajouter" title="Inventaire de garantie" id="@(garantieNiv4.FCTCodeGarantie + "_" + garantieNiv4.TypeInven + "_" + garantieNiv4.CodeInven)" albNiv="@("niv4_" + Model.GuidId + "_" + bloc.GuidId + "_" + modele.GuidId + "_" + garantieNiv1.GuidGarantie + "_" + garantieNiv2.GuidGarantie + "_" + garantieNiv3.GuidGarantie + "_" + garantieNiv4.GuidGarantie)" albOriginCodeInven="@garantieNiv4.CodeInven" albGar = "@("garantieNiv4_" + garantieNiv4.FCTCodeGarantie)" class="None" />
+                }
+            }
+        </td>
+        @*<td name="delInven" class="@(garantieNiv4.isExcluding ? "tdImgCheckBox linkImage" : "tdImgCheckBox")">
+                @if (garantieNiv4.isExcluding)
+                { 
+                    <img src="@Url.Content("/Content/Images/exclureInventaire1616.png")" name="icoDelInven" alt="Exclure" title="Exclure" id="@(garantieNiv4.Code)" />
+                }
+            </td>*@
+    </tr>
+            }
+            }
+            }
+                    }
+                }
+}

@@ -1,0 +1,14 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamFiltres.ModeleLigneFiltre
+<td class="col_BCodeFiltre">
+    <label id="@("lblCodeFiltre_" + @Model.GuidId)">@Model.CodeFiltre</label>
+</td>
+<td class="col_BDescriptionFiltre">
+    <label id="@("lblDescriptionFiltre_" + @Model.GuidId)">@Model.DescriptionFiltre</label>
+</td>
+<td class="col_BAction">   
+    @if (Model.AdditionalParam == "**")
+    {
+        <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSupprFiltre_" + @Model.GuidId)" alt="Supprimer" title="Supprimer" class="Action CursorPointer" name="btnSupprimerFiltre"/>
+    }
+</td>
+

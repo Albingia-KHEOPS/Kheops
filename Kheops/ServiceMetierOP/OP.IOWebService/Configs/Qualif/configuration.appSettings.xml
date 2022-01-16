@@ -1,0 +1,26 @@
+﻿<appSettings>
+  <add key="AppInsightInstrumntationKey" value="03d5acff-9e2a-4dcf-8c8f-46a869e7addc" />
+  <!-- Environnement de travail-->
+  <add key="EnvironnementDeploiment" value="Qualif" />
+  <add key="InternalApplicationId" value="OPServices" />
+  <!--clé permettant d'appeler les PGM400 (1) ou non (0)-->
+  <add key="CallPGM400" value="0"/>
+  <!--KheoBridge Keys-->
+  <add key="repertoireTravail" value="\\files01\kheops\Dev\Clausier\"/>
+  <add key="repertoireDocuments" value="\\Files01\Kheops\Dev\Docs\"/>
+  <add key="XmlObjectPath" value="C:\Work\Clients\Albingia\KheopsProduction\KheoBridge\ObjetMetierMapping.xml"/>
+  <add key="RepertoireClausier" value="\\files01\kheops\Dev\Clausier\"/>
+  <add key="RepertoireCpGeneree" value="C:\EdiKheops\Dev\DocGen\"/>
+  <add key="RepertoireClauseTemp" value="\\files01\kheops\Dev\Temp\"/>
+  <add key="RepertoireAideKheoTalk" value="\\files01\kheops\Commun\AideKheoTalk\"/>
+  <add key="NouvelleVersion" value="vrai"/>
+  <add key="PgmDocEnPdf" value="C:\AlbinVs\KheoDocEnPdf\KheoGenPdf.exe"/>
+  <add key="FeuilleStyle" value="\\files01\kheops\Commun\Clauses\AlbingiaStyle.dotx"/>
+
+  <!--Qualif 10.1.2.10-->
+  <add key="KheoBridgeUrl" value="http://KheoBridge2:8082/KheoBridge.asmx"/>
+
+  <!--Qualif-->
+  <add key="UrlServeurPush" value="http://WebService2016:8071/signalr/hubs/"/>
+
+</appSettings>

@@ -1,0 +1,169 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Avenant.ModelesAvenant.ModeleVisuInfosContrat
+<div class="nGradientSection">
+
+
+    <div class="HeightRow">
+        <div class="left-column">
+            <span>
+                <label class="form-label">N° Contrat / Alim </label>
+            </span>
+            <span>
+                <input class="readonly" readonly="readonly" type="text" id="Code" name="Code" value="@Model.CodeOffre" title="@Model.CodeOffre" style="width: 165px;" />
+            </span>
+            <span>
+                <input class="readonly" readonly="readonly" type="text" id="Version" name="Version" value="@Model.Version" title="@Model.Version" style="width: 20px; text-align: right" />
+            </span>
+        </div>
+        <div class="right-coulumn">
+            <span>
+                <label class="form-label">Effet contrat du</label>
+            </span>
+            <span>
+                <input class="inputDate readonly" readonly="readonly" type="text" id="DateDebutEffet" style="width: 108px !important;" name="DateDebutEffet" value='@(!Model.DateDebutEffet.HasValue ? string.Empty : Model.DateDebutEffet.Value.ToString("dd/MM/yyyy"))' title='@(!Model.DateDebutEffet.HasValue ? "" : Model.DateDebutEffet.Value.ToString("dd/MM/yyyy"))' />
+            </span>
+            <span>
+                <label class="form-label" style="width: 20px;">au</label>
+            </span>
+            <span>
+                <input class="inputDate readonly" readonly="readonly" type="text" id="DateFinEffet" style="width: 108px  !important;" name="DateFinEffet" value='@(!Model.DateFinEffet.HasValue  ? string.Empty : Model.DateFinEffet.Value.ToString("dd/MM/yyyy"))' title='@(!Model.DateFinEffet.HasValue  ? "" : Model.DateFinEffet.Value.ToString("dd/MM/yyyy"))' />
+            </span>
+        </div>
+    </div>
+
+
+    <div class="HeightRow">
+
+        <div class="left-column">
+            <span>
+                <label class="form-label">Type</label>
+            </span>
+            <span>
+                <input class="readonly" readonly="readonly" type="text" id="type" name="type" style="width: 80px;" value="@(Model.TypeContrat ?? String.Empty)" title="@(Model.TypeContrat ?? string.Empty)" />
+            </span>
+            <span>
+                <label class="form-label" style="width: 73px;">Contrat mère</label>
+            </span>
+            <span>
+                <input class="readonly" readonly="readonly" type="text" id="contratMere" name="contratMere" style="width: 80px;" value='@(Model.TypeContrat!=null && Model.TypeContrat.StartsWith("A") ? Model.CodeOffre  : String.Empty)' title='@(Model.TypeContrat!=null && Model.TypeContrat.StartsWith("A") ? Model.CodeOffre  : String.Empty)' />
+            </span>
+        </div>
+        <div class="right-coulumn">
+            <span>
+                <label class="form-label">Périodicité/Echéance</label>
+            </span>
+            <span>
+                <input type="text" class="inputDate readonly" readonly="readonly" id="Periodicite" name="Periodicite" value='@(Model.Periodicite ?? string.Empty)' title='@(Model == null ? "" : Model.Periodicite)' />
+            </span>
+            <span>
+                <input class="readonly" readonly="readonly" type="text" id="echeance" style="width: 173px;" name="echeance" value='@(Model.DateEcheance.HasValue ? Model.DateEcheance.Value.ToString("dd/MM/yyyy") : string.Empty)' title='@(Model.DateEcheance.HasValue ? Model.DateEcheance.Value.ToString("dd/MM/yyyy") : string.Empty)' />
+            </span>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="HeightRow">
+        <div class="left-column">
+            <span>
+                <label class="form-label">Identification</label>
+            </span>
+            <span>
+                <input class="readonly form-input" readonly="readonly" type="text" id="identification" name="identification" value='@(Model.Identification ?? string.Empty)' title='@(Model.Identification ?? string.Empty)' />
+            </span>
+
+        </div>
+        <div class="right-coulumn">
+            <span>
+                <label class="form-label">Nature du contrat</label>
+            </span>
+            <span>
+                <input class="readonly form-input" readonly="readonly" type="text" id="natureContrat" name="natureContrat" value="@(Model.NatureContrat ?? string.Empty)" title="@(Model.NatureContrat ?? string.Empty)" />
+            </span>
+
+        </div>
+
+
+    </div>
+
+    <div class="HeightRow">
+        <div class="left-column">
+            <span>
+                <label class="form-label">Courtier</label>
+            </span>
+            <span>
+                <input class="readonly form-input" readonly="readonly" type="text" id="CourtierA" name="CourtierA" value='@(Model.CourtierA ?? string.Empty)' title='@(Model.CourtierA ?? string.Empty)' />
+            </span>
+
+
+        </div>
+        <div class="right-coulumn">
+            <span>
+                <label class="form-label">Ret.dernière pièce validé</label>
+            </span>
+            <span>
+                <input class="readonly form-input" readonly="readonly" type="text" id="RetValide" name="RetValide" value='@(Model.RetourSigne ?? string.Empty)' title='@(Model.RetourSigne ?? string.Empty)' />
+            </span>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="HeightRow">
+        <div class="left-column">
+            <span>
+                <label class="form-label">Assuré</label>
+            </span>
+            <span>
+                <input class="readonly form-input" readonly="readonly" type="text" id="Assure" name="Assure" value='@(Model.Assure ?? string.Empty)' title='@(Model.Assure ?? string.Empty)' />
+            </span>
+
+        </div>
+        <div class="right-coulumn">
+
+            <span>
+                <label class="form-label FloatLeft">Observations</label>
+            </span>
+            <textarea id="Observation" class="NonReprisCP divTextArea2" readonly>@Html.Raw(!string.IsNullOrEmpty(Model.Observation) ? Model.Observation.Replace("<br/>", "\r\n").Replace("<br>", "\r\n"): string.Empty)</textarea>
+            @*<div id="zoneTxtArea" class="FloatLeft divTextArea2 form-input NonReprisCP" albcontext="Observation" >
+            @Html.Raw(!string.IsNullOrEmpty(Model.Observation) ? Model.Observation.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)
+        </div>
+        <div id="txtAreaLnk" name="txtAreaLnk" class=" FloatLeft CursorPointer" albcontext="Observation">
+            <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+        </div>
+        <div id="txtArea" class="None" albcontext="Observation">
+            <div class="FloatLeft">
+                <div id="Observation" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Observation)</div>
+            </div>
+        </div>*@
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="left-column">
+            <span>
+                <label class="form-label">Souscripteur</label>
+            </span>
+            <span>
+                <input class="readonly form-input" readonly="readonly" type="text" id="Souscripteur" name="Souscripteur" value='@(Model.Souscripteur ?? string.Empty)' title='@(Model.Souscripteur ?? string.Empty)' />
+            </span>
+
+        </div>
+
+        <div class="left-column">
+            <span>
+                <label class="form-label">Gestionnaire</label>
+            </span>
+            <span>
+                <input class="readonly form-input" readonly="readonly" type="text" id="Gestionnaire" name="Gestionnaire" value='@(Model.Gestionnaire ?? string.Empty)' title='@(Model.Gestionnaire ?? string.Empty)' />
+            </span>
+        </div>
+
+
+    </div>
+
+
+</div>

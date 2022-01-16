@@ -1,0 +1,151 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesConnexite.ModeleEngagement
+@if (!string.IsNullOrEmpty(Model.TypeAffichage))
+{
+    <h3>Periodes d'engagement des connexités</h3>
+
+    <div class="divBottomCnxLeftHeader">
+        <table id="tblHeaderConnexitePeriodes">
+            <tr>
+                <th class="colUtiliseeHeader tablePersoHead">Utilisée
+                </th>
+                <th class="colDateDebHeader tablePersoHead">Début
+                </th>
+                <th class="colDateFinHeader tablePersoHead">Fin
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div class="divBottomCnxCenterHeader">
+        <table id="tblHeaderConnexitePeriodesTraites">
+            <tr>
+                @foreach (var c in Model.ListeDeTraites)
+                {
+                    <th class=" widthCommunCol tablePersoHead">@c</th>
+                }
+            </tr>
+        </table>
+    </div>
+    <div class="divBottomCnxRightHeader">
+        <table id="tblHeaderConnexitePeriodesActions">
+            <tr>
+                @if (!string.IsNullOrEmpty(Model.TypeAffichage))
+                {
+                    <th>@if (Model.IsConnexiteReadOnly || Model.ConnexitesEngagement == null || !Model.ConnexitesEngagement.Any())
+                        {
+                        <div class="FloatRight paddingRight">
+                            <img class="marginRightAjouter btn-action" src='@Url.Content("/Content/Images/plusajouter_gris1616.jpg")' alt="Ajouter" />
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="FloatRight paddingRight">
+                            <img class="CursorPointer Action marginRightAjouter btn-action" src='@Url.Content("/Content/Images/plusajouter1616.png")' name="btnAjouterPeriodeCnx" alt="Ajouter" title="Ajouter une periode de connexité" id="btnAjouterPeriodeCnx" />
+                        </div>
+                        }
+                    </th>
+                }
+            </tr>
+        </table>
+    </div>
+
+    <div class="divBottomCnxLeft">
+        <table id="tblConnexitePeriodesBody" class="table-alternate">
+
+            <tr id="newPeriodeCnx" class="None" albid="-1">
+                <td class="colUtilisee"></td>
+                <td class="colDateDeb">
+                    <input type="text" name="dateDebut" class="datepicker inputDate" />
+                </td>
+                <td class="colDateFin">
+                    <input type="text" name="dateFin" class="datepicker inputDate" />
+                </td>
+            </tr>
+
+
+            @foreach (var ligne in Model.PeriodesDeConnexites)
+            {
+                <tr albid="@ligne.Code">
+                    <td class="colUtilisee">@(ligne.IsUtilisee ? "OUI" : "NON")
+                    </td>
+                    <td class="colDateDeb">
+                        <span name="spanDateDebut">
+                            @(ligne.DateDebut.HasValue ? @ligne.DateDebut.Value.ToString("dd/MM/yyyy") : string.Empty)
+                        </span>
+                        <input type="text" name="dateDebut" value='@(ligne.DateDebut.HasValue ? @ligne.DateDebut.Value.ToString("dd/MM/yyyy") : string.Empty)' class="datepicker inputDate  None" />
+                    </td>
+                    <td class="colDateFin">
+                        <span name="spanDateFin">
+                            @(ligne.DateFin.HasValue ? @ligne.DateFin.Value.ToString("dd/MM/yyyy") : string.Empty)
+                        </span>
+                        <input type="text" name="dateFin" value='@(ligne.DateFin.HasValue ? @ligne.DateFin.Value.ToString("dd/MM/yyyy") : string.Empty)' class="datepicker inputDate  None" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="divBottomCnxCenter">
+        <table id="tblConnexitePeriodesBodyTraites" class="table-alternate">
+
+            <tr id="newPeriodeCnxTraites" class="None" albid="-1">
+                @foreach (var c in Model.ListeDeTraites)
+                {
+                    <td class="widthCommun" >
+                        <input name="traite_@(c)"  class="decimal" type="text" style="width: 80px;" value="0" albfam="@c" />
+                    </td>
+                }
+
+            </tr>
+
+            @foreach (var ligne in Model.PeriodesDeConnexites)
+            {
+                <tr albid="@ligne.Code">
+                    @foreach (var c in Model.ListeDeTraites)
+                    {
+                        <td class="widthCommun"  style="text-align:right;">@{  
+                        var traite = ligne.ListeDeTraites.FirstOrDefault(i => i.CodeEngagement == c);
+                        var value = default(long);
+
+                        if (traite != null)
+                        {
+                            value = traite.ValeurEngagement;
+                        }       
+                        }
+                            
+                            <span  albMask="decimal">@value</span>
+                            <input type="text"  class="None" style="width: 80px;" value="@value" albfam="@c"  />
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="divBottomCnxRight">
+        <table id="tblConnexitePeriodesBodyActions" class="table-alternate">
+
+            <tr id="newPeriodeCnxActions" class="None" albid="-1">
+                <td>
+                    <img class="CursorPointer Action  btn-action" src='@Url.Content("/Content/Images/Save_16.png")' alt="Enregistrer" title="Enregistrer une periode de connexité" name="btnEnregistrerPeriodeCnxEng" />
+                    <img class="CursorPointer Action  btn-action" src='@Url.Content("/Content/Images/cancel.png")' alt="Anuuler" title="Annuler une periode de connexité" name="btnAnnulerPeriodeCnxEng" />
+                </td>
+            </tr>
+
+            @foreach (var ligne in Model.PeriodesDeConnexites)
+            {
+
+                <tr albid="@ligne.Code">
+                    <td>@if (!string.IsNullOrEmpty(Model.TypeAffichage) && !Model.IsConnexiteReadOnly)
+                        {
+                        <img class="CursorPointer Action  btn-action" src='@Url.Content("/Content/Images/editer1616.png")' alt="Modifier" title="Modifier une periode de connexité" name="btnModifierPeriodeCnxEng" />
+                        <img class="CursorPointer Action  btn-action" src='@Url.Content("/Content/Images/poubelle1616.png")' alt="Supprimer" title="Supprimer une periode de connexité" name="btnSupprimerPeriodeCnxEng" />
+                        <img class="CursorPointer Action  btn-action None" src='@Url.Content("/Content/Images/Save_16.png")' alt="Enregistrer" title="Enregistrer une periode de connexité" name="btnEnregistrerPeriodeCnxEng" />
+                        <img class="CursorPointer Action  btn-action None" src='@Url.Content("/Content/Images/cancel.png")' alt="Anuuler" title="Annuler une periode de connexité" name="btnAnnulerPeriodeCnxEng" />
+                        }
+                    </td>
+                </tr>
+
+
+
+            }
+        </table>
+    </div>
+}

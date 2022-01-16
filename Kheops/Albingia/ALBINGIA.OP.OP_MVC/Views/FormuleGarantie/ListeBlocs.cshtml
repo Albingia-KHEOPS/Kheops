@@ -1,0 +1,17 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesFormGarantie.ModeleFormBloc>
+@foreach (var bloc in Model)
+{
+    <tr style="background-color: cyan;">
+        <td>@(bloc.Code) - @(bloc.Description)</td>
+    </tr>  
+    if (bloc.Modeles != null && bloc.Modeles.Any())
+    {
+        foreach (var modele in bloc.Modeles)
+        {
+            if (modele.Garanties != null && modele.Garanties.Any())
+            {
+                @Html.Partial("ListeGaranties", modele.Garanties)
+            }
+        }
+    }
+}

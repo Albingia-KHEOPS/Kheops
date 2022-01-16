@@ -1,0 +1,31 @@
+﻿@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+@using ALBINGIA.Framework.Common
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRecherchePage
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+
+@section stylesheets {
+    @AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "search.css" }, "~/Content/less/recherche/")
+}
+
+@section scripts {
+    @AlbAddCssJsScripts.AlbAddJsToViews(
+        new UrlHelper(ViewContext.RequestContext),
+        new[] { "FrDate.js", "/AlbingiaJS/Common/affaire.js" }, "~/Scripts",
+        false)
+
+    @AlbAddCssJsScripts.AlbAddJsToViews(
+        new UrlHelper(ViewContext.RequestContext),
+        new[] { "recherche-affaires.initializer.js", "recherche-affaires.viewmodel.js" }, "~/knockout/components/recherche-affaires",
+        false)
+
+    <script type="text/javascript">
+        affaire.recherche.init();
+    </script>
+}
+
+<recherche-affaires></recherche-affaires>

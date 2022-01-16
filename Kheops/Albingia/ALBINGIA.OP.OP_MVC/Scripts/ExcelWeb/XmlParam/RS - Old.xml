@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <controls>
+    <control>
+      <Type>
+        <type>
+          <ID>1</ID>
+          <Visible>true</Visible>
+          <Label>L1</Label>
+          <Name>Name1</Name>
+        </type>
+      </Type>
+    </control>
+    <control>
+      <Type>
+        <type>
+          <ID>1</ID>
+          <Visible>true</Visible>
+          <Label>L1</Label>
+          <Name>Name1</Name>
+        </type>
+      </Type>
+    </control>
+  </controls>
+</Root>

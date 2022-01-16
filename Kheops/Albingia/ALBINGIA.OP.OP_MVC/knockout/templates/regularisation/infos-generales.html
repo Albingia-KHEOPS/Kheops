@@ -1,0 +1,66 @@
+﻿
+<div class="nGradientSection">
+    <!--<input type="hidden" id="codeFor" value="@Model.codeFor" />
+    <input type="hidden" id="codeRsq" value="@Model.codeRsq" />
+    <input type="hidden" id="lotID" value="@Model.lotId" />
+    <input type="hidden" id="codeOpt" value="@Model.codeOpt" />
+    <input type="hidden" id="idGar" value="@Model.idGar" />
+    <input type="hidden" id="codeGar" value="@Model.CodeGar" />
+    <input type="hidden" id="reguleId" value="@Model.reguleId" />
+    <input type="hidden" id="libgar" value="@Model.libGar" />
+    <input type="hidden" id="idregulgar" value="@Model.idregulgar" />
+    <input type="hidden" id="typeregulgar" value="@Model.modelInfoInitregul.InfoInitregul.TypeGrille" />
+    <input type="hidden" id="TypeGrille" name="TypeRegule" value="@(Model.modelInfoInitregul.InfoInitregul.TypeGrille)" />
+    <input type="hidden" id="grisSuivant" name="grisSuivant" value="@(Model.modelInfoInitregul.InfoInitregul.SuivantDesactiv)" />
+    <input type="hidden" id="reload" name="reload" value="@(Model.modelInfoInitregul.InfoInitregul.relaod)" />-->
+
+    <div class="FloatLeft">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Type de r&eacute;gularisation :</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" class="readonly" readonly data-bind="textInput: type" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">N&deg; Contrat / Alim :</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" readonly class="readonly" data-bind="textInput: codeOffre" />
+            </div>
+            <div class="FloatLeft">
+                <input type="text" readonly class="readonly" data-bind="textInput: version" />
+            </div>
+            <div class="FloatLeft">
+                <input type="text" readonly class="readonly" data-bind="textInput: typeContrat" />
+            </div>
+        </div>
+
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">P&eacute;riode g&eacute;n&eacute;rale de r&eacute;gularisation du contrat : du&nbsp;</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" readonly class="inputDate readonly" data-bind="textInput: debutPeriode" />
+            </div>
+            <div class="FloatLeft">
+                <label class="Block">au :&nbsp;</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" readonly class="inputDate readonly" data-bind="textInput: finPeriode" />
+            </div>
+        </div>
+    </div>
+    <div class="FloatRight PaddingRight">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">R&eacute;gime de taxe</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" readonly class="readonly" data-bind="textInput: regimeTaxe" />
+            </div>
+        </div>
+    </div>
+</div>

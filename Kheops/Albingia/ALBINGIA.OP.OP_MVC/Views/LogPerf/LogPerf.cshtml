@@ -1,0 +1,84 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleLogPerfPage
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vLogTrace.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albLogTrace.js" }, "~/Scripts/AlbingiaJS/")
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm TotalWidth">
+        <div id="divBodyPage" class="GroupFull GroupWithBorder TotalWidth">
+            <div class="GroupTitle">
+                Trace des Logs
+            </div>
+            <div class="HorizontalFullWithGroup WidthBody">
+                <div class="GradientSection RechFiltre">
+                    <div class="HeightRow">
+
+                        <div class="GenericColumn">
+                            <div class="FloatLeft lblDateDebut">Date de début:</div>
+                            <div class="FloatLeft">
+                                @Html.AlbDateFormat(m => m.DateDebutFiltre, new { @class = "datepicker" })
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft lblDateFin">Date de fin:</div>
+                            <div class="FloatLeft">
+                                @Html.AlbDateFormat(m => m.DateFinFiltre, new { @class = "datepicker" })
+                            </div>
+                        </div>
+                        <div class="FloatLeft">
+                            <button type="button" id="btnRechercherPerf" albshortcut="true" data-accesskey="r">
+                                <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="FloatRight PaddingRight">
+                        <a id="export" href="javascript:ExportToCSV()">
+                            <img id="imgExportExcel" alt="Export Excel" title="Export Excel" src="@(Url.Content("~/Content/Images/exportExcel3232.png"))" class="CursorPointer" />
+                        </a>
+                    </div>
+                </div>
+                <div class="GradientSection">
+                    <div id="divHeaderListLogTraces">
+                        <table id="tblHeader" class="trHeight">
+                            <tr>
+                                <th class="colHPDate tablePersoHead" id="th_1">Date
+                                </th>
+                                <th class="colHPUser tablePersoHead" id="th_2">Utilisateur
+                                </th>
+                                <th class="colHPScreen tablePersoHead" id="th_3">Ecran
+                                </th>
+                                <th class="colHPAction tablePersoHead" id="th_4">Action
+                                </th>
+                                <th class="colHPTime tablePersoHead" id="th_5">Temps
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyListLogTraces">
+                        @if (Model.LogPerfs == null || Model.LogPerfs.Count == 0)
+                        {
+                            <br />
+                            <b>@Html.Raw("Aucune trace de log")</b>
+                            <br />
+                            <br />
+                        }
+                        else
+                        {
+                            @Html.Partial("ListeLogPerf", Model.LogPerfs)    
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnulerRetour" type="button" albshortcut="true" data-accesskey="t">Re<u>t</u>our</button>
+            </div>
+        </div>
+    </div>
+</div>
+

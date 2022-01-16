@@ -1,0 +1,18 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamCible.LigneCible>
+<table id="tblCibleBody" class="trHeight tableCibleHeader">
+    @foreach (var item in Model)
+    {      
+        <tr id="@("tr_" + @item.GuidId)" idAlbLine="@(item.Code + "_" + item.Libelle)">
+            <td id="@("codeCible_" + item.GuidId)" name="codeCible" class="linkCible col_CodeCible" title="@item.Code">
+                @item.Code
+            </td>
+            <td id="@("libelleCible_" + item.GuidId)" class="linkCible col_LibelleCible" title="@item.Libelle">
+                @item.Libelle
+            </td>
+            <td id="@("grilleCible_"+item.GuidId)" class="col_GrilleCible" title="@(!string.IsNullOrEmpty(item.Grille) ? string.Format("{0} - {1}", item.Grille, item.LibGrille) : string.Empty)">@(!string.IsNullOrEmpty(item.Grille) ? string.Format("{0} - {1}", item.Grille, item.LibGrille) : string.Empty)</td>
+            <td class="supprCible col_SupprimerCible">
+                <img id="@("suppr_" + item.GuidId)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprCible" />
+            </td>
+        </tr>
+    }
+</table>

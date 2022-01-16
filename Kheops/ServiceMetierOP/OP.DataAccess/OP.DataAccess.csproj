@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DBED05E2-773D-4B40-B704-3359823BFFB9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OP.DataAccess</RootNamespace>
+    <AssemblyName>OP.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>latest</LangVersion>
+    <CodeAnalysisRuleSet>..\..\Rule Sets\Kheops.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.5.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FastMember.Signed.1.5.0\lib\net461\FastMember.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Client.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.EasycomClient, Version=2.0.0.6, Culture=neutral, PublicKeyToken=32fd8354c170411b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\System.Data.EasycomClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.PowerShell.5.ReferenceAssemblies.1.1.0\lib\net4\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdresseHexaviaRepository.cs" />
+    <Compile Include="AdresseRepository.cs" />
+    <Compile Include="AffaireNouvelleRepository.cs" />
+    <Compile Include="AperiteurRepository.cs" />
+    <Compile Include="AttentatRepository.cs" />
+    <Compile Include="AttestationRepository.cs" />
+    <Compile Include="AvenantRepository.cs" />
+    <Compile Include="CibleRepository.cs" />
+    <Compile Include="ClauseRepository.cs" />
+    <Compile Include="BlocRepository.cs" />
+    <Compile Include="CategorieRepository.cs" />
+    <Compile Include="CommonAffNouvRepository.cs" />
+    <Compile Include="CommonRepository.cs" />
+    <Compile Include="ConditionRepository.cs" />
+    <Compile Include="ConnexiteRepository.cs" />
+    <Compile Include="ControleFinRepository.cs" />
+    <Compile Include="CopieDocRepository.cs" />
+    <Compile Include="CotisationsRepository.cs" />
+    <Compile Include="CourtierRepository.cs" />
+    <Compile Include="Data\AffaireBaseData.cs" />
+    <Compile Include="Data\ApplicationsFrmlOptData.cs" />
+    <Compile Include="Data\DateEffetEtFraisData.cs" />
+    <Compile Include="Data\FolderBasicData.cs" />
+    <Compile Include="Data\KDA300Result.cs" />
+    <Compile Include="Data\NouvelleAffaireData.cs" />
+    <Compile Include="Data\OffreSelectionData.cs" />
+    <Compile Include="Data\OptionsFormulesAppData.cs" />
+    <Compile Include="Data\_AffaireBaseData.cs" />
+    <Compile Include="Data\PeriodeConnexiteData.cs" />
+    <Compile Include="Data\PeriodeEffetAffaireData.cs" />
+    <Compile Include="DbBase.cs" />
+    <Compile Include="DoubleSaisieRepository.cs" />
+    <Compile Include="EngagementRepository.static.cs" />
+    <Compile Include="EngagementRepository.cs" />
+    <Compile Include="ExcelRepository.cs" />
+    <Compile Include="FinOffreRepository.cs" />
+    <Compile Include="FolderLock.cs" />
+    <Compile Include="FormuleRepository.static.cs" />
+    <Compile Include="FormuleRepository.cs" />
+    <Compile Include="GarantieModeleRepository.cs" />
+    <Compile Include="GeoRepository.cs" />
+    <Compile Include="GestionDocumentRepository.cs" />
+    <Compile Include="AssureRepository.cs" />
+    <Compile Include="BrancheRepository.cs" />
+    <Compile Include="CabinetCourtageRepository.cs" />
+    <Compile Include="DataAccessManager.cs" />
+    <Compile Include="DelegationRepository.cs" />
+    <Compile Include="GestionnaireRepository.cs" />
+    <Compile Include="Helper\CmdWrapper.cs" />
+    <Compile Include="Helper\ConnectionContext.cs" />
+    <Compile Include="Helper\OutilsHelper.cs" />
+    <Compile Include="Historization\HistoriqueRepository.cs" />
+    <Compile Include="Historization\HistorizationQueries.cs" />
+    <Compile Include="IFolderAct.cs" />
+    <Compile Include="InterlocuteurRepository.cs" />
+    <Compile Include="InventaireRepository.cs" />
+    <Compile Include="NavigationArbreRepository.cs" />
+    <Compile Include="NavigationArbreRepository.static.cs" />
+    <Compile Include="ObservationsRepository.cs" />
+    <Compile Include="OffreRepository.cs" />
+    <Compile Include="ParamCiblesRepository.cs" />
+    <Compile Include="ParamClausesRepository.cs" />
+    <Compile Include="ParamConceptFamilleCodeRepository.cs" />
+    <Compile Include="ParamEngagementRepository.cs" />
+    <Compile Include="ParamGarantieRepository.cs" />
+    <Compile Include="ParamGestionNomenclatureRepository.cs" />
+    <Compile Include="ParamInventairesRepository.cs" />
+    <Compile Include="ParamISRepository.cs" />
+    <Compile Include="ParamTemplatesRepository.cs" />
+    <Compile Include="PGMFolder.cs" />
+    <Compile Include="PoliceRepository.cs" />
+    <Compile Include="ProgramAS400Repository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RechercheRepository.cs" />
+    <Compile Include="ReferenceRepository.cs" />
+    <Compile Include="RefExpressionComplexeRepository.cs" />
+    <Compile Include="RegularisationRepository.static.cs" />
+    <Compile Include="RegularisationRepository.cs" />
+    <Compile Include="RemiseEnVigueurRepository.cs" />
+    <Compile Include="RepositoryBase.cs" />
+    <Compile Include="RisqueRepository.cs" />
+    <Compile Include="SouscripteurRepository.cs" />
+    <Compile Include="SuiviDocumentsRepository.cs" />
+    <Compile Include="TraceRepository.cs" />
+    <Compile Include="TraitementVarianteOffreRepository.cs" />
+    <Compile Include="VerouillageOffresRepository.cs" />
+    <Compile Include="VoletRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj">
+      <Project>{a98a2815-a24c-4e02-891e-8b802ee892ea}</Project>
+      <Name>ALBINGIA.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OP.Application\Albingia.Kheops.OP.Application\Albingia.Kheops.OP.Application.csproj">
+      <Project>{8EBC1EB5-0C73-4857-906A-CF38D5DADAA6}</Project>
+      <Name>Albingia.Kheops.OP.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OP.Application\Albingia.Kheops.OP.Domain\Albingia.Kheops.OP.Domain.csproj">
+      <Project>{E00E8B1D-08A8-4A8D-B086-6517E83262B4}</Project>
+      <Name>Albingia.Kheops.OP.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OP.WSAS400.DTO\OP.WSAS400.DTO.csproj">
+      <Project>{583328b5-c77a-40b6-a9cc-e74bdb583afb}</Project>
+      <Name>OP.WSAS400.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,63 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFraisAccessoires.FraisAccessoiresModel
+
+<table id="RechercheFrais" class="GradientSection rPanel fullWidth" albcontext="@Model.Albcontext">
+    <tr>
+
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Branche :</label>
+            @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "Branche", htmlAttributes: new
+                                                           {
+                                                               @id = "Branche",
+                                                               @tabindex = "1",
+                                                               @class = "FieldBranche",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+        </td>
+
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Sous Branche :</label>
+            @Html.AlbDropDownListFor(m => m.SousBranche, Model.SousBranches, "SousBranche", htmlAttributes: new
+                                                           {
+                                                               @id = "SousBranche",
+                                                               @tabindex = "2",
+                                                               @class = "FieldSousBranche",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+        </td>
+
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Categorie :</label>
+            @Html.AlbDropDownListFor(m => m.Categorie, Model.Categories, "Categorie", htmlAttributes: new
+                                                           {
+                                                               @id = "Categorie",
+                                                               @tabindex = "3",
+                                                               @class = "FieldCategorie",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+        </td>
+
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Année:</label>
+            <input name="Annee" id="Annee" tabindex="1" albmask="numeric" class="numerique" value="@Model.Annee" albcontext="Model.Albcontext" />
+        </td>
+
+        <td class="BlockInLine">
+            <div class="" albcontext="@Model.Albcontext" tabindex="4">
+                <span id="btnRechercherFrais" albcontext="@Model.Albcontext">
+                    <img class="CursorPointer" id="RechercherImg" alt="" src="/Content/Images/loupe.png">
+                </span>
+            </div>
+
+            <div class="" albcontext="@Model.Albcontext" tabindex="5">
+                <button tabIndex="" title="" id="btnInitializeRechercheFrais"  type="button" albcontext="@Model.Albcontext" >Ré<u>i</u>nitialiser</button>
+            </div>
+
+            <div class="" albcontext="@Model.Albcontext" tabindex="5">
+                <a id="exportExcelFrais" href="javascript:ExportToCSV()">
+                    <img id="imgExportExcel" alt="Export Excel" title="Export Excel" src="@(Url.Content("~/Content/Images/exportExcel3232.png"))" class="CursorPointer" />
+                </a>
+            </div>
+
+        </td>
+    </tr>
+</table>

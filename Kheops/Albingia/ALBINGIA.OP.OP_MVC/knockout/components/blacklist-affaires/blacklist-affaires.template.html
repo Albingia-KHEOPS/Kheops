@@ -1,0 +1,62 @@
+﻿
+<div class="ko-cloak conceal">
+    <div class="container container-details">
+        <div class="page-results">
+            <!-- ko ifnot: hasResults -->
+            <div class="padding5">Aucunes offres/contrats</div>
+            <!-- /ko -->
+            <!-- ko if: hasResults -->
+            <div class="flex-table pad7">
+                <div class="flex-header vertical-gradient">
+                    <span class="cell tiny">&nbsp;</span>
+                    <span class="cell longer">Numéro</span>
+                    <span class="cell tiny">&nbsp;</span>
+                    <span class="cell short">Avt.</span>
+                    <span class="cell long">Date Màj</span>
+                    <span class="cell short">Branche</span>
+                    <span class="cell short">Cible</span>
+                    <span class="cell short">Etat</span>
+                    <span class="cell short">Sit.</span>
+                    <span class="cell short">Qual.</span>
+                    <span class="cell pretty-long">Descriptif</span>
+                    <span class="cell long">Preneur</span>
+                    <span class="cell long">Courtier</span>
+                </div>
+                <div class="flex-body big-scroll">
+                    <!-- ko foreach: Affaires -->
+                    <div class="alternate-bg-color grid thin" data-bind="click: reachFolder, css: clickableRow">
+                        <div class="cell tiny center-text">
+                            <i data-bind="css: imgTypeClass"></i>
+                        </div>
+                        <div class="cell longer lpad" data-bind="text: Affaire.Code"></div>
+                        <div class="cell tiny center-text" data-bind="text: Affaire.Version"></div>
+                        <div class="cell short center-text" data-bind="text: Affaire.NumeroAvenant"></div>
+                        <div class="cell long center-text" data-bind="text: DateMAJ"></div>
+                        <div class="cell short center-text" data-bind="text: Affaire.Branche"></div>
+                        <div class="cell short center-text auto-shorten lpad" data-bind="text: Cible, attr: { title: Cible }"></div>
+                        <div class="cell short center-text" data-bind="text: Etat"></div>
+                        <div class="cell short center-text" data-bind="text: Situation"></div>
+                        <div class="cell short center-text" data-bind="text: Qualite"></div>
+                        <div class="cell pretty-long auto-shorten lpad" data-bind="text: Affaire.Libelle, attr: { title: Affaire.Libelle }"></div>
+                        <div class="cell long auto-shorten lpad" data-bind="text: Preneur, attr: { title: Preneur }"></div>
+                        <div class="cell long auto-shorten lpad" data-bind="text: Courtier, attr: { title: Courtier }"></div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+
+    <div class="container container-foot">
+
+        <div class="input-line">
+            <div class="flex11">
+            </div>
+            <div class="flex1-12">
+                <button type="button" data-bind="click: hideList">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>

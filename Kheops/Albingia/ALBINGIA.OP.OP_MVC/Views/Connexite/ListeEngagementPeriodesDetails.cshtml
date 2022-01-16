@@ -1,0 +1,71 @@
+﻿@using ALBINGIA.Framework.Common.Tools
+@model ALBINGIA.OP.OP_MVC.Models.ModelesConnexite.ModeleDetailsConnexitesEng
+<table id="tblEngagementPeriodesBody">
+    @{  
+  
+        if (Model.ConnexitesEngPeriodes != null && Model.ConnexitesEngPeriodes.Count > 0)
+        {
+
+            foreach (var engagementPeriode in Model.ConnexitesEngPeriodes)
+            {                      
+        <tr id="tr_@(engagementPeriode.Code)" name="lineEngagementPeriode" class="@(engagementPeriode.Actif  ? "" : "textOrange")" albPeriodeActive="@engagementPeriode.Actif.ToString()">
+            <td class="col_Actif" name="selectableCol" id="colActif_@(engagementPeriode.Code)" style="text-align:center;">
+                <label title="@((engagementPeriode.Utilise  ? "Utilisé" : "Non Utilisé") + " - " + (engagementPeriode.Actif  ? "Actif" : "Inactif"))">
+                    @(engagementPeriode.Utilise ? "OUI" : "NON")
+                </label>
+              
+            </td>
+            <td class="col_DateDeb" name="selectableCol" id="col_DateDeb_@(engagementPeriode.Code)">
+                <div class="FloatLeft" name="colReadOnly_@(engagementPeriode.Code)">
+
+                    <label id="lblDateDeb_@(engagementPeriode.Code)"></label>
+
+                </div>
+            
+
+            </td>
+            <td class="col_DateFin" name="selectableCol" id="col_DateFin_@(engagementPeriode.Code)">
+                <div class="FloatLeft" name="colReadOnly_@(engagementPeriode.Code)">
+
+                    <label id="lblDateFin_@(engagementPeriode.Code)"></label>
+
+                </div>
+
+
+                <td class="col_Buttons">
+                    <div class="FloatLeft" name="colReadOnly_@(engagementPeriode.Code)">
+                        @if (engagementPeriode.Actif )
+                        {
+                            if (engagementPeriode.Utilise )
+                            {
+                            <img id="updateEngagementPeriode_@(engagementPeriode.Code)" name="updateEngagementPeriodeGris" title="Modifier la période d'engagement" alt="Modifier la période d'engagement" class="imgUpdate" src="@Url.Content("/Content/Images/editer1616_gris.png")" />
+                            <img id="deleteEngagementPeriode_@(engagementPeriode.Code)" name="deleteEngagementPeriodeGris" title="Supprimer la période d'engagement" alt="Supprimer la période d'engagement" src="@Url.Content("/Content/Images/poubelle1616_gris.png")" />
+                            }
+                            if (engagementPeriode.Utilise )
+                            {
+                            <img id="consultEngagementPeriode_@(engagementPeriode.Code)" name="consultEngagementPeriode" title="Consulter la période d'engagement" alt="Consulter la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/ContextMenu/m_consulter.png")" />
+                            
+                            }
+
+                        }
+                        else if (engagementPeriode.Utilise )
+                        {
+                            <img id="consultEngagementPeriode_@(engagementPeriode.Code)" name="consultEngagementPeriode" title="Consulter la période d'engagement" alt="Consulter la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/ContextMenu/m_consulter.png")" />
+                        
+                    
+                        }
+                        else if (engagementPeriode.Utilise )
+                        {
+                            <img id="consultEngagementPeriode_@(engagementPeriode.Code)" name="consultEngagementPeriode" title="Consulter la période d'engagement" alt="Consulter la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/ContextMenu/m_consulter.png")" />
+                      
+                        }
+                    </div>
+                </td>
+            <td class="requiredRow columnHidden" id="colRequired_@(engagementPeriode.Code)">*</td>
+        </tr>
+            }
+        }
+    
+    }
+</table>
+

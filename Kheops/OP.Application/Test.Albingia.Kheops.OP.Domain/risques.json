@@ -1,0 +1,201 @@
+{
+  "$type": "System.Collections.Generic.List`1[[Albingia.Kheops.OP.Domain.Risque.Risque, Albingia.Kheops.OP.Domain]], mscorlib",
+  "$values": [
+    {
+      "$type": "Albingia.Kheops.OP.Domain.Risque.Risque, Albingia.Kheops.OP.Domain",
+      "AffaireId": {
+        "$type": "Albingia.Kheops.OP.Domain.Affaire.AffaireId, Albingia.Kheops.OP.Domain",
+        "CodeAffaire": "RS1803147",
+        "NumeroAliment": 0,
+        "TypeAffaire": 1,
+        "NumeroAvenant": null,
+        "IsHisto": false
+      },
+      "Numero": 1,
+      "Designation": "Budget assuré",
+      "Objets": {
+        "$type": "System.Collections.Generic.List`1[[Albingia.Kheops.OP.Domain.Risque.Objet, Albingia.Kheops.OP.Domain]], mscorlib",
+        "$values": [
+          {
+            "$type": "Albingia.Kheops.OP.Domain.Risque.Objet, Albingia.Kheops.OP.Domain",
+            "Id": {
+              "$type": "Albingia.Kheops.OP.Domain.Risque.ObjetId, Albingia.Kheops.OP.Domain",
+              "AffaireId": {
+                "$type": "Albingia.Kheops.OP.Domain.Affaire.AffaireId, Albingia.Kheops.OP.Domain",
+                "CodeAffaire": "RS1803147",
+                "NumeroAliment": 0,
+                "TypeAffaire": 1,
+                "NumeroAvenant": null,
+                "IsHisto": false
+              },
+              "NumRisque": 1,
+              "NumObjet": 1
+            },
+            "Designation": 184119,
+            "Description": "Budget assuré",
+            "Type": "BIL",
+            "Unite": "D",
+            "Valeur": 200000,
+            "DateDebut": null,
+            "DateFin": "2018-04-28T23:59:00",
+            "NumeroAvenantCreation": 0,
+            "NumeroAvenantModification": 0,
+            "DateEffetAvenant": null
+          }
+        ]
+      },
+      "DateDebut": null,
+      "DateFin": "2018-04-28T23:59:00",
+      "NumeroAvenantCreation": 0,
+      "NumeroAvenantModification": 0,
+      "DateEffetAvenant": null
+    },
+    {
+      "$type": "Albingia.Kheops.OP.Domain.Risque.Risque, Albingia.Kheops.OP.Domain",
+      "AffaireId": {
+        "$type": "Albingia.Kheops.OP.Domain.Affaire.AffaireId, Albingia.Kheops.OP.Domain",
+        "CodeAffaire": "RS1803147",
+        "NumeroAliment": 0,
+        "TypeAffaire": 1,
+        "NumeroAvenant": null,
+        "IsHisto": false
+      },
+      "Numero": 3,
+      "Designation": "Ensemble des bénévoles assurées",
+      "Objets": {
+        "$type": "System.Collections.Generic.List`1[[Albingia.Kheops.OP.Domain.Risque.Objet, Albingia.Kheops.OP.Domain]], mscorlib",
+        "$values": [
+          {
+            "$type": "Albingia.Kheops.OP.Domain.Risque.Objet, Albingia.Kheops.OP.Domain",
+            "Id": {
+              "$type": "Albingia.Kheops.OP.Domain.Risque.ObjetId, Albingia.Kheops.OP.Domain",
+              "AffaireId": {
+                "$type": "Albingia.Kheops.OP.Domain.Affaire.AffaireId, Albingia.Kheops.OP.Domain",
+                "CodeAffaire": "RS1803147",
+                "NumeroAliment": 0,
+                "TypeAffaire": 1,
+                "NumeroAvenant": null,
+                "IsHisto": false
+              },
+              "NumRisque": 3,
+              "NumObjet": 1
+            },
+            "Designation": 184120,
+            "Description": "Ensemble des bénévoles assurées",
+            "Type": "PER",
+            "Unite": "N",
+            "Valeur": 150,
+            "DateDebut": "2018-04-23T00:00:00",
+            "DateFin": "2018-05-01T23:59:00",
+            "NumeroAvenantCreation": 0,
+            "NumeroAvenantModification": 0,
+            "DateEffetAvenant": null
+          }
+        ]
+      },
+      "DateDebut": "2018-04-23T00:00:00",
+      "DateFin": "2018-05-01T23:59:00",
+      "NumeroAvenantCreation": 0,
+      "NumeroAvenantModification": 0,
+      "DateEffetAvenant": null
+    },
+    {
+      "$type": "Albingia.Kheops.OP.Domain.Risque.Risque, Albingia.Kheops.OP.Domain",
+      "AffaireId": {
+        "$type": "Albingia.Kheops.OP.Domain.Affaire.AffaireId, Albingia.Kheops.OP.Domain",
+        "CodeAffaire": "RS1803147",
+        "NumeroAliment": 0,
+        "TypeAffaire": 1,
+        "NumeroAvenant": null,
+        "IsHisto": false
+      },
+      "Numero": 4,
+      "Designation": "Matériels et/ou Biens assurés",
+      "Objets": {
+        "$type": "System.Collections.Generic.List`1[[Albingia.Kheops.OP.Domain.Risque.Objet, Albingia.Kheops.OP.Domain]], mscorlib",
+        "$values": [
+          {
+            "$type": "Albingia.Kheops.OP.Domain.Risque.Objet, Albingia.Kheops.OP.Domain",
+            "Id": {
+              "$type": "Albingia.Kheops.OP.Domain.Risque.ObjetId, Albingia.Kheops.OP.Domain",
+              "AffaireId": {
+                "$type": "Albingia.Kheops.OP.Domain.Affaire.AffaireId, Albingia.Kheops.OP.Domain",
+                "CodeAffaire": "RS1803147",
+                "NumeroAliment": 0,
+                "TypeAffaire": 1,
+                "NumeroAvenant": null,
+                "IsHisto": false
+              },
+              "NumRisque": 4,
+              "NumObjet": 1
+            },
+            "Designation": 184121,
+            "Description": "Matériels et/ou Biens assurés",
+            "Type": "VTD",
+            "Unite": "D",
+            "Valeur": 500000,
+            "DateDebut": "2018-04-23T00:00:00",
+            "DateFin": "2018-05-01T23:59:00",
+            "NumeroAvenantCreation": 0,
+            "NumeroAvenantModification": 0,
+            "DateEffetAvenant": null
+          }
+        ]
+      },
+      "DateDebut": "2018-04-23T00:00:00",
+      "DateFin": "2018-05-01T23:59:00",
+      "NumeroAvenantCreation": 0,
+      "NumeroAvenantModification": 0,
+      "DateEffetAvenant": null
+    },
+    {
+      "$type": "Albingia.Kheops.OP.Domain.Risque.Risque, Albingia.Kheops.OP.Domain",
+      "AffaireId": {
+        "$type": "Albingia.Kheops.OP.Domain.Affaire.AffaireId, Albingia.Kheops.OP.Domain",
+        "CodeAffaire": "RS1803147",
+        "NumeroAliment": 0,
+        "TypeAffaire": 1,
+        "NumeroAvenant": null,
+        "IsHisto": false
+      },
+      "Numero": 5,
+      "Designation": "Organisation Festival PACO TYSON",
+      "Objets": {
+        "$type": "System.Collections.Generic.List`1[[Albingia.Kheops.OP.Domain.Risque.Objet, Albingia.Kheops.OP.Domain]], mscorlib",
+        "$values": [
+          {
+            "$type": "Albingia.Kheops.OP.Domain.Risque.Objet, Albingia.Kheops.OP.Domain",
+            "Id": {
+              "$type": "Albingia.Kheops.OP.Domain.Risque.ObjetId, Albingia.Kheops.OP.Domain",
+              "AffaireId": {
+                "$type": "Albingia.Kheops.OP.Domain.Affaire.AffaireId, Albingia.Kheops.OP.Domain",
+                "CodeAffaire": "RS1803147",
+                "NumeroAliment": 0,
+                "TypeAffaire": 1,
+                "NumeroAvenant": null,
+                "IsHisto": false
+              },
+              "NumRisque": 5,
+              "NumObjet": 1
+            },
+            "Designation": 184122,
+            "Description": "Organisation Festival PACO TYSON",
+            "Type": "",
+            "Unite": "",
+            "Valeur": 0,
+            "DateDebut": "2018-04-23T00:00:00",
+            "DateFin": "2018-05-01T23:59:00",
+            "NumeroAvenantCreation": 0,
+            "NumeroAvenantModification": 0,
+            "DateEffetAvenant": null
+          }
+        ]
+      },
+      "DateDebut": "2018-04-23T00:00:00",
+      "DateFin": "2018-05-01T23:59:00",
+      "NumeroAvenantCreation": 0,
+      "NumeroAvenantModification": 0,
+      "DateEffetAvenant": null
+    }
+  ]
+}

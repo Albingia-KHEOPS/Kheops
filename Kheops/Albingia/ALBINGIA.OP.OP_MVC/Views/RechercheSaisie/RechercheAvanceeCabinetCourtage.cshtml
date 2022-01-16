@@ -1,0 +1,43 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleRechercheAvancee
+<div class="GroupFull GroupWithBorder TotalWidth RechercheSaisie" id="dialogGrid">
+    @Html.HiddenNoName("albContextResultCourtier", Model.Contexte)
+    <div id="divRechercherResultCourtier">
+        <div class="scroll ">
+            <div id="PaginationSize" style="visibility: hidden; display: none;">@Model.LineCount</div>
+            <div class="GroupTitle">
+                Recherche de courtiers
+            </div>
+            <div class="FieldRow">
+                <div class="NomCabinetLabel">
+                    <label class="AutoWidth">Code du Cabinet</label>
+                </div>
+                <div class="NomCabinetTextBox">
+                    <input type="text" class="numerique" albhorsavn albMask="numericCodeCourtier"  id="CodeCabinetRecherche" name="CodeCabinetRecherche" value="@(Model.CodeCabinetRecherche)" albcontext="@Model.Contexte"/>
+                </div>
+                <div class="NomCabinetLabel">
+                    <label class="AutoWidth">Nom du Cabinet</label>
+                </div>
+                <div class="NomCabinetTextBox">
+                    <input type="text" id="NomCabinetRecherche" albhorsavn name="NomCabinetRecherche" value="@(Model.NomCabinetRecherche)" albcontext="@Model.Contexte"/>
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <button type="button" id="RechercherCabinetCourtierButton" name="Rechercher" albshortcut="true" data-accesskey="r" albcontext="@Model.Contexte">
+                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" class="paddingLoupe" />
+                    </button>
+                </div>
+            </div>
+            <div id="CabinetCourtageRechercherResultDialogDiv" name="resultRecherche" albcontext="@Model.Contexte">
+                @Html.Partial("/Views/RechercheSaisie/ResultRechercheAvanceeCabinetCourtier.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+    <div id="LoadingRechDiv" class="FloatLeft">
+        <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+    </div>
+    <span id="MsgAffinementCabinetCourtage" name="messageAffinement" albcontext="@Model.Contexte" style="display: none" class="errorRechAvancee"></span>
+    <div class="ActionButtons ActionButtonsSearchRight ActionButtonRight">
+        <button type="button" id="btnCloseAdvanced" name="closeAdvanced" albcontext="@Model.Contexte">Fermer</button>
+    </div>
+</div>

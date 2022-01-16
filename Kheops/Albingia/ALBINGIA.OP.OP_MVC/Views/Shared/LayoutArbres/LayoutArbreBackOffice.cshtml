@@ -1,0 +1,321 @@
+﻿@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albLayoutArbreBO.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    var SupportRole = ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Any(el => el.TypeDroit == ALBINGIA.Framework.Common.Constants.TypeDroit.S.ToString());
+    var masterRole = ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Any(el => el.TypeDroit == ALBINGIA.Framework.Common.Constants.TypeDroit.M.ToString());
+    var superMaster = ALBINGIA.OP.OP_MVC.MvcApplication.ACCESS_MENU.ToLower().Contains(ALBINGIA.Framework.Common.CacheTools.AlbSessionHelper.ConnectedUser.ToLower());
+}
+<div id="LayoutArbre" class="GroupWithBorder ArbreWidth" style="position: absolute; left: 170px; top: 86px; display: none">
+    <ul class="MenuArbreRacine MenuArbreUL">
+
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Volet/Bloc/Modèle</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Gérer les volets" name="linkNavigationArbreBO" albparamarbrebo="Volets/Index">Volets</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Gérer les blocs" name="linkNavigationArbreBO" albparamarbrebo="Blocs/Index">Blocs</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Consulter les modèles" name="linkNavigationArbreBO" albparamarbrebo="GarantieModele/Index">Modèles</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Associer les volets-blocs-modèles" name="linkNavigationArbreBO" albparamarbrebo="AssocierVBM/Index">Associer VBM</span>
+                </li>
+            </ul>
+        </li>
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Garanties</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Paramétrage des Garanties" name="linkNavigationArbreBO" albparamarbrebo="ParamGaranties/Index">Param. Garanties</span>
+                </li>
+            </ul>
+        </li>
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Clause</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Association Etapes/Contextes" name="linkNavigationArbreBO" albparamarbrebo="ParamClause/Index">Assoc. Etapes/Ctx</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Livraison Paramétrage Clauses" name="linkNavigationArbreBO" albparamarbrebo="CopyParamClause/Index">Livr. Param. Clause</span>
+                </li>
+                <li class="MenuArbreLI">
+                   
+                    <span class="MenuArbreAdminText navig" title="Libellés Clauses" name="linkNavigationArbreBO" albparamarbrebo="LibellesClauses/Index">Libelles. Clauses</span>
+                </li>
+            </ul>
+        </li>
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Cible</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Paramétrage Cibles" name="linkNavigationArbreBO" albparamarbrebo="ParamCible/Index">Param. cibles</span>
+                </li>
+                @if (superMaster) {
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Cibles Récupération" name="linkNavigationArbreBO" albparamarbrebo="ParamCibleRecup/Index">Cibles Récup.</span>
+                    </li>
+                }
+            </ul>
+        </li>
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Inventaire</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Paramétrage Inventaires" name="linkNavigationArbreBO" albparamarbrebo="ParamInventaires/Index">Param. inventaires</span>
+                </li>
+            </ul>
+        </li>
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Engagements</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Engagements" name="linkNavigationArbreBO" albparamarbrebo="ParamEngagements/Index">Param. Engments</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Frais Accessoires" name="linkNavigationArbreBO" albparamarbrebo="FraisAccessoires/Index">Frais Accessoires</span>
+                </li>
+            </ul>
+        </li>
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Concept/Famille/Code</span>
+            <ul class="MenuArbreUL">
+                @if (ALBINGIA.OP.OP_MVC.Common.CacheUserRights.IsUserAdmin || masterRole) {
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Paramétrage des concepts" name="linkNavigationArbreBO" albparamarbrebo="ParamConcepts/Index">Param. Concepts</span>
+                    </li>
+                }
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Paramétrage des familles" name="linkNavigationArbreBO" albparamarbrebo="ParamFamilles/Index">Param. Familles</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Paramétrage des filtres" name="linkNavigationArbreBO" albparamarbrebo="ParamFiltres/Index">Param. Filtres</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Paramétrage des types valeur" name="linkNavigationArbreBO" albparamarbrebo="ParamTypesValeur/Index">Param. Valeurs</span>
+                </li>
+            </ul>
+        </li>
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Canevas</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Référentiel des canevas" name="linkNavigationArbreBO" albparamarbrebo="ParamTemplates/Index">Référentiel</span>
+                </li>
+            </ul>
+        </li>
+
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Param. IS.</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Paramétrage des références IS" name="linkNavigationArbreBO" albparamarbrebo="ParamISReference/Index">Référentiels IS</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Paramétrage des modèles IS" name="linkNavigationArbreBO" albparamarbrebo="ParamISModeles/Index">Modèles IS</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Associer Références/Modèles IS" name="linkNavigationArbreBO" albparamarbrebo="ParamISModeleAssocier/Index">Associer IS/Modèles</span>
+                </li>
+            </ul>
+        </li>
+
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Ref. Expr. Comp.</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Référentiel expressions complexes" name="linkNavigationArbreBO" albparamarbrebo="RefExprComp/Index">Expression Comp.</span>
+                </li>
+            </ul>
+        </li>
+        <li class="MenuArbreLI">
+            <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+            <span class="MenuArbreText">Param. Nomenclature</span>
+            <ul class="MenuArbreUL">
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Gestion des nomenclatures" name="linkNavigationArbreBO" albparamarbrebo="GestionNomenclature/Index">Nomenclatures</span>
+                </li>
+                <li class="MenuArbreLI">
+                    <span class="MenuArbreAdminText navig" title="Gestion des grilles de nomenclature" name="linkNavigationArbreBO" albparamarbrebo="GestionGrilleNomenclature/Index">Grilles nomenclatures</span>
+                </li>
+            </ul>
+        </li>
+        @if ((masterRole && !superMaster ) || SupportRole ){
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Sécurité</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Offres vérrouillées" name="linkNavigationArbreBO" albparamarbrebo="OffresVerrouillees/Index">Off. Verrouillées</span>
+                    </li>
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Gest . Utilisateurs" name="linkNavigationArbreBO" albparamarbrebo="GestUtilisateurs/Index">Gest . Utilisateurs</span>
+                    </li>
+                    @if (!SupportRole)
+                {
+                        <li class="MenuArbreLI">
+                            <span class="MenuArbreAdminText navig" title="Stat . Offre/Contrat" name="linkNavigationArbreBO" albparamarbrebo="Statistique/Index">Stat . Offre/Contrat</span>
+                        </li>
+
+                        <li class="MenuArbreLI">
+                            <span class="MenuArbreAdminText navig" title="Stat . Clauses_Libres" name="linkNavigationArbreBO" albparamarbrebo="StatClausesLibres/Index">Stat . Clauses_Libres</span>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+        @if (superMaster) {
+
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Documents</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Param chemins" name="linkNavigationArbreBO" albparamarbrebo="ParamDocumentChemin/Index">Param. Chemins</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Sécurité</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Offres vérrouillées" name="linkNavigationArbreBO" albparamarbrebo="OffresVerrouillees/Index">Off. Verrouillées</span>
+                    </li>
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Suppression" name="linkNavigationArbreBO" albparamarbrebo="SuppressionOffre">Suppression Offres</span>
+                    </li>
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Gest . Utilisateurs" name="linkNavigationArbreBO" albparamarbrebo="GestUtilisateurs/Index">Gest . Utilisateurs</span>
+                    </li>
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Stat . Offre/Contrat" name="linkNavigationArbreBO" albparamarbrebo="Statistique/Index">Stat . Offre/Contrat</span>
+                    </li>
+
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Stat . Clauses_Libres" name="linkNavigationArbreBO" albparamarbrebo="StatClausesLibres/Index">Stat . Clauses_Libres</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Trace Log</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Trace Log" name="linkNavigationArbreBO" albparamarbrebo="LogTrace/Index">Trace Log</span>
+                    </li>
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Trace Perf" name="linkNavigationArbreBO" albparamarbrebo="LogPerf/LogPerf">Trace Perf</span>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Info.base de données</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Informations tables" name="linkNavigationArbreBO" albparamarbrebo="InformationsDataBase/Index">Informations tables</span>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Recherche offre</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Rapide" name="linkNavigationArbreBO" albparamarbrebo="RechercheOffreRapide/Index">Rapide</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Visualisation</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Suspension" name="linkNavigationArbreBO" albparamarbrebo="Suspension/Index">Périodes suspension</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Script</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Régénérer les scripts" name="linkNavigationArbreBO" albparamarbrebo="Script/Index">Régénérer les scripts</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="MenuArbreLI">
+                <span class="MenuArbreImage Expanded">&nbsp;&nbsp;&nbsp;</span>
+                <span class="MenuArbreText">Cache WCF</span>
+                <ul class="MenuArbreUL" albshow="admin">
+                    <li class="MenuArbreLI">
+                        <span class="MenuArbreAdminText navig" title="Actualiser tous les caches sur le serveur WCF" data-url="/BackOffice/RefreshAllCaches">Actualiser les caches</span>
+                    </li>
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
+
+
+<div id="divDelOffre" class="None">
+    <div class="overlay-background" style="z-index:4" >
+    </div>
+    <div id="divDataDelOffre">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <input type="radio" id="delTypeOffre" name="delType" checked="checked" value="O" />
+            </div>
+            <div class="FloatLeft">
+                <label class="Block">Offre</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="radio" id="delTypeContrat" name="delType" value="P" />
+            </div>
+            <div class="FloatLeft">
+                <label class="Block">Contrat</label>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Code offre/contrat</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="delCodeOffre" name="delCodeOffre" value="" maxlength="9" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Version</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="delVersionOffre" name="delVersionOffre" value="0" class="numerique" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="PaddingRight">
+                <div class="FloatRight">
+                    <button id="btnDelAnnuler" name="btnDelAnnuler" value="Annuler">Annuler</button>
+                </div>
+                <div class="FloatRight PaddingRight">
+                    <button id="btnDelValider" name="btnDelValider" value="Valider">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

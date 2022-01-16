@@ -1,0 +1,118 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleClausePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vLibelleClauses.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albClauses.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<!DOCTYPE html>
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder GroupBackOffice GroupHeightBlocs" style="margin-right: 12px;">
+                    <div class="GroupTitle">
+                        Paramétrage des libellés spécifiques
+                    </div>
+                    <div class="HorizontalHalfWithGroupAdmin GroupHeightBlocsInterieur">
+                        <div class="GradientSection">
+                            <table>
+                                <tr>
+                                    <th class="">
+                                        Branche
+                                        <select class="SelectBanche" id="SelectBanche">
+                                            <option selected></option>
+                                        </select>
+
+                                    </th>
+                                    <th class="">
+                                        Cible
+                                        <select class="SelectCible" id="SelectCible">
+                                            <option selected></option>
+                                        </select>
+                                    </th>
+                                    <th class="">
+                                        Nomenclature 1
+                                        <input type="text" class="TxtRechercheNm1" id="RechercheNm1" tabindex="3">
+                                    </th>
+                                    <th class="">
+                                        Nomenclature 2
+                                       
+                                        <input type="text" class="TxtRechercheNm2" id="RechercheNm2" tabindex="3">
+                                    </th>
+                                    <th class="">
+                                        Nomenclature 3
+                                        <input type="text" class="TxtRechercheNm3" id="RechercheNm3" tabindex="3" name="myinput" onkeypress="return isNumber(event);" maxlength="5"/>
+
+                                    </th>
+                                  
+                                    <th class="">
+                                        <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                            <img id="btnRechercherClause" src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" class="CursorPointer" />
+                                        </button>
+                                    </th>
+                                </tr>
+                            </table>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div id="divLstBlocs">
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <th class="hBranche tablePersoHead">
+                                                Branche
+                                            </th>
+                                            <th class="hCible tablePersoHead">
+                                                Cible
+                                            </th>
+                                            <th class="hNm1 tablePersoHead">
+                                                Nomenclature 1
+                                            </th>
+                                            <th class="hNm2 tablePersoHead">
+                                                Nomenclature 2
+                                            </th>
+                                            <th class="hNm3 tablePersoHead">
+                                                Nomenclature 3
+                                            </th>
+                                            <th class="hLibelleS tablePersoHead">
+                                                Libellé spécifique
+                                            </th>
+                                            <th class="hImg tablePersoHead">
+                                                @Html.Hidden("AjoutIsChekedVal", 0)
+                                                @Html.Hidden("ModifIsChekedVal", 0)
+                                                @Html.Hidden("SuppLigneLibelle", 0)
+                                                <img id="btnAjouterClause" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" />
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBodyClauses" class="divHeight">
+                                    @Html.Partial("ListeClauses", Model.Clauses)
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divInfoBloc" class="GroupFull GroupWithBorder GroupAdmin GroupHeightBlocsFixe FloatLeft GroupBackOffice">
+                </div>
+                <div class="GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+

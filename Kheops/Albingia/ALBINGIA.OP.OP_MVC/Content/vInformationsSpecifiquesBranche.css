@@ -1,0 +1,23 @@
+﻿#WaitLoadingDiv
+{
+    text-align: center;
+    vertical-align: middle;
+    display: none;
+}
+
+.divInfo
+{
+    /*float:left;
+    margin-right:10px;*/
+}
+
+#InfoBranche
+{
+    height: 487px;
+}
+
+.divBonification
+{
+    text-decoration:underline;
+    margin:10px;   
+}

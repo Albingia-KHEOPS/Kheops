@@ -1,0 +1,22 @@
+﻿<bindings>
+  <basicHttpBinding>
+    <binding name="BasicHttpBinding_ICreationOffre" maxReceivedMessageSize="1000000" />
+    <binding name="BasicHttpBinding_IDoubleSaisie" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_IRechercheSaisie" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_ISaisieOffre" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_IPoliceServices" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_IRisquesGaranties" closeTimeout="00:10:00"
+      openTimeout="00:10:00" sendTimeout="00:10:00" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_IVoletsBlocsCategories" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_IConfirmationSaisie" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_IFinOffre" maxReceivedMessageSize="2147483647"  />
+    <binding name="BasicHttpBinding_ICommonOffre" maxReceivedMessageSize="2147483647"/>
+
+    <binding name="BasicHttpBinding_IParametrageClauses" maxReceivedMessageSize="2147483647"/>
+    <binding name="BasicHttpBinding_IAffaireNouvelle" maxReceivedMessageSize="2147483647"/>
+    <binding name="BasicHttpBinding_ICommonAffaireNouvelle" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_IAdresseHexavia" />
+    <binding name="BasicHttpBinding_IInfoSpecif" maxReceivedMessageSize="2147483647" />
+    <binding name="BasicHttpBinding_IOffreSimplifieExcel" maxReceivedMessageSize="2147483647"/>
+  </basicHttpBinding>
+</bindings>

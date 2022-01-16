@@ -1,0 +1,99 @@
+﻿
+<div class="nGradientSection">
+    <div class="HeightRow">
+        <div class="">
+            <div class="FloatLeft">
+                <label class="Block">Libellé formule</label>
+            </div>
+            
+            <div class="FloatLeft PaddingRight" data-bind="visible: formGen">
+                <input type="text" id="LettreLib" name="LettreLib" data-bind="value: LettreAlpha, readonly: true" style="width: 30px;" />
+            </div>
+            
+            <div class="FloatLeft">
+                <input type="text" id="Libelle" name="Libelle" data-bind="visible: displayInputLabel, textInput: LibelleFormule, css: { requiredField: !LibelleFormule.requireState.isValid() }, readonly: isReadonly" maxlength="60" class="libelle-formule" />
+                <select data-bind="visible: displaySelectVoletLabel, options: selectedVolets, value: autoFilledLabel, disable: isReadonly, css: { requiredField: !LibelleFormule.requireState.isValid() }" class="libelle-formule"></select>
+                <label>
+                    <input type="checkbox" data-bind="checked: autoFillLabel, disable: isReadonly" />
+                    Saisie-Auto
+                </label>
+            </div>
+            <div class="FloatLeft">
+                <label style=" padding-left: 10px;padding-right:15px;">Cible</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CibleRisque" name="CibleRisque" data-bind="value: libelleCible, readonly: true" class="inputBranche" />
+            </div>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="divAppliqueA">
+            <div class="FloatLeft">
+                <label class="Block">s'applique</label>
+            </div>
+            <div class="FloatLeft PaddingRight">
+                <input type="text" id="ObjetRisque" name="ObjetRisque" data-bind="value: LibelleApplication, readonly: true" />
+            </div>
+        </div>
+
+        <div class="FloatLeft" data-bind="visible: !formGen">
+            <button id="btnMultiObj" type="button" albshortcut="true" accesskey="l" data-bind="click: displayApplications">Sé<u>l</u>ectionner</button>
+        </div>
+        
+    </div>
+
+</div>
+
+<!-- selection popup -->
+<div id="divLstRsqObj">
+    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div style="position: absolute; top: 75px; left: 400px; display: block; z-index: 3; float: left; background-color: #FFF; padding: 10px;">
+        <div id="divWinListRsqObj">
+            <div class="GroupFull GroupWithBorder" style="width: 500px;">
+                <div class="GroupTitle">Sélection des risques liés à la formule de garantie</div>
+                <div id="dvListObjRsq" class="divFancyListRsqObj">
+                    <table>
+                        <tbody>
+                            <!-- ko foreach: Risques -->
+                            <tr>
+                                <td class="lgnNiv1" data-bind="css: { NotAffecte: !isRisqueApplicable() }">
+                                    <label data-bind="event:{mouseup: $component.selectRisque}" >
+                                        <input name="radioRsq" type="radio" data-bind="enable: isRisqueApplicable, checkedValue: Numero, checked: $component.risqueSelectionne" />
+                                        <!-- ko text: Designation --><!-- /ko -->
+                                    </label>
+                                </td>
+                            </tr>
+                            <!-- ko foreach: Objets  -->
+                            <tr>
+                                <td class="lgnNiv2" data-bind="css: { NotAffecte: !isApplicable() }">
+                                    <label>
+                                        <!-- ko if: isApplicable -->
+                                        <input type="checkbox" data-bind="checked: isSelected, disable: $component.isReadonly" />
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: isApplicable -->
+                                        <input type="checkbox" data-bind="checked: false, enable: false" />
+                                        <!-- /ko -->
+                                        <!-- ko text: Description--><!-- /ko -->
+                                    </label>
+                                </td>
+                            </tr>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="Validation">
+                <!-- ko if: isReadonly -->
+                <button id="btnListCancel" type="button" albshortcut="false" accesskey="#**#f" data-bind="click: cancelChanges"><u>F</u>ermer</button>
+                <!-- /ko -->
+                <!-- ko ifnot: isReadonly -->
+                <button id="btnCancelListApplique" type="button" albshortcut="false" accesskey="#**#a" data-bind="click: cancelChanges"><u>A</u>nnuler</button>
+                <button id="btnValidListApplique" type="button" albshortcut="false" accesskey="#**#v" data-bind="click: validateChanges"><u>V</u>alider</button>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,72 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleStatistiqueClausesLibresPage
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albRechercheClausesLib.js" }, "~/Scripts/AlbingiaJS/")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albStatClauseLibRecherche.css" }, "~/Content/")
+<div>
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+</div>
+<div class="CommonForm TotalWidth FloatLeft">
+    <div id="divSearchContainer" class="GroupFull GroupWithBorder TotalWidth">
+        <div id="divSearchCriteria" class="nHorizontalFullWithGroup SearchCriteria nHorizontalTotalWidth">
+            <div class="nGradientSection nDivSearch">
+                <div id="divOffreContratTitle" class="SubGroupTitleSearch">
+                    <div id="divGroupOffreContratTitle" class="FloatLeft TxtMenuTitle">
+                        @Html.Raw("Recherche Stat.Clauses Libres")
+                    </div>
+                </div>
+                <div class="HeightRow">
+
+                    <div class="FloatLeft">
+                        <label class="Block">Date Creat. Debut:</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <div class="PeriodeEntreLMeDateDebut">@Html.AlbDateFormat(m => m.DateDebutCreation, new { @id = "Datedebcreate", @class = "datepicker", @tabindex = "8", @albGroup = "Advanced" })</div>
+
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="blockjustif">Fin:</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <div class="PeriodeEntreLMeDateDebut">@Html.AlbDateFormat(m => m.DateFinCreation, new { @id = "Datefincreate", @class = "datepicker", @tabindex = "8", @albGroup = "Advanced" })</div>
+                    </div>
+
+
+                    <div class="FloatLeft">
+                        <label class="Block">Date Saisie Debut:</label>
+                    </div>
+                    <div class="FloatLeft">
+
+                        <div class="PeriodeEntreLMeDateDebut">@Html.AlbDateFormat(m => m.DateDebutSaisie, new { @id = "Datesaisdebut", @class = "datepicker", @tabindex = "8", @albGroup = "Advanced" })</div>
+
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="blockjustif">Fin:</label>
+                    </div>
+                    <div class="FloatLeft">
+
+                        <div class="PeriodeEntreLMeDateDebut">@Html.AlbDateFormat(m => m.DateFinSaisie, new { @id = "Datesaisfin", @class = "datepicker", @tabindex = "8", @albGroup = "Advanced" })</div>
+                    </div>
+
+                    <div class="ActionButtonRight" style="padding-right: 10px">
+                        <button type="button" id="btnStatRechercher" tabindex="13" albshortcut="true" data-accesskey="r"><u>R</u>echercher</button>
+                    </div>
+                    <div class="ActionButtonRight" tabindex="10">
+                        <button tabindex="" title="" id="btnInitialize" type="button">Ré<u>i</u>nitialiser</button>
+                    </div>
+                    <div class="ActionButtonRight" style="padding-right: 10px">
+                        <a id="exportExcel" href="javascript:ExportToCSV()">
+                            <img id="imgExportExcel" alt="Export Excel" title="Export Excel" src="@(Url.Content("~/Content/Images/exportExcel3232.png"))" class="CursorPointer" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divResultRechercheIntegre">
+        </div>
+    </div>
+
+
+</div>

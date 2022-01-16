@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4E616268-D872-424B-9FC6-6F89A7310FA0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Albingia.Kheops.OP.Application.Contracts</RootNamespace>
+    <AssemblyName>Albingia.Kheops.OP.Application.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\ConditionGarantieDto.cs" />
+    <Compile Include="DTO\ConditionsAffaireDto.cs" />
+    <Compile Include="DTO\ContextEtapeDto.cs" />
+    <Compile Include="DTO\EngagementTraiteDto.cs" />
+    <Compile Include="DTO\GareatStateDto.cs" />
+    <Compile Include="DTO\PrimeGarantieGareatDto.cs" />
+    <Compile Include="DTO\PrimesGareatDto.cs" />
+    <Compile Include="DTO\RelanceDto.cs" />
+    <Compile Include="DTO\TarifAffaireDto.cs" />
+    <Compile Include="DTO\ValeursUniteDto.cs" />
+    <Compile Include="ICache.cs" />
+    <Compile Include="IConfig.cs" />
+    <Compile Include="ILiveDataCache.cs" />
+    <Compile Include="IRepositoryCache.cs" />
+    <Compile Include="ISessionContext.cs" />
+    <Compile Include="ISharedDataCache.cs" />
+    <Compile Include="Port\Driven\IAdresseRepository.cs" />
+    <Compile Include="Port\Driven\IAffaireRepository.cs" />
+    <Compile Include="Port\Driven\IClauseRepository.cs" />
+    <Compile Include="Port\Driven\IConnexiteRepository.cs" />
+    <Compile Include="Port\Driven\IControleRepository.cs" />
+    <Compile Include="Port\Driven\IDesignationRepository.cs" />
+    <Compile Include="Port\Driven\IDocumentRepository.cs" />
+    <Compile Include="Port\Driven\IEngagementRepository.cs" />
+    <Compile Include="Port\Driven\IFormuleRepository.cs" />
+    <Compile Include="Port\Driven\IGarantieRepository.cs" />
+    <Compile Include="Port\Driven\IInformationSpecifiqueRepository.cs" />
+    <Compile Include="Port\Driven\IInfosSpecifiquesRepository.cs" />
+    <Compile Include="Port\Driven\IInventaireRepository.cs" />
+    <Compile Include="Port\Driven\INomsCourtiersRepository.cs" />
+    <Compile Include="Port\Driven\IObservationRepository.cs" />
+    <Compile Include="Port\Driven\IOffreRepository.cs" />
+    <Compile Include="Port\Driven\IOppositionRepository.cs" />
+    <Compile Include="Port\Driven\IParametrageModelesRepository.cs" />
+    <Compile Include="Port\Driven\IParamRepository.cs" />
+    <Compile Include="Port\Driven\IPrimeRepository.cs" />
+    <Compile Include="Port\Driven\IQuittanceRepository.cs" />
+    <Compile Include="Port\Driven\IRefRepository.cs" />
+    <Compile Include="Port\Driven\IRegularisationRepository.cs" />
+    <Compile Include="Port\Driven\IRelancesRepository.cs" />
+    <Compile Include="Port\Driven\IRepriseAvenantRepository.cs" />
+    <Compile Include="Port\Driven\IRisqueRepository.cs" />
+    <Compile Include="Port\Driven\ISinistreRepository.cs" />
+    <Compile Include="Port\Driven\ISuspensionRepository.cs" />
+    <Compile Include="Port\Driven\ITraceRepository.cs" />
+    <Compile Include="Port\Driven\ITransverseRepository.cs" />
+    <Compile Include="Port\Driven\IUserRepository.cs" />
+    <Compile Include="DTO\AffaireDto.cs" />
+    <Compile Include="DTO\AffaireFormuleDto.cs" />
+    <Compile Include="DTO\ApplicationDto.cs" />
+    <Compile Include="DTO\BlocDto.cs" />
+    <Compile Include="DTO\CalculChargementDto.cs" />
+    <Compile Include="DTO\ConnexiteDto.cs" />
+    <Compile Include="DTO\FolderDto.cs" />
+    <Compile Include="DTO\FolderLockDto.cs" />
+    <Compile Include="DTO\FormuleDto.cs" />
+    <Compile Include="DTO\GarantieDetailsDto.cs" />
+    <Compile Include="DTO\GarantieDto.cs" />
+    <Compile Include="DTO\ImpayeDto.cs" />
+    <Compile Include="DTO\InformationSpecifiqueDto.cs" />
+    <Compile Include="DTO\InfoSpeValeurDto.cs" />
+    <Compile Include="DTO\InfosSpecifiquesDto.cs" />
+    <Compile Include="DTO\InventaireDto.cs" />
+    <Compile Include="DTO\LigneModeleISDto.cs" />
+    <Compile Include="DTO\ModeleISDto.cs" />
+    <Compile Include="DTO\NouvelleAffaireDto.cs" />
+    <Compile Include="DTO\ObjetDto.cs" />
+    <Compile Include="DTO\OptionDto.cs" />
+    <Compile Include="DTO\OptionsDetailBlocDto.cs" />
+    <Compile Include="DTO\OptionsDetailDto.cs" />
+    <Compile Include="DTO\OptionsDetailVoletDto.cs" />
+    <Compile Include="DTO\ParamBlocDto.cs" />
+    <Compile Include="DTO\ParamModeleGarantieDto.cs" />
+    <Compile Include="DTO\ParamVoletDto.cs" />
+    <Compile Include="DTO\PeriodeGarantieDto.cs" />
+    <Compile Include="DTO\PorteeGarantieDto.cs" />
+    <Compile Include="DTO\PrimeDto.cs" />
+    <Compile Include="DTO\ProprieteISDto.cs" />
+    <Compile Include="DTO\RegularisationDto.cs" />
+    <Compile Include="DTO\RegulSimpleDto.cs" />
+    <Compile Include="DTO\RetardPaiementDto.cs" />
+    <Compile Include="DTO\RisqueDto.cs" />
+    <Compile Include="DTO\SectionISDto.cs" />
+    <Compile Include="DTO\SelectionElementFormuleDto.cs" />
+    <Compile Include="DTO\SelectionFormuleRegularisationDto.cs" />
+    <Compile Include="DTO\SelectionObjetRegularisationDto.cs" />
+    <Compile Include="DTO\SelectionRegularisationDto.cs" />
+    <Compile Include="DTO\SelectionRisqueRegularisationDto.cs" />
+    <Compile Include="DTO\SinistreDto.cs" />
+    <Compile Include="DTO\TarifGarantieDto.cs" />
+    <Compile Include="DTO\TypeInventaireDto.cs" />
+    <Compile Include="DTO\VerrouAffaire.cs" />
+    <Compile Include="DTO\VoletDto.cs" />
+    <Compile Include="Port\Driver\IAffairePort.cs" />
+    <Compile Include="Port\Driver\IDocumentPort.cs" />
+    <Compile Include="Port\Driver\IEtapePort.cs" />
+    <Compile Include="Port\Driver\IFormulePort.cs" />
+    <Compile Include="Port\Driver\IGarantiePort.cs" />
+    <Compile Include="Port\Driver\IInfosSpecifiquesPort.cs" />
+    <Compile Include="Port\Driver\IParametrageModelesPort.cs" />
+    <Compile Include="Port\Driver\IReferentielPort.cs" />
+    <Compile Include="Port\Driver\IRegularisationPort.cs" />
+    <Compile Include="Port\Driver\IRisquePort.cs" />
+    <Compile Include="Port\Driver\ISinistrePort.cs" />
+    <Compile Include="Port\Driver\IUserPort.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj">
+      <Project>{a98a2815-a24c-4e02-891e-8b802ee892ea}</Project>
+      <Name>ALBINGIA.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Albingia.Kheops.Common\Albingia.Kheops.Common.csproj">
+      <Project>{7919E1A0-1894-4262-BE0C-71CC06369408}</Project>
+      <Name>Albingia.Kheops.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceMetierOP\OP.WSAS400.DTO\OP.WSAS400.DTO.csproj">
+      <Project>{583328b5-c77a-40b6-a9cc-e74bdb583afb}</Project>
+      <Name>OP.WSAS400.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Albingia.Kheops.OP.Domain\Albingia.Kheops.OP.Domain.csproj">
+      <Project>{e00e8b1d-08a8-4a8d-b086-6517e83262b4}</Project>
+      <Name>Albingia.Kheops.OP.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

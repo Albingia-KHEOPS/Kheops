@@ -1,0 +1,128 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsSpecifiquesRisquesPage>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Autowidth" style="text-decoration: none;">Risque @(Model.Code) @(Model.DescriptifRisque)</label>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="GenericColumn">
+        <div class="FloatLeft" style="width: 108px;">
+            <label class="Block">Indice Réf.</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="readonly" tabindex ="20" albCFList="indiceReference" title="@(Model.IndiceRef + (!string.IsNullOrEmpty(Model.IndiceRefLibelle) ? " - " + Model.IndiceRefLibelle : string.Empty))" value="@(Model.IndiceRef + (!string.IsNullOrEmpty(Model.IndiceRefLibelle) ? " - " + Model.IndiceRefLibelle : string.Empty))" />
+        </div>
+    </div>
+    <div class="GenericColumn MarginRightInfo" style="margin-left: 15px;">
+        <div class="FloatLeft">
+            <label class="Block">Valeur</label>
+        </div>
+        <div class="FloatLeft">@Html.TextBoxFor(m => m.Valeur, new { @class = "readonly numerique", @readonly = "readonly", tabindex = "21", albMask = "decimal" })</div>
+    </div>
+    <div class="FloatLeft RisqueIndexe">
+        <div class="FloatLeft">
+            <div class="FloatLeft">
+                <label class="Block AutoWidth">Risque Indexé</label>
+            </div>
+            <div class="FloatLeft CheckBoxWidth">@Html.CheckBoxFor(m => m.RisqueIndexe, new { tabindex = "22" })</div>
+        </div>
+        <div id="paramRisqueIndexe" class="@(!Model.RisqueIndexe ? "None" : string.Empty)">
+            <div class="FloatLeft PaddingLeftInfo">
+                <div class="FloatLeft">
+                    <label class="Block AutoWidth">LCI</label>
+                </div>
+                <div class="FloatLeft CheckBoxWidth">@Html.CheckBoxFor(m => m.LCI, new { tabindex = "23" })</div>
+            </div>
+            <div class="FloatLeft PaddingLeftInfo">
+                <div class="FloatLeft">
+                    <label class="Block AutoWidth">Franchise</label>
+                </div>
+                <div class="FloatLeft CheckBoxWidth">@Html.CheckBoxFor(m => m.Franchise, new { tabindex = "24" })</div>
+            </div>
+            <div class="FloatLeft PaddingLeftInfo">
+                <div class="FloatLeft">
+                    <label class="Block AutoWidth">Assiette</label>
+                </div>
+                <div class="FloatLeft CheckBoxWidth">@Html.CheckBoxFor(m => m.Assiette, new { tabindex = "25" })</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block AutoWidth">Regime Taxe*</label>
+    </div>
+    <div class="FloatLeft" style="padding-left: 27px;">@Html.AlbDropDownListFor(m => m.RegimeTaxe, Model.RegimesTaxe, "RegimeTaxe", htmlAttributes: new { id = "RegimeTaxe", tabindex = "26", @class = "GenericColumn", albCFList = "regimeTaxe", @albhorsavn = "" }, generateTitle: true)
+    </div>
+    <div class="FloatLeft" style="padding-left: 10px;">
+        <label class="Block">CATNAT</label>
+        @Html.HiddenFor(m => m.ForceAllowCatnat)
+    </div>
+    <div class="FloatLeft">@Html.CheckBoxFor(m => m.CATNAT, new { tabindex = "27" })
+    </div>
+
+</div>
+@if (Model.NomEcran == ALBINGIA.Framework.Common.Constants.NomsInternesEcran.InformationsSpecifiquesRisque)
+{
+    <div class="HeightRow">
+        @Html.Partial("/Views/Shared/LCIFranchise/LCIFranchise.cshtml", Model.LCIRisque)
+        @Html.Partial("/Views/Shared/LCIFranchise/LCIFranchise.cshtml", Model.FranchiseRisque)
+    </div>
+    <div id="divExprComplexe">
+        <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 4; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+        </div>
+        <div id="divDataExprComp">
+        </div>
+    </div>
+}
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Régularisable</label>
+        </div>
+        <div class="FloatLeft PaddingRight">
+            @if (Model.CanDoRegularisable) {
+                @Html.CheckBoxFor(m => m.IsRegularisable, new { tabindex = "32", name = "IsRegularisable" })
+            }
+            else {
+                @Html.CheckBoxFor(m => m.IsRegularisable, new { tabindex = "32", name = "IsRegularisable", albhorsavn = string.Empty })
+            }
+        </div>
+
+        @*@if (Model.CanDoRegularisable)
+        {
+            <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.TypeRegularisation, Model.ListTypesRegularisation, "TypeRegularisation", htmlAttributes: new { id = "TypeRegul", @class = "GenericColumn", albCFList = "typeRegul" }, generateTitle: true)</div>
+        }
+        else
+        {*@
+            @if (Model.IsRegularisable)
+            {
+                <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.TypeRegularisation, Model.ListTypesRegularisation, "TypeRegularisation", htmlAttributes: new { id = "TypeRegul", @class = "GenericColumn ", albCFList = "typeRegul", albhorsavn = "" }, generateTitle: true)</div>
+            }
+            else
+            {
+                <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.TypeRegularisation, Model.ListTypesRegularisation, "TypeRegularisation", htmlAttributes: new { id = "TypeRegul", @class = "GenericColumn readonly", albCFList = "typeRegul", disabled = "disabled", albhorsavn = "" }, generateTitle: true)</div>
+            }
+        @*}*@
+
+        <div class="QuarterGenericColumn">
+            @if (Model.ListOppositions != null && Model.ListOppositions.Count > 0)
+            {
+                <div class="FloatLeft">
+                    <button id="btnOppositions" type="button" albshortcut="true" accesskey="o" style="width: 146px; margin-left: 280px;">
+                        <img  id="imgBtnOpposition" class="FloatLeft MarginLeftButton" src="@Url.Content("/Content/Images/opposition_check_orange.png")" />
+                        <span class="spanText FloatLeft CursorPointer"><u>O</u>pp./Bénéficiaires</span>
+                    </button>
+                </div>
+            }
+            else
+            {
+                <div class="FloatLeft">
+                    <button id="btnOppositions" type="button" albshortcut="true" accesskey="o" style="width: 146px; margin-left: 280px;">
+                        <img  id="imgBtnOpposition" class="FloatLeft MarginLeftButton" src="@Url.Content("/Content/Images/opposition.png")" />
+                        <span class="spanText FloatLeft CursorPointer"><u>O</u>pp./Bénéficiaires</span>
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+

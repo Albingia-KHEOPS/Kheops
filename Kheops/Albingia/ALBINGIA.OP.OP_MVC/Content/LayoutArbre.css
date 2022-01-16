@@ -1,0 +1,100 @@
+﻿/* Feuille de style du menu Tree */
+
+.MenuArbre
+{
+    height: 357px;
+    overflow-y: scroll;
+}
+
+.CollapseMenuArbre
+{
+    height: 229px;
+    overflow-y: scroll;
+}
+
+.MenuArbreBO
+{
+    height: 643px;
+}
+
+.MenuArbreContrat
+{
+    height: 334px;
+    overflow-y: scroll;
+}
+
+.MenuArbreRegule
+{
+    height: 334px;
+}
+
+.MenuArbreRegule .MenuArbreUL li {
+    padding-left: 20px;
+}
+
+.MenuArbreRacine {
+}
+
+.MenuArbreUL
+{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.MenuArbreLI
+{
+    padding-left: 5px;
+}
+
+.menuArbre-current {
+    font-weight: bold;
+}
+
+.MenuArbreText
+{
+    padding-left: 5px;
+}
+
+.MenuArbreAdminText
+{
+    padding-left: 20px;
+}
+
+.MenuArbreImage
+{
+    cursor: pointer;
+}
+
+.Expanded
+{
+    background-image: url("/Content/Images/LayoutArbre/moins.png");
+    background-repeat: no-repeat;
+}
+
+.Reduced
+{
+    background-image: url("/Content/Images/LayoutArbre/plus.png");
+    background-repeat: no-repeat;
+}
+
+.Disabled
+{
+    color: Gray;
+}
+
+.Enabled
+{
+    color: Black;
+}
+
+.MenuArbreRegule .MenuArbreUL li.level2 {
+    padding-left: 23px;
+}
+
+.MenuArbreRegule .MenuArbreUL li.level3 {
+    padding-left: 26px;
+}
+
+.MenuArbreRegule .MenuArbreUL li.level4 {
+    padding-left: 29px;
+}

@@ -1,0 +1,207 @@
+﻿.divHeight
+{
+    overflow-y: auto;
+    height: 475px;
+    /*margin-bottom: 10px;*/
+}
+
+.tablePersoHead
+{
+    border: 1px solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.heightDivList
+{
+    height: 455px;
+}
+
+.heightDivListInterne
+{
+    height: 440px;
+    padding-left: 5px;
+}
+
+.divListInfoBranche
+{
+    max-height: 415px;
+    overflow-y: auto;
+}
+
+.GroupHeightModelesGarantie
+{
+    height: 600px;
+    max-height: 600px;
+}
+
+.GroupHeightModelesGarantieFixe
+{
+    height: 600px;
+}
+
+.GroupHeightModelesGarantieInterieur
+{
+    max-height: 560px;
+}
+
+#divLstModelesGarantie
+{
+    display: none;
+}
+
+#divInfoModelesGarantie
+{
+    display: none;
+}
+
+#CodeCopieRow, #btnValider, #btnAnnuler {
+    display: none;
+}
+
+.divRechercheCode
+{
+    width: 105px;
+    float: left;
+}
+
+.divRecherche
+{
+    padding-top: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20px;
+    float: left;
+}
+
+.divRechercheDescr
+{
+    width: 255px;
+    float: left;
+}
+
+.FieldModelesGarantieLabel
+{
+    width: 150px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.FieldModelesGarantieCode input
+{
+    width: 100px;
+}
+
+.FieldModelesGarantieDescr input
+{
+    width: 240px;
+}
+
+.FieldInfoLabel
+{
+    width: 100px;
+    float: left;
+}
+
+.modifModelesGarantie
+{
+    cursor: pointer;
+}
+
+.supprModelesGarantie
+{
+    cursor: pointer;
+}
+
+.col1
+{
+    width: 80px;
+}
+
+.col2
+{
+    width: 200px;
+}
+
+.col3
+{
+    width: 350px;
+}
+
+.col4
+{
+    width: 25px;
+}
+
+.col3Head
+{
+    width: 365px;
+}
+
+.colHGeneric
+{
+    width: 100px;
+}
+
+.colBGeneric
+{
+    padding-left: 5px;
+    width: 98px;
+}
+
+.width100
+{
+    width: 100%;
+}
+
+.labelCode
+{
+    width: 65px;
+}
+
+.widthTableModele {
+    width: 554px;
+    table-layout: fixed;
+}
+
+.tdHeaderEditModele {
+    width: 20px;
+}
+
+.tdHeaderCodeModele {
+    width: 136px;
+}
+
+.tdHeaderImgModele {
+    width: 27px;
+}
+
+.tdHeaderDescModele {
+    width: 347px;
+}
+
+.tdBodyEditModele {
+    width: 20px;
+    text-align: center;
+}
+
+.tdBodyCodeModele {
+    width: 136px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdBodyImgModele {
+    width: 27px;
+    text-align: center;
+}
+
+.tdBodyDescModele {
+    width: 347px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+

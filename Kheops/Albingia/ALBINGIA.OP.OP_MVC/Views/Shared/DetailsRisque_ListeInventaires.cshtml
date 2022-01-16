@@ -1,0 +1,25 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaModels.DetailsObjet_MetaModels.DetailsObjet_Inventaires_MetaModel
+<table id="TableListeInventaire" width="95%">
+    @{
+        string[] trClass = new string[] { "odd", "even" };
+        int classIndex = 0;
+    }
+    @foreach (var item in Model.Inventaires)
+    { 
+        <tr class="@trClass[classIndex] trFichier">
+            <td class="colBtn">
+                @if (!Model.IsReadOnly)
+                {
+                    <img id="btnSupprimerInventaire_@(item.Code)_@(item.NumDescription)" class="CursorPointer" name="btnSupprimerInventaire" src="@Url.Content("/Content/Images/icoDelete.png")" title="Supprimer l'inventaire" alt="icoDelete" />
+                }
+            </td>
+            <td name="OpenInven" class="colTxt TxtLink CursorPointer" param="@(item.Type)_@(item.Code)">
+                @item.Descriptif
+            </td>
+            <td class="colTxt">
+                @item.Type
+            </td>
+        </tr>
+                classIndex = (classIndex == 1 ? 0 : 1);
+    }
+</table>

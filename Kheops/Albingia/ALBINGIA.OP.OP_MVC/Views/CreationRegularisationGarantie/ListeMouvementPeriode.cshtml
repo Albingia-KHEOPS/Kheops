@@ -1,0 +1,34 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegulGar.Mouvement>
+<div id="divMouvementHeader" style="text-align: center;">
+    <table id="tblMouvementHeader" class="divTable trHeight">
+        <tr>
+            <th class="col_HeaderMouvement tablePersoHeader">Mouvement
+            </th>
+            <th class="col_HeaderAssiette tablePersoHeader">Assiette
+            </th>
+            <th class="col_HeaderTaux tablePersoHeader">Taux/Forfait
+            </th>
+
+        </tr>
+    </table>
+</div>
+<div id="divMouvementBody">
+    <table id="tblMouvementBody" class="trHeight">
+        @{
+            foreach (var MouvementInfo in Model)
+            {
+            <tr>
+                <td class="col_TdMvt CursorPointer" title="@MouvementInfo.MouvementPeriodeDebStr">@MouvementInfo.MouvementPeriodeDebStr</td>
+                <td class="col_TdMvt CursorPointer" title="@MouvementInfo.MouvementPeriodeFinStr">@MouvementInfo.MouvementPeriodeFinStr</td>
+                <td class="col_TdAssiette CursorPointer">
+                    <span  albmask="decimal" title="@MouvementInfo.AssietteValeurMvt">@MouvementInfo.AssietteValeurMvt </span></td>
+                <td class="col_TdTauxForfait CursorPointert">
+                    <span albmask="pourcentdecimal">@MouvementInfo.Taux  </span></td>
+                <td class="col_TdTauxForfait CursorPointer">@MouvementInfo.Unite </td>
+            </tr>
+   
+            }
+        }
+    </table>
+
+</div>

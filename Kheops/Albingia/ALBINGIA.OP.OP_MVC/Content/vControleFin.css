@@ -1,0 +1,25 @@
+﻿th1
+{
+    width: 20px;
+}
+
+th2
+{
+    width: 150px;
+}
+
+th3
+{
+    width: 200px;
+}
+
+.dvDataRegenerateDocument
+{
+    position: absolute;
+    top: 82px;
+    left: 10px;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}

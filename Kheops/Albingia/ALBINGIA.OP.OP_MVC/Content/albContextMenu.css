@@ -1,0 +1,187 @@
+﻿.icon-encours {
+    background-image: url("/Content/Images/ContextMenu/m_avenant.gif");
+}
+
+.icon-blocage {
+    background-image: url("/Content/Images/ContextMenu/m_blocage.gif");
+}
+
+.icon-connexite {
+    background-image: url("/Content/Images/ContextMenu/m_connexite.png");
+}
+
+.icon-consulter {
+    background-image: url("/Content/Images/ContextMenu/m_consulter.png");
+}
+
+.icon-copyoffre {
+    background-image: url("/Content/Images/ContextMenu/m_copier.png");
+}
+
+.icon-doublesaisie {
+    background-image: url("/Content/Images/ContextMenu/m_dblsaisie.gif");
+}
+
+.icon-documents {
+    background-image: url("/Content/Images/ContextMenu/m_documents.gif");
+}
+
+.icon-engagementperiode {
+    background-image: url("/Content/Images/ContextMenu/m_engagements.gif");
+}
+
+.icon-etabliran {
+    background-image: url("/Content/Images/ContextMenu/m_etablir_an.gif");
+}
+
+.icon-historique {
+    background-image: url("/Content/Images/ContextMenu/m_historique.png");
+}
+
+.icon-openoffre {
+    background-image: url("/Content/Images/ContextMenu/m_modifier.png");
+}
+
+.icon-creercontrat {
+    background-image: url("/Content/Images/ContextMenu/m_new_contrat.gif");
+}
+
+.icon-creersaisie {
+    background-image: url("/Content/Images/ContextMenu/m_new_offre.gif");
+}
+
+.icon-regul {
+    background-image: url("/Content/Images/ContextMenu/m_regul.png");
+}
+
+.icon-retour {
+    background-image: url("/Content/Images/ContextMenu/m_retour.gif");
+}
+
+.icon-valideroffre {
+    background-image: url("/Content/Images/ContextMenu/m_validation.gif");
+}
+
+.icon-defaultIcon {
+    background-image: url("/Content/Images/ContextMenu/m_logoalbingia.png");
+}
+
+.icon-AVNMD {
+    background-image: url("/Content/Images/ContextMenu/m_logoalbingia.png");
+}
+
+.icon-AVNRS {
+    background-image: url("/Content/Images/ContextMenu/m_logoalbingia.png");
+}
+
+.icon-AVNRM {
+    background-image: url("/Content/Images/ContextMenu/m_logoalbingia.png");
+}
+
+.icon-AVNPG {
+    background-image: url("/Content/Images/ContextMenu/m_logoalbingia.png");
+}
+
+.icon-AVNSP {
+    background-image: url("/Content/Images/ContextMenu/m_logoalbingia.png");
+}
+
+.icon-REGUL {
+    background-image: url("/Content/Images/ContextMenu/m_logoalbingia.png");
+}
+
+.icon-blocdebloc1 {
+    background-image: url("/Content/Images/ContextMenu/m_blocage1.gif");
+}
+
+.icon-blocdebloc2 {
+    background-image: url("/Content/Images/ContextMenu/m_blocage2.gif");
+}
+
+.icon-blocdebloc3 {
+    background-image: url("/Content/Images/ContextMenu/m_blocage3.gif");
+}
+
+.icon-valideroffre {
+    background-image: url("/Content/Images/ContextMenu/m_validation.gif");
+}
+
+.context-menu-list {
+    padding-top: 2px;
+    font-family: Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    font-size: 12px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    min-width: 130px;
+}
+
+.context-menu-submenu:after {
+    content: url("/Content/Images/expand-red-right.png");
+    color: #666;
+    position: absolute;
+    top: 0;
+    right: 3px;
+    z-index: 1;
+}
+
+.backgroundImage {
+    min-height: 18px;
+    background-repeat: no-repeat;
+    background-position: 4px 2px;
+    padding: 2px 2px 2px 24px;
+    position: relative;
+}
+
+.AutoCompleteActionMenuTd {
+    width: 250px;
+}
+
+.context-menu-item {
+    padding: 2px 2px 2px 24px;
+    background-color: #FFFFFF;
+    position: relative;
+    height: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 2px;
+}
+
+    .context-menu-item.hover {
+        cursor: pointer;
+        background-color: #5bc3ff;
+    }
+
+.icon-updateFormule {
+    background-image: url("/Content/Images/ContextMenu/m_modifier.png");
+}
+
+.icon-duplicateFormule {
+    background-image: url("/Content/Images/ContextMenu/m_copier.png");
+}
+
+.icon-conditionsFormule {
+    background-image: url("/Content/Images/ContextMenu/m_engagements.gif");
+}
+
+.icon-deleteFormule {
+    background-image: url("/Content/Images/ContextMenu/m_delete.png");
+}
+
+.icon-consulterFormule {
+    background-image: url("/Content/Images/ContextMenu/m_consulter.png");
+}
+
+
+.icon-deleteInventaire {
+    background-image: url("/Content/Images/ContextMenu/m_delete.png");
+}
+
+.icon-saveInventaire {
+    background-image: url("/Content/Images/ContextMenu/m_save.png");
+}
+
+.icon-addInventaire {
+    background-image: url("/Content/Images/ContextMenu/m_new_contrat.gif");
+}

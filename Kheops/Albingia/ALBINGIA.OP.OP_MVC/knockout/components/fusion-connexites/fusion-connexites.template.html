@@ -1,0 +1,79 @@
+﻿<div class="ko-cloak conceal">
+    <div class="container container-details">
+        <div class="container-lines">
+            <!--<div class="input-line center-content">
+                <div class="sub-title">Observations</div>
+                <textarea data-bind="textInput: Observations" class="inline-w95p"></textarea>
+            </div>-->
+            <div class="input-line">
+                <div class="flex-display">
+                    <div class="flex-table-container flex2">
+                        <div class="flex-table">
+                            <div class="flex-header vertical-gradient">
+                                <span class="cell full">Connexite A</span>
+                            </div>
+                            <div class="flex-header vertical-gradient">
+                                <span class="cell flex3">Contrat</span>
+                                <span class="cell flex1">Alx.</span>
+                                <span class="cell flex3">Cible</span>
+                            </div>
+                            <div class="flex-body full-block">
+                                <!-- ko foreach: Connexites -->
+                                <div>
+                                    <div class="cell flex3" data-bind="text: Folder.CodeOffre"></div>
+                                    <div class="cell flex1" data-bind="text: Folder.Version"></div>
+                                    <div class="cell flex3" data-bind="text: CodeCible"></div>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex1">
+                        <div class="center-content">
+                            <button data-bind="click: merge, attr: { title: mergeTooltip }, disable: fusionState"><i class="png png24 merge"></i></button>
+                        </div>
+                        <div class="center-content">
+                            <button data-bind="click: pickContract, attr: { title: pickTooltip }, disable: fusionState"><i class="png png24 move-left"></i></button>
+                        </div>
+                        <div class="center-content">
+                            <button data-bind="click: moveSource, attr: { title: moveSourceTooltip }, disable: fusionState"><i class="png png24 move-right"></i></button>
+                        </div>
+                        <div class="center-content">
+                            <button data-bind="click: resetState"><i class="png png24 refresh"></i></button>
+                        </div>
+                    </div>
+                    <div class="flex-table-container flex2">
+                        <div class="flex-table">
+                            <div class="flex-header vertical-gradient">
+                                <span class="cell full">Connexite B</span>
+                            </div>
+                            <div class="flex-header vertical-gradient">
+                                <span class="cell flex3">Contrat</span>
+                                <span class="cell flex1">Alx.</span>
+                                <span class="cell flex3">Cible</span>
+                            </div>
+                            <div class="flex-body full-block">
+                                <!-- ko foreach: ConnexitesExternes -->
+                                <div>
+                                    <div class="cell flex3" data-bind="text: Folder.CodeOffre"></div>
+                                    <div class="cell flex1" data-bind="text: Folder.Version"></div>
+                                    <div class="cell flex3" data-bind="text: CodeCible"></div>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container container-foot">
+        <div class="input-line">
+            <div class="textRouge flex9-12">&nbsp;</div>
+            <div class="flex3-12">
+                <button type="button" data-bind="click: abort">Annuler</button>
+                <button type="button" data-bind="click: confirm, enable: fusionState">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>

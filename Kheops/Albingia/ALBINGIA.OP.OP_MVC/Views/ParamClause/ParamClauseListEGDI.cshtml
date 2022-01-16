@@ -1,0 +1,103 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamContexteEGDI
+@*  [Obsolete] cette page n'est pas utilisée *@
+<div class="GroupTitle">
+    Liste des Eléments Générateurs / Délencheurs Inconditionels
+</div>
+<div class="HorizontalFullWithGroup ParamWidth">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @Html.HiddenFor(m => m.CodeService)
+                    @Html.Hidden("CodeActGes", (Model.CodeActeGestion))
+                    @Html.HiddenFor(m => m.CodeEtape)
+                    @Html.HiddenFor(m => m.CodeContexte)
+                    <label class="Block">Service</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Service" name="Service" value="@(Model.Service)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Acte de gestion</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="ActeGestion" name="ActeGestion" value="@(Model.ActeGestion)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Etape</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Etape" name="Etape" value="@(Model.Etape)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Contexte</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Contexte" name="Contexte" value="@(Model.Contexte)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection ParamHeight">
+        <div id="listParam" class="PaddingLeft">
+            <div id="divHeaderParam">
+                <table id="tblHeaderParam">
+                    <tr>
+                        <th class="colHBtn tablePersoHead">&nbsp;
+                        </th>
+                        <th class="colHBtn tablePersoHead">&nbsp;
+                        </th>
+                        <th class="colHType tablePersoHead">Type
+                        </th>
+                        <th class="colHActe tablePersoHead">Code élem.
+                        </th>
+                        <th class="colHLibelle tablePersoHead">Libellé
+                        </th>
+                        <th class="colHNumOrd tablePersoHead">N° ordre
+                        </th>
+                        <th class="colHBtn tablePersoHead">
+                            <img src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" title="Ajouter" id="addEGDI" />
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divBodyEGDI">
+                <table id="tblBodyParam">
+                    @foreach (var egdi in Model.ListEGDI)
+                    {
+                        <tr>
+                            <td class="colBBtn">
+                                <img src="@Url.Content("/Content/Images/script-16.png")" id="editScript_@(egdi.Code)" name="editScript" alt="Editeur de script" title="Editeur de script" class="CursorPointer" />
+                            </td>
+                            <td class="colBBtn">
+                                <img src="@Url.Content("/Content/Images/afficher_details1616.png")" id="attachClause_@(egdi.Code)" name="attachClause" alt="Rattachement de clauses" title="Rattachement de clauses" class="CursorPointer" />
+                            </td>
+                            <td class="colBType">
+                                @egdi.Type
+                            </td>
+                            <td class="colBActe">
+                                <a href="#" id="openEGDI_@(egdi.Code)" name="openEGDI">@egdi.Param</a>
+                                @*<a href="#" id="openEGDI_@(egdi.Param)" name="openEGDI">@egdi.Param</a>*@
+                            </td>
+                            <td class="colBLibelle">
+                                @egdi.Libelle
+                            </td>
+                            <td class="colBNumOrd">
+                                @egdi.NumOrdre
+                            </td>
+                            <td class="colBBtn">
+                                <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="delEGDI_@(egdi.Code)" name="delEGDI" alt="Supprimer élément générateur" title="Supprimer élément générateur" class="CursorPointer" />
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

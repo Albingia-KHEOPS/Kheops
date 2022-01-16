@@ -1,0 +1,202 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleGestionDocument.ModeleGestionDocumentCreation
+<div class="CommonForm FloatLeft">
+    <input type="hidden" name="currentCodePartenaire" id="currentCodePartenaire" value="" />
+    <input type="hidden" name="currentLignePartenaire" id="currentLignePartenaire" value="" />
+    <input type="hidden" name="currentTypePartenaire" id="currentTypePartenaire" value="" />
+    <div class="GroupFull GroupWithBorder">
+        <div class="GroupTitle">
+            Distribution d'un document
+        </div>
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Type document*</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.TypeDocument, Model.TypesDocument, "TypeDocument", htmlAttributes: new { @id = "TypeDocument", @name = "TypeDocument" }, genEmptyLine: false, generateTitle: true)</div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Courrier type</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.TypeDocument == "LETTYP")
+                            { 
+                                @Html.AlbDropDownListFor(m => m.TypeCourrier, Model.TypesCourrier, "TypeCourrier", htmlAttributes: new { @id = "TypeCourrier", @name = "TypeCourrier" }, generateTitle: true)
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => m.TypeCourrier, Model.TypesCourrier, "TypeCourrier", htmlAttributes: new { @id = "TypeCourrier", @name = "TypeCourrier", @disabled = "disabled", @class = "readonly" }, generateTitle: true)
+                            }
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Pièce jointe</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.TypeDocument == "PJOINT")
+                            { 
+                                <input type="text" id="PieceJointe" name="PieceJointe" value="@Model.PieceJointe" />
+                            }
+                            else
+                            { 
+                                <input type="text" id="PieceJointe" name="PieceJointe" value="@Model.PieceJointe" readonly="readonly" class="readonly" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="GradientSection CreationHeight">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="PaddingLeft FloatLeft">
+                            <b><u>Envoi par courrier</u></b>
+                        </div>
+                    </div>
+                </div>
+                <div id="divCourrier">
+                    <div id="divHeaderCourrier" class="PaddingLeft">
+                        <table id="tblHeaderCourrier" style="width: 990px;">
+                            <tr>
+                                <th class="tablePersoHead PaddingTop tdPartenaire22">&nbsp;                                    
+                                </th>
+                                <th class="tablePersoHead tdPartenaire108">Type partenaire
+                                </th>
+                                <th class="tablePersoHead tdPartenaire108">Code partenaire
+                                </th>
+                                <th class="tablePersoHead tdPartenaire296">Nom partenaire
+                                </th>
+                                <th class="tablePersoHead tdPartenaire233">Interlocuteur
+                                </th>
+                                <th class="tablePersoHead tdPartenaire108">Original/Copie
+                                </th>
+                                <th class="tablePersoHead tdPartenaire43">Nb ex.
+                                </th>
+                                <th class="tablePersoHead tdPartenaire22">
+                                    <img id="" name="" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter un partenaire" class="CursorPointer" />
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyCourrier" class="PaddingLeft">
+                        <table id="tblBodyCourrier" style="width: 990px;">
+                            @foreach (var courrier in Model.Courriers)
+                            {
+                                <tr>
+                                    <td class="tdPartenaire24">
+                                        <input type="hidden" id="CodeCourrier_@(courrier.CodeCourrier)" name="CodeCourrier" value="@(courrier.CodeCourrier)" />
+                                        <img id="" name="" src="@Url.Content("/Content/Images/u462_original.png")" alt="Texte" title="Texte libre" class="CursorPointer" />
+                                    </td>
+                                    <td class="tdPartenaire110">
+                                        @Html.AlbDropDownListFor(m => courrier.TypePartenaire, courrier.TypesPartenaire, "TypePartenaireCourrier_" + courrier.CodeCourrier, htmlAttributes: new { @id = "TypePartenaireCourrier_" + courrier.CodeCourrier, @name = "TypePartenaireCourrier_" + courrier.CodeCourrier, @style = "width:110px;" }, generateTitle: true)
+                                    </td>
+                                    <td class="tdPartenaire110 @(courrier.TypePartenaire != "COURT" ? "tdHidden" : string.Empty)" name="@("ColCourtier" + courrier.CodeCourrier)">
+                                        <input type="text" id="CodeCourtierCourrier_@(courrier.CodeCourrier)" name="CodeCourtier" value="@(courrier.CodePartenaire)" style="width:110px;" />
+                                    </td>
+                                    <td class="tdPartenaire110 @(courrier.TypePartenaire != "ASS" ? "tdHidden" : string.Empty)" name="@("ColAssure" + courrier.CodeCourrier)">
+                                        <input type="text" id="CodeAssureCourrier_@(courrier.CodeCourrier)" name="CodeAssure" value="@(courrier.CodePartenaire)" style="width:110px;" />
+                                    </td>
+                                    <td class="tdPartenaire298 @(courrier.TypePartenaire != "COURT" ? "tdHidden" : string.Empty)" name="@("ColCourtier" + courrier.CodeCourrier)">
+                                        <input type="text" id="NomCourtierCourrier_@(courrier.CodeCourrier)" name="NomCourtier" value="@(courrier.NomPartenaire)" style="width: 296px;" />
+                                    </td>
+                                    <td class="tdPartenaire298 @(courrier.TypePartenaire != "ASS" ? "tdHidden" : string.Empty)" name="@("ColAssure" + courrier.CodeCourrier)">
+                                        <input type="text" id="NomAssureCourrier_@(courrier.CodeCourrier)" name="NomAssure" value="@(courrier.NomPartenaire)" style="width: 296px;" />
+                                    </td>
+                                    <td class="tdPartenaire235">
+                                        <input type="text" id="InterlocuteurCourrier_@(courrier.CodeCourrier)" name="InterlocuteurPartenaire" value="@(courrier.Interlocuteur)" style="width: 233px;" />
+                                    </td>
+                                    <td class="tdPartenaire110">
+                                        @Html.AlbDropDownListFor(m => courrier.TypeCourrierPart, Model.TypesCourrierPart, "TypeCourrierPart_" + courrier.CodeCourrier, htmlAttributes: new { @id = "TypeCourrierPart_" + courrier.CodeCourrier, @name = "TypeCourrierPart_" + courrier.CodeCourrier, @style = "width:110px;" }, generateTitle: true)
+                                    </td>
+                                    <td class="tdPartenaire45">
+                                        <input type="text" id="NbExp_@(courrier.CodeCourrier)" name="NbExp" value="@(courrier.NbExp)" style="width: 43px;" />
+                                    </td>
+                                    <td class="tdPartenaire24">
+                                        <img id="" name="" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer le partenaire" class="CursorPointer" />
+                                    </td>
+                                </tr>                                
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="GradientSection CreationHeight">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="PaddingLeft FloatLeft">
+                            <b><u>Envoi par e-mail</u></b>
+                        </div>
+                    </div>
+                </div>
+                <div id="divMail">
+                    <div id="divHeaderMail" class="PaddingLeft">
+                        <table id="tblHeaderMail" style="width: 920px;">
+                            <tr>
+                                <th class="tablePersoHead tdPartenaire108">Type partenaire
+                                </th>
+                                <th class="tablePersoHead tdPartenaire108">Code partenaire
+                                </th>
+                                <th class="tablePersoHead tdPartenaire296">Nom partenaire
+                                </th>
+                                <th class="tablePersoHead tdPartenaire233">Interlocuteur
+                                </th>
+                                <th class="tablePersoHead tdPartenaire108">To/CC/CCI
+                                </th>
+                                <th class="tablePersoHead PaddingTop tdPartenaire22">
+                                    <img id="" name="" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter un partenaire" class="CursorPointer" />
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyMail" class="PaddingLeft">
+                        <table id="tblBodyMail" style="width: 920px;">
+                            @foreach (var email in Model.Emails)
+                            {
+                                <tr>
+                                    <td class="tdPartenaire110">
+                                        @Html.AlbDropDownListFor(m => email.TypePartenaire, email.TypesPartenaire, "TypePartenaireEmail_" + email.CodeCourrier, htmlAttributes: new { @id = "TypePartenaireEmail_" + email.CodeCourrier, @name = "TypePartenaireEmail_" + email.CodeCourrier, @style = "width:110px;" }, generateTitle: true)
+                                    </td>
+                                    <td class="tdPartenaire110 @(email.TypePartenaire != "COURT" ? "tdHidden" : string.Empty)" name="@("ColCourtier" + email.CodeCourrier)">
+                                        <input type="text" id="CodeCourtierEmail_@(email.CodeCourrier)" name="CodeCourtier" value="@(email.CodePartenaire)" style="width:110px;" />
+                                    </td>
+                                    <td class="tdPartenaire110 @(email.TypePartenaire != "ASS" ? "tdHidden" : string.Empty)" name="@("ColAssure" + email.CodeCourrier)">
+                                        <input type="text" id="CodeAssureEmail_@(email.CodeCourrier)" name="CodeAssure" value="@(email.CodePartenaire)" style="width:110px;" />
+                                    </td>
+                                    <td class="tdPartenaire298 @(email.TypePartenaire != "COURT" ? "tdHidden" : string.Empty)" name="@("ColCourtier" + email.CodeCourrier)">
+                                        <input type="text" id="NomCourtierEmail_@(email.CodeCourrier)" name="NomCourtier" value="@(email.NomPartenaire)" style="width: 296px;" />
+                                    </td>
+                                    <td class="tdPartenaire298 @(email.TypePartenaire != "ASS" ? "tdHidden" : string.Empty)" name="@("ColAssure" + email.CodeCourrier)">
+                                        <input type="text" id="NomAssureEmail_@(email.CodeCourrier)" name="NomAssure" value="@(email.NomPartenaire)" style="width: 296px;" />
+                                    </td>
+                                    <td class="tdPartenaire235">
+                                        <input type="text" id="InterlocuteurEmail_@(email.CodeCourrier)" name="InterlocuteurPartenaire" value="@(email.Interlocuteur)" style="width:233px;" />
+                                    </td>
+                                    <td class="tdPartenaire110">
+                                        @Html.AlbDropDownListFor(m => email.DestinatairePart, Model.DestinatairesPart, "DestinatairePart_" + email.CodeCourrier, htmlAttributes: new { @id = "DestinatairePart_" + email.CodeCourrier, @name = "DestinatairePart_" + email.CodeCourrier, @style = "width:110px;" }, generateTitle: true)
+                                    </td>
+                                    <td class="tdPartenaire24">
+                                        <input type="hidden" id="CodeEmail_@(email.CodeCourrier)" name="CodeEmail" value="@(email.CodeCourrier)" />
+                                        <img id="" name="" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer le partenaire" class="CursorPointer" />
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonLeft">
+        </div>
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnAnnulerCreation" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+            <button id="btnValiderCreation" type="button" albshortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>

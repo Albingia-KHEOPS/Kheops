@@ -1,0 +1,29 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleTransverse.ModeleCommonCabinetPreneur>
+<table id="tblResRecherchePreneurAssuBody" class="trHeight">
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var ligne in Model)
+        {                      
+        <tr id="tr_@(ligne.Code)" name="lineResultRecherchePreneur">
+            <td class="col_CodePreneur">
+                <label class="col_CodePreneur">@ligne.Code</label>
+            </td>
+            <td class="col_NomPreneur">
+                <label class="col_NomPreneur">@ligne.Nom</label>
+            </td>
+            <td class="col_NomSecPreneur">
+                <label class="col_NomSecPreneur">@(ligne.NomSecondaires.Any() ? ligne.NomSecondaires.FirstOrDefault() : string.Empty)</label>
+            </td>
+            <td class="col_DepartementPreneur">
+                <label class="col_DepartementPreneur">@ligne.Departement</label>
+            </td>
+            <td class="col_VillePreneur">
+                <label class="col_VillePreneur">@ligne.Ville</label>
+            </td>
+            <td class="col_SirenPreneur">
+                <label class="col_SirenPreneur">@ligne.SIREN</label>
+            </td>
+        </tr>
+        }
+    }
+</table>

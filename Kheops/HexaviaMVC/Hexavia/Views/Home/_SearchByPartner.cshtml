@@ -1,0 +1,63 @@
+﻿<div id="partnerSearchBox" style="padding:15px 15px;display:none;">
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label for="formBatiment">Type</label>
+        </div>
+        <div class="col-md-5 float-left">
+            <label class="radio-inline"><input type="radio" name="optPartners" id="optAssures" checked onclick="$('#searchPartenaireCourtierBlock').hide()">Assurés</label>
+            <label class="radio-inline"><input type="radio" name="optPartners" id="optCourtiers" onclick="$('#searchPartenaireCourtierBlock').show()">Courtiers</label>
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label>Code</label>
+        </div>
+        <div class="col-md-2">
+            <input class="form-control" id="codePartenaire" onkeypress='validate(event)' style="text-align:right" maxlength="10" />
+        </div>
+        <div class="col-md-1">
+            <label for="formVille">Nom</label>
+        </div>
+        <div class="col-md-6 float-left">
+            <input class="form-control searchPartenaireOtherFilters" id="nomPartenaire" />
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px; display:none;" id="searchPartenaireCourtierBlock">
+        <div class="col-md-1">
+            <label>Orias</label>
+        </div>
+        <div class="col-md-2">
+            <input class="form-control" id="oriasPartenaire" onkeypress='validate(event)' style="text-align:right" maxlength="10" />
+        </div>
+        <div class="col-md-1">
+            <label>Interlocuteur</label>
+        </div>
+        <div class="col-md-6 float-left">
+            <input class="form-control searchPartenaireOtherFilters" id="interlocuteurPartenaire" />
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label>CP</label>
+        </div>
+        <div class="col-md-2">
+            <input class="form-control searchPartenaireOtherFilters" style="text-align:right" id="cpPartenaire" onkeypress='validate(event)' maxlength="5" disabled />
+        </div>
+        <div class="col-md-1 col-offset-md-2">
+            <label for="formVille">Ville</label>
+        </div>
+        <div class="col-md-4 float-left">
+            <input class="form-control searchPartenaireOtherFilters" id="villePartenaire" style="/*z-index: 99999;*/" disabled />
+        </div>
+    </div>
+    <hr />
+    <div class="row" style="margin-top:5px">
+        <div class="offset-md-1">
+            <button type="button" class="btn btn-light" id="btnNettoyerPartenaire">Réinitialiser la recherche</button>
+        </div>
+        <div class="offset-md-7">
+            <button type="button" class="btn second-color" style="margin-left:3px" id="btnRechercherPartenaires" disabled>Lancer la recherche</button>
+        </div>
+
+    </div>
+</div>

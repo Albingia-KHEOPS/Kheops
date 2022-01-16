@@ -1,0 +1,171 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleQuittancePage>
+@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+
+@*@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albQuittance.css" }, "~/Content/Quittance/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albQuittance.js" }, "~/Scripts/AlbingiaJS/Quittance/")*@
+@{
+    // Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+    var model = Model as ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleQuittancePage;
+}
+@section stylesheets {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbQuittance")
+}
+@section scripts {
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbQuittance")
+}
+
+<div class="FullWidth">
+    @if (Model.TypeAvt == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_REGUL || Model.TypeAvt == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF)
+    {
+        if (Model.ActeGestionRegule == "REGUL" && !string.IsNullOrWhiteSpace(model.ReguleId))
+        {
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+        }
+        else
+        {
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+        }
+    }
+    else
+    {
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+    }
+
+    @Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+    <div>
+        <div id="divCotisations" class="CommonForm FloatLeft">
+            @if (@Model.ShowVisuQuittance)
+            {
+
+                @Html.Partial("VisualisationQuittances", Model.ModeleVisualisationQuittances)
+
+                @Html.HiddenFor(m => m.EffetAnnee)
+                <div id="divFraisAccessoires">
+                    <div class="overlay-background" style="z-index:2" >
+                    </div>
+                    <div id="divDataFraisAccessoires">
+                    </div>
+                </div>
+            }
+            else
+            {
+                @Html.Partial("BodyQuittances", Model)
+            }
+        </div>
+        @Html.Hidden("NumInterne", string.Empty)
+        @if (Model.IsModifHorsAvenant)
+        {
+            <div class="GroupFull GroupWithBorder ButtonsHeight">
+                <div class="ActionButtons ActionButtonLeft">
+                    <div class="FloatLeft PaddingLeftButtonActionRight">
+                        <button type="button" id="btnFraisAccess" albshortcut="true" data-accesskey="f" disabled="@(Model.ModeCalculForce)">
+                            <img class="FloatLeft MarginLeftButton" title="BackOffice" alt="BackOffice" src="@Url.Content("/Content/Images/Quittance/frais.png")" />
+                            <span class="spanText FloatLeft  @(Model.ModeCalculForce ? "CursorDefault" : "CursorPointer")"><u>F</u>rais accessoires</span>
+                        </button>
+                    </div>
+                    <div class="FloatLeft PaddingLeftButtonActionRight" disabled="@(Model.ModeCalculForce)">
+                        <div id="divButtonCourtier" class="FloatLeft">
+                            <button id="btnDetailCot" type="button" albshortcut="true" data-accesskey="o" disabled="@(Model.ModeCalculForce)">C<u>o</u>mmissions</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div id="divCommentForce" class="FloatLeft dvCommentForce">
+                <input type="hidden" id="MontantForce" name="MontantForce" value="@(Model.MontantForce ? "1" : "0")" />
+                <div class="FloatLeft">
+                    <label class="Block">Commentaires</label>
+                </div>
+              
+                <div class="FloatLeft">
+                    @if (Model.IsReadOnly && !Model.IsModifHorsAvenant)
+                    {
+                        @*<div id="CommentForce" style="width: 502px; height: 100px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.CommentForce)</div>*@
+                        <textarea id="CommentForce" disabled name="CommentForce" class="NonReprisCP heightAreaQuittance" style="margin: 0px 0px 5px;width: 350px;max-width: 585px;height: 27px;min-height: 27px;" tabindex="6">@Model.CommentForce</textarea>
+                    }
+                    else
+                    {
+                        <textarea id="CommentForce" albhorsavn name="CommentForce" class="NonReprisCP heightAreaQuittance" style="margin: 0px 0px 5px;width: 350px;max-width: 585px;height: 27px;min-height: 27px;" tabindex="6">@Model.CommentForce</textarea>
+                    }
+                </div>
+
+            </div>
+            <div id="FullScreen" class="PaddingLeft FloatLeft" style="padding-top: 6px;">
+                <button id="btnFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Plein écran">
+                    <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+                </button>
+            </div>
+            <div class="ActionButtonsComment ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divFullScreenListFormules">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataFullScreenListFormules">
+        @Html.Partial("QuittanceListFormulesPleinEcran", Model.Formules)
+    </div>
+</div>
+<div id="divCoCourtiers">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataCoCourtiers">
+    </div>
+</div>
+<div id="divFullScreenDetails">
+    <div class="overlay-background" style="z-index:202" >
+    </div>
+    <div id="divDataDetailsVentilationCoassGarantie">
+    </div>
+</div>
+<div id="divCalculForce">
+    <div class="overlay-background" style="z-index:2" ></div>
+    <div id="divDataCalculForce">
+        @Html.Partial("CalculForce", Model)
+    </div>
+</div>
+<div id="fancyConfirmQuitt" style="display: none;">
+    <table>
+        <tr>
+            <td style="background-color: #EDEDED;" colspan="2">
+                <b>Message de Confirmation</b><br />
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2" valign="middle">
+                <img src="/Content/Images/alertes/notif_icn_warn.png" alt="" />
+            </td>
+            <td>
+                <div id="msgConfirmQuitt" class="FloatLeft FancyTextCenter">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <button type="button" id="btnConfirmCancelQuitt" value="Non" data-accesskey="n"><u>N</u>on</button>
+                <button type="button" id="btnConfirmOkQuitt" value="Oui" data-accesskey="o"><u>O</u>ui</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="resListChoixClause" class="None">
+    <div id="listChoix">
+        <label><input type="radio" name="choixClause" value="" /><span name="libClause"></span></label>
+    </div>
+    <br/>
+    <button type="button" disabled="disabled" >Valider</button>
+</div>
+
+@*<div id="divEcheancier">
+        <div class="overlay-background" style="z-index:2" >
+        </div>
+        <div id="divDataEcheancier">
+        </div>
+    </div>*@

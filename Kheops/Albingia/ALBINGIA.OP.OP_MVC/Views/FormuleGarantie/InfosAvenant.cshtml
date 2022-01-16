@@ -1,0 +1,21 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleFormuleGarantiePage
+
+<!-- ko if: isModeAvt -->
+<div class="nGradientSection" id="divModeAvenant" data-bind="visible: isModeAvt">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label>Date d'effet de l'avenant</label>
+            <input type="text" data-bind="readonly: true, disabled: true, value: (new FrDate(DateEffetAvenantContrat())).toDateString()" maxlength="10" />
+        </div>
+        <div class="FloatRight PaddingRight">
+
+            <input type="checkbox" data-bind="checked: modifiedForAvenant, enable: canChangeModifiedFlag" />
+            <label>Modification de la formule dans l'avenant au</label>
+            <input type="text" maxlength="10" class="inputDate" data-bind="dateselector: { value: dateAvenant, onlyTriggerChange: true, pickerOptions: { dateFormat: 'dd/mm/yy', minDate: dateMinAvenant() } }, visible: modifiedForAvenant, enable:canChangeDateAvenant , css: { 'invalid-value': !dateAvenant.requireState.isValid() }" />
+            <input type="text" maxlength="10" class="inputDate" data-bind="readonly: true, value: '', visible: !modifiedForAvenant()" />
+            <img alt="!" data-bind="visible: !!dateErrors(), attr: { title: dateErrors, src: imgDateErrors }" />
+
+        </div>
+    </div>
+</div>
+<!-- /ko -->

@@ -1,0 +1,216 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@inherits AlbToReadOnlyHtml<ModeleEngagementsPage>
+@if (!string.IsNullOrEmpty(Model.AccessMode)) {
+    Layout = null;
+    @Html.Raw(@"
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv=""X-UA-Compatible"" content=""charset=UTF-8"" />
+        <meta http-equiv=""X-UA-Compatible"" content =""IE=Edge"" />
+        <meta http-equiv=""Content-Type"" content =""text/html; charset=UTF-8"" >
+        <meta name=""viewport"" content =""width=device-width"" />")
+
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutScriptCSS.cshtml")
+    @Html.Partial("~/Views/Shared/SessionError.cshtml")
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbEngagement")
+    @Html.Raw(@"
+    </head>
+    <body>")
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutHideInput.cshtml", Model as MetaModelsBase)
+}
+else {
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbEngagement")
+}
+
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbEngagement")
+
+@Html.Hidden("fieldInput", string.Empty)
+@Html.Hidden("CurrentExpression", string.Empty)
+@Html.HiddenNoName("NomEcran", Model.NomEcran.ToString())
+@Html.Hidden("NewExpr", string.Empty)
+@Html.HiddenNoName("TypeOperation", string.Empty)
+@Html.HiddenNoName("accessMode", Model.AccessMode)
+@Html.HiddenNoName("codePeriode", Model.CodePeriode)
+@Html.HiddenFor(m => m.CurrentAccessMode)
+
+<div id="divEngagement" class="CommonForm FloatLeft">
+    <div id="dataEngagement" class="nGroupFull nGroupWithBorder">
+        <div class="nHorizontalFullWithGroup">
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft PaddingLeft">
+                            Informations contrat
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    @Html.Partial("/Views/Shared/LCIFranchise/LCIFranchise.cshtml", Model.LCIGenerale)
+                </div>
+            </div>
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Nature du contrat</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Nature" name="Nature" value="@(Model.Nature)" tabindex="6" class="readonly " readonly="readonly" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Part Albingia</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="PartAlb" name="PartAlb" value="@(Model.PartAlb)" tabindex="7" class="readonly numerique" readonly="readonly" albMask="pourcentdecimal" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Couverture</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Couverture" name="Couverture" value="@(Model.Couverture)" tabindex="8" class="readonly numerique" readonly="readonly" albMask="pourcentdecimal" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Début effet</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @switch (Model.ScreenType) {
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+                                    @Html.AlbDateFormat(m => m.DateDeb, new { tabindex = "9", @class = "datepicker readonly", disabled = string.Empty })
+                                    break;
+                                default:
+                                    @Html.AlbDateFormat(m => m.DateDeb, new { tabindex = "9", @class = "datepicker readonly NonReprisCP", disabled = string.Empty })
+                                    break;
+                            }
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Fin effet</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @switch (Model.ScreenType) {
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+                                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+                                    @Html.AlbDateFormat(m => m.DateFin, new { tabindex = "9", @class = "datepicker readonly", disabled = string.Empty })
+                                    break;
+                                default:
+                                    @Html.AlbDateFormat(m => m.DateFin, new { tabindex = "9", @class = "datepicker readonly NonReprisCP", disabled = string.Empty })
+                                    break;
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nGradientSection HeightEngagementGroup">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft PaddingLeft">
+                            Engagements par traité de réassurance
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table id="tblHeadTraite" class="trHeight">
+                        <tr>
+                            <th class="tdHeaderTraite tablePersoHead PaddingLeft">Engagement</th>
+                            <th class="tdHeaderEngagement tablePersoHead">Engag. 100% (€)</th>
+                            <th class="tdHeaderEngagement tablePersoHead">Engag. Albingia (€)</th>
+                            @*<th class="tdHeaderEngagement tablePersoHead">SMP 100% (€)</th>
+                            <th class="tdHeaderEngagement tablePersoHead">SMP Albingia (€)</th>*@
+                        </tr>
+                    </table>
+                </div>
+                <div class="divTraite">
+                    @Html.Partial("EngagementTraite", Model.Traites)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div id="divCommentForce" class="FloatLeft dvCommentForce">
+            <input type="hidden" id="MontantForce" name="MontantForce" value="@(Model.MontantForce ? "1" : "0")" />
+            <div class="FloatLeft">
+                <label class="Block">Commentaires</label>
+            </div>
+            
+            <div class="FloatLeft">
+                @if (Model.IsReadOnly) {
+                    <div id="CommentForce" style="width: 637px;height: 31px;border: 1px solid #cdcdcd;color: #cdcdcd;background-color: white;overflow-y: auto;">@Html.Raw(Model.CommentForce)</div>
+                }
+                else {
+                    <textarea id="CommentForce" name="CommentForce" albhorsavn class="NonReprisCP heightAreaEngagement" tabindex="6">@Model.CommentForce</textarea>
+                }
+            </div>
+            
+        </div>
+        <div class="ActionButtonsComment ActionButtonRight">
+            @if (Model.IsReadOnly) {
+                <div id="divReset" class="FloatLeft PaddingLeft" style="margin-top: -4px;">
+                    <img id="btnReset" src="@Url.Content("/Content/Images/reset_formgris32.png")" alt="RAZ" title="RAZ" />
+                </div>
+            }
+            else {
+                <div id="divReset" class="FloatLeft PaddingLeft CursorPointer" style="margin-top: -4px;">
+                    <img id="btnReset" src="@Url.Content("/Content/Images/reset_form32.png")" alt="RAZ" title="RAZ" />
+                </div>
+            }
+            <div id="divRefresh" class="FloatLeft PaddingLeft" style="margin-top: -4px;">
+                <img id="btnRefresh" src="@Url.Content("/Content/Images/boutonRefresh_gris3232.png")" alt="Rechargement" title="Rechargement" />
+            </div>
+            @*    </div>*@
+            <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+            @switch (Model.ScreenType) {
+                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s" tabindex="28"><u>S</u>uivant</button>
+                    break;
+                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+                case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+                    break;
+                default:
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s" tabindex="28"><u>S</u>uivant</button>
+                    break;
+            }
+        </div>
+    </div>
+    <div id="divExprComplexe">
+        <div class="overlay-background" style="z-index:4">
+        </div>
+        <div id="divDataExprComp">
+        </div>
+    </div>
+
+</div>
+
+@if (string.IsNullOrEmpty(Model.AccessMode)) {
+    <script type="text/javascript">
+
+        $(function () {
+            engagements.initPage();
+        });
+
+    </script>
+}
+else {
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "LoadEnJSIframe.js" }, "~/Scripts/AlbingiaJS/")
+    @Html.Raw(@"
+    </body>
+</html>")
+}
+

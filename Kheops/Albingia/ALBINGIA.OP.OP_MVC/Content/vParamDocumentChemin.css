@@ -1,0 +1,42 @@
+﻿
+.col_identifiant {
+    width: 100px;
+}
+
+.col_designation {
+    width: 120px;
+}
+
+.col_type {
+    width: 40px;
+}
+
+.col_chemin {
+    width: 270px;
+}
+
+.col_Action {
+    width: 40px;
+}
+
+.divHeight {
+    height: 480px;
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+.divHeightDetails {
+    height: 514px;
+}
+
+.PaddingRight {
+    padding-right: 10px;
+}
+
+.PaddingLeft3 {
+    padding-left: 3px;
+}
+
+.widthColumn {
+    width: 383px;
+}

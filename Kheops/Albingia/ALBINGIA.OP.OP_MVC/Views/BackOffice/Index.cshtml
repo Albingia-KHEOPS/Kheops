@@ -1,0 +1,16 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleBackOffice
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vBackOffice.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albBackOffice.js" }, "~/Scripts/AlbingiaJS/")
+
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft">
+    </div>
+</div>
+
+

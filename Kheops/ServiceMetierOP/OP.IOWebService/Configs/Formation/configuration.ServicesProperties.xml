@@ -1,0 +1,7 @@
+﻿<connectionStrings>
+  <add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=YALBIN;Password=YALBIN;Init Libl=&quot;ZALBINKHEO;YUNIKHEO;LAUNCHER;YAlbinPgm;GENERALE&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />
+  <!--<add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=YALBIN;Password=YALBIN;Init Libl=&quot;ZALBINKQUA;YUNIKHEO;LAUNCHER;YAlbinPgm;GENERALE&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+    <!--<add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=KPRE;Password=KPRE;Init Libl=&quot;*LIBL&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+  <add providerName="System.Data.EasycomClient" name="VstoClause" connectionString="Server=10.1.2.36;User Id=YALBIN;Password=YALBIN;Init Libl=&quot;ZALBINKHEO;YUNIKHEO;LAUNCHER;YAlbinPgm;GENERALE&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />
+  <!--<add providerName="System.Data.EasycomClient" name="VstoClause" connectionString="Server=10.1.2.36;User Id=YALBIN;Password=YALBIN;Init Libl=&quot;ZALBINCLAU;KPGM;LAUNCHER;YAlbinPgm;GENERALE&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />-->
+</connectionStrings>

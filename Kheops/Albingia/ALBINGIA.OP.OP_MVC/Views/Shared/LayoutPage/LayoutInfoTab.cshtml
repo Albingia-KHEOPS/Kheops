@@ -1,0 +1,36 @@
+﻿@using Albingia.Common
+@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.OP.OP_MVC.Common
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+
+@{
+    var layoutModel = Model as MetaModelsBase;
+    string codeKey = "idOffreVersionType";
+    string tabguidKey = "tabGuid";
+    string universalContratCode = string.Empty;
+    if (layoutModel != null) {
+        universalContratCode = layoutModel.GetUniversalContratCode();
+        <input id="idOffreVersionType" type="hidden" value="@(codeKey + universalContratCode + codeKey)" />
+        @Html.Hidden("tabGuid", (tabguidKey + layoutModel.TabGuid + tabguidKey), new { id = "tabGuid" })
+    }
+}
+
+<script type="text/javascript">
+    (function () {
+        var tabGuidKey = "@(PageParamContext.TabGuidKey)";
+        var navigKey = "@(PageParamContext.ModeNavigKey)";
+        window.infosTab = {
+            type: $("#@(PageParamContext.ParamIdKey)Type").val() || "",
+            value: $("#@(PageParamContext.ParamIdKey)Value").val() || "",
+            tabGuid: $("#" + tabGuidKey).val().substring(tabGuidKey.length, $("#" + tabGuidKey).val().lastIndexOf(tabGuidKey)),
+            fullTabGuid: $("#" + tabGuidKey).val(),
+            isReadonly: @((layoutModel.IsReadOnly || layoutModel.IsModeConsultationEcran).ToString().ToLower()),
+            isLocked: @(layoutModel.IsForceReadOnly.ToString().ToLower()),
+            modeNavigation: "@(layoutModel.ModeNavig)",
+            fullModeNavig: navigKey + "@(layoutModel.ModeNavig)" + navigKey,
+            user: "@(AlbSessionHelper.ConnectedUser)"
+        };
+    })();
+</script>

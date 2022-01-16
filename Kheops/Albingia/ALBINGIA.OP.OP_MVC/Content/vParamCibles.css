@@ -1,0 +1,448 @@
+﻿#divAjouterCible {
+    clear: both;
+    padding-bottom: 10px;
+}
+
+.tablePersoHead {
+    border: 0 solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.divHeight {
+    overflow-y: auto;
+    height: 453px;
+}
+
+#divEditValeur {
+    display: none;
+}
+
+#divDataEditValeur {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 23;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 670px;
+    height: 540px;
+}
+
+.col_HeaderCodeFamille {
+    width: 98px;
+}
+
+.col_HeaderDescriptionFamille {
+    width: 420px;
+}
+
+.GroupHeightCibles {
+    max-height: 360px;
+}
+
+.col_CodeFamille {
+    width: 100px;
+}
+
+.col_DescriptionFamille {
+    width: 422px;
+}
+
+.divLstFamilles {
+    display: none;
+}
+
+#divBodyFamilles {
+    margin-left: 5px;
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+.GroupHeightCiblesFixe {
+    height: 600px;
+}
+
+.GroupHeightCiblesInterieur {
+    max-height: 560px;
+}
+
+#divLstCibles {
+    display: none;
+}
+
+#divInfoCible {
+    display: none;
+}
+
+.divRechercheCode {
+    width: 105px;
+    float: left;
+}
+
+.divRecherche {
+    padding-top: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20px;
+    float: left;
+}
+
+.WidthGroupRecherche {
+    width: 660px !important;
+}
+
+.RechercheGradientSection {
+    height: 400px;
+    width: 657px;
+}
+
+.FiltreGradientSection {
+    width: 657px;
+}
+
+.divRechercheDescr {
+    width: 255px;
+    float: left;
+}
+
+.WidthButton {
+    width: 655px;
+}
+
+.FieldCiblesLabel {
+    width: 150px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+}
+
+.FieldCiblesCode input {
+    width: 100px;
+}
+
+.FieldCiblesDescr input {
+    width: 240px;
+}
+
+.FieldInfoLabel {
+    width: 100px;
+    float: left;
+}
+
+.linkCible {
+    cursor: pointer; /*text-decoration: underline;*/
+}
+
+.modifCible {
+    cursor: pointer;
+}
+
+.supprCible {
+    cursor: pointer;
+}
+
+.col_ModifierCible {
+    width: 25px;
+}
+
+.col_CodeCible {
+    width: 65px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_TableauBSC {
+    width: 120px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+}
+
+.col_SuuprimerBSC {
+    width: 21px;
+    text-align: center;
+}
+
+.col_LibelleCible {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 110px;
+}
+
+.col_GrilleCible {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 90px;
+}
+
+.col_SupprimerCible {
+    width: 25px;
+    text-align: center;
+}
+
+.col4Head {
+    width: 25px;
+}
+
+.WidthDivCible {
+    width: 342px;
+}
+
+.WidthConsultCible {
+    width: 830px;
+}
+
+.BtnAdd {
+    padding-left: 10px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+.FieldDropDown select {
+    width: 159px;
+    margin-left: 8px;
+    margin-right: 4px;
+}
+
+.ddlCarac {
+    width: 50px !important;
+}
+
+.divHeightCat {
+    overflow-y: auto;
+    height: 200px;
+}
+
+.divHeightSansCat {
+    overflow-y: auto;
+    height: 379px;
+}
+
+.FieldLabelVBM {
+    padding-left: 5px;
+    width: 190px;
+}
+
+.ValidationCible {
+    clear: both;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    text-align: right;
+}
+
+.GradientSectionBSC {
+    margin-right: 5px;
+    border: 1px #ddd outset;
+    margin-top: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-radius: 5px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd');
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #fff),color-stop(1, #ddd));
+    background-image: -moz-linear-gradient(top, #fff, #ddd);
+    background-attachment: fixed !important;
+    -pie-background: linear-gradient(#EEFF99, #66EE33);
+    background-color: #eee;
+    float: left;
+    width: 814px;
+    height: 43px;
+}
+
+.HorizontalHalfWithGroupAdminBSC {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    width: 99%;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+    height: 50px;
+}
+
+.selectLine {
+    background-color: #FFDFDF !important;
+}
+
+.labelParamCibleRecherche {
+    padding-top: 2px;
+    padding-left: 5px;
+    font-size: 12px;
+    width: 88px;
+}
+
+.supprBranche {
+    cursor: pointer;
+}
+
+.Gras {
+    font-weight: bold;
+}
+
+.trEdition {
+    display: none;
+}
+
+.col_Templates {
+    padding-left: 5px;
+    width: 380px;
+}
+
+.tableCibleHeader {
+    table-layout: fixed;
+    width: 314px;
+}
+
+.tableBodyBSC {
+    table-layout: fixed;
+    width: 783px;
+}
+
+.dropDownWidth {
+    width: 120px;
+}
+
+.col_ModifierBSC {
+    text-align: center;
+}
+
+.divDataAddTemplate {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    padding: 5px 5px 0;
+    height: 427px;
+}
+
+.tdCodeTemplate {
+    width: 80px;
+    text-align: center;
+}
+
+.tdDescriptionTemplate {
+    width: 527px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdTypeDefaultTemplate {
+    width: 40px;
+    text-align: center;
+}
+
+.tdImgTemplate {
+    width: 20px;
+    padding-top: 7px;
+    text-align: center;
+}
+
+.divBodyTemplate {
+    max-height: 264px;
+    overflow-y: auto;
+    width: 770px;
+}
+
+.inputCodeTemp {
+    width: 75px !important;
+}
+
+.inputDescTemp {
+    width: 523px !important;
+}
+
+.tableTemplate {
+    width: 752px;
+    table-layout: fixed;
+}
+
+
+/*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 221px;*/
+
+.GroupTitle {
+    color: #800000;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11pt;
+    font-style: italic;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.CodeLabel {
+    float: left;
+    margin-left: 20px;
+}
+
+.CodeTextBox {
+    float: left;
+    margin-left: 20px;
+}
+
+.NomDescriptionTextBox {
+    float: left;
+    margin-left: 20px;
+}
+
+.NomDescriptionLabel {
+    float: left;
+    margin-left: 20px;
+}
+
+.col_HeaderConcept {
+    width: 80px;
+}
+
+.col_HeaderFamille {
+    width: 80px;
+}
+
+.col_HeaderDescription {
+    width: 440px;
+}
+
+.co_TdConcept {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 98px;
+}
+
+.col_TdFamille {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 98px;
+}
+
+.col_TdDescription {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 420px;
+}
+
+#divBodyFam {
+    margin-right: 10px;
+    overflow-y: auto;
+    max-height: 360px;
+}
+
+#divRechercherResult {
+    overflow-y: hidden;
+}

@@ -1,0 +1,1329 @@
+﻿#divRecherche, #divCopie, #divCreate, #divRefusOffre, #divReadOnlyOffre, #divRechercheAvancee, #divRechercheAvanceePreneur, #divRechercheAvanceeCourtier
+{
+    display: none;
+}
+
+#divAdvancedMenu label, #divPreneurMenu label, #divCourtierMenu label, #divAddressMenu label
+{
+    font-size: 12px;
+    padding-left: 17px;
+    padding-top: 2px;
+    width: 120px;
+}
+
+/*input[type="text"]
+{
+    width: 250px;
+}
+
+select
+{
+    width: 252px;
+}*/
+
+.WidthFieldCode
+{
+    width: 80px !important;
+}
+
+.WidthLargeField
+{
+    width: 420px !important;
+}
+
+.TxtRechercheSaisie
+{
+    width: 250px !important;
+}
+
+.SelectRechercheSaisie
+{
+    width: 254px !important;
+}
+
+.TxtMenuTitle
+{
+    padding-top: 2px;
+    padding-left: 5px;
+}
+
+.PaddingLeft5
+{
+    padding-left: 5px;
+}
+
+.PaddingLeftCheck
+{
+    padding-left: 15px;
+}
+
+.labelContrat
+{
+    font-size: 12px;
+    padding-left: 5px;
+    padding-top: 2px;
+    width: 60px;
+}
+
+#OffreId
+{
+    width: 100px !important;
+}
+
+#NumAliment
+{
+    width: 38px !important;
+}
+
+.TxtBatVoie
+{
+    width: 420px !important;
+}
+
+.SubGroupTitleSearch
+{
+    margin: 2px;
+    margin-left: 5px;
+    color: #800000;
+    /*cursor: pointer;*/
+    min-height: 20px;
+}
+
+.DivSearch
+{
+    width: 1187px;
+}
+
+.nDivSearch
+{
+    width: 1194px;
+}
+
+.SearchCriteria
+{
+    max-height: 442px;
+    overflow-y: auto;
+}
+
+.PeriodeEntreLMeDateDebut
+{
+    float: left;
+    margin-right: 2px;
+}
+
+    .PeriodeEntreLMeDateDebut input
+    {
+        width: 102px;
+    }
+
+.PeriodeEtLe
+{
+    float: left;
+    width: 40px !important;
+}
+
+.LabelEtLe
+{
+    display: block;
+    margin-top: 2px;
+    padding-left: 5px !important;
+    width: 40px !important;
+}
+
+.PeriodeEtLeDateFin
+{
+    float: left;
+}
+
+    .PeriodeEtLeDateFin label
+    {
+        display: block;
+        margin-top: 2px;
+        padding-left: 5px !important;
+        width: 20px !important;
+    }
+
+    .PeriodeEtLeDateFin input
+    {
+        width: 102px;
+    }
+
+#divDataRecherche {
+    position: absolute;
+    top: 12px;
+    left: 30px;
+    display: block;
+    z-index: 12;
+    background-color: #ccc;
+    border-radius: 10px;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+    border-style: outset;
+    border-width: 2px;
+    border-color: #eee;
+}
+
+#divDataCreate
+{
+    position: absolute;
+    top: 215px;
+    left: 450px;
+    display: block;
+    z-index: 31;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 400px;
+}
+
+#divDataCopie
+{
+    position: absolute;
+    top: 215px;
+    left: 450px;
+    display: block;
+    z-index: 41;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 400px;
+}
+
+#divDataRefusOffre
+{
+    position: absolute;
+    top: 215px;
+    left: 450px;
+    display: block;
+    z-index: 19;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 400px;
+}
+
+#divDataReadOnlyOffre
+{
+    position: absolute;
+    top: 215px;
+    left: 450px;
+    display: block;
+    z-index: 20;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 400px;
+}
+
+
+
+.RechercheSaisie
+{
+    height: 540px;
+}
+
+/*#divRechercherResult {
+    border-color: #888888 #CCCCCC #CCCCCC #888888;
+    border-left: 1px solid #888888;
+    border-style: solid;
+    border-width: 1px;
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+}*/
+
+#divPagination
+{
+    height: 39px;
+}
+
+/*#divResultatsHeader {
+    height: 31px;
+}*/
+
+#divResultatsBody
+{
+    /*overflow-y: scroll;*/
+    height: 472px;
+}
+
+#divCabinetsCourtageBody
+{
+    /*overflow-y: scroll;*/
+    height: 345px;
+}
+
+#RechercherCabinetCourtierButton
+{
+    height: 20px;
+}
+
+.paddingLoupe
+{
+    margin-top: -2px;
+}
+
+.PaddingSauf
+{
+    padding-right: 25px !important;
+    padding-left: 0px !important;
+}
+
+/*.divListRecherche {
+    background-color: #FFFFFF;
+    border: medium none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 9pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .divListRecherche .tdExpender img {
+        margin-top: 9px;
+        margin-left: 4px;
+    }
+
+    .divListRecherche .tdExpender input[type=radio] {
+        margin-top: 5px;
+        margin-left: 4px;
+    }
+
+    .divListRecherche .tdExpender img, .divListRecherche .tdExpender input[type=radio] {
+        display: block;
+        float: left;
+    }
+
+    .divListRecherche th {
+        background-image: url("/Content/Images/RechercheSaisieGridHeaderThBg.png");
+        background-position: center bottom;
+        background-repeat: repeat-x;
+        border-color: transparent #FFFFFF #DDDDDD -moz-use-text-color;
+        border-style: solid solid solid none;
+        border-width: 1px 1px 1px medium;
+        border-top: 1px solid transparent;
+        border-right: 1px solid #fff;
+        border-left: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .divListRecherche td {
+        border-color: transparent #DDDDDD #CCCCCC -moz-use-text-color;
+        border-style: solid solid solid none;
+        border-width: 1px 1px 1px medium;
+        overflow: hidden;
+        border-top: 1px solid transparent;
+        border-right: 1px solid #ddd;
+        border-left: none;
+        border-bottom: 1px solid #ccc;
+    }*/
+
+.thExpender
+{
+    width: 35px;
+}
+
+.thIcone
+{
+    width: 30px;
+}
+
+.thNo
+{
+    width: 75px;
+}
+
+.thVersion
+{
+    width: 35px;
+}
+
+.thAvenant
+{
+    width: 30px;
+}
+
+.thDate
+{
+    width: 70px;
+}
+
+.thBranche
+{
+    width: 30px;
+}
+
+.thCible
+{
+    width: 40px;
+}
+
+.thPreneurAssurance
+{
+    width: 145px;
+}
+
+.thCodePostal
+{
+    width: 40px;
+}
+
+.thEtat
+{
+    width: 40px;
+}
+
+.thSituation
+{
+    width: 40px;
+}
+
+.thQualite
+{
+    width: 50px;
+}
+
+.thCourtierGestionnaireNom
+{
+    width: 145px;
+}
+
+.thCourtierGestionnaireCP
+{
+    width: 40px;
+}
+
+.thDescriptifRisque
+{
+    width: 242px;
+}
+
+.tdExpender
+{
+    width: 35px;
+    padding-left: 3px;
+}
+
+.tdIcone
+{
+    width: 30px;
+    padding-left: 3px;
+    text-align: center;
+}
+
+.tdNo
+{
+    width: 75px;
+    /*padding-left: 5px;*/
+    padding-left: 3px;
+}
+
+.tdVersion
+{
+    width: 35px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdAvenant
+{
+    width: 30px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdDate
+{
+    width: 70px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdBranche
+{
+    width: 30px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdCible
+{
+    width: 40px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdPreneurAssurance
+{
+    width: 145px;
+    padding-left: 2px;
+    /*padding-left: 5px;*/
+}
+
+.tdCodePostal
+{
+    width: 40px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdEtat
+{
+    width: 40px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdSituation
+{
+    width: 40px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdQualite
+{
+    width: 50px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.tdCourtierGestionnaireNom
+{
+    width: 145px;
+    padding-left: 2px;
+    /*padding-left: 5px;*/
+}
+
+.tdCourtierGestionnaireCP
+{
+    width: 40px;
+    text-align: center;
+}
+
+.tdDescriptifRisque
+{
+    width: 242px;
+    padding-left: 3px;
+    /*padding-left: 5px;*/
+}
+
+.divNo
+{
+    width: 80%;
+}
+
+.divVersion
+{
+    width: 63%;
+}
+
+.divDateRecherche
+{
+    width: 80%;
+}
+
+.divBranche
+{
+    width: 63%;
+}
+
+.divEtat
+{
+    width: 70%;
+}
+
+.divSituation
+{
+    width: 70%;
+}
+
+.divQualite
+{
+    width: 75%;
+}
+
+.divDescription
+{
+    width: 94%;
+}
+
+.divPreneurAssurance
+{
+    width: 88%;
+}
+
+.divCodePostal
+{
+    width: 70%;
+}
+
+.divCourtierGestionnaireNom
+{
+    width: 90%;
+}
+
+.divCourtierGestionnaireCP
+{
+    width: 70%;
+}
+
+.divCibleRechercheSaisie
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 40px;
+}
+
+.divDescriptifRisqueRechercheSaisie
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 242px;
+}
+
+.divPreneurNomRechercheSaisie
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 146px;
+}
+
+.divCourtierNomRechercheSaisie
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 146px;
+}
+
+.thDateMAJ
+{
+    width: 70px;
+    text-align: center;
+}
+
+.thSouscripteur
+{
+    width: 120px;
+    text-align: center;
+}
+
+.thNumero
+{
+    width: 80px;
+    text-align: center;
+}
+
+.thVille
+{
+    width: 288px;
+    text-align: center;
+}
+
+.thMotif
+{
+    width: 198px;
+    text-align: center;
+}
+
+.tdDateMAJ
+{
+    width: 70px;
+    text-align: center;
+}
+
+.tdSouscripteur
+{
+    width: 115px;
+    padding-left: 5px;
+}
+
+.tdNumero
+{
+    width: 75px;
+    padding-left: 5px;
+}
+
+.tdVille
+{
+    width: 283px;
+    padding-left: 5px;
+}
+
+.tdMotif
+{
+    width: 193px;
+    padding-left: 5px;
+}
+
+#dialogGridPreneursAssurance
+{
+    width: 1220px;
+}
+
+.tblPreneursAssuranceGroupWithBorder
+{
+    background-color: #EEEEEE;
+    border: 1px outset #EEEEEE;
+    border-radius: 10px 10px 10px 10px;
+    float: left;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+}
+
+.tblPreneursAssuranceGroupFull
+{
+    background-attachment: fixed !important;
+    background-clip: border-box;
+    background-color: #FFFFFF;
+    background-image: -moz-linear-gradient(center top, #FFFFFF, #DDDDDD);
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    height: 1%;
+    padding-bottom: 15px;
+    width: 1200px;
+}
+
+.NomPreneurAssuranceLabel
+{
+    float: left;
+    padding-left: 5px;
+}
+
+.NomPreneurAssuranceTextBox
+{
+    float: left;
+    margin-left: 20px;
+}
+
+.GroupTitle
+{
+    color: #800000;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11pt;
+    font-style: italic;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.TablePersoTdHead
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tablePersoHeadRechercheSaisie
+{
+    background-image: url("/Content/Images/RechercheSaisieGridHeaderThBg.png");
+    background-position: center center;
+    background-repeat: repeat-x;
+    height: 36px;
+}
+
+.TablePersoHeadPreneursAssuranceTd1
+{
+    width: 48px;
+}
+
+.TablePersoHeadPreneursAssuranceTd2
+{
+    width: 290px;
+}
+
+.TablePersoHeadPreneursAssuranceTd3
+{
+    width: 290px;
+}
+
+.TablePersoHeadPreneursAssuranceTd4
+{
+    width: 60px;
+}
+
+.TablePersoHeadPreneursAssuranceTd5
+{
+    width: 198px;
+}
+
+.TablePersoHeadPreneursAssuranceTd6
+{
+    width: 176px;
+}
+
+.TablePersoHeadPreneursAssuranceTd7 ,
+.TablePersoHeadPreneursAssuranceTd8 {
+    width: 56px;
+}
+
+.tblCabinetsCourtageGroupWithBorder
+{
+    background-color: #EEEEEE;
+    border: 1px outset #EEEEEE;
+    border-radius: 10px 10px 10px 10px;
+    float: left;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+}
+
+.tblCabinetsCourtageGroupFull
+{
+    background-attachment: fixed !important;
+    background-clip: border-box;
+    background-color: #FFFFFF;
+    background-image: -moz-linear-gradient(center top, #FFFFFF, #DDDDDD);
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    height: 1%;
+    padding-bottom: 15px;
+    width: 1200px;
+}
+
+.NomCabinetLabel
+{
+    float: left;
+    margin-left: 20px;
+}
+
+.NomCabinetTextBox
+{
+    float: left;
+    margin-left: 20px;
+}
+
+.TablePersoHeadCabinetsCourtageTd1
+{
+    width: 54px;
+}
+
+.TablePersoCabinetsCourtageTd1
+{
+    width: 54px;
+}
+
+.TablePersoHeadCabinetsCourtageTd2
+{
+    width: 260px;
+}
+
+.TablePersoCabinetsCourtageTd2
+{
+    width: 260px;
+}
+
+.TablePersoHeadCabinetsCourtageTd3
+{
+    width: 224px;
+}
+
+.TablePersoCabinetsCourtageTd3
+{
+    width: 224px;
+}
+
+.TablePersoHeadCabinetsCourtageTd4
+{
+    width: 54px;
+}
+
+.TablePersoCabinetsCourtageTd4
+{
+    width: 54px;
+}
+
+.TablePersoHeadCabinetsCourtageTd5
+{
+    width: 111px;
+}
+
+.TablePersoCabinetsCourtageTd5
+{
+    width: 111px;
+}
+
+.TablePersoHeadCabinetsCourtageTd6
+{
+    width: 100px;
+}
+
+.TablePersoCabinetsCourtageTd6
+{
+    width: 100px;
+}
+
+.TablePersoHeadCabinetsCourtageTd7
+{
+    width: 112px;
+}
+
+.TablePersoCabinetsCourtageTd7
+{
+    width: 112px;
+}
+
+.TablePersoHeadCabinetsCourtageTd8
+{
+    width: 111px;
+}
+
+.TablePersoCabinetsCourtageTd8
+{
+    width: 111px;
+}
+
+.TablePersoHeadCabinetsCourtageTd9
+{
+    width: 112px;
+}
+
+.TablePersoCabinetsCourtageTd9
+{
+    width: 112px;
+}
+
+.labelCheckWidth
+{
+    width: 82px;
+}
+
+.labelNumWidth
+{
+    width: 30px !important;
+}
+
+.WidthCopyOffre
+{
+    width: 120px !important;
+}
+
+.WidthCopyVers
+{
+    width: 40px !important;
+}
+
+.WidthSeparator
+{
+    width: 10px;
+}
+
+.ButtonHide
+{
+    display: none;
+}
+
+.dvDataListeCPVille
+{
+    position: absolute;
+    display: block;
+    z-index: 5;
+    background-color: white;
+    padding: 5px 0 0 5px;
+    height: 30px;
+}
+
+.PaddingLeftLarge
+{
+    padding-left: 112px;
+}
+
+.PaddingLeftVeryLarge
+{
+    padding-left: 207px;
+}
+
+.PaddingRightLarge
+{
+    padding-right: 18px !important;
+}
+
+.TxtRechercheDep
+{
+    width: 40px !important;
+}
+
+.TxtRechercheSaisieCode
+{
+    width: 40px !important;
+}
+
+.FieldBranche
+{
+    width: 125px;
+}
+
+.FieldCible
+{
+    width: 125px;
+    margin-left: 4px;
+}
+
+.FieldEtat
+{
+    width: 180px;
+}
+
+.FieldSituation
+{
+    width: 256px;
+}
+
+.FieldPreneurAssuranceCP
+{
+    width: 207px !important;
+}
+
+.FieldPreneurAssuranceNom
+{
+    width: 206px !important;
+}
+
+#divConteneurBandeauRecherche
+{
+    display: none;
+}
+
+.textLightGrey
+{
+    color: #606060; /*gris leger pour les sans couleurs*/
+}
+
+.textDarkCyan
+{
+    color: darkcyan;
+}
+
+.textGreen
+{
+    color: green;
+    font-weight: bold;
+}
+
+.textBlack
+{
+    color: black;
+}
+
+.textRed
+{
+    color: #EE0000;
+}
+
+.textOrange
+{
+    color: #F79B43;
+}
+
+.textAlignDroite
+{
+    text-align: right;
+}
+
+
+#divLstResultats
+{
+    /*border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;*/
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#divLstResultatCabinetsCourtage
+{
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 5px;
+    margin-top: 5px;
+    overflow-y: scroll;
+    height: 390px;
+}
+
+.backgroundPink
+{
+    background-color: #FFDFDF !important;
+}
+
+.ImgRech
+{
+    padding-left: 12px;
+}
+
+
+#divDataRechercheCopyOffre
+{
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 62;
+    background-color: White;
+    width: 1220px;
+}
+
+.CopyOffreHeight
+{
+    height: 383px !important;
+    width: 1200px !important;
+}
+
+.CopyOffreHeightContainer
+{
+    height: 390px !important;
+}
+
+#divCheckCanevas
+{
+    display: none;
+}
+
+#divLstResultatPreneurAssurance
+{
+    margin-left: 5px;
+    height: 358px;
+}
+
+/*#divPreneurAssuranceBody
+{
+    height: 345px;
+}*/
+
+.TablePersoPreneursAssuranceTd1
+{
+    width: 44px;
+    padding-right: 5px;
+    text-align: right;
+}
+
+.TablePersoPreneursAssuranceTd2
+{
+    width: 279px;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.TablePersoPreneursAssuranceTd3
+{
+    width: 282px;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.TablePersoPreneursAssuranceTd4
+{
+    width: 59px;
+    text-align: center;
+}
+
+.TablePersoPreneursAssuranceTd5
+{
+    width: 193px;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.TablePersoPreneursAssuranceTd6
+{
+    width: 177px;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.TablePersoPreneursAssuranceTd7, TablePersoPreneursAssuranceTd8 {
+    width: 51px;
+    padding-left: 5px;
+}
+
+.errorRechAvancee
+{
+    color: #FF0000;
+    margin-left: 350px;
+    margin-top: 2px;
+    width: 450px;
+}
+
+.ButtonGroupLeft
+{
+    padding-left: 5px;
+    width: 250px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.ButtonGroupCenter
+{
+    padding-left: 5px;
+    width: 989px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.ButtonGroupRight
+{
+    padding-left: 5px;
+    width: 209px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+#customActionText
+{
+    width: 195px;
+}
+
+#btnActionNouveau
+{
+    width: 123px;
+    text-align: left;
+}
+
+#btnFolderReadOnly
+{
+    width: 123px;
+    margin-left: 23px;
+}
+
+#btnCreerOffre
+{
+    width: 123px;
+    margin-left: 23px;
+}
+
+#btnActionMenu
+{
+    width: 123px;
+    margin-left: 23px;
+    text-align: left;
+}
+
+#btnInitializeRech
+{
+    width: 100px;
+}
+
+#btnNewRechercher
+{
+    width: 100px;
+}
+
+#btnAvenant
+{
+    margin-left: 23px;
+    width: 140px;
+    text-align: left;
+}
+
+#btnAvtResil
+{
+    margin-left: 23px;
+    width: 123px;
+}
+
+.ButtonGroupExitSearch
+{
+    padding-left: 178px;
+    width: 40px;
+    height: 30px;
+    margin-bottom: 5px;
+    padding-right: 38px;
+}
+
+
+/*#region Retours*/
+
+.titre
+{
+    font-weight: bold;
+    text-decoration: underline;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*.titreIS
+{
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}*/
+
+.col_HeaderCoAssureurs
+{
+    width: 300px;
+}
+
+.col_CoAssureurs
+{
+    width: 300px;
+}
+
+.col_HeaderPart
+{
+    width: 80px;
+}
+
+.col_Part
+{
+    width: 78px;
+    padding-left: 3px;
+}
+
+.col_HeaderDateRetour
+{
+    width: 120px;
+}
+
+.col_DateRetour
+{
+    width: 118px;
+    padding-left: 3px;
+}
+
+.col_HeaderTypeAccord
+{
+    width: 120px;
+}
+
+.col_TypeAccord
+{
+    width: 118px;
+    padding-left: 3px;
+}
+
+#divDataRechercheAvancee
+{
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 23;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+}
+/*#endregion Retours*/
+
+.dvDataRechEng
+{
+    position: absolute;
+    top: 10px;
+    display: block;
+    z-index: 83;
+    background-color: white;
+    padding: 5px 0 0 5px;
+    width: 1045px;
+}

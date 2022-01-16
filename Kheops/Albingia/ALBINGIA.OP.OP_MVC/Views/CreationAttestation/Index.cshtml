@@ -1,0 +1,41 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationAttestationPage
+
+@Url.IncludeKoComponent("entete-contrat")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "vCreationAttestation.css", "vCreationAvenant.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albCreationAttestation.js" }, "~/Scripts/AlbingiaJS/")
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <input type="hidden" id="tabOpen" value="Periode" />
+    <input type="hidden" id="changeRsqObj" value="" />
+    <input type="hidden" id="changeGar" value="" />
+    <input type="hidden" id="attestId" value="" />
+    <input type="hidden" id="NumInterne" value="@Model.NumAvenantPage" />
+    <div class="CommonForm FloatLeft albAttestationInfos">
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="divGlobalRegulGroup">
+                <entete-contrat></entete-contrat>
+                <div id="divInfoRegul" class="nGradientSection divListRisquesRegularisation">
+                    @Html.Partial("SelectionPeriodeAttestation", Model)
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" accesskey="s"><u>S</u>uivant</button>
+                <button id="btnValider" class="None" type="button" albshortcut="true" accesskey="v"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    window.context = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
+</script>
+

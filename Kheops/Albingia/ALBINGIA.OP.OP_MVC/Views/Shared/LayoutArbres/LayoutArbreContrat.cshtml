@@ -1,0 +1,353 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.ModelesNavigationArbre
+@model ModeleNavigationArbre
+@*@{
+        string navClass = Model.IsScreenAvenant == false
+            && (Model.Etape == "InfoGen"
+                || Model.Etape == "InfoSaisie"
+                || Model.Etape == "CoCourtiers"
+                || Model.Etape == "CoAssureurs"
+                || Model.Etape == "ChoixClauses"
+                || Model.Etape == "MatriceRisques"
+                || Model.Etape == "MatriceFormules"
+                || Model.Etape == "MatriceGaranties"
+                || Model.Etape == "Risque"
+                || Model.Etape == "Formule") ? "navigate-step " : string.Empty;
+
+        var showMain = (Model.ScreenType != AlbConstantesMetiers.SCREEN_TYPE_AVNRS && Model.ScreenType != AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR_NO_MODIF) || Model.IsReadOnly;
+        var cotisOnly = Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR_NO_MODIF && !Model.IsReadOnly;
+    }*@
+<div id="LayoutArbre" class="GroupWithBorder ArbreWidth">
+    <div class="ArbreBackground GradientSection MenuArbreContrat" id="DivTop">
+        @Html.Partial("_Menu")
+        @*@if (!Model.IsEmptyRequested)
+            {
+                string codeAffaire = Model.CodeOffre.Trim() + "_" + Model.Version.ToString(CultureInfo.CurrentCulture) + "_" + Model.Type;
+                <ul class="MenuArbreRacine MenuArbreUL" id="MenuRacineGeneral">
+                    @if (Model.IsRegule && !Model.IsValidation)
+                    {
+                        <li class="MenuArbreLI">
+                            <span class="">&nbsp;&nbsp;&nbsp;</span>
+                            <span class="@(Model.Etape == "Regule" ? (Model.TagSaisie == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagSaisie == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))"
+                                  title="Infos de régularisation"
+                                  name="linkNavigationArbre"
+                                  albParamArbre="CreationRegularisation/Step1_ChoixPeriode_FromNavig_Consult/@codeAffaire"
+                                  albParamArbreConsultOnly="true"
+                                  albParamArbreActeGestionRegule="AVNMD"
+                                  albParamArbreNewWindow="true">Régularisation</span>
+                        </li>
+                    }
+                    @if (Model.IsScreenAvenant && !Model.IsValidation && Model.Etape != "Regule")
+                    {
+                        <li class="MenuArbreLI">
+                            <span class="">&nbsp;&nbsp;&nbsp;</span>
+                            <span class="MenuArbreText navig" title="Infos de création avenant" name="linkNavigationArbre" albParamArbre="CreationAvenant/Index/@codeAffaire">Infos. Avenant</span>
+                        </li>
+                    }
+
+                    @if (showMain && !Model.IsValidation && Model.Etape != "Regule")
+                    {
+                        <li class="MenuArbreLI">
+                            <span class="">&nbsp;&nbsp;&nbsp;</span>
+                            <span class="@(navClass)@(Model.Etape == "InfoSaisie" ? (Model.TagSaisie == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagSaisie == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" title="Infos de base" name="linkNavigationArbre" albParamArbre="AnCreationContrat/Index/@codeAffaire" data-target="@(ContextStepName.EditionInfosBase)">Infos. de base</span>
+                        </li>
+                        if (Model.InformationsGenerales)
+                        {
+                            string screenController = "";
+                            <li class="MenuArbreLI">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                @switch (Model.ScreenType as string)
+                                {
+                                    case AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+                                    case AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+                                    case AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+                                    case AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+                                    case AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+                                        screenController = "AvenantInfoGenerales";
+                                        break;
+                                    case AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                                    default:
+                                        screenController = "AnInformationsGenerales";
+                                        break;
+                                }
+                                <span class="@(navClass)@(Model.Etape == "InfoGen" ? (Model.TagInfoGen == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagInfoGen == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" title="@Model.OffreIdentification" name="linkNavigationArbre" albParamArbre="@(screenController)/Index/@(codeAffaire)" data-target="@(ContextStepName.EditionInfosGenerales)" albArbreName="InfoGen">Infos. Générales</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="MenuArbreLI Disabled">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(Model.Etape == "InfoGen" ? "MenuArbreText bgSelEtape" : "MenuArbreText")" title="Informations Générales">Infos. Générales</span>
+                            </li>
+                        }
+                        if (Model.CoAssureurs)
+                        {
+                            <li class="MenuArbreLI">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(navClass)@(Model.Etape == "CoAssureurs" ? (Model.TagCoAssureurs == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagCoAssureurs == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" title="Co-Assureurs" name="linkNavigationArbre" albParamArbre="AnCoAssureurs/Index/@codeAffaire" data-target="@(ContextStepName.EditionCoAssureurs)">Co-assureurs</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="MenuArbreLI Disabled">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(Model.Etape == "CoAssureurs" ? "MenuArbreText bgSelEtape" : "MenuArbreText")" title="Co-assureurs">Co-assureurs</span>
+                            </li>
+                        }
+                        if (Model.CoCourtiers)
+                        {
+                            <li class="MenuArbreLI">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(navClass)@(Model.Etape == "CoCourtiers" ? (Model.TagCoCourtiers == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagCoCourtiers == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" title="Co-courtiers" name="linkNavigationArbre" albParamArbre="AnCourtier/Index/@codeAffaire" data-target="@(ContextStepName.EditionCommissions)">Commissions</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="MenuArbreLI Disabled">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(Model.Etape == "CoCourtiers" ? "MenuArbreText bgSelEtape" : "MenuArbreText")" title="Commissions">Commissions</span>
+                            </li>
+                        }
+                        <li class="@(Model.MatriceFormules || Model.MatriceGaranties || Model.MatriceRisques || (Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_AVNRS) ? "MenuArbreLI" : "MenuArbreLI Disabled")">
+                            <span class="@(Model.MatriceFormules || Model.MatriceGaranties || Model.MatriceRisques || (Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_AVNRS) ? "MenuArbreImage" : "")">&nbsp;&nbsp;&nbsp;</span>
+                            <span class="MenuArbreText">Matrices</span>
+                            <ul class="MenuArbreUL">
+                                @if (Model.MatriceRisques || (Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_AVNRS || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR))
+                                {
+                                    <li class="MenuArbreLI">
+                                        <span class="MenuArbreImage">&nbsp;&nbsp;&nbsp;</span>
+                                        <span class="@(navClass)@(Model.Etape == "MatriceRisques" ? (Model.TagMatriceRisques == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagMatriceRisques == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="MatriceRisque/Index/@codeAffaire" data-target="@(ContextStepName.MatriceRisque)" albArbreName="RsqGar">Matrice Risques</span>
+                                    </li>
+                                }
+                                @if (Model.MatriceFormules)
+                                {
+                                    <li class="MenuArbreLI">
+                                        <span class="MenuArbreImage">&nbsp;&nbsp;&nbsp;</span>
+                                        <span class="@(navClass)@(Model.Etape == "MatriceFormules" ? (Model.TagMatriceFormules == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagMatriceFormules == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="MatriceFormule/Index/@codeAffaire" data-target="@(ContextStepName.MatriceFormule)">Matrice Formules</span>
+                                    </li>
+                                }
+                                @if (Model.MatriceGaranties)
+                                {
+                                    <li class="MenuArbreLI">
+                                        <span class="MenuArbreImage">&nbsp;&nbsp;&nbsp;</span>
+                                        <span class="@(navClass)@(Model.Etape == "MatriceGaranties" ? (Model.TagMatriceGaranties == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagMatriceGaranties == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="MatriceGarantie/Index/@codeAffaire" data-target="@(ContextStepName.MatriceGarantie)">Matrice Garanties</span>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                        if (Model.Risques != null && Model.Risques.Count > 0)
+                        {
+                            <li class="MenuArbreLI">
+                                <span class="MenuArbreImage">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="MenuArbreText">Risques</span>
+                                <ul class="MenuArbreUL">
+                                    @foreach (var risque in Model.Risques)
+                                    {
+                                        string paramRisque = codeAffaire + "_" + risque.Code;
+                                        <li class="MenuArbreLI" albbaddate="@(Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF ? risque.isBadDate : false)">
+                                            <span class="@(risque.Formules != null && risque.Formules.Count > 0 ? "MenuArbreImage" : "")">&nbsp;&nbsp;&nbsp;</span>
+                                            <span class="@(navClass)@(Model.Etape == "Risque" && Model.CodeRisque == risque.Code ? (risque.TagRisque == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (risque.TagRisque == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" title="@risque.Descriptif" name="linkNavigationArbre" albParamArbre="DetailsRisque/Index/@paramRisque" data-target="@(ContextStepName.DetailsRisque)" data-risque="@risque.Code" "@((Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF) ? risque.isBadDate : false)">Risque @risque.Numero</span>
+                                            <ul class="MenuArbreUL">
+                                                @foreach (var formule in risque.Formules)
+                                                {
+                                                    string paramFormule = codeAffaire + "_" + formule.CodeFormule + "_" + formule.CodeOption;
+                                                    <li class="MenuArbreLI">
+                                                        <span class="MenuArbreImage">&nbsp;&nbsp;&nbsp;</span>
+                                                        <span class="@(navClass)@(Model.Etape == "Formule" && Model.CodeFormule == formule.Option.Formule ? (formule.TagFormule == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (formule.TagFormule == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" title="Formule @formule.Option.Description" name="linkNavigationArbre" albParamArbre="FormuleGarantie/Index/@paramFormule" data-target="@(ContextStepName.EditionOption)" data-formule="@formule.CodeFormule" data-option="@formule.CodeOption">Formule @formule.Alpha</span>
+
+                                                        @if (formule.Options.Any() && formule.CreateModifAvn)
+                                                        {
+                                                            paramFormule += "_C";
+                                                            <ul class="MenuArbreUL">
+                                                                <li class="MenuArbreLI">
+                                                                    <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                                                    <span title="Conditions tarifaires" class="@(navClass)@(Model.Etape == "Condition" && Model.CodeFormule == formule.Option.Formule ? (formule.TagFormule == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (formule.TagFormule == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="ConditionsGarantie/Index/@(paramFormule)" data-target="@(ContextStepName.ConditionsGarantie)" data-formule="@formule.CodeFormule" data-option="@formule.CodeOption">Conditions</span>
+                                                                </li>
+                                                            </ul>
+                                                        }
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                    @if ((!Model.IsValidation && Model.Etape != "Regule") && ((Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS && (!Model.IsCheckedEcheance || Model.IsReadOnly)) || (Model.ScreenType != ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS)))
+                    {
+                        if (!cotisOnly)
+                        {
+                            if (Model.Engagement)
+                            {
+                            <li class="MenuArbreLI">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                @switch (Model.ScreenType as string)
+                                {
+                                    case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                                        <span class="@(navClass)@(Model.Etape == "Engagement" ? (Model.TagEngagement == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagEngagement == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="Engagements/Index/@codeAffaire" data-target="@(ContextStepName.EditionEngagements)" albArbreName="Engage">Engagements</span>
+                                        break;
+                                    default:
+                                        <span class="@(Model.Etape == "Engagement" ? (Model.TagEngagement == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagEngagement == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="EngagementPeriodes/Index/@codeAffaire" albArbreName="Engage">Engagements</span>
+                                        break;
+                                }
+                            </li>
+                            }
+                            else
+                            {
+                            <li class="MenuArbreLI Disabled">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(Model.Etape == "Engagement" ? "MenuArbreText bgSelEtape" : "MenuArbreText")">Engagements</span>
+                            </li>
+                            }
+                            if (Model.ScreenType != ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS || Model.IsReadOnly)
+                            {
+                                if (Model.AttentatGareat)
+                                {
+                                <li class="MenuArbreLI">
+                                    <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                    <span class="@(navClass)@(Model.Etape == "AttentatGareat" ? (Model.TagAttentatGareat == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagAttentatGareat == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="AnMontantReference/Index/@codeAffaire" data-target="@(ContextStepName.EditionMontantsReference)">Montant Réf</span>
+                                </li>
+                                }
+                                else
+                                {
+                                <li class="MenuArbreLI Disabled">
+                                    <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                    <span class="@(Model.Etape == "AttentatGareat" ? "MenuArbreText bgSelEtape" : "MenuArbreText")">Montant Réf </span>
+                                </li>
+                                }
+                            }
+                        }
+                        if (Model.Cotisation && Model.ModeNavig != ModeConsultation.Historique.AsCode())
+                        {
+                            <li class="MenuArbreLI" id="CotisationMenuArbreLI">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(navClass)@(Model.Etape == "Cotisation" ? (Model.TagCotisation == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagCotisation == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="Quittance/Index/@codeAffaire" data-target="@(ContextStepName.EditionQuittance)" albArbreName="Cotis">Cotisations</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="MenuArbreLI Disabled" id="CotisationMenuArbreLI">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(Model.Etape == "Cotisation" ? "MenuArbreText bgSelEtape" : "MenuArbreText")">Cotisations</span>
+                            </li>
+                        }
+                    }
+                    @if (Model.Etape != "Regule")
+                    {
+                        if (Model.Cotisation && Model.Fin && Model.ModeNavig != ModeConsultation.Historique.AsCode())
+                        {
+                            <li class="MenuArbreLI" id="ControleFinMenuArbreLI">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(navClass)@(Model.Etape == "Fin" ? (Model.TagFin == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (Model.TagFin == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="ControleFin/Index/@codeAffaire" data-target="@(ContextStepName.ControleFin)" albArbreName="Fin">@(Model.IsReadOnly ? "Gestion doc." : "Contrôle & Fin")</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="MenuArbreLI Disabled" id="ControleFinMenuArbreLI">
+                                <span class="">&nbsp;&nbsp;&nbsp;</span>
+                                <span class="@(Model.Etape == "Fin" ? "MenuArbreText bgSelEtape" : "MenuArbreText")">@(Model.IsReadOnly ? "Gestion doc." : "Contrôle & Fin")</span>
+                            </li>
+                        }
+                    }
+                </ul>
+            }*@
+    </div>
+    <div class="ArbreBackground GradientSection NavigationBasseContrat" id="DivBot">
+        @if (!Model.IsEmptyRequested || (Model.IsEmptyRequested && Model.IsTransverseAllowed)) {
+            <div id="expandArbre" style="text-align: center" class="CursorPointer">
+                <img name="expandArbre" src="@Url.Content("/Content/Images/collapse.png")" id="imgExpandArbre" title="Menus Complémentaires" />
+            </div>
+            if (Model.NumAvn > 0) {
+                <div alblinkarbre="OpenVisuAlertes">
+                    <img name="ListeAlertes" src="@Url.Content("/Content/Images/ControleFin/A.png")" class="CursorPointer" />
+                    <span class="navig">Visu des alertes</span>
+                </div>
+                @Html.Partial("_Alertes", Model.AlertesAvenant)
+                <div alblinkarbre="OpenVisuHistorique">
+                    <img src="@Url.Content("/Content/Images/Clock-History-Frame-16.png")" class="CursorPointer" />
+                    <span class="navig">Historique du contrat</span>
+                </div>
+            }
+            <div alblinkarbre="OpenSuiviActesGestion">
+                <img name="SuiviActes" src="@Url.Content("/Content/Images/u135_normal.png")" class="CursorPointer" />
+                <span class="navig">Suivi des actes de gestion</span>
+            </div>
+            <div alblinkarbre="OpenListeClauses">
+                <img name="ListeClauses" src="@Url.Content("/Content/Images/LayoutArbre/u100_original.gif")" class="CursorPointer" />
+                <span class="navig">Clauses de l'affaire</span>
+            </div>
+            <div class="None">
+                <img src="@Url.Content("/Content/Images/LayoutArbre/u102_original.gif")" />
+                <span style="margin-left: 5px">Liste des inventaires</span>
+            </div>
+            <div alblinkarbre="OpenListeIntervenants">
+                <img name="ListeIntervenants" src="@Url.Content("/Content/Images/LayoutArbre/intervenants.gif")" class="CursorPointer" />
+                <span class="navig">Liste des intervenants</span>
+            </div>
+            <div alblinkarbre="OpenNavigationDocuments">
+                <img src="@Url.Content("/Content/Images/LayoutArbre/trombone.png")" class="CursorPointer" />
+                <span class="navig">Documents joints</span>
+            </div>
+            <div alblinkarbre="OpenGED">
+                <img src="@(Url.Content("/Content/Images/u410_normal.gif"))" class="CursorPointer" />
+                <span class="navig">Accès GED</span>
+            </div>
+            <hr class="None" id="delimArbre" />
+
+            <div id="CollapseContainer" class="None">
+
+
+                @if (Model.NumAvn > 0 || Model.Type == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_CONTRAT) {
+                    <div alblinkarbre="OpenConnexites">
+                        <img src="@(Url.Content("/Content/Images/connexite16.png"))" class="CursorPointer" />
+                        <span class="navig">Visu des connexités</span>
+                    </div>
+                }
+                @if (Model.NumAvn > 0 || @Model.Type == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_CONTRAT) {
+                    <div alblinkarbre="OpenVisulisationQuittances">
+                        <img src="@(Url.Content("/Content/Images/Quittance/frais.png"))" class="CursorPointer" />
+                        <span class="navig">Visu des quittances</span>
+                    </div>
+                }
+                <div alblinkarbre="OpenVisualisationObservations">
+                    <img src="@(Url.Content("/Content/Images/u408_normal.gif"))" class="CursorPointer" />
+                    <span class="navig">Visu des observations</span>
+                </div>
+
+                @if (Model.NumAvn > 0) {
+                    <div alblinkarbre="">
+                        <img src="@(Url.Content("/Content/Images/u410_normal.gif"))" />
+                        <span class="navig">Visu des sinistres</span>
+                    </div>
+                }
+                @if (Model.Type == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_CONTRAT) {
+                    <div alblinkarbre="OpenVisualisationSuspension">
+                        <img src="@(Url.Content("/Content/Images/u410_normal.gif"))" class="CursorPointer" />
+                        <span class="navig">Visu période suspension</span>
+                    </div>
+                }
+                <div alblinkarbre="OpenClausier">
+                    <img name="ListeClauses" src="@Url.Content("/Content/Images/LayoutArbre/u100_original.gif")" class="CursorPointer" />
+                    <span class="navig">Clausier</span>
+                </div>
+            </div>
+            <div id="NoCollapseContainer">
+                @if (Model.IsValidation) {
+                    <div alblinkarbre="OpenModif">
+                        <img src="@Url.Content("/Content/Images/editer1616.png")" class="CursorPointer" />
+                        <span class="navig">Ouvrir en consultation</span>
+                    </div>
+                }
+                else {
+                    <div>&nbsp</div>
+                }
+                <hr />
+                <div>
+                    @using (Html.BeginForm("SimpleDownloadFile", "CommonNavigation", new { id = "" }, System.Web.Mvc.FormMethod.Post, new { @id = "FileDownLoad", target = "_blank" })) {
+                        <input id="cpFullNameFile" name="fullNameFile" type="hidden" value="" />
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿<applicationSettings>
+  <OP.Services.Properties.Settings>
+    <setting name="OP_Services_WSeditique_KheoBridge" serializeAs="String">
+      <value>http://wseditique/KheoBridge.asmx</value>
+    </setting>
+    <setting name="OP_Services_WSKheoDev_KheoBridge" serializeAs="String">
+      <value>http://kheobridge:8084/KheoBridge.asmx</value>
+    </setting>
+  </OP.Services.Properties.Settings>
+</applicationSettings>

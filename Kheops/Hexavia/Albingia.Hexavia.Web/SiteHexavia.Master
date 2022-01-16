@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteHexavia.Master.cs"
+    Inherits="Albingia.Hexavia.Web.SiteHexavia" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="~/Styles/SiteHexavia.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <telerik:RadScriptManager ID="RadScriptManager1" runat="server" EnablePageMethods="true">
+        <CompositeScript>
+            <Scripts>
+                <asp:ScriptReference Path="~/Scripts/jquery-1.6.3.js" ScriptMode="Release" />
+            </Scripts>
+        </CompositeScript>
+    </telerik:RadScriptManager>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    </telerik:RadAjaxManager>
+    <div class="page espacement10">
+        <%--<div class="spacer">
+        </div>--%>
+        <div class="clear">
+        </div>
+        <div class="header">
+            <%--<div>
+                <div class="logoalbingia">
+                </div>
+            </div>
+            <div>
+                <h1 class="title">
+                    HEXAVIA
+                </h1>
+            </div>
+            <div class="clear">
+            </div>--%>
+        </div>
+        <div>
+            <div>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <%-- <div class="footer">
+        Copyright © 2011 Albingia
+    </div>--%>
+    </form>
+</body>
+</html>

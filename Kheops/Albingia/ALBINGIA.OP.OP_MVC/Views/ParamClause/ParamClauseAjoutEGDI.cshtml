@@ -1,0 +1,155 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamAjoutEGDI
+@*  [Obsolete] cette page n'est pas utilisée *@
+<div class="CommonForm FloatLeft" style="width: 540px;">
+    <div class="GroupFull GroupWithBorder" style="width: 520px;">
+        <div class="GroupTitle">
+            @Html.Hidden("ParamType", "EGDI")
+            @Html.HiddenFor(m => m.CodeService)
+            @Html.HiddenFor(m => m.CodeActGes)
+            @Html.HiddenFor(m => m.CodeEtape)
+            @Html.HiddenFor(m => m.CodeContexte)
+            @Html.Hidden("hidNumOrdre", (Model.NumOrd))
+            @Html.HiddenFor(m => m.Code)
+            Saisie EG/DI
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 515px;">
+            <div class="GradientSection" style="height: 275px;">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Service</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Service" name="Service" value="@(Model.CodeService) - @(Model.LibelleService)" readonly="readonly" class="readonly" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Acte de gestion</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="ActGes" name="ActGes" value="@(Model.CodeActGes) - @(Model.LibelleActGes)" readonly="readonly" class="readonly" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Etape</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Etape" name="Etape" value="@(Model.CodeEtape) - @(Model.LibelleEtape)" readonly="readonly" class="readonly" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Contexte</label>
+                        </div>
+                        <div class="FLoatLeft">
+                            <input type="text" id="Contexte" name="Contexte" value="@(Model.CodeContexte) - @(Model.LibelleContexte)" readonly="readonly" class="readonly" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">
+                                Type</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.EG)
+                            {
+                                <input type="radio" id="EG" name="EGDI" value="@Model.EG.ToString()" checked="checked" />  
+                            }
+                            else
+                            { 
+                                <input type="radio" id="EG" name="EGDI" value="@Model.EG.ToString()" />     
+                            }
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block RadioWidth">Elément Générateur</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.DI)
+                            {
+                                <input type="radio" id="DI" name="EGDI" value="@Model.DI.ToString()" checked="checked" /> 
+                            }
+                            else
+                            { 
+                                <input type="radio" id="DI" name="EGDI" value="@Model.DI.ToString()" disabled="disabled" />
+                            }
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block RadioWidth">Déclencheur Incond.</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Code EG/DI</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.ModeSaisie == 2)
+                            { 
+                                <input type="text" id="CodEGDI" name="CodEGDI" value="@(Model.CodeEGDI)" readonly="readonly" class="readonly" />
+                            }
+                            else
+                            { 
+                                <input type="text" id="CodEGDI" name="CodEGDI" value="@(Model.CodeEGDI)" />
+                            }
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Ordre</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.ModeSaisie == 2)
+                            { 
+                                <input type="text" id="NumOrdre" name="NumOrdre" value="@(Model.NumOrd)" class="readonly numerique" albMask="numeric" readonly="readonly" />
+                            }
+                            else
+                            {
+                                <input type="text" id="NumOrdre" name="NumOrdre" value="@(Model.NumOrd)" class="numerique"  albMask="numeric" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Libellé</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="LibelleEGDI" name="LibelleEGDI" value="@(Model.LibelleEGDI)" class="DoubleInputWidth" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Commentaires</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <textarea id="Commentaires" name="Commentaires" rows="3" class="DoubleInputWidth">@(Model.Commentaires)</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 520px;">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <input type="button" id="btnFancyValider" value="Valider" tabindex="29" />
+            <input type="button" id="btnFancyAnnuler" value="Annuler" tabindex="30" />
+        </div>
+    </div>
+</div>

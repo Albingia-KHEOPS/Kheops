@@ -1,0 +1,97 @@
+﻿
+<div class="nGradientSection dvInfoDataRegul">
+    <div class="HeightRow PaddingLeft">
+        <div class="FloatLeft">
+            <b>Données de la BNS :</b>
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <span class="title-center-text short">HT Hors Cat Nat</span>
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Prime totale sur la période</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: CotisationPeriode" albmask="decimal" />
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <input type="text" class="inputDate numerique" disabled value="100" albmask="pourcentnumeric" />%
+        </div>
+    </div>
+
+    <div class="HeightRow">
+
+
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Prime calculée / BNS déduite</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: PrimeCalculee" albmask="decimal" />
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <!-- ko if: IsAnticipee -->
+                <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: TauxAppel" albmask="pourcentnumeric" />%
+            <!-- /ko -->
+            <!-- ko ifnot: IsAnticipee -->
+                <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: CotisationsRetenues" albmask="pourcentnumeric" />%
+            <!-- /ko -->
+        </div>
+    </div>
+
+    <div class="HeightRow">
+
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblLibelleMnt">Montant émis</label>
+        </div>
+
+        <div class="FloatLeft LargePaddingLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: { value: MontantCalcule, min: -999999999.99 }" albmask="decimal" />
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: Ristourne" albmask="pourcentnumeric" />%
+        </div>
+
+    </div>
+
+    <div class="HeightRow">
+
+    </div>
+
+    <div class="HeightRow">
+
+    </div>
+
+    <div class="HeightRow">
+        &nbsp;
+        <input type="hidden" class="inputDate numerique" data-bind="autoNumeric: TauxAppel" albmask="pourcentnumeric" />
+    </div>
+
+    <div class="HeightRow None">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Montant (hors ATTENTAT)</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" disabled value="" />
+        </div>
+    </div>
+
+    <div class="HeightRow None">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Montant ATTENTAT</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" disabled value="" />
+        </div>
+    </div>
+
+
+
+</div>

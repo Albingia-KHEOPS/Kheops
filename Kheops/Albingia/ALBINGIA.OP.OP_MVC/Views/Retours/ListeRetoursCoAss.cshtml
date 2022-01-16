@@ -1,0 +1,27 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesRetours.ModeleLigneRetourCoAss>
+<table id="tblRetoursCoAssBody" class="trHeight">
+    @{    
+        if (Model != null && Model.Count > 0)
+        {
+
+            foreach (var ligne in Model)
+            {                      
+        <tr id="tr_@(ligne.GuidId)" name="lineCoass">
+            <td class="col_CoAssureurs">
+                <label>@ligne.NomCoassureur</label>
+            </td>
+            <td class="col_Part">
+                <label>@(ligne.Part + "%")</label>
+            </td>
+            <td class="col_DateRetour">
+                <input class="datepicker col_DateRetour" name="dateRetour" id="@("inDateRetourCoAss_" + ligne.GuidId)" value="@(ligne.DateRetourCoAss != 0 ? ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(ligne.DateRetourCoAss).Value.ToString("dd/MM/yyyy") : string.Empty)"/>
+            </td>
+            <td class="col_TypeAccord">
+                @Html.AlbDropDownListFor(m => ligne.TypeAccordVal, ligne.TypeAccordCoAss, "TypeAccordCoAss", htmlAttributes: new { id = "TypeAccordCoAss_" + ligne.GuidId, @tabindex = "4", @class = "col_TypeAccord" }, generateTitle: true, genEmptyLine: false, replaceHtmlName: "typeAccordInput")
+            </td>
+        </tr>
+            }
+        }
+    
+    }
+</table>

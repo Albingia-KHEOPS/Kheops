@@ -1,0 +1,43 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesRisque.ModeleRisque>
+<table id="tblBodyRsqRegularisation" class="trHeight tableRsqRegule">
+    @{
+        var i = 0;
+        foreach (var rsq in Model)
+        {
+        <tr id="trRsq_@(rsq.Code)" class="@(i % 2 == 0 ? "odd" : "even")" style="font-weight: bold;">
+            <td class="tdRsq">
+                <table class="tableTDRRsq">
+                    <tr>
+                        <td class="tdImgRsq">
+                            @if (rsq.IsUsed)
+                            {
+                                <img id="ExpandRsq_@(rsq.Code)" name="ExpandRsq" class="CursorPointer" src="@(Url.Content("/Content/Images/Op.png"))" albExpCol="collapse"/>
+                            }
+                            else
+                            {
+                                <img id="ExpandRsq_@(rsq.Code)" name="ExpandRsq" class="CursorPointer" src="@(Url.Content("/Content/Images/Cl.png"))" albExpCol="expand"/>
+                            }
+                        </td>
+                        <td id="tdRsqRegule" class="@(rsq.IsUsed ? "navigvisited tdInfoRsq" : "navig tdInfoRsq")" albcodersq="@(rsq.Code)" albreguleused="@(rsq.IsUsed ? "O" : "N")">R@(rsq.Code) - @(rsq.Designation)</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="tdDates">@(rsq.EntreeGarantieStr)</td>
+            <td class="tdDates">@(rsq.SortieGarantieStr)</td>
+            <td class="tdCible"  title ="@(rsq.Cible.Code) - @(rsq.Cible.Libelle)">@(rsq.Cible.Libelle)</td>
+            <td class="tdTypeRegule" title="@(rsq.CodeTypeRegule) - @(rsq.LibTypeRegule)">@(rsq.LibTypeRegule)</td>
+        </tr>
+                            foreach (var obj in rsq.Objets)
+                            {
+        <tr id="trObj_@(rsq.Code)_@(obj.Code)" class="@(rsq.IsUsed ? i % 2 == 0 ? "odd" : "even" : i % 2 == 0 ? "odd None" : "even None")">
+            <td class="tdObj">O@(obj.Code) - @(obj.Designation)</td>
+            <td class="tdDates">@(obj.EntreeGarantieStr)</td>
+            <td class="tdDates">@(obj.SortieGarantieStr)</td>
+            <td class="tdCible" title="@(obj.Cible.Code ) - @(obj.Cible.Libelle) ">@(obj.Cible.Libelle )</td>
+            <td class="tdTypeRegule" title="@(obj.CodeTypeRegule) - @(obj.LibTypeRegule)">@(obj.LibTypeRegule)</td>
+        </tr>                        
+                            }
+                            i++;
+        }
+    }
+</table>

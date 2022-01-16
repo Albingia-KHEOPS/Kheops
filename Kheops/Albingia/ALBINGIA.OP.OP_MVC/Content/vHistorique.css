@@ -1,0 +1,52 @@
+﻿/*#region Retours*/
+
+.titre {
+    font-weight: bold;
+    text-decoration: underline;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.col_HeaderCoAssureurs {
+    width: 300px;
+}
+
+.col_CoAssureurs {
+    width: 300px;
+}
+
+.col_HeaderPart {
+    width: 80px;
+}
+
+.col_Part {
+    width: 78px;
+    padding-left: 3px;
+}
+
+.col_HeaderDateRetour {
+    width: 120px;
+}
+
+.col_DateRetour {
+    width: 118px;
+    padding-left: 3px;
+}
+
+.col_HeaderTypeAccord {
+    width: 120px;
+}
+
+.col_TypeAccord {
+    width: 118px;
+    padding-left: 3px;
+}
+
+#divConteneurBandeauRechercheHisto
+{
+    display: none;
+}
+
+
+ /*#endregion Retours*/ 
+

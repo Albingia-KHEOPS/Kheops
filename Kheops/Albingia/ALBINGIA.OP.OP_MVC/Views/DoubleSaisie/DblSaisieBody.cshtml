@@ -1,0 +1,203 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleDoubleSaisiePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vDoubleSaisie.css" }, "~/Content/")
+<input type="hidden" name="splitChar" id="splitChar" value="@ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML" />
+<div class="nGroupFull nGroupWithBorder">
+    <input type="hidden" id="DivFlottante" name="DivFlottante" value="@(Model.DivFlottante ? "O" : "N")" />
+    @Html.Hidden("DblSaisieReadOnly", Model.IsReadOnly.ToString())
+    @Html.HiddenNoName("DblSaisieChangeInProgress", 0)
+    @Html.HiddenNoName("DblSaisieCurrentVersion", (Model.Offre.Version))
+    @Html.HiddenNoName("DlbSaisieEtatOffre", (Model.Offre.Etat))
+    <div class="nHorizontalFullWithGroup">
+        <div class="nGradientSection PaddingLeft">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label><u>Courtiers</u></label>
+                </div>
+            </div>
+            <div id="divDoubleSaisieHeader">
+                <table id="tblDoubleSaisieHeader">
+                    <tr>
+                        <td class="tableHeader colTypeHeader">&nbsp;</td>
+                        <td class="tableHeader colCodeHeader">Code</td>
+                        <td class="tableHeader colCourtierDblSaisieHeader">Courtier</td>
+                        <td class="tableHeader colDelegationDblSaisieHeader">Délégation</td>
+                        <td class="tableHeader colSouscripteurDblSaisieHeader">Souscripteur</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divDoubleSaisieBody">
+                <table id="tblDoubleSaisieBody">
+                    <tr>
+                        <td class="colType">Apporteur</td>
+                        <td class="colCode">@(Model.CourtierApporteur.Code)</td>
+                        <td class="colCourtierDblSaisie" title="@(Model.CourtierApporteur.Courtier)">@(Model.CourtierApporteur.Courtier)</td>
+                        <td class="colDelegationDblSaisie">@(Model.CourtierApporteur.Delegation)</td>
+                        <td class="colSouscripteurDblSaisie" title="@(Model.CourtierApporteur.SouscripteurCode + " - " + Model.CourtierApporteur.Souscripteur)">@(Model.CourtierApporteur.SouscripteurCode + " - " + Model.CourtierApporteur.Souscripteur)</td>
+                    </tr>
+                    <tr>
+                        <td class="colType">Gestionnaire</td>
+                        <td class="colCode">@(Model.CourtierGestionnaire.Code)</td>
+                        <td class="colCourtierDblSaisie">@(Model.CourtierGestionnaire.Courtier)</td>
+                        <td class="colDelegationDblSaisie">@(Model.CourtierGestionnaire.Delegation)</td>
+                        <td class="colSouscripteurDblSaisie">&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <div class="PaddingLeft"><b>Historique</b></div>
+            <div id="divDoubleSaisieHistoHeader">
+                <table id="tblDoubleSaisieHistoHeader">
+                    <tr>
+                        <td colspan="5" class="tableHeader">&nbsp;</td>
+                        <td colspan="2" class="tableHeader">Saisie</td>
+                        <td colspan="2" class="tableHeader">Enregistrement</td>
+                    </tr>
+                    <tr>
+                        <td class="tableHeader colTypeHeader">Motif</td>
+                        <td class="tableHeader colCodeHeader">Code</td>
+                        <td class="tableHeader colCourtierDblSaisieHeader">Courtier</td>
+                        <td class="tableHeader colDelegationDblSaisieHeader">Délégation</td>
+                        <td class="tableHeader colSouscripteurDblSaisieHeader">Souscripteur</td>
+                        <td class="tableHeader colDateheureHeader">Date</td>
+                        <td class="tableHeader colDateheureHeader">Heure</td>
+                        <td class="tableHeader colDateheureHeader">Date</td>
+                        <td class="tableHeader colDateheureHeader">Heure</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divDoubleSaisieHistoBody">
+                @if (Model.CourtiersHistorique != null)
+                {
+                    @Html.Partial("/Views/DoubleSaisie/ListHisto.cshtml", Model.CourtiersHistorique)
+                }
+            </div>
+        </div>
+        <div class="nGradientSection">
+            <div class="HeightRow">
+                @Html.HiddenNoName("inInvalidCourtierApp", string.Empty)
+                <div class="FloatLeft">
+                    <label><u>Actions à réaliser sur l'offre</u> : </label>
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <label id="lblDblSaisieOffre">@(Model.Offre.CodeOffre) - </label>
+                    <label id="lblDblSaisieVersion">@(Model.Offre.Version)</label>
+                </div>
+                <div id="CourtierInvalideDiv" class="PaddingLeft error FloatLeft">
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Demandeur</label>
+                </div>
+                <div class="FloatLeft">
+                    <input class="@(Model.IsReadOnly ? "inputCodeDem numerique readonly" : "inputCodeDem numerique")" type="text" id="DblCode" tabindex="1" name="Code" value="" albautocomplete="autoCompCodeCourtier" albcontext="dblSaisie" disabled="@(Model.IsReadOnly )" maxlength="5"/>
+                </div>
+                <div class="FloatLeft">
+                    <input class="@(Model.IsReadOnly ? "inputCourtierDelegationSouscripteurDem readonly" : "inputCourtierDelegationSouscripteurDem")" type="text" id="DblCourtier" tabindex="2" name="Courtier" value="" albautocomplete="autoCompNomCourtier" albcontext="dblSaisie" disabled="@(Model.IsReadOnly )" />
+                </div>
+                <div class="FloatLeft">
+                    <input class="inputCourtierDelegationSouscripteurDem readonly" readonly="readonly" type="text" id="DblDelegation" tabindex="3" name="Delegation" value="" albautocomplete="autoCompDelegCourtier" albcontext="dblSaisie" disabled="@(Model.IsReadOnly )" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="WidthInterlocuteur">Interlocuteur</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="hidden" id="DblCodeInterlocuteur" name="CodeInterlocuteur" value="" albautocomplete="autoCompCodeInterlocuteur" albcontext="dblSaisie" />
+                    <input type="text" class="@(Model.IsReadOnly ? "inputInterlocuteurDblSaisie readonly" : "inputInterlocuteurDblSaisie")" id="DblNomInterlocuteur" name="NomInterlocuteur" tabindex="4" value="" albautocomplete="autoCompNomInterlocuteur" disabled="@(Model.IsReadOnly )" albcontext="dblSaisie" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="WidthRef">Réf.</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="DblReference" name="Reference" tabindex="5" maxlength="25" value="" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Souscripteur</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="hidden" id="SouscripteurSelect" name="SouscripteurSelect" value="" albautocomplete="autoCompSouscripteurSelect" albcontext="dblSaisie" albcontext="dblSaisie" />
+                    <input class="@(Model.IsReadOnly ? "inputCourtierDelegationSouscripteurDem readonly" : "inputCourtierDelegationSouscripteurDem")" type="text" id="DblSouscripteur" tabindex="6" name="Souscripteur" value="" albautocomplete="autoCompSouscripteurNom" albcontext="dblSaisie" disabled="@(Model.IsReadOnly )" albcontext="dblSaisie" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Date de saisie</label>
+                </div>
+                <div class="FloatLeft">
+                    <input class="@(Model.IsReadOnly ? "inputDateHeureDem readonly" : "inputDateHeureDem datepicker")" type="text" id="DblDateSaisie" tabindex="7" name="DateSaisie" value="" disabled="@(Model.IsReadOnly )" />
+                </div>
+                <div class="FloatLeft">
+                    @*@if (Model.IsReadOnly)
+                    {
+                        <input class="HourMinute readonly" value="@Model.CourtierDemandeur.SaisieHeure" tabindex="8" id="SaisieHeure" disabled="disabled"/>
+                    }
+                    else
+                    {*@
+                    @Html.AlbTimePicker(m => m.CourtierDemandeur.SaisieHeure, "SaisieHeure", new { @class = "HourMinute", @tabindex = "6" })
+                    @*}*@
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft divActions">
+                    <div class="FloatLeft">
+                        <input type="radio" id="MaintenirCourtier" name="Actions" tabindex="8" value="" />
+                    </div>
+                    <div class="FloatLeft paddingLabel">
+                        <label class="AutoWidth">Maintenir Courtier Apporteur / Gestionnaire</label>
+                    </div>
+                </div>
+                @*<div class="PaddingRight FloatRight">
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="NotifierApporteur" name="NotifierApporter" tabindex="11" value="" />
+                    </div>
+                    <div class="FloatLeft paddingLabel widthNotification">
+                        <label class="AutoWidth">Notifier Courtier Apporteur :&nbsp;</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.NotificationApporteur, Model.NotificationsApporteur, "NotificationApporteur", htmlAttributes: new { @id = "NotificationApporteur", @tabindex = "12" }, generateTitle: true)
+                    </div>
+                </div>*@
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft divActions">
+                    <div class="FloatLeft">
+                        <input type="radio" id="RemplacerCourtier" name="Actions" tabindex="9" value="" />
+                    </div>
+                    <div class="FloatLeft paddingLabel">
+                        <label class="AutoWidth">Remplacer Courtier Apporteur par Courtier Demandeur pour le motif :&nbsp;</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.MotifRemp, Model.MotifsRemp, "MotifRemp", htmlAttributes: new { @id = "MotifRemp", @class = "readonly", @disabled = "disabled", @tabindex = "10", @albCFList = "motifRefus" }, generateTitle: true)
+                    </div>
+                </div>
+                @*<div class="PaddingRight FloatRight">
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="NotifierDemandeur" name="NotifierDemandeur" tabindex="13" value="" />
+                    </div>
+                    <div class="FloatLeft paddingLabel widthNotification">
+                        <label class="AutoWidth">Notifier Courtier Demandeur :&nbsp;</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.NotificationDemandeur, Model.NotificationsDemandeur, "NotificationDemandeur", htmlAttributes: new { @id = "NotificationsDemandeur", @tabindex = "14" }, generateTitle: true)
+                    </div>
+                </div>*@
+            </div>
+            <div class="HeightRow">
+            </div>
+            <div class="HeightRow">
+                @if (Model.IsReadOnly)
+                {
+                    <div class="FloatRight PaddingRight">
+                        <button id="ValiderBtnDbl" name="ValiderBtnDbl" type="button" albshortcut="true" data-accesskey="v" tabindex="15" disabled="disabled"><u>V</u>alider</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="FloatRight PaddingRight">
+                        <button id="ValiderBtnDbl" name="ValiderBtnDbl" type="button" albshortcut="true" data-accesskey="v" tabindex="15"><u>V</u>alider</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGarantieTypePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vGarantieType.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albGarantieType.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            @Html.Hidden("SupprType", string.Empty)
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupBackOfficeLeft">
+                    <div class="GroupFull GroupWithBorder GroupBackOfficeGarantieTypeList GroupHeightGarantieType" style="margin-right: 10px;">
+                        <div class="GroupTitle">
+                            Filtrer les garanties
+                        </div>
+                        <div class="HorizontalHalfWithGroupAdmin GroupHeightGarantieTypeInterieur">
+                            <div class="GradientSection">
+                                <div class="HeightRow">
+                                    <div class="FloatLeft">
+                                        <label class="Block labelCode">Modèle</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="RechercheGarantieType_CodeModele" class="readonly" value="@Model.RechercheGarantieType.CodeModele" readonly>
+                                    </div>
+                                </div>
+                                <div class="HeightRow">
+                                    <div class="FloatLeft">
+                                        <label class="Block labelCode">Code</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="RechercheGarantieType_Code">
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <label class="Block labelCode">Niveau</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="RechercheGarantieType_Niveau">
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft">
+                                        <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    &nbsp;
+                                </div>
+                                <div id="divLstGarantieType">
+                                    <div>
+                                        <table class="trHeight">
+                                            <tr>
+                                                <th class="tablePersoHead tdHeaderEditType">
+                                                    &nbsp;
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderSmall" title="Niveau">
+                                                    Niv
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderCodeGarantie" title="Garantie">
+                                                    Garantie
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderDescription" title="Description">
+                                                    Description
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderSmall" title="Ordre">
+                                                    Ord
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderSmall" title="Caractère">
+                                                    Car
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderSmall" title="Nature">
+                                                    Nat
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderSmall" title="Indexée">
+                                                    Ind
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderSmall" title="Soumis CATNAT">
+                                                    Cn
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderSmall" title="Code Taxe">
+                                                    Tax
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderSmall" title="Groupe Alternatif">
+                                                    Alt
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderTypePrime" title="Type Prime">
+                                                    Type Prime
+                                                </th>
+                                                <th class="tablePersoHead tdHeaderImgType">
+                                                    @if (Model.IsModifiable)
+                                                    {
+                                                        <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" onclick="ajouterGarantieType();" />
+                                                    }
+                                                </th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div id="divBodyGarantieType" class="divHeight">
+                                        <table id="tblType" class="trHeight widthTableType">
+                                            @Html.Partial("ListGarantieType", Model.GarantieTypes)
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divInfoGarantieTypeLien" class="GroupFull GroupWithBorder GroupBackOfficeGarantieTypeLien GroupHeightGarantieTypeLien" style="margin-right: 10px;">
+                        
+                    </div>
+                </div>
+
+                <div id="divInfoGarantieType" class="GroupFull GroupWithBorder GroupBackOfficeGarantieTypeConsult GroupHeightGarantieTypeFixe FloatLeft">
+                </div>
+                <div class="GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Annuler();" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+

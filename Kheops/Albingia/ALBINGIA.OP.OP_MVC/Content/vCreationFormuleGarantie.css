@@ -1,0 +1,476 @@
+﻿#divFullScreenFormule {
+    display: none;
+}
+
+#divDataFullScreenFormule {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 628px;
+}
+
+.divDataPorteGarantie {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 435px;
+}
+
+#dvLinkClose {
+    margin: 0 auto;
+    width: 100px;
+}
+
+#FullScreen {
+    width: 80px;
+    margin: 0px auto;
+}
+
+.Height15 {
+    clear: both;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.LibWidth {
+    width: 480px !important;
+}
+
+.divAppliqueA {
+    float: left;
+    width: 667px;
+}
+
+#divLoadFormule {
+    display: none;
+}
+
+#divLstRsqObj {
+    display: none;
+    background-color: #FFF;
+}
+
+.HeightDescription {
+    height: 115px;
+}
+
+.FullTextarea {
+    width: 995px;
+}
+
+.tblListInventaire th {
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-left: none;
+    border-bottom: none;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+
+.colBtn {
+    width: 20px;
+}
+
+.colTxt {
+    width: 200px;
+    text-align: center;
+}
+
+
+
+#tblListRsqObj {
+    background-color: #CCCCCC;
+    width: 100%;
+}
+
+.divFancyListRsqObj {
+    padding-left: 12px;
+    width: 99%;
+}
+
+#divListRsqObj {
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    z-index: 10;
+    border: 1px #ddd inset;
+    background-color: #ddd;
+}
+
+.divConteneur {
+    width: 145px;
+    max-height: 50px;
+    overflow-y: auto;
+}
+
+.divApplique {
+    width: 260px !important;
+}
+
+#tblRsqObj {
+    width: 125px;
+}
+
+.tdImgCheckBox {
+    text-align: center;
+    width: 20px;
+}
+
+.tdTitle {
+    width: 20px;
+    text-align: center;
+}
+
+#ObjetRisque {
+    width: 521px;
+}
+
+#divGaranties {
+    clear: both;
+    margin-top: 4px;
+}
+
+.FieldLabelFor {
+    width: 95px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+.FieldLabelLib {
+    width: 125px !important;
+}
+
+.DivBrancheCible {
+    width: 1020px;
+}
+
+.FieldTextBoxFor {
+    width: 180px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+.FieldTextBoxLettreLib {
+    width: 50px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+    .FieldTextBoxLettreLib input {
+        width: 30px;
+    }
+
+.FieldTextBoxForDropDown {
+    width: 140px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+    .FieldTextBoxForDropDown select {
+        width: 100px;
+    }
+
+.lgnNiv1 {
+    width: 780px;
+    padding-left: 10px;
+}
+
+.lgnNiv2 {
+    width: 780px;
+    padding-left: 25px;
+}
+
+.lgnModeleNiv1 {
+    width: 780px;
+    padding-left: 40px;
+}
+
+.lgnModeleNiv2 {
+    width: 780px;
+    padding-left: 55px;
+}
+
+.lgnModeleNiv3 {
+    width: 780px;
+    padding-left: 70px;
+}
+
+.lgnModeleNiv4 {
+    width: 780px;
+    padding-left: 85px;
+}
+
+.tdCombo {
+    width: 40px;
+    text-align: center;
+}
+
+.lstParamNatMod {
+    width: 35px;
+}
+
+.divLabelGarantie {
+    padding-bottom: 5px;
+}
+
+.divBtn {
+    padding-top: 5px;
+}
+
+.linkImage {
+    cursor: pointer;
+}
+
+.PaddingApplique {
+    padding-left: 235px;
+}
+
+.Ascenseur {
+    max-height: 362px;
+    overflow: auto;
+}
+
+.AscenseurAvt {
+    max-height: 322px;
+    overflow: auto;
+}
+
+.labelBranche {
+    display: block;
+    width: 70px !important;
+}
+
+.divBranche {
+    float: left;
+    margin-right: 30px;
+}
+
+.inputBranche {
+    width: 250px !important;
+}
+
+.dvFormule {
+    height: 410px;
+}
+
+.dvFormuleAvenant {
+    height: 374px;
+}
+
+.divDataGarantieInventaire {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 568px;
+    width: 1044px;
+}
+
+.divDataErrorAssietteMsg {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    padding: 5px 0 5px 5px;
+    max-height: 410px;
+    width: 620px;
+}
+
+.dvDataAssiette {
+    width: 610px;
+}
+
+.dvMessageError {
+    width: 600px;
+}
+
+.dvBodyErrorMsg {
+    height: 307px;
+    overflow-y: auto;
+    width: 600px;
+}
+
+.tableBodyError {
+    width: 595px;
+    table-layout: fixed;
+}
+
+.thErrorGarantie {
+    width: 100px;
+}
+
+.thErrorMsg {
+    width: 470px;
+}
+
+.tdErrorGarantie {
+    width: 102px;
+}
+
+.tdErrorMsg {
+    width: 468px;
+    padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.dvDataInfoDetail {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 61;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 293px;
+}
+
+.labelInfo1 {
+    width: 120px;
+    padding-left: 5px;
+}
+
+.labelInfo2 {
+    width: 80px;
+    padding-left: 5px;
+}
+
+.spanLibVBM {
+    padding-top: 6px;
+    float: left;
+    display: block;
+}
+
+.spanImgVBM {
+    padding-top: 4px;
+    padding-left: 5px;
+    float: left;
+    display: block;
+}
+
+
+.thLibObj {
+    width: 712px;
+    text-align: center;
+}
+
+.thLibObjPrime {
+    width: 260px;
+    text-align: center;
+}
+
+.thValeur {
+    width: 150px;
+    text-align: center;
+}
+
+.thForfait {
+    width: 170px;
+    text-align: center;
+}
+
+.thMontant {
+    width: 120px;
+    text-align: center;
+}
+
+.dvBodyLstObj {
+    max-height: 180px;
+    /*max-height: 190px;*/
+    overflow: auto;
+}
+
+.tableBodyLstObj {
+    width: 742px;
+    table-layout: fixed;
+}
+
+.tdLibObjPrime {
+    width: 260px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tdLibObj {
+    width: 712px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tdValeur {
+    width: 62px;
+    text-align: center;
+}
+
+.tdUnitType {
+    width: 40px;
+    text-align: center;
+}
+
+.tdUnitTypePortee {
+    width: 50px;
+    text-align: center;
+}
+
+.tdPrime {
+    width: 116px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.inputValObj {
+    width: 58px !important;
+}
+
+.selectUnitType {
+    width: 46px !important;
+}
+
+.thFooter {
+    width: 438px;
+}
+
+.thFooterMontant {
+    width: 170px;
+}
+
+.thFooterMntTotal {
+    width: 116px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+
+.dvNonTempo {
+    float: left;
+    padding-left: 124px;
+}
+
+.dvTempo {
+    float: right;
+    padding-right: 5px;
+    padding-top: 2px;
+}

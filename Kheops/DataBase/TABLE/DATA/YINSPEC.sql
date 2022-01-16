@@ -1,0 +1,26 @@
+﻿CREATE TABLE ZALBINKHEO.YINSPEC ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table YINSPEC de ZALBINKHEO ignoré. 
+	ACLINS CHAR(2) CCSID 297 NOT NULL DEFAULT '' , 
+	ACLDES CHAR(30) CCSID 297 NOT NULL DEFAULT '' , 
+	ACLLIB CHAR(20) CCSID 297 NOT NULL DEFAULT '' , 
+	ACLORD NUMERIC(3, 0) NOT NULL DEFAULT 0 , 
+	ACLUIN CHAR(10) CCSID 297 NOT NULL DEFAULT '' )   
+	RCDFMT FINSPEC    ; 
+  
+LABEL ON TABLE ZALBINKHEO.YINSPEC 
+	IS 'Inspection                                     ABH' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.YINSPEC 
+( ACLINS IS 'Code Inspection' , 
+	ACLDES IS 'Désignation' , 
+	ACLLIB IS 'désignation abrégé' , 
+	ACLORD IS 'N° Ordre' , 
+	ACLUIN IS 'User Inspecteur' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.YINSPEC 
+( ACLINS TEXT IS 'Code inspection' , 
+	ACLDES TEXT IS 'Désignation' , 
+	ACLLIB TEXT IS 'Désignation abrégée' , 
+	ACLORD TEXT IS 'N° Ordre' , 
+	ACLUIN TEXT IS 'User Inspecteur' ) ; 
+  

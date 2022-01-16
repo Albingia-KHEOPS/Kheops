@@ -1,0 +1,54 @@
+﻿[
+  {
+    "outputFile": "Content/less/formule/edition/details-valeurs-garantie.css",
+    "inputFile": "Content/less/formule/edition/details-valeurs-garantie.less"
+  },
+  {
+    "outputFile": "Content/less/formule/edition/portees.css",
+    "inputFile": "Content/less/formule/edition/portees.less"
+  },
+  {
+    "outputFile": "Content/less/regularisation/global.css",
+    "inputFile": "Content/less/regularisation/global.less"
+  },
+  {
+    "outputFile": "Content/less/formule/edition/add-or-update.css",
+    "inputFile": "Content/less/formule/edition/add-or-update.less"
+  },
+  {
+    "outputFile": "Content/less/recherche/search.css",
+    "inputFile": "Content/less/recherche/search.less"
+  },
+  {
+    "outputFile": "Content/common.css",
+    "inputFile": "Content/common.less"
+  },
+  {
+    "outputFile": "Content/less/connexites/engagements.css",
+    "inputFile": "Content/less/connexites/engagements.less"
+  },
+  {
+    "outputFile": "Content/ko-popup.css",
+    "inputFile": "Content/ko-popup.less"
+  },
+  {
+    "outputFile": "Content/paging.css",
+    "inputFile": "Content/paging.less"
+  },
+  {
+    "outputFile": "Content/home.css",
+    "inputFile": "Content/home.less"
+  },
+  {
+    "outputFile": "Content/less/affaire/synthese.css",
+    "inputFile": "Content/less/affaire/synthese.less"
+  },
+  {
+    "outputFile": "Content/gareat.css",
+    "inputFile": "Content/gareat.less"
+  },
+  {
+    "outputFile": "knockout/components/liste-relances/liste-relances.css",
+    "inputFile": "knockout/components/liste-relances/liste-relances.less"
+  }
+]

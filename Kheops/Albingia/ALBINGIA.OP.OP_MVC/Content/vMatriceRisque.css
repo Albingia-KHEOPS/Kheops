@@ -1,0 +1,144 @@
+﻿
+.td70 {
+    width: 70px;
+    text-align: center;
+}
+
+#divBodyGen {
+    clear: both;
+}
+
+#divHeadInfo {
+    overflow: hidden;
+}
+
+#divRisque {
+    height: 353px;
+    overflow: hidden;
+}
+
+#divInfo {
+    height: 370px;
+    width: 641px;
+    overflow: scroll;
+}
+
+tr {
+    height: 25px !important;
+}
+
+#tblHeaderRisque tr, #tblHeaderInfo tr {
+    height: 1px !important;
+}
+
+#tblHeaderRisque {
+    height: 18px;
+    width: 372px;
+}
+#tblBodyRisque {
+    width:372px;
+}
+#tblHeaderInfo {
+    height: 20px;
+}
+
+.HeaderGen {
+    height: 30px;
+    margin: 0;
+    padding-top: 36px;
+}
+
+.tdEmpty {
+    width: 20px;
+}
+
+.tdRisque {
+    width: 300px;
+    text-align: left;
+    padding-left: 5px;
+    border: 0px;
+    height: 20px;
+}
+
+.libHeadFormule {
+    width: 60px;
+    text-align: center;
+}
+
+.libHeadCible {
+    width: 74px;
+    text-align: center;
+}
+
+.libHeadValeur {
+    width: 109px;
+    text-align: center;
+}
+
+.libHeadUnite {
+    width: 39px;
+    text-align: center;
+}
+
+.libHeadType {
+    width: 49px;
+    text-align: center;
+}
+
+.libHeadDate {
+    width: 69px;
+    text-align: center;
+}
+
+.libHeadAutre {
+    width: 45px;
+    text-align: center;
+}
+
+.tableBodyInfo {
+    border: 0;
+    table-layout: fixed;
+    width: 609px;
+}
+
+.cellFormule {
+    width: 56px;
+    text-align: center;
+    padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cellCible {
+    width: 75px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.cellValeur {
+    width: 110px;
+    text-align: center;
+}
+
+.cellUnite {
+    width: 40px;
+    text-align: center;
+}
+
+.cellType {
+    width: 50px;
+    text-align: center;
+}
+
+.cellDate {
+    width: 70px;
+    text-align: center;
+}
+
+.cellAutre {
+    width: 46px;
+    text-align: center;
+}

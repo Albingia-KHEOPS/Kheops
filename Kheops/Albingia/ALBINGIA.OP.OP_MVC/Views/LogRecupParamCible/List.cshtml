@@ -1,0 +1,30 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesLogTrace.LogParamCibleRecupModel>
+<div id="LigneCount">Nombre de lignes: @Model.Count</div>
+<div id="listeLog" class="GradientSection">
+    <table id="tblHeaderParam">
+        <tr>
+            <th class="tablePersoHead" title="N° police/offre">N° police/offre</th>
+            <th class="tablePersoHead" title="Type">Type</th>
+            <th class="tablePersoHead" title="N° aliment">N° aliment  </th>
+            <th class="tablePersoHead" title="N° avenant ">N° avenant  </th>
+            <th class="tablePersoHead" title="Code situation">Code situation  </th>
+            <th class="tablePersoHead" title="Date situation">Date situation  </th>
+            <th class="tablePersoHead" title="N° histo">N° histo  </th>
+            <th class="tablePersoHead" title="N° travail">N° travail</th>
+            <th class="tablePersoHead" title="Id objet">Id objet </th>           
+            <th class="tablePersoHead" title="Id risque">Id risque </th>
+            <th class="tablePersoHead" title="Commentaire situation">Commentaire situation </th>
+            <th class="tablePersoHead" title="User situation">User situation </th>
+             <th class="tablePersoHead" title="Option récupération">Option récupération </th>
+        </tr>
+    </table>
+
+    <div id="divBodyParam" class="AlignCenter">
+        <table id="LogTable" class="styled">
+            @foreach (var item in @Model)
+            {
+                @Html.Partial("Item", item)
+            }
+        </table>
+    </div>
+</div>

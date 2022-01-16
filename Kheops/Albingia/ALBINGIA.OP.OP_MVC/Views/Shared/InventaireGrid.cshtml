@@ -1,0 +1,978 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaModels.Inventaire_MetaModel
+<div class="@(Model.FullScreen ? "GradientSection HeightTableauFullScreen" : "HeightTableau")">
+    <div id="divHeaderInventaire">
+        <table id="tblHeaderInventaire" style="@(Model.InventaireType == 9 ? "width:1634px;" : string.Empty)">
+            <tr albnamecontext="headerinven" class="CursorPointer">
+                @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 6 || Model.InventaireType == 7 || Model.InventaireType == 8 || Model.InventaireType == 16)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDescription">
+                        Désignation
+                    </th>
+                }
+                @if (Model.InventaireType == 9)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDescription">Raison Sociale</th>
+                }
+                @if (Model.InventaireType == 18)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDescription">Copropriété</th>
+                }
+                @if (Model.InventaireType == 13 || Model.InventaireType == 14)
+                {
+                    <th name="headerTab" class="thNatureMarchandise tablePersoHead" title="Nature des marchandises">
+                        Nature des marchandises
+                    </th>
+                }
+                @if (Model.InventaireType == 15)
+                {
+                    <th name="headerTab" class="tablePersoHead thMarque">
+                        Marque
+                    </th>
+                    <th name="headerTab" class="tablePersoHead thModele">
+                        Modèle
+                    </th>
+                    <th name="headerTab" class="tablePersoHead thImmatriculation">
+                        Immatriculation
+                    </th>
+                }
+                @if (Model.InventaireType == 13)
+                {
+                    <th name="headerTab" class="tablePersoHead thDepart">
+                        Départ
+                    </th>
+                    <th name="headerTab" class="tablePersoHead thDestination">
+                        Destination
+                    </th>
+                    <th name="headerTab" class="tablePersoHead thModalite">
+                        Modalités
+                    </th>
+                }
+
+                @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 14)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Lieu
+                    </th>
+                }
+                @if (Model.InventaireType == 9 || Model.InventaireType == 16 || Model.InventaireType == 18)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderAdresse">
+                        Adresse
+                    </th>
+                }
+
+                @if (Model.InventaireType == 1 || Model.InventaireType == 9 || Model.InventaireType == 14 || Model.InventaireType == 16 || Model.InventaireType == 18)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderCP">
+                        CP
+                    </th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Ville
+                    </th>
+                }
+                @if (Model.InventaireType == 14)
+                {
+                    <th name="headerTab" class="tablePersoHead thPays">
+                        Pays
+                    </th>
+                }
+
+                @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 9 || Model.InventaireType == 13 || Model.InventaireType == 15)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDate" title="Date de début">
+                        Date deb
+                    </th>
+                }
+                @if (Model.InventaireType == 1 || Model.InventaireType == 9)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderHeure" title="Heure de début">
+                        Heure deb
+                    </th>
+                }
+
+                @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 9 || Model.InventaireType == 13 || Model.InventaireType == 15)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDate" title="Date de fin">
+                        Date fin
+                    </th>
+                }
+                @if (Model.InventaireType == 1 || Model.InventaireType == 9)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderHeure" title="Heure de fin">
+                        Heure fin
+                    </th>
+                }
+                @if (Model.InventaireType == 3 || Model.InventaireType == 4 || Model.InventaireType == 5)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNom">
+                        Nom
+                    </th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderNom">
+                        Prénom
+                    </th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderFonction">
+                        Fonction
+                    </th>
+                }
+                @if (Model.InventaireType == 3)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Année de naissance
+                    </th>
+                }
+                @if (Model.InventaireType == 4 || Model.InventaireType == 5)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Date de naissance
+                    </th>
+                }
+                @if (Model.InventaireType == 3 || Model.InventaireType == 5)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Extension
+                    </th>
+                }
+                @if (Model.InventaireType == 10)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie" title="Production et/ou réalisation">Prod./Réal.</th>
+                }
+                @if (Model.InventaireType == 11)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie" title="Location à des tiers">Loc. Tiers</th>
+                }
+                @if (Model.InventaireType == 12)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie" title="Pro de l'immo">Pro Immo</th>
+                }
+                @if (Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant">CA(%)</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant">CA(€)</th>
+                }
+                @if (Model.InventaireType == 1 || Model.InventaireType == 3 || Model.InventaireType == 5 || Model.InventaireType == 8 || Model.InventaireType == 13 || Model.InventaireType == 14 || Model.InventaireType == 15)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant">
+                        @( Model.InventaireType == 15 ? "Montant /véhicule" : "Montant")
+                    </th>
+                }
+                @if (Model.InventaireType == 1 || Model.InventaireType == 2)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Nature lieu
+                    </th>
+                }
+                @if (Model.InventaireType == 3 || Model.InventaireType == 5)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Franchise
+                    </th>
+                }
+                @if (Model.InventaireType == 6)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie">
+                        Référence
+                    </th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie">Code matériel</th>
+                }
+                @if (Model.InventaireType == 9 || Model.InventaireType == 16)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate" title="Qualité de l'assuré">Qualité</th>
+                }
+                @if (Model.InventaireType == 9)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate" title="Renonciation à recours">Renonce</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate" title="Risques locatifs O/N/Exonéré">Rsq loc.</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Risques locatifs (€)">Rsq. loc. (€)</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Surface (m²)">Surface</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Contenu (€)">Contenu</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Matériels de bureautique (€)">Mat. bur.</th>
+                }
+                @if (Model.InventaireType == 6 || Model.InventaireType == 7)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant">
+                        Valeur
+                    </th>
+                }
+                @if (Model.InventaireType == 16)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="M² ou Euro">Valeur</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Euro">Valeur Contenu</th>
+                }
+                @if (Model.InventaireType == 17)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Nombre équidé(s)">Nombre équidé(s)</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Valeur Total (Euro)">Valeur Total (€)</th>
+                }
+                @if (Model.InventaireType == 18)
+                {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Surface (m²)">Surface (M²)</th>
+                }
+                <th class="@(Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 6 ? "tablePersoHead tdHeaderImg tdHeaderImgDesc" : "tablePersoHead tdHeaderImg")">
+                    @if (Model.IsReadOnly || Model.IsAvnDisabled == true || Model.IsModifHorsAvenant)
+                    {
+                        <img id="addInventaire" name="addInventaire" alt="Ajout inventaire" title="Ajout inventaire" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" />
+                    }
+                    else
+                    {
+                        <img id="addInventaire" name="addInventaire" alt="Ajout inventaire" title="Ajout inventaire" src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" />
+                    }
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div id="divBodyInventaire" class="@(Model.FullScreen ? "maxHeightFull" : "maxHeight")" style="@(Model.InventaireType == 9 ? "width:1656px;" : string.Empty)">
+        @Html.Hidden("idTimeInput", string.Empty)
+        @Html.Hidden("splitCharHtml", (ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML))
+        @Html.HiddenFor(m => m.InventaireType)
+        @Html.Hidden("currentHourDeb", string.Empty)
+        @Html.Hidden("currentMinuteDeb", string.Empty)
+        @Html.Hidden("currentHourFin", string.Empty)
+        @Html.Hidden("currentMinuteFin", string.Empty)
+        @Html.Hidden("EditInventaireId", string.Empty)
+        @Html.Hidden("InvenContextMenuId", string.Empty)
+        <table id="tblBodyInventaire" class="tableListInvent@(Model.InventaireType)">
+            <!-- cellpadding="0">fonctionne pas sous firefox-->
+            @{
+                var splitChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+                var albIndexLst = ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST;
+                var firstRow = Model.InventaireInfos[0];
+                <tr id="newInventaire" class="CursorPointer" albNameContext="inventaire" albinvenId="@(albIndexLst)">
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 6 || Model.InventaireType == 7 || Model.InventaireType == 8 || Model.InventaireType == 9 || Model.InventaireType == 16 || Model.InventaireType == 18)
+                    {
+                        <td class="tdBodyDescription">
+                            <input type="hidden" id="InventaireCode@(splitChar)@(albIndexLst)" name="InventaireCode" value="@(albIndexLst)" />
+                            <input type="text" id="InventaireDesignation@(splitChar)@(albIndexLst)" name="InventaireDesignation" class="inputDescription" value="@(firstRow.DescMat)" maxlength="40" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 13 || Model.InventaireType == 14)
+                    {
+                        <td class="tdNatureMarchandise"> <input type="text" class="inputNatureMarchandise" id="InventaireNatureMarchandise@(splitChar)@(albIndexLst)" name="InventaireNatureMarchandise" value="@firstRow.DescNatureMarchandise" maxlength="40" /> </td>
+                    }
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 9 || Model.InventaireType == 14 || Model.InventaireType == 16)
+                    {
+                        <td class="tdBodyAdresse">
+                            <input type="text" id="InventaireLieu@(splitChar)@(albIndexLst)" name="InventaireLieu" class="inputAdresse" value="@(firstRow.Lieu)" maxlength="40" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 9 || Model.InventaireType == 14 || Model.InventaireType == 16)
+                    {
+                        <td class="tdBodyCP">
+                            <input type="text" id="InventaireCodePostal@(splitChar)@(albIndexLst)" name="InventaireCodePostal" class="inputCP numerique" albmask="cpnumeric" maxlength="5" value="@(firstRow.CodePostal == 0 ? string.Empty : firstRow.CodePostal.ToString())" albautocomplete="autoCompCodePostal" albcontext="@(albIndexLst)" />
+                        </td>
+                        <td class="tdBodyLieuVilleDate">
+                            <input type="text" id="InventaireVille@(splitChar)@(albIndexLst)" name="InventaireVille" class="inputLieuVilleDate" value="@(firstRow.Ville)" albautocomplete="autoCompVille" albcontext="@(albIndexLst)" maxlength="30" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 18)
+                    {
+                        <td class="tdBodyAdresse">
+                            <!-- Container pour le retour de l'adresse Hexavia/Atlas -->
+                            @Html.Hidden("ContactAdresse.NoChrono", (firstRow.Adresse.NoChrono), new { id = "ContactAdresse_NoChrono", albContext = firstRow.Code })
+                            @Html.Hidden("ContactAdresse.UrlHexavia", ALBINGIA.OP.OP_MVC.MvcApplication.URL_HEXAVIA, new { id = "UrlHexavia", albContext = firstRow.Code })
+                            @Html.Hidden("ContactAdresse.UrlBackHexavia", ALBINGIA.OP.OP_MVC.MvcApplication.URL_BACKHEXAVIA, new { id = "UrlBackHexavia", albContext = firstRow.Code })
+                            @Html.Hidden("ContactAdresse.MatriculeHexavia", (firstRow.Adresse.MatriculeHexavia), new { id = "ContactAdresse_MatriculeHexavia", albContext = firstRow.Code })
+                            <input type="hidden" id="ContactAdresse_Latitude" name="ContactAdresse.Latitude" value="@(firstRow.Adresse.Latitude)" albcontext="@(firstRow.Code)" />
+                            <input type="hidden" id="ContactAdresse_Longitude" name="ContactAdresse.Longitude" value="@(firstRow.Adresse.Longitude)" albcontext="@(firstRow.Code)" />
+                            <div id="divInfoAdr" name="divInfoAdr" albContext="@(firstRow.Code)" class="nInfoBandeau">
+                                <div id="divErrorHexavia" name="divErrorHexavia" albContext="@(firstRow.Code)" class="FieldRow MsgErrorHexavia">
+                                    <div>
+                                        Adresse non valide
+                                    </div>
+                                </div>
+
+                                <div class="DoubleGenericColumn">
+                                    <div class="HeightRow nBGEntete1">
+                                        <div class="FloatLeft">
+                                            <label class="Block">Bâtiment | ZI</label>
+                                        </div>
+                                        <div class="FloatLeft">
+                                            <label id="lblBatiment" albcontext="@(firstRow.Code)">@firstRow.Adresse.Batiment</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_Batiment" name="ContactAdresse.Batiment" class="@(firstRow.Adresse.ReadOnly ? "readonly DoubleInputHalfBlock" : "DoubleInputHalfBlock")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex)" value="@(firstRow.Adresse.Batiment)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                    </div>
+                                    <div class="HeightRow nBGEntete2">
+                                        <div class="FloatLeft">
+                                            <label class="Block">N° | Ext | Voie</label>
+                                        </div>
+                                        <div class="FloatLeft PaddingRight">
+                                            <label id="lblNo" albcontext="@(firstRow.Code)">@firstRow.Adresse.No</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_No" name="ContactAdresse.No" class="@(firstRow.Adresse.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 1)" value="@(firstRow.Adresse.No)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                        <div class="FloatLeft PaddingRight">
+                                            <label id="lblExtension" albcontext="@(firstRow.Code)">@firstRow.Adresse.Extension</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_Extension" name="ContactAdresse.Extension" class="@(firstRow.Adresse.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 2)" value="@(firstRow.Adresse.Extension)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                        <div class="FloatLeft">
+                                            <label id="lblVoie" albcontext="@(firstRow.Code)">@firstRow.Adresse.Voie</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_Voie" name="ContactAdresse.Voie" class="@(firstRow.Adresse.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 3)" value="@(firstRow.Adresse.Voie)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                    </div>
+                                    <div class="HeightRow nBGEntete1">
+                                        <div class="FloatLeft">
+                                            <label class="Block">Distribution</label>
+                                        </div>
+                                        <div class="FloatLeft">
+                                            <label id="lblDistribution" albcontext="@(firstRow.Code)">@firstRow.Adresse.Distribution</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_Distribution" name="ContactAdresse.Distribution" class="@(firstRow.Adresse.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 4)" value="@(firstRow.Adresse.Distribution)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                    </div>
+                                    <div class="HeightRow nBGEntete2">
+                                        <div class="FloatLeft">
+                                            <label class="Block">CP | Ville</label>
+                                        </div>
+                                        <div class="FloatLeft PaddingRight">
+                                            <label id="lblCodePostal" albcontext="@(firstRow.Code)">@(!string.IsNullOrEmpty(firstRow.Adresse.CodePostal) && firstRow.Adresse.CodePostal != "00000" && firstRow.Adresse.CodePostal != "000" && firstRow.Adresse.CodePostal != "0" ? firstRow.Adresse.CodePostal : string.Empty)</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_CodePostal" name="ContactAdresse.CodePostal" class="@(firstRow.Adresse.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 5)" value="@(firstRow.Adresse.CodePostal)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                        <div class="FloatLeft">
+                                            <label id="lblVille" albcontext="@(firstRow.Code)">@firstRow.Adresse.Ville</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_Ville" name="ContactAdresse.Ville" class="@(firstRow.Adresse.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 6)" value="@(firstRow.Adresse.Ville)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                    </div>
+                                    <div class="HeightRow nBGEntete1">
+                                        <div class="FloatLeft">
+                                            <label class="Block">CP | Ville (Cedex)</label>
+                                        </div>
+                                        <div class="FloatLeft PaddingRight">
+                                            <label id="lblCodePostalCedex" albcontext="@(firstRow.Code)">@(!string.IsNullOrEmpty(firstRow.Adresse.CodePostalCedex) && firstRow.Adresse.CodePostalCedex != "00000" && firstRow.Adresse.CodePostalCedex != "000" && firstRow.Adresse.CodePostalCedex != "0" ? firstRow.Adresse.CodePostalCedex : string.Empty)</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_CodePostalCedex" name="ContactAdresse.CodePostalCedex" class="@(firstRow.Adresse.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 7)" value="@(firstRow.Adresse.CodePostalCedex)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                        <div class="FloatLeft">
+                                            <label id="lblVilleCedex" albcontext="@(firstRow.Code)">@firstRow.Adresse.VilleCedex</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_VilleCedex" name="ContactAdresse.VilleCedex" class="@(firstRow.Adresse.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 8)" value="@(firstRow.Adresse.VilleCedex)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                    </div>
+                                    <div class="HeightRow nBGEntete2">
+                                        <div class="FloatLeft">
+                                            <label class="Block">Pays</label>
+                                        </div>
+                                        <div class="FloatLeft">
+                                            <label id="lblPays" albcontext="@(firstRow.Code)">@firstRow.Adresse.Pays</label>
+                                            <input type="hidden" albhorsavn id="ContactAdresse_Pays" name="ContactAdresse.Pays" class="@(firstRow.Adresse.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(firstRow.Adresse.FirstIndex + 9)" value="@(firstRow.Pays)" albcontext="@(firstRow.Code)" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---------------------------------------------------------------->
+                            <!-- Container pour l'adresse à sauvegarder dans l'inventaire -->
+                            <input type="hidden" class="inputAdresseNoChrono" id="InventaireAdresseNoChrono@(splitChar)@(albIndexLst)" name="InventaireAdresseNoChrono" value="@firstRow.Adresse.NoChrono" />
+                            <input type="hidden" class="inputAdresseBatiment" id="InventaireAdresseBatiment@(splitChar)@(albIndexLst)" name="InventaireAdresseBatiment" value="@firstRow.Adresse.Batiment" />
+                            <input type="hidden" class="inputAdresseNo" id="InventaireAdresseNo@(splitChar)@(albIndexLst)" name="InventaireAdresseNo" value="@firstRow.Adresse.No" />
+                            <input type="hidden" class="inputAdresseExtension" id="InventaireAdresseExtension@(splitChar)@(albIndexLst)" name="InventaireAdresseExtension" value="@firstRow.Adresse.Extension" />
+                            <input type="hidden" class="inputAdresseVoie" id="InventaireAdresseVoie@(splitChar)@(albIndexLst)" name="InventaireAdresseVoie" value="@firstRow.Adresse.Voie" />
+                            <input type="hidden" class="inputAdresseDistribution" id="InventaireAdresseDistribution@(splitChar)@(albIndexLst)" name="InventaireAdresseDistribution" value="@firstRow.Adresse.Distribution" />
+                            <input type="hidden" class="inputAdresseCodePostal" id="InventaireAdresseCodePostal@(splitChar)@(albIndexLst)" name="InventaireAdresseCodePostal" value="@firstRow.Adresse.CodePostal" />
+                            <input type="hidden" class="inputAdresseVille" id="InventaireAdresseVille@(splitChar)@(albIndexLst)" name="InventaireAdresseVille" value="@firstRow.Adresse.Ville" />
+                            <input type="hidden" class="inputAdresseCodePostalCedex" id="InventaireAdresseCodePostalCedex@(splitChar)@(albIndexLst)" name="InventaireAdresseCodePostalCedex" value="@firstRow.Adresse.CodePostal" />
+                            <input type="hidden" class="inputAdresseVilleCedex" id="InventaireAdresseVilleCedex@(splitChar)@(albIndexLst)" name="InventaireAdresseVilleCedex" value="@firstRow.Adresse.VilleCedex" />
+                            <input type="hidden" class="inputAdressePays" id="InventaireAdressePays@(splitChar)@(albIndexLst)" name="InventaireAdressePays" value="@firstRow.Adresse.Pays" />
+                            <input type="hidden" class="inputAdresseMatriculeHexavia" id="InventaireAdresseMatriculeHexavia@(splitChar)@(albIndexLst)" name="InventaireAdresseMatriculeHexavia" value="@firstRow.Adresse.MatriculeHexavia" />
+                            <input type="hidden" class="inputAdresseLongitude" id="InventaireAdresseLongitude@(splitChar)@(albIndexLst)" name="InventaireAdresseLongitude" value="@firstRow.Adresse.Longitude" />
+                            <input type="hidden" class="inputAdresseLatitude" id="InventaireAdresseLatitude@(splitChar)@(albIndexLst)" name="InventaireAdresseLatitude" value="@firstRow.Adresse.Latitude" />
+                            <!---------------------------------------------------------------->
+                            <div class="FloatLeft invenEllipsis" style="width:220px">
+                                <label id="lblInfoNo" albcontext="@(firstRow.Code)">@(!string.IsNullOrEmpty(firstRow.Adresse.No) ? string.Format("{0}", firstRow.Adresse.No) : string.Empty) </label>
+                                <label id="lblInfoExtension" albcontext="@(firstRow.Code)">@firstRow.Adresse.Extension</label>
+                                <label id="lblInfoVoie" albcontext="@(firstRow.Code)">@firstRow.Adresse.Voie</label>
+                            </div>
+                            <div name="btnAdresse" albContext="@firstRow.Code" class="FloatRight CursorPointer" style="width:26px; margin-top: -4px;">
+                                <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                            </div>
+                        </td>
+                        <td class="tdBodyCP">
+                            <label id="lblInfoCodePostal" albContext="@firstRow.Code">
+                                @(!string.IsNullOrEmpty(firstRow.Adresse.CodePostal) && firstRow.Adresse.CodePostal != "00000" && firstRow.Adresse.CodePostal != "000" && firstRow.Adresse.CodePostal != "0" ?
+                                                                      firstRow.Adresse.CodePostal :
+                                                                      !string.IsNullOrEmpty(firstRow.Adresse.CodePostalCedex) && firstRow.Adresse.CodePostalCedex != "00000" && firstRow.Adresse.CodePostalCedex != "000" && firstRow.Adresse.CodePostalCedex != "0" ? firstRow.Adresse.CodePostalCedex : string.Empty)
+                            </label>
+                        </td>
+                        <td class="tdBodyLieuVilleDate" albContext="@firstRow.Code">
+                            <label id="lblInfoVille" albContext="@firstRow.Code">@(!string.IsNullOrEmpty(firstRow.Adresse.VilleCedex) ? firstRow.Adresse.VilleCedex : firstRow.Adresse.Ville)</label>
+                        </td>
+                    }
+                    @if (Model.InventaireType == 14)
+                    {
+                        <td class="tdPays">
+                            @Html.AlbDropDownListFor(m => m.Pays, Model.ListePays, "InventairePays", htmlAttributes: new { @id = string.Format("InventairePays{0}{1}", splitChar, albIndexLst), @class = "selectPays NonReprisCP", @albCFList = "pays" }, generateTitle: true, genEmptyLine: false)
+                        </td>
+                    }
+
+
+                    @if (Model.InventaireType == 15)
+                    {
+
+                        <td class="tdMarque"> <input class="inputMarque" type="text" id="InventaireMarque@(splitChar)@(albIndexLst)" name="InventaireMarque" value="@firstRow.Marque" /> </td>
+                        <td class="tdModele"> <input class="inputModele" type="text" id="InventaireModele@(splitChar)@(albIndexLst)" name="InventaireModele" value="@firstRow.Modele" /> </td>
+                        <td class="tdImmatriculation"> <input class="inputImmatriculation" type="text" id="InventaireImmatriculation@(splitChar)@(albIndexLst)" name="InventaireImmatriculation" value="@firstRow.Immatriculation" /> </td>
+                    }
+
+                    @if (Model.InventaireType == 13)
+                    {
+
+                        <td class="tdDepart"> <input class="inputDepart" type="text" id="InventaireDepart@(splitChar)@(albIndexLst)" name="InventaireDepart" value="@firstRow.DescDepart" /> </td>
+                        <td class="tdDestination"> <input class="inputDestination" type="text" id="InventaireDestination@(splitChar)@(albIndexLst)" name="InventaireDestination" value="@firstRow.DescDestination" /> </td>
+                        <td class="tdModalite"> <input class="inputModalite" type="text" id="InventaireModalite@(splitChar)@(albIndexLst)" name="InventaireModalite" value="@firstRow.DescModalite" /> </td>
+                    }
+
+
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 9 || Model.InventaireType == 13 || Model.InventaireType == 15)
+                    {
+                        <td class="tdBodyDate">
+                            <input type="text" id="InventaireDateDeb@(splitChar)@(albIndexLst)" name="InventaireDateDeb" class="inputDate datepicker" value="@(firstRow.DateDebStr)" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 9)
+                    {
+                        <td class="tdBodyHeure">
+                            <input type="text" id="InventaireHeureDeb@(splitChar)@(albIndexLst)" name="InventaireHeureDeb" class="inputHeure" value="@(firstRow.HeureDebStr)" readonly="readonly" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 9 || Model.InventaireType == 13 || Model.InventaireType == 15)
+                    {
+                        <td class="tdBodyDate">
+                            <input type="text" id="InventaireDateFin@(splitChar)@(albIndexLst)" name="InventaireDateFin" class="inputDate datepicker" value="@(firstRow.DateFinStr)" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 9)
+                    {
+                        <td class="tdBodyHeure">
+                            <input type="text" id="InventaireHeureFin@(splitChar)@(albIndexLst)" name="InventaireHeureFin" class="inputHeure" value="@(firstRow.HeureFinStr)" readonly="readonly" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 3 || Model.InventaireType == 4 || Model.InventaireType == 5)
+                    {
+                        <td class="tdBodyNom">
+                            <input type="text" id="InventaireNom@(splitChar)@(albIndexLst)" name="InventaireNom" value="" maxlength="40" />
+                        </td>
+                        <td class="tdBodyNom">
+                            <input type="text" id="InventairePrenom@(splitChar)@(albIndexLst)" name="InventairePrenom" value="" maxlength="30" />
+                        </td>
+                        <td class="tdBodyFonction">
+                            <input type="text" id="InventaireFonction@(splitChar)@(albIndexLst)" name="InventaireFonction" value="" maxlength="30" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 3)
+                    {
+                        <td class="tdBodyLieuVilleDate">
+                            <input type="text" id="InventaireAnneeNaissance@(splitChar)@(albIndexLst)" name="InventaireAnneeNaissance" class="inputLieuVilleDate numerique" albmask="yearnumeric" maxlength="4" value="" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 4 || Model.InventaireType == 5)
+                    {
+                        <td class="tdBodyLieuVilleDate">
+                            <input type="text" id="InventaireDateNaissance@(splitChar)@(albIndexLst)" name="InventaireDateNaissance" class="inputLieuVilleDate datepicker" value="" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 3 || Model.InventaireType == 5)
+                    {
+                        <td class="tdFranchiseExtension">
+                            @Html.AlbDropDownListFor(m => m.CodeExtension, Model.CodesExtension.Select(u => { u.Selected = (u.Value == Model.CodeExtension ? true : false); return u; }).ToList(), "InventaireCodeExtension", htmlAttributes: new { @id = string.Format("InventaireCodeExtension{0}{1}", splitChar, albIndexLst), @albCFList = "codeextension", @class = "inputLieuVilleDate" }, generateTitle: true)
+                        </td>
+                    }
+                    @if (Model.InventaireType == 6)
+                    {
+                        <td class="tdBodyNumSerie">
+                            <input type="text" id="InventaireNumSerie@(splitChar)@(albIndexLst)" name="InventaireNumSerie" value="" maxlength="40" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 6 || Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12)
+                    {
+                        <td class="tdBodyNumSerie">
+                            @Html.AlbDropDownListFor(m => Model.CodeMateriel, Model.CodesMateriel.Select(u => { u.Selected = (u.Value == Model.CodeMateriel ? true : false); return u; }).ToList(), "InventaireCodeMat", htmlAttributes: new { @id = string.Format("InventaireCodeMat{0}{1}", splitChar, albIndexLst), @albCFList = "codemateriel" }, generateTitle: true)
+                        </td>
+                    }
+                    @if (Model.InventaireType == 9 || Model.InventaireType == 16)
+                    {
+                        <td class="tdBodyLieuVilleDate">
+                            @Html.AlbDropDownListFor(m => Model.CodeQualite, Model.CodesQualite.Select(u => { u.Selected = (u.Value == Model.CodeQualite ? true : false); return u; }).ToList(), "InventaireCodeQualite", htmlAttributes: new { @id = string.Format("InventaireCodeQualite{0}{1}", splitChar, albIndexLst), @albCFList = "codequalite", @class = "inputLieuVilleDate" }, generateTitle: true)
+                        </td>
+                    }
+                    @if (Model.InventaireType == 9)
+                    {
+                        <td class="tdBodyLieuVilleDate">
+                            @Html.AlbDropDownListFor(m => Model.CodeRenonce, Model.CodesRenonce.Select(u => { u.Selected = (u.Value == Model.CodeRenonce ? true : false); return u; }).ToList(), "InventaireCodeRenonce", htmlAttributes: new { @id = string.Format("InventaireCodeRenonce{0}{1}", splitChar, albIndexLst), @albCFList = "coderenonce", @class = "inputLieuVilleDate" }, generateTitle: true)
+                        </td>
+                        <td class="tdBodyLieuVilleDate">
+                            @Html.AlbDropDownListFor(m => Model.CodeRsqLoc, Model.CodesRsqLoc.Select(u => { u.Selected = (u.Value == Model.CodeRsqLoc ? true : false); return u; }).ToList(), "InventaireCodeRsqLoc", htmlAttributes: new { @id = string.Format("InventaireCodeRsqLoc{0}{1}", splitChar, albIndexLst), @albCFList = "codersqloc", @class = "inputLieuVilleDate" }, generateTitle: true)
+                        </td>
+                    }
+                    @if (Model.InventaireType == 17)
+                    {
+                        <td class="tdBodyMontant">
+                            <input type="text" id="InventaireNbPers@(splitChar)@(albIndexLst)" name="InventaireNbPers" class="inputMontant numerique" value="" albMask="numeric" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 3 || Model.InventaireType == 5 || Model.InventaireType == 6 || Model.InventaireType == 7 || Model.InventaireType == 8 || Model.InventaireType == 9 || Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 || Model.InventaireType == 13 || Model.InventaireType == 14 || Model.InventaireType == 15 || Model.InventaireType == 16 || Model.InventaireType == 17 || Model.InventaireType == 18)
+                    {
+                        <td class="tdBodyMontant">
+                            <input type="text" id="InventaireMontant@(splitChar)@(albIndexLst)" name="InventaireMontant" class="@(Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 ? "inputMontant numerique" : "inputMontant decimal")" value="" albMask="@(Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 ? "pourcentnumeric" : "decimal")" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 9 || Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 || Model.InventaireType == 16)
+                    {
+                        <td class="tdBodyMontant">
+                            <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireMnt2@(splitChar)@(albIndexLst)" name="InventaireMnt2" value="@(Model.Mnt2 == 0 ? string.Empty : Model.Mnt2.ToString())" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 9)
+                    {
+                        <td class="tdBodyMontant">
+                            <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireContenu@(splitChar)@(albIndexLst)" name="InventaireContenu" value="@(Model.Contenu == 0 ? string.Empty : Model.Contenu.ToString())" />
+                        </td>
+                        <td class="tdBodyMontant">
+                            <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireMatBur@(splitChar)@(albIndexLst)" name="InventaireMatBur" value="@(Model.MatBur == 0 ? string.Empty : Model.MatBur.ToString())" />
+                        </td>
+                    }
+                    @if (Model.InventaireType == 1 || Model.InventaireType == 2)
+                    {
+                        <td class="tdBodyLieuVilleDate">
+                            @Html.AlbDropDownListFor(m => m.NatureLieu, Model.NaturesLieu, "InventaireNatureLieu", htmlAttributes: new { @id = string.Format("InventaireNatureLieu{0}{1}", splitChar, albIndexLst), @class = "inputLieuVilleDate NonReprisCP", @albCFList = "naturelieu" }, generateTitle: true)
+                        </td>
+                    }
+                    @if (Model.InventaireType == 3 || Model.InventaireType == 5)
+                    {
+                        <td class="tdFranchiseExtension">
+                            <input type="text" id="InventaireFranchise@(splitChar)@(albIndexLst)" name="InventaireFranchise" class="inputLieuVilleDate" value="" maxlength="40" />
+                        </td>
+                    }
+                    <td class="@(Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 6 ? "tdBodyImgDesc" : "tdBodyImg")">
+                        <img id="saveInventaire@(splitChar)@(albIndexLst)" name="saveInventaire" alt="Sauver l'inventaire" title="Sauver l'inventaire" src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer" />
+                    </td>
+                </tr>
+                foreach (var row in Model.InventaireInfos)
+                {
+                    if (row.Code == ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST)
+                    {
+                        continue;
+                    }
+                    <tr id="tr@(row.Code)" class="CursorPointer" name="rowInventaire" albNameContext="inventaire" albinvenId="@(row.Code)">
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 6 || Model.InventaireType == 7 || Model.InventaireType == 8 || Model.InventaireType == 9 || Model.InventaireType == 16 | Model.InventaireType == 18)
+                        {
+                            <td name="lock" id="divCode@(splitChar)@(row.Code)" class="tdBodyDescription invenEllipsis" title="@row.Designation">
+                                <input type="hidden" id="InventaireCode@(splitChar)@(row.Code)" name="InventaireCode" value="@(row.Code)" />
+                                @row.Designation
+                            </td>
+                            <td name="edit" id="tdCode@(splitChar)@(row.Code)" class="tdBodyDescription">
+                                <input class="inputDescription" type="text" id="InventaireDesignation@(splitChar)@(row.Code)" name="InventaireDesignation" value="@(row.Designation)" maxlength="40" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 15)
+                        {
+
+                            <td name="lock" id="divMarque@(splitChar)@(row.Code)" class="tdMarque invenEllipsis" title="@row.Marque"> @row.Marque </td>
+                            <td name="edit" id="tdMarque@(splitChar)@(row.Code)" class="">
+                                <input class="inputMarque" type="text" id="InventaireMarque@(splitChar)@(row.Code)" name="InventaireMarque" value="@(row.Marque)" maxlength="40" />
+                            </td>
+
+                            <td name="lock" id="divModelee@(splitChar)@(row.Code)" class="tdModele invenEllipsis" title="@row.Modele"> @row.Modele </td>
+                            <td name="edit" id="tdModele@(splitChar)@(row.Code)" class="tdModele">
+                                <input class="inputModele" type="text" id="InventaireModele@(splitChar)@(row.Code)" name="InventaireModele" value="@(row.Modele)" maxlength="40" />
+                            </td>
+
+                            <td name="lock" id="divImmatriculation@(splitChar)@(row.Code)" class="tdImmatriculation invenEllipsis" title="@row.Immatriculation"> @row.Immatriculation</td>
+                            <td name="edit" id="tdImmatriculation@(splitChar)@(row.Code)" class="tdImmatriculation">
+                                <input class="inputImmatriculation" type="text" id="InventaireImmatriculation@(splitChar)@(row.Code)" name="InventaireImmatriculation" value="@(row.Immatriculation)" maxlength="40" />
+                            </td>
+
+                        }
+                        @if (Model.InventaireType == 13 || Model.InventaireType == 14)
+                        {
+                            <td name="lock" id="divNatureMarchandise@(splitChar)@(row.Code)" class="tdNatureMarchandise invenEllipsis" title="@row.DescNatureMarchandise"> @row.DescNatureMarchandise</td>
+                            <td name="edit" id="tdNatureMarchandise@(splitChar)@(row.Code)" class="tdNatureMarchandise">
+                                <input class="inputNatureMarchandise" type="text" id="InventaireNatureMarchandise@(splitChar)@(row.Code)" name="InventaireNatureMarchandise" value="@(row.DescNatureMarchandise)" maxlength="40" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 13)
+                        {
+                            <td name="lock" id="divdepart@(splitChar)@(row.Code)" class="tdDepart invenEllipsis" title="@row.DescDepart"> @row.DescDepart</td>
+                            <td name="edit" id="tdDepart@(splitChar)@(row.Code)" class="tdDepart">
+                                <input class="inputDepart" type="text" id="InventaireDepart@(splitChar)@(row.Code)" name="InventaireDepart" value="@(row.DescDepart)" maxlength="40" />
+                            </td>
+
+                            <td name="lock" id="divDestination@(splitChar)@(row.Code)" class="tdDestination invenEllipsis" title="@row.DescDestination"> @row.DescDestination</td>
+                            <td name="edit" id="tdDestination@(splitChar)@(row.Code)" class="tdDestination">
+                                <input class="inputDestination" type="text" id="InventaireDestination@(splitChar)@(row.Code)" name="InventaireDestination" value="@(row.DescDestination)" maxlength="40" />
+                            </td>
+
+                            <td name="lock" id="divModalite@(splitChar)@(row.Code)" class="tdModalite invenEllipsis" title="@row.DescModalite"> @row.DescModalite</td>
+                            <td name="edit" id="tdModalite@(splitChar)@(row.Code)" class="tdModalite">
+                                <input class="inputModalite" type="text" id="InventaireModalite@(splitChar)@(row.Code)" name="InventaireModalite" value="@(row.DescModalite)" maxlength="40" />
+                            </td>
+                        }
+
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 9 || Model.InventaireType == 14 || Model.InventaireType == 16)
+                        {
+                            <td name="lock" id="divLieu@(splitChar)@(row.Code)" class="tdBodyAdresse invenEllipsis" title="@row.Lieu">
+                                @row.Lieu
+                            </td>
+                            <td name="edit" id="tdLieu@(splitChar)@(row.Code)" class="tdBodyAdresse">
+                                <input class="inputAdresse" type="text" id="InventaireLieu@(splitChar)@(row.Code)" name="InventaireLieu" value="@(row.Lieu)" maxlength="40" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 9 || Model.InventaireType == 14 || Model.InventaireType == 16)
+                        {
+                            <td name="lock" id="divCodePostal@(splitChar)@(row.Code)" class="tdBodyCP">
+                                <span>@(row.CodePostal == 0 ? string.Empty : row.CodePostal.ToString())</span>
+                            </td>
+                            <td name="edit" id="tdCodePostal@(splitChar)@(row.Code)" class="tdBodyCP">
+                                <input class="inputCP numerique" albMask="cpnumeric" type="text" id="InventaireCodePostal@(splitChar)@(row.Code)" name="InventaireCodePostal" value="@(row.CodePostal == 0 ? string.Empty : row.CodePostal.ToString())" maxlength="5" albautocomplete="autoCompCodePostal" albcontext="@(row.Code)" />
+                            </td>
+                            <td name="lock" id="divVille@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate invenEllipsis" title="@row.Ville">
+                                @row.Ville
+                            </td>
+                            <td name="edit" id="tdVille@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                <input class="inputLieuVilleDate" type="text" id="InventaireVille@(splitChar)@(row.Code)" name="InventaireVille" value="@(row.Ville)" albautocomplete="autoCompVille" albcontext="@(row.Code)" maxlength="30" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 18)
+                        {
+                            <td name="lock" id="divLieu@(splitChar)@(row.Code)" class="tdBodyAdresse invenEllipsis" title="@row.Adresse.Batiment @row.Adresse.No @row.Adresse.Extension @row.Adresse.Voie  @row.Adresse.Distribution">
+                                @row.Adresse.Batiment @row.Adresse.No @row.Adresse.Extension @row.Adresse.Voie  @row.Adresse.Distribution
+                            </td>
+                            <td name="edit" id="tdLieu@(splitChar)@(row.Code)" class="tdBodyAdresse">
+                                <div class="FloatLeft invenEllipsis" style="width: 220px;">
+                                    <label id="lblInfoNo" albcontext="@(row.Code)">@(!string.IsNullOrEmpty(row.Adresse.No) ? string.Format("{0}", row.Adresse.No) : string.Empty) </label>
+                                    <label id="lblInfoExtension" albcontext="@(row.Code)">@row.Adresse.Extension</label>
+                                    <label id="lblInfoVoie" albcontext="@(row.Code)">@row.Adresse.Voie</label>
+                                </div>
+                                <div name="btnAdresse" albContext="@row.Code" class="FloatRight CursorPointer" style="width:26px; margin-top: -4px;">
+                                    <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                                </div>
+                                <!-- Container pour le retour de l'adresse Hexavia/Atlas -->
+                                @Html.Hidden("ContactAdresse.NoChrono", (row.Adresse.NoChrono), new { id = "ContactAdresse_NoChrono", albContext = row.Code })
+                                @Html.Hidden("ContactAdresse.UrlHexavia", ALBINGIA.OP.OP_MVC.MvcApplication.URL_HEXAVIA, new { id = "UrlHexavia", albContext = row.Code })
+                                @Html.Hidden("ContactAdresse.UrlBackHexavia", ALBINGIA.OP.OP_MVC.MvcApplication.URL_BACKHEXAVIA, new { id = "UrlBackHexavia", albContext = row.Code })
+                                @Html.Hidden("ContactAdresse.MatriculeHexavia", (row.Adresse.MatriculeHexavia), new { id = "ContactAdresse_MatriculeHexavia", albContext = row.Code })
+                                <input type="hidden" id="ContactAdresse_Latitude" name="ContactAdresse.Latitude" value="@(row.Adresse.Latitude)" albcontext="@(row.Code)" />
+                                <input type="hidden" id="ContactAdresse_Longitude" name="ContactAdresse.Longitude" value="@(row.Adresse.Longitude)" albcontext="@(row.Code)" />
+                                <div id="divInfoAdr" name="divInfoAdr" albContext="@(row.Code)" class="nInfoBandeau">
+                                    <div id="divErrorHexavia" name="divErrorHexavia" albContext="@(row.Code)" class="FieldRow MsgErrorHexavia">
+                                        <div>
+                                            Adresse non valide
+                                        </div>
+                                    </div>
+
+                                    <div class="DoubleGenericColumn">
+                                        <div class="HeightRow nBGEntete1">
+                                            <div class="FloatLeft">
+                                                <label class="Block">Bâtiment | ZI</label>
+                                            </div>
+                                            <div class="FloatLeft">
+                                                <label id="lblBatiment" albcontext="@(row.Code)">@row.Adresse.Batiment</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_Batiment" name="ContactAdresse.Batiment" class="@(row.Adresse.ReadOnly ? "readonly DoubleInputHalfBlock" : "DoubleInputHalfBlock")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex)" value="@(row.Adresse.Batiment)" albcontext="@(row.Code)" />
+                                            </div>
+                                        </div>
+                                        <div class="HeightRow nBGEntete2">
+                                            <div class="FloatLeft">
+                                                <label class="Block">N° | Ext | Voie</label>
+                                            </div>
+                                            <div class="FloatLeft PaddingRight">
+                                                <label id="lblNo" albcontext="@(row.Code)">@row.Adresse.No</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_No" name="ContactAdresse.No" class="@(row.Adresse.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 1)" value="@(row.Adresse.No)" albcontext="@(row.Code)" />
+                                            </div>
+                                            <div class="FloatLeft PaddingRight">
+                                                <label id="lblExtension" albcontext="@(row.Code)">@row.Adresse.Extension</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_Extension" name="ContactAdresse.Extension" class="@(row.Adresse.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 2)" value="@(row.Adresse.Extension)" albcontext="@(row.Code)" />
+                                            </div>
+                                            <div class="FloatLeft">
+                                                <label id="lblVoie" albcontext="@(row.Code)">@row.Adresse.Voie</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_Voie" name="ContactAdresse.Voie" class="@(row.Adresse.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 3)" value="@(row.Adresse.Voie)" albcontext="@(row.Code)" />
+                                            </div>
+                                        </div>
+                                        <div class="HeightRow nBGEntete1">
+                                            <div class="FloatLeft">
+                                                <label class="Block">Distribution</label>
+                                            </div>
+                                            <div class="FloatLeft">
+                                                <label id="lblDistribution" albcontext="@(row.Code)">@row.Adresse.Distribution</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_Distribution" name="ContactAdresse.Distribution" class="@(row.Adresse.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 4)" value="@(row.Adresse.Distribution)" albcontext="@(row.Code)" />
+                                            </div>
+                                        </div>
+                                        <div class="HeightRow nBGEntete2">
+                                            <div class="FloatLeft">
+                                                <label class="Block">CP | Ville</label>
+                                            </div>
+                                            <div class="FloatLeft PaddingRight">
+                                                <label id="lblCodePostal" albcontext="@(row.Code)">@(!string.IsNullOrEmpty(row.Adresse.CodePostal) && row.Adresse.CodePostal != "00000" && row.Adresse.CodePostal != "000" && row.Adresse.CodePostal != "0" ? row.Adresse.CodePostal : string.Empty)</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_CodePostal" name="ContactAdresse.CodePostal" class="@(row.Adresse.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 5)" value="@(row.Adresse.CodePostal)" albcontext="@(row.Code)" />
+                                            </div>
+                                            <div class="FloatLeft">
+                                                <label id="lblVille" albcontext="@(row.Code)">@row.Adresse.Ville</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_Ville" name="ContactAdresse.Ville" class="@(row.Adresse.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 6)" value="@(row.Adresse.Ville)" albcontext="@(row.Code)" />
+                                            </div>
+                                        </div>
+                                        <div class="HeightRow nBGEntete1">
+                                            <div class="FloatLeft">
+                                                <label class="Block">CP | Ville (Cedex)</label>
+                                            </div>
+                                            <div class="FloatLeft PaddingRight">
+                                                <label id="lblCodePostalCedex" albcontext="@(row.Code)">@(!string.IsNullOrEmpty(row.Adresse.CodePostalCedex) && row.Adresse.CodePostalCedex != "00000" && row.Adresse.CodePostalCedex != "000" && row.Adresse.CodePostalCedex != "0" ? row.Adresse.CodePostalCedex : string.Empty)</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_CodePostalCedex" name="ContactAdresse.CodePostalCedex" class="@(row.Adresse.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 7)" value="@(row.Adresse.CodePostalCedex)" albcontext="@(row.Code)" />
+                                            </div>
+                                            <div class="FloatLeft">
+                                                <label id="lblVilleCedex" albcontext="@(row.Code)">@row.Adresse.VilleCedex</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_VilleCedex" name="ContactAdresse.VilleCedex" class="@(row.Adresse.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 8)" value="@(row.Adresse.VilleCedex)" albcontext="@(row.Code)" />
+                                            </div>
+                                        </div>
+                                        <div class="HeightRow nBGEntete2">
+                                            <div class="FloatLeft">
+                                                <label class="Block">Pays</label>
+                                            </div>
+                                            <div class="FloatLeft">
+                                                <label id="lblPays" albcontext="@(row.Code)">@row.Adresse.Pays</label>
+                                                <input type="hidden" albhorsavn id="ContactAdresse_Pays" name="ContactAdresse.Pays" class="@(row.Adresse.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(row.Adresse.FirstIndex + 9)" value="@(row.Pays)" albcontext="@(row.Code)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---------------------------------------------------------------->
+                                <!-- Container pour l'adresse à sauvegarder dans l'inventaire -->
+                                <input type="hidden" class="inputAdresseNoChrono" id="InventaireAdresseNoChrono@(splitChar)@(row.Code)" name="InventaireAdresseNoChrono" value="@row.Adresse.NoChrono" />
+                                <input type="hidden" class="inputAdresseBatiment" id="InventaireAdresseBatiment@(splitChar)@(row.Code)" name="InventaireAdresseBatiment" value="@row.Adresse.Batiment" />
+                                <input type="hidden" class="inputAdresseNo" id="InventaireAdresseNo@(splitChar)@(row.Code)" name="InventaireAdresseNo" value="@row.Adresse.No" />
+                                <input type="hidden" class="inputAdresseExtension" id="InventaireAdresseExtension@(splitChar)@(row.Code)" name="InventaireAdresseExtension" value="@row.Adresse.Extension" />
+                                <input type="hidden" class="inputAdresseVoie" id="InventaireAdresseVoie@(splitChar)@(row.Code)" name="InventaireAdresseVoie" value="@row.Adresse.Voie" />
+                                <input type="hidden" class="inputAdresseDistribution" id="InventaireAdresseDistribution@(splitChar)@(row.Code)" name="InventaireAdresseDistribution" value="@row.Adresse.Distribution" />
+                                <input type="hidden" class="inputAdresseCodePostal" id="InventaireAdresseCodePostal@(splitChar)@(row.Code)" name="InventaireAdresseCodePostal" value="@row.Adresse.CodePostal" />
+                                <input type="hidden" class="inputAdresseVille" id="InventaireAdresseVille@(splitChar)@(row.Code)" name="InventaireAdresseVille" value="@row.Adresse.Ville" />
+                                <input type="hidden" class="inputAdresseCodePostalCedex" id="InventaireAdresseCodePostalCedex@(splitChar)@(row.Code)" name="InventaireAdresseCodePostalCedex" value="@row.Adresse.CodePostal" />
+                                <input type="hidden" class="inputAdresseVilleCedex" id="InventaireAdresseVilleCedex@(splitChar)@(row.Code)" name="InventaireAdresseVilleCedex" value="@row.Adresse.VilleCedex" />
+                                <input type="hidden" class="inputAdressePays" id="InventaireAdressePays@(splitChar)@(row.Code)" name="InventaireAdressePays" value="@row.Adresse.Pays" />
+                                <input type="hidden" class="inputAdresseMatriculeHexavia" id="InventaireAdresseMatriculeHexavia@(splitChar)@(row.Code)" name="InventaireAdresseMatriculeHexavia" value="@row.Adresse.MatriculeHexavia" />
+                                <input type="hidden" class="inputAdresseLongitude" id="InventaireAdresseLongitude@(splitChar)@(row.Code)" name="InventaireAdresseLongitude" value="@row.Adresse.Longitude" />
+                                <input type="hidden" class="inputAdresseLatitude" id="InventaireAdresseLatitude@(splitChar)@(row.Code)" name="InventaireAdresseLatitude" value="@row.Adresse.Latitude" />
+                                <!---------------------------------------------------------------->
+                            </td>
+                            <td name="lock" id="divCodePostal@(splitChar)@(row.Code)" class="tdBodyCP">
+                                <span>@(row.Adresse.CodePostal == "0" ? string.Empty : row.Adresse.CodePostal.ToString())</span>
+                            </td>
+                            <td name="edit" id="tdCodePostal@(splitChar)@(row.Code)" class="tdBodyCP">
+                                <label id="lblInfoCodePostal" albContext="@row.Code">
+                                    @(!string.IsNullOrEmpty(row.Adresse.CodePostal) && row.Adresse.CodePostal != "00000" && row.Adresse.CodePostal != "000" && row.Adresse.CodePostal != "0" ?
+                                                                                  row.Adresse.CodePostal :
+                                                                                  !string.IsNullOrEmpty(row.Adresse.CodePostalCedex) && row.Adresse.CodePostalCedex != "00000" && row.Adresse.CodePostalCedex != "000" && row.Adresse.CodePostalCedex != "0" ? row.Adresse.CodePostalCedex : string.Empty)
+                                </label>
+                            </td>
+                            <td name="lock" id="divVille@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate invenEllipsis" title="@row.Adresse.Ville">
+                                @row.Adresse.Ville
+                            </td>
+                            <td name="edit" id="tdVille@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                <label id="lblInfoVille" albContext="@row.Code">@(!string.IsNullOrEmpty(row.Adresse.VilleCedex) ? row.Adresse.VilleCedex : row.Adresse.Ville)</label>
+                            </td>
+                        }
+                        @if (Model.InventaireType == 14)
+                        {
+                            <td name="lock" id="divPays@(splitChar)@(row.Code)" class="tdPays invenEllipsis" albCFList="pays" title="@(row.Pays)- @(row.DescPays)">
+                                @(!string.IsNullOrEmpty(row.DescPays) ? string.Format("{0} - {1}", row.Pays, row.DescPays) : string.Empty)
+                            </td>
+                            <td name="edit" id="tdPays@(splitChar)@(row.Code)" class="tdPays">
+                                @Html.AlbDropDownListFor(m => row.Pays, Model.ListePays.Select(u => { u.Selected = (u.Value == row.Pays ? true : false); return u; }).ToList(), "InventairePays", htmlAttributes: new { @id = string.Format("InventairePays{0}{1}", splitChar, row.Code), @class = "selectPays", @albCFList = "pays" }, generateTitle: true, genEmptyLine: false)
+                            </td>
+                        }
+
+
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 9 || Model.InventaireType == 13 || Model.InventaireType == 15)
+                        {
+                            <td name="lock" id="divDateDeb@(splitChar)@(row.Code)" class="tdBodyDate">
+                                @row.DateDebStr
+                            </td>
+                            <td name="edit" id="tdDateDeb@(splitChar)@(row.Code)" class="tdBodyDate">
+                                <input class="inputDate datepicker" type="text" id="InventaireDateDeb@(splitChar)@(row.Code)" name="InventaireDateDeb" value="@(row.DateDebStr)" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 9)
+                        {
+                            <td name="lock" id="divHeureDeb@(splitChar)@(row.Code)" class="tdBodyHeure">
+                                @(string.IsNullOrEmpty(row.DateDebStr) ? string.Empty : row.HeureDebStr)
+                            </td>
+                            <td name="edit" id="tdHeureDeb@(splitChar)@(row.Code)" class="tdBodyHeure">
+                                <input class="inputHeure" type="text" id="InventaireHeureDeb@(splitChar)@(row.Code)" name="InventaireHeureDeb" value="@(string.IsNullOrEmpty(row.DateDebStr) ? string.Empty : row.HeureDebStr)" readonly="readonly" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 9 || Model.InventaireType == 13 || Model.InventaireType == 15)
+                        {
+                            <td name="lock" id="divDateFin@(splitChar)@(row.Code)" class="tdBodyDate">
+                                @row.DateFinStr
+                            </td>
+                            <td name="edit" id="tdDateFin@(splitChar)@(row.Code)" class="tdBodyDate">
+                                <input class="inputDate datepicker" type="text" id="InventaireDateFin@(splitChar)@(row.Code)" name="InventaireDateFin" value="@(row.DateFinStr)" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 9)
+                        {
+                            <td name="lock" id="divHeureFin@(splitChar)@(row.Code)" class="tdBodyHeure">
+                                @(string.IsNullOrEmpty(row.DateFinStr) ? string.Empty : row.HeureFinStr)
+                            </td>
+                            <td name="edit" id="tdHeureFin@(splitChar)@(row.Code)" class="tdBodyHeure">
+                                <input class="inputHeure" type="text" id="InventaireHeureFin@(splitChar)@(row.Code)" name="InventaireHeureFin" value="@(string.IsNullOrEmpty(row.DateFinStr) ? string.Empty : row.HeureFinStr)" readonly="readonly" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 3 || Model.InventaireType == 4 || Model.InventaireType == 5)
+                        {
+                            <td name="lock" id="divNom@(splitChar)@(row.Code)" class="tdBodyNom invenEllipsis" title="@row.Nom">
+                                @row.Nom
+                            </td>
+                            <td name="edit" id="tdNom@(splitChar)@(row.Code)" class="tdBodyNom">
+                                <input type="text" id="InventaireNom@(splitChar)@(row.Code)" name="InventaireNom" value="@(row.Nom)" maxlength="40" />
+                            </td>
+                            <td name="lock" id="divPrenom@(splitChar)@(row.Code)" class="tdBodyNom invenEllipsis" title="@row.Prenom">
+                                @row.Prenom
+                            </td>
+                            <td name="edit" id="tdPrenom@(splitChar)@(row.Code)" class="tdBodyNom">
+                                <input type="text" id="InventairePrenom@(splitChar)@(row.Code)" name="InventairePrenom" value="@(row.Prenom)" maxlength="30" />
+                            </td>
+                            <td name="lock" id="divFonction@(splitChar)@(row.Code)" class="tdBodyFonction invenEllipsis" title="@row.Fonction">
+                                @row.Fonction
+                            </td>
+                            <td name="edit" id="tdFonction@(splitChar)@(row.Code)" class="tdBodyFonction">
+                                <input type="text" id="InventaireFonction@(splitChar)@(row.Code)" name="InventaireFonction" value="@(row.Fonction)" maxlength="30" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 3)
+                        {
+                            <td name="lock" id="divDateNaissance@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate" style="text-align:center;">
+                                @row.AnneeNaissance
+                            </td>
+                            <td name="edit" id="tdDateNaissance@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                <input type="text" class="inputLieuVilleDate numerique" id="InventaireAnneeNaissance@(splitChar)@(row.Code)" name="InventaireAnneeNaissance" albmask="yearnumeric" maxlength="4" value="@(row.AnneeNaissance)" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 4 || Model.InventaireType == 5)
+                        {
+                            <td name="lock" id="divDateNaissance@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                @row.DateNaissanceStr
+                            </td>
+                            <td name="edit" id="tdDateNaissance@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                <input type="text" class="inputLieuVilleDate datepicker" id="InventaireDateNaissance@(splitChar)@(row.Code)" name="InventaireDateNaissance" value="@(row.DateNaissanceStr)" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 3 || Model.InventaireType == 5)
+                        {
+                            <td name="lock" id="divExtension@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate invenEllipsis" albCFList="codeextension" title="@(!string.IsNullOrEmpty(row.CodeExtension) ? string.Format("{0} - {1}", row.CodeExtension, row.DescExtension) : string.Empty)">
+                                @(!string.IsNullOrEmpty(row.CodeExtension) ? string.Format("{0} - {1}", row.CodeExtension, row.DescExtension) : string.Empty)
+                            </td>
+                            <td name="edit" id="tdExtension@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                @Html.AlbDropDownListFor(m => row.CodeExtension, Model.CodesExtension.Select(u => { u.Selected = (u.Value == row.CodeExtension ? true : false); return u; }).ToList(), "InventaireCodeExtension", htmlAttributes: new { @id = string.Format("InventaireCodeExtension{0}{1}", splitChar, row.Code), @albCFList = "codeextension", @class = "inputLieuVilleDate" }, generateTitle: true)
+                            </td>
+                        }
+                        @if (Model.InventaireType == 6)
+                        {
+                            <td name="lock" id="divNumSerie@(splitChar)@(row.Code)" class="tdBodyNumSerie invenEllipsis" title="@row.NumSerie">
+                                @row.NumSerie
+                            </td>
+                            <td name="edit" id="tdNumSerie@(splitChar)@(row.Code)" class="tdBodyNumSerie">
+                                <input type="text" id="InventaireNumSerie@(splitChar)@(row.Code)" name="InventaireNumSerie" value="@(row.NumSerie)" maxlength="40" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 6 || Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12)
+                        {
+                            <td name="lock" id="divCodeMat@(splitChar)@(row.Code)" class="tdBodyNumSerie invenEllipsis" albCFList="codemateriel" title="@(row.CodeMateriel) - @(row.DescMat)">
+                                @(!string.IsNullOrEmpty(row.CodeMateriel) ? string.Format("{0} - {1}", row.CodeMateriel, row.DescMat) : string.Empty)
+                            </td>
+                            <td name="edit" id="tdCodeMat@(splitChar)@(row.Code)" class="tdBodyNumSerie">
+                                @Html.AlbDropDownListFor(m => row.CodeMateriel, Model.CodesMateriel.Select(u => { u.Selected = (u.Value == row.CodeMateriel ? true : false); return u; }).ToList(), "InventaireCodeMat", htmlAttributes: new { @id = string.Format("InventaireCodeMat{0}{1}", splitChar, row.Code), @albCFList = "codemateriel" }, generateTitle: true)
+                            </td>
+                        }
+                        @if (Model.InventaireType == 9 || Model.InventaireType == 16)
+                        {
+                            <td name="lock" id="divQualite@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate invenEllipsis" albCFList="codequalite" title="@(!string.IsNullOrEmpty(row.CodeQualite) ? string.Format("{0} - {1}", row.CodeQualite, row.DescQualite) : string.Empty)">
+                                @(!string.IsNullOrEmpty(row.CodeQualite) ? string.Format("{0} - {1}", row.CodeQualite, row.DescQualite) : string.Empty)
+                            </td>
+                            <td name="edit" id="tdQualite@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                @Html.AlbDropDownListFor(m => row.CodeQualite, Model.CodesQualite.Select(u => { u.Selected = (u.Value == row.CodeQualite ? true : false); return u; }).ToList(), "InventaireCodeQualite", htmlAttributes: new { @id = string.Format("InventaireCodeQualite{0}{1}", splitChar, row.Code), @albCFList = "codequalite", @class = "inputLieuVilleDate" }, generateTitle: true)
+                            </td>
+                        }
+                        @if (Model.InventaireType == 9)
+                        {
+                            <td name="lock" id="divRenonce@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate invenEllipsis" albCFList="coderenonce" title="@(!string.IsNullOrEmpty(row.CodeRenonce) ? string.Format("{0} - {1}", row.CodeRenonce, row.DescRenonce) : string.Empty)">
+                                @(!string.IsNullOrEmpty(row.CodeRenonce) ? string.Format("{0} - {1}", row.CodeRenonce, row.DescRenonce) : string.Empty)
+                            </td>
+                            <td name="edit" id="tdRenonce@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                @Html.AlbDropDownListFor(m => row.CodeRenonce, Model.CodesRenonce.Select(u => { u.Selected = (u.Value == row.CodeRenonce ? true : false); return u; }).ToList(), "InventaireCodeRenonce", htmlAttributes: new { @id = string.Format("InventaireCodeRenonce{0}{1}", splitChar, row.Code), @albCFList = "coderenonce", @class = "inputLieuVilleDate" }, generateTitle: true)
+                            </td>
+                            <td name="lock" id="divRsqLoc@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate invenEllipsis" albCFList="codersqloc" title="@(!string.IsNullOrEmpty(row.CodeRsqLoc) ? string.Format("{0} - {1}", row.CodeRsqLoc, row.DescRsqLoc) : string.Empty)">
+                                @(!string.IsNullOrEmpty(row.CodeRsqLoc) ? string.Format("{0} - {1}", row.CodeRsqLoc, row.DescRsqLoc) : string.Empty)
+                            </td>
+                            <td name="edit" id="tdRsqLoc@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                @Html.AlbDropDownListFor(m => row.CodeRsqLoc, Model.CodesRsqLoc.Select(u => { u.Selected = (u.Value == row.CodeRsqLoc ? true : false); return u; }).ToList(), "InventaireCodeRsqLoc", htmlAttributes: new { @id = string.Format("InventaireCodeRsqLoc{0}{1}", splitChar, row.Code), @albCFList = "codersqloc", @class = "inputLieuVilleDate" }, generateTitle: true)
+                            </td>
+                        }
+                        @if (Model.InventaireType == 17)
+                        {
+                            <td name="lock" id="divNbPers@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <span albmask="numerique">@(row.NbPers == 0 ? string.Empty : row.NbPers.ToString())</span>
+                            </td>
+                            <td name="edit" id="tdNbPers@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <input type="text" class="inputMontant numerique" albMask="numerique" id="InventaireNbPers@(splitChar)@(row.Code)" name="InventaireNbPers" value="@(row.NbPers == 0 ? string.Empty : row.NbPers.ToString())" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 3 || Model.InventaireType == 5 || Model.InventaireType == 6 || Model.InventaireType == 7 || Model.InventaireType == 8 || Model.InventaireType == 9 || Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 || Model.InventaireType == 13 || Model.InventaireType == 14 || Model.InventaireType == 15 || Model.InventaireType == 16 || Model.InventaireType == 17 || Model.InventaireType == 18)
+                        {
+                            <td name="lock" id="divMontant@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <span albmask="@(Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 ? "numerique" : "decimal")">@(row.Montant == 0 ? string.Empty : row.Montant.ToString())</span>
+                            </td>
+                            <td name="edit" id="tdMontant@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <input class="@(Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 ? "inputMontant numerique" : "inputMontant decimal")" albMask="@(Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 ? "pourcentnumeric" : "decimal")" type="text" id="InventaireMontant@(splitChar)@(row.Code)" name="InventaireMontant" value="@(row.Montant == 0 ? string.Empty : row.Montant.ToString())" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 9 || Model.InventaireType == 10 || Model.InventaireType == 11 || Model.InventaireType == 12 || Model.InventaireType == 16)
+                        {
+                            <td name="lock" id="divMnt2@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <span albmask="decimal">@(row.Mnt2 == 0 ? string.Empty : row.Mnt2.ToString())</span>
+                            </td>
+                            <td name="edit" id="tdMnt2@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireMnt2@(splitChar)@(row.Code)" name="InventaireMnt2" value="@(row.Mnt2 == 0 ? string.Empty : row.Mnt2.ToString())" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 9)
+                        {
+                            <td name="lock" id="divContenu@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <span albmask="decimal">@(row.Contenu == 0 ? string.Empty : row.Contenu.ToString())</span>
+                            </td>
+                            <td name="edit" id="tdContenu@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireContenu@(splitChar)@(row.Code)" name="InventaireContenu" value="@(row.Contenu == 0 ? string.Empty : row.Contenu.ToString())" />
+                            </td>
+                            <td name="lock" id="divMatBur@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <span albmask="decimal">@(row.MatBur == 0 ? string.Empty : row.MatBur.ToString())</span>
+                            </td>
+                            <td name="edit" id="tdMatBur@(splitChar)@(row.Code)" class="tdBodyMontant">
+                                <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireMatBur@(splitChar)@(row.Code)" name="InventaireMatBur" value="@(row.MatBur == 0 ? string.Empty : row.MatBur.ToString())" />
+                            </td>
+                        }
+                        @if (Model.InventaireType == 1 || Model.InventaireType == 2)
+                        {
+                            <td name="lock" id="divNatureLieu@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate invenEllipsis" albCFList="naturelieu" title="@(row.NatureLieu) - @(row.DescNatLieu)">
+                                @(!string.IsNullOrEmpty(row.NatureLieu) ? string.Format("{0} - {1}", row.NatureLieu, row.DescNatLieu) : string.Empty)
+                            </td>
+                            <td name="edit" id="tdNatureLieu@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                @Html.AlbDropDownListFor(m => row.NatureLieu, Model.NaturesLieu.Select(u => { u.Selected = (u.Value == row.NatureLieu ? true : false); return u; }).ToList(), "InventaireNatureLieu", htmlAttributes: new { @id = string.Format("InventaireNatureLieu{0}{1}", splitChar, row.Code), @class = "inputLieuVilleDate NonReprisCP", @albCFList = "naturelieu" }, generateTitle: true)
+                            </td>
+                        }
+                        @if (Model.InventaireType == 3 || Model.InventaireType == 5)
+                        {
+                            <td name="lock" id="divFranchise@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate invenEllipsis" title="@(row.Franchise)">@(row.Franchise)</td>
+                            <td name="edit" id="tdFranchise@(splitChar)@(row.Code)" class="tdBodyLieuVilleDate">
+                                <input type="text" id="InventaireFranchise@(splitChar)@(row.Code)" name="InventaireFranchise" class="inputLieuVilleDate" value="@(row.Franchise)" maxlength="40" />
+                            </td>
+                        }
+                        <td class="@(Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 6 ? "tdBodyImgDesc" : "tdBodyImg")">
+                            @if (!Model.IsReadOnly && Model.IsAvnDisabled != true && !Model.IsModifHorsAvenant)
+                            {
+                                if (Model.InventaireType == 1 || Model.InventaireType == 2 || Model.InventaireType == 6)
+                                {
+                                    <img id="descInventaire@(splitChar)@(row.Code)" name="descInventaire" alt="Description inventaire" title="Description de l'inventaire" src="@Url.Content("/Content/Images/moreinfo.png")" width="17" height="17" class="CursorPointer" />
+                                    <div id="divDescInven@(splitChar)@(row.Code)" class="DescrInven">
+                                        @row.Description
+                                    </div>
+                                }
+                                <img id="delInventaire@(splitChar)@(row.Code)" name="delInventaire" alt="Supprimer l'inventaire" title="Supprimer l'inventaire" src="@Url.Content("/Content/Images/poubelle1616.png")" class="CursorPointer" />
+                                <img id="updateInventaire@(splitChar)@(row.Code)" name="updateInventaire" alt="Sauver l'inventaire" title="Sauver l'inventaire" src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer" />
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+</div>

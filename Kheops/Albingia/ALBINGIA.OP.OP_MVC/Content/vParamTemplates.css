@@ -1,0 +1,105 @@
+﻿
+.col_HeaderCodeTemplate
+{
+    width: 97px;
+}
+
+.col_CodeTemplate
+{
+    width: 102px;
+}
+
+.col_HeaderDescriptionTemplate
+{
+    width: 335px;
+}
+
+.col_DescriptionTemplate
+{
+    width: 337px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.col_HeaderTypeTemplate
+{
+    width: 47px;
+}
+
+.col_TypeTemplate
+{
+    width: 52px;
+    text-align: center;
+}
+
+.col_HeaderAction 
+{
+    width: 22px;
+    text-align: center;
+}
+
+.col_Action 
+{
+    width: 25px;
+    text-align: center;
+}
+
+.divHeight
+{
+    overflow-y: auto;
+    height: 483px;
+}
+
+.Validation
+{
+    clear: both;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    text-align: right;
+}
+
+.PaddingLeft40
+{
+    padding-left: 40px;
+}
+
+.PaddingLeft10
+{
+    padding-left: 10px;
+}
+
+.PaddingLeft5
+{
+    padding-left: 10px;
+}
+
+.GroupHeight
+{
+    height: 575px;
+    margin-left: 12px;
+}
+
+#VoletDetails
+{
+    display: none;
+}
+
+.searchField
+{
+    width: 180px;
+}
+
+.Gras
+{
+    font-weight: bold;
+}
+
+.codeInput
+{
+    width: 340px !important;
+}
+
+.codeInputEntete
+{
+    width: 30px !important;
+}

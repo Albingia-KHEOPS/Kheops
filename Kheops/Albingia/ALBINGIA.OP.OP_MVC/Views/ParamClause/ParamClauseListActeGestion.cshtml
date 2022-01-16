@@ -1,0 +1,17 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamListParam>
+<table id="tblBodyParam">
+    @foreach (var acte in Model)
+    {
+        <tr>
+            <td class="colBActe">
+                <a href="#" id="openActeGestion_@(acte.Param)" name="openActeGestion">@acte.Param</a>
+            </td>
+            <td class="colBLibelle">
+                @acte.Libelle
+            </td>
+            <td class="colBBtn">
+                <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="delActeGestion_@(acte.Code)" name="delActeGestion" alt="Supprimer acte" title="Supprimer acte" class="CursorPointer" />
+            </td>
+        </tr>
+    }
+</table>

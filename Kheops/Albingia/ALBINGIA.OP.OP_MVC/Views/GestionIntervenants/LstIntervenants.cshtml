@@ -1,0 +1,38 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesGestionIntervenants.ModeleIntervenant>
+@{
+    if (Model != null && Model.Count > 0)
+    {
+    <table id="tblGestionIntervenantsBody" class="trHeight">
+        @foreach (var ligne in Model)
+        {
+            <tbody name="flyOverLine" id="@("line_" + ligne.GuidId)">
+                <tr class="@(ligne.IsPrincipal == "O" ? "BoldText" : string.Empty) @(ligne.IsFinValidite == "O" ? "textRed" : string.Empty)">
+                    <td class="tdInterType CursorDefault"  albFlyOver="flyOverLine" id="@("type_" + ligne.GuidId)">@(ligne.Type)</td>
+                    <td class="tdInterDenomination" name="selectableCol" id="@("nom_" + ligne.GuidId)">@(ligne.Denomination)</td>
+                    <td class="tdInterVille" name="selectableCol" id="@("ville_" + ligne.GuidId)" title="@(ligne.CodePostal + " - " + ligne.Ville)">
+                        <div class="ellipsisVille">@(ligne.CodePostal + " - " + ligne.Ville)</div>
+                    </td>
+                    <td class="tdInterInterlocuteur" name="selectableCol" id="@("interlocuteur_" + ligne.GuidId)">
+                        <div class="ellipsisInterlocuteur">@(ligne.Interlocuteur)</div>
+                    </td>
+                    <td class="tdInterReference" name="selectableCol" id="@("reference_" + ligne.GuidId)" title="@(ligne.Reference)">
+                        <div class="ellipsisReference">@(ligne.Reference)</div>
+                    </td>
+                    <td class="tdInterFonction" name="selectableCol" id="@("fonction_" + ligne.GuidId)">@(ligne.Fonction)</td>
+                    <td class="tdDocAction Action">
+                        @if (ligne.IsReadOnly)
+                        {
+                            <img src="@Url.Content("/Content/Images/poubelle1616_gris.png")" alt="Supprimer" title="Supprimer" class="Action"/>
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("suppr_" + ligne.GuidId)" alt="Supprimer" title="Supprimer" class="CursorPointer Action" name="btnSupprimer"/>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+
+        }
+    </table>
+    }
+}

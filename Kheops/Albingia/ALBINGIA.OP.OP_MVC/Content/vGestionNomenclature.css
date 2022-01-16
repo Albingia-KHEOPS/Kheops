@@ -1,0 +1,505 @@
+﻿.btnSearch
+{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+/***** Zone Index.html *****/
+.widthNomenclature
+{
+    width: 1197px !important;
+}
+
+.widthNomenclatureSection
+{
+    width: 1192px;
+}
+
+.widthNomenclatureSemiSection
+{
+    width: 594px;
+    height: 524px;
+}
+/***************************/
+
+/***** Zone ListeNomenclatures.html *****/
+.dvBodyNomenclature
+{
+    height: 430px;
+    overflow-y: auto;
+}
+
+.tblNomenclature
+{
+    width: 570px;
+    table-layout: fixed;
+}
+
+.thOrdre
+{
+    width: 40px;
+}
+
+.thCode
+{
+    width: 80px;
+}
+
+.thLibelle
+{
+    width: 145px;
+}
+
+.thBranche
+{
+    width: 80px;
+}
+
+.thCible
+{
+    width: 80px;
+}
+
+.thTypologie
+{
+    width: 80px;
+}
+
+.thImg
+{
+    width: 22px;
+}
+
+.tdOrdre
+{
+    width: 42px;
+    text-align: center;
+}
+
+.tdCode
+{
+    padding-left: 5px;
+    width: 78px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdLibelle
+{
+    padding-left: 5px;
+    width: 143px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdBranche
+{
+    padding-left: 5px;
+    width: 78px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdCible
+{
+    padding-left: 5px;
+    width: 78px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdTypologie
+{
+    padding-left: 5px;
+    width: 78px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdImg
+{
+    width: 24px;
+    text-align: center;
+}
+/***************************/
+
+/***** Zone AjoutNomenclature.html *****/
+.widthAddNomenclature
+{
+    width: 594px;
+}
+
+.inputCodeNomenclature
+{
+    text-transform: uppercase;
+}
+
+.labelNomenclature
+{
+    display: block;
+    width: 50px !important;
+}
+
+.labelTypologie
+{
+    display: block;
+    width: 65px !important;
+}
+
+.inputTypologie
+{
+    width: 508px !important;
+}
+
+.inputLibelle
+{
+    width: 523px !important;
+}
+
+.dvBtnNomenclature
+{
+    height: 28px;
+}
+
+.dvListGrilles
+{
+    height: 352px;
+}
+/***************************************/
+
+/***** Zone ListeGrilles.html *****/
+.tableGrille
+{
+    width: 565px;
+    table-layout: fixed;
+}
+
+.thCodeNomen
+{
+    width: 150px;
+}
+
+.thLibelleNomen
+{
+    width: 373px;
+}
+
+.thImgNomen
+{
+    width: 22px;
+}
+
+.tdCodeNomen
+{
+    padding-left: 5px;
+    width: 147px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tdLibelleNomen
+{
+    padding-left: 5px;
+    width: 370px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tdImgNomen
+{
+    width: 24px;
+}
+
+.dvGrilleInfo
+{
+    z-index: 11;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: block;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 602px;
+    height: 540px;
+}
+
+.dvGradientGrilleInfo
+{
+    width: 594px;
+    margin-right: 2px;
+    border: 1px #ddd outset;
+    margin-top: 2px;
+    padding-top: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-radius: 5px;
+    background-image: -webkit-gradient(linear,left bottom,right bottom,color-stop(0, #fff),color-stop(1, #ddd));
+    background-image: -moz-linear-gradient(top, #fff, #ddd);
+    background-attachment: fixed !important;
+    -pie-background: linear-gradient(#EEFF99, #66EE33);
+    background-color: #eee;
+}
+
+/**********************************/
+
+/***** Zone AjoutGrille.html *****/
+.widthGrilleSemiSection
+{
+    width: 594px;
+}
+
+.dvListCible
+{
+    height: 278px;
+}
+
+.inputCodeGrille
+{
+    text-transform: uppercase;
+}
+
+.dvListTypologie
+{
+    height: 155px;
+}
+
+.thOrdreGrille
+{
+    width: 22px;
+}
+
+.thTypologieGrille
+{
+    width: 210px;
+}
+
+.thLibelleGrille
+{
+    width: 190px;
+}
+
+.thLienGrille
+{
+    width: 70px;
+}
+
+.thImgGrille
+{
+    width: 44px;
+}
+
+.tdOrdreGrille
+{
+    width: 24px;
+    text-align: center;
+}
+
+.tdTypologieGrille
+{
+    width: 212px;
+}
+
+.tdTypologieGrilleRead
+{
+    width: 208px;
+    padding-left: 5px;
+}
+
+.tdLibelleGrille
+{
+    width: 192px;
+}
+
+.tdLibelleGrilleRead
+{
+    width: 188px;
+    padding-left: 5px;
+}
+
+.tdLienGrille
+{
+    width: 72px;
+}
+
+.tdLienGrilleRead
+{
+    width: 72px;
+    text-align: center;
+}
+
+.tdImgGrille
+{
+    width: 48px;
+    text-align: center;
+}
+
+.libelleGrille
+{
+    width: 450px !important;
+}
+
+.typologieSelect
+{
+    width: 210px !important;
+}
+
+.libTypologie
+{
+    width: 188px !important;
+}
+
+.lienSelect
+{
+    width: 70px !important;
+}
+
+.dvBtnGrille
+{
+    height: 28px;
+}
+
+.dvSelectionValeurs
+{
+    z-index: 21;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: block;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 795px;
+}
+
+.dvBodyCibles
+{
+    height: 225px;
+    overflow-y: auto;
+}
+
+.tableCibles
+{
+    width: 565px;
+    table-layout: fixed;
+}
+
+.thCiblesBranches
+{
+    width: 275px;
+}
+
+.tdCiblesBranches
+{
+    width: 273px;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+/*********************************/
+
+/***** Zone ListeValeurNiv.html *****/
+.tableValNomclature
+{
+    width: 150px;
+    table-layout: fixed;
+}
+
+.tdValNomenclature
+{
+    width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/************************************/
+
+/***** Zone SelectionValeurs.html *****/
+.widthSelectionValeur
+{
+    width: 775px !important;
+}
+
+.widthSelectionValeurGroup
+{
+    width: 773px !important;
+}
+
+.dvListNiveau
+{
+    height: 100px;
+}
+
+.inputSearchFiltre
+{
+    text-transform: uppercase;
+}
+
+.tableHeaderValeur
+{
+    width: 745px;
+}
+
+.thCheck
+{
+    width: 23px;
+}
+
+.dvBodyValeur
+{
+    overflow-y: auto;
+    height: 150px;
+}
+
+.tableBodyValeur
+{
+    width: 745px;
+    table-layout: fixed;
+}
+
+.tdCheck
+{
+    width: 25px;
+    text-align: center;
+}
+
+.tdNomenclature
+{
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.legendNomenclature
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.fieldsetNomenclature
+{
+    padding-top: 8px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+}
+
+.selectedTypo
+{
+    color: red;
+    font-weight: bold;
+}
+/************************************/

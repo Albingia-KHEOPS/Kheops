@@ -1,0 +1,123 @@
+﻿.onglet { /* onglets inactifs */
+    border: solid 1px #DDDDDD;
+    border-left: none;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 5px 5px;
+    text-align: center;
+    background-color: #F6F5F5;
+}
+
+.onglet-actif { /*l'onglet actif */
+    border: solid 1px #DDDDDD;
+    border-width: 1px 1px medium;
+    border-bottom: none;
+    border-left: none;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+.onglet-vide {
+    border-bottom: solid 1px #DDDDDD;
+    border-top: none;
+    border-left: none;
+    padding: 21px 2px 2px;
+    float: left;
+    width: 234px;
+}
+
+.titreOnglet {
+    text-align: center;
+}
+
+.ObjetRisque {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+    width: 325px !important;
+}
+
+.RisqueIndexe {
+    width: 400px;
+}
+
+table[name="albISMenuTable"] {
+    table-layout: fixed;
+    width: 150px;
+}
+
+table[name="albISTable"] {
+    width: 700px;
+}
+
+    table[name="albISTable"] td:first-child {
+        width: 60%;
+    }
+
+.titre {
+    background: none repeat scroll 0 0 #D0D1D3;
+    font-weight: bold;
+}
+body {
+    color: #232323;
+    font-family: Arial,"Helvetica Neue",Helvetica,Sans-Serif;
+    font-size: 12px;
+}
+
+.dvISGtiesResultObjet {
+    height: 391px !important;
+    overflow-y: auto;
+    width: 1023px;
+}
+.dvISGtiesResultGarantie {
+    height: 423px !important;
+    overflow-y: auto;
+    width: 1023px;
+}
+table[name="albISGlobalTable"] {
+    width: 100%;
+}
+
+.columnFormule {
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+    width: 65px;
+}
+.columnLabelLettre {
+    width: 103px !important;
+}
+
+.columnLettre {
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+    width: 65px;
+}
+.columnLabelLibelle {
+    width: 103px !important;
+}
+
+.columnLibelle {
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 400px;
+}
+
+.tblInfoOffreSimp {
+    margin-bottom: 5px;
+    table-layout: fixed;
+    width: 950px;
+}
+#divInfosSpecifiquesObjet {
+    height:91px;
+}
+#divInfosSpecifiquesGarantie {
+    height:117px;
+}
+.DivListObjet {
+    margin-top:10px !important;
+}

@@ -1,0 +1,12 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleStatisque.StatClausesLibreModel>
+@using ALBINGIA.Framework.Common.Constants
+<table id="tblResultatsBody" class="divListRecherche trHeight">
+
+    @foreach (var ligne in Model)
+    {   
+        <tr id="@("ligne_" + ligne.DelegationUser)">
+            @Html.Partial("LigneResultatsRecherche", ligne)
+        </tr>
+     
+    }
+</table>

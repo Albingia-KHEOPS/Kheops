@@ -1,0 +1,176 @@
+﻿
+.readOnlyCell, .editableCell, .newCell, .newCell input, .eCell
+{
+    width: 202px !important;
+}
+
+    .newCell input, .newCell select, .FieldTypeDroit
+    {
+        width: 200px !important;
+    }
+
+.headerCell
+{
+    width: 200px;
+}
+
+.headerBtnCell
+{
+    width: 50px;
+}
+
+.btnCell
+{
+    width: 48px;
+    padding-left: 5px;
+}
+
+.styled tr:nth-child(odd)
+{
+    background: rgba(254, 254, 254, 1);
+}
+
+.styled tr:nth-child(even)
+{
+    background: rgba(236, 237, 254, 1);
+}
+
+.styled tr:hover
+{
+    background: #FFDFDF;
+    font-size: 1em;
+    /*text-decoration: underline;*/
+    /*color: #F1F2FE;*/
+    margin: 0 5px;
+}
+
+.styled label
+{
+    /*text-align: center;*/
+    padding-left: 30px;
+}
+
+
+.styled tr
+{
+    height: 10px;
+}
+
+
+.styled span
+{
+    margin: 3px;
+}
+
+#rechercheTable
+{
+    margin-bottom: 10px;
+}
+
+
+#divDataRechercheGestUtilisateur
+{
+    position: absolute;
+    top: 85px;
+    left: 200px;
+    display: block;
+    z-index: 4;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 614px;
+    width: 770px;
+    border-radius: 8px;
+}
+
+/*#divBodyPage, #blockRetour {
+    width: 750px !important;
+}*/
+
+.DivWidth
+{
+    width: 750px !important;
+}
+
+.ParamWidth
+{
+    width: 1195px !important;
+}
+
+.DivParamWidth
+{
+    width: 720px !important;
+}
+
+.TblUserList
+{
+    width: 693px !important;
+    margin-bottom: 5px;
+}
+
+.DvBtnReinit
+{
+    /*padding-top: 8px;*/
+    padding-bottom: 9px;
+    float: right;
+    padding-right: 5px !important;
+}
+
+.fullScreenSize
+{
+    height: 1000px;
+}
+
+.rCell
+{
+    display: inline-block;
+    margin: 5px;
+}
+
+    .rCell lable, select, input
+    {
+        display: block;
+    }
+
+.rPanel
+{
+    height: 50px;
+}
+
+.rpCell
+{
+    display: inline-block;
+    margin: 10px;
+}
+
+.floatR
+{
+    float: right;
+    margin-right: 60px;
+}
+
+.cancelBtn
+{
+    float: right;
+    margin-right: 10px;
+}
+
+.padTop
+{
+    padding-top: 5px;
+}
+
+.padB
+{
+    margin-top: 14px;
+}
+
+#btnInitialize
+{
+    border-radius: 5px;
+}
+
+.FullScreenContainer
+{
+    padding-top: 6px;
+    margin-left: 585px;
+}

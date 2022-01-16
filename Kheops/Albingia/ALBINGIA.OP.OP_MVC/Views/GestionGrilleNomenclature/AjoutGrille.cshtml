@@ -1,0 +1,164 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGestionNomenclature.ModeleGrille
+@{
+    var splitHtmlChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML; 
+}
+<div class="nGradientSection widthGrilleSemiSection">
+    @Html.Hidden("newGrille", (string.IsNullOrEmpty(Model.Code) ? 1 : 0), new { id = "newGrille" })
+    @Html.Hidden("delIdLine", string.Empty)
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Code</label>
+        </div>
+        <div class="FloatLeft">
+            @if (!string.IsNullOrEmpty(Model.Code))
+            {
+                <input type="text" id="CodeGrille" name="CodeGrille" value="@(Model.Code)" class="readonly inputCodeGrille" readonly="readonly" />
+            }
+            else
+            {
+                <input type="text" id="CodeGrille" name="CodeGrille" value="@(Model.Code)" class="inputCodeGrille" maxlength="15" />
+            }
+        </div>
+        @*<div class="PaddingLeft FloatLeft">
+            <label class="Block">Typologie</label>
+        </div>
+        <div class="FloatLeft">
+            @Html.AlbDropDownListFor(m => m.TypologieGrille, Model.LstTypologie, "Typologie", htmlAttributes: new { @id = "Typologie", @ablcflist = "typologie" }, generateTitle: true)
+        </div>*@
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Désignation</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="LibelleGrille" name="LibelleGrille" value="@(Model.Libelle)" class="libelleGrille" maxlength="60" />
+        </div>
+    </div>
+    <div class="dvListTypologie">
+        <div id="divHeaderTypologie">
+            <table id="tblHeaderTypologie" class="trHeight">
+                <tr>
+                    <th class="tablePersoHead thOrdreGrille">&nbsp;</th>
+                    <th class="tablePersoHead thTypologieGrille">Typologies</th>
+                    <th class="tablePersoHead thLibelleGrille">Libellés</th>
+                    <th class="tablePersoHead thLienGrille">Lien</th>
+                    <th class="tablePersoHead thImgGrille">&nbsp;</th>
+                </tr>
+            </table>
+        </div>
+        <div id="divBodyTypologie">
+            <table id="tblBodyTypologie" class="trHeight">
+                @{
+                    var i = 1;
+                    var readOnly = false;
+                    foreach (var item in Model.Typologies)
+                    {
+                        if (!readOnly)
+                        {
+                    <tr>
+                        <td class="tdOrdreGrille">
+                            @i
+                            <input type="hidden" id="ordreGrille@(splitHtmlChar)@(i)" name="ordreGrille" value="@(i)" />
+                        </td>
+                        <td class="None tdTypologie" albmode="update" albinfogrille="@(i)">
+                            @if (readOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => item.Code, Model.LstTypologie.Select(u => { u.Selected = (u.Value == item.Code ? true : false); return u; }).ToList(), "Typologie" + splitHtmlChar + i, htmlAttributes: new { @id = "Typologie" + splitHtmlChar + i, @albcflist = "typologie", @class = "typologieSelect readonly", @disabled = "disabled" }, generateTitle: true, replaceHtmlName: "Typologie")
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => item.Code, Model.LstTypologie.Select(u => { u.Selected = (u.Value == item.Code ? true : false); return u; }).ToList(), "Typologie" + splitHtmlChar + i, htmlAttributes: new { @id = "Typologie" + splitHtmlChar + i, @albcflist = "typologie", @class = "typologieSelect" }, generateTitle: true, replaceHtmlName: "Typologie")
+                            }
+                        </td>
+                        <td class="@(!string.IsNullOrEmpty(item.Code) ? "navig tdTypologieGrilleRead" : "tdTypologieGrilleRead")" name="valeurGrille" albmode="read" albinfogrille="@(i)">
+                            @(Model.LstTypologie.Where(m => m.Value == item.Code).FirstOrDefault() != null ? Model.LstTypologie.Where(m => m.Value == item.Code).FirstOrDefault().Text : string.Empty)
+                        </td>
+                        <td class="None tdLibelleGrille" albmode="update" albinfogrille="@(i)">
+                            @if (readOnly)
+                            {
+                                <input type="text" id="LibTypologie@(splitHtmlChar)@(i)" name="LibTypologie@(splitHtmlChar)@(i)" value="@(item.Libelle)" class="libTypologie readonly" readonly="readonly" maxlength="15" />
+                            }
+                            else
+                            {
+                                <input type="text" id="LibTypologie@(splitHtmlChar)@(i)" name="LibTypologie@(splitHtmlChar)@(i)" value="@(item.Libelle)" class="libTypologie" maxlength="15" />
+                            }
+                        </td>
+                        <td class="tdLibelleGrilleRead" albmode="read" albinfogrille="@(i)">
+                            @(item.Libelle)
+                        </td>
+                        <td class="None tdLienGrille" albmode="update" albinfogrille="@(i)">
+                            @if (readOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => item.Lien, item.Liens.Select(u => { u.Selected = (u.Value == item.Lien ? true : false); return u; }).ToList(), "Lien" + splitHtmlChar + i, htmlAttributes: new { @id = "Lien" + splitHtmlChar + i, @albcflist = "lien", @class = "lienSelect readonly", @disabled = "disabled" }, generateTitle: true)
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => item.Lien, item.Liens.Select(u => { u.Selected = (u.Value == item.Lien ? true : false); return u; }).ToList(), "Lien" + splitHtmlChar + i, htmlAttributes: new { @id = "Lien" + splitHtmlChar + i, @albcflist = "lien", @class = "lienSelect" }, generateTitle: true)
+                            }
+                        </td>
+                        <td class="tdLienGrilleRead" albmode="read" albinfogrille="@(i)">
+                            @(item.Lien)
+                        </td>
+                        <td class="tdImgGrille">
+                            <img class="@(readOnly ? "CursorPointer None" : "CursorPointer")" id="updGrille@(splitHtmlChar)@(i)" name="updGrille" src="@Url.Content("/Content/Images/editer1616.png")" alt="updGrille" title="Mode édition" />
+                            <img class="CursorPointer None" id="svgGrille@(splitHtmlChar)@(i)" name="svgGrille" src="@Url.Content("/Content/Images/Save_16.png")" alt="svgGrille" title="Sauvegarde" />
+                            <img class="@(!string.IsNullOrEmpty(item.Code) ? "CursorPointer" : "CursorPointer None")" id="delGrille@(splitHtmlChar)@(i)" name="delGrille" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="delGrille" title="Suppression de la grille" />
+                            <img class="CursorPointer None" id="cancelGrille@(splitHtmlChar)@(i)" name="cancelGrille" src="@Url.Content("/Content/Images/portee.png")" alt="cancelGrille" title="Annuler" />
+                            <img class="None" id="blkLineGrille@(splitHtmlChar)@(i)" name="blkLineGrille" src="@Url.Content("/Content/Images/blank.png")" />
+                        </td>
+                    </tr>
+                            if (string.IsNullOrEmpty(item.Code))
+                            {
+                                readOnly = true;
+                            }
+                        }
+                        i++;
+                    }
+                }
+            </table>
+        </div>
+    </div>
+    <div class="dvBtnGrille">
+        @if (!string.IsNullOrEmpty(Model.Code) && !Model.CibleLiee)
+        {
+            <div class="FloatLeft PaddingLeft">
+                <button id="btnGrilleSupprimer" type="button" albshorcut="true" data-accesskey="s"><u>S</u>upprimer</button>
+            </div>
+        }
+        <div class="ActionButtonRight PaddingRight">
+            <button id="btnGrilleAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+            <button id="btnGrilleValider" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>
+<div class="nGradientSection widthGrilleSemiSection dvListCible">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label><u>Grille utilisées dans les cibles suivantes</u></label>
+        </div>
+    </div>
+    <div id="divHeaderCibles" class="PaddingLeft">
+        <table id="tblHeaderCibles" class="trHeight tableCibles">
+            <tr>
+                <th class="tablePersoHead thCiblesBranches">Cible</th>
+                <th class="tablePersoHead thCiblesBranches">Branche</th>
+            </tr>
+        </table>
+    </div>
+    <div id="divBodyCibles" class="PaddingLeft dvBodyCibles">
+        <table id="tblBodyCibles" class="trHeight tableCibles">
+            @foreach (var item in Model.Cibles)
+            {
+                <tr>
+                    <td class="tdCiblesBranches" title="@item.Code - @item.Description">@item.Code - @item.Description</td>
+                    <td class="tdCiblesBranches"title="@(!string.IsNullOrEmpty(item.CodeBranche) ? string.Format("{0} - {1}", item.CodeBranche, item.LibBranche) : string.Empty)">@(!string.IsNullOrEmpty(item.CodeBranche) ? string.Format("{0} - {1}", item.CodeBranche, item.LibBranche) : string.Empty)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div id="divSelectionValeurs" class="None">
+    <div class="overlay-background" style="z-index:20" ></div>
+    <div id="divDataSelectionValeurs" class="dvSelectionValeurs">
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestUtilisateursPage
+@*list of users *@
+
+@foreach (var item in Model.ModeleMappageUtiliDroitBranches)
+{
+    var rowID = item.Utilisateur.Replace(" ", "") + ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML + item.Branche.Replace(" ", "");
+     
+    <tr id="@rowID" class="@(item.ExistInCache ? "editableRow" : "editableRow NotAffecte")" albcontext="@Model.Albcontext">
+
+        <td  id="@rowID" class="eCell clicktoEdit">
+            <label id="@(rowID + "Utilisateur")" albcontext="@Model.Albcontext">@item.Utilisateur</label>
+        </td>
+
+        <td id="@rowID" class="eCell clicktoEdit" albcontext="@Model.Albcontext">
+            <input id="@(rowID + "Branche")" type="hidden" value="@item.Branche" albcontext="@Model.Albcontext"/>
+            <label>@item.BrancheLabel</label>
+        </td>
+
+        <td id="@rowID" class="readOnlyCell clicktoEdit" albcontext="@Model.Albcontext">
+            <label id="@(rowID + "TypeDroit")" albcontext="@Model.Albcontext">@item.TypeDroitLabel</label>
+        </td>
+
+        <td class="editableCell" albcontext="@Model.Albcontext">
+            @Html.AlbDropDownListFor(m => item.TypeDroit, item.TypeDroits, "Type de droit", htmlAttributes: new
+                                               {
+                                                   @id = rowID + "TypeDroit",
+                                                   @tabindex = "3",
+                                                   @class = "FieldTypeDroit Cancellable",
+                                                   @albcontext = Model.Albcontext
+                                               }, generateTitle: true)
+
+        </td>
+
+        @if (!Model.IsReadOnly)
+        { <td class="btnCell" albcontext="@Model.Albcontext" >
+
+            <span name="delUtilisateurBranche" id="@rowID" title="Supprimer l'UtilisateurBranche"
+                                                        class="delUtilisateurBrancheBtn" albcontext="@Model.Albcontext">
+                <img  class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+            </span>
+
+            <span id="@rowID" alt="Enregistrer" title="Enregistrer" 
+                                                        class="saveUtilisateurBrancheBtn None" albcontext="@Model.Albcontext" >
+                <img  src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer" />
+            </span>
+
+            <span name="cancelUtilisateurBrancheEditBtn" id="@rowID" title="Annuler l'edition de l'UtilisateurBranche" 
+                                                        class="cancelUtilisateurBrancheEditBtn None"  albcontext="@Model.Albcontext" >
+                <img name="cancel" src="/Content/Images/reset.png">
+            </span>
+
+        </td>
+        }
+    </tr>
+}
+

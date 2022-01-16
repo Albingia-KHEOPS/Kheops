@@ -1,0 +1,139 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRisque.ModeleOpposition
+<div class="GroupFull GroupWithBorder" id="divDialogEditOpposition">
+    <input type="hidden" id="editGuidId" value="@Model.GuidId" />
+    <input type="hidden" id="mode" value="@Model.Mode" />
+    <input type="hidden" id="KDESIRef" value="@Model.KDESIRef" />
+    <input type="hidden" name="autoCompOrganismeSelect" albautocomplete="autoCompOrganismeSelect" />
+    <div class="GroupTitle">
+        Ajout / Modification d'une opposition
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin HeightDialogOpposition">
+        <div class="GradientSection FloatLeft" id="FormOpposition">
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Organisme*</label>
+                </div>
+                <div class="QuarterGenericColumn">
+                    <input id="CodeOrganisme" name="CodeOrganisme" albAutoComplete="autoCompOrganismeCode" class="InputQuarterGenericColumn @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@(@Model.CodeOrganisme == 0 ? string.Empty : @Model.CodeOrganisme.ToString())" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                </div>
+                <div class="GenericColumnAndQuarter">
+                    <input id="NomOrganisme" name="NomOrganisme" albAutoComplete="autoCompOrganismeNom" class="GenericColumnAndQuarter @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.NomOrganisme" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>CP / Ville / Pays</label>
+                </div>
+                <div class="QuarterGenericColumn">
+                    <input id="CPOrganisme" name="CPOrganisme" albAutoComplete="autoCompOrganismeCP" class="InputQuarterGenericColumn readonly" value="@Model.CPOrganisme" readonly="readonly"/>
+                </div>
+                <div class="HalfGenericColumn">
+                    <input id="VilleOrganisme" name="VilleOrganisme" albAutoComplete="autoCompOrganismeVille" class="InputHalfGenericColumn readonly" value="@Model.VilleOrganisme" readonly="readonly"/>
+                </div>
+                <div class="QuarterGenericColumn">
+                    <input id="PaysOrganisme" name="PaysOrganisem" albAutoComplete="autoCompOrganismePays" class="QuarterGenericColumn readonly" value="@Model.PaysOrganisme" readonly="readonly"/>
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Description</label>
+                </div>
+                <div class="GenericColumnAndAHalf">
+                    <input id="Description" class="GenericColumnAndAHalf @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.Description" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty)/>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Référence financeur</label>
+                </div>
+                <div class="GenericColumnAndAHalf">
+                    <input id="Reference" class="GenericColumnAndAHalf @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.Reference" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty)/>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Echéance</label>
+                </div>
+                <div class="QuarterGenericColumn">
+                    <input id="Echeance" class="InputQuarterGenericColumn datepicker @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@(@Model.Echeance == null ? string.Empty : @Model.Echeance.Value.ToString("dd/MM/yyyy"))" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty)/>
+                </div>
+                <div class="QuarterGenericColumn">
+                    <label>Type*</label>
+                </div>
+                <div class="HalfGenericColumn">
+                    @Html.AlbDropDownListFor(m => @Model.Mode, @Model.TypesFinancement, "dvTypeFinancement", generateTitle: true, htmlAttributes: new { @id = "drlTypeFinancement", @class = @Model.Mode == "D" || @Model.Mode == "R" ? "HalfGenericColumn readonly" : "HalfGenericColumn" })
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Montant</label>
+                </div>
+                <div class="QuarterGenericColumn">
+                    <input id="Montant" albMask="decimal" class="InputMontant InputQuarterGenericColumn @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.Montant" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty)/>
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>
+        </div>
+        <div class="GradientSection FloatLeft" id="FormRisque">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label>Objets concernés par l'opposition :</label>
+                </div>
+            </div>
+            <div id="CheckBoxes">
+                @if (@Model.AppliqueAuRisqueEntier)
+                { 
+                    <div>
+                        <input type="checkbox" id="chkRisque" class="@(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" checked="checked" value="@Model.LibelleRisque" @(@Model.Mode == "D" || @Model.Mode == "R" ? "disabled=\"disabled\"" : string.Empty)/>@Model.LibelleRisque
+                    </div>
+                    <div>
+                        @if (@Model.ObjetsRisque != null)
+                        {
+                            foreach (var item in Model.ObjetsRisque)
+                            {
+                            <div class="padLeft">
+                                <input type="checkbox" name="chkObjet" value="@item.Value"class="padLeft @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" @(@item.Selected ? "checked=\"checked\"" :string.Empty) @(@Model.Mode == "D" || @Model.Mode == "R" ? "disabled=\"disabled\"" : string.Empty)/>@item.Text<br />
+                            </div>
+                            }
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <input type="checkbox" id="chkRisque" class="@(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" checked="checked" value="@Model.LibelleRisque" @(@Model.Mode == "D" || @Model.Mode == "R" ? "disabled=\"disabled\"" : string.Empty)/>@Model.LibelleRisque
+                    </div>
+                    <div>
+                        @if (@Model.ObjetsRisque != null)
+                        {
+                            foreach (var item in Model.ObjetsRisque)
+                            {
+                            <div class="padLeft">
+                                <input type="checkbox" name="chkObjet" value="@item.Value"class="padLeft @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" @(@item.Selected ? "checked" : string.Empty) @(@Model.Mode == "D" || @Model.Mode == "R" ? "disabled=\"disabled\"" : string.Empty)/>@item.Text<br />
+                            </div>
+                            }
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="FloatRight">
+        <input type="button" id="btnFermerEditOpposition" value="Annuler" />
+        @if (@Model.Mode == "I")
+        {
+            <input type="button" id="btnActionOpposition" value="Ajouter" />
+        }
+        else if (@Model.Mode == "U")
+        {
+            <input type="button" id="btnActionOpposition" value="Enregistrer" />
+        }
+        else if (@Model.Mode == "D")
+        {
+            <input type="button" id="btnActionOpposition" value="Supprimer" />
+        }
+    </div>
+</div>

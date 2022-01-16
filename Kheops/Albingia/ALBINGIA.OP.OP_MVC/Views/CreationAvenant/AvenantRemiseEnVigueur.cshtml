@@ -1,0 +1,160 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesCreationAvenant.ModeleAvenantRemiseVigueur
+@*<div>*@
+<input type="hidden" id="AvenantError" name="AvenantError" value="@Model.ErrorAvt" />
+<input type="hidden" id="EcheanceHisto" name="EcheanceHisto" value="@(Model.ProchaineEchHisto)" />
+<input type="hidden" class="numerique cssVersion" albmask="numeric" id="NumAvt" name="NumAvt" value="@Model.NumAvt" />
+<div class="HeightRow PaddingTop">
+    <div class="FloatLeft PaddingLeft">
+        <input type="text" id="TypeAvt" name="TypeAvt" value="@Model.TypeAvt - @Model.LibelleAvt" readonly="readonly" class="readonly inputTypeAvt" />
+    </div>
+    <div class="FloatRight PaddingRight">
+        <input type="text" id="NumInterne" name="NumInterne" value="@Model.NumInterneAvt" readonly="readonly" class="readonly inputNumInterne" />
+    </div>
+    <div class="FloatRight">
+        <label class="Block cssType">N° avt</label>
+    </div>
+</div>
+
+@if (Model.ModeAvt?.ToUpper() == "CREATE")
+{
+    <div class="dvWarning">
+        <label class="Block avtWarning">Attention, vous allez créer un nouvel acte de gestion. Toutes les informations du contrat en cours vont être mises en historique.</label>
+    </div>
+}
+<div class="dvDesc">
+    <div class="FloatLeft">
+        <label class="Block">Réf. de gestion</label>
+    </div>
+    @*<div id="zoneTxtArea" class="FloatLeft divTextArea2" albcontext="Description">@Html.Raw(!string.IsNullOrEmpty(Model.DescriptionAvt) ? Model.DescriptionAvt.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+    <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="Description">
+        <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+    </div>
+    <div id="txtArea" class="None" albcontext="Description">*@
+        <div class="FloatLeft">
+            <textarea id="Description" name="Description" albcontext="Description" class="textareaDesc NonReprisCP" style="margin: 0px; width: 413px; min-height: 38px !important; max-width: 441px; max-height: 385px; ">@Model.DescriptionAvt</textarea>
+        </div>
+    @*</div>*@
+</div>
+<div class="HeightRow" style="padding-top: 10px;">
+    <div class="FloatLeft">
+        <label class="Block">Contrat résilié le  </label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDateFormat(m => m.DateResil, new { @class = "inputDate readonly", @readonly = "readonly" })
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbTimePicker(m => m.HeureResil, "HeureResil", new { @class = "HourMinute readonly", @disabled = "disabled" })
+    </div>
+</div>
+<div class="HeightRow" style="padding-top: 10px;">
+    <div class="FloatLeft">
+        <label class="Block">Date de remise en vigueur </label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDateFormat(m => m.DateRemiseVig, new { @class = "datepicker inputDate" })
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbTimePicker(m => m.HeureRemiseVig, "HeureRemiseVig", new { @class = "HourMinute" })
+    </div>
+</div>
+<div class="HeightRow" style="padding-top: 10px;">
+    <div class="FloatLeft">
+        <label class="Block">Date de fin d'effet </label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDateFormat(m => m.DateFinEffet, new { @class = "datepicker inputDate" })
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbTimePicker(m => m.HeureFinEffet, "HeureFinEffet", new { @class = "HourMinute" })
+    </div>
+</div>
+<div class="HeightRow" style="padding-top: 10px;">
+    <div class="FloatLeft">
+        <label class="Block">Type de gestion</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.TypeGestion == "M" && Model.ModeAvt?.ToUpper() != "CREATE") {
+            @Html.AlbDropDownListFor(m => Model.TypeGestion, Model.TypesGestion, "TypeGestion", htmlAttributes: new { @id = "TypeGestion", @albCFList = "typegestion", @style = "width: 150px;", @disabled = default(string) }, generateTitle: true)
+        }
+        else {
+            @Html.AlbDropDownListFor(m => Model.TypeGestion, Model.TypesGestion, "TypeGestion", htmlAttributes: new { @id = "TypeGestion", @albCFList = "typegestion", @style = "width: 150px;" }, generateTitle: true)
+        }
+    </div>
+    <div class="FloatLeft">
+        <label class="AutoWidth">V (en vigueur seule) / M (avec modification)</label>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block">Suite à règlement du</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="hidden" id="PrimeReglee" value="@Model.PrimeReglee" />
+        @Html.AlbDateFormat(m => m.PrimeReglementDate, new { @class = "inputDate readonly", @readonly = "readonly" })
+    </div>
+</div>
+<div class="HeightRow" style="padding-top: 10px;">
+    <div class="FloatLeft">
+        <label class="Block" style="width: 180px;">Contrat suspendu</label>
+    </div>
+    <div class="FloatLeft">
+        <label class="Block" style="width: 60px;">du</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDateFormat(m => m.DateSuspDeb, new { @class = "inputDate readonly", @readonly = "readonly" })
+        @Html.AlbTimePicker(m => m.HeureSuspDeb, "HeureSuspDeb", new { @class = "HourMinute readonly", @disabled = "disabled" })
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block" style="width: 180px;">&nbsp;</label>
+    </div>
+    <div class="FloatLeft">
+        <label class="Block" style="width: 60px;">au</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDateFormat(m => m.DateSuspFin, new { @class = "inputDate readonly", @readonly = "readonly" })
+        @Html.AlbTimePicker(m => m.HeureSuspFin, "HeureSuspFin", new { @class = "HourMinute readonly", @disabled = "disabled" })
+    </div>
+</div>
+<div class="HeightRow" style="padding-top: 10px;">
+    <div class="FloatLeft">
+        <label class="Block" style="width: 180px;">Déclaration de non sinistre</label>
+    </div>
+    <div class="FloatLeft">
+        <label class="Block" style="width: 60px;">du</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDateFormat(m => m.DateDebNonSinistre, new { @class = "inputDate readonly", @readonly = "readonly" })
+        @Html.AlbTimePicker(m => m.HeureDebNonSinistre, "HeureDebNonSinistre", new { @class = "HourMinute readonly", @disabled = "disabled" })
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block" style="width: 180px;">&nbsp;</label>
+    </div>
+    <div class="FloatLeft">
+        <label class="Block" style="width: 60px;">au</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDateFormat(m => m.DateFinNonSinistre, new { @class = "inputDate readonly", @readonly = "readonly" })
+        @Html.AlbTimePicker(m => m.HeureFinNonSinistre, "HeureFinNonSinistre", new { @class = "HourMinute readonly", @disabled = "disabled" })
+    </div>
+</div>
+<div class="HeightRow" style="padding-top: 10px;display: none;">
+    <div class="dvDesc">
+        <div class="FloatLeft">
+            <label class="Block">Observations</label>
+        </div>
+        @*<div id="zoneTxtArea" class="FloatLeft divTextArea2" albcontext="ObservationsAvt">@Html.Raw(!string.IsNullOrEmpty(Model.ObservationsAvt) ? Model.ObservationsAvt.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+        <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="ObservationsAvt">
+            <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+        </div>
+        <div id="txtArea" class="None" albcontext="ObservationsAvt">*@
+            <div class="FloatLeft">
+                <textarea id="ObservationsAvt" name="ObservationsAvt" albcontext="ObservationsAvt" class="textareaDesc NonReprisCP" style="margin: 0px;width: 433px;height: 65px;max-width: 441px;max-height: 385px;">@Model.ObservationsAvt</textarea>
+            </div>
+        @*</div>*@
+    </div>
+</div>
+@*</div>*@

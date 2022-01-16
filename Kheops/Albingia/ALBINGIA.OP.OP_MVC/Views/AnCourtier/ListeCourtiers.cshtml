@@ -1,0 +1,51 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.Courtiers.Courtier>
+@{ 
+    Single total = 0;
+    if (Model != null && Model.Count > 0)
+    {
+        foreach (var courtier in Model)
+        {
+            total += courtier.Commission;      
+    <tr id="tr@(courtier.CodeCourtier)" albSumCommission="@total">
+        <td id="CodeCourtier_@(courtier.CodeCourtier)" class="col_CodeCourtier">
+            @courtier.CodeCourtier
+        </td>
+        <td id="NomCourtier_@(courtier.CodeCourtier)" class="col_NomCourtier">
+            @courtier.NomCourtier
+        </td>
+        <td id="CodePostal_@(courtier.CodeCourtier)" class="col_CodePostal">
+            @courtier.CodePostal
+        </td>
+        <td id="Commission_@(courtier.CodeCourtier)"  class="col_Commission decimal">
+            <span albmask="pourcentdecimal">@courtier.Commission</span>
+        </td>
+        <td class="col_ApportGestPay">
+            @if (courtier.Apport)
+            {
+                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+            }
+        </td>
+        <td class="col_ApportGestPay">
+            @if (courtier.Gest)
+            {
+                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+            }
+        </td>
+        <td class="col_ApportGestPay">
+            @if (courtier.Payeur)
+            {
+                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+            }
+        </td>
+        <td class="col_Buttons">
+            <img id="@courtier.CodeCourtier" name="modifCourtier" title="Modifier" alt="Modifier" class="CursorPointer" src="@Url.Content("/Content/Images/editer1616.png")" />
+            @if (!(courtier.Apport || courtier.Gest || courtier.Payeur))
+            {
+                <img id="@courtier.CodeCourtier" name="supprCourtier" title="Supprimer" alt="Supprimer" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+            }
+        </td>
+    </tr>
+        }
+    }
+
+}

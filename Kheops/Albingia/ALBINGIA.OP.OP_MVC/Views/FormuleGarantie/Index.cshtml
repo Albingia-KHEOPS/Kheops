@@ -1,0 +1,173 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@model ModeleFormuleGarantiePage
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    var model = Model as ModeleFormuleGarantiePage;
+
+    int numAvn = 0;
+    int.TryParse(model.NumAvenantPage, out numAvn);
+}
+
+@AlbAddCssJsScripts.AlbAddCssToViews(
+    new UrlHelper(ViewContext.RequestContext),
+    new[] {
+        "vCreationFormuleGarantie.css",
+        "less/formule/edition/add-or-update.css",
+        "ko-popup.css",
+        "less/formule/edition/details-valeurs-garantie.css",
+        "less/formule/edition/portees.css"
+    },
+    "~/Content/")
+
+@AlbAddCssJsScripts.AlbAddJsToViews(
+    new UrlHelper(ViewContext.RequestContext),
+    new[] { "risque.js" },
+    "~/Scripts/AlbingiaJS/Common/",
+    false)
+
+<div id="GestionErreur">
+</div>
+<div class="FullWidth">
+    @Html.HiddenNoName("buttonClicked", string.Empty)
+    @Html.HiddenNoName("currentGarantieId", string.Empty)
+    @Html.HiddenNoName("currentGuidGarantie", string.Empty)
+    @Html.HiddenNoName("currentGarantieNiv", string.Empty)
+    @Html.HiddenNoName("currentTypeInven", string.Empty)
+    @Html.Hidden("AddedInventaires", string.Empty)
+    @Html.Hidden("currentOriginCodeInventaire", string.Empty)
+    @Html.HiddenNoName("modeDuplication", (model.ModeDuplicate.ToString()))
+
+    @switch (model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", model.NavigationArbre)
+            break;
+    }
+
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", model)
+        @Html.HiddenFor(m => m.CodeFormule)
+        @Html.HiddenFor(m => m.CodeOption)
+        @Html.HiddenFor(m => m.LettreLib)
+        @Html.HiddenFor(m => m.DateFinEffet)
+        <input type="hidden" name="FormGen" id="FormGen" value="@(string.IsNullOrEmpty(model.FormGen) ? "0" : model.FormGen)" />
+        <input type="hidden" name="GuidOption" id="GuidOption" value="" />
+        <input type="hidden" name="CodeCibleRsq" id="CodeCibleRsq" value="@(model.CodeCible > 0 ? model.CodeCible.ToString() : string.Empty)" />
+        <input type="hidden" name="DateModifRsq" id="DateModifRsq" value="@(model.DateModificationRsq)" />
+        <input type="hidden" name="IsFormuleSortie" id="IsFormuleSortie" value="@(model.IsAlertePeriode.ToString())" />
+        <input type="hidden" name="HiddenBranche" id="HiddenBranche" value="@(model.Branche)" />
+        <div class="nGroupFull nGroupWithBorder ko-cloak hide main@(numAvn > 0 ? " mode-avenant" : string.Empty)">
+            <div class="nHorizontalFullWithGroup">
+                @Html.Partial("InfosAvenant", model)
+                @Html.HiddenNoName("ObjetRisqueCode", (model.NumRisque))
+                @Html.Partial("InfoApplications", model)
+
+                <div id="divFormuleGarantie" class="@(model.IsModeAvenant ? "nGradientSection dvFormuleAvenant" : "nGradientSection dvFormule")">
+                    <div id="divGaranties">
+                        <div class="divLabelGarantie PaddingLeft">Sélection des garanties composant la formule :</div>
+                        <div id="divListGaranties" class="@(model.IsModeAvenant ? "AscenseurAvt" : "Ascenseur")">
+                            @Html.Hidden("codeOptionFormule", (model.CodeOption))
+                            @Html.Partial("TreeViewGaranties", model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="action_buttons_formula" class="GroupFull GroupWithBorder ButtonsHeight ko-cloak hide">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="FullScreenFormule" class="FloatLeft" style="padding-top: 6px;" albcontext="Formule">
+                <button id="btnFullScreenKo" type="button" class="CursorPointer FullScreenBtn" title="Plein écran" data-bind="click: fullscreen">
+                    <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+                </button>
+            </div>
+            <!-- ko ifnot: isReadonly -->
+            <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+                <button id="btnAnnuler" type="button" albshortcut="true" albtargetscreen="mainFormuleGarantie" data-accesskey="a" data-bind="click: askCancel"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" data-accesskey="v" data-bind="click: validate" data-option="@(model.CodeOption)" data-formule="@(model.CodeFormule)" data-risque="@(model.NumRisque)"><u>V</u>alider</button>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: isReadonly -->
+            <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+                <button id="btnAnnuler" type="button" albshortcut="true" albtargetscreen="mainFormuleGarantie" data-accesskey="p" data-bind="click: back"><u>P</u>récédent</button>
+                <button id="btnSuivant" type="button" data-accesskey="s" data-bind="click: forward" data-option="@(model.CodeOption)" data-formule="@(model.CodeFormule)" data-risque="@(model.NumRisque)"><u>S</u>uivant</button>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "formule-garanties.js" }, "~/Scripts/AlbingiaJS/", false)
+</div>
+
+<div id="divDetailsGarantie" class="None">
+    <div class="overlay-background" style="z-index:50" >
+    </div>
+    <div style="position: absolute; top: 10px; left: 21px; display: block; z-index: 51; float: left; background-color: #FFF; padding: 10px;">
+        <div id="divDataDetailsGarantie"></div>
+    </div>
+</div>
+<div id="divPorteGarantie" class="None">
+    <div class="overlay-background" style="z-index:8" >
+    </div>
+    <div id="divDataPorteGarantie" class="divDataPorteGarantie">
+    </div>
+</div>
+
+<div id="divLoadFormule">
+    <div class="overlay-background" style="z-index:4" >
+    </div>
+    <div style="position: absolute; top: 42%; left: 50%; display: block; z-index: 5;">
+        <img src="/Content/Images/ajax-loader.gif" alt="" />
+    </div>
+</div>
+<div id="divFullScreenFormule">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataFullScreenFormule">
+    </div>
+</div>
+<div id="divGarantieInventaire" class="None">
+    <div class="overlay-background" style="z-index:8" >
+    </div>
+    <div id="divDataGarantieInventaire" class="divDataGarantieInventaire">
+    </div>
+</div>
+<div id="divErrorAssietteMsg" class="None">
+    <div class="overlay-background" style="z-index:8" >
+    </div>
+    <div id="divDataErrorAssietteMsg" class="divDataErrorAssietteMsg">
+        <div id="divDataAssiette" class="dvDataAssiette">
+            <div class="GroupFull GroupWithBorder dvMessageError">
+                <div class="GroupTitle">Erreur Calcul Assiette</div>
+                <div id="divHeaderErrorMsg">
+                    <table id="tblHeaderErrorMsg" class="trHeight">
+                        <tr>
+                            <th class="tablePersoHead thErrorGarantie">Garantie</th>
+                            <th class="tablePersoHead thErrorMsg">Erreur</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divBodyErrorMsg" class="dvBodyErrorMsg">
+                    <table id="tblBodyErrorMsg" class="trHeight tableBodyError">
+                        <tr id="rowError$$">
+                            <td id="cellErrorGarantie$$" class="tdErrorGarantie"></td>
+                            <td id="cellErrorMsg$$" class="tdErrorMsg" title=""></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="Validation">
+                <input type="button" id="btnOKAssiette" value="OK" />
+            </div>
+        </div>
+    </div>
+</div>

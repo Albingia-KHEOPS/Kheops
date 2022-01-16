@@ -1,0 +1,163 @@
+<appSettings>
+  <add key="aspnet:MaxJsonDeserializerMembers" value="150000" />
+
+  <add key="webpages:Version" value="3.0.0.0"/>
+  <add key="ClientValidationEnabled" value="true"/>
+  <add key="UnobtrusiveJavaScriptEnabled" value="true"/>
+
+  <add key="envParam" value="false"/>
+  <add key="useLablat" value="false"/>
+  <add key="bundle" value="false" />
+  <add key="AppInsightsTraceDebug" value="true" />
+  <!--<add key="AppInsightInstrumntationKey" value="38e1e4f3-a09e-4377-af8b-f42a2328dae5" />-->
+  <add key="AppInsightInstrumntationKey" value="00000000-0000-0000-0000-000000000000" />
+  <!--Nom de l'environnement-->
+  <add key="EnvironmentName" value="RECETTE" />
+  <add key="InternalApplicationId" value="OpFront" />
+
+  <add key="MessageAccueil" value="Bienvenue sur le portail Outils de Production, nous sommes le {0:dd/MM/yyyy} !" />
+  <add key="PageSize" value="20" />
+  <add key="PaginationSize" value="200" />
+  <!-- Variable utilisée pour le téléchargement des pieces jointes à l'inventaire-->
+  <!--<add key="UploadPathInventory" value="C:\Projets\Upload\Inventaire" />
+  <add key="UploadParthReturnedDocument" value="C:\Projets\Upload\RetourDocuments" />
+  <add key="UploadPathDocumentGestionVal" value="C:\Projets\Upload\DocumentsGestion" />-->
+
+  <!-- Variable utilisée pour le repertoire virtuel-->
+  <add key="VirtuelDirectoryInventory" value="Upload/Inventaire/" />
+  <!-- Taille du fichier maximale en Octet (Ko/1000 = Octet, Mo/1000000 = Octet)-->
+  <add key="FileSize" value="500000" />
+  <!-- Extension autorisée au telechargement-->
+  <add key="ExtentionFichier" value="*.doc;*.docx;*.pdf;*.xls;*.xlsx;*.jpg;*.jpeg;*.png;*.gif" />
+  <!-- Extension autorisée au telechargement pour les clauses-->
+  <add key="ExtensionClause" value="*.doc;*.docx;*.pdf" />
+  <!-- Chaine de spli qui sert à la construction du nom de fichier-->
+  <add key="SplitCharsFile" value="__" />
+  <!-- Url d'appel Hexavia-->
+  <!-- <add key="UrlHexavia" value="http://hexavia.local/Guide/GrpSaisieAdresse.aspx" /> -->
+  <add key="UrlHexavia" value="http://hexavia.local/" />
+
+  <add key="UrlBackHexavia" value="host=opmvc.local/AdresseHexavia/ResultRedirectTestGrp.html" />
+  <!-- Environnement de travail-->
+  <add key="EnvironnementDeploiment" value="DEV" />
+  <!-- Nom de l'application-->
+  <add key="ApplicationName" value="OutilsProd" />
+  <!-- Mail Notification-->
+  <add key="From" value="Admin.OutilProd@albingia.fr" />
+  <add key="To" value="erwan.coulm@albingia.fr" />
+  <add key="CC" value="" />
+  <add key="subject" value="Notification d'erreur Outils de production" />
+  <!-- Stockage des traces -->
+  <add key="WindowEventLog" value="true" />
+  <add key="FileLog" value="false" />
+  <!-- Stockage des traces -->
+  <add key="AlbWndEventLog" value="AlbOPLog" />
+  <!-- Notification Mail -->
+  <add key="NotificationMail" value="true" />
+  <!-- CS/JS Version -->
+  <add key="JsCsVersion" value="031220211" />
+  <!-- Color Conditions Garantie-->
+  <add key="GaraBaseColor" value="#000" />
+  <add key="GaraIncludeColor" value="#09F" />
+  <add key="GaraGrantedColor" value="#039" />
+  <!-- Index de la ligne vide -->
+  <add key="AlbIndexList" value="-9999" />
+  <!-- Chaine de split pour séparer le nom du controle html et l'index de l'objet -->
+  <add key="SplitCharsHtml" value="#**#" />
+  <!-- Excel App config -->
+  <add key="XmlParamPath" value="C:\Parametrage\" />
+  <!--Exctension Fichier Excel-->
+  <add key="ExcelFileExtention" value=".xlsm" />
+  <!--Navigateur-->
+  <add key="OtherBrowsers" value="true" />
+  <!--Répèrtoire de génération Offre-Contrat-->
+  <!--<add key="TargetGenerateFolder" value="\\files01\kheops\Dev\temp\" />-->
+  <!--ExcelTemplateFile-->
+  <add key="ExcelTemplateFile" value="http://opmvc.local/ExcelWeb/ExcelTemplates/" />
+  <!--Version Application-->
+  <add key="App_Version" value="1.5.7.0" />
+  <!--Code de l'application utilisé dans la gestion des droits-->
+  <add key="GdmAppName" value="KDQ" />
+  <!--Page cible lors de l'ouverture d'une nouvelle fenêtre-->
+  <add key="UrlWinPageTarget" value="/" />
+  <!--répèrtoire virtuel de génèration des documents-->
+  <add key="UrlGenDoc" value="http://opmvc.local/DocGen/" />
+  <!--Url du serveur de stockage de documents-->
+  <add key="UrlStockageDocumentServeur" value="Files01" />
+  <!--Url de la racine de stockage de documents-->
+  <add key="UrlStockageDocumentRacine" value="Kheops" />
+  <!-- Paramètres de stockage des contrats-->
+  <add key="StoragePrefixDirectory" value="DOC" />
+  <add key="StorageMaxFiles" value="500" />
+  <add key="StorageNumPosDirectory" value="15" />
+  <!-- Chemin fichiers intercalaires-->
+  <add key="CheminIntercalaire" value="\\stockage\service$\PRD\Intercalaires\" />
+  <!--Chemin clausier-->
+  <add key="CheminClausier" value="\\Files01\Kheops\Dev\Clausier\" />
+  <!-- Chemin fichiers Documents Contractuels -->
+  <add key="CheminDocContract" value="L:\Documents\KheopsProduction" />
+  <!-- Afficher ou non l'ecran IS Entête -->
+  <add key="IgnoreISBranche" value="true" />
+  <!-- Url application externe-->
+  <add key="ExternalApp" value="External.Dev.albingia.local" />
+  <!-- Accès menu *** -->
+  <add key="AccessMenu" value="COULM;NEOS1;NEOS5;NEOS2;NEOS7" />
+  <!--chargement des users login à partir du cache-->
+  <add key="UsersLoginCache" value="True"/>
+  <!--<add key="UsersLoginCache" value="False" />-->
+  <!-- Menu et sous-menu à cacher (si aucun menu à cacher mettre ";", sinon toujours finir par ";")-->
+  <add key="HiddenMenu" value=";" />
+  <!--Pagination Suivi des documents-->
+  <add key="PageSizeDoc" value="50" />
+  <add key="PaginationSizeDoc" value="500" />
+  <!--Module Affichage documents-->
+  <add key="DisplayDocModule" value="UrlDocViewer" />
+  <add key="UrlDocViewer" value="http://opmvc.local/OfficeViewer" />
+  <add key="UrlDocViewerTxt" value="http://opmvc.local/TxtControlViewer" />
+  <!--Module Magnetic-->
+  <add key="MagneticUrl" value="http://recetteedi.albingia.local"/>
+  <!--Chemin XML-->
+  <add key="MagneticUrlXml" value="\\Files01\Kheops\Dev\XmlEditique\" />
+  <!--Switch pour le module de gestion documentaire-->
+  <add key="SwitchModuleGestDoc" value="1" />
+  <!--Liste des personnes pour lesquelles le module est ouvert-->
+  <add key="UserModuleGestDocOpen" value="COULM" />
+  <!--Liste des personnes pour lesquelles le module est fermé-->
+  <add key="UserModuleGestDocClose" value="" />
+  <!--Activer ou non le Log en mode Hard dans KEDILOG-->
+  <add key="SwitchHardLog" value="1" />
+  <!-- Liste des personnes autorisées pour la régularisation -->
+  <add key="UserRegularisation" value=";COULM;NEOS5;NEOS1;NEOS7;NEOS4;NEOS7;" />
+  <!-- Liste des personnes autorisées pour la remise en vigueur -->
+  <add key="UserRemVigueur" value=";COULM;NEOS5;NEOS1;NEOS7;NEOS4;SARRAZIN;NEOS2;" />
+  <!--Switch pour l'envoi de mail-->
+  <add key="SendMail" value="1"/>
+  <!--Liste des personnes autorisées pour le centre équestre-->
+  <add key="UserHorse" value=";NEOS1;COULM;GALANT;SARRAZIN;ACQUART;NEOS2;NEOS5;NEOS4;NEOS7;" />
+
+  <!-- Start Portail Partenaire Configuration -->
+  <add key="UrlPortailPartenaire" value="http://partenaire.local"/>
+  <add key="UserPortailPartenaire" value=";COULM;NEOS5;NEOS2;" />
+  <!-- End Portail Partenaire Configuration -->
+
+  <!-- Contracts JSON Creation -->
+  <add key="ContractJsonFullPath" value="C:\Projets\Connecteur\Connecteur\Kheops_MR_17045440203_19_12_2019 09_21_18.json" />
+  <!--<add key="ContractJsonFullPath" value="C:\PROJETS\Structure_AN.json" />-->
+  <!-- End Contracts JSON Creation -->
+
+  <!-- Grp Web Service -->
+  <add key="grpBaseUrl" value="https://grp365.albingia.fr/Albingia/main.aspx"/>
+  <add key="grpServiceUrl" value="https://grp365.albingia.fr/Albingia/api/data/v8.2/"/>
+  <add key="grpUserName" value="userlab"/>
+  <add key="grpPassword" value="userlab"/>
+  <!-- End Grp Web Service -->
+
+  <!-- Refinitiv API  -->
+  <add key="APIKey" value="8ac85b73-1964-450a-9b8b-35a444f7b5fd" />
+  <add key="APISecret" value="fYxa/lKwikRF27TWH8M6L6/WniKpc2K1DXhRw4yYpkNLkh/6uzeMPXeHIHGBAMeoxNifEq6n76SVQ7Mb5pWcWg==" />
+  <add key="RefinitivHost" value="api-worldcheck.refinitiv.com" />
+  <add key="RefinitivUrl" value="/v2/" />
+  <add key="RefinitivEndpoint" value="https://api-worldcheck.refinitiv.com/v2/" />
+  <!--<add key="ContractJsonFullPath" value="C:\PROJETS\Structure_AN.json" />-->
+  <!-- End Refinitiv API -->
+</appSettings>

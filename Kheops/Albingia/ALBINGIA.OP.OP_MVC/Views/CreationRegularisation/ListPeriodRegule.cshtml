@@ -1,0 +1,47 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegulGar.PerioderegulGarantie>
+<div id="divPeriodRegulHeader">
+    <table id="tblPeriodRegulHeader" class="trHeight ">
+        <tr>
+            <th class="col_HeaderMouvement tablePersoHeader">Période à régulariser
+            </th>
+            <th class="col_HeaderAssiette tablePersoHeader">Assiette
+            </th>
+            <th class="col_HeaderTaux tablePersoHeader">Taux / Forfait
+            </th>
+            <th class="col_HeaderMontant tablePersoHeader">Montant de la régularisation HT HCN
+            </th>
+            <th id="btnAjouterPeriodregul" title="Ajouter une période de régularisation du risque" class="tablePersoHeader col_HeaderImg CursorPointer">
+                <img src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+            </th>
+        </tr>
+    </table>
+</div>
+<div id="divPeriodRegul" class="dvPeriodRegul">
+    <table id="tblPeriodRegulBody" class="trHeight">
+        @{
+            foreach (var periodRegulInfo in Model)
+            {
+            <tr>
+                <td data-id="@(periodRegulInfo.Code)" data-id-rcfr="@(periodRegulInfo.IdRCFR)" name="LinkRegulGar" class="@( periodRegulInfo.Situation == "V" ? "navigvisited CursorPointer col_TdMvt" : "navig CursorPointer col_TdMvt")" albidgar="@(periodRegulInfo.idGar)" albcodgar="@(periodRegulInfo.codeGar)" albcodeopt="@(periodRegulInfo.codeOpt)" albidregul="@(periodRegulInfo.idregul)" albidlot="@(periodRegulInfo.idLot)" albcodefor="@(periodRegulInfo.codeFor)" albcodersq="@(periodRegulInfo.codeRsq)" alblibgar="@(periodRegulInfo.libGar)" albprov="periodRegul">@periodRegulInfo.PeriodeRegulDebStr</td>
+                <td class="col_TdMvt">@periodRegulInfo.PeriodeRegulFinStr</td>
+                <td class="col_TdAssiette">
+                    <span albmask="decimal">@periodRegulInfo.AssietteValeur</span>
+                </td>
+                <td class="col_TdTauxForfait">
+                    <span albmask="@(periodRegulInfo.TauxForfaitHTUnite == "D" ? "decimal" : "pourcentdecimal")">@periodRegulInfo.TauxForfaitHTValeur</span>
+                </td>
+                <td class="col_TdUnite">@periodRegulInfo.TauxForfaitHTUnite</td>
+                <td class="col_TdMontantRegulHF">
+                    <span albmask="decimal">@periodRegulInfo.MontantRegulHF</span>
+                </td>
+                <td class="col_Buttons col_TdImg CursorPointer">
+                    <img id="SuppPeriodRegul" name="SuppPeriodRegul" title="Supprimer une periode de régule" albregulecode="@(periodRegulInfo.Code)" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+                </td>
+            </tr>
+            
+            }
+        }
+    </table>
+</div>
+
+

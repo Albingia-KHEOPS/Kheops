@@ -1,0 +1,173 @@
+﻿<div class="nGradientSection">
+    <div class="simpleGradientSection">
+        <img name="expandArbre" id="imgExpandInfo" src="/Content/Images/collapse.png" class="styleImgCollapser" data-bind="click: displayOrNotDetailedInfoRC" />
+        <div class="FloatRight " style="padding-left: 60px; padding-top: 5px;">
+            <div class="HeightRow" style="float: right; padding-right: 5px;">
+                <div class="FloatLeft" style="margin-left: 20px;">
+                    <label style="margin-right: 10px; width: 110px; font-weight:bold">Montant de la régul.</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="inNumericRegule" data-bind="autoNumeric: { value: TotalAmount, min: -99999999999.99, max: 99999999999.99 }, readonly: true" albmask="decimal" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="simpleGradientSection divInfoReguleGarantieRC" id="garantieRegulRC">
+        <div>
+            <div class="FloatLeft">
+                <div class="FloatLeft">
+                    <label style="font-weight: bold;">Données de régularisation :</label>
+                </div>
+            </div>
+            <div class="FloatLeft">
+                <!-- ko foreach: Garanties -->
+                <div class="FloatLeft divInfoTauxleft">
+                    <div class="FloatLeft divInfoTauxleft">
+                        <div class="HeightRow">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td style="font-weight: bold;" colspan="11"><!-- ko text: Definitif.Label --><!-- /ko --></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <label class="lblAssiette">Assiette</label>
+                                        </td>
+
+                                        <td>
+                                            <label>Taux/Montant </label>
+                                        </td>
+                                        <td>
+                                            <label class="lblUnite">Unité</label>
+                                        </td>
+                                        <td>
+                                            <label class="lblCode">Code Taxes</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="autowidth">Prévisionnel</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inAss" data-bind="autoNumeric: { value: Previsionnel.BasicValues.Assiette, min: -99999999999.99, max: 99999999999.99 }, readonly: true" albmask="decimal" />
+                                        </td>
+                                        <td>
+                                            <input id="regultestid3" type="text" class="inTaux" data-bind="visible: Previsionnel.BasicValues.Unite.Code() == 'D', autoNumeric: { value: montantPrev, min: -99999999999.99, max: 99999999999.99 }, readonly: true" albmask="decimal" />
+                                            <input id="regultestid" type="text" class="inTaux" data-bind="visible: Previsionnel.BasicValues.Unite.Code() != 'D', autoNumeric: { value: tauxPrev, min: -99999999999.9999, max: 99999999999.9999, nbDecimals: 3 }, readonly: true" albmask="decimal" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inUnit" data-bind="value: Previsionnel.BasicValues.Unite.Label, readonly: true" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="InCodtaxe" data-bind="value: Previsionnel.BasicValues.CodeTaxes.Label, readonly: true" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="autowidth">Définitif</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inAss" data-bind="autoNumeric: { value: Definitif.BasicValues.Assiette, min: -99999999999.99, max: 99999999999.99 }, readonly: isReadonly" albmask="decimal" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inTaux" data-bind="css: { requiredField: isInvalidEntry(montant()) && !isEmpty() }, visible: isCurrencyAmount, autoNumeric: { value: montant, min: -99999999999.99, max: 99999999999.99 }, readonly: isReadonly" albmask="decimal" />
+                                            <input id="regultestid2" type="text" class="inTaux" data-bind="css: { requiredField: isInvalidEntry(taux()) && !isEmpty() }, visible: isRateAmount, autoNumeric: { value: taux, min: -999.9999, max: 999.9999, nbDecimals: 3 }, readonly: isReadonly" albmask="decimal" />
+                                        </td>
+                                        <td>
+                                            <select class="inUnit" data-bind="css: { requiredField: isInvalidEntry(Definitif.BasicValues.Unite.Code()) && !isEmpty() }, options: $parent.ListeUnites, optionsText: 'Label', optionsValue: 'Code', optionsCaption: '', value: Definitif.BasicValues.Unite.Code, valueAllowUnset: true, disable: isReadonly"></select>
+                                        </td>
+                                        <td>
+                                            <select class="InCodtaxe" data-bind="css: { requiredField: isInvalidEntry(Definitif.BasicValues.CodeTaxes.Code()) && !isEmpty() }, options: $parent.ListeCodesTaxes, optionsText: 'Label', optionsValue: 'Code', optionsCaption: '', value: Definitif.BasicValues.CodeTaxes.Code, valueAllowUnset: true, disable: isReadonly"></select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="FloatRight " style="padding-left: 60px; padding-top: 58px;">
+                    <div class="HeightRow" style="float: right; padding-right: 5px;">
+                        <div class="FloatLeft">
+                            <label class="LabelHT">H.T Hors Cat Nat</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <label>Taxes</label>
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="float: right; padding-right: 5px;">
+                        <div class="FloatLeft" style="margin-right: 20px;">
+                            <input type="text" class="inNumericRegule" data-bind="autoNumeric: { value: Definitif.CalculAssiette, min: -999999999.99, max: 999999999.99 }, readonly: true" albmask="decimal" />
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="inNumericRegule" data-bind="autoNumeric: { value: Definitif.CalculTaxesAssiette, min: -999999999.99, max: 999999999.99 }, readonly: true" albmask="decimal" />
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="float: right; padding-right: 5px;">
+                        <div class="FloatLeft" style="margin-left: 20px;">
+                            <label style="margin-right: 10px; width: 120px;">Cotisation émise</label>
+                        </div>
+                        <div class="FloatLeft" style="margin-right: 20px;">
+                            <input type="text" class="inNumericRegule" data-bind="autoNumeric: { value: Definitif.CotisationEmise, min: -999999999.99, max: 999999999.99 }, readonly: true" albmask="decimal" />
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="inNumericRegule" data-bind="autoNumeric: { value: Definitif.TaxesCotisationEmise, min: -999999999.99, max: 999999999.99 }, readonly: true" albmask="decimal" />
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="float: right; padding-right: 5px;">
+                        <div class="FloatLeft" style="margin-left: 20px;">
+                            <label style="margin-right: 10px; width: 120px;">Cotisation forcée</label>
+                        </div>
+                        <div class="FloatLeft" style="margin-right: 20px;">
+                            <input type="text" class="inNumericRegule" data-bind="readonly: cannotEditCotisForcee, autoNumeric: { value: CotisationForcee, min: -999999999.99, max: 999999999.99 }" albmask="decimal" />
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="inNumericRegule" data-bind="readonly: cannotEditCotisForcee, autoNumeric: { value: TaxesCotisationForcee, min: -999999999.99, max: 999999999.99 }" albmask="decimal" />
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="float: right; padding-right: 5px;">
+                        <div class="FloatLeft" style="margin-left: 20px;">
+                            <label style="margin-right: 10px; width: 110px">Ou Montant régul forcé </label>
+                        </div>
+                        <div class="FloatLeft" style="padding-right: 22px;">
+                            <input type="text" class="inNumericRegule" data-bind="autoNumeric: { value: RegulForcee, min: -999999999.99, max: 999999999.99 }, readonly: isReguleZeroReadonly" albmask="decimal" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label>
+                                <input type="checkbox" data-bind="checked: IsRegulZero, enable: allowForceZero" /> Forcer à "0"
+                            </label>
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="float: right; padding-right: 5px;">
+                        <div class="FloatLeft" style="margin-left: 20px;">
+                            <label style="margin-right: 10px; width: 110px"><b>Montant régul. <!-- ko text: Definitif.CodeGarantie --><!-- /ko --></b></label>
+                        </div>
+                        <div class="FloatLeft" style="padding-right: 110px;">
+                            <input type="text" class="inNumericRegule readonly" readonly="readonly" data-bind="autoNumeric: { value: RegulCalcule, min: -999999999.99, max: 999999999.99 }" albmask="decimal" />
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="float: right; padding-right: 5px;" data-bind="visible: showCoef">
+                        <div class="FloatLeft" style="width:85px !important; text-align: right; margin-left: 20px;">
+                            <label style="margin-right: 10px; width: 120px;" data-bind="visible: showCoef">Coefficient</label>
+                        </div>
+                        <div class="FloatLeft" style="padding-right: 20px;">
+                            <input type="text" class="inNumericRegule" data-bind="visible: showCoef, readonly: cannotEditCoef, autoNumeric: { value: Definitif.Coefficient, min: -999999999.99, max: 999999999.99 }" albmask="decimal" />
+                        </div>
+                        <div class="None FloatRight" style="padding-top: 2px; width: 105px; text-align: center;">
+                            <label>DONT ATTENTAT</label>
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="float: right; padding-right: 5px;" data-bind="visible: showCoef">
+                        <div class="None">
+                            <input type="text" class="inNumericRegule" data-bind="readonly: cannotEditAttentat, autoNumeric: { value: Attentat, min: -999999999.99, max: 999999999.99 }" albmask="decimal" />
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!--<span class="None" data-bind="template: { afterRender: init }"></span>-->
+    </div>
+</div>

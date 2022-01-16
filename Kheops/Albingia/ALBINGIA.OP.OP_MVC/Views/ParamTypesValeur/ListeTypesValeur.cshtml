@@ -1,0 +1,20 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamTypesValeur.ModeleLigneTypeValeur>
+<table id="tblTypesValeurBody" class="trHeight">
+    @foreach (var ligne in Model)
+    {
+        <tr name="ligneTypeValeur" id="@("ligneTypeValeur_" + ligne.Code)">
+            <td class="col_BCode">
+                <label id="@("lblCodeTypeValeur_" + ligne.Code)">@ligne.Code</label>
+            </td>
+            <td class="col_BDescription">
+                <label id="@("lblDescriptionTypeValeur_" + ligne.Code)">@ligne.Description</label>
+            </td>
+            <td class="col_BAction">
+                @if (ligne.AdditionalParam == "**")
+                {
+                    <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSupprTypeValeur_" + ligne.Code)" alt="Supprimer" title="Supprimer" class="Action CursorPointer" name="btnSupprimerTypeValeur"/>
+                }
+            </td>
+        </tr>
+    }
+</table>

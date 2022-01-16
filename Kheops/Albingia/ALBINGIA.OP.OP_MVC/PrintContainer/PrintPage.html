@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta charset="utf-8" />
+    <title></title>
+     <script language="javascript" type="text/javascript" src="../Scripts/Jquery/jquery-1.8.2.min.js"></script>
+     <script language="javascript" type="text/javascript" src="../Scripts/Jquery/jquery-ui-1.8.23.min.js"></script>
+    <script>
+        //var codeDoc = $('#docCodes', window.parent.document).val();
+        //if ($("#frmSuiviDoc").attr("src") != undefined && (codeDoc != "" || codeDoc != "|")) {
+        //    var src = $("#frmSuiviDoc").attr("src").replace("##id##", codeDoc);
+        //    $("#frmSuiviDoc").attr("src", src).show();
+        //    //$("#divIframeDoc").show();
+        //    var XbapHandler = null;
+
+        //}
+        var XbapHandler = null;
+        // create new function to document, that will be called from C#, this links the C# object to XbapHandler
+        document.AttachXBAPHandler = function (xbapHandler) {
+            XbapHandler = xbapHandler;
+        }
+
+        // Make simple function to document, that can be called from C# XBAP
+        document.ResponseData = function (responseData) {
+            alert(responseData);
+        }
+       
+        function ShowXBap(src) {
+           // location.reload();
+            //var codeDoc = $('#docCodes', window.parent.document).val();
+            //if ($("#frmSuiviDoc").attr("src") != undefined && (codeDoc != "" || codeDoc != "|")) {
+            //    var src = $("#frmSuiviDoc").attr("src").replace("##id##", codeDoc);
+            //    $("#frmSuiviDoc").attr("src", src).show();
+            //}
+            //var src = $("#frmSuiviDoc").attr("src").replace("##id##", code);
+                $("#frmSuiviDoc").attr("src", src);
+
+        }
+            
+        function SendToXBAP() {
+            //    // Get the text from textbox
+            //    // var text = document.getElementById("TestText").value;
+            //    // Call C# object with the text data
+            XbapHandler("0");
+        } 
+    </script>
+</head>
+    <body>
+        
+        <!--<input id="TestText" value="Hello World"/>-->
+            <button type="button" onclick="javascript:SendToXBAP();">Exit</button>
+            <br /><br />
+        <iframe id="frmSuiviDoc" name="frmSuiviDoc" width="500px" height="450px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" src="http://opmvc.local/PrintPublish/ALBINGIA.PrintContainer.xbap?id=##id##"></iframe>
+       <!-- <script>
+            var codeDoc = $('#docCodes', window.parent.document).val();
+            if ($("#frmSuiviDoc").attr("src") != undefined && (codeDoc != "" || codeDoc != "|")) {
+                var src = $("#frmSuiviDoc").attr("src").replace("##id##", codeDoc);
+                $("#frmSuiviDoc").attr("src", src).show();
+                //$("#divIframeDoc").show();
+                var XbapHandler = null;
+
+            }
+
+            // create new function to document, that will be called from C#, this links the C# object to XbapHandler
+            document.AttachXBAPHandler = function (xbapHandler) {
+                XbapHandler = xbapHandler;
+            }
+
+            // Make simple function to document, that can be called from C# XBAP
+            document.ResponseData = function (responseData) {
+                alert(responseData);
+            }
+        </script>-->
+    </body>
+</html>

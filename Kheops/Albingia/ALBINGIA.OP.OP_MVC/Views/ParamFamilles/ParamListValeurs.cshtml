@@ -1,0 +1,41 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamFamilles.Valeur>
+<table id="tblBodyValeurs" class="trHeight">
+    @foreach (var item in Model)
+    {      
+        <tr id="@("tr_" + item.CodeValeur + "_" + item.CodeFamille + "_" + item.CodeConcept)">
+            @if (item.RestrictionParam != "Y" && item.AdditionalParam == "**")
+            {
+                <td id="@("codeValeur_" + item.CodeValeur)"  class="linkValeur CursorPointer col_CodeValeur" >
+                    @item.CodeValeur
+                </td>
+                <td id="@("libelleValeur_" + item.CodeValeur)" class="linkValeur CursorPointer col_LibelleValeur">
+                    @item.LibelleValeur
+                </td>
+
+                <td id="@("libelleValeur_" + item.CodeValeur)" title="@item.LibelleFiltre" class="linkValeur CursorPointer col_Filtre">
+                    @(!string.IsNullOrEmpty(item.CodeFiltre) ? item.CodeFiltre + " - " + item.LibelleFiltre : "-")
+                </td>
+            }
+            else
+            {
+                <td id="@("codeValeur_" + item.CodeValeur)"  class="col_CodeValeur" >
+                    @item.CodeValeur
+                </td>
+                <td id="@("libelleValeur_" + item.CodeValeur)" class="col_LibelleValeur">
+                    @item.LibelleValeur
+                </td>
+
+                <td id="@("libelleValeur_" + item.CodeValeur)" title="@item.LibelleFiltre" class="col_Filtre">
+                    @(!string.IsNullOrEmpty(item.CodeFiltre) ? item.CodeFiltre + " - " + item.LibelleFiltre : "-")
+                </td>
+            }
+            <td class="colBtn">@*col_Buttons*@
+                <img src="@Url.Content("/Content/Images/Copy_16.png")" id="@("dupliquerValeur_" + @item.CodeValeur)" alt="Dupliquer la valeur" title="Dupliquer la valeur" class="CursorPointer PaddingLeft" name="dupliquerValeur"/>
+                @if (item.RestrictionParam != "Y" && item.AdditionalParam == "**")
+                {
+                    <img id="@("suppr_" + item.CodeValeur)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" class="CursorPointer" title="Supprimer" name="supprValeur" />
+                }
+            </td>
+        </tr>
+    }
+</table>

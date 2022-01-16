@@ -1,0 +1,182 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause
+<div class="CommonForm" style="width: auto">
+    <div class="nGroupFull nGroupWithBorder LargeurTotal">
+        <div class="nHorizontalFullWithGroup LargeurTotalInterieur">
+            <div class="nGradientSection">
+                <div class="GroupTitle Titre">
+                    Clause ajoutée par <b>@(Model.Origine)</b>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Code</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputCodeClause" readonly="readonly" value="@Model.Titre"/>
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block" style="width: 60px;">Version</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputNum" readonly="readonly" value="@Model.NumeroVersion" />
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Du</label>
+                    </div>
+                    <div class=" FloatLeft">
+                        <input type="text" class="readonly inputDate" readonly="readonly" value="@(Model.DateEffetVersionDebut.HasValue ? Model.DateEffetVersionDebut.Value.ToShortDateString() : string.Empty)" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block labelDate">au</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputDate" readonly="readonly" value="@(Model.DateEffetVersionFin.HasValue ? Model.DateEffetVersionFin.Value.ToShortDateString() : string.Empty)" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block">Etape</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly" readonly="readonly" value="@Model.Etape" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block">Contexte</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly" readonly="readonly" value="@Model.Contexte" />
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Code situation</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly" readonly="readonly" value="@Model.CodeSituation" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block">Date de situation</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputDate" readonly="readonly" value="@(Model.DateSituation.HasValue ? Model.DateSituation.Value.ToShortDateString() : string.Empty)" />
+                    </div>
+                </div>
+            </div>
+            <div class="nGradientSection AvenantModif FloatLeft" style="width: 420px;">
+                <div class="GroupTitle Titre">
+                    Avenant de création
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Numéro</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputNum" readonly="readonly" value="@Model.NumeroAvenantCreation" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block" style="width: 60px;">Date</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputDate" readonly="readonly" value="@( Model.DateAvenantCreation.HasValue ? Model.DateAvenantCreation.Value.ToShortDateString() : string.Empty)" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block" title="Avenant spécifique" style="width: 60px;">Avt spec.</label>
+                    </div>
+                    <div class="FieldCheckBoxFor FloatLeft">
+                        <input type="checkbox" class="readonly" checked="@(Model.IndiqueAvenantSpecifique )" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="nGradientSection AvenantModif FloatLeft" style="width: 420px;">
+                <div class="GroupTitle Titre">
+                    Avenant de modification
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Numéro</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly" readonly="readonly" value="@Model.NumeroAvenantModification" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block" style="width: 60px;">Date</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputDate" readonly="readonly" value="@(Model.DateAvenantModification.HasValue ? Model.DateAvenantModification.Value.ToShortDateString() : string.Empty)" />
+                    </div>
+                </div>
+            </div>
+            <div class="nGradientSection FloatLeft" style="width: 844px;">
+                <div class="GroupTitle Titre">
+                    Impression
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Document</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="readonly" readonly="readonly" value="@Model.Document" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Emplacement</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="readonly" readonly="readonly" value="@Model.Chapitre" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Sous emplacement</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="readonly" readonly="readonly" value="@Model.SousChapitre" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Numéro</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputNum" readonly="readonly" value="@Model.NumeroImpression" />
+                    </div>
+                    <div class="PaddingLeft FloatLeft">
+                        <label class="Block" style="width: 60px;">Ordre</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputNum" readonly="readonly" value="@Model.NumeroOrdre" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block" title="Impression annexe" style="width: 80px;">Impr. annexe</label>
+                    </div>
+                    <div class="FieldCheckBoxFor FloatLeft">
+                        <input type="checkbox" disabled="disabled" class="readonly" checked="@Model.IndiqueImpressionAnnexe" />
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly inputNum" readonly="readonly" value="@Model.ImpressionAnnexe" />
+                    </div>
+                </div>
+            </div>
+            <div class="nGradientSection FloatLeft" style="width: 844px;">
+                <div class="GroupTitle Titre">
+                    Action enchainée
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Action Enchaine</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly" readonly="readonly" value="@Model.ActionEnchaine" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight LargeurTotal">
+        <div class="ActionButtons ActionButtonRight">
+            <button type="button" value="Fermer" id="btnFermerChoixClauseTransverse">Fermer</button>
+        </div>
+    </div>
+</div>

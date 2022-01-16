@@ -1,0 +1,14 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRisque.ModeleRisque
+
+<div id="divApplique" class="None nInfoBandeau">
+    <div class="even" style="width: 410px; padding: 5px;">@string.Format("Risque {0} - {1}", Model.Code, Model.Designation)</div>
+    @foreach (var obj in Model.Objets)
+    {
+        <div class="odd" style="width: 400px; padding: 5px; padding-left: 15px;">@string.Format("Objet {0} - {1}", obj.Code, obj.Designation)
+        </div>
+    }
+    @*<div class="ActionButtons ActionButtonRight">
+        <button id="btnFermerpopup" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+    </div>*@
+
+</div>

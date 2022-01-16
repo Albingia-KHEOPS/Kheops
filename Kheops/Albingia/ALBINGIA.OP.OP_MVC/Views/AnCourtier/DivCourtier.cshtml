@@ -1,0 +1,72 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.Courtiers.Courtier
+<div class="GradientSectionEntetePopup">
+    @if (Model.CodeCourtier == 0)
+    {
+        <label class="lableEntete">Ajout d'un courtier</label>
+    }
+    else
+    {
+        <label class="lableEntete">Modification d'un courtier</label>
+    }
+</div>
+<div id="AjoutCourtier" class="GradientSectionAjoutCourtier">
+    <div class="HeightRow">
+        <div class="NumeroCourtierColumn">
+            <div class="Label">
+                Code*
+            </div>
+            <div class="FloatLeft">
+                @if (Model.CodeCourtier == 0)
+                {
+                    <input type="text" id="CodeCourtier" name="CodeCourtier" value="" class="NumCourtierTxt" maxlength="5" albautocomplete="autoCompCodeCourtier" />
+                }
+                else
+                {
+                    <input type="text" id="CodeCourtier" name="CodeCourtier" value="@Model.CodeCourtier" disabled="disabled" class="NumCourtierTxt readonly"/>
+                }
+            </div>
+        </div>
+        <div class="TripleColumnsGroup FloatLeft">
+            <div class="Label">
+                Nom*
+            </div>
+            <div class="FloatLeft">
+                @if (Model.CodeCourtier == 0)
+                {
+                    <input type="text" id="NomCourtier" name="NomCourtier" value="" class="NomTxt" albautocomplete="autoCompNomCourtier" />
+                }
+                else
+                {
+                    <input type="text" id="NomCourtier" name="NomCourtier" value="@Model.NomCourtier" disabled="disabled" class="NomTxt readonly" />
+                }
+            </div>
+        </div>
+        <div class="TripleColumnsGroup FloatLeft">
+            <div class="Label">
+                % de commission*
+            </div>
+            <div class="FloatLeft">
+                @Html.Hidden("AncienneCommission", Model.Commission)
+                <input type="text" id="Commission" value="@Model.Commission" name="Commission"  albmask="pourcentdecimal" class="CommissionTxt decimal" />
+            </div>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="TripleColumnsGroup FloatLeft">
+            @Html.HiddenNoName("inInvalidCourtierApp", string.Empty)
+            <div id="CourtierInvalideDiv" class="FloatLeft error PaddingLeft">
+            </div>
+        </div>
+    </div>
+    <div class="HeightRowButtons">
+        <button id="btnAnnulerDivFlottante" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+        @if (Model.CodeCourtier == 0)
+        {
+            <button id="btnAjouter" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        }
+        else
+        {
+            <button id="btnModifier" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        }
+    </div>
+</div>

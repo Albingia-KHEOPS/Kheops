@@ -1,0 +1,158 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6EA724A9-8249-41E8-A3AA-38086FE41F9F}"
+	ProjectSection(SolutionItems) = preProject
+		OP.vsmdi = OP.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalAssemblies", "ExternalAssemblies", "{11913359-E664-463B-9BF2-595BD7AB7C18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.DataAccess", "OP.DataAccess\OP.DataAccess.csproj", "{DBED05E2-773D-4B40-B704-3359823BFFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.Services", "OP.Services\OP.Services.csproj", "{A0581548-B430-479F-A38A-397259278639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.IOWebService", "OP.IOWebService\OP.IOWebService.csproj", "{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.WSAS400.DTO", "OP.WSAS400.DTO\OP.WSAS400.DTO.csproj", "{583328B5-C77A-40B6-A9CC-E74BDB583AFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPServiceContract", "OPServiceContract\OPServiceContract.csproj", "{51915333-F540-4663-AEB6-4C84CD955300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBINGIA.Framework.Common", "..\Albingia\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj", "{A98A2815-A24C-4E02-891E-8B802EE892EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OP.Services.Excel", "OP.Services.Excel\OP.Services.Excel.csproj", "{71215CB6-7A59-4D96-8979-FCAFB1583A83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DBED05E2-773D-4B40-B704-3359823BFFB9}.Release|x86.ActiveCfg = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A0581548-B430-479F-A38A-397259278639}.Release|x86.ActiveCfg = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{85DDE75F-6A4E-4135-AB97-FA4A141AA34C}.Release|x86.ActiveCfg = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{583328B5-C77A-40B6-A9CC-E74BDB583AFB}.Release|x86.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|x86.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|x86.ActiveCfg = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{71215CB6-7A59-4D96-8979-FCAFB1583A83}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E80A4A75-9681-44A1-9314-EAC0F9CE4BB3}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2018/defaultcollection
+		SccProjectUniqueName0 = ..\\Albingia\\ALBINGIA.Framework.Common\\ALBINGIA.Framework.Common.csproj
+		SccProjectName0 = ../Albingia/ALBINGIA.Framework.Common
+		SccAuxPath0 = http://tfs2018/defaultcollection
+		SccLocalPath0 = ..\\Albingia\\ALBINGIA.Framework.Common
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = OP.WSAS400.DTO\\OP.WSAS400.DTO.csproj
+		SccProjectName1 = OP.WSAS400.DTO
+		SccAuxPath1 = http://tfs2018/defaultcollection
+		SccLocalPath1 = OP.WSAS400.DTO
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = OP.DataAccess\\OP.DataAccess.csproj
+		SccProjectName2 = OP.DataAccess
+		SccAuxPath2 = http://tfs2018/defaultcollection
+		SccLocalPath2 = OP.DataAccess
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = OPServiceContract\\OPServiceContract.csproj
+		SccProjectName3 = OPServiceContract
+		SccAuxPath3 = http://tfs2018/defaultcollection
+		SccLocalPath3 = OPServiceContract
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = OP.Services.Excel\\OP.Services.Excel.csproj
+		SccProjectName4 = OP.Services.Excel
+		SccAuxPath4 = http://tfs2018/defaultcollection
+		SccLocalPath4 = OP.Services.Excel
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = OP.Services\\OP.Services.csproj
+		SccProjectName5 = OP.Services
+		SccAuxPath5 = http://tfs2018/defaultcollection
+		SccLocalPath5 = OP.Services
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName6 = OP.IOWebService\\OP.IOWebService.csproj
+		SccProjectName6 = OP.IOWebService
+		SccAuxPath6 = http://tfs2018/defaultcollection
+		SccLocalPath6 = OP.IOWebService
+		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = OP.vsmdi
+	EndGlobalSection
+EndGlobal

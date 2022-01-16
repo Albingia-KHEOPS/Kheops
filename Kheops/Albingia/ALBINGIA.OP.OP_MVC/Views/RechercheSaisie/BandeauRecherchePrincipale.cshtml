@@ -1,0 +1,59 @@
+﻿@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.Framework.Common.Constants
+<div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+    <div class="ActionButtons ActionButtonsSearch ActionButtonLeft">
+        @if (Model.AccesRecherche == AlbConstantesMetiers.TypeAccesRecherche.Standard)
+        {
+            if ((AlbOpConstants.ClientWorkEnvironment != AlbOpConstants.OPENV_PROD) && (ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Exists(el => el.TypeDroit != TypeDroit.S.ToString())))
+            {
+                <button type="button" id="btnCreerSaisie" tabindex="23" albshortcut="true" data-accesskey="s">Créer <u>S</u>aisie</button>
+                <button type="button" id="btnCreerContrat" tabindex="24" albshortcut="true" data-accesskey="c">Créer <u>C</u>ontrat</button>
+            }
+
+            if (ALBINGIA.OP.OP_MVC.MvcApplication.ACCESS_MENU.ToLower().Contains(AlbSessionHelper.ConnectedUser.ToLower())
+                    || (ALBINGIA.OP.OP_MVC.MvcApplication.ENVIRONMENT_NAME == AlbOpConstants.OPENV_SPP
+                            && ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Exists(el => el.TypeDroit == TypeDroit.A.ToString() || el.TypeDroit == TypeDroit.M.ToString() || el.TypeDroit == TypeDroit.S.ToString())))
+            {
+                <button type="button" id="btnAdmin" tabindex="27" albshortcut="true" data-accesskey="a"><u>A</u>dministration</button>
+            }
+            @*<button type="button" id="btnShowRelances" tabindex="28">Relances</button>*@
+            <button type="button" id="btnClausierRech" tabindex="29" albshortcut="true" data-accesskey="l">C<u>l</u>ausier</button>
+            <button type="button" id="btnAtlas" tabindex="29" albshortcut="true" data-accesskey="t">A<u>t</u>las</button>
+            if (AlbSessionHelper.ConnectedUser.ToLower() == "coulm" || AlbSessionHelper.ConnectedUser.ToLower() == "weng")
+            {
+                <button type="button" id="btnCorrectionECM">CorrectionECM</button>
+                <button type="button" id="btnLoadJsonFile">Load JSON</button>
+                <button type="button" id="btnExcelContrat" tabindex="10" albshortcut="true" data-accesskey="x">E<u>x</u>cel</button>
+                //}
+                //if (ALBINGIA.OP.OP_MVC.MvcApplication.USER_PARTENAIRE.ToLower().Contains(AlbSessionHelper.ConnectedUser.ToLower())
+                //        || (ALBINGIA.OP.OP_MVC.MvcApplication.ENVIRONMENT_NAME == AlbOpConstants.OPENV_QUALIF
+                //                && ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Exists(el => el.TypeDroit == TypeDroit.A.ToString() || el.TypeDroit == TypeDroit.M.ToString())))
+                //{
+                <button type="button" id="btnPartenaire" tabindex="10" albshortcut="true" data-accesskey="P"
+                        onclick="window.open('@ALBINGIA.OP.OP_MVC.MvcApplication.URL_PARTENAIRE','_blank');">
+                    <u>P</u>artenaire
+                </button>
+            }
+        }
+        else
+        {
+            <button value="Retour" id="btnRetourRechRapide" tabindex="22" albshortcut="false" data-accesskey="R"><u>R</u>etour</button>
+        }
+
+
+    </div>
+    <div id="LoadingDiv" class="FloatLeft">
+        <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+    </div>
+    <div class="ActionButtons ActionButtonsSearch ActionButtonRight">
+        <button type="button" id="btnInitialize" tabindex="25" albshortcut="true" data-accesskey="i">Ré<u>i</u>nitialiser</button>
+        @if (Model.SessionSearch)
+        {
+            <button type="submit" id="btnRechercher" name="btnRechercher" tabindex="22" albshortcut="true" data-accesskey="r"><u>R</u>echercher</button>
+        }
+        else {
+            <button type="submit" id="btnRechercher" name="btnRechercher" tabindex="22" disabled="disabled" albshortcut="true" data-accesskey="r"><u>R</u>echercher</button>
+        }
+
+    </div>
+</div>

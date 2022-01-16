@@ -1,0 +1,197 @@
+﻿@using System.Globalization
+@using ALBINGIA.Framework.Common.Extensions
+@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.ModelesNavigationArbre
+
+@model NavTreeModel
+@{
+    ModeleNavigationArbre navTree = Model.NavTree;
+    RegularisationStep step = Model.Step;
+}
+
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "template-url-loader.js" }, "~/Scripts/knockout/Components/", false)
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/regul.js" }, "~/Scripts/AlbingiaJS/", false)
+
+@if (step == RegularisationStep.ChoixMode) {
+    <script type="text/javascript">
+        window.context = regul.resetContext();
+    </script>
+}
+else if (step != RegularisationStep.Invalid) {
+    <script type="text/javascript">
+            window.context = regul.tryGetContext("@step.ToString()", @(Model.RsqId == default(int) ? "null" : Model.RsqId.ToString()), @(Model.GrId == default(long) ? "null" : Model.GrId.ToString()), @(Model.RgGrId == default(long) ? "null" : Model.RgGrId.ToString()));
+    </script>
+}
+
+<div id="LayoutArbre" class="GroupWithBorder ArbreWidth">
+    <div class="ArbreBackground GradientSection MenuArbreRegule" id="DivTop">
+        <div id="CreateReg">
+            @if (!string.IsNullOrEmpty(navTree.CodeOffre)) {
+                int numRisque = 0;
+                <ul class="MenuArbreRacine MenuArbreUL" id="MenuRacineGeneral">
+                    @if (navTree.IsReadOnly) {
+                        var state = navTree.RegularisationStepList.FirstOrDefault(it => it.Step == RegularisationStep.Contrat);
+                        if (state != null) {
+                            <li class="MenuArbreLI" id="ContratMenuArbreLI">
+                                <span class="@(navTree.Etape == "Regule" ? (navTree.TagFin == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (navTree.TagFin == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))"
+                                      name="linkNavigationArbre"
+                                      title="@state.Label"
+                                      albParamArbre="@state.Link"
+                                      albParamArbreConsultOnly="true"
+                                      albParamArbreActeGestionRegule="AVNMD"
+                                      albParamArbreModeNavig="@(((state.Link.IndexOf("AnInformationsGenerales/") == 0 || state.Link.IndexOf("AvenantInfoGenerales/")==0) && navTree.LastValidNumAvt == navTree.LastNumAvt) ? "S" : "H")"
+                                      albParamArbreLastValidNumAVN="@navTree.LastValidNumAvt"
+                                      albParamArbreLastValidRgId="@navTree.LastValidRgId"
+                                      albParamArbreNewWindow="true">@state.Label</span>
+                                </li>
+                            }
+                        }
+
+                    @foreach (var state in navTree.RegularisationStepList) {
+                        string urlComplementGarantieOrPeriode = "";
+                        int rsqid = 0;
+                        if (state.Step == RegularisationStep.ChoixPeriodesGarantie && navTree.IsMonoGarantie) {
+                            rsqid = navTree.Risques[numRisque].Code;
+                        }
+
+                        if (state.Step != RegularisationStep.Contrat) {
+                            <li class="MenuArbreLI@(state.IsVisible ? string.Empty : " None")@(state.TreeLevel == 1 ? string.Empty : " level" + state.TreeLevel.ToString())">
+                                <span @Html.Raw(state.Step == RegularisationStep.Cotisations ? "id='CotisationMenuArbreLI'" : "")
+                                      class="MenuArbreText@(state.IsLink ? (state.IsLinkVisited ? " navigvisited" : " navig") : string.Empty)@(state.IsHighlighted ? " bgSelEtape" : string.Empty)"
+                                      title="@state.Label"
+                                      name="stepStateNav@(state.IsLink ? "Link" : string.Empty)"
+                                      data-url="@(state.Link.EnsureEmpty())@(urlComplementGarantieOrPeriode)"
+                                      data-step="@(state.Step.ToString())" @(rsqid > 0 ? $"data-rsq={rsqid}" : string.Empty)>@state.Label</span>
+                                </li>
+                            }
+
+                            if (state.Step == RegularisationStep.ChoixPeriodesGarantie && state.Link.EnsureEmpty() != string.Empty) {
+                                numRisque++;
+                            }
+                        }
+
+                    @if (navTree.IsReguleValidated) {
+                        if (navTree.Etape != "Regule" && navTree.Fin) {
+                            string paramControlFin = navTree.CodeOffre.Trim() + "_" + navTree.Version.ToString(CultureInfo.CurrentCulture) + "_" + navTree.Type;
+                            if (!(navTree.IsRegule && navTree.IsScreenAvenant)) {
+                                <li class="MenuArbreLI" id="ControleFinMenuArbreLI">
+                                    <span class="@(navTree.Etape == "Fin" ? (navTree.TagFin == "O" ? "MenuArbreText navigvisited bgSelEtape" : "MenuArbreText navig bgSelEtape") : (navTree.TagFin == "O" ? "MenuArbreText navigvisited" : "MenuArbreText navig"))" name="linkNavigationArbre" albParamArbre="ControleFin/Index/@paramControlFin">Contrôle & Fin</span>
+                                </li>
+                            }
+                        }
+                        else {
+                            if (!(navTree.IsRegule && navTree.IsScreenAvenant)) {
+                                <li class="MenuArbreLI Disabled" id="ControleFinMenuArbreLI">
+                                    <span class="@(navTree.Etape == "Fin" ? "MenuArbreText bgSelEtape" : "MenuArbreText")">Contrôle & Fin</span>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+    <div class="ArbreBackground GradientSection NavigationBasseContrat" id="DivBot">
+        @if (!navTree.IsEmptyRequested || (navTree.IsEmptyRequested && navTree.IsTransverseAllowed)) {
+            <div id="expandArbre" style="text-align: center" class="CursorPointer">
+                <img name="expandArbre" src="@Url.Content("/Content/Images/collapse.png")" id="imgExpandArbre" title="Menus Complémentaires" />
+            </div>
+            if (navTree.NumAvn > 0) {
+                <div alblinkarbre="OpenVisuAlertes">
+                    <img name="ListeAlertes" src="@Url.Content("/Content/Images/ControleFin/A.png")" class="CursorPointer" />
+                    <span class="navig">Visu des alertes</span>
+                </div>
+                @Html.Partial("_Alertes", Model.NavTree.AlertesAvenant)
+                <div alblinkarbre="OpenVisuHistorique">
+                    <img src="@(Url.Content("/Content/Images/Clock-History-Frame-16.png"))" class="CursorPointer" />
+                    <span class="navig">Historique du contrat</span>
+                </div>
+            }
+            <div alblinkarbre="OpenSuiviActesGestion">
+                <img name="SuiviActes" src="@Url.Content("/Content/Images/u135_normal.png")" class="CursorPointer" />
+                <span class="navig">Suivi des actes de gestion</span>
+            </div>
+            <div alblinkarbre="OpenListeClauses">
+                <img name="ListeClauses" src="@Url.Content("/Content/Images/LayoutArbre/u100_original.gif")" class="CursorPointer" />
+                <span class="navig">Clauses de l'affaire</span>
+            </div>
+            <div class="None">
+                <img src="@Url.Content("/Content/Images/LayoutArbre/u102_original.gif")" /><span style="margin-left: 5px">
+                    Liste
+                    des inventaires
+                </span>
+            </div>
+            <div alblinkarbre="OpenListeIntervenants">
+                <img name="ListeIntervenants" src="@Url.Content("/Content/Images/LayoutArbre/intervenants.gif")" class="CursorPointer" />
+                <span class="navig">Liste des intervenants</span>
+            </div>
+            <div alblinkarbre="OpenNavigationDocuments">
+                <img src="@Url.Content("/Content/Images/LayoutArbre/trombone.png")" class="CursorPointer" />
+                <span class="navig">Documents joints</span>
+            </div>
+            <div alblinkarbre="OpenGED">
+                <img src="@(Url.Content("/Content/Images/u410_normal.gif"))" class="CursorPointer" />
+                <span class="navig">Accès GED</span>
+            </div>
+            <hr class="None" id="delimArbre" />
+
+            <div id="CollapseContainer" class="None">
+
+                @if (navTree.NumAvn > 0 || navTree.Type == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_CONTRAT) {
+                    <div alblinkarbre="OpenConnexites">
+                        <img src="@(Url.Content("/Content/Images/connexite16.png"))" class="CursorPointer" />
+                        <span class="navig">Visu des connexités</span>
+                    </div>
+                }
+                @if (navTree.NumAvn > 0 || navTree.Type == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_CONTRAT) {
+                    <div alblinkarbre="OpenVisulisationQuittances">
+                        <img src="@(Url.Content("/Content/Images/Quittance/frais.png"))" class="CursorPointer" />
+                        <span class="navig">Visu des quittances</span>
+                    </div>
+                }
+                <div alblinkarbre="OpenVisualisationObservations">
+                    <img src="@(Url.Content("/Content/Images/u408_normal.gif"))" class="CursorPointer" />
+                    <span class="navig">Visu des observations</span>
+                </div>
+
+                @if (navTree.NumAvn > 0) {
+                    <div alblinkarbre="">
+                        <img src="@(Url.Content("/Content/Images/u410_normal.gif"))" />
+                        <span class="navig">Visu des sinistres</span>
+                    </div>
+                }
+                @if (navTree.Type == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_CONTRAT) {
+                    <div alblinkarbre="OpenVisualisationSuspension">
+                        <img src="@(Url.Content("/Content/Images/u410_normal.gif"))" class="CursorPointer" />
+                        <span class="navig">Visu période suspension</span>
+                    </div>
+                }
+                <div alblinkarbre="OpenClausier">
+                    <img name="ListeClauses" src="@Url.Content("/Content/Images/LayoutArbre/u100_original.gif")" class="CursorPointer" />
+                    <span class="navig">Clausier</span>
+                </div>
+            </div>
+            <div id="NoCollapseContainer">
+                @if (navTree.IsValidation) {
+                    <div alblinkarbre="OpenModif">
+                        <img src="@Url.Content("/Content/Images/editer1616.png")" class="CursorPointer" />
+                        <span class="navig">Ouvrir en consultation</span>
+                    </div>
+                }
+                else {
+                    <div>&nbsp</div>
+                }
+                <hr />
+                <div>
+                    @using (Html.BeginForm("SimpleDownloadFile", "CommonNavigation", new { id = "" }, FormMethod.Post, new { @id = "FileDownLoad", target = "_blank" })) {
+                        <input id="cpFullNameFile" name="fullNameFile" type="hidden" value="" />
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

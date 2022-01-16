@@ -1,0 +1,65 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamAjoutEtape
+<div class="CommonForm FloatLeft" style="width: 450px;">
+    <div class="GroupFull GroupWithBorder" style="width: 435px;">
+        <div class="GroupTitle">
+            @Html.Hidden("ParamType", Model.Etape)
+            @Html.HiddenFor(m => m.CodeService)
+            @Html.HiddenFor(m => m.CodeActGes)
+            @Html.Hidden("hidNumOrdre", (Model.NumOrd))
+            Affectation étape de @Model.LibelleActGes
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 430px;">
+            <div class="GradientSection" style="height: 200px;">
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Ordre</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="NumOrdre" name="NumOrdre" value="@(Model.NumOrd)" class="numerique WidthInput" albMask="numeric" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Service</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Service" name="Service" value="@(Model.CodeService) - @(Model.LibelleService)" readonly="readonly" class="readonly WidthInput" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Acte de gestion</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="ActGes" name="ActGes" value="@(Model.CodeActGes) - @(Model.LibelleActGes)" readonly="readonly" class="readonly WidthInput" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Etape</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Etape, Model.Etapes, "Etape", htmlAttributes: new { @id = "Etape", @class = "WidthInput" }, generateTitle:true)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 435px;">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <input type="button" id="btnFancyValider" value="Valider" tabindex="29" />
+            <input type="button" id="btnFancyAnnuler" value="Annuler" tabindex="30" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleFormuleGarantiePage
+@{
+    var model = Model as ModeleFormuleGarantiePage;
+}
+@AlbAddCssJsScripts.AlbAddJsToViews(
+    new UrlHelper(ViewContext.RequestContext),
+    new[]
+    {
+        "options-formule/options-formule.initializer.js", "options-formule/options-formule.viewmodel.js",
+        "inventaires-garantie/inventaires-garantie.initializer.js", "inventaires-garantie/inventaires-garantie.viewmodel.js",
+        "portee-garantie/portee-garantie.initializer.js", "portee-garantie/portee-garantie.viewmodel.js",
+        "details-garantie/details-garantie.initializer.js", "details-garantie/details-garantie.viewmodel.js"
+    },
+    "~/knockout/components/",
+    false)
+
+<script type="text/javascript">
+    window.currentFormule = @Html.Raw(MetaModelsBase.GetJsonFromData(model.OptionsFormule));
+</script>
+
+<options-formule id="formule_option" params="formule: '@(Model.CodeFormule)', numOption: @(Model.CodeOption), isReadonly: @(Model.IsReadOnly.ToString().ToLower()), isHisto: @(Model.IsHisto.ToString().ToLower()), isModeConsultation:@(Model.IsModeConsultationEcran.ToString().ToLower()), isModifHorsAvenant:@(Model.IsModifHorsAvenant.ToString().ToLower()), numAvenant: @(Model.NumAvenantPage), branche: '@(Model.Branche)', cible: '@(Model.Cible)', risque: @(Model.NumRisque), nbObjets: @(Model.NbObjetsSelectionnes), dateEffetAvt: '@(Model.DateEffetAvenantModificationLocale.HasValue ? Model.DateEffetAvenantModificationLocale.Value.ToString() : string.Empty)'"></options-formule>

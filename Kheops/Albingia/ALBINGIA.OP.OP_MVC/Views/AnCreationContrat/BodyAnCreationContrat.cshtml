@@ -1,0 +1,169 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.ModelePage.AnCreationContratPage
+
+@Html.HiddenFor(m => m.EditMode)
+@Html.HiddenNoName("selectedOffreContrat", string.Empty)
+@Html.HiddenNoName("typeRecherche", string.Empty)
+@Html.HiddenFor(m => m.CopyMode)
+@Html.HiddenFor(m => m.CodeContratCopy)
+@Html.HiddenFor(m => m.VersionCopy)
+@Html.HiddenFor(m => m.TemplateMode)
+@Html.HiddenNoName(nameof(Model.CodeContrat), Model.CodeContrat)
+@Html.HiddenNoName("idBlacklistedPartenaire", string.Empty)
+
+<div class="CommonForm FloatLeft">
+    <div id="CreationInformationSaisieDiv" class="nGroupFull nGroupWithBorder FloatLeft">
+        <div class="nHorizontalFullWithGroup">
+            <!--Informations Avenant-->
+            @if (Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD
+                || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF
+                || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR
+                || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS)
+            {
+                <div id="divInfoAvenant" class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">N° Avenant</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="NumAvenant" name="NumAvenant" value="@Model.Contrat.NumAvenant" readonly="readonly" class="readonly inputAnCodeCourtier" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">N° Interne</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="NumInterne" name="NumInterne" value="@Model.Contrat.NumInterneAvenant" readonly="readonly" class="readonly inputAnCodeCourtier" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Date d'effet</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.Contrat.DateEffetAvenant, htmlAttributes: new { @id = "DateEffetAvenant", @disabled = "disabled", @class = "readonly inputDate" })
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbTimePicker(m => m.Contrat.HeureEffetAvenant, "HeureEffetAvenant", new { @id = "HeureEffetAvenant", @disabled = "disabled", @class = "readonly HourMinute" })
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Motif</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Motif" name="Motif" value="@(Model.Contrat.MotifAvenant) - @(Model.Contrat.LibMotifAvenant)" readonly="readonly" class="readonly" />
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="nGradientSection">
+                @Html.Partial("InformationsBase", Model.InformationBase)
+            </div>
+            @if (Model.NumAvenantPage == "0" && !Model.IsModifHorsAvenant) {
+                <div class="nGradientSection blkCourtierContrat">
+                    @Html.Hidden("hideInterlocuteur", string.Empty)
+                    @Html.Hidden("hideRefCourtier", string.Empty)
+                    @Html.Partial("CourtierGestion", Model.CourtierGestionnairePayeur.CourtierGestionnaire)
+
+                    <div id="divGpIdentique" class="HeightRow">
+                        @Html.HiddenNoName("inInvalidCourtierGest", string.Empty)
+                        <div class="TripleColumnsGroup FloatLeft">
+
+                            <div class="FloatLeft">
+
+                                @if (Model.GpIdentiqueApporteur) {
+                                    <input type="checkbox" id="GpIdentiqueApporteur" albhorsavn tabindex="23" name="GpIdentiqueApporteur" checked="checked" />
+                                }
+                                else {
+                                    <input type="checkbox" id="GpIdentiqueApporteur" albhorsavn tabindex="23" name="GpIdentiqueApporteur" />
+                                }
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block labelGpIdentiqueApporteur">Apporteur et payeur identiques au gestionnaire</label>
+                            </div>
+                        </div>
+
+                        <div id="CodeCourtierInvalideGestionnaireDiv" class="FloatLeft error largePaddingLeft"></div>
+
+                    </div>
+
+                    <div class="FloatLeft">
+                        @Html.Partial("CourtierApporteur", Model.CourtierApporteur)
+                    </div>
+                    <div class="FloatLeft PaddingLeft6">
+                        @Html.Partial("CourtierPayeur", Model.CourtierGestionnairePayeur.CourtierPayeur)
+                    </div>
+
+                    @Html.Hidden("hideInterlocuteurGestionnaire", string.Empty)
+                    @Html.Hidden("hideInterlocuteurPayeur", string.Empty)
+
+
+                    @Html.Partial("CourtierGestionnairePayeur", Model.CourtierGestionnairePayeur)
+                </div>
+            }
+            else
+            {
+                <div class="nGradientSection blkCourtierContratWithoutApporteur">
+                    <input type="hidden" id="hideInterlocuteur" name="hideInterlocuteur" value="" />
+                    <input type="hidden" id="hideRefCourtier" name="hideRefCourtier" value="" />
+                    @Html.Partial("CourtierGestion", Model.CourtierGestionnairePayeur.CourtierGestionnaire)
+
+                    <div id="divGpIdentique" class="HeightRow None">
+                        <input type="hidden" id="inInvalidCourtierGest" value="" />
+
+                        <div id="CodeCourtierInvalideGestionnaireDiv" class="FloatLeft error largePaddingLeft"></div>
+
+                    </div>
+
+                    <div class="FloatLeft">
+                        @Html.Partial("CourtierApporteur", Model.CourtierApporteur)
+                    </div>
+                    <div class="FloatLeft PaddingLeft6">
+                        @Html.Partial("CourtierPayeur", Model.CourtierGestionnairePayeur.CourtierPayeur)
+                    </div>
+
+                    @Html.Hidden("hideInterlocuteurGestionnaire", string.Empty)
+                    @Html.Hidden("hideInterlocuteurPayeur", string.Empty)
+                    @Html.Partial("CourtierGestionnairePayeur", Model.CourtierGestionnairePayeur)
+                </div>
+            }
+            <div class="nGradientSection">
+                @Html.Partial("PreneurAssurance", Model.PreneurAssurance)
+            </div>
+            <div class="nGradientSection HeightAdresse">
+                @Html.Partial("InformationContrat", Model.InformationContrat)
+            </div>
+            <div id="divHideAdresse" class="None">
+                <!--Adresse-->
+                @Html.Partial("/Views/DetailsObjetRisque/ObjetAdresse.cshtml", Model.ContactAdresse)
+            </div>
+        </div>
+    </div>
+    <div id="divRecherche">
+        <div class="overlay-background" style="z-index:11" >
+        </div>
+        <div id="divDataRecherche">
+        </div>
+    </div>
+    <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+        <div class="nActionButtons ActionButtonLeft">
+            @if (string.IsNullOrEmpty(Model.CodeContrat)) {
+                if (string.IsNullOrEmpty(Model.CodeContratCopy) && string.IsNullOrEmpty(Model.CodePolicePage)) {
+                    <label id="labelInfoEtat" class="textInfo">Création d'un contrat vierge</label>
+                }
+                else if (!string.IsNullOrEmpty(Model.CodeContratCopy) && !Model.CodeContratCopy.Trim().StartsWith("CV")) {
+                    <label id="labelInfoEtat" class="textInfo">@(string.Format("Copie à partir du contrat {0}", Model.CodeContratCopy.ToUpper()))</label>
+                }
+                else if (!string.IsNullOrEmpty(Model.CodeContratCopy) && Model.CodeContratCopy.Trim().StartsWith("CV")) {
+                    <label id="labelInfoEtat" class="textInfo">@(string.Format("Copie à partir du canevas {0}", Model.CodeContratCopy.ToUpper()))</label>
+                }
+
+            }
+
+        </div>
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+
+        <div class="nActionButtons ActionButtonRight">
+            <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="20"><u>A</u>nnuler</button>
+            <button id="btnSuivant" class="next-step" type="button" albshortcut="true" data-accesskey="s" tabindex="19"><u>S</u>uivant</button>
+        </div>
+    </div>
+</div>
+

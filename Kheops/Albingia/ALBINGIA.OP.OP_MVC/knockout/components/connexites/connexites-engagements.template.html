@@ -1,0 +1,171 @@
+﻿<script type="text/html" id="connexites_engagements">
+    <!-- ko if: Engagements().length == 0 -->
+    <div>Ajouter une nouvelle connexité d'engagement <i class="add-img-cell" data-bind="click: addEngagement"></i></div>
+    <!-- /ko -->
+    
+    <!-- ko if: Engagements().length > 0 -->
+    <div class="connexites-engagements">
+        <div class="connexites">
+            <div class="title"><h1>Liste des connexités</h1></div>
+            <div class="header">
+                <div class="left">
+                    <span>Contrat</span>
+                    <span>Libellé</span>
+                    <span class="flex-short">Etat</span>
+                    <span class="flex-short">Sit.</span>
+                    <span>Branche</span>
+                    <span>Cible</span>
+                    <span class="flex-pretty-long">Preneur</span>
+                </div>
+                <div class="traites scroll-x-hidden" data-bind="visible: hasTraites">
+                    <!-- ko foreach: FamillesReassurances -->
+                    <span class="flex-min pdl3 auto-shorten" data-bind="text: Label, attr: { title: Label }"></span>
+                    <!-- /ko -->
+                </div>
+                <div class="commands">
+                    <!-- ko ifnot: isReadonly -->
+                    <span class="add-img-cell" data-bind="click: addEngagement"></span>
+                    <!-- /ko -->
+                    <!-- ko if: isReadonly -->
+                    <span></span>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="lines scroll-y">
+                <div class="left">
+                    <!-- ko foreach: Engagements -->
+                    <div class="line">
+                        <div class="lpad">
+                            <a class="link" data-bind="text: Folder.CodeOffre, attr: { href: linkGoToAffair, target: '_blank' }"></a>
+                        </div>
+                        <div class="auto-shorten" data-bind="text: NomContrat, attr: { title: NomContrat }"></div>
+                        <div class="flex-short center" data-bind="text: CodeEtat"></div>
+                        <div class="flex-short center" data-bind="text: CodeSituation"></div>
+                        <div class="center" data-bind="text: CodeBranche"></div>
+                        <div class="center" data-bind="text: CodeCible"></div>
+                        <div class="flex-pretty-long lpad auto-shorten" data-bind="text: Preneur, attr: { title: Preneur }"></div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="traites scroll-x-hidden" data-bind="visible: hasTraites">
+                    <!-- ko foreach: Engagements -->
+                    <div class="line fx-bas">
+                        <!-- ko foreach: Valeurs -->
+                        <div class="currency-align flex-min" data-bind="text: Montant, visible: ($root || $component).typePart() == 'ena'"></div>
+                        <div class="currency-align flex-min" data-bind="text: MontantTotal, visible: ($root || $component).typePart() == 'eng'"></div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="commands">
+                    <!-- ko foreach: Engagements -->
+                    <div class="line">
+                        <i class="pen-img-cell" data-bind="click: navigateToEngagement"></i>
+                        <!-- ko if: canRemove -->
+                        <i class="delete-img-cell" data-bind="click: remove"></i>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+        <!-- ko ifnot: isReadonly -->
+        <!-- ko ifnot: showPeriodeList  -->
+        <div>Ajouter une période d'engagement <i class="add-img-cell" data-bind="click: addPeriodeEngagement, visible: PeriodesEngagements().length == 0"></i></div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <div class="periodes">
+            <!-- ko if: showPeriodeList -->
+            <div class="title">
+                <h1>Periodes d'engagement des connexités</h1>
+                <div class="radios-inline">
+                    Afficher
+                    <label><input type="radio" name="displayingPeriodes" data-bind="checked: displayingPeriodes" value="active" /> Périodes actives</label>
+                    <label><input type="radio" name="displayingPeriodes" data-bind="checked: displayingPeriodes" value="" /> Toutes les périodes</label>
+                </div>
+            </div>
+            <div class="header">
+                <div class="left">
+                    <span class="masked">&nbsp;</span>
+                    <span class="flex-long">Utilisée</span>
+                    <span class="flex-pretty-long">Debut</span>
+                    <span class="flex-pretty-long">Fin</span>
+                </div>
+                <div class="traites scroll-x-hidden">
+                    <!-- ko foreach: FamillesReassurances -->
+                    <span class="flex-min pdl3 auto-shorten" data-bind="text: Label, attr: { title: Label }"></span>
+                    <!-- /ko -->
+                </div>
+                <div class="commands">
+                    <!-- ko if: canInsertPeriodeAtFirst -->
+                    <span class="add-img-cell" title="Ajouter une période précédente" data-bind="click: insertFirstPeriodeEngagement"></span>
+                    <!-- /ko -->
+                    <!-- ko ifnot: canInsertPeriodeAtFirst -->
+                    <span></span>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="lines scroll-y">
+                <div class="left">
+                    <!-- ko foreach: PeriodesEngagements -->
+                    <div class="line" data-bind="visible: isShown">
+                        <div class="masked">&nbsp;</div>
+                        <div class="flex-long center" data-bind="text: utilisee"></div>
+                        <!-- ko if: canEditDebut -->
+                        <div class="flex-pretty-long center"><input type="text" data-bind="dateselector: { value: dateDebut, pickerOptions: { dateFormat: 'dd/mm/yy' }, onlyTriggerChange: true }" /></div>
+                        <!-- /ko -->
+                        <!-- ko ifnot: canEditDebut -->
+                        <div class="flex-pretty-long center"><input type="text" data-bind="value: Beginning, readonly: true" maxlength="10" /></div>
+                        <!-- /ko -->
+                        <div class="flex-pretty-long center"><input type="text" data-bind="value: End, readonly: true" maxlength="10" /></div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="traites scroll-x-hidden">
+                    <!-- ko foreach: PeriodesEngagements -->
+                    <div class="line fx-bas" data-bind="visible: isShown">
+                        <!-- ko foreach: Valeurs -->
+                        <div class="center flex-min">
+                            <input type="text" class="currency-align" data-bind="autoNumeric: Montant, disable: $parent.isReadonly, visible: ($root || $component).typePart() == 'ena'" albmask="decimal" />
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="commands">
+                    <!-- ko foreach: PeriodesEngagements -->
+                    <div class="line img20" data-bind="visible: isShown">
+                        <!-- ko if: isInvalid -->
+                        <i class="error-img-cell" data-bind="attr: { title: errorText }"></i>
+                        <!-- /ko -->
+                        <!-- ko if: canInsert -->
+                        <i class="add-img-cell" title="Ajouter une période suivante" data-bind="click: $parent.insertPeriodeEngagement"></i>
+                        <!-- /ko -->
+                        <!-- ko if: canCancel -->
+                        <i class="disable-img-cell" title="Désactiver" data-bind="click: cancel"></i>
+                        <!-- /ko -->
+                        <!-- ko if: canRemove -->
+                        <i class="delete-img-cell" data-bind="click: remove, visible: !isReadonly()"></i>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: hasMultipleTraites  -->
+            <div class="scrollbar">
+                <div class="left"></div>
+                <div class="traites scroll-x" data-bind="event: { scroll: scrollAllTraites }">
+                    <!-- ko foreach: Engagements()[0].Valeurs -->
+                    <div class="invisible">
+                        <input type="text" albmask="decimal" />
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="commands"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
+</script>

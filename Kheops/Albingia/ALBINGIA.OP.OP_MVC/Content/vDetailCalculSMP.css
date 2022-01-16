@@ -1,0 +1,50 @@
+﻿.tdHeaderImg
+{
+    width: 18px;
+}
+
+.tdImg
+{
+    width: 20px;
+}
+
+.tdHeaderGarantie
+{
+    width: 343px;
+}
+
+.tdGarantie
+{
+    width: 345px;
+}
+
+.tdHeaderLCISMP
+{
+    width: 98px;
+}
+
+.tdLCISMP
+{
+    width: 100px;
+}
+
+.tdHeaderSMPForce
+{
+    width: 138px;
+}
+
+.tdSMPForce
+{
+    width: 140px;
+}
+
+tr
+{
+    height: 1px !important;
+}
+
+.ColorSelection
+{
+    color: Green;
+    font-weight: bold;
+}

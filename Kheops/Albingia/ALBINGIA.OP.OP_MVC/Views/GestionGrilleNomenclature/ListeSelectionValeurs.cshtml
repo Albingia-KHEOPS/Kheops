@@ -1,0 +1,20 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGestionNomenclature.ModeleSelectionValeurs
+@{
+    var splitHtmlChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML; 
+}
+@foreach (var item in Model.Nomenclatures)
+{
+    <tr>
+        <td class="tdCheck">
+            @if (item.IdValeur > 0)
+            {
+                <input type="checkbox" id="check_@(item.Id)_@(item.Code)" name="checkValeur" checked="checked" />
+            }
+            else
+            {
+                <input type="checkbox" id="check_@(item.Id)_@(item.Code)" name="checkValeur" />
+            }
+        </td>
+        <td class="tdNomenclature">@(item.Code) - @(item.Libelle)</td>
+    </tr>
+}

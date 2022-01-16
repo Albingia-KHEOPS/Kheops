@@ -1,0 +1,109 @@
+﻿<div id="adresseSearchBox" style="padding:15px 15px;display:block;">
+    @*<img src="https://catastrophes-naturelles.ccr.fr/catnat-carto/contextProxy?url=/services/tilemetier2/88/5/11/16" />
+    <img src="https://wxs.ign.fr/an7nvfzojv5wa96dsga5nk8w/geoportail/wmts?layer=COMMUNES.SISMICITE&style=normal&tilematrixset=PM&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=7&TILEROW=46&TILECOL=65" />*@
+    <div class="row" id="rowOptAdresseManuelle">
+        <div class="col-md-1"></div>
+        <label class="radio-inline"><input type="checkbox" name="optAdresseManuelle" id="optAdresseManuelle" style="vertical-align:text-bottom;" @(Model.MatriculeHexavia > 0 || Model.MatriculeHexavia == null ? "" : "checked")>&nbsp;Fournir une adresse manuellement</label>
+    </div>
+
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label for="form-adresse">Recherche</label>
+        </div>
+        @* Google Map Search Tool START *@
+        <div class="col-md-11" id="input-styling-address">
+            <input type="search" class="form-control" id="formAddressRecherche" placeholder="Adresse recherchée" value="@Model.ConcatVoie">
+        </div>
+        @* Google Map Search Tool END *@
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label for="formNumero">Numéro</label>
+        </div>
+        <div class="col-md-1">
+            <input class="form-control adresseInput" id="street_number" value="@Model.NumeroVoie" />
+        </div> /
+        <div class="col-md-1">
+            <input class="form-control adresseInput" id="street_number2" value="@Model.NumeroVoie2" />
+        </div>
+        <div class="col-md-1">
+            <label for="formExtension">Extension</label>
+        </div>
+        <div class="col-md-1">
+            <input class="form-control adresseInput" id="formExtension" value="@Model.ExtensionVoie" maxlength="1" />
+        </div>
+        <div class="col-md-1">
+            <label for="formVoie">Voie</label>
+        </div>
+        <div class="col-md-5">
+            <input class="form-control adresseInput" id="route" value="@Model.NomVoie" style="width: 520px;" />
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label for="formBatiment">Bat./ZI</label>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control adresseInput" id="formBatiment" value="@Model.Batiment" maxlength="32" />
+        </div>
+        <div class="col-md-2">
+            <label for="formDistribution">Distribitution(BP...)</label>
+        </div>
+        <div class="col-md-3">
+            <input class="form-control adresseInput" id="formDistribution" value="@Model.BoitePostale" />
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label for="formVille">Ville</label>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control adresseInput" id="locality" value="@Model.Ville" maxlength="38" />
+        </div>
+        <div class="col-md-2">
+            <label for="formCP">Code Postal</label>
+        </div>
+        <div class="col-md-3">
+            <input class="form-control adresseInput" id="postal_code" value="@Model.CodePostal" />
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label for="formVille">Cedex</label>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control adresseInput" id="formVilleCedex" value="@Model.VilleCedex" />
+        </div>
+        <div class="col-md-2">
+            <label for="formCP">Code Postal Cedex</label>
+        </div>
+        <div class="col-md-3">
+            <input class="form-control adresseInput" id="formCPCedex" value="@Model.CodePostalCedex" />
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-1">
+            <label for="formDepartement">Région/Etat</label>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control adresseInput" id="administrative_area_level_1" value="@Model.Departement">
+        </div>
+        <div class="col-md-2">
+            <label for="formPays">Pays</label>
+        </div>
+        <div class="col-md-3">
+            <input class="form-control adresseInput" id="country" value="@Model.Pays.Libelle" />
+        </div>
+    </div>
+    <hr />
+    <div class="row" style="margin-top:5px">
+        <div class="offset-md-1">
+            <button type="button" class="btn btn-light" id="btnNettoyerAdresse">Réinitialiser la recherche</button>
+            <button type="button" class="btn second-color" style="margin-left:3px" id="formSupprimer">Supprimer</button>
+        </div>
+        <div class="offset-md-7">
+            <button type="button" class="btn btn-light" style="margin-left:3px" id="formAnnuler">Annuler</button>
+            <button type="button" class="btn second-color" style="margin-left:3px" id="formValider" disabled>Valider</button>
+        </div>
+    </div>
+</div>

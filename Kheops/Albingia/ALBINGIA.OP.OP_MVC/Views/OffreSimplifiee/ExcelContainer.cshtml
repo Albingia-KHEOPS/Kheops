@@ -1,0 +1,19 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleOffreSimplifieePage
+           @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "AlbEvents.js" }, "~/Scripts/Excel/")
+<input type="hidden" id="fileName" runat="server" value="@Model.FileName" />
+<input type="hidden" id="jsSplitChar"  runat="server" value="@ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML" />
+<input type="hidden" id="branche" runat="server" value="@Model.Offre.Branche.Code" />
+@*<input type="hidden" id="section" clientidmode="Static" runat="server" />*@
+<input type="hidden" id="parameters" runat="server" />
+<input type="hidden" id="cellsMap" runat="server" />
+<object classid="clsid:367AD645-0381-4750-9B15-741067C2A118" id="OA1" width="100%"
+        height="385px" codebase="../../ExcelWeb/Redist/officeviewer.cab#8,0,0,395">
+    <param name="Toolbars" value="-1">
+    <param name="LicenseName" value="30daytrial">
+    <param name="LicenseCode" value="EDWD-3333-2222-1111">
+    <param name="BorderColor" value="15647136">
+    <param name="BorderStyle" value="2">
+</object>
+
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "AlbExcelDocs.js" }, "~/Scripts/Excel/")
+

@@ -1,0 +1,58 @@
+﻿@model List<ALBINGIA.Framework.Common.Models.FileModel.FileDescription>
+@{
+    var splitChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+}
+<div id="divDocJointsAdd" class="CommonForm FloatLeft" style="width: 990px;">
+    @Html.Hidden("pathInter", (ALBINGIA.Framework.Common.Constants.AlbOpConstants.CheminIntercalaire))
+    <div class="nGroupFull nGroupWithBorder" style="width: 975px;">
+        <div class="nHorizontalFullWithGroup" style="width: 970px;">
+            <div class="nGradientSection" style="padding-bottom: 5px;">
+                <div class="HeightRow">
+                    <label class="AutoWidth">
+                        <u>Sélection d'un document de type "Intercalaire"</u>
+                    </label>
+                </div>
+                <div id="dvHeaderListDoc" class="PaddingLeft">
+                    <table id="tblHeaderListDoc" class="trHeight">
+                        <tr>
+                            <th class="tablePersoHead" style="width: 18px;">&nbsp;</th>
+                            <th class="tablePersoHead" style="width: 425px;">Chemin d'accès</th>
+                            <th class="tablePersoHead" style="width: 475px;">Nom document</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="dvBodyListDoc" class="PaddingLeft" style="overflow: auto; max-height: 160px; width: 955px; height: 160px;">
+                    @if (Model != null && Model.Any())
+                    {
+                        <table id="tblBodyListDoc" class="trHeight" style="table-layout: fixed; width: 938px;">
+                            @{
+                        var i = 1;
+                        foreach (var doc in Model)
+                        {
+                                <tr>
+                                    <td style="width: 20px;">
+                                        <input type="radio" id="chk@(splitChar)@(i)" name="chkDocInter" albFullName="@(doc.FullName)" />
+                                    </td>
+                                    <td style="width: 423px; padding-left: 5px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" id="tdChm@(splitChar)@(i)" title="@(doc.FilePath == "\\" ? "racine du répertoire" : doc.FilePath)">@(doc.FilePath)</td>
+                                    <td style="width: 473px; padding-left: 5px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" id="tdNom@(splitChar)@(i)" title="@(doc.Name)">
+                                        @Html.ActionLink(Html.Raw(doc.Name).ToHtmlString(), "DownloadFile", "CommonNavigation", new { fileName = doc.Name, fullNameFile = doc.FullName, pathFile = doc.FilePath }, new { @target = "_blank" })
+                                    </td>
+                                </tr>
+                            i++;
+                        }
+                            }
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonHeight" style="width: 975px;">
+        <div class="ActionButtons ActionButtonRight" style="width: 150px;">
+            <button id="btnCancelIntercalaire" type="button" albshortcut="true" data-accesskey="n">A<u>n</u>nuler</button>
+            <button id="btnSaveIntercalaire" type="button" albshortcut="true" data-accesskey="d">Vali<u>d</u>er</button>
+        </div>
+    </div>
+</div>
+
+

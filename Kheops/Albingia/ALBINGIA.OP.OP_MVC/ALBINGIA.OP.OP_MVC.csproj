@@ -1,0 +1,2854 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A30944B8-8881-4532-BE12-E04F45285A41}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ALBINGIA.OP.OP_MVC</RootNamespace>
+    <AssemblyName>ALBINGIA.OP.OP_MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+    <ApplicationInsightsResourceId>/subscriptions/7289f81d-8400-4164-8787-369ab0a61166/resourcegroups/Default-ApplicationInsights-NorthEurope/providers/microsoft.insights/components/OP.IOWebService</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/7289f81d-8400-4164-8787-369ab0a61166/resourcegroups/Default-ApplicationInsights-NorthEurope/providers/microsoft.insights/components/OP.IOWebService</ApplicationInsightsAnnotationResourceId>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>..\..\Rule Sets\Kheops.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=20.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.Cells.20.1.0\lib\net40\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="BatchConnecteur">
+      <HintPath>..\..\ThirdBinaries\BatchConnecteur.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=358a5681c50fd84c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=358a5681c50fd84c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="EmitMapper">
+      <HintPath>..\..\ThirdBinaries\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.5.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FastMember.Signed.1.5.0\lib\net461\FastMember.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.11.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Lib.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=92212eec0425916e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\Lib.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="LightInject, Version=5.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LightInject.5.1.2\lib\net46\LightInject.dll</HintPath>
+    </Reference>
+    <Reference Include="Mapster, Version=3.2.0.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mapster.3.2.0\lib\net45\Mapster.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.4.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.4.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.4.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.Web.2.4.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.WindowsServer.2.4.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft Visual Studio 11.0\Visual Studio Tools for Office\PIA\Office14\Microsoft.Office.Interop.Outlook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.OutlookViewCtl, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft Visual Studio 11.0\Visual Studio Tools for Office\PIA\Office14\Microsoft.Office.Interop.OutlookViewCtl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=1.6.30117.9648, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\NuGet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft Visual Studio 11.0\Visual Studio Tools for Office\PIA\Office14\Office.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.EasycomClient, Version=2.0.0.6, Culture=neutral, PublicKeyToken=32fd8354c170411b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\System.Data.EasycomClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\OP.Application\Albingia.Kheops.OP.Application\MapperConfig.cs">
+      <Link>Common\MapperConfig.cs</Link>
+    </Compile>
+    <Compile Include="AlbSpecificAttribute\CheckApplicationsRisquesAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\ErrorHandlerAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\AlbAjaxRedirectAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\AlbApplyUserRole.cs" />
+    <Compile Include="AlbSpecificAttribute\AlbDetectBrowserAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\AlbRedirectObject.cs" />
+    <Compile Include="AlbSpecificAttribute\AlbVerifLockedOfferAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\HttpGetNoCacheAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\CheckVerrouAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\ModelBaseAssignAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\ModelLessLoaderAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\PerformanceAttribute.cs" />
+    <Compile Include="AlbSpecificAttribute\ProfileKheopsAttribute.cs" />
+    <Compile Include="Common\AccesAffaire.cs" />
+    <Compile Include="Common\AccesOrigine.cs" />
+    <Compile Include="Common\AccesStatutVerrou.cs" />
+    <Compile Include="Common\AlbRequestValidation.cs" />
+    <Compile Include="Common\AlbTransverse.cs" />
+    <Compile Include="Common\AlbUserRoles.cs" />
+    <Compile Include="Common\BundleConfig.cs" />
+    <Compile Include="Common\CacheModels.cs" />
+    <Compile Include="Common\CacheUserRights.cs" />
+    <Compile Include="Common\CacheUsersLogin.cs" />
+    <Compile Include="Common\CacheVerouillage.cs" />
+    <Compile Include="Common\CacheIS.cs" />
+    <Compile Include="Common\CacheConditions.cs" />
+    <Compile Include="Common\DefaultRoute.cs" />
+    <Compile Include="Common\FlowAccessMode.cs" />
+    <Compile Include="Common\FlowAction.cs" />
+    <Compile Include="Common\FlowName.cs" />
+    <Compile Include="Common\IMetaModelsController.cs" />
+    <Compile Include="Common\LablatPartner.cs" />
+    <Compile Include="Common\NavigationFlow.cs" />
+    <Compile Include="Common\NavigationFlowState.cs" />
+    <Compile Include="Common\NavigationRequest.cs" />
+    <Compile Include="Common\PageParamContext.cs" />
+    <Compile Include="Controllers\API\PandoreAPIController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BNS\CreationBNSController.cs" />
+    <Compile Include="Controllers\ClassementSansSuiteController.cs" />
+    <Compile Include="Controllers\__ClausesController.cs" />
+    <Compile Include="Controllers\FusionConnexitesController.cs" />
+    <Compile Include="Controllers\GarantieTypeController.cs" />
+    <Compile Include="Controllers\IModelLessController.cs" />
+    <Compile Include="Controllers\InformationsSpecifiquesControllerBase.cs" />
+    <Compile Include="Controllers\ExcelContratController.cs" />
+    <Compile Include="Controllers\LibellesClausesController.cs" />
+    <Compile Include="Controllers\OffreController.cs" />
+    <Compile Include="Controllers\OffreRelanceController.cs" />
+    <Compile Include="Controllers\PandoreController.cs" />
+    <Compile Include="Controllers\PB\CreationPBController.cs" />
+    <Compile Include="Controllers\SinistreController.cs" />
+    <Compile Include="Controllers\RedirectionController.cs" />
+    <Compile Include="Controllers\ConnexitesController.cs" />
+    <Compile Include="Controllers\FolderController.cs" />
+    <Compile Include="Controllers\MatriceControllerBase.cs" />
+    <Compile Include="Controllers\RechercheAffairesController.cs" />
+    <Compile Include="Controllers\RisqueController.cs" />
+    <Compile Include="Controllers\RemiseEnVigueurController.cs" />
+    <Compile Include="Controllers\SyntheseAffaireController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ScriptController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="CustomModelBinders\InventoryItemModelBinder.cs" />
+    <Compile Include="CustomModelBinders\DoubleModelBinder.cs" />
+    <Compile Include="CustomModelBinders\DecimalModelBinder.cs" />
+    <Compile Include="CustomModelBinders\NullableModelBinder.cs" />
+    <Compile Include="CustomValueFactories\JsonNetValueProviderFactory.cs" />
+    <Compile Include="DynamicGuiIS\Ajax\DbInteraction.asmx.cs">
+      <DependentUpon>DbInteraction.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DynamicGuiIS\Common\DbDataEntity.cs" />
+    <Compile Include="DynamicGuiIS\Common\DbIOParam.cs" />
+    <Compile Include="DynamicGuiIS\Common\GenerationDbHTML.cs" />
+    <Compile Include="DynamicGuiIS\Common\ParamISInfo.cs" />
+    <Compile Include="DynamicGuiIS\Common\ParamISLigneInfo.cs" />
+    <Compile Include="Filters\WhitespaceFilterAttribute.cs" />
+    <Compile Include="Helpers\AutoReadOnlyViewResult.cs" />
+    <Compile Include="Helpers\HiddenNoNameExtension.cs" />
+    <Compile Include="Models\AffaireNouvelle\SelectionFormuleOption.cs" />
+    <Compile Include="Models\AffaireNouvelle\SelectionObjet.cs" />
+    <Compile Include="Models\AffaireNouvelle\SelectionRisqueObjets.cs" />
+    <Compile Include="Models\AffaireNouvelle\SelectionRisquesObjets.cs" />
+    <Compile Include="Models\AutoComplete\Courtier.cs" />
+    <Compile Include="Models\AutoComplete\Gestionnaire.cs" />
+    <Compile Include="Models\AutoComplete\Preneur.cs" />
+    <Compile Include="Models\AutoComplete\Souscripteur.cs" />
+    <Compile Include="Models\AutoComplete\Ville.cs" />
+    <Compile Include="Models\Blacklisting\Affaire.cs" />
+    <Compile Include="Models\Blacklisting\BlacklistAffaire.cs" />
+    <Compile Include="Models\BNS\ModeleBNSPage.cs" />
+    <Compile Include="Models\Connexites\ConnexiteBase.cs" />
+    <Compile Include="Models\Connexites\ConnexiteContext.cs" />
+    <Compile Include="Models\Connexites\ConnexiteEngagement.cs" />
+    <Compile Include="Models\Connexites\ConnexiteInformation.cs" />
+    <Compile Include="Models\Connexites\ConnexiteRegularisation.cs" />
+    <Compile Include="Models\Connexites\ConnexiteRemplacement.cs" />
+    <Compile Include="Models\Connexites\ConnexiteResiliation.cs" />
+    <Compile Include="Models\Connexites\FusionConnexites.cs" />
+    <Compile Include="Models\Connexites\ModelConnexites.cs" />
+    <Compile Include="Models\Connexites\PeriodeEngagement.cs" />
+    <Compile Include="Models\Connexites\ValeurEngagement.cs" />
+    <Compile Include="Models\ControllerState.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModelInfosGareat.cs" />
+    <Compile Include="Models\ModeleLibellesClauses\ModeleClauseBranche.cs" />
+    <Compile Include="Models\ModeleLibellesClauses\ModeleClause.cs" />
+    <Compile Include="Models\ModeleLibellesClauses\ModeleRechercheClauses.cs" />
+    <Compile Include="Models\ModelesFinOffre\ModeleFinOffre.cs" />
+    <Compile Include="Models\ModelesNavigationArbre\LienArbre.cs" />
+    <Compile Include="Models\ModelesGarantieType\ModeleGarantieType.cs" />
+    <Compile Include="Models\ModelesGarantieType\ModeleRechercheGarantieType.cs" />
+    <Compile Include="Models\ModelesPages\ModeleClassementSansSuitePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleClausePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleEngagementBase.cs" />
+    <Compile Include="Models\ModelesPages\ModeleExcelContratPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGarantieTypePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleOffreRelancePage.cs" />
+    <Compile Include="Models\ModelesPages\ModelSyntheseAffaire.cs" />
+    <Compile Include="Models\Offre.cs" />
+    <Compile Include="Models\FormuleGarantie\Application.cs" />
+    <Compile Include="Models\FormuleGarantie\DetailsValeursGarantie.cs" />
+    <Compile Include="Models\FormuleGarantie\IdentifiantOption.cs" />
+    <Compile Include="Models\FormuleGarantie\InfoApplication.cs" />
+    <Compile Include="Models\FormuleGarantie\NouvelleAffaire.cs" />
+    <Compile Include="Models\FormuleGarantie\ObjetRisque.cs" />
+    <Compile Include="Models\FormuleGarantie\Risque.cs" />
+    <Compile Include="Models\FormuleGarantie\IdentifiantGarantie.cs" />
+    <Compile Include="Models\FormuleGarantie\SelectionElementFormule.cs" />
+    <Compile Include="Models\Inventaires\PersonneDesigneeIndispoTournage.cs" />
+    <Compile Include="Models\Inventaires\TypeInventaire.cs" />
+    <Compile Include="Models\ModelesRecherche\FiltreAffaire.cs" />
+    <Compile Include="Models\Offres\RelanceOffre.cs" />
+    <Compile Include="Models\Contrat.cs" />
+    <Compile Include="Models\PB\ModeleExercicePB.cs" />
+    <Compile Include="Models\PB\ModelePBPage.cs" />
+    <Compile Include="Models\Primes\RetardPaiement.cs" />
+    <Compile Include="Models\Primes\Impaye.cs" />
+    <Compile Include="Models\Offres\ModelRelances.cs" />
+    <Compile Include="Models\Primes\Prime.cs" />
+    <Compile Include="Models\Sinistres\Sinistre.cs" />
+    <Compile Include="Models\ValidationPoliceModel.cs" />
+    <Compile Include="Startup\Cache.cs" />
+    <Compile Include="Startup\CompositionRoot.cs" />
+    <Compile Include="Startup\Config.cs" />
+    <Compile Include="Startup\MapsterConfigurator.cs" />
+    <Compile Include="Startup\SessionContext.cs" />
+    <Content Include="Configs\Dev\system.serviceModel.bindings.debug.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\albRechercherBlackList.css" />
+    <Content Include="Content\gareat.css">
+      <DependentUpon>gareat.less</DependentUpon>
+    </Content>
+    <Content Include="Content\gareat.min.css">
+      <DependentUpon>gareat.css</DependentUpon>
+    </Content>
+    <Content Include="Content\home.css">
+      <DependentUpon>home.less</DependentUpon>
+    </Content>
+    <Content Include="Content\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\alertes\blacklisted.png" />
+    <Content Include="Content\Images\Blue-013-loading.gif" />
+    <Content Include="Content\Images\Clock-History-Frame-16-green.png" />
+    <Content Include="Content\Images\ContextMenu\labalert.png" />
+    <Content Include="Content\Images\ContextMenu\labalert2.png" />
+    <Content Include="Content\Images\deplacer-gauche32.png" />
+    <Content Include="Content\Images\favicon-grp2011.ico" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\minifindstore_spin.gif" />
+    <Content Include="Content\Images\refresh.png" />
+    <Content Include="Content\Images\Spinner-1s-200px.gif" />
+    <Content Include="Content\Images\type_COMA.png" />
+    <Content Include="Content\common.css">
+      <DependentUpon>common.less</DependentUpon>
+    </Content>
+    <Content Include="Content\common.min.css">
+      <DependentUpon>common.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\affaire\synthese.css">
+      <DependentUpon>synthese.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\affaire\synthese.min.css">
+      <DependentUpon>synthese.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\connexites\engagements.css">
+      <DependentUpon>engagements.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\connexites\engagements.min.css">
+      <DependentUpon>engagements.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\formule\edition\add-or-update.css">
+      <DependentUpon>add-or-update.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\formule\edition\add-or-update.min.css">
+      <DependentUpon>add-or-update.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\formule\edition\details-valeurs-garantie.css">
+      <DependentUpon>details-valeurs-garantie.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\formule\edition\details-valeurs-garantie.min.css">
+      <DependentUpon>details-valeurs-garantie.css</DependentUpon>
+    </Content>
+    <Content Include="Content\ko-popup.css">
+      <DependentUpon>ko-popup.less</DependentUpon>
+    </Content>
+    <Content Include="Content\ko-popup.min.css">
+      <DependentUpon>ko-popup.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\formule\edition\portees.css">
+      <DependentUpon>portees.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\formule\edition\portees.min.css">
+      <DependentUpon>portees.css</DependentUpon>
+    </Content>
+    <Content Include="Content\paging.css">
+      <DependentUpon>paging.less</DependentUpon>
+    </Content>
+    <Content Include="Content\paging.min.css">
+      <DependentUpon>paging.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\recherche\search.css">
+      <DependentUpon>search.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\recherche\search.min.css">
+      <DependentUpon>search.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\regularisation\global.css">
+      <DependentUpon>global.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\regularisation\global.min.css">
+      <DependentUpon>global.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\loading2r.gif" />
+    <Content Include="Content\Images\logo2.png" />
+    <Content Include="Content\Images\logo_in.png" />
+    <Content Include="Content\Images\logo_out.png" />
+    <Content Include="Content\pagination\pagination.css" />
+    <Content Include="Content\Images\citrix.png" />
+    <Content Include="Content\PB\vCreationPB.css" />
+    <Content Include="Content\PB\vSelectionPeriodePB.css" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\themes\albLABRecherche.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\vLibelleClauses.css" />
+    <Content Include="Content\vClassementSansSuite.css" />
+    <Content Include="Content\vCopyCanevas.css" />
+    <Content Include="Content\vCopyParamClause.css" />
+    <Content Include="Content\Images\ajax-loader2.gif" />
+    <Content Include="Content\Images\InfoRegule\regule_desactive.png" />
+    <Content Include="Content\Images\InfoRegule\regule_off.png" />
+    <Content Include="Content\Images\InfoRegule\regule_off_select.png" />
+    <Content Include="Content\Images\InfoRegule\regule_on.png" />
+    <Content Include="Content\Images\InfoRegule\regule_on_select.png" />
+    <Content Include="Content\Images\opposition_check_orange.png" />
+    <Content Include="Content\Images\type_OO_16.png" />
+    <Content Include="Content\Regularisation\vCreationRegularisation.css" />
+    <Content Include="Content\CLEditor\jquery.cleditor.min.css" />
+    <Content Include="Content\fancybox\jquery.fancybox-1.3.4.min.css" />
+    <Content Include="Content\fancybox\jquery.fancybox-buttons.min.css" />
+    <Content Include="Content\fancybox\jquery.fancybox-thumbs.min.css" />
+    <Content Include="Content\fancybox\jquery.fancybox.min.css" />
+    <Content Include="Content\Regularisation\vRegularisationSelectionRsq.css" />
+    <Content Include="Content\vExcelContrat.css" />
+    <Content Include="Content\vGarantieType.css" />
+    <Content Include="Content\vInformationsTable.css" />
+    <Content Include="Content\vOffreRelance.css" />
+    <Content Include="Content\vParamInventaires.css" />
+    <Content Include="Content\vCreationAttestation.css" />
+    <Content Include="Content\Images\voyant_blank_petit.png" />
+    <Content Include="Content\Images\voyant_orange_petit.png" />
+    <Content Include="Content\Images\voyant_rouge_petit.png" />
+    <Content Include="Content\Images\voyant_vert_petit.png" />
+    <Content Include="Content\albStatClauseLibRecherche.css" />
+    <Content Include="Content\vFraisAccessoires.css" />
+    <Content Include="Content\vLogRecupParamCible.css" />
+    <Content Include="Content\vRechercheOffreRapide.css" />
+    <Content Include="Content\vStatOffreContrat.css" />
+    <Compile Include="Common\ContextMessageInspector.cs" />
+    <Compile Include="Controllers\AffaireNouvelle\AnEcheancierController.cs" />
+    <Compile Include="Controllers\AffaireNouvelle\AnMontantReferenceController.cs" />
+    <Compile Include="Controllers\AnnulationQuittancesController.cs" />
+    <Compile Include="Controllers\Avenant\AvenantInfoGeneralesController.cs" />
+    <Compile Include="Controllers\BlocageTermesController.cs" />
+    <Compile Include="Controllers\ContextMenuController.cs" />
+    <Compile Include="Controllers\CopyParamClauseController.cs" />
+    <Compile Include="Controllers\CreationAttestationController.cs" />
+    <Compile Include="Controllers\RegularisationController.cs" />
+    <Compile Include="Controllers\FormuleGarantieController.cs" />
+    <Compile Include="Controllers\FraisAccessoiresController.cs" />
+    <Compile Include="CustomModelBinders\AlbModelBinder.cs" />
+    <Compile Include="CustomResult\JsonNetResult.cs" />
+    <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
+    <Compile Include="FilterConfig.cs" />
+    <Compile Include="Controllers\LogPerfController.cs" />
+    <Compile Include="Models\Affaire.cs" />
+    <Compile Include="Models\BasicStateModel.cs" />
+    <Compile Include="Models\FormuleGarantie\DetailsGarantie.cs" />
+    <Compile Include="Models\FormuleGarantie\PorteeObjet.cs" />
+    <Compile Include="Models\FormuleGarantie\PorteesGarantie.cs" />
+    <Compile Include="Models\knockout\BandeauContratRegularisation.cs" />
+    <Compile Include="Models\knockout\DonneesRegularisation.cs" />
+    <Compile Include="Models\knockout\InfosFormuleRegularisation.cs" />
+    <Compile Include="Models\knockout\InfosPeriodeRegularisation.cs" />
+    <Compile Include="Models\ModelesFormGarantie\ModeleFormBloc.cs" />
+    <Compile Include="Models\ModelesFormGarantie\ModeleFormGarantie.cs" />
+    <Compile Include="Models\ModelesFormGarantie\ModeleFormModele.cs" />
+    <Compile Include="Models\ModelesFormGarantie\ModeleFormVolet.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleDetailsConnexitesEng.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleDetailsConnexitesEngPeriode.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleEngTrait.cs" />
+    <Compile Include="Models\ModelesConnexite\ModelePeriodeDeConnexite.cs" />
+    <Compile Include="Models\FormuleGarantie\Bloc.cs" />
+    <Compile Include="Models\FormuleGarantie\Formule.cs" />
+    <Compile Include="Models\FormuleGarantie\Garantie.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleGarantiePeriode.cs" />
+    <Compile Include="Controllers\InformationsDataBaseController.cs" />
+    <Compile Include="Controllers\LogRecupParamCibleController.cs" />
+    <Compile Include="Controllers\ParamInventairesController.cs" />
+    <Compile Include="Controllers\RechercheOffreRapideController.cs" />
+    <Compile Include="Controllers\Regularisation\CreationRegularisationController.cs" />
+    <Compile Include="Controllers\StatClausesLibresController.cs" />
+    <Compile Include="Controllers\StatistiqueController.cs" />
+    <Compile Include="Controllers\CreationAvenantController.cs" />
+    <Compile Include="Controllers\DocumentGestionController.cs" />
+    <Compile Include="Controllers\GestionDocumentContratController.cs" />
+    <Compile Include="Controllers\GestionIntervenantsController.cs" />
+    <Compile Include="Controllers\GestionGrilleNomenclatureController.cs" />
+    <Compile Include="Controllers\GestionNomenclatureController.cs" />
+    <Compile Include="Controllers\GestUtilisateursController.cs" />
+    <Compile Include="Controllers\HistoriqueController.cs" />
+    <Compile Include="Controllers\ClauseSimplifieeController.cs" />
+    <Compile Include="Controllers\InformationsSpecifiquesRecupGarantiesController.cs" />
+    <Compile Include="Controllers\InformationsSpecifiquesRecupObjetsController.cs" />
+    <Compile Include="Controllers\LogTraceController.cs" />
+    <Compile Include="Controllers\NavigationArbreController.cs" />
+    <Compile Include="Controllers\OffreSimplifieeController.cs" />
+    <Compile Include="Controllers\ParamCibleRecupController.cs" />
+    <Compile Include="Controllers\ParamDocumentCheminController.cs" />
+    <Compile Include="Controllers\ParamFamillesController.cs" />
+    <Compile Include="Controllers\ParamConceptsController.cs" />
+    <Compile Include="Controllers\ParamFiltresController.cs" />
+    <Compile Include="Controllers\ParamGarantiesController.cs" />
+    <Compile Include="Controllers\ParamISModeleAssocierController.cs" />
+    <Compile Include="Controllers\ParamISModelesController.cs" />
+    <Compile Include="Controllers\ParamISReferenceController.cs" />
+    <Compile Include="Controllers\ParamNomenclatureController.cs" />
+    <Compile Include="Controllers\ParamTemplateNomenclatureController.cs" />
+    <Compile Include="Controllers\ParamTemplatesController.cs" />
+    <Compile Include="Controllers\ParamTypesValeurController.cs" />
+    <Compile Include="Controllers\PrisePositionController.cs" />
+    <Compile Include="Controllers\RefExprCompController.cs" />
+    <Compile Include="Controllers\RetoursController.cs" />
+    <Compile Include="Controllers\SuiviDocumentsController.cs" />
+    <Compile Include="Controllers\SuspensionController.cs" />
+    <Compile Include="Controllers\SyntheseDocumentsController.cs" />
+    <Compile Include="Controllers\WordViwerController.cs" />
+    <Compile Include="Models\ModeleTransverse\LTA.cs" />
+    <Compile Include="Scripts\ExcelWeb\Ajax\ExcelInteraction.asmx.cs">
+      <DependentUpon>ExcelInteraction.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Scripts\ExcelWeb\Common\ExcelDataEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\ExcelWeb\Common\ExcelIOParam.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\AffaireNouvelle\Courtiers\CommissionCourtier.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\CourtierGestionnairePayeur.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\Template_InformationBase.cs" />
+    <Compile Include="Models\Avenant\ModelesAvenant\ModeleAvenantInfoGeneralesPage.cs" />
+    <Compile Include="Models\Avenant\ModelesAvenant\ModeleVisuInfosContrat.cs" />
+    <Compile Include="Models\Avenant\ModelesAvenant\ModeleVisuObservations.cs" />
+    <Compile Include="Models\Avenant\ModelesAvenant\ModeleVisuSuspension.cs" />
+    <Compile Include="Models\Avenant\ModelesAvenant\ModeleVisuListSuspension.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionsListExprComplexe.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationGarantieNiv4.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationGarantieNiv3.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationGarantieNiv2.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationFormule.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationGarantie.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestation.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationGarantieNiv1.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationObjet.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationRisque.cs" />
+    <Compile Include="Models\ModeleCreationAttestation\ModeleAttestationRsqObj.cs" />
+    <Compile Include="Models\ModeleInformationDatabase\ModeleColumnInfo.cs" />
+    <Compile Include="Models\ModeleRechercheOffreRapide\ModeleOffreRapideFiltre.cs" />
+    <Compile Include="Models\ModeleRechercheOffreRapide\ModeleOffreRapideResult.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleListContextesClause.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleListClauses.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleChoixClauseListePieceJointe.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleChoixClausePieceJointe.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleViewerClauseLibre.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleConnexite.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleInfosConnexite.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleInfoConnexite.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleRegularisation.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleTypeConnexite.cs" />
+    <Compile Include="Models\ModelesCreationAvenant\ModeleAvenant.cs" />
+    <Compile Include="Models\ModelesCreationAvenant\ModeleAvenantAlerte.cs" />
+    <Compile Include="Models\ModelesCreationAvenant\ModeleAvenantModification.cs" />
+    <Compile Include="Models\ModelesCreationAvenant\ModeleAvenantRegularisation.cs" />
+    <Compile Include="Models\ModelesCreationAvenant\ModeleAvenantRemiseVigueur.cs" />
+    <Compile Include="Models\ModelesCreationAvenant\ModeleAvenantResiliation.cs" />
+    <Compile Include="Models\ModelesDetailsRisque\ModeleInformationsGeneralesRisqueNomenclatures.cs" />
+    <Compile Include="Models\ModelesDetailsRisque\ModeleLigneActivite.cs" />
+    <Compile Include="Models\ModelesDetailsRisque\ModeleRechercheActivite.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\DestinataireLigne.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\DocumentGestionDoc.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\DocumentGestionDocInfo.cs" />
+    <Compile Include="Models\ModelesDetailsRisque\ModeleListeNomenclatures.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\DocumentGestionInfoDest.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\LigneCourrierType.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\LigneSelectionDestinataire.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\LigneTypeIntervenant.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\ModeleSelectionCourrierType.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\ModeleSelectionDestinataire.cs" />
+    <Compile Include="Models\ModelesDocumentGestion\ModifierDocumentModele.cs" />
+    <Compile Include="Models\ModelesDocumentsJoints\Documents.cs" />
+    <Compile Include="Models\ModelesDocumentsJoints\DocumentsAdd.cs" />
+    <Compile Include="Models\ModelesDocumentsJoints\ModeleDocumentsJoints.cs" />
+    <Compile Include="Models\FormuleGarantie\Option.cs" />
+    <Compile Include="Models\FormuleGarantie\OptionItem.cs" />
+    <Compile Include="Models\FormuleGarantie\Volet.cs" />
+    <Compile Include="Models\FormuleGarantie\VoletBase.cs" />
+    <Compile Include="Models\ModelesGarantieModeles\IModeleGarantieNiveau.cs" />
+    <Compile Include="Models\Inventaires\Activite.cs" />
+    <Compile Include="Models\Inventaires\ActiviteLocalisee.cs" />
+    <Compile Include="Models\Inventaires\BienAssure.cs" />
+    <Compile Include="Models\Inventaires\ActivitesImmobilieres.cs" />
+    <Compile Include="Models\Inventaires\InventoryItem.cs" />
+    <Compile Include="Models\Inventaires\LocationTiers.cs" />
+    <Compile Include="Models\Inventaires\ManifestationAssure.cs" />
+    <Compile Include="Models\Inventaires\Marchandises.cs" />
+    <Compile Include="Models\Inventaires\MarchandisesTransportees.cs" />
+    <Compile Include="Models\Inventaires\MarchandisesStockees.cs" />
+    <Compile Include="Models\Inventaires\Materiel.cs" />
+    <Compile Include="Models\Inventaires\MaterielAssure.cs" />
+    <Compile Include="Models\Inventaires\Inventaire.cs" />
+    <Compile Include="Models\Inventaires\MultiplesSituations.cs" />
+    <Compile Include="Models\Inventaires\PersonneDesigneeIndispo.cs" />
+    <Compile Include="Models\Inventaires\PersonneDesignee.cs" />
+    <Compile Include="Models\Inventaires\Personne.cs" />
+    <Compile Include="Models\Inventaires\PosteAssure.cs" />
+    <Compile Include="Models\Inventaires\ProductionRealisationAudio.cs" />
+    <Compile Include="Models\Inventaires\TournageAssure.cs" />
+    <Compile Include="Models\Inventaires\VehiculePourTransport.cs" />
+    <Compile Include="Models\ModelesParamGaranties\ModeleGarTypeRegul.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleInfoDetailsGarantie.cs" />
+    <Compile Include="Models\ModelesFraisAccessoires\FraisAccessoiresModel.cs" />
+    <Compile Include="Models\ModelesGestionDocumentContrat\ModeleLignePieceJointe.cs" />
+    <Compile Include="Models\ModelesGestionIntervenants\ModeleGestionIntervenants.cs" />
+    <Compile Include="Models\ModelesGestionIntervenants\ModeleIntervenant.cs" />
+    <Compile Include="Models\ModelesGestionIntervenants\ModeleIntervenantInfo.cs" />
+    <Compile Include="Models\ModelesGestUtilisateurs\ModeleUtilisateurBranche.cs" />
+    <Compile Include="Models\ModelesLogTrace\LogParamCibleRecupModel.cs" />
+    <Compile Include="Models\ModelesPages\FormuleGarantiePage.cs" />
+    <Compile Include="Models\ModelesPages\LogPerfExport.cs" />
+    <Compile Include="Models\ModelesPages\ModeleCopyParamClausePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleCreationAttestationPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsDataBasePage.cs" />
+    <Compile Include="Models\ModeleRechercheOffreRapide\ModeleOffreRapideInfo.cs" />
+    <Compile Include="Models\ModelesPages\ModeleLogPerfPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamInventairesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleRechercheOffreRapidePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleStatistiqueClausesLibresPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleFraisAccessoiresPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleLogRecupParamCiblePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleStatistiqueOffreContratPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGestUtilisateursPage.cs" />
+    <Compile Include="Models\ModelesHistorique\HistoriqueLigne.cs" />
+    <Compile Include="Models\ModelesPages\ModeleAnnulationQuittancesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleCreationAvenantPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleDocumentGestionPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGestionIntervenantsPage.cs" />
+    <Compile Include="Models\ModelesGestionNomenclature\ModeleGrille.cs" />
+    <Compile Include="Models\ModelesGestionNomenclature\ModeleNomenclature.cs" />
+    <Compile Include="Models\ModelesGestionNomenclature\ModeleSelectionValeurs.cs" />
+    <Compile Include="Models\ModelesGestionNomenclature\ModeleTypologie.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGestionGrilleNomenclaturePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGestionNomenclaturePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleHistoriquePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsSpecifiquesRecupGarantiesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsSpecifiquesRecupObjetsPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamCibleRecupPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamDocumentCheminPage.cs" />
+    <Compile Include="Models\ModelesPages\ModelePrisePositionPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleRefExprCompPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleSuiviDocumentsPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleSyntheseDocumentsPage.cs" />
+    <Compile Include="Models\ModelesParamCible\LigneFamille.cs" />
+    <Compile Include="Models\ModelesParamCible\ModeleOffreRecup.cs" />
+    <Compile Include="Models\ModelesParamCible\ModeleRechercheFamille.cs" />
+    <Compile Include="Models\ModelesParamDocumentChemin\ModeleLigneDocumentChemin.cs" />
+    <Compile Include="Models\ModelesParamDocumentChemin\ModeleTypologies.cs" />
+    <Compile Include="Models\ModelesParamGaranties\DDLFamilles.cs" />
+    <Compile Include="Models\ModelesParamInventaires\DetailsInventaire.cs" />
+    <Compile Include="Models\ModelesParamInventaires\LigneInventaires.cs" />
+    <Compile Include="Models\ModelesQuittances\CoAssureurGarantie.cs" />
+    <Compile Include="Models\ModelesQuittances\Garanties.cs" />
+    <Compile Include="Models\ModelesQuittances\PartAlbingia.cs" />
+    <Compile Include="Models\ModelesQuittances\QuittanceCalculForce.cs" />
+    <Compile Include="Models\ModelesQuittances\QuittanceForceFormule.cs" />
+    <Compile Include="Models\ModelesQuittances\QuittanceForceGarantie.cs" />
+    <Compile Include="Models\ModelesQuittances\QuittanceForceInfoFormule.cs" />
+    <Compile Include="Models\ModelesQuittances\QuittanceForceInfoGarantie.cs" />
+    <Compile Include="Models\ModelesQuittances\QuittanceForceTotal.cs" />
+    <Compile Include="Models\ModelesQuittances\ReeditionBulletinAvis.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationCoassureur.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationCoassureurParGarantie.cs" />
+    <Compile Include="Models\ModelesQuittances\VisualisationQuittancesLigne.cs" />
+    <Compile Include="Models\ModelesQuittances\VisualisationQuittances.cs" />
+    <Compile Include="Models\ModelesRisque\ModeleRechercheOpp.cs" />
+    <Compile Include="Models\ModelesSuiviDocuments\SuiviDocumentsDoc.cs" />
+    <Compile Include="Models\ModelesSuiviDocuments\SuiviDocumentsListe.cs" />
+    <Compile Include="Models\ModelesSuiviDocuments\SuiviDocumentsLot.cs" />
+    <Compile Include="Models\ModelesSuiviDocuments\SuiviDocumentsLotDetails.cs" />
+    <Compile Include="Models\ModelesSuiviDocuments\SuiviDocumentsPlat.cs" />
+    <Compile Include="Models\ModelesSyntheseDocuments\SyntheseDocumentsDoc.cs" />
+    <Compile Include="Models\ModelesSyntheseDocuments\SyntheseDocumentsDocInfo.cs" />
+    <Compile Include="Models\ModeleStatisque\ResultStatClausesLibreModel.cs" />
+    <Compile Include="Models\ModeleStatisque\StatClausesLibreModel.cs" />
+    <Compile Include="Models\ModeleStatisque\StatOffreContratFiltreModel.cs" />
+    <Compile Include="Models\ModeleStatisque\StatOffreContratModel.cs" />
+    <Compile Include="Models\ModelesUsersLogin\ModeleUsersLogin.cs" />
+    <Compile Include="Models\ModelesValidationOffre\ModeleEditionDocuments.cs" />
+    <Compile Include="Models\LabeledValue.cs" />
+    <Compile Include="Models\Regularisation\IRegulModel.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegularisation\ConfirmSaisieRegule.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegularisation\ModeleGarantie.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegularisation\ModeleGarantiesRegularisation.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegularisation\ModeleRisquesRegularisation.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegulGar\RegularisationGarInfo.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegulGar\LigneGarantieRegul.cs" />
+    <Compile Include="Models\Regularisation\ModeleRegularisationSelectionRisquePage.cs" />
+    <Compile Include="Models\Regularisation\ModeleSaisieRegulGarantiePage.cs" />
+    <Compile Include="Models\Regularisation\ModeleRegularisationPage.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegularisation\ModeleCreationRegule.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegularisation\ModeleLigneRegularisation.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegularisation\ModeleRegularisation.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegulGar\Mouvement.cs" />
+    <Compile Include="Models\Regularisation\ModeleCreationRegulGar\PerioderegulGarantie.cs" />
+    <Compile Include="Models\Regularisation\ModeleSaisieRegulGarantie\InfoInitSaisieRegul.cs" />
+    <Compile Include="Models\Regularisation\ModeleSaisieRegulGarantie\ModeleDataRegularisation.cs" />
+    <Compile Include="Models\Regularisation\ModeleSaisieRegulGarantie\SaisieInfoRegulPeriod.cs" />
+    <Compile Include="Models\Regularisation\NavTreeModel.cs" />
+    <Compile Include="Models\Regularisation\RegularisationNavigator.cs" />
+    <Compile Include="Models\Regularisation\RegularisationStateModel.cs" />
+    <Compile Include="Models\WordViewer\WordViewer.cs" />
+    <Compile Include="Models\ModeleCreationSaisie\ModeleInfoSaisieTemplate.cs" />
+    <Compile Include="Models\ModelesBlocageTermes\ModeleDeblocageTermes.cs" />
+    <Compile Include="Models\ModelesClauses\Clausier.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleChoixClauseTransverse.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleClauseLibreSimp.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleDDLFormules.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleDDLOptions.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleObjetsRisque.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleContratConnexe.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleEngagement.cs" />
+    <Compile Include="Models\ModelesBlocs\ModeleLigneBloc.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleClauseSimpRisque.cs" />
+    <Compile Include="Models\ModelesContextMenu\ModeleListItem.cs" />
+    <Compile Include="Models\ModelesDetailsRisque\ModeleDetailsObjetRisque.cs" />
+    <Compile Include="Models\ModelesDetailsRisque\ModeleInformationsGeneralesRisque.cs" />
+    <Compile Include="Models\ModelesDetailsRisque\ModeleObjetsRisque.cs" />
+    <Compile Include="Models\ModelesEcheance\ModeleEcheance.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\BlocSave.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleFormuleGarantieSave.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleNiv1Save.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleNiv2Save.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleNiv3Save.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleNiv4Save.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModelePorteeGarantie.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleSave.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\VoletSave.cs" />
+    <Compile Include="Models\ModelesGestionDocumentContrat\ModeleGestionDocumentContrat.cs" />
+    <Compile Include="Models\ModelesGestionDocumentContrat\ModeleLigneDocument.cs" />
+    <Compile Include="Models\ModelesInformationsSpecifiques\ModeleListOptions.cs" />
+    <Compile Include="Models\ModelesInventaire\ModeleInventaireCPVille_JSON.cs" />
+    <Compile Include="Models\ModelesInventaire\ModeleInventaireListeCPVille.cs" />
+    <Compile Include="Models\ModelesLCIFranchise\ModeleLCIFranchise.cs" />
+    <Compile Include="Models\ModelesLogTrace\ModeleLogTrace.cs" />
+    <Compile Include="Models\ModelesMontantReference\ModeleMontantReference.cs" />
+    <Compile Include="Models\CommonNavigation\CommonNavigationModel.cs" />
+    <Compile Include="Controllers\ConnexiteController.cs" />
+    <Compile Include="Controllers\ControllerExtensionMethods.cs" />
+    <Compile Include="Controllers\EngagementPeriodesController.cs" />
+    <Compile Include="Controllers\EngagementsConnexiteController.cs" />
+    <Compile Include="Controllers\ParamEngagementsController.cs" />
+    <Compile Include="Controllers\QuittanceController.cs" />
+    <Compile Include="Helpers\AlbToReadOnlyHtml.cs" />
+    <Compile Include="Common\InformationsGenerales.cs" />
+    <Compile Include="Controllers\AffaireNouvelle\AnCoAssureursController.cs" />
+    <Compile Include="Controllers\AffaireNouvelle\AnCourtierController.cs" />
+    <Compile Include="Controllers\AffaireNouvelle\AnCreationContratController.cs" />
+    <Compile Include="Controllers\AffaireNouvelle\AnInformationsGeneralesController.cs" />
+    <Compile Include="Controllers\AffaireNouvelle\AssuresAdditionnelsController.cs" />
+    <Compile Include="Controllers\AssocierVBMController.cs" />
+    <Compile Include="Controllers\AttentatGareatController.cs" />
+    <Compile Include="Controllers\AutoCompleteController.cs" />
+    <Compile Include="Controllers\BackOfficeController.cs" />
+    <Compile Include="Controllers\BlocsController.cs" />
+    <Compile Include="Controllers\ChoixClausesController.cs" />
+    <Compile Include="Controllers\ClausierController.cs" />
+    <Compile Include="Controllers\CommonNavigationController.cs" />
+    <Compile Include="Controllers\ConditionsGarantieController.cs" />
+    <Compile Include="Controllers\ConfirmationSaisieController.cs" />
+    <Compile Include="Controllers\ControleFinController.cs" />
+    <Compile Include="Controllers\ControllersBase.cs" />
+    <Compile Include="Controllers\CotisationsController.cs" />
+    <Compile Include="Controllers\CreationAffaireNouvelleController.cs" />
+    <Compile Include="Controllers\CreationFormuleGarantieController.cs" />
+    <Compile Include="Controllers\CreationSaisieController.cs" />
+    <Compile Include="Controllers\DetailCalculSMPController.cs" />
+    <Compile Include="Controllers\DetailsObjetRisqueController.cs" />
+    <Compile Include="Controllers\DetailsRisqueController.cs" />
+    <Compile Include="Controllers\DoubleSaisieController.cs" />
+    <Compile Include="Controllers\EngagementsController.cs" />
+    <Compile Include="Controllers\EngagementTraiteController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\ExclusionFormuleGarantieController.cs" />
+    <Compile Include="Controllers\FinOffreController.cs" />
+    <Compile Include="Controllers\FormVolAffNouvController.cs" />
+    <Compile Include="Controllers\GarantieModeleController.cs" />
+    <Compile Include="Controllers\GestionDocumentController.cs" />
+    <Compile Include="Controllers\GestionOptionsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationsSpecifiquesBrancheController.cs" />
+    <Compile Include="Controllers\InformationsSpecifiquesGarantieController.cs" />
+    <Compile Include="Controllers\InformationsSpecifiquesObjetsController.cs" />
+    <Compile Include="Controllers\InformationsSpecifiquesRisquesController.cs" />
+    <Compile Include="Controllers\MatriceFormuleController.cs" />
+    <Compile Include="Controllers\MatriceGarantieController.cs" />
+    <Compile Include="Controllers\MatriceRisqueController.cs" />
+    <Compile Include="Controllers\ModifierOffreController.cs" />
+    <Compile Include="Controllers\OffresVerrouilleesController.cs" />
+    <Compile Include="Controllers\Option3Controller.cs" />
+    <Compile Include="Controllers\OptTarAffNouvController.cs" />
+    <Compile Include="Controllers\ParamCibleController.cs" />
+    <Compile Include="Controllers\ParamClauseController.cs" />
+    <Compile Include="Controllers\RechercheSaisieController.cs" />
+    <Compile Include="Controllers\RisqueInventaireController.cs" />
+    <Compile Include="Controllers\RsqObjAffNouvController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\SuiviActesGestionController.cs" />
+    <Compile Include="Controllers\ValidationOffreController.cs" />
+    <Compile Include="Controllers\VoletsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AlbAddCssJsScripts.cs" />
+    <Compile Include="Helpers\AlbDropDownList.cs" />
+    <Compile Include="Helpers\AlbLabel.cs" />
+    <Compile Include="Helpers\HelpersDateTime.cs" />
+    <Compile Include="Models\Acceuil\Acceuil.cs" />
+    <Compile Include="Models\Accueil_Model.cs" />
+    <Compile Include="Models\AffaireNouvelle\AssuresAdditionnels\AssuAdditionnels.cs" />
+    <Compile Include="Models\AffaireNouvelle\AssuresAdditionnels\AssuresNonRef.cs" />
+    <Compile Include="Models\AffaireNouvelle\AssuresAdditionnels\AssuresRef.cs" />
+    <Compile Include="Models\AffaireNouvelle\CoAssureurs\CoAssureur.cs" />
+    <Compile Include="Models\AffaireNouvelle\Courtiers\Courtier.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\AdresseRisque.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\Cible_InformationBase.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\Courtier.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\CourtierApporteur.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\CourtierGestionnaire.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\CourtierPayeur.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\InformationBase.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\InformationContrat.cs" />
+    <Compile Include="Models\AffaireNouvelle\CreationContrat\PreneurAssurance.cs" />
+    <Compile Include="Models\AffaireNouvelle\Entete\AnEntete.cs" />
+    <Compile Include="Models\AffaireNouvelle\ModelePage\AnAssuresAdditionnelsPage.cs" />
+    <Compile Include="Models\AffaireNouvelle\ModelePage\AnCoAssureursPage.cs" />
+    <Compile Include="Models\AffaireNouvelle\ModelePage\AnCourtier.cs" />
+    <Compile Include="Models\AffaireNouvelle\ModelePage\AnCreationContratPage.cs" />
+    <Compile Include="Models\AffaireNouvelle\ModelePage\AnInformationsBaseEnregister.cs" />
+    <Compile Include="Models\AffaireNouvelle\ModelePage\AnInformationsGeneralesPage.cs" />
+    <Compile Include="Models\AffaireNouvelle\ModelePage\AnInformationsSpecifiquesBranchePage.cs" />
+    <Compile Include="Models\MetaData\Bandeau_MetaData.cs" />
+    <Compile Include="Models\MetaData\ContactAddresse_MetaData.cs" />
+    <Compile Include="Models\MetaData\ListInventaires_MetaData.cs" />
+    <Compile Include="Models\MetaModels\Acceuil_Index_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\Account_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\ChoixClauses_Index_MetaModel.cs" />
+    <Compile Include="Models\ModelesClauses\ClausierHistorique.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleChoixClause.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleClause.cs" />
+    <Compile Include="Models\MetaModels\ClausierHistoriqueMetaModel.cs" />
+    <Compile Include="Models\MetaModels\ClausierRecherche_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\Clausier_Index_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\ConfirmationSaisieConfirme_Index_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\ConfirmationSaisieRefus_Index_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\ConfirmationSaisie_Index_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\DetailsObjet_MetaModels\DetailsObjet_Inventaires_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\Garantie_Index_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\InformationsSpecifiquesBranche_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\Inventaire_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\MetaModelsBase.cs" />
+    <Compile Include="Models\MetaModels\MetaModelsCache\DoubleSaisie_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\MetaModelsCache\Offre_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\ModifierOffre_Index_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\Navigation_MetaModel.cs" />
+    <Compile Include="Models\MetaModels\SelectListItemMetaModel.cs" />
+    <Compile Include="Models\ModeleActeGestion\ActeGestion.cs" />
+    <Compile Include="Models\ModeleAttentat\ModeleAttentatParametre.cs" />
+    <Compile Include="Models\ModeleCategories\ModeleCategorie.cs" />
+    <Compile Include="Models\ModeleCibles\ModeleCible.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleClauseLibre.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleClausier.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleContexte.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleDDLSequence.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleDDLSousRubrique.cs" />
+    <Compile Include="Models\ModelesClauses\ModeleListeClauses.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionGarantieExport.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionsExprComplexe.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionsExprComplexeDetails.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionsFiltre.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionsGarantie.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionsInfosCondition.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionsInfosContrat.cs" />
+    <Compile Include="Models\ModeleConditionsGarantie\ModeleConditionsLigneGarantie.cs" />
+    <Compile Include="Models\ModeleCreationSaisie\ModeleCabinetCourtage.cs" />
+    <Compile Include="Models\ModeleCreationSaisie\ModeleContactAdresse.cs" />
+    <Compile Include="Models\ModeleCreationSaisie\ModeleDescription.cs" />
+    <Compile Include="Models\ModeleCreationSaisie\ModeleInformationSaisie.cs" />
+    <Compile Include="Models\ModeleCreationSaisie\ModeleInfoSaisieCible.cs" />
+    <Compile Include="Models\ModeleCreationSaisie\ModelePreneurAssurance.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleEngagementConnexite.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleEngagementPeriode.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleEngagementTraite.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleEnteteDetailCalculSMP.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleLigneDetailCalculSMP.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleLignesDetailCalculSMP.cs" />
+    <Compile Include="Models\ModeleEngagements\ModeleTraite.cs" />
+    <Compile Include="Models\ModeleGestionDocument\GestionDocumentCourrier.cs" />
+    <Compile Include="Models\ModeleGestionDocument\ModeleGestionDiffusion.cs" />
+    <Compile Include="Models\ModeleGestionDocument\ModeleGestionDistribution.cs" />
+    <Compile Include="Models\ModeleGestionDocument\ModeleGestionDocumentCreation.cs" />
+    <Compile Include="Models\ModeleMatriceFormule\ModeleMatriceFormuleForm.cs" />
+    <Compile Include="Models\ModeleMatriceFormule\ModeleMatriceFormuleOpt.cs" />
+    <Compile Include="Models\ModeleModeles\ModeleModele.cs" />
+    <Compile Include="Models\ModeleOption3\ModeleOption3ListeRisques.cs" />
+    <Compile Include="Models\ModelesBlocs\ModeleBloc.cs" />
+    <Compile Include="Models\ModelesBlocs\ModeleRechercheBlocs.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleAjoutConnexite.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleConfirmationAction.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleEngagement.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleInformation.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleLigneConnexite.cs" />
+    <Compile Include="Models\ModelesConnexite\ModelePleinEcranConnexite.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleRemplacement.cs" />
+    <Compile Include="Models\ModelesConnexite\ModeleResiliation.cs" />
+    <Compile Include="Models\ModelesControleFin\ModeleControleFinControle.cs" />
+    <Compile Include="Models\ModelesCotisations\ModeleCatnatGareat.cs" />
+    <Compile Include="Models\ModelesCotisations\ModeleCommission.cs" />
+    <Compile Include="Models\ModelesCotisations\ModeleCotisationUpdate.cs" />
+    <Compile Include="Models\ModelesCotisations\ModeleGarantie.cs" />
+    <Compile Include="Models\ModelesCotisations\ModeleInfoGarantie.cs" />
+    <Compile Include="Models\ModelesCotisations\ModeleInfoTarif.cs" />
+    <Compile Include="Models\ModelesCotisations\ModeleTarif.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleCreationAffaireNouvelleContrat.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleFormVolAffNouvForm.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleFormVolAffNouvOpt.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleFormVolAffNouvRecap.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleFormVolAffNouvRsq.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleFormVolAffNouvVol.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleOptTarAffNouvGaran.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleOptTarAffNouvTarif.cs" />
+    <Compile Include="Models\ModelesCreationAffaireNouvelle\ModeleRsqObjAffNouv.cs" />
+    <Compile Include="Models\ModelesDetailsObjet\ModeleDetailsObjetInventaire.cs" />
+    <Compile Include="Models\ModelesDetailsObjet\ModeleInventaire.cs" />
+    <Compile Include="Models\ModelesDetailsObjet\ModeleInventaireObjet.cs" />
+    <Compile Include="Models\ModelesDoubleSaisie\ModeleDoubleSaisieAdd.cs" />
+    <Compile Include="Models\ModelesDoubleSaisie\ModeleDoubleSaisieCourtier.cs" />
+    <Compile Include="Models\ModelesFinOffre\ModeleFinOffreAnnotation.cs" />
+    <Compile Include="Models\ModelesFinOffre\ModeleFinOffreInfos.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleAjoutFormuleGarantie.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleDetailsGarantie.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleFormuleGarantie.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleFormuleGarantieLstObjRsq.cs" />
+    <Compile Include="Models\ModelesFormuleGarantie\ModeleValidationPage.cs" />
+    <Compile Include="Models\ModelesGarantieModeles\ModeleGarantieModele.cs" />
+    <Compile Include="Models\ModelesGarantieModeles\ModeleGarantieNiveau1.cs" />
+    <Compile Include="Models\ModelesGarantieModeles\ModeleGarantieNiveau2.cs" />
+    <Compile Include="Models\ModelesGarantieModeles\ModeleGarantieNiveau3.cs" />
+    <Compile Include="Models\ModelesGarantieModeles\ModeleGarantieNiveau4.cs" />
+    <Compile Include="Models\ModelesGarantieModeles\ModeleRechercheGarantieModele.cs" />
+    <Compile Include="Models\ModelesInventaire\ModeleInventaire.cs" />
+    <Compile Include="Models\ModelesInventaire\ModeleInventaireGrid.cs" />
+    <Compile Include="Models\ModelesInventaire\ModeleInventaireGridRow.cs" />
+    <Compile Include="Models\ModelesMatriceGarantie\ModeleMatriceRisqueForm.cs" />
+    <Compile Include="Models\ModelesMatriceGarantie\ModelesMatriceGarantieOpt.cs" />
+    <Compile Include="Models\ModelesMatriceRisquesFormules\ModelesMatriceRisquesFormules.cs" />
+    <Compile Include="Models\ModelesNavigationArbre\ModeleNavigationArbre.cs" />
+    <Compile Include="Models\ModelesObjet\ModeleObjet.cs" />
+    <Compile Include="Models\ModelesOffresVerrouillees\ModeleOffreVerrouillee.cs" />
+    <Compile Include="Models\ModelesPages\ModeleAssocierVBMPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleAttentatPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleBackOffice.cs" />
+    <Compile Include="Models\ModelesPages\ModeleBlocageTermesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleBlocPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleChoixClausesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleClauseSimplifieePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleClausierPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleConditionsGarantiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleConfirmationSaisiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleConnexitePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleContexteCible.cs" />
+    <Compile Include="Models\ModelesPages\ModeleControleFinPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleCotisationsPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleCreationAffaireNouvellePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleFormuleGarantiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleCreationSaisiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleDetailCalculSMPPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleDetailsObjetRisquePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleDetailsRisquePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleDoubleSaisiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleEcheancierPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleEngagementPeriodesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleEngagementsConnexitePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleEngagementsPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleEngagementTraitePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleExclusionFormuleGarantiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleFinOffrePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleFormVolAffNouvPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGarantieModelePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGestionDocumentContratPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGestionDocumentPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleGestionOptionsPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsSpecifiquesGarantiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsSpecifiquesObjetsPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsSpecifiquesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsSpecifiquesRisquesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsSpecifiquesRsqObjGarGarantiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleInformationsSpecifiquesRsqObjGarObjetPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleLogTracePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleMatriceFormulePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleMatriceGarantiePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleMatriceRisquePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleMontantReferencePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleOffreSimplifieePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleOffresVerrouilleesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleOffreverrouillees.cs" />
+    <Compile Include="Models\ModelesPages\ModeleOption3Page.cs" />
+    <Compile Include="Models\ModelesPages\ModeleOptTarAffNouvPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamCiblePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamClausePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamConceptsPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamEngmentPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamFamillesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamFiltresPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamGarantiesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamISModelesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamISPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamISReferencePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamNomenclaturePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamTemplatesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamTypesValeurPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleQuittancePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleRecherchePage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ModelesPages\ModeleRetoursPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleRsqObjAffNouvPage.cs" />
+    <Compile Include="Models\ModelesPages\ModelesMatriceRisquesFormulesPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleSuiviActesGestionPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleValidationOffrePage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleVoletPage.cs" />
+    <Compile Include="Models\ModelesPages\ModeleParamTemplateNomenclaturePage.cs" />
+    <Compile Include="Models\ModelesParamCible\DetailsCible.cs" />
+    <Compile Include="Models\ModelesParamCible\DropListBranches.cs" />
+    <Compile Include="Models\ModelesParamCible\DropListCategories.cs" />
+    <Compile Include="Models\ModelesParamCible\DropListSousBranches.cs" />
+    <Compile Include="Models\ModelesParamCible\EditBSC.cs" />
+    <Compile Include="Models\ModelesParamCible\EditTemplate.cs" />
+    <Compile Include="Models\ModelesParamCible\InfoTemplate.cs" />
+    <Compile Include="Models\ModelesParamCible\LigneBSC.cs" />
+    <Compile Include="Models\ModelesParamCible\LigneCible.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamActeGestionEtape.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamAjoutActeGestion.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamAjoutContexte.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamAjoutEGDI.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamAjoutEtape.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamContexteEGDI.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamEtapeContexte.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamListClauses.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamListParam.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamRattachClause.cs" />
+    <Compile Include="Models\ModelesParamClause\ParamRattachSaisie.cs" />
+    <Compile Include="Models\ModelesParamConcepts\ModeleLigneConcept.cs" />
+    <Compile Include="Models\ModelesParamEngment\ParamEngmentColonne.cs" />
+    <Compile Include="Models\ModelesParamFiltres\ModeleDrlCibles.cs" />
+    <Compile Include="Models\ModelesParamFiltres\ModeleLigneBrancheCible.cs" />
+    <Compile Include="Models\ModelesParamFiltres\ModeleDetailsFiltre.cs" />
+    <Compile Include="Models\ModelesParamFiltres\ModeleLigneFiltre.cs" />
+    <Compile Include="Models\ModelesParamGaranties\DDLBranches.cs" />
+    <Compile Include="Models\ModelesParamGaranties\DDLCategories.cs" />
+    <Compile Include="Models\ModelesParamGaranties\DDLSousBranche.cs" />
+    <Compile Include="Models\ModelesParamGaranties\DDLTypesValeur.cs" />
+    <Compile Include="Models\ModelesParamGaranties\DetailsFamillesReassurance.cs" />
+    <Compile Include="Models\ModelesParamGaranties\EditFamilleReassurance.cs" />
+    <Compile Include="Models\ModelesParamGaranties\EditTypeValeur.cs" />
+    <Compile Include="Models\ModelesParamGaranties\LigneFamilleReassurance.cs" />
+    <Compile Include="Models\ModelesParamGaranties\LigneGarantie.cs" />
+    <Compile Include="Models\ModelesParamGaranties\LigneTypeValeur.cs" />
+    <Compile Include="Models\ModelesParamGaranties\DetailsTypesValeur.cs" />
+    <Compile Include="Models\ModelesParamGaranties\OffreInventaireGarantie.cs" />
+    <Compile Include="Models\ModelesParamISAssocier\ParamISDrlModele.cs" />
+    <Compile Include="Models\ModelesParamISAssocier\ParamISLigneModele.cs" />
+    <Compile Include="Models\ModelesParamISAssocier\ParamISModele.cs" />
+    <Compile Include="Models\ModelesParamISReference\LigneModeleIS.cs" />
+    <Compile Include="Models\ModelesParamIS\ParamModeleIntermediaire.cs" />
+    <Compile Include="Models\ModelesParamIS\ParamModeleLigneInfo.cs" />
+    <Compile Include="Models\ModelesParamIS\ParamModeleListGenerique.cs" />
+    <Compile Include="Models\ModelesParamIS\ParamModeleSqlRequest.cs" />
+    <Compile Include="Models\ModelesParamNomenclature\ModeleDetailsNomenclature.cs" />
+    <Compile Include="Models\ModelesParamNomenclature\ModeleLigneDetails.cs" />
+    <Compile Include="Models\ModelesParamNomenclature\ModeleListeFamille.cs" />
+    <Compile Include="Models\ModelesParamNomenclature\ModeleListeValeur.cs" />
+    <Compile Include="Models\ModelesParamTemplateNomenclature\ModeleDetailsTemplateNomenclature.cs" />
+    <Compile Include="Models\ModelesParamTemplateNomenclature\ModeleLigneTemplateNomenclature.cs" />
+    <Compile Include="Models\ModelesParamTemplates\ModeleLigneTemplate.cs" />
+    <Compile Include="Models\ModelesParamTypesValeur\ModeleDetailsTypeValeur.cs" />
+    <Compile Include="Models\ModelesParamTypesValeur\ModeleLigneTypeValeur.cs" />
+    <Compile Include="Models\ModelesParamTypesValeur\ModeleLigneTypeValeurCompatible.cs" />
+    <Compile Include="Models\ModelesQuittances\Commission.cs" />
+    <Compile Include="Models\ModelesQuittances\DetailsQuittanceCommission.cs" />
+    <Compile Include="Models\ModelesQuittances\DetailsQuittanceTotaux.cs" />
+    <Compile Include="Models\ModelesQuittances\Formule.cs" />
+    <Compile Include="Models\ModelesQuittances\FormulesInformation.cs" />
+    <Compile Include="Models\ModelesQuittances\FraisAccessoires.cs" />
+    <Compile Include="Models\ModelesQuittances\ListFormules.cs" />
+    <Compile Include="Models\ModelesQuittances\Totaux.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationCommission.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationCommissionCourtier.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationCommissionGarantie.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationDetaillee.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationDetailleeGarantie.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationDetailleeRegime.cs" />
+    <Compile Include="Models\ModelesQuittances\VentilationDetailleeTaxe.cs" />
+    <Compile Include="Models\ModelesRecherche\ModeleDivCreation.cs" />
+    <Compile Include="Models\ModelesRecherche\ModeleListeCibles.cs" />
+    <Compile Include="Models\ModelesRecherche\ModeleListResultRecherche.cs" />
+    <Compile Include="Models\ModelesRecherche\ModeleParametresRecherche.cs" />
+    <Compile Include="Models\ModelesRecherche\ModeleRechercheAvancee.cs" />
+    <Compile Include="Models\ModelesRecherche\ModeleResultRecherche.cs" />
+    <Compile Include="Models\ModelesRetours\ModeleLigneRetourCoAss.cs" />
+    <Compile Include="Models\ModelesRisque\ModeleOpposition.cs" />
+    <Compile Include="Models\ModelesRisque\ModeleRisque.cs" />
+    <Compile Include="Models\ModelesValidationOffre\ModeleCritereValidation.cs" />
+    <Compile Include="Models\ModelesValidationOffre\ModeleDetailNiveau.cs" />
+    <Compile Include="Models\ModelesVolets\ModeleCibleCarac.cs" />
+    <Compile Include="Models\ModelesVolets\ModeleRechercheVolets.cs" />
+    <Compile Include="Models\ModelesVolets\ModeleVolet.cs" />
+    <Compile Include="Models\ModeleTraites\ModeleTraiteInfoRsqVen.cs" />
+    <Compile Include="Models\ModeleTraites\ModeleTraiteRisque.cs" />
+    <Compile Include="Models\ModeleTraites\ModeleTraiteUpdate.cs" />
+    <Compile Include="Models\ModeleTraites\ModeleTraiteVolet.cs" />
+    <Compile Include="Models\ModeleTransverse\ModeleCommonConceptFamilleCode.cs" />
+    <Compile Include="Models\ModeleTransverse\ErreursPages.cs" />
+    <Compile Include="Models\ModeleTransverse\ModeleCommonCabinetPreneur.cs" />
+    <Compile Include="Models\ModeleTransverse\ModeleCommonGestionnaireSouscripteurAperiteur.cs" />
+    <Compile Include="Models\ModeleTransverse\ModeleIndice.cs" />
+    <Compile Include="Models\ModeleTransverse\ModeleOrganisme.cs" />
+    <Compile Include="Models\ModeleTransverse\OutilModel\FileManagerProvider.cs" />
+    <Compile Include="Models\ModeleTransverse\SouscripteurModel.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\ModelesQuittances\DetailsQuittance.cs" />
+    <Compile Include="Models\ModelsParamFamilles\Famille.cs" />
+    <Compile Include="Models\ModelsParamFamilles\LigneFamille.cs" />
+    <Compile Include="Models\ModelsParamFamilles\Valeur.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelesParamTemplateNomenclature\ModeleListeCibles.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdresseHexavia\ResultRedirectTestGrp.html" />
+    <Content Include="Configs\Formation\configuration.appSettings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Formation\system.serviceModel.bindings.xml" />
+    <Content Include="Configs\Formation\system.serviceModel.clients.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Dev\configuration.appSettings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Dev\system.serviceModel.bindings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Dev\system.serviceModel.clients.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\PreProd\configuration.appSettings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\PreProd\system.serviceModel.bindings.xml" />
+    <Content Include="Configs\PreProd\system.serviceModel.clients.xml" />
+    <Content Include="Configs\Prod\configuration.appSettings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Prod\system.serviceModel.bindings.xml" />
+    <Content Include="Configs\Prod\system.serviceModel.clients.xml" />
+    <Content Include="Configs\Qualif\configuration.appSettings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Qualif\system.serviceModel.bindings.xml" />
+    <Content Include="Configs\Qualif\system.serviceModel.clients.xml" />
+    <Content Include="Content\AffaireNouvelle\albAnAssuresAdditionnels.css" />
+    <Content Include="Content\AffaireNouvelle\albEcheancier.css" />
+    <Content Include="Content\AffaireNouvelle\albMontantReference.css" />
+    <Content Include="Content\albContextMenu.css" />
+    <Content Include="Content\Avenant\albAvenantInfoGenerales.css" />
+    <Content Include="Content\contextmenu.css" />
+    <Content Include="Content\vParamCibleRecup.css" />
+    <Content Include="Content\Images\16_print.gif" />
+    <Content Include="Content\Images\ico_16_132.gif" />
+    <Content Include="Content\Images\ContextMenu\m_delete.png" />
+    <Content Include="Content\Images\LayoutArbre\trombone.png" />
+    <Content Include="Content\Images\reset.png" />
+    <Content Include="Content\vCreationAvenant.css" />
+    <Content Include="Content\Images\blank.png" />
+    <Content Include="Content\Images\u408_normal.gif" />
+    <Content Include="Content\Images\u410_normal.gif" />
+    <Content Include="Content\vDocumentGestion.css" />
+    <Content Include="Content\vGestionGrilleNomenclature.css" />
+    <Content Include="Content\fancybox\jquery.fancybox-1.3.4.css" />
+    <Content Include="Content\Images\adresse.gif" />
+    <Content Include="Content\Images\details1616.png" />
+    <Content Include="Content\Images\email.gif" />
+    <Content Include="Content\Images\LayoutArbre\intervenants.gif" />
+    <Content Include="Content\Images\loupe_blanche.png" />
+    <Content Include="Content\Images\loupe_orange.png" />
+    <Content Include="Content\Images\telephone.gif" />
+    <Content Include="Content\Images\travail.gif" />
+    <Content Include="Content\PageDocument.css" />
+    <Content Include="Content\Images\ajouterInventaire1616_on.png" />
+    <Content Include="Content\Images\ContextMenu\menu_bg.gif" />
+    <Content Include="Content\Images\ContextMenu\m_arrow.gif" />
+    <Content Include="Content\Images\ContextMenu\m_avenant.gif" />
+    <Content Include="Content\Images\ContextMenu\m_blocage.gif" />
+    <Content Include="Content\Images\ContextMenu\m_blocage1.gif" />
+    <Content Include="Content\Images\ContextMenu\m_blocage2.gif" />
+    <Content Include="Content\Images\ContextMenu\m_blocage3.gif" />
+    <Content Include="Content\Images\ContextMenu\m_connexite.png" />
+    <Content Include="Content\Images\ContextMenu\m_consulter.png" />
+    <Content Include="Content\Images\ContextMenu\m_copier.png" />
+    <Content Include="Content\Images\ContextMenu\m_dblsaisie.gif" />
+    <Content Include="Content\Images\ContextMenu\m_documents.gif" />
+    <Content Include="Content\Images\ContextMenu\m_engagements.gif" />
+    <Content Include="Content\Images\ContextMenu\m_etablir_an.gif" />
+    <Content Include="Content\Images\ContextMenu\m_historique.png" />
+    <Content Include="Content\Images\ContextMenu\m_item.gif" />
+    <Content Include="Content\Images\ContextMenu\m_logoalbingia.png" />
+    <Content Include="Content\Images\ContextMenu\m_modifier.png" />
+    <Content Include="Content\Images\ContextMenu\m_new_contrat.gif" />
+    <Content Include="Content\Images\ContextMenu\m_new_offre.gif" />
+    <Content Include="Content\Images\ContextMenu\m_regul.png" />
+    <Content Include="Content\Images\ContextMenu\m_retour.gif" />
+    <Content Include="Content\Images\ContextMenu\m_splitLine.gif" />
+    <Content Include="Content\Images\ContextMenu\m_validation.gif" />
+    <Content Include="Content\Images\Entity16_4202.png" />
+    <Content Include="Content\Images\opposition.png" />
+    <Content Include="Content\Images\opposition_check.png" />
+    <Content Include="Content\Images\stock_lock.png" />
+    <Content Include="Content\Images\stock_lock_gris.png" />
+    <Content Include="Content\Images\type_A.png" />
+    <Content Include="Content\Images\type_A_16.png" />
+    <Content Include="Content\Images\type_C.png" />
+    <Content Include="Content\Images\type_C_16.png" />
+    <Content Include="Content\Images\type_M.png" />
+    <Content Include="Content\Images\type_M_16.png" />
+    <Content Include="Content\Images\type_O.png" />
+    <Content Include="Content\Images\type_O_16.png" />
+    <Content Include="Content\jquery.contextMenu.css" />
+    <Content Include="Content\OffreSimplifie.css" />
+    <Content Include="Content\Erreurs\vErreurs.css" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox-x.png" />
+    <Content Include="Content\fancybox\fancybox-y.png" />
+    <Content Include="Content\fancybox\fancybox.png" />
+    <Content Include="Content\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\fancybox\fancy_close.png" />
+    <Content Include="Content\fancybox\fancy_loading.png" />
+    <Content Include="Content\fancybox\fancy_nav_left.png" />
+    <Content Include="Content\fancybox\fancy_nav_right.png" />
+    <Content Include="Content\fancybox\fancy_shadow_e.png" />
+    <Content Include="Content\fancybox\fancy_shadow_n.png" />
+    <Content Include="Content\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Content\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_s.png" />
+    <Content Include="Content\fancybox\fancy_shadow_se.png" />
+    <Content Include="Content\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_w.png" />
+    <Content Include="Content\fancybox\fancy_title_left.png" />
+    <Content Include="Content\fancybox\fancy_title_main.png" />
+    <Content Include="Content\fancybox\fancy_title_over.png" />
+    <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\Images\2downarrow.png" />
+    <Content Include="Content\Images\bgArbre.png" />
+    <Content Include="Content\Images\cleansession.png" />
+    <Content Include="Content\Images\collapse-left.png" />
+    <Content Include="Content\Images\connexite16.png" />
+    <Content Include="Content\Images\connexite32.png" />
+    <Content Include="Content\Images\Copy_16.png" />
+    <Content Include="Content\Images\deplacer16.png" />
+    <Content Include="Content\Images\deplacer32.png" />
+    <Content Include="Content\Images\desactiverOFF.png" />
+    <Content Include="Content\Images\desactiver.png" />
+    <Content Include="Content\Images\editer1616_gris.png" />
+    <Content Include="Content\Images\Edit_2_16.png" />
+    <Content Include="Content\Images\expand-red-right.png" />
+    <Content Include="Content\Images\expand-red.png" />
+    <Content Include="Content\Images\expand-right.png" />
+    <Content Include="Content\Images\Clock-History-OFF-16.png" />
+    <Content Include="Content\Images\Clock-History-OFF-32.png" />
+    <Content Include="Content\Images\Edit_2_16.png" />
+    <Content Include="Content\Images\fd.jpg" />
+    <Content Include="Content\Images\fullscreen.png" />
+    <Content Include="Content\Images\fusionner.png" />
+    <Content Include="Content\Images\fusionner32.png" />
+    <Content Include="Content\Images\ico_16_formorder.png" />
+    <Content Include="Content\Images\logoalbingia.png" />
+    <Content Include="Content\Images\loupegris.png" />
+    <Content Include="Content\Images\moreinfo.png" />
+    <Content Include="Content\Images\portee.png" />
+    <Content Include="Content\Images\portee_2.png" />
+    <Content Include="Content\Images\poubelle1616_gris.png" />
+    <Content Include="Content\Images\Quittance\calcul_forcé.gif" />
+    <Content Include="Content\Images\Quittance\commission.gif" />
+    <Content Include="Content\Images\Quittance\détails_primes.png" />
+    <Content Include="Content\Images\Quittance\frais.png" />
+    <Content Include="Content\Images\Quittance\u153_original.png" />
+    <Content Include="Content\Images\reset_formgris32.png" />
+    <Content Include="Content\Images\selectetape.png" />
+    <Content Include="Content\Images\selectetapered.png" />
+    <Content Include="Content\Images\window_fullscreen.png" />
+    <Content Include="Content\Images\window_nofullscreen.png" />
+    <Content Include="Content\Quittance\albQuittance.css" />
+    <Content Include="Content\vBlocageTermes.css" />
+    <Content Include="Content\vClauseSimplifiee.css" />
+    <Content Include="Content\vConnexite.css" />
+    <Content Include="Content\vEngagementPeriodes.css" />
+    <Content Include="Content\vEngagementsConnexite.css" />
+    <Content Include="Content\vGestionDocumentContrat.css" />
+    <Content Include="Content\vGestionIntervenants.css" />
+    <Content Include="Content\vGestionNomenclature.css" />
+    <Content Include="Content\vGestionOptions.css" />
+    <Content Include="Content\vGestUtilisateurs.css" />
+    <Content Include="Content\vHistorique.css" />
+    <Content Include="Content\vInformationsSpecifiquesOffreSimp.css" />
+    <Content Include="Content\vLCIFranchise.css" />
+    <Content Include="Content\vLogTrace.css" />
+    <Content Include="Content\vOption3.css" />
+    <Content Include="Content\albActesGestion.css" />
+    <Content Include="Content\AnCoAssureur\albAnCoAssureur.css" />
+    <Content Include="Content\AnCourtiers\albAnCourtiers.css" />
+    <Content Include="Content\AnCreationContrat\albAnCreationContrat.css" />
+    <Content Include="Content\AnEntete\albAnEntete.css" />
+    <Content Include="Content\AnInformationsGenerales\albAnInformationsGenerales.css" />
+    <Content Include="Content\AnInformationsSpecifiquesBranche\vInformationsSpecifiquesBranche.css" />
+    <Content Include="Content\CLEditor\images\buttons.gif" />
+    <Content Include="Content\CLEditor\images\toolbar.gif" />
+    <Content Include="Content\CLEditor\jquery.cleditor.css" />
+    <Content Include="Content\FormCommon.css" />
+    <Content Include="Content\Images\1340965171_pagination_1_next.png" />
+    <Content Include="Content\Images\1340965171_pagination_1_next_disabled.png" />
+    <Content Include="Content\Images\1340965176_pagination_1_previous.png" />
+    <Content Include="Content\Images\1340965176_pagination_1_previous_disabled.png" />
+    <Content Include="Content\Images\1340965180_pagination_1_last.png" />
+    <Content Include="Content\Images\1340965180_pagination_1_last_disabled.png" />
+    <Content Include="Content\Images\1340965186_pagination_1_first.png" />
+    <Content Include="Content\Images\1340965186_pagination_1_first_disabled.png" />
+    <Content Include="Content\Images\AffaireNouvelle\bouton_recherche_police_disabled.png" />
+    <Content Include="Content\Images\AffaireNouvelle\bouton_recherche_police_normal.png" />
+    <Content Include="Content\Images\afficher_details1616.png" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\ajouterInventaire1616.png" />
+    <Content Include="Content\Images\albingia.png" />
+    <Content Include="Content\Images\alertes\icn_help16.png" />
+    <Content Include="Content\Images\alertes\icn_help32.png" />
+    <Content Include="Content\Images\alertes\notif_icn_crit16.png" />
+    <Content Include="Content\Images\alertes\notif_icn_critical.png" />
+    <Content Include="Content\Images\alertes\notif_icn_info.png" />
+    <Content Include="Content\Images\alertes\notif_icn_info16.png" />
+    <Content Include="Content\Images\alertes\notif_icn_warn.png" />
+    <Content Include="Content\Images\alertes\notif_icn_warn16.png" />
+    <Content Include="Content\Images\AnimatedLogoAlbingia.gif" />
+    <Content Include="Content\Images\arrow-refresh.png" />
+    <Content Include="Content\Images\backgroundBlack.png" />
+    <Content Include="Content\Images\backSaveEmpty.png" />
+    <Content Include="Content\Images\bgHeader20.png" />
+    <Content Include="Content\Images\boutonRefresh_3232.png" />
+    <Content Include="Content\Images\boutonRefresh_gris3232.png" />
+    <Content Include="Content\Images\cancel.png" />
+    <Content Include="Content\Images\Checkmark-16.png" />
+    <Content Include="Content\Images\Checkmark-32.png" />
+    <Content Include="Content\Images\Checkmark_2-16.png" />
+    <Content Include="Content\Images\Checkmark_2-32.png" />
+    <Content Include="Content\Images\check_1616.gif" />
+    <Content Include="Content\Images\Cl.png" />
+    <Content Include="Content\Images\Clock-History-Frame-16.png" />
+    <Content Include="Content\Images\Clock-History-Frame-32.png" />
+    <Content Include="Content\Images\collapse.png" />
+    <Content Include="Content\Images\Contrat\contrat_actif.png" />
+    <Content Include="Content\Images\Contrat\contrat_black.png" />
+    <Content Include="Content\Images\Contrat\contrat_inactif.png" />
+    <Content Include="Content\Images\Contrat\formgaran_actif.png" />
+    <Content Include="Content\Images\Contrat\formgaran_black.png" />
+    <Content Include="Content\Images\Contrat\formgaran_inactif.png" />
+    <Content Include="Content\Images\Contrat\opttar_actif.png" />
+    <Content Include="Content\Images\Contrat\opttar_black.png" />
+    <Content Include="Content\Images\Contrat\opttar_inactif.png" />
+    <Content Include="Content\Images\Contrat\rsqobj_actif.png" />
+    <Content Include="Content\Images\Contrat\rsqobj_black.png" />
+    <Content Include="Content\Images\Contrat\rsqobj_inactif.png" />
+    <Content Include="Content\Images\ControleFin\A.png" />
+    <Content Include="Content\Images\ControleFin\B.png" />
+    <Content Include="Content\Images\ControleFin\N.png" />
+    <Content Include="Content\Images\cross_05-20110903142016-00016.png" />
+    <Content Include="Content\Images\DeleteSelected_16.png" />
+    <Content Include="Content\Images\dossier3232.png" />
+    <Content Include="Content\Images\editer1616.png" />
+    <Content Include="Content\Images\Edit_16.png" />
+    <Content Include="Content\Images\enregistrer_off.png" />
+    <Content Include="Content\Images\enregistrer_on.png" />
+    <Content Include="Content\Images\entete.png" />
+    <Content Include="Content\Images\entetecontrat.png" />
+    <Content Include="Content\Images\Entity32_4202.png" />
+    <Content Include="Content\Images\exclureInventaire1616.png" />
+    <Content Include="Content\Images\expand.png" />
+    <Content Include="Content\Images\exportExcel3232.png" />
+    <Content Include="Content\Images\ExportToExcel16.png" />
+    <Content Include="Content\Images\icoDelete.png" />
+    <Content Include="Content\Images\ico_16_1039_advFind.gif" />
+    <Content Include="Content\Images\ico_32_138.gif" />
+    <Content Include="Content\Images\InfoCotis\cot_desactive.png" />
+    <Content Include="Content\Images\InfoCotis\cot_off.png" />
+    <Content Include="Content\Images\InfoCotis\cot_off_select.png" />
+    <Content Include="Content\Images\InfoCotis\cot_on.png" />
+    <Content Include="Content\Images\InfoCotis\cot_on_select.png" />
+    <Content Include="Content\Images\InfoEngage\eng_desactive.png" />
+    <Content Include="Content\Images\InfoEngage\eng_off.png" />
+    <Content Include="Content\Images\InfoEngage\eng_off_select.png" />
+    <Content Include="Content\Images\InfoEngage\eng_on.png" />
+    <Content Include="Content\Images\InfoEngage\eng_on_select.png" />
+    <Content Include="Content\Images\InfoFin\fin_desactive.png" />
+    <Content Include="Content\Images\InfoFin\fin_off.png" />
+    <Content Include="Content\Images\InfoFin\fin_off_select.png" />
+    <Content Include="Content\Images\InfoFin\fin_on.png" />
+    <Content Include="Content\Images\InfoFin\fin_on_select.png" />
+    <Content Include="Content\Images\InfoGen\ig_desactive.png" />
+    <Content Include="Content\Images\InfoGen\ig_off.png" />
+    <Content Include="Content\Images\InfoGen\ig_off_select.png" />
+    <Content Include="Content\Images\InfoGen\ig_on.png" />
+    <Content Include="Content\Images\InfoGen\ig_on_select.png" />
+    <Content Include="Content\Images\InfoRsqGar\rg_desactive.png" />
+    <Content Include="Content\Images\InfoRsqGar\rg_off.png" />
+    <Content Include="Content\Images\InfoRsqGar\rg_off_select.png" />
+    <Content Include="Content\Images\InfoRsqGar\rg_on.png" />
+    <Content Include="Content\Images\InfoRsqGar\rg_on_select.png" />
+    <Content Include="Content\Images\invalide.png" />
+    <Content Include="Content\Images\LayoutArbre\moins.png" />
+    <Content Include="Content\Images\LayoutArbre\plus.png" />
+    <Content Include="Content\Images\LayoutArbre\u100_original.gif" />
+    <Content Include="Content\Images\LayoutArbre\u102_original.gif" />
+    <Content Include="Content\Images\LayoutArbre\u105_original.gif" />
+    <Content Include="Content\Images\LayoutArbre\u98_original.png" />
+    <Content Include="Content\Images\livreloupe3232.png" />
+    <Content Include="Content\Images\LoadingImg.gif" />
+    <Content Include="Content\Images\LoadingText.gif" />
+    <Content Include="Content\Images\LogoAlbingia.ico" />
+    <Content Include="Content\Images\logo_albingia2.png" />
+    <Content Include="Content\Images\loupe.png" />
+    <Content Include="Content\Images\loupe1616.png" />
+    <Content Include="Content\Images\magique3232.png" />
+    <Content Include="Content\Images\OldImg\Annuler.jpg" />
+    <Content Include="Content\Images\OldImg\buttonsample.png" />
+    <Content Include="Content\Images\OldImg\cancel_blue.png" />
+    <Content Include="Content\Images\OldImg\Clock\bg_blue.png" />
+    <Content Include="Content\Images\OldImg\Clock\bg_green.png" />
+    <Content Include="Content\Images\OldImg\Clock\bg_orange.png" />
+    <Content Include="Content\Images\OldImg\fleche_vertical.png" />
+    <Content Include="Content\Images\OldImg\fond_infoentete_80.png" />
+    <Content Include="Content\Images\OldImg\fond_infoentete_larger_100.png" />
+    <Content Include="Content\Images\OldImg\logo-gris.png" />
+    <Content Include="Content\Images\OldImg\LogoAlbingiaGros.png" />
+    <Content Include="Content\Images\OldImg\logo_albingia.jpg" />
+    <Content Include="Content\Images\OldImg\logo_albingia.png" />
+    <Content Include="Content\Images\OldImg\minus.gif" />
+    <Content Include="Content\Images\OldImg\redloadingpanel.gif" />
+    <Content Include="Content\Images\OldImg\save.png" />
+    <Content Include="Content\Images\OldImg\Valider.jpg" />
+    <Content Include="Content\Images\Op.png" />
+    <Content Include="Content\Images\plus.gif" />
+    <Content Include="Content\Images\plusajouter1616.png" />
+    <Content Include="Content\Images\plusajouter_gris1616.jpg" />
+    <Content Include="Content\Images\poubelle1616.png" />
+    <Content Include="Content\Images\RechercheSaisieGridHeaderThBg.png" />
+    <Content Include="Content\Images\reset_form32.png" />
+    <Content Include="Content\Images\Saisie\confirmactif.png" />
+    <Content Include="Content\Images\Saisie\confirminactif.png" />
+    <Content Include="Content\Images\Saisie\saisieactif.png" />
+    <Content Include="Content\Images\Saisie\saisieinactif.png" />
+    <Content Include="Content\Images\Save_16.png" />
+    <Content Include="Content\Images\script-16.png" />
+    <Content Include="Content\Images\supprimergris_1616.png" />
+    <Content Include="Content\Images\supprimer_1616.png" />
+    <Content Include="Content\Images\Tools_16.png" />
+    <Content Include="Content\Images\tri.png" />
+    <Content Include="Content\Images\tri_asc.png" />
+    <Content Include="Content\Images\tri_desc.png" />
+    <Content Include="Content\Images\u132_normal.png" />
+    <Content Include="Content\Images\u135_normal.png" />
+    <Content Include="Content\Images\u153_original.png" />
+    <Content Include="Content\Images\u462_original.png" />
+    <Content Include="Content\Images\valide.png" />
+    <Content Include="Content\jquery-ui.multiselect.css" />
+    <Content Include="Content\Layout.css" />
+    <Content Include="Content\LayoutArbre.css" />
+    <Content Include="Content\pvOffreContratSearchResult_Grid.css" />
+    <Content Include="Content\uploadify.css" />
+    <Content Include="Content\vAccueil.css" />
+    <Content Include="Content\vAssocierVBM.css" />
+    <Content Include="Content\vAttentat.css" />
+    <Content Include="Content\vBackOffice.css" />
+    <Content Include="Content\vBandeau.css" />
+    <Content Include="Content\vBlocs.css" />
+    <Content Include="Content\vChoixClauses.css" />
+    <Content Include="Content\vClausier.css" />
+    <Content Include="Content\vClock.css" />
+    <Content Include="Content\vConditionsGarantie.css" />
+    <Content Include="Content\vConfirmationSaisie.css" />
+    <Content Include="Content\vControleFin.css" />
+    <Content Include="Content\vCotisations.css" />
+    <Content Include="Content\vCreationAffaireNouvelle.css" />
+    <Content Include="Content\vCreationFormuleGarantie.css" />
+    <Content Include="Content\vCreationSaisie.css" />
+    <Content Include="Content\vDetailCalculSMP.css" />
+    <Content Include="Content\vDetailsObjetRisque.css" />
+    <Content Include="Content\vDetailsRisque.css" />
+    <Content Include="Content\vDoubleSaisie.css" />
+    <Content Include="Content\vEngagements.css" />
+    <Content Include="Content\vEngagementTraite.css" />
+    <Content Include="Content\vExclusionFormuleGarantie.css" />
+    <Content Include="Content\vFinOffre.css" />
+    <Content Include="Content\vFormVolAffNouv.css" />
+    <Content Include="Content\vGestionDocument.css" />
+    <Content Include="Content\vInformationsSpecifiques.css" />
+    <Content Include="Content\vInformationsSpecifiquesBranche.css" />
+    <Content Include="Content\vInformationsSpecifiquesGarantie.css" />
+    <Content Include="Content\vInformationsSpecifiquesRisques.css" />
+    <Content Include="Content\vMatriceFormule.css" />
+    <Content Include="Content\vMatriceGarantie.css" />
+    <Content Include="Content\vMatriceRisque.css" />
+    <Content Include="Content\vModelesGarantie.css" />
+    <Content Include="Content\vModifierOffre.css" />
+    <Content Include="Content\vOffresVerrouillees.css" />
+    <Content Include="Content\vOptTarAffNouv.css" />
+    <Content Include="Content\vParamCibles.css" />
+    <Content Include="Content\vParamClause.css" />
+    <Content Include="Content\vParamConcepts.css" />
+    <Content Include="Content\vParamDocumentChemin.css" />
+    <Content Include="Content\vParamEngment.css" />
+    <Content Include="Content\vParamFamilles.css" />
+    <Content Include="Content\vParamFiltres.css" />
+    <Content Include="Content\vParamGaranties.css" />
+    <Content Include="Content\vParamIS.css" />
+    <Content Include="Content\vParamISModeles.css" />
+    <Content Include="Content\vParamISReference.css" />
+    <Content Include="Content\vParamNomenclature.css" />
+    <Content Include="Content\vParamTemplateNomenclature.css" />
+    <Content Include="Content\vParamTemplates.css" />
+    <Content Include="Content\vParamTypesValeur.css" />
+    <Content Include="Content\vPrendrePosition.css" />
+    <Content Include="Content\vRechercheSaisie.css" />
+    <Content Include="Content\vRefExprComp.css" />
+    <Content Include="Content\vRetours.css" />
+    <Content Include="Content\vRisqueInventaire.css" />
+    <Content Include="Content\vRsqObjAffNouv.css" />
+    <Content Include="Content\vSuiviDocuments.css" />
+    <Content Include="Content\vSyntheseDocuments.css" />
+    <Content Include="Content\vValidationOffre.css" />
+    <Content Include="Content\vVisuSuspension.css" />
+    <Content Include="Content\vVolets.css" />
+    <Content Include="Content\_Site.css" />
+    <Content Include="DynamicGuiIS\Ajax\DbInteraction.asmx" />
+    <Content Include="knockout\components\entete-contrat\entete-contrat.initializer.js" />
+    <Content Include="knockout\components\entete-contrat\entete-contrat.template.html" />
+    <Content Include="knockout\components\entete-contrat\entete-contrat.viewmodel.js" />
+    <Content Include="knockout\components\fusion-connexites\fusion-connexites.template.html" />
+    <Content Include="knockout\components\connexites\connexites.initializer.js" />
+    <Content Include="knockout\components\connexites\connexites.template.html" />
+    <Content Include="knockout\components\connexites\connexites.viewmodel.js" />
+    <Content Include="knockout\components\blacklist-affaires\blacklist-affaires.initializer.js" />
+    <Content Include="knockout\components\blacklist-affaires\blacklist-affaires.template.html" />
+    <Content Include="knockout\components\blacklist-affaires\blacklist-affaires.viewmodel.js" />
+    <Content Include="knockout\components\fusion-connexites\fusion-connexites.initializer.js" />
+    <Content Include="knockout\components\fusion-connexites\fusion-connexites.viewmodel.js" />
+    <Content Include="knockout\components\liste-pb\liste-pb.template.html" />
+    <Content Include="knockout\components\liste-pb\liste-pb.viewmodel.js" />
+    <Content Include="knockout\components\liste-relances\liste-relances.css">
+      <DependentUpon>liste-relances.less</DependentUpon>
+    </Content>
+    <Content Include="knockout\components\liste-relances\liste-relances.min.css">
+      <DependentUpon>liste-relances.css</DependentUpon>
+    </Content>
+    <Content Include="knockout\components\retards-paiement-preneur\retards-paiement-preneur.initializer.js" />
+    <Content Include="knockout\components\retards-paiement-preneur\retards-paiement-preneur.template.html" />
+    <Content Include="knockout\components\retards-paiement-preneur\retards-paiement-preneur.viewmodel.js" />
+    <Content Include="knockout\components\info-formule-applications\info-formule-applications.initializer.js" />
+    <Content Include="knockout\components\info-formule-applications\info-formule-applications.template.html" />
+    <Content Include="knockout\components\info-formule-applications\info-formule-applications.viewmodel.js" />
+    <Content Include="knockout\components\paging-buttons\paging-buttons.template.html" />
+    <Content Include="knockout\components\paging-buttons\paging-buttons.viewmodel.js" />
+    <Content Include="knockout\components\paging-buttons\paging-buttons.initializer.js" />
+    <Content Include="knockout\components\selection-periode-pb\selection-periode-pb.initializer.js" />
+    <Content Include="knockout\components\selection-periode-pb\selection-periode-pb.template.html" />
+    <Content Include="knockout\components\selection-periode-pb\selection-periode-pb.viewmodel.js" />
+    <Content Include="knockout\components\sinistres-preneur\sinistres-preneur.initializer.js" />
+    <Content Include="knockout\components\sinistres-preneur\sinistres-preneur.template.html" />
+    <Content Include="knockout\components\sinistres-preneur\sinistres-preneur.viewmodel.js" />
+    <Content Include="knockout\components\impayes-preneur\impayes-preneur.initializer.js" />
+    <Content Include="knockout\components\impayes-preneur\impayes-preneur.template.html" />
+    <Content Include="knockout\components\impayes-preneur\impayes-preneur.viewmodel.js" />
+    <Content Include="knockout\components\liste-relances\liste-relances.viewmodel.js" />
+    <Content Include="knockout\components\liste-relances\liste-relances.initializer.js" />
+    <Content Include="knockout\components\liste-relances\liste-relances.template.html" />
+    <Content Include="knockout\components\options-formule\options-formule.template.html" />
+    <Content Include="knockout\components\recherche-affaires\recherche-affaires.initializer.js" />
+    <Content Include="knockout\components\recherche-affaires\recherche-affaires.template.html" />
+    <Content Include="knockout\components\recherche-affaires\recherche-affaires.viewmodel.js" />
+    <Content Include="knockout\components\alertes-preneur\alertes-preneur.initializer.js" />
+    <Content Include="knockout\components\alertes-preneur\alertes-preneur.template.html" />
+    <Content Include="knockout\components\alertes-preneur\alertes-preneur.viewmodel.js" />
+    <Content Include="knockout\templates\attestation\attestation-bandeau-contrat.js" />
+    <Content Include="knockout\templates\attestation\infos-contrat-bandeau.html" />
+    <Content Include="knockout\templates\regularisation\check-list-risques-BNS.html" />
+    <Content Include="knockout\templates\regularisation\check-list-risques-BURNER.html" />
+    <Content Include="knockout\templates\regularisation\donnees-regul-BURNER.html" />
+    <Content Include="knockout\templates\regularisation\infos-formule-BURNER.html" />
+    <Content Include="knockout\templates\regularisation\regularisation-calcul-BNS.js" />
+    <Content Include="knockout\templates\regularisation\regularisation-calcul-BURNER.js" />
+    <Content Include="Scripts\AlbingiaJS\albClassementSansSuite.js" />
+    <Content Include="Scripts\AlbingiaJS\albClauses.js" />
+    <Content Include="Scripts\AlbingiaJS\albGarantieType.js" />
+    <Content Include="Scripts\AlbingiaJS\albOffreRelance.js" />
+    <Content Include="Scripts\AlbingiaJS\albVisualisationObservations.js" />
+    <Content Include="Scripts\AlbingiaJS\Common\define-properties.js" />
+    <Content Include="Scripts\AlbingiaJS\PB\albListePB.js" />
+    <Content Include="Scripts\AlbingiaJS\PB\albSelectionPeriodePB.js" />
+    <Content Include="Scripts\AlbingiaJS\synthese-affaire.js" />
+    <Content Include="Scripts\Jquery\select2.js" />
+    <Content Include="Scripts\Jquery\select2.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\AlbingiaJS\affaire-relances.js" />
+    <Content Include="Scripts\AlbingiaJS\albExcelContrat.js" />
+    <Content Include="Scripts\AlbingiaJS\albRechercherBlackList.js" />
+    <Content Include="Scripts\AlbingiaJS\alertes-preneurs.js" />
+    <Content Include="Scripts\AlbingiaJS\affaireNouvelle-choixFormules.js" />
+    <Content Include="Scripts\AlbingiaJS\albGestionErreur.js" />
+    <Content Include="Scripts\AlbingiaJS\albHomeDev.js" />
+    <Content Include="Scripts\AlbingiaJS\albRechercherBlackList.js" />
+    <Content Include="Scripts\AlbingiaJS\Common\constants.js" />
+    <Content Include="Scripts\AlbingiaJS\connexites.js" />
+    <Content Include="Scripts\AlbingiaJS\es5\LayoutArbre.js" />
+    <Content Include="Scripts\AlbingiaJS\kheops.errors.js" />
+    <Content Include="Scripts\AlbingiaJS\MatricesAffaire\matrice-formule.js" />
+    <Content Include="Scripts\AlbingiaJS\affaireNouvelle-choixRisques.js" />
+    <Content Include="Scripts\AlbingiaJS\recherche-affaires.js" />
+    <Content Include="Scripts\knockout\CustomBindings\clickLoading.js" />
+    <Content Include="Scripts\knockout\CustomBindings\jqUiTabs.js" />
+    <Content Include="Scripts\knockout\CustomBindings\uiAutoComplete.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\test.js" />
+    <Content Include="Views\CreationAttestation\SelectionPeriodeAttestation.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="ExcelWeb\ExcelTemplates\Structure_IA_MISSION.xlsm" />
+    <Content Include="ExcelWeb\ExcelTemplates\Structure_MR_EQDOM.xlsm" />
+    <Content Include="Content\less\affaire\synthese.less" />
+    <Content Include="Content\gareat.less" />
+    <Content Include="knockout\components\liste-relances\liste-relances.less" />
+    <Content Include="knockout\components\liste-pb\liste-pb.initializer.js" />
+    <None Include="Properties\PublishProfiles\Precompile.pubxml" />
+    <None Include="Properties\PublishProfiles\Publication - Qualif.pubxml" />
+    <Content Include="Views\RechercheSaisie\BodyRechercheCommon.cshtml" />
+    <Content Include="Views\RechercheAffaires\Index.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\_RisquesAffaireNouvelle.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\ChoixRisques.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\ChoixFormulesOptions.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\_FormulesAffaireNouvelle.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\_GarantiesAffaireNouvelle.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\_GarantieAffaireNouvelle.cshtml" />
+    <Content Include="Views\Shared\serviceoff.cshtml" />
+    <Content Include="Views\Test\TestView.cshtml" />
+    <Content Include="Views\Test\Test1.cshtml" />
+    <Content Include="Views\RechercheSaisie\ListesPopups.cshtml" />
+    <Content Include="Views\Shared\_AlertesPreneur.cshtml" />
+    <Content Include="Views\Shared\ErrorMessage.cshtml" />
+    <Content Include="Views\Script\Index.cshtml" />
+    <Content Include="Views\Shared\SessionError.cshtml" />
+    <Content Include="Views\ExcelContrat\Index.cshtml" />
+    <Content Include="Views\SyntheseAffaire\Index.cshtml" />
+    <Content Include="Views\SyntheseAffaire\BlocsSynthese.cshtml" />
+    <Content Include="Views\SyntheseAffaire\MenuSynthese.cshtml" />
+    <Content Include="Views\Shared\_Alertes.cshtml" />
+    <Content Include="Views\OffreRelance\Index.cshtml" />
+    <Content Include="Views\ClassementSansSuite\Index.cshtml" />
+    <Content Include="Views\Shared\_InfosSpecifiques.cshtml" />
+    <Content Include="Views\Shared\_InfoSpecifiqueValeur.cshtml" />
+    <Content Include="Views\Shared\_InfosSpecifiquesInputs.cshtml" />
+    <Content Include="Views\GarantieModele\ListGarantieModeles.cshtml" />
+    <Content Include="Views\GarantieType\Index.cshtml" />
+    <Content Include="Views\GarantieType\ListGarantieType.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ConsultGarantieType.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ConsultGarantieTypeLien.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="libman.json" />
+    <Content Include="Views\CreationPB\Index.cshtml" />
+    <Content Include="Views\CreationPB\Step1_ChoixPeriode.cshtml" />
+    <Content Include="Views\LibellesClauses\Index.cshtml" />
+    <Content Include="Views\LibellesClauses\ListeClauses.cshtml" />
+    <Content Include="Views\Clauses\__ListeClauses.cshtml" />
+    <Content Include="Views\LibellesClauses\CibleClauses.cshtml" />
+    <Content Include="Views\ModifierOffre\InfoFinGeneral.cshtml" />
+    <Content Include="Views\ModifierOffre\FinOffreInfos.cshtml" />
+    <Content Include="Views\ModifierOffre\FinOffreAnnotation.cshtml" />
+    <Content Include="Views\Shared\BoitesDialogueDetails\BoiteContrats.cshtml" />
+    <TypeScriptCompile Include="Scripts\AlbingiaJS\Common\jqExtensions.d.ts" />
+    <Content Include="Scripts\AlbingiaJS\Common\jqExtensions.js" />
+    <Content Include="Scripts\AlbingiaJS\Regularisation\albCreationRegularisationGar.js" />
+    <Content Include="Scripts\ExcelWeb\Ajax\ExcelInteraction.asmx" />
+    <Content Include="Scripts\ExcelWeb\XmlParam\ParamExcelBranche.xml" />
+    <Content Include="Scripts\ExcelWeb\XmlParam\RS - Old.xml" />
+    <Content Include="Global.asax" />
+    <Content Include="knockout\components\details-garantie\details-garantie.initializer.js" />
+    <Content Include="knockout\components\details-garantie\details-garantie.template.html" />
+    <Content Include="knockout\components\details-garantie\details-garantie.viewmodel.js" />
+    <Content Include="knockout\components\inventaires-garantie\inventaires-garantie.viewmodel.js" />
+    <Content Include="knockout\components\inventaires-garantie\inventaires-garantie.initializer.js" />
+    <Content Include="knockout\components\inventaires-garantie\inventaires-garantie.template.html" />
+    <Content Include="knockout\components\portee-garantie\portee-garantie.initializer.js" />
+    <Content Include="knockout\components\portee-garantie\portee-garantie.template.html" />
+    <Content Include="knockout\components\portee-garantie\portee-garantie.viewmodel.js" />
+    <Content Include="knockout\components\options-formule\options-formule.initializer.js" />
+    <Content Include="knockout\components\options-formule\options-formule.template.flat.html" />
+    <Content Include="knockout\components\options-formule\options-formule.viewmodel.js" />
+    <Content Include="knockout\components\regul-rc\regul-rc.initializer.js" />
+    <Content Include="knockout\components\regul-rc\regul-rc.template.html" />
+    <Content Include="knockout\components\regul-rc\regul-rc.viewmodel.js" />
+    <Content Include="knockout\templates\regularisation\check-list-risques-PB.html" />
+    <Content Include="knockout\templates\regularisation\donnees-regul-PBTR.html" />
+    <Content Include="knockout\templates\regularisation\donnees-regul-BNS.html" />
+    <Content Include="knockout\templates\regularisation\header-garanties-RC.html" />
+    <Content Include="knockout\templates\regularisation\regularisation-calcul-PBTR.js" />
+    <Content Include="knockout\templates\regularisation\infos-formule-BNS.html" />
+    <Content Include="Scripts\AlbingiaJS\Common\common.js" />
+    <Content Include="knockout\templates\regularisation\infos-contrat-bandeau.html" />
+    <Content Include="Scripts\AlbingiaJS\Common\FrDate.js" />
+    <Content Include="Scripts\AlbingiaJS\Common\risque.js" />
+    <Content Include="Scripts\AlbingiaJS\Common\affaire.js" />
+    <Content Include="Scripts\AlbingiaJS\formule-garanties.js" />
+    <Content Include="Scripts\AlbingiaJS\Regularisation\regul.js" />
+    <Content Include="knockout\templates\regularisation\regularisation-bandeau-contrat.js" />
+    <Content Include="knockout\templates\regularisation\regularisation-header-rcfr.js" />
+    <Content Include="Scripts\Jquery\jquery-1.8.2.js" />
+    <Content Include="Scripts\Jquery\jquery-ui-1.8.23.js" />
+    <Content Include="Scripts\knockout\3.5\knockout.js" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
+    <Content Include="Scripts\knockout\knockout-fast-foreach.js" />
+    <Content Include="Scripts\knockout\knockout-fast-foreach.min.js" />
+    <Content Include="Scripts\knockout\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout\knockout.mapping-latest.js" />
+    <Content Include="Scripts\knockout\3.5\knockout.min.js" />
+    <Content Include="Scripts\knockout\Components\template-url-loader.js" />
+    <Content Include="Scripts\knockout\Components\viewmodel-loader.js" />
+    <Content Include="Scripts\knockout\CustomBindings\autoNumeric.js" />
+    <Content Include="knockout\templates\regularisation\regularisation-calcul.js" />
+    <Content Include="knockout\templates\regularisation\infos-contrat-periode.html" />
+    <Content Include="knockout\templates\regularisation\donnees-regul-PB.html" />
+    <Content Include="knockout\templates\regularisation\infos-formule-PB.html" />
+    <Content Include="PrintContainer\PrintPage.html" />
+    <Content Include="Scripts\AlbingiaJS\AffaireNouvelle\albAnAssuresAdditionnels.js" />
+    <Content Include="Scripts\AlbingiaJS\AffaireNouvelle\albEcheancier.js" />
+    <Content Include="Scripts\AlbingiaJS\AffaireNouvelle\albMontantReference.js" />
+    <Content Include="Scripts\AlbingiaJS\albAnnulationQuittances.js" />
+    <Content Include="Scripts\AlbingiaJS\albAssocierVBM.js" />
+    <Content Include="Scripts\AlbingiaJS\albAttentat.js" />
+    <Content Include="Scripts\AlbingiaJS\albBackOffice.js" />
+    <Content Include="Scripts\AlbingiaJS\albBlocageTermes.js" />
+    <Content Include="Scripts\AlbingiaJS\albBlocs.js" />
+    <Content Include="Scripts\AlbingiaJS\albCFListe.js" />
+    <Content Include="Scripts\AlbingiaJS\albChoixClauses.js" />
+    <Content Include="Scripts\AlbingiaJS\albClauseSimplifiee.js" />
+    <Content Include="Scripts\AlbingiaJS\albClausier.js" />
+    <Content Include="Scripts\AlbingiaJS\albCommon.js" />
+    <Content Include="Scripts\AlbingiaJS\albCommonAutoComplete.js" />
+    <Content Include="Scripts\AlbingiaJS\albCommonNavigation.js" />
+    <Content Include="Scripts\AlbingiaJS\albConditionsGarantie.js" />
+    <Content Include="Scripts\AlbingiaJS\albConfirmationSaisie.js" />
+    <Content Include="Scripts\AlbingiaJS\albConnexite.js" />
+    <Content Include="Scripts\AlbingiaJS\albContextMenu.js" />
+    <Content Include="Scripts\AlbingiaJS\albControleFin.js" />
+    <Content Include="Scripts\AlbingiaJS\albCotisations.js" />
+    <Content Include="Scripts\AlbingiaJS\albCreationAffaireNouvelle.js" />
+    <Content Include="Scripts\AlbingiaJS\albCreationSaisie.js" />
+    <Content Include="Scripts\AlbingiaJS\albDetailCalculSMP.js" />
+    <Content Include="Scripts\AlbingiaJS\albDetailsObjetRisque.js" />
+    <Content Include="Scripts\AlbingiaJS\albDetailsRisque.js" />
+    <Content Include="Scripts\AlbingiaJS\albDoubleSaisie.js" />
+    <Content Include="Scripts\AlbingiaJS\albEndPage.js" />
+    <Content Include="Scripts\AlbingiaJS\albEngagemensConnexite.js" />
+    <Content Include="Scripts\AlbingiaJS\albEngagementPeriodes.js" />
+    <Content Include="Scripts\AlbingiaJS\albEngagements.js" />
+    <Content Include="Scripts\AlbingiaJS\albEngagementTraite.js" />
+    <Content Include="Scripts\AlbingiaJS\albExclusionFormuleGarantie.js" />
+    <Content Include="Scripts\AlbingiaJS\albFinOffre.js" />
+    <Content Include="Scripts\AlbingiaJS\albFormVolAffNouv.js" />
+    <Content Include="Scripts\AlbingiaJS\albGestionDocument.js" />
+    <Content Include="Scripts\AlbingiaJS\albGestionIntervenants.js" />
+    <Content Include="Scripts\AlbingiaJS\albGestionNomenclature.js" />
+    <Content Include="Scripts\AlbingiaJS\albGestionOptions.js" />
+    <Content Include="Scripts\AlbingiaJS\albGestUtilisateurs.js" />
+    <Content Include="Scripts\AlbingiaJS\albHistorique.js" />
+    <Content Include="Scripts\AlbingiaJS\albHome.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsSpecifiques.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsSpecifiquesBranche.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsSpecifiquesGarantie.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsSpecifiquesObjets.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsSpecifiquesOffreSimp.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsSpecifiquesRecupGarantie.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsSpecifiquesRecupObjets.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsSpecifiquesRisques.js" />
+    <Content Include="Scripts\AlbingiaJS\albInformationsTable.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamInventaires.js" />
+    <Content Include="Scripts\AlbingiaJS\albRechercheClausesLib.js" />
+    <Content Include="Scripts\AlbingiaJS\albLayoutArbre.js" />
+    <Content Include="Scripts\AlbingiaJS\albLayoutArbreBO.js" />
+    <Content Include="Scripts\AlbingiaJS\albLCIFranchise.js" />
+    <Content Include="Scripts\AlbingiaJS\albListeClauses.js" />
+    <Content Include="Scripts\AlbingiaJS\albLogTrace.js" />
+    <Content Include="Scripts\AlbingiaJS\albMatriceFormule.js" />
+    <Content Include="Scripts\AlbingiaJS\albMatriceGarantie.js" />
+    <Content Include="Scripts\AlbingiaJS\albMatriceRisque.js" />
+    <Content Include="Scripts\AlbingiaJS\albModelesGarantie.js" />
+    <Content Include="Scripts\AlbingiaJS\albModifierOffre.js" />
+    <Content Include="Scripts\AlbingiaJS\albOffresVerrouillees.js" />
+    <Content Include="Scripts\AlbingiaJS\albOption3.js" />
+    <Content Include="Scripts\AlbingiaJS\albOptTarAffNouv.js" />
+    <Content Include="Scripts\AlbingiaJS\AlbParamCibleRecup.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamCibles.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamClause.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamConcepts.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamDocumentChemin.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamEngment.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamFamilles.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamFiltres.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamGaranties.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamIS.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamISModeles.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamISReference.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamNomenclature.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamTemplateNomenclature.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamTemplates.js" />
+    <Content Include="Scripts\AlbingiaJS\albParamTypesValeur.js" />
+    <Content Include="Scripts\AlbingiaJS\albPrisePosition.js" />
+    <Content Include="Scripts\AlbingiaJS\albRechercheOffreRapide.js" />
+    <Content Include="Scripts\AlbingiaJS\albRechercheSaisie.js" />
+    <Content Include="Scripts\AlbingiaJS\albRefExprComp.js" />
+    <Content Include="Scripts\AlbingiaJS\Regularisation\albRegul_Step2_ChoixRisque.js" />
+    <Content Include="Scripts\AlbingiaJS\Regularisation\albRegul_Step4_ChoixPeriodeGarantie.js" />
+    <Content Include="Scripts\AlbingiaJS\Regularisation\albRegul_Step5_RegulContrat.js" />
+    <Content Include="Scripts\AlbingiaJS\Regularisation\albRegul_Step3_ChoixGarantie.js" />
+    <Content Include="Scripts\AlbingiaJS\Regularisation\albRegul_Step1_ChoixPeriode.js" />
+    <Content Include="Scripts\AlbingiaJS\albRetours.js" />
+    <Content Include="Scripts\AlbingiaJS\albRisqueInventaire.js" />
+    <Content Include="Scripts\AlbingiaJS\albRsqObjAffNouv.js" />
+    <Content Include="Scripts\AlbingiaJS\albSaveDocJointsIframe.js" />
+    <Content Include="Scripts\AlbingiaJS\albSuiviDocuments.js" />
+    <Content Include="Scripts\AlbingiaJS\albSuspension.js" />
+    <Content Include="Scripts\AlbingiaJS\albSyntheseDocuments.js" />
+    <Content Include="Scripts\AlbingiaJS\albValidationOffre.js" />
+    <Content Include="Scripts\AlbingiaJS\albVolets.js" />
+    <Content Include="Scripts\AlbingiaJS\alb_Layout.js" />
+    <Content Include="Scripts\AlbingiaJS\AnCoAssureurs\albAnCoAssureurs.js" />
+    <Content Include="Scripts\AlbingiaJS\AnCourtiers\albAnCourtiers.js" />
+    <Content Include="Scripts\AlbingiaJS\AnCreationContrat\albAnCreationContrat.js" />
+    <Content Include="Scripts\AlbingiaJS\AnInformationsGenerales\albAnInformationsGenerales.js" />
+    <Content Include="Scripts\AlbingiaJS\albOffreSimplifie.js" />
+    <Content Include="Scripts\AlbingiaJS\albGestionGrilleNomenclature.js" />
+    <Content Include="Scripts\AlbingiaJS\albCreationAvenant.js" />
+    <Content Include="Scripts\AlbingiaJS\Avenant\albAvenantInfoGenerales.js" />
+    <Content Include="Scripts\AlbingiaJS\albStatOffreContrat.js" />
+    <Content Include="Scripts\AlbingiaJS\albLogRecupParamCible.js" />
+    <Content Include="Scripts\AlbingiaJS\albFraisAccessoires.js" />
+    <Content Include="Scripts\AlbingiaJS\albEngPerRech.js" />
+    <Content Include="Scripts\AlbingiaJS\alb_QuittanceTransverse.js" />
+    <Content Include="Scripts\AlbingiaJS\albCreationAttestation.js" />
+    <Content Include="Scripts\AlbingiaJS\albActivite.js" />
+    <Content Include="Scripts\AlbingiaJS\albCopyParamClause.js" />
+    <Content Include="Scripts\AlbingiaJS\Excel\AlbExcelDocs.js" />
+    <Content Include="Scripts\AlbingiaJS\Excel\AlbEvents.js" />
+    <Content Include="Scripts\AlbingiaJS\albDocumentGestion.js" />
+    <Content Include="Scripts\AlbingiaJS\LoadEnJSIframe.js" />
+    <Content Include="Scripts\AlbingiaJS\Quittance\albQuittance.js" />
+    <Content Include="Scripts\AlbingiaJS\Regularisation\albCreationRegularisation.js" />
+    <Content Include="Scripts\AlbingiaJS\Word\AlbWordEvents.js" />
+    <Content Include="Scripts\AlbingiaJS\Word\AlbWordDocs.js" />
+    <Content Include="Scripts\conditional-validation.js" />
+    <Content Include="Scripts\conditional-validation.min.js" />
+    <Content Include="Scripts\fancybox\blank.gif" />
+    <Content Include="Scripts\fancybox\fancybox_loading.gif" />
+    <Content Include="Scripts\fancybox\fancybox_sprite.png" />
+    <Content Include="Scripts\fancybox\helpers\fancybox_buttons.png" />
+    <Content Include="Content\fancybox\jquery.fancybox-buttons.css" />
+    <Content Include="Scripts\fancybox\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Scripts\fancybox\helpers\jquery.fancybox-buttons.min.js" />
+    <Content Include="Scripts\fancybox\helpers\jquery.fancybox-media.js" />
+    <Content Include="Content\fancybox\jquery.fancybox-thumbs.css" />
+    <Content Include="Scripts\fancybox\helpers\jquery.fancybox-media.min.js" />
+    <Content Include="Scripts\fancybox\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Content\fancybox\jquery.fancybox.css" />
+    <Content Include="Scripts\fancybox\helpers\jquery.fancybox-thumbs.min.js" />
+    <Content Include="Scripts\fancybox\jquery.fancybox.js" />
+    <Content Include="Scripts\fancybox\jquery.fancybox.min.js" />
+    <Content Include="Scripts\fancybox\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\fancybox\jquery.fancybox.pack.min.js" />
+    <Content Include="Scripts\Jquery\autoNumeric.js" />
+    <Content Include="Scripts\Jquery\autoNumeric.min.js" />
+    <Content Include="Scripts\Jquery\jquery-ui-1.8.23.min.js" />
+    <Content Include="ErrorHandler\DynamicGuiIS\ExcelTemplates\infos_spec_RS.xlsm" />
+    <Content Include="ErrorHandler\DynamicGuiIS\ExcelTemplates\rs-info.xlsm" />
+    <Content Include="ExcelWeb\ExcelTemplates\RS_OffreSimple.xlsx" />
+    <Content Include="App_Browsers\BrowserFile.browser" />
+    <Content Include="App_Browsers\ie.browser" />
+    <Content Include="App_Browsers\ie11.browser" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Properties\DataSources\ALBINGIA.Framework.Common.Models.FileModel.FileDescription.datasource" />
+    <Content Include="Scripts\Jquery\autoNumeric.min.js.map" />
+    <Content Include="ApplicationInsights.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\less\regularisation\global.less" />
+    <Content Include="Content\less\formule\edition\add-or-update.less" />
+    <Content Include="Content\ko-popup.less" />
+    <Content Include="knockout\components\options-formule\test-data\test-options-formules.json" />
+    <Content Include="Content\common.less" />
+    <Content Include="Content\less\formule\edition\details-valeurs-garantie.less" />
+    <Content Include="Content\less\formule\edition\portees.less" />
+    <None Include=".eslintrc" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\less\recherche\search.less" />
+    <Content Include="knockout\components\connexites\connexites-engagements.template.html" />
+    <Content Include="Content\less\connexites\engagements.less" />
+    <Content Include="Content\paging.less" />
+    <Content Include="Content\home.less" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Scripts\Jquery\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\Jquery\jquery.cleditor.min.js" />
+    <Content Include="Scripts\Jquery\jquery.contextmenu.js" />
+    <Content Include="Scripts\Jquery\jquery.contextmenu.min.js" />
+    <Content Include="Scripts\Jquery\jquery.contextmenu.min.old.js" />
+    <Content Include="Scripts\Jquery\jquery.mousewheel.min.js" />
+    <Content Include="Scripts\Jquery\jquery.ui.datepick-fr.min.js" />
+    <Content Include="Scripts\Jquery\jquery.ui.datepick.min.js" />
+    <Content Include="Scripts\Jquery\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\Jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\Jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\json2.min.js" />
+    <Content Include="knockout\templates\regularisation\regularisation-check-list-rsq.js" />
+    <Content Include="Scripts\knockout\CustomBindings\bindElement.js" />
+    <Content Include="Scripts\knockout\CustomBindings\dateselector.js" />
+    <Content Include="Scripts\knockout\CustomBindings\readonly.js" />
+    <Content Include="Scripts\knockout\CustomBindings\watch.js" />
+    <Content Include="Scripts\knockout\Extenders\required.js" />
+    <Content Include="Scripts\knockout\Extenders\watcher.js" />
+    <Content Include="Scripts\mvcfoolproof.unobtrusive.min.js" />
+    <Content Include="Scripts\MvcFoolproofJQueryValidation.min.js" />
+    <Content Include="Scripts\MvcFoolproofValidation.min.js" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Public\AccesDenied.html" />
+    <Compile Include="Startup\HttpSuccessIndicator.cs" />
+    <Content Include="Views\DetailsRisque\InformationsGeneralesDetailsRisque.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\Entete\InfoBandeau.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\ParamIS\ParamIntermediaire.cshtml" />
+    <Content Include="Views\SuiviActesGestion\Index.cshtml" />
+    <Content Include="Views\SuiviActesGestion\ListeActesGestion.cshtml" />
+    <Content Include="Views\Option3\Index.cshtml" />
+    <Content Include="Views\Option3\ListeRisques.cshtml" />
+    <Content Include="Views\GestionOptions\Index.cshtml" />
+    <Content Include="Views\GestionOptions\ListeIS.cshtml" />
+    <Content Include="Views\ConditionsGarantie\ConditionFiltre.cshtml" />
+    <Content Include="Views\ChoixClauses\ClauseLibre.cshtml" />
+    <Content Include="Views\ChoixClauses\ListeChoixClauses.cshtml" />
+    <Content Include="Views\ChoixClauses\ChoixClauseIntermediaire.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRisques\ListeOppositions.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRisques\EditOpposition.cshtml" />
+    <Content Include="Views\CreationSaisie\InformationsSaisie.cshtml" />
+    <Content Include="Views\CreationSaisie\CabinetCourtage.cshtml" />
+    <Content Include="Views\CreationSaisie\PreneurAssurance.cshtml" />
+    <Content Include="Views\CreationSaisie\ContactAdresse.cshtml" />
+    <Content Include="Views\CreationSaisie\Description.cshtml" />
+    <Content Include="Views\DoubleSaisie\DblSaisieBody.cshtml" />
+    <Content Include="Views\ParamEngagements\Index.cshtml" />
+    <Content Include="Views\ParamEngagements\ParamEngmentListCol.cshtml" />
+    <Content Include="Views\ParamEngagements\ParamEngmentAddCol.cshtml" />
+    <Content Include="Views\Quittance\Index.cshtml" />
+    <Content Include="Views\Quittance\DetailsQuittance.cshtml" />
+    <Content Include="Views\Quittance\QuittanceListFormules.cshtml" />
+    <Content Include="Views\Quittance\DetailsQuittanceCommission.cshtml" />
+    <Content Include="Views\Quittance\DetailsQuittanceTotaux.cshtml" />
+    <Content Include="Views\Quittance\QuittanceCommissions.cshtml" />
+    <Content Include="Views\Quittance\QuittanceTotaux.cshtml" />
+    <Content Include="Views\Quittance\VentilationDetaillee.cshtml" />
+    <Content Include="Views\Quittance\VentilationDetailleeGarantie.cshtml" />
+    <Content Include="Views\Quittance\VentilationDetailleeTaxe.cshtml" />
+    <Content Include="Views\Quittance\VentilationDetailleeRegime.cshtml" />
+    <Content Include="Views\Quittance\VentilationCommission.cshtml" />
+    <Content Include="Views\Quittance\VentilationCommissionCourtier.cshtml" />
+    <Content Include="Views\Quittance\VentilationCommissionGarantie.cshtml" />
+    <Content Include="Views\ParamCible\ParamListBSC.cshtml" />
+    <Content Include="Views\ParamCible\DrlBranches.cshtml" />
+    <Content Include="Views\ParamCible\DrlSousBranches.cshtml" />
+    <Content Include="Views\ParamCible\DrlCategories.cshtml" />
+    <Content Include="Views\Clausier\ListeClauses.cshtml" />
+    <Content Include="Views\Clausier\ClausierHistorique.cshtml" />
+    <Content Include="Views\Clausier\ListeContexteClause.cshtml" />
+    <Content Include="Views\ChoixClauses\ClauseDetails.cshtml" />
+    <Content Include="Views\ChoixClauses\ClauseVisualisation.cshtml" />
+    <Content Include="Views\Clausier\VisualisationClause.cshtml" />
+    <Content Include="Views\Connexite\Index.cshtml" />
+    <Content Include="Views\EngagementPeriodes\Index.cshtml" />
+    <Content Include="Views\EngagementPeriodes\ListeEngagementPeriodes.cshtml" />
+    <Content Include="Views\Connexite\AjoutConnexite.cshtml" />
+    <Content Include="Views\EngagementsConnexite\Index.cshtml" />
+    <Content Include="Views\EngagementsConnexite\ContratsConnexes.cshtml" />
+    <Content Include="Views\EngagementsConnexite\MontantEngagements.cshtml" />
+    <Content Include="Views\EngagementsConnexite\ContratConnexe.cshtml" />
+    <Content Include="Views\Connexite\ConnexitePleinEcran.cshtml" />
+    <Content Include="Views\RechercheSaisie\BandeauRecherchePrincipale.cshtml" />
+    <Content Include="Views\RechercheSaisie\BandeauResultatRecherchePrincipale.cshtml" />
+    <Content Include="Views\RechercheSaisie\BandeauRechercheContrat.cshtml" />
+    <Content Include="Views\RechercheSaisie\BandeauResultatRechercheContrat.cshtml" />
+    <Content Include="Views\CommonNavigation\Index.cshtml" />
+    <Content Include="Views\RechercheSaisie\BodyRechercheSaisie.cshtml" />
+    <Content Include="Views\Connexite\ListeConnexiteEngagement.cshtml" />
+    <Content Include="Views\Connexite\ListeConnexiteRemplacement.cshtml" />
+    <Content Include="Views\Connexite\ListeConnexiteInformation.cshtml" />
+    <Content Include="Views\Connexite\ListeConnexiteResiliation.cshtml" />
+    <Content Include="Views\DetailsRisque\ObjetsRisquePleinEcran.cshtml" />
+    <Content Include="Views\Connexite\ConfirmationAction.cshtml" />
+    <Content Include="Views\Clausier\ClausierHistoriqueInvalide.cshtml" />
+    <Content Include="Views\ParamISReference\Index.cshtml" />
+    <Content Include="Views\AnEcheancier\Index.cshtml" />
+    <Content Include="Views\AnEcheancier\ListeEcheances.cshtml" />
+    <Content Include="Views\AnEcheancier\UpdateEcheance.cshtml" />
+    <Content Include="Views\AnMontantReference\Index.cshtml" />
+    <Content Include="Views\AnMontantReference\ListeMontantsReference.cshtml" />
+    <Content Include="Views\AnMontantReference\ModificationMontantFormule.cshtml" />
+    <Content Include="Views\AnMontantReference\ModificationMontantTotal.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\Index.cshtml" />
+    <Content Include="Views\DetailsObjetRisque\ObjetInventaire.cshtml" />
+    <Content Include="Views\DetailsObjetRisque\ObjetAdresse.cshtml" />
+    <Content Include="Views\ParamISReference\ListeISReferentiels.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\ListeISLignesModele.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\ModeleComplet.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\LigneModeleIS.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\ListeDrlModelesIS.cshtml" />
+    <Content Include="Views\ParamISModeles\Index.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\AjoutModele.cshtml" />
+    <Content Include="Views\ParamISModeles\ConfirmSuppr.cshtml" />
+    <Content Include="Views\AnCreationContrat\CourtierGestionnairePayeur.cshtml" />
+    <Content Include="Views\AnCreationContrat\DivFlottanteGestionnairePayeur.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\BandeauReferentiel.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\SelectPopup.cshtml" />
+    <Content Include="Views\ChoixClauses\TransverseListeClauses.cshtml" />
+    <Content Include="Views\ChoixClauses\TransverseClauseVisualisation.cshtml" />
+    <Content Include="Views\Cotisations\CotisationsListGarantiePleinEcran.cshtml" />
+    <Content Include="Views\Quittance\QuittanceListFormulesPleinEcran.cshtml" />
+    <Content Include="Views\ParamCible\EditBSC.cshtml" />
+    <Content Include="Views\Clausier\ListObjets.cshtml" />
+    <Content Include="Views\RisqueInventaire\InventaireListeCPVille.cshtml" />
+    <Content Include="Views\ChoixClauses\TransverseListeChoixClauses.cshtml" />
+    <Content Include="Views\Quittance\FraisAccessoires.cshtml" />
+    <Content Include="Views\AnCourtier\CourtiersBody.cshtml" />
+    <Content Include="Views\ChoixClauses\TransverseClauseDetails.cshtml" />
+    <Content Include="Views\AnMontantReference\MontantReferenceBody.cshtml" />
+    <Content Include="Views\RechercheSaisie\RechercheAvanceeCabinetCourtage.cshtml" />
+    <Content Include="Views\RechercheSaisie\RechercheAvanceePreneurAssurance.cshtml" />
+    <Content Include="Views\RechercheSaisie\ResultRechercheAvanceePreneurAssurance.cshtml" />
+    <Content Include="Views\RechercheSaisie\ResultRechercheAvanceeCabinetCourtier.cshtml" />
+    <Content Include="Views\Errors\AccesDenied.cshtml" />
+    <Content Include="Views\ParamFamilles\Index.cshtml" />
+    <Content Include="Views\ParamConcepts\Index.cshtml" />
+    <Content Include="Views\ParamConcepts\ListeConcepts.cshtml" />
+    <Content Include="Views\ParamConcepts\LigneConcept.cshtml" />
+    <Content Include="Views\ParamConcepts\DetailsConcept.cshtml" />
+    <Content Include="Views\ParamFamilles\EditFamille.cshtml" />
+    <Content Include="Views\ParamFamilles\ParamListFamilles.cshtml" />
+    <Content Include="Views\ParamFamilles\EditValeurs.cshtml" />
+    <Content Include="Views\ParamFamilles\ParamListValeurs.cshtml" />
+    <Content Include="Views\ParamFamilles\EditValeur.cshtml" />
+    <Content Include="Views\ParamFiltres\Index.cshtml" />
+    <Content Include="Views\ParamFiltres\ListeFiltres.cshtml" />
+    <Content Include="Views\ParamFiltres\LigneFiltre.cshtml" />
+    <Content Include="Views\ParamFiltres\DetailsFiltre.cshtml" />
+    <Content Include="Views\ParamFiltres\ListePairesBrancheCible.cshtml" />
+    <Content Include="Views\ParamFiltres\LignePaireBrancheCible.cshtml" />
+    <Content Include="Views\ParamFiltres\DrlCibles.cshtml" />
+    <Content Include="Views\ParamGaranties\Index.cshtml" />
+    <Content Include="Views\ParamGaranties\ListeGaranties.cshtml" />
+    <Content Include="Views\ParamGaranties\DetailsGarantie.cshtml" />
+    <Content Include="Views\ParamGaranties\TypesValeur.cshtml" />
+    <Content Include="Views\ParamGaranties\ListTypesValeur.cshtml" />
+    <Content Include="Views\ParamGaranties\DDLTypesValeur.cshtml" />
+    <Content Include="Views\ParamGaranties\EditTypeValeur.cshtml" />
+    <Content Include="Views\ParamGaranties\FamillesReassurance.cshtml" />
+    <Content Include="Views\ParamGaranties\ListFamillesReassurance.cshtml" />
+    <Content Include="Views\ParamGaranties\EditFamilleReassurance.cshtml" />
+    <Content Include="Views\ParamGaranties\DDLBranches.cshtml" />
+    <Content Include="Views\ParamGaranties\DDLSousBranche.cshtml" />
+    <Content Include="Views\ParamGaranties\DDLCategories.cshtml" />
+    <Content Include="Views\Blocs\ListeBlocs.cshtml" />
+    <Content Include="Views\Blocs\DetailsBloc.cshtml" />
+    <Content Include="Views\Blocs\ListeBlocsIncompatibles.cshtml" />
+    <Content Include="Views\Blocs\ListeBlocsAssocies.cshtml" />
+    <Content Include="Views\ParamTypesValeur\Index.cshtml" />
+    <Content Include="Views\ParamTypesValeur\ListeTypesValeur.cshtml" />
+    <Content Include="Views\ParamTypesValeur\DetailsTypeValeur.cshtml" />
+    <Content Include="Views\ParamTypesValeur\ListeTypesValeurCompatibles.cshtml" />
+    <Content Include="Views\ParamISReference\LigneISReferentielReadOnly.cshtml" />
+    <Content Include="Views\ParamISReference\LigneISReferentielEdition.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\LigneModeleISReadOnly.cshtml" />
+    <Content Include="Views\ParamISModeleAssocier\LigneModeleISEdition.cshtml" />
+    <Content Include="Views\Retours\Index.cshtml" />
+    <Content Include="Views\Retours\ListeRetoursCoAss.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\PorteeGarantie.cshtml" />
+    <Content Include="Views\DetailsRisque\RisqueAdresse.cshtml" />
+    <Content Include="Views\ParamTemplates\Index.cshtml" />
+    <Content Include="Views\ParamTemplates\ListeTemplates.cshtml" />
+    <Content Include="Views\ParamTemplates\LigneTemplate.cshtml" />
+    <Content Include="Views\ParamTemplates\DetailsTemplate.cshtml" />
+    <Content Include="Views\Clausier\ListSequences.cshtml" />
+    <Content Include="Views\Clausier\ListSousRubriques.cshtml" />
+    <Content Include="Views\ChoixClauses\ListOptions.cshtml" />
+    <Content Include="Views\ChoixClauses\ListFormules.cshtml" />
+    <Content Include="Views\ParamCible\ParamCibleAddTemplate.cshtml" />
+    <Content Include="Views\ParamCible\ParamCibleListTemplate.cshtml" />
+    <Content Include="Views\RechercheSaisie\ListeCibles.cshtml" />
+    <Content Include="Views\OffreSimplifiee\Index.cshtml" />
+    <Content Include="Views\OffresVerrouillees\ListeOffreVerrouileesCache.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesOffreSimp\Index.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesOffreSimp\InformationsSpecifiquesRisque.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesOffreSimp\InformationsSpecifiquesObjet.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesOffreSimp\InformationsSpecifiquesGarantie.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesOffreSimp\GarantieListOptions.cshtml" />
+    <Content Include="Views\ParamGaranties\LigneGarantie.cshtml" />
+    <Content Include="Views\ChoixClauses\LigneChoixClauses.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\Index.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\ListeClauses.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\LigneClause.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\InfoClauses.cshtml" />
+    <Content Include="Views\Shared\Clausier.cshtml" />
+    <Content Include="Views\Clausier\LigneClause.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\InformationsSpecifiquesRisques\InformationsSpecifiquesBody.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesObjets\InformationsSpecifiquesObjetsBody.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesGarantie\InformationsSpecifiquesGarantieBody.cshtml" />
+    <Content Include="Views\RisqueInventaire\RisqueInventaireBody.cshtml" />
+    <Content Include="Views\ParamGaranties\ConfirmModifTypeInventaire.cshtml" />
+    <Content Include="Views\Shared\LCIFranchise\LCIFranchise.cshtml" />
+    <Content Include="Views\RechercheSaisie\BodyResultatsRecherche.cshtml" />
+    <Content Include="Views\RechercheSaisie\ListeResultatsRecherche.cshtml" />
+    <Content Include="Views\Shared\LayoutCopieOffre.cshtml" />
+    <Content Include="Views\RechercheSaisie\RechercheSaisieCopieOffre.cshtml" />
+    <Content Include="Views\RechercheSaisie\BandeauRechercheOffre.cshtml" />
+    <Content Include="Views\RechercheSaisie\BandeauResultatRechercheOffre.cshtml" />
+    <Content Include="Views\RechercheSaisie\DivCreation.cshtml" />
+    <Content Include="Views\CreationSaisie\Template_InformationSaisie.cshtml" />
+    <Content Include="Views\CreationSaisie\BodyCreationSaisie.cshtml" />
+    <Content Include="Views\LogTrace\Index.cshtml" />
+    <Content Include="Views\LogTrace\ListeLogTraces.cshtml" />
+    <Content Include="Views\AnCreationContrat\Template_InfoBase.cshtml" />
+    <Content Include="Views\AnCreationContrat\BodyAnCreationContrat.cshtml" />
+    <Content Include="Views\Shared\Entete\InfoBandeauOffre.cshtml" />
+    <Content Include="Views\BlocageTermes\Index.cshtml" />
+    <Content Include="Views\BlocageTermes\DeblocageTermes.cshtml" />
+    <Content Include="Views\ParamTemplateNomenclature\Index.cshtml" />
+    <Content Include="Views\ParamTemplateNomenclature\DetailsNomenclature.cshtml" />
+    <Content Include="Views\ParamTemplateNomenclature\ListeCibles.cshtml" />
+    <Content Include="Views\ParamTemplateNomenclature\ListeNomenclatures.cshtml" />
+    <Content Include="Views\ParamNomenclature\Index.cshtml" />
+    <Content Include="Views\ParamNomenclature\DetailsParamNomenclature.cshtml" />
+    <Content Include="Views\ParamNomenclature\ListeLignesDetails.cshtml" />
+    <Content Include="Views\ParamNomenclature\LigneDetailsReadonly.cshtml" />
+    <Content Include="Views\ParamNomenclature\LigneDetailsEdition.cshtml" />
+    <Content Include="Views\ParamNomenclature\ListeNomenclatures.cshtml" />
+    <Content Include="Views\ParamNomenclature\DrlFamilles.cshtml" />
+    <Content Include="Views\ParamNomenclature\DrlValeurs.cshtml" />
+    <Content Include="Views\RechercheSaisie\BandeauResultatRechercheDynamique.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\ListObjets.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\ListFormules.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\ClauseLibre.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\ClauseVisualisation.cshtml" />
+    <Content Include="Views\ClauseSimplifiee\ListContextesCibles.cshtml" />
+    <Content Include="Views\WordViewer\WordDocument.cshtml" />
+    <Content Include="Views\WordViewer\FooterWordEvent.cshtml" />
+    <Content Include="Views\WordViewer\HeaderWordDoc.cshtml" />
+    <Content Include="Views\WordViewer\Index.cshtml" />
+    <Content Include="Views\GestionDocumentContrat\GestionDocumentContrat.cshtml" />
+    <Content Include="Views\GestionDocumentContrat\LstDocuments.cshtml" />
+    <Content Include="Views\GestionDocumentContrat\PiecesJointes.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\InfoDetailsGarantie.cshtml" />
+    <Content Include="Views\Shared\BoitesDialogueDetails\InfosGeneralesEntite.cshtml" />
+    <Content Include="Views\Shared\BoitesDialogueDetails\InfosInterlocuteur.cshtml" />
+    <Content Include="Views\Shared\BoitesDialogueDetails\InfosDelegation.cshtml" />
+    <Content Include="Views\Shared\BoitesDialogueDetails\BoiteCourtierGestionnaire.cshtml" />
+    <Content Include="Views\Shared\BoitesDialogueDetails\BoiteCourtierApporteurPayeur.cshtml" />
+    <Content Include="Views\Shared\BoitesDialogueDetails\BoiteAssure.cshtml" />
+    <Content Include="Views\RefExprComp\Index.cshtml" />
+    <Content Include="Views\RefExprComp\DetaileExprComp.cshtml" />
+    <Content Include="Views\RefExprComp\ListLCI.cshtml" />
+    <Content Include="Views\RefExprComp\ListFRH.cshtml" />
+    <Content Include="Views\RefExprComp\RowsExprComp.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRecupObjets\Index.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRecupObjets\InformationsSpecifiquesRecupObjetsBody.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRecupGaranties\Index.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRecupGaranties\InformationsSpecifiquesRecupGarantieBody.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseSousRubrique.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseSequence.cshtml" />
+    <Content Include="Views\ConditionsGarantie\ListExprCompReferentiel.cshtml" />
+    <Content Include="Views\ConditionsGarantie\TabExprCompReferentiel.cshtml" />
+    <Content Include="Views\Shared\InfoClauseLibre.cshtml" />
+    <Content Include="Views\GestionIntervenants\GestionIntervenants.cshtml" />
+    <Content Include="Views\GestionIntervenants\LstIntervenants.cshtml" />
+    <Content Include="Views\GestionIntervenants\DetailsIntervenant.cshtml" />
+    <Content Include="Views\GestionNomenclature\Index.cshtml" />
+    <Content Include="Views\GestionNomenclature\ListeNomenclatures.cshtml" />
+    <Content Include="Views\GestionNomenclature\AjoutNomenclature.cshtml" />
+    <Content Include="Views\GestionNomenclature\ListeGrilles.cshtml" />
+    <Content Include="Views\GestionGrilleNomenclature\Index.cshtml" />
+    <Content Include="Views\GestionGrilleNomenclature\ListeGrilles.cshtml" />
+    <Content Include="Views\GestionGrilleNomenclature\AjoutGrille.cshtml" />
+    <Content Include="Views\GestionGrilleNomenclature\SelectionValeurs.cshtml" />
+    <Content Include="Views\GestionGrilleNomenclature\ListeValeurNiv.cshtml" />
+    <Content Include="Views\DetailsRisque\ListesNomenclature.cshtml" />
+    <Content Include="Views\GestionGrilleNomenclature\ListeSelectionValeurs.cshtml" />
+    <Content Include="Views\GestionGrilleNomenclature\ListeDeroulanteValeurs.cshtml" />
+    <Content Include="Views\DetailsRisque\DropDownNomenclature.cshtml" />
+    <Content Include="Views\DocumentGestion\Index.cshtml" />
+    <Content Include="Views\DocumentGestion\ModifierDocument.cshtml" />
+    <Content Include="Views\DocumentGestion\LstDetailsDestinataires.cshtml" />
+    <Content Include="Views\DocumentGestion\SelectionCourrierType.cshtml" />
+    <Content Include="Views\DocumentGestion\InfoDestinataire.cshtml" />
+    <Content Include="Views\DocumentGestion\LstCourriersType.cshtml" />
+    <Content Include="Views\DocumentGestion\InfoDestinataire.cshtml" />
+    <Content Include="Views\DocumentGestion\SelectionDestinataire.cshtml" />
+    <Content Include="Views\DocumentGestion\LstDestinataires.cshtml" />
+    <Content Include="Views\SyntheseDocuments\Index.cshtml" />
+    <Content Include="Views\DocumentGestion\SelectionTypeIntervenant.cshtml" />
+    <Content Include="Views\DocumentGestion\LstDocuments.cshtml" />
+    <Content Include="Views\ControleFin\Index.cshtml" />
+    <Content Include="Views\Cotisations\CotisationsFraisAccessoires.cshtml" />
+    <Content Include="Views\Quittance\PartAlbingia.cshtml" />
+    <Content Include="Views\Quittance\VentilationCoassureur.cshtml" />
+    <Content Include="Views\Quittance\VentilationCoassureurCoassureurs.cshtml" />
+    <Content Include="Views\Quittance\PartAlbingiaGaranties.cshtml" />
+    <Content Include="Views\Quittance\VentilationCoassureurParGarantie.cshtml" />
+    <Content Include="Views\Quittance\VentilationCoassureurParGarantieLigne.cshtml" />
+    <Content Include="Views\ParamDocumentChemin\Index.cshtml" />
+    <Content Include="Views\ParamDocumentChemin\ListeChemins.cshtml" />
+    <Content Include="Views\ParamDocumentChemin\DetailsParamChemin.cshtml" />
+    <Content Include="Views\ParamDocumentChemin\Typologie.cshtml" />
+    <Content Include="Views\Shared\DocumentsJoints.cshtml" />
+    <Content Include="Views\Shared\DocumentsJointsListe.cshtml" />
+    <Content Include="Views\Shared\DocumentsJointsAdd.cshtml" />
+    <Content Include="Views\Quittance\VisualisationQuittances.cshtml" />
+    <Content Include="Views\Quittance\VisualisationQuittancesListe.cshtml" />
+    <Content Include="Views\ChoixClauses\ClausePiecesJointes.cshtml" />
+    <Content Include="Views\CreationAvenant\Index.cshtml" />
+    <Content Include="Views\CreationAvenant\AvenantModification.cshtml" />
+    <Content Include="Views\CreationAvenant\AvenantAlerte.cshtml" />
+    <Content Include="Views\DetailsObjetRisque\InformationsGeneralesDetailsObjet.cshtml" />
+    <Content Include="Views\AvenantInfoGenerales\Index.cshtml" />
+    <Content Include="Views\AvenantInfoGenerales\Aperiteurs.cshtml" />
+    <Content Include="Views\AvenantInfoGenerales\Gestionnaires.cshtml" />
+    <Content Include="Views\AvenantInfoGenerales\Souscripteurs.cshtml" />
+    <Content Include="Views\Shared\Entete\AvnEntete.cshtml" />
+    <Content Include="Views\Shared\Entete\InfoBandeauAvn.cshtml" />
+    <Content Include="Views\AnnulationQuittances\Index.cshtml" />
+    <Content Include="Views\CreationAvenant\AvenantResiliation.cshtml" />
+    <Content Include="Views\Quittance\BodyQuittances.cshtml" />
+    <Content Include="Views\ConditionsGarantie\ConditionsExpressionComplexeLignes.cshtml" />
+    <Content Include="Views\Quittance\CalculForce.cshtml" />
+    <Content Include="Views\Quittance\CalculForceTotalHT.cshtml" />
+    <Content Include="Views\Quittance\CalculForceFormule.cshtml" />
+    <Content Include="Views\Quittance\CalculForceGarantie.cshtml" />
+    <Content Include="Views\Quittance\ReeditionBulletinAvis.cshtml" />
+    <Content Include="Views\SuiviDocuments\Index.cshtml" />
+    <Content Include="Views\SuiviDocuments\SuiviDocumentListDoc.cshtml" />
+    <Content Include="Views\SuiviDocuments\SuiviDocumentsBody.cshtml" />
+    <Content Include="Views\SuiviDocuments\SuiviDocumentListPJ.cshtml" />
+    <Content Include="Views\CreationSaisie\MotsCles.cshtml" />
+    <Content Include="Views\AnCreationContrat\MotsCles.cshtml" />
+    <Content Include="Views\Historique\Index.cshtml" />
+    <Content Include="Views\Historique\ListHistorique.cshtml" />
+    <Content Include="Views\Retours\RetoursBody.cshtml" />
+    <Content Include="Views\StatClausesLibres\BodyResultatsRecherche.cshtml" />
+    <Content Include="Views\Shared\VisualisationObservations.cshtml" />
+    <Content Include="Views\Historique\BodyHistorique.cshtml" />
+    <Content Include="Views\PrisePosition\Index.cshtml" />
+    <Content Include="Views\Shared\DocumentsJointsIntercalaire.cshtml" />
+    <Content Include="Views\ValidationOffre\EditionValidationDocuments.cshtml" />
+    <Content Include="Views\DocumentGestion\LstDocumentsLibre.cshtml" />
+    <Content Include="Views\Shared\DocLoadAsynch.cshtml" />
+    <Content Include="Views\GestUtilisateurs\Index.cshtml" />
+    <Content Include="Views\DocumentGestion\CodeLabelDestinataire.cshtml" />
+    <Content Include="Views\Cotisations\CotisationsBandeau.cshtml" />
+    <Content Include="Views\Shared\SaveDocsJointsForm.cshtml" />
+    <Content Include="Views\RecherchesAvanceesTransverses\RecherchePreneursAssurancesBody.cshtml" />
+    <Content Include="Views\RecherchesAvanceesTransverses\RecherchePreneursAssurancesResult.cshtml" />
+    <Content Include="Views\GestUtilisateurs\AddUtilisateurWidget.cshtml" />
+    <Content Include="Views\GestUtilisateurs\GestUtlisateurBody.cshtml" />
+    <Content Include="Views\GestUtilisateurs\RechercheUtlisateurWidget.cshtml" />
+    <Content Include="Views\GestUtilisateurs\TypeDroitsDropDownList.cshtml" />
+    <Content Include="Views\GestUtilisateurs\UtiliDroitBranches.cshtml" />
+    <Content Include="Views\ParamCibleRecup\Index.cshtml" />
+    <Content Include="Views\ParamCibleRecup\ParamCibleRecupResult.cshtml" />
+    <Content Include="Views\GestUtilisateurs\GestUtlisateurList.cshtml" />
+    <Content Include="Views\Statistique\Index.cshtml" />
+    <Content Include="Views\Statistique\BodySatatOffreContrat.cshtml" />
+    <Content Include="Views\Statistique\RechercheOffreContrat.cshtml" />
+    <Content Include="Views\Statistique\ListResultOffreContrat.cshtml" />
+    <Content Include="Views\Statistique\OffreContratItem.cshtml" />
+    <Content Include="Views\LogRecupParamCible\Body.cshtml" />
+    <Content Include="Views\LogRecupParamCible\Index.cshtml" />
+    <Content Include="Views\LogRecupParamCible\List.cshtml" />
+    <Content Include="Views\LogRecupParamCible\Item.cshtml" />
+    <Content Include="Views\LogRecupParamCible\Recherche.cshtml" />
+    <Content Include="Views\FraisAccessoires\Body.cshtml" />
+    <Content Include="Views\FraisAccessoires\Index.cshtml" />
+    <Content Include="Views\FraisAccessoires\Item.cshtml" />
+    <Content Include="Views\FraisAccessoires\List.cshtml" />
+    <Content Include="Views\FraisAccessoires\Recherche.cshtml" />
+    <Content Include="Views\FraisAccessoires\DrlSousBranches.cshtml" />
+    <Content Include="Views\FraisAccessoires\DrlCategories.cshtml" />
+    <Content Include="Views\FraisAccessoires\EditItem.cshtml" />
+    <Content Include="Views\StatClausesLibres\Index.cshtml" />
+    <Content Include="Views\StatClausesLibres\ListeResultatsRecherche.cshtml" />
+    <Content Include="Views\StatClausesLibres\LigneResultatsRecherche.cshtml" />
+    <Content Include="Views\CreationAvenant\AvenantResilMotif.cshtml" />
+    <Content Include="Views\EngagementPeriodes\EngagementsPeriodeBody.cshtml" />
+    <Content Include="Views\DocumentGestion\CodeLabelDestinataireRO.cshtml" />
+    <Content Include="Views\Quittance\FraisAccessoiresQuittance.cshtml" />
+    <Content Include="Views\CreationAttestation\Index.cshtml" />
+    <Content Include="Views\CreationAttestation\AttesPeriode.cshtml" />
+    <Content Include="Views\CreationAttestation\AttesRsqObj.cshtml" />
+    <Content Include="Views\CreationAttestation\AttesGarantie.cshtml" />
+    <Content Include="Views\CreationAttestation\AttesListGarantie.cshtml" />
+    <Content Include="Views\CreationRegularisation\CreationRegule.cshtml" />
+    <Content Include="Views\CreationRegularisation\CreationReguleCourtier.cshtml" />
+    <Content Include="Views\CreationRegularisation\Index.cshtml" />
+    <Content Include="Views\CreationRegularisation\ListeRegularisations.cshtml" />
+    <Content Include="Views\CreationRegularisation\ReguleChoixCourtier.cshtml" />
+    <Content Include="Views\CreationRegularisation\LignesRegularisation.cshtml" />
+    <Content Include="Views\CreationRegularisation\ListeGarantiesRegularisation.cshtml" />
+    <Content Include="Views\CreationRegularisation\ListeRisquesRegularisation.cshtml" />
+    <Content Include="Views\ChoixClauses\ListClauses.cshtml" />
+    <Content Include="Views\ParamCible\ListFamilles.cshtml" />
+    <Content Include="Views\Shared\RechercheActivite\RechercheActiv.cshtml" />
+    <Content Include="Views\Shared\RechercheActivite\ResultRechecheActivite.cshtml" />
+    <Content Include="Views\ParamCible\RechercheFamille.cshtml" />
+    <Content Include="Views\CreationRegularisation\CreationPeriodRegule.cshtml" />
+    <Content Include="Views\CreationRegularisation\ListMvtPeriod.cshtml" />
+    <Content Include="Views\CreationRegularisation\ListPeriodRegule.cshtml" />
+    <Content Include="Views\CreationRegularisation\SaisiePeriodRegul.cshtml" />
+    <Content Include="Views\CreationRegularisation\TauxRegulPeriod.cshtml" />
+    <Content Include="Views\CreationRegularisation\TauxInfoPeriod.cshtml" />
+    <Content Include="Views\CreationRegularisation\TauxRegulProv.cshtml" />
+    <Content Include="Views\CreationRegularisation\DataRegularisationPeriod.cshtml" />
+    <Content Include="Views\CreationRegularisation\DataRegularisationPBNSPeriod.cshtml" />
+    <Content Include="Views\CreationRegularisation\ConfirmationMontantRegule.cshtml" />
+    <Content Include="Views\CreationRegularisationGarantie\AppliqueFormule.cshtml" />
+    <Content Include="Views\CreationRegularisationGarantie\ListeMouvementPeriode.cshtml" />
+    <Content Include="Views\CreationRegularisationGarantie\ListePeriodeRegularise.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\AjoutFormuleGarantie.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\FormuleLignesBlocs.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\FormuleLignesModeles.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\ListInventaires.cshtml" />
+    <Content Include="Views\Shared\LayoutPage\LayoutHideInput.cshtml" />
+    <Content Include="Views\Shared\LayoutArbres\LayoutArbre.cshtml" />
+    <Content Include="Views\Shared\LayoutArbres\LayoutArbreBackOffice.cshtml" />
+    <Content Include="Views\Shared\LayoutArbres\LayoutArbreContrat.cshtml" />
+    <Content Include="Views\Shared\LayoutArbres\LayoutArbreRegule.cshtml" />
+    <Content Include="Views\Shared\LayoutHeader\LayoutEntete.cshtml" />
+    <Content Include="Views\Shared\LayoutHeader\LayoutMenu.cshtml" />
+    <Content Include="Views\Shared\LayoutPage\LayoutInfoTab.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\LayoutPage\LayoutJSEndPage.cshtml" />
+    <Content Include="Views\Shared\LayoutPage\LayoutScriptCSS.cshtml" />
+    <Content Include="Views\CreationRegularisation\TabRisquesRegularisation.cshtml" />
+    <Content Include="Views\CreationRegularisation\TabGarantiesRegularisation.cshtml" />
+    <Content Include="Views\Connexite\ListeConnexiteRegularisation.cshtml" />
+    <Content Include="Views\ParamInventaires\Index.cshtml" />
+    <Content Include="Views\ParamInventaires\ParamListInventaires.cshtml" />
+    <Content Include="Views\ParamInventaires\ParamDetailInventaire.cshtml" />
+    <Content Include="Views\Suspension\VisualisationSuspension.cshtml" />
+    <Content Include="Views\Suspension\ListVisuSuspension.cshtml" />
+    <Content Include="Views\Suspension\Index.cshtml" />
+    <Content Include="Views\InformationsDataBase\Index.cshtml" />
+    <Content Include="Views\InformationsDataBase\ListeColonnes.cshtml" />
+    <Content Include="Views\RechercheOffreRapide\Index.cshtml" />
+    <Content Include="Views\RechercheOffreRapide\ListeOffresRapides.cshtml" />
+    <Content Include="Views\CreationAvenant\AvenantRemiseEnVigueur.cshtml" />
+    <Content Include="Views\Suspension\VisuInfosContrat.cshtml" />
+    <Content Include="Views\CreationRegularisation\UpdateTypeRegul.cshtml" />
+    <Content Include="Views\ValidationOffre\VisuCotisations.cshtml" />
+    <Content Include="Views\Quittance\BodyQuittancesConsult.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRisques\DetailOpposition.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRisques\RechercheOppositions.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRisques\ResultRechercheOppositions.cshtml" />
+    <Content Include="Views\FormuleGarantie\Index.cshtml" />
+    <Content Include="Views\FormuleGarantie\ListeVolets.cshtml" />
+    <Content Include="Views\FormuleGarantie\ListeBlocs.cshtml" />
+    <Content Include="Views\FormuleGarantie\ListeGaranties.cshtml" />
+    <Content Include="Views\Connexite\DetailsConnexitesEngagement.cshtml" />
+    <Content Include="Views\Connexite\ListeEngagementPeriodesDetails.cshtml" />
+    <Content Include="Views\Connexite\ListePeriodeConnexiteEngagemenet.cshtml" />
+    <Content Include="Views\Shared\Entete\InfoBandeauBis.cshtml" />
+    <Content Include="Views\CopyParamClause\Index.cshtml" />
+    <Content Include="Views\ParamGaranties\DDLFamilles.cshtml" />
+    <Content Include="Views\LogPerf\LogPerf.cshtml" />
+    <Content Include="Views\LogPerf\ListeLogPerf.cshtml" />
+    <Content Include="Views\CreationRegularisation\Step1_ChoixPeriode.cshtml" />
+    <Content Include="Views\CreationRegularisation\Step2_ChoixRisque.cshtml" />
+    <Content Include="Views\CreationRegularisation\Step5_RegulContrat.cshtml" />
+    <Content Include="Views\CreationRegularisation\Step4_ChoixPeriodeGarantie.cshtml" />
+    <Content Include="Views\CreationRegularisation\Step3_ChoixGarantie.cshtml" />
+    <Content Include="Views\ParamGaranties\ListeTypeRegul.cshtml" />
+    <Content Include="Views\Regularisation\CalculPBContrat.cshtml" />
+    <Content Include="Views\Regularisation\CheckListRisques.cshtml" />
+    <Content Include="Views\Regularisation\CalculGarantiesRC.cshtml" />
+    <Content Include="Views\Regularisation\CalculPBRisque.cshtml" />
+    <Content Include="Views\Regularisation\CalculPBTRContrat.cshtml" />
+    <Content Include="Views\Regularisation\CalculBNSContrat.cshtml" />
+    <Content Include="Views\Regularisation\CalculBNSRisque.cshtml" />
+    <Content Include="Views\Regularisation\CalculPBTRRisque.cshtml" />
+    <Content Include="Views\Regularisation\CalculBurnerContrat.cshtml" />
+    <Content Include="Views\Regularisation\CalculBurnerRisque.cshtml" />
+    <Content Include="Views\Shared\ViewLTA.cshtml" />
+    <Content Include="Views\FormuleGarantie\TreeViewGaranties.cshtml" />
+    <Content Include="Views\FormuleGarantie\ListRsqObj.cshtml" />
+    <Content Include="Views\FormuleGarantie\InfosAvenant.cshtml" />
+    <Content Include="Views\FormuleGarantie\InfoApplications.cshtml" />
+    <Content Include="Views\Shared\MainLayout.cshtml" />
+    <Content Include="Views\Shared\_HiddenInputs.cshtml" />
+    <Content Include="Views\Shared\_Transverse.cshtml" />
+    <Content Include="Views\Shared\_InfoTab.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\OldImg\psd\bg.psd" />
+    <Content Include="Content\web.config" />
+    <Content Include="Views\AnCoAssureurs\EditionCoAssureur.cshtml" />
+    <Content Include="Views\AnCoAssureurs\Index.cshtml" />
+    <Content Include="Views\AnCoAssureurs\ListeCoAssureurs.cshtml" />
+    <Content Include="Views\AnCourtier\DivCourtier.cshtml" />
+    <Content Include="Views\AnCourtier\Index.cshtml" />
+    <Content Include="Views\AnCourtier\ListeCourtiers.cshtml" />
+    <Content Include="Views\AnCreationContrat\AdresseRisque.cshtml" />
+    <Content Include="Views\AnCreationContrat\Cible_InfoBase.cshtml" />
+    <Content Include="Views\AnCreationContrat\CourtierApporteur.cshtml" />
+    <Content Include="Views\AnCreationContrat\CourtierGestion.cshtml" />
+    <Content Include="Views\AnCreationContrat\CourtierPayeur.cshtml" />
+    <Content Include="Views\AnCreationContrat\Index.cshtml" />
+    <Content Include="Views\AnCreationContrat\InformationContrat.cshtml" />
+    <Content Include="Views\AnCreationContrat\InformationsBase.cshtml" />
+    <Content Include="Views\AnCreationContrat\PreneurAssurance.cshtml" />
+    <Content Include="Views\AnInformationsGenerales\Aperiteurs.cshtml" />
+    <Content Include="Views\AnInformationsGenerales\Gestionnaires.cshtml" />
+    <Content Include="Views\AnInformationsGenerales\Index.cshtml" />
+    <Content Include="Views\AnInformationsGenerales\Souscripteurs.cshtml" />
+    <Content Include="Views\AssocierVBM\Index.cshtml" />
+    <Content Include="Views\AssuresAdditionnels\AddAssureNonRef.cshtml" />
+    <Content Include="Views\AssuresAdditionnels\AddAssureRef.cshtml" />
+    <Content Include="Views\AssuresAdditionnels\AssuAdditionnels.cshtml" />
+    <Content Include="Views\AssuresAdditionnels\Index.cshtml" />
+    <Content Include="Views\AssuresAdditionnels\LstAssuresNonRef.cshtml" />
+    <Content Include="Views\AssuresAdditionnels\LstAssuresRef.cshtml" />
+    <Content Include="Views\AttentatGareat\AttentatBody.cshtml" />
+    <Content Include="Views\AttentatGareat\AttentatParametre.cshtml" />
+    <Content Include="Views\AttentatGareat\Index.cshtml" />
+    <Content Include="Views\BackOffice\Index.cshtml" />
+    <Content Include="Views\Blocs\Index.cshtml" />
+    <Content Include="Views\ChoixClauses\Index.cshtml" />
+    <Content Include="Views\Clausier\Index.cshtml" />
+    <Content Include="Views\ConditionsGarantie\ConditionsExpressionComplexe.cshtml" />
+    <Content Include="Views\ConditionsGarantie\ConditionsExpressionComplexeDetails.cshtml" />
+    <Content Include="Views\ConditionsGarantie\Index.cshtml" />
+    <Content Include="Views\ConditionsGarantie\LigneCondition.cshtml" />
+    <Content Include="Views\ConditionsGarantie\TableauConditions.cshtml" />
+    <Content Include="Views\ConfirmationSaisie\Offre.cshtml" />
+    <Content Include="Views\Cotisations\CotisationsBody.cshtml" />
+    <Content Include="Views\Cotisations\CotisationsCommission.cshtml" />
+    <Content Include="Views\Cotisations\CotisationsListGarantie.cshtml" />
+    <Content Include="Views\Cotisations\CotisationsTarif.cshtml" />
+    <Content Include="Views\Cotisations\CotisationsTotaux.cshtml" />
+    <Content Include="Views\Cotisations\Index.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\Index.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\ListeContrats.cshtml" />
+    <Content Include="Views\CreationAffaireNouvelle\NouveauContrat.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\DetailsGarantie.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\Index.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\ListeFormuleGarantie.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\ListRsqObj.cshtml" />
+    <Content Include="Views\CreationFormuleGarantie\TableFormuleGarantie.cshtml" />
+    <Content Include="Views\CreationSaisie\Cible_InformationSaisie.cshtml" />
+    <Content Include="Views\CreationSaisie\Index.cshtml" />
+    <Content Include="Views\DetailCalculSMP\Index.cshtml" />
+    <Content Include="Views\DetailCalculSMP\LigneGarantie.cshtml" />
+    <Content Include="Views\DetailsObjetRisque\Index.cshtml" />
+    <Content Include="Views\DetailsRisque\Index.cshtml" />
+    <Content Include="Views\DetailsRisque\ObjetsRisque.cshtml" />
+    <Content Include="Views\DoubleSaisie\Index.cshtml" />
+    <Content Include="Views\DoubleSaisie\ListHisto.cshtml" />
+    <Content Include="Views\Engagements\EngagementBody.cshtml" />
+    <Content Include="Views\Engagements\EngagementTraite.cshtml" />
+    <Content Include="Views\Engagements\Index.cshtml" />
+    <Content Include="Views\EngagementTraite\EngagementTraiteBody.cshtml" />
+    <Content Include="Views\EngagementTraite\Index.cshtml" />
+    <Content Include="Views\EngagementTraite\TraiteRisquesVolets.cshtml" />
+    <Content Include="Views\Errors\BrowserError.cshtml" />
+    <Content Include="Views\Errors\Index.cshtml" />
+    <Content Include="Views\ExclusionFormuleGarantie\Index.cshtml" />
+    <Content Include="Views\ExclusionFormuleGarantie\ListRsqObj.cshtml" />
+    <Content Include="Views\FinOffre\FinOffreAnnotation.cshtml" />
+    <Content Include="Views\FinOffre\FinOffreInfos.cshtml" />
+    <Content Include="Views\FinOffre\Index.cshtml" />
+    <Content Include="Views\FormVolAffNouv\Index.cshtml" />
+    <Content Include="Views\FormVolAffNouv\LstFormVolAffNouv.cshtml" />
+    <Content Include="Views\FormVolAffNouv\LstRsqFormAffNouv.cshtml" />
+    <Content Include="Views\GarantieModele\Index.cshtml" />
+    <Content Include="Views\GestionDocument\GestionDistribution.cshtml" />
+    <Content Include="Views\GestionDocument\GestionDistributionLigne.cshtml" />
+    <Content Include="Views\GestionDocument\GestionDocumentCreation.cshtml" />
+    <Content Include="Views\GestionDocument\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesBranche\Index.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesGarantie\Index.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesObjets\Index.cshtml" />
+    <Content Include="Views\InformationsSpecifiquesRisques\Index.cshtml" />
+    <Content Include="Views\MatriceFormule\Index.cshtml" />
+    <Content Include="Views\MatriceFormule\MatriceFormuleTableau.cshtml" />
+    <Content Include="Views\MatriceGarantie\Index.cshtml" />
+    <Content Include="Views\MatriceGarantie\MatriceGarantieTableau.cshtml" />
+    <Content Include="Views\MatriceRisque\Index.cshtml" />
+    <Content Include="Views\MatriceRisque\MatriceRisqueTableau.cshtml" />
+    <Content Include="Views\ModifierOffre\Index.cshtml" />
+    <Content Include="Views\OffresVerrouillees\Index.cshtml" />
+    <Content Include="Views\OffresVerrouillees\ListeOffresVerrouillees.cshtml" />
+    <Content Include="Views\OptTarAffNouv\Index.cshtml" />
+    <Content Include="Views\OptTarAffNouv\LstOptTarAffNouv.cshtml" />
+    <Content Include="Views\ParamCible\Index.cshtml" />
+    <Content Include="Views\ParamCible\ParamDetailCible.cshtml" />
+    <Content Include="Views\ParamCible\ParamListCibles.cshtml" />
+    <Content Include="Views\ParamClause\Index.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseActeGestion.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseAjoutActeGestion.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseAjoutContexte.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseAjoutEGDI.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseAjoutEtape.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseListActeGestion.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseListClauses.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseListContextes.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseListEGDI.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseListEtapes.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseRattachement.cshtml" />
+    <Content Include="Views\ParamClause\ParamClauseSaisieRattachement.cshtml" />
+    <Content Include="Views\ParamIS\Index.cshtml" />
+    <Content Include="Views\ParamIS\ParamListLignesInfo.cshtml" />
+    <Content Include="Views\ParamIS\ParamSqlRequest.cshtml" />
+    <Content Include="Views\RechercheSaisie\Index.cshtml" />
+    <Content Include="Views\RisqueInventaire\Index.cshtml" />
+    <Content Include="Views\RsqObjAffNouv\Index.cshtml" />
+    <Content Include="Views\RsqObjAffNouv\LstRsqObjAffNouv.cshtml" />
+    <Content Include="Views\Shared\DetailsRisque_ListeInventaires.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ClausierHistorique.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ClausierRecherche.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ConsultBloc.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ConsultGarantieModele.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ConsultVolet.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ContactAddresse.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ListeContexteClause.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ListeInventaires.cshtml" />
+    <Content Include="Views\Shared\Entete\AnEntete.cshtml" />
+    <Content Include="Views\Shared\Entete\Bandeau.cshtml" />
+    <Content Include="Views\Shared\Entete\OEntete.cshtml" />
+    <Content Include="Views\Shared\InventaireGrid.cshtml" />
+    <Content Include="Views\Shared\InventaireRow.cshtml" />
+    <Content Include="Views\Shared\LayoutContrat.cshtml" />
+    <Content Include="Views\Shared\LayoutHome.cshtml" />
+    <Content Include="Views\Shared\LayoutTransverse.cshtml" />
+    <Content Include="Views\Shared\LineUpload.cshtml" />
+    <Content Include="Views\Shared\ParametreVBM\ListBlocs.cshtml" />
+    <Content Include="Views\Shared\ParametreVBM\ListCategories.cshtml" />
+    <Content Include="Views\Shared\ParametreVBM\ListCibles.cshtml" />
+    <Content Include="Views\Shared\ParametreVBM\ListGarantieModeles.cshtml" />
+    <Content Include="Views\Shared\ParametreVBM\ListVolets.cshtml" />
+    <Content Include="Views\Shared\SouscripteurAutoComplete.cshtml" />
+    <Content Include="Views\Shared\TelechargerFichiers.cshtml" />
+    <Content Include="Views\ValidationOffre\Index.cshtml" />
+    <Content Include="Views\ValidationOffre\ValidationCritere.cshtml" />
+    <Content Include="Views\ValidationOffre\ValidationDetailNiveau.cshtml" />
+    <Content Include="Views\Volets\CiblesCarac.cshtml" />
+    <Content Include="Views\Volets\Index.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj">
+      <Project>{a98a2815-a24c-4e02-891e-8b802ee892ea}</Project>
+      <Name>ALBINGIA.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Albingia.Kheops.Common\Albingia.Kheops.Common.csproj">
+      <Project>{7919e1a0-1894-4262-be0c-71cc06369408}</Project>
+      <Name>Albingia.Kheops.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OP.Application\Albingia.Kheops.OP.Application.Contracts\Albingia.Kheops.OP.Application.Contracts.csproj">
+      <Project>{4e616268-d872-424b-9fc6-6f89a7310fa0}</Project>
+      <Name>Albingia.Kheops.OP.Application.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OP.Application\Albingia.Kheops.OP.Domain\Albingia.Kheops.OP.Domain.csproj">
+      <Project>{e00e8b1d-08a8-4a8d-b086-6517e83262b4}</Project>
+      <Name>Albingia.Kheops.OP.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceMetierOP\OP.DataAccess\OP.DataAccess.csproj">
+      <Project>{DBED05E2-773D-4B40-B704-3359823BFFB9}</Project>
+      <Name>OP.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceMetierOP\OP.Services\OP.Services.csproj">
+      <Project>{A0581548-B430-479F-A38A-397259278639}</Project>
+      <Name>OP.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceMetierOP\OP.WSAS400.DTO\OP.WSAS400.DTO.csproj">
+      <Project>{583328b5-c77a-40b6-a9cc-e74bdb583afb}</Project>
+      <Name>OP.WSAS400.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceMetierOP\OPServiceContract\OPServiceContract.csproj">
+      <Project>{51915333-f540-4663-aeb6-4c84cd955300}</Project>
+      <Name>OPServiceContract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="Views\CreationBNS\" />
+    <Folder Include="Views\Pandore\" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64491</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://opmvc.local</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="AfterBuild">
+    <PropertyGroup>
+      <TimeStamp>Built at $([System.DateTime]::Now.ToString("G"))</TimeStamp>
+    </PropertyGroup>
+    <Message Text="$(TimeStamp)" Importance="high" />
+  </Target>
+</Project>

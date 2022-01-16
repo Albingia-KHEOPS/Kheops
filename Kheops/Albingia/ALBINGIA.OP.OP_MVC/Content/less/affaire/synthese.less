@@ -1,0 +1,207 @@
+﻿body {
+    #full_synthese {
+        height: 500px;
+        display: flex;
+        width: 1200px;
+        cursor: default;
+    }
+
+    #partial_synthese {
+        height: 500px;
+        display: flex;
+        width: 1000px;
+        cursor: default;
+
+        #divBlocsSynthese {
+            flex: 1;
+        }
+    }
+
+    #divBlocsSynthese {
+        width: 1000px !important;
+       // flex: 11;
+        height: 100%;
+        border: 1px solid steelblue;
+        border-radius: 3px;
+        margin-left: 5px;
+        padding: 5px;
+        background-color: #F5F5F5;
+    }
+
+    #divMenuSynthese {
+        width: 100px !important;
+       // flex: 2;
+        border: 1px solid steelblue;
+        height: 100%;
+        border-radius: 3px;
+        margin-left: 5px;
+        padding: 5px;
+        background-color: #F5F5F5;
+
+        & > a {
+            height: 25px;
+            line-height: 25px;
+            margin: 0 0 3px 5px;
+        }
+    }
+
+    #blocs_synthese {
+        .bloc-line {
+            display: flex;
+            min-height: 200px;
+
+            &.top {
+                min-height: 285px;
+            }
+
+            .NW, .NE {
+                min-height: 285px;
+                border-bottom: 2px solid steelblue;
+                margin: 0;
+                padding: 3px;
+            }
+
+            .NW {
+                border-right: 2px solid steelblue;
+            }
+
+            .SW, .SE {
+                min-height: 190px;
+                margin: 0;
+                padding: 3px;
+            }
+
+            .SW {
+                border-right: 2px solid steelblue;
+            }
+
+            .SE {
+                position: relative;
+
+                .floating-alertes {
+                    position: absolute;
+                    bottom: 3px;
+                    left: 3px;
+                    height: 25px;
+                    line-height: 25px;
+                    width: 250px;
+                    color: red;
+                    cursor: auto;
+                }
+            }
+
+            .title-affaire {
+                padding: 0 1px;
+                height: 25px;
+                font-weight: bold;
+                margin: 0;
+                color: steelblue;
+                line-height: 25px;
+            }
+
+            .label-value {
+                padding: 0 1px;
+                height: 25px;
+                margin: 0;
+                display: flex;
+                line-height: 25px;
+
+                .title {
+                    flex: 11;
+                    color: black;
+                }
+
+                .text {
+                    flex: 50;
+                    color: steelblue;
+                }
+            }
+
+            .bloc-synthese {
+                width: 100%;
+                table-layout: fixed;
+                color: steelblue;
+                border-collapse: collapse;
+                border: none;
+                margin: 0;
+
+                tr {
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    height: auto;
+                }
+
+                td {
+                    padding: 1px;
+                    margin: 0;
+                    border: none;
+                    height: 25px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+
+                    &.label-width {
+                        width: 90px;
+                    }
+
+                    &.label-big-width {
+                        width: 123px;
+                    }
+
+                    &.icon-button {
+                        width: 32px;
+                    }
+
+                    &.date-effet {
+                        width: 92px;
+                    }
+
+                    &.short-width {
+                        width: 20px;
+                    }
+
+                    &.long-value {
+                        width: 110px;
+                    }
+
+                    .citrix {
+                        cursor: default;
+                        height: 100%;
+                        line-height: 25px;
+                    }
+                }
+
+                .label {
+                    color: black;
+                }
+
+                .left-indent td:first-child {
+                    padding-left: 30px;
+                }
+
+                .title-label-underline {
+                    color: black;
+                    font-weight: bold;
+                    text-decoration: underline;
+                }
+
+                .title-label {
+                    color: black;
+                    font-weight: bold;
+                }
+
+                .branche-cible {
+                    font-weight: bold;
+                    width: 200px;
+                }
+
+                .offre-origine {
+                    font-weight: bold;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

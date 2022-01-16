@@ -1,0 +1,81 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.DestinataireLigne
+<table>
+    <tr>
+        @if (Model.CodeTypeDestinataire == "AS" || Model.CodeTypeDestinataire == "ASS")
+        {    
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire" albcontext="@Model.GuidId" albAutoComplete="autoCompCodeAssure" maxlength="7" />
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire" albcontext="@Model.GuidId" title="@Model.NomDestinataire" albAutoComplete="autoCompNomAssure"/>
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <img src="@Url.Content("/Content/Images/loupe.png")" id="@("btnRechercheDestinataire_" + Model.GuidId)" name="selectDestinataire" class="CursorPointer"/>
+                </div>
+            </td>
+        }
+        else if (Model.CodeTypeDestinataire == "COURT" || Model.CodeTypeDestinataire == "CT")
+        {
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire" albcontext="@Model.GuidId" albAutoComplete="autoCompCodeCourtier" maxlength="5"/>
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire" albcontext="@Model.GuidId" title="@Model.NomDestinataire" albAutoComplete="autoCompNomCourtier"/>
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <img src="@Url.Content("/Content/Images/loupe.png")" id="@("btnRechercheDestinataire_" + Model.GuidId)" name="selectDestinataire" class="CursorPointer"/>
+                </div>
+            </td>
+        }
+        else if (Model.CodeTypeDestinataire == "CI")
+        {
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" value="" albautocomplete="autoCompAperiteurSelect" albcontext="@Model.GuidId"/>
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire" albcontext="@Model.GuidId" albAutoComplete="autoCompAperiteurCodeNum"/>
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire" albcontext="@Model.GuidId" title="@Model.NomDestinataire" albAutoComplete="autoCompAperiteurNom"/>
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <img src="@Url.Content("/Content/Images/loupe.png")" id="@("btnRechercheDestinataire_" + Model.GuidId)" name="selectDestinataire" class="CursorPointer"/>
+                </div>
+            </td>
+        }
+        else if (Model.CodeTypeDestinataire == "IN")
+        {
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId" albAutoComplete="autoCompIntervenantType"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire" albcontext="@Model.GuidId" albAutoComplete="autoCompIntervenantCode"/>
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire" albcontext="@Model.GuidId" title="@Model.NomDestinataire" albAutoComplete="autoCompIntervenant"/>
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <img src="@Url.Content("/Content/Images/loupe.png")" id="@("btnRechercheDestinataire_" + Model.GuidId)" name="selectDestinataire" class="CursorPointer"/>
+                </div>
+            </td>
+        }
+        else
+        {
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire" albcontext="@Model.GuidId" disabled />
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire" albcontext="@Model.GuidId" title="@Model.NomDestinataire" disabled="disabled"/>
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <img src="@Url.Content("/Content/Images/loupe.png")" id="@("btnRechercheDestinataire_" + Model.GuidId)" name="selectDestinataire" class="CursorPointer"/>
+                </div>
+            </td>
+        }
+    </tr>
+</table>

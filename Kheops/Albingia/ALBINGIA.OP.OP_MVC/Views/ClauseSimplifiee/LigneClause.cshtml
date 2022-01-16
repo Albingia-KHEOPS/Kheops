@@ -1,0 +1,89 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause
+<tr class="trFichier" id="@(Model.Id)">
+    <td style="width: 30px" class="TablePersoTdHead">
+        @if (!Model.IsReadOnlyMode && Model.Origine != "Systeme")
+        {
+            <img id="Supp@(Model.Id)" name="suppression" alt="" src="@(Url.Content("/Content/Images/invalide.png"))" />
+        }
+        else
+        {
+            <span>&nbsp;</span>
+        }
+    </td>
+    <td class="TablePersoTd1 TablePersoTdHead navig" name="linkDetail" AlbLinkId="code_@(Model.Rubrique + "_" + Model.SousRubrique + "_" + Model.Sequence)">
+        Détail
+        @*SLA 05/03/2013 : pour réactiver décommenter le name du td et le texte ci-dessus*@
+        @Html.HiddenNoName($"EtatTitre_{Model.Id}", Model.EtatTitre)
+        @Html.HiddenNoName($"IsCheckOrigine_{Model.Id}", Model.IsCheckHistorique)
+    </td>
+    <td class="TablePersoTdHead TdROF" title="@(Model.CodeRisque != "0" ? !string.IsNullOrEmpty(Model.DescRisque) ? Model.CodeRisque + "-" + Model.DescRisque : Model.CodeRisque : "")">
+        @*@if (Model.CodeRisque != "0")
+                {
+                    @(Model.CodeRisque + "-" + Model.DescRisque)
+                }*@
+        @if (Model.CodeRisque != "0")
+        {
+            @Model.CodeRisque
+        }
+    </td>
+    <td class="TablePersoTdHead TdROF" title="@(Model.CodeObjet != "0" ? !string.IsNullOrEmpty(Model.DescObjet) ? Model.CodeObjet + "-" + Model.DescObjet : Model.CodeObjet : "")">
+        @* @if (Model.CodeObjet != "0")
+                {
+                    @(Model.CodeObjet + "-" + Model.DescObjet)
+                }*@
+        @if (Model.CodeObjet != "0")
+        {
+            @Model.CodeObjet
+        }
+    </td>
+    <td class="TablePersoTdHead TdROF" title="@(Model.CodeFormule != "0" ? !string.IsNullOrEmpty(Model.LettreFormule) ? Model.CodeFormule + "-" + Model.LettreFormule : Model.CodeFormule : "")">
+        @*  @if (Model.CodeFormule != "0")
+                {
+                    @(Model.CodeFormule + "-" + Model.DescFormule)
+                }*@
+        @if (!string.IsNullOrEmpty(Model.LettreFormule))
+        {
+            @Model.LettreFormule
+        }
+    </td>
+    <td class="TablePersoTd2 TablePersoTdBody">
+        <div class="FloatLeft">
+            <input type="checkbox" id="IsCheck_@(Model.Id)" name="IsCheck" checked="@(Model.IsCheck )" disabled="@(Model.EtatTitre == "O" )" />
+        </div>
+        <div class="FloatLeft navig" name="linkVisu" AlbLinkId="visu_@(Model.Id)" AlbIsLibre="@(Model.IsClauseLibre.ToString())">
+            @*      @if (!string.IsNullOrEmpty(Model.Code))
+                    {
+                        @(Model.Code + " - " + Model.Titre)
+                    }
+                    else
+                    {
+                        @Model.Titre
+                    }*@
+            @if (!string.IsNullOrEmpty(Model.Rubrique) && !string.IsNullOrEmpty(Model.SousRubrique) && !string.IsNullOrEmpty(Model.Sequence))
+            {
+                @(Model.Rubrique + " - " + Model.SousRubrique + " - " + Model.Sequence + " - " + Model.Titre)
+            }
+            else
+            {
+                @Model.Titre
+            }
+        </div>
+    </td>
+    <td class="TablePersoTd4 TablePersoTdBody">
+        <label title="@Model.ContexteLabel">@Model.Contexte</label>
+    </td>
+    <td class="TablePersoTd5 TablePersoTdBody"></td>
+    <td class="TablePersoTd5 TablePersoTdBody">
+        @if (Model.Origine != "Systeme")
+        {
+            @Model.Origine
+        }
+        else
+        {
+            <span>&nbsp;</span>
+        }
+    </td>
+    <td class="TablePersoTd6 TablePersoTdBody">
+        <label>@Model.Edition</label>
+    </td>
+</tr>

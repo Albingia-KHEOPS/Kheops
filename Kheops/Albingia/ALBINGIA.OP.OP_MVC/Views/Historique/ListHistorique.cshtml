@@ -1,0 +1,56 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleHistoriquePage
+<div id="dvHeaderListHisto" class="PaddingLeft">
+    <table id="tblHeaderListHisto" style="width: 1174px;">
+        <tr>
+            <th class="tablePersoHead" style="width: 25px;">Int</th>
+            <th class="tablePersoHead" style="width: 25px;">Ext</th>
+            <th class="tablePersoHead" style="width: 339px;">Désignation</th>
+            <th class="tablePersoHead" style="width: 80px;">Effet le</th>
+            <th class="tablePersoHead" style="width: 80px;">Etabli le</th>
+            <th class="tablePersoHead" style="width: 200px;">Motif</th>
+            <th class="tablePersoHead" style="width: 25px;">E</th>
+            <th class="tablePersoHead" style="width: 25px;">S</th>
+            <th class="tablePersoHead" style="width: 25px;">Q</th>
+            <th class="tablePersoHead" style="width: 120px;">Accord client</th>
+            <th class="tablePersoHead" style="width: 80px;">TTR</th>
+            <th class="tablePersoHead" style="width: 80px;">&nbsp;</th>
+        </tr>
+    </table>
+</div>
+<div id="dvBodyListHisto" class="PaddingLeft" style="height: 400px;overflow:scroll;">
+    <table id="tblBodyListHisto" style="width: 1174px; table-layout: fixed;" class="trHeight">
+        @foreach (var item in Model.ListHistorique)
+        {
+            <tr albnumint="@item.NumInterne">
+                <td style="width: 27px; text-align: center;" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@item.NumInterne</td>
+                <td style="width: 27px; text-align: center;" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@item.NumExterne</td>
+                <td style="width: 336px; padding-left: 5px; white-space: nowrap; text-overflow: ellipsis;overflow: hidden;" title="@(string.Concat(item.Reference.Trim(), "\n", item.Designation.Trim()))" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@item.Reference.Trim()</td>
+                <td style="width: 81px; text-align: center;" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@(item.DateEffet)</td>
+                <td style="width: 82px; text-align: center;" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@(item.DateCreation)</td>
+                <td style="width: 197px; padding-left: 5px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@(string.Concat(item.Motif.Trim(), !string.IsNullOrEmpty(item.LibMotif) ? string.Concat(" - ", item.LibMotif.Trim()) : string.Empty))</td>
+                <td style="width: 27px; text-align: center;" title="@(string.Concat(item.Etat.Trim(), " - ", item.LibEtat.Trim()))" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@item.Etat.Trim()</td>
+                <td style="width: 27px; text-align: center;" title="@(string.Concat(item.Situation.Trim(), " - ", item.LibSituation.Trim()))" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@item.Situation.Trim()</td>
+                <td style="width: 27px; text-align: center;" title="@(string.Concat(item.Qualite.Trim(), " - ", item.LibQualite.Trim()))" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@item.Qualite.Trim()</td>
+                <td style="width: 118px; padding-left: 5px; white-space: nowrap; text-overflow: ellipsis;overflow: hidden;" title="@(string.Concat(item.TypeRetour.Trim(), " - ", item.LibRetour.Trim()))" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@item.TypeRetour@(!string.IsNullOrEmpty(item.DateRetour) ? string.Concat(" - ", item.DateRetour) : string.Empty)</td>
+                <td style="width: 77px; padding-left: 5px;" title="@(string.Concat(item.Traitement.Trim(), " - ", item.LibTraitement.Trim()))" class="CursorPointer" name="clickableColHisto" albnumint="@(item.NumInterne)">@item.Traitement</td>
+                <td style="width: 82px;">
+                    <div class="FloatLeft" style="padding-left: 4px; width: 16px;" title="Consulter">
+                        <img class="CursorPointer" name="imgConsult" albtypetraitement="@(item.Traitement)" albreguleId="@(item.ReguleId)" albnumext="@(item.NumExterne)" albnumint="@(item.NumInterne)" src="@(Url.Content("/Content/Images/ContextMenu/m_consulter.png"))" />
+                    </div>
+                    <div class="FloatLeft" style="padding-left: 4px; width: 16px;" title="Visualiser les cotisations">
+                        <img class="CursorPointer" name="imgPrimes" albtypetraitement="@(item.Traitement)" albnumext="@(item.NumExterne)" albnumint="@(item.NumInterne)" src="@(Url.Content("/Content/Images/Quittance/frais.png"))" />
+                    </div>
+                    <div class="FloatLeft" style="padding-left: 4px; width: 16px;" title="Retour des pièces signées">
+                        @if (item.Etat == "V")
+                        {
+                            <img class="CursorPointer" name="imgRetour" albtypetraitement="@(item.Traitement)" albnumext="@(item.NumExterne)" albnumint="@(item.NumInterne)" src="@(Url.Content("/Content/Images/ContextMenu/m_retour.gif"))" />
+                        }
+                    </div>
+                    <div class="FloatLeft" style="padding-left: 4px; width: 16px;" title="Suivi documents">
+                        <img class="CursorPointer" name="imgDocument" albtypetraitement="@(item.Traitement)" albnumext="@(item.NumExterne)" albnumint="@(item.NumInterne)" src="@(Url.Content("/Content/Images/ContextMenu/m_documents.gif"))" />
+                    </div>
+                </td>
+            </tr>            
+        }
+    </table>
+</div>

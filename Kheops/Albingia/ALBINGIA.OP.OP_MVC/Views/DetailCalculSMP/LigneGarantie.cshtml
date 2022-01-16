@@ -1,0 +1,46 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleEngagements.ModeleLignesDetailCalculSMP
+<div id="divTblDetail" style="height: 359px; overflow: auto; margin-left: 5px; margin-right: 10px;">
+    @if (Model.ListeGarantie != null)
+    {
+        <table id="tblDetail" border="0">
+            @foreach (var ligne in Model.ListeGarantie)
+            {
+                <tr id="tr¤@(ligne.IdGarantie)" >
+                    <td class="tdImg">
+                        <input id="Check¤@(ligne.IdGarantie)" type="checkbox" checked="@(ligne.CheckBox == "O" )" />
+                        @Html.Hidden("flag", "false", new { id = $"flag¤{ligne.IdGarantie}" })
+                    </td>
+                    <td class="tdGarantie" style="padding-left: 5px">
+                        @(ligne.NomGarantie)
+                    </td>
+                    <td id="LCI¤@(ligne.IdGarantie)" class="tdLCISMP" style="text-align: center">
+                        <span albmask="numeric">@(ligne.LCI)</span>
+                    </td>
+                    <td id="SMPcalcule¤@(ligne.IdGarantie)" class="tdLCISMP @(ligne.CheckBox == "O" && ligne.Type == "" && ligne.Valeur == "" ? "greenValue" : "")" style="text-align: center">
+                        <span albmask="numeric">@(ligne.SMPcalcule)</span>
+                    </td>
+                    <td class="tdSMPForce" style="text-align: center">
+                        @Html.AlbDropDownListFor(m => ligne.Type, Model.Types.Select(u => { u.Selected = (u.Text == ligne.Type ? true : false); return u; }).ToList(), "Types", htmlAttributes: new { @id = "Type¤" + ligne.IdGarantie }, generateTitle: true)
+                    </td>
+                    <td class="tdSMPForce" style="text-align: center">
+                        <input type="text" name="Valeur¤@(ligne.IdGarantie)" id="Valeur¤@(ligne.IdGarantie)" class="numerique @(ligne.CheckBox == "O" && ligne.Type != "" && ligne.Type != "%" && ligne.Valeur != "" ? "greenValue" : "")" value="@(ligne.Valeur)" albMask="numeric" />
+                    </td>
+                    <td id="SMPretenu¤@(ligne.IdGarantie)" class="tdLCISMP @(ligne.CheckBox == "O" && ligne.Type == "%" && ligne.Valeur != "" ? "greenValue" : "")" style="text-align: right; padding-right: 5px;">
+                        <span albmask="numeric">@(ligne.SMPretenu)</span>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+<br />
+<div class="HeightRow">
+    <div class="GenericColumn FloatRight">
+        <div class="FloatLeft">
+            <label class="Block">SMP total (€)</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="SMPtotal" value="@(Model.SMPtotal)" readonly="readonly" class="readonly" albMask="numeric" />
+        </div>
+    </div>
+</div>

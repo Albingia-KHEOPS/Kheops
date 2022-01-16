@@ -1,0 +1,6 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaModels.SelectListItemMetaModel
+
+@if(@Model.Items!=null)
+{
+    @Html.DropDownListFor( m=>m.Item, Model.Items)
+}

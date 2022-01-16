@@ -1,0 +1,79 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.CourtierGestionnairePayeur
+<div class="CommonForm FloatLeft">
+    <div class="nGroupFull nGroupWithBorder divFCourtiers">
+        <!---Gestionnaire--->
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                @Html.HiddenNoName("inInvalidCourtierGest", string.Empty)
+                <label class="labelAnCourtier">Courtier gestionnaire</label>
+            </div>
+            <div id="CourtierInvalideGestionnaireDiv" class="FloatLeft error PaddingLeft"></div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelCourtierCodeDivF">Code*</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="DivFCodeGest" name="DivFCodeGest" value="@Model.CourtierGestionnaire.CodeCourtier" tabindex="18" class="inputAnCodeCourtier" albAutoComplete="autoCompCodeCourtierGestion" />
+            </div>
+            <div class="FloatLeft">
+                <label class="labelNomCourtier">Nom</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="DivFNomGest" name="DivFNomGest" tabindex="19" class="inputNomCourtier" value="@Model.CourtierGestionnaire.NomCourtier" albAutoComplete="autoCompNomCourtierGestion" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Interlocuteur</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.Hidden("CodeInterlocuteurGestionnaire", Model.CourtierGestionnaire.CodeInterlocuteur, new { id = "DivFCodeInterlocuteur", albAutoComplete = "autoCompCodeInterlocuteurGestion" })
+                <input type="text" id="DivFNomInterlocuteur" name="DivFNomInterlocuteur" tabindex="20" value="@(Model.CourtierGestionnaire.NomInterlocuteur)" class="inputInterlocuteur" albAutoComplete="autoCompNomInterlocuteurGestion" />
+            </div>
+            <div class="FloatLeft">
+                <label class="labelReference">Référence</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="DivFReference" name="DivFReference" tabindex="21" value="@Model.CourtierGestionnaire.Reference" />
+            </div>
+        </div>
+        <!-----Payeur------>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                @Html.HiddenNoName("inInvalidCourtierPay", string.Empty)
+                <label class="labelAnCourtier">Courtier payeur</label>
+            </div>
+            <div id="CourtierInvalidePayeurDiv" class="FloatLeft error PaddingLeft"></div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelCourtierCodeDivF">Code*</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="DivFCodePay" name="DivFCodePay" tabindex="22" value="@Model.CourtierPayeur.CodeCourtier"  class="inputAnCodeCourtier" albAutoComplete="autoCompCodeCourtierPayeur" />
+            </div>
+            <div class="FloatLeft">
+                <label class="labelNomCourtier">Nom</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="DivFNomPay" name="DivFNomPay" tabindex="23" class="inputNomCourtier" value="@Model.CourtierPayeur.NomCourtier" albAutoComplete="autoCompNomCourtierPayeur" />
+            </div>
+        </div>
+        <div class="HeightRow" style="display: none">
+            <div class="ColumnIterLocCourt FloatLeft">
+                <div class="FloatLeft">
+                    <label class="Block">Interlocuteur</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.Hidden("DivCodeInterlocuteurPayeur", Model.CourtierPayeur.CodeInterlocuteur, new { albAutoComplete = "autoCompCodeInterlocuteurPayeur" })
+                    <input type="text" id="DivNomInterlocuteurPayeur" name="DivNomInterlocuteurPayeur" tabindex="24" value="@(Model.CourtierPayeur.NomInterlocuteur)" class="MediumInput"  albAutoComplete="autoCompNomInterlocuteurPayeur" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow ButtonDivFGestPayRight">
+            <button id="btnAnnulerDivF" type="button" albshortcut="true" data-accesskey="v"><u>A</u>nnuler</button>
+            <button id="btnValider" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>

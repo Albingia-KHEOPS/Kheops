@@ -1,0 +1,193 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamNomenclature.ModeleDetailsNomenclature
+@Html.HiddenNoName("DetailGuidId", Model.GuidId)
+@Html.HiddenNoName("EmptyLineId", (ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST))
+<div id="divSectionInfoBaseCible" class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Branche</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="BrancheDetail" value="@Model.Branche" class="readonly" readonly="readonly" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Cible</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="CibleDetail" value="@Model.Cible" class="readonly" readonly="readonly" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Libellé</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleDetail" class="DoubleInput readonly" readonly="readonly" value="@Model.Libelle" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divSectionListeBSC" class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            @*Espace vide *@
+        </div>
+        <div id="divLstDetails">
+            <div id="divLstDetailsHeader">
+                <table id="tblHeaderDetails">
+                    <tr>
+                        <th class="col_TableauDetails tablePersoHead">
+                            <div class="FloatLeft col_TableauDetails">
+                                <div class="FloatLeft">
+                                    <label class="Block">Concept :</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @if (string.IsNullOrEmpty(Model.Concept01))
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Concept01, Model.ListeConcepts01, "dvConcepts01", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlConcepts_01", @class = "drlEnteteWidth" }, replaceHtmlName: "dvConcepts")
+                                    }
+                                    else
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Concept01, Model.ListeConcepts01, "dvConcepts01", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlConcepts_01", @class = "drlEnteteWidth readonly", @disabled = "disabled" }, replaceHtmlName: "dvConcepts")
+                                    }
+                                </div>
+                                <div class="FloatLeft">
+                                    <label class="Block">Famille :</label>
+                                </div>
+                                <div class="FloatLeft" id="divDrlFamille_01">
+                                    @if (string.IsNullOrEmpty(Model.Famille01))
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Famille01, Model.ListeFamilles01, "dvFamilles01", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_01", @class = "drlEnteteWidth" }, replaceHtmlName: "dvFamilles")
+                                    }
+                                    else
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Famille01, Model.ListeFamilles01, "dvFamilles01", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_01", @class = "drlEnteteWidth readonly", @disabled = "disabled" }, replaceHtmlName: "dvFamilles")                                    
+                                    }
+                                </div>
+                            </div>
+                        </th>
+                        <th class="col_TableauDetails tablePersoHead">
+                            <div class="FloatLeft col_TableauDetails">
+                                <div class="FloatLeft">
+                                    <label class="Block">Concept :</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @if (string.IsNullOrEmpty(Model.Concept02))
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Concept02, Model.ListeConcepts02, "dvConcepts02", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlConcepts_02", @class = "drlEnteteWidth" }, replaceHtmlName: "dvConcepts")
+                                    }
+                                    else
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Concept02, Model.ListeConcepts02, "dvConcepts02", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlConcepts_02", @class = "drlEnteteWidth readonly", @disabled = "disabled" }, replaceHtmlName: "dvConcepts")
+                                    }
+                                </div>
+                                <div class="FloatLeft">
+                                    <label class="Block">Famille :</label>
+                                </div>
+                                <div class="FloatLeft" id="divDrlFamille_02">
+                                    @if (string.IsNullOrEmpty(Model.Famille02))
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Famille02, Model.ListeFamilles02, "dvFamilles02", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_02", @class = "drlEnteteWidth" }, replaceHtmlName: "dvFamilles")
+                                    }
+                                    else
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Famille02, Model.ListeFamilles02, "dvFamilles02", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_02", @class = "drlEnteteWidth readonly", @disabled = "disabled" }, replaceHtmlName: "dvFamilles")                                    
+                                    }
+                                </div>
+                            </div>
+                        </th>
+                        <th class="col_TableauDetails tablePersoHead">
+                            <div class="FloatLeft col_TableauDetails">
+                                <div class="FloatLeft">
+                                    <label class="Block">Concept :</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @if (string.IsNullOrEmpty(Model.Concept03))
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Concept03, Model.ListeConcepts03, "dvConcepts03", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlConcepts_03", @class = "drlEnteteWidth" }, replaceHtmlName: "dvConcepts")
+                                    }
+                                    else
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Concept03, Model.ListeConcepts03, "dvConcepts03", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlConcepts_03", @class = "drlEnteteWidth readonly", @disabled = "disabled" }, replaceHtmlName: "dvConcepts")                                     
+                                    }
+                                </div>
+                                <div class="FloatLeft">
+                                    <label class="Block">Famille :</label>
+                                </div>
+                                <div class="FloatLeft" id="divDrlFamille_03">
+                                    @if (string.IsNullOrEmpty(Model.Famille03))
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Famille03, Model.ListeFamilles03, "dvFamilles03", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_03", @class = "drlEnteteWidth" }, replaceHtmlName: "dvFamilles")
+                                    }
+                                    else
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Famille03, Model.ListeFamilles03, "dvFamilles03", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_03", @class = "drlEnteteWidth readonly", @disabled = "disabled" }, replaceHtmlName: "dvFamilles")                                     
+                                    }
+                                </div>
+                            </div>
+                        </th>
+                        <th class="col_TableauDetails tablePersoHead">
+                            <div class="FloatLeft col_TableauDetails">
+                                <div class="FloatLeft">
+                                    <label class="Block">Concept :</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @if (string.IsNullOrEmpty(Model.Concept04))
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Concept04, Model.ListeConcepts04, "dvConcepts04", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlConcepts_04", @class = "drlEnteteWidth" }, replaceHtmlName: "dvConcepts")
+                                    }
+                                    else
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Concept04, Model.ListeConcepts04, "dvConcepts04", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlConcepts_04", @class = "drlEnteteWidth readonly", @disabled = "disabled" }, replaceHtmlName: "dvConcepts")                                    
+                                    }
+                                </div>
+                                <div class="FloatLeft">
+                                    <label class="Block">Famille :</label>
+                                </div>
+                                <div class="FloatLeft" id="divDrlFamille_04">
+                                    @if (string.IsNullOrEmpty(Model.Famille04))
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Famille04, Model.ListeFamilles04, "dvFamilles04", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_04", @class = "drlEnteteWidth" }, replaceHtmlName: "dvFamilles")
+                                    }
+                                    else
+                                    {
+                                        @Html.AlbDropDownListFor(m => Model.Famille04, Model.ListeFamilles04, "dvFamilles04", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlFamilles_04", @class = "drlEnteteWidth readonly", @disabled = "disabled" }, replaceHtmlName: "dvFamilles")                                    
+                                    }
+                                </div>
+                            </div>
+                        </th>
+                        <th class="col_Action tablePersoHead">
+                            <img id="btnAjouterLigne" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Add" title="Ajout d'une branche" />
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divLstDetailsBody">
+                <div class="floatLeft" id="divDetailsBodyEmptyLine">
+                    <table id="tblDetailsBodyEmptyLine">
+                        @{                           
+                            var albIndexLst = ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST;
+                            <tr id="ligneDetails_@(albIndexLst)">
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <div class="floatLeft" id="divDetailsBodyLines">
+                    @if ((Model.ListeLignesDetails != null) && (Model.ListeLignesDetails.Count > 0))
+                    {                    
+                        @Html.Partial("ListeLignesDetails", Model.ListeLignesDetails)                           
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

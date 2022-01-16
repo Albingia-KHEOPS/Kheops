@@ -1,0 +1,120 @@
+﻿#divAjouterInventaire {
+    clear: both;
+    padding-bottom: 10px;
+}
+
+.tablePersoHead {
+    border: 0 solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.divHeight {
+    overflow-y: auto;
+    height: 453px;
+}
+
+.GroupHeightInventaires {
+    max-height: 360px;
+}
+
+.GroupHeightInventairesFixe {
+    height: 600px;
+}
+
+.GroupHeightInventairesInterieur {
+    max-height: 560px;
+}
+
+#divLstInventaires {
+    display: table;
+}
+
+#divInfoInventaire {
+    display: none;
+}
+
+.divRecherche {
+    padding-top: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20px;
+    float: left;
+}
+
+.WidthButton {
+    width: 655px;
+}
+
+.FieldInventairesCode input {
+    width: 100px;
+}
+
+.FieldInventairesDescr input {
+    width: 240px;
+}
+
+.col_CodeInventaire {
+    width: 60px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_LibelleInventaire {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 110px;
+}
+
+.col_SupprimerInventaire {
+    width: 25px;
+    text-align: center;
+}
+
+.col4Head {
+    width: 25px;
+}
+
+.WidthDivInventaire {
+    width: 520px;
+}
+
+.WidthConsultInventaire {
+    width: 653px;
+}
+
+.selectLine {
+    background-color: #FFDFDF !important;
+}
+
+.labelParamInventaireRecherche {
+    padding-top: 2px;
+    padding-left: 5px;
+    font-size: 12px;
+    width: 78px;
+}
+
+.Gras {
+    font-weight: bold;
+}
+
+.tableInventaireHeader {
+    table-layout: fixed;
+    width: 488px;
+}
+
+.dvBodyInventaire {
+    width: 506px;
+}
+
+.dropDownWidth {
+    width: 120px;
+}
+
+.InputLong
+{
+    width: 377px !important;
+}

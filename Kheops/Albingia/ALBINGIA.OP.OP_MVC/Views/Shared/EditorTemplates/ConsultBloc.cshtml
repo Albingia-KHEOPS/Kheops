@@ -1,0 +1,60 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesBlocs.ModeleBloc
+@using (Html.BeginForm("Enregistrer", "Blocs", FormMethod.Post, new { @id = "frmMain" }))
+{ 
+    @Html.HiddenNoName("GuidId", Model.GuidId) 
+    <div class="GroupTitle">
+        Consultation / Modification Blocs
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Code Bloc</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly || !string.IsNullOrEmpty(Model.GuidId))
+                        {                         
+                            <input id="Code" class="readonly DoubleInput" readonly="readonly" value="@Model.Code" />
+                        }
+                        else
+                        {                         
+                             <input id="Code" class="DoubleInput" value="@Model.Code"/>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Description</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                             <input id="Description" class="readonly DoubleInput" readonly="readonly" value="@Model.Description" />
+                        }
+                        else
+                        {
+                            <input id="Description" class="DoubleInput" value="@Model.Description"/>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Créé le</label>
+                    </div>
+                    <div>@Html.DisplayFor(m => m.DateCreation)</div>
+                </div>
+                @if (!Model.ReadOnly)
+                {
+                    <div class="" style="text-align: right; padding-right: 5px;">
+                        <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

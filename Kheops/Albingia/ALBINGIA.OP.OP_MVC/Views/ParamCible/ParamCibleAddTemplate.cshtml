@@ -1,0 +1,26 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamCible.EditTemplate
+<div class="CommonForm FloatLeft" style="width: 790px;">
+    <div class="nGroupFull nGroupWithBorder" style="width: 775px;">
+        @Html.Hidden("CibleTemplate", (Model.Cible))
+        <div class="GroupTitle">Sélection des templates - Cible @(Model.Cible)</div>
+        <div class="nHorizontalFullWithGroup" style="width: 774px">
+            <div id="divLstTemplate" class="nGradientSection" style="height: 300px;">
+                @Html.Partial("ParamCibleListTemplate", Model.Templates)
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 775px">
+        <div class="ActionButtons ActionButtonRight">
+            @if (!Model.isReadOnly)
+            { 
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnFancyValider" type="button" albshortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>             
+              
+            }
+            else
+            { 
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>            
+            }
+        </div>
+    </div>
+</div>

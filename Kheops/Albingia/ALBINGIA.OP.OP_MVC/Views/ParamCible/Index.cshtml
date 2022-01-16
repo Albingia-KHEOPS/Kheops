@@ -1,0 +1,116 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamCiblePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamCibles.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamCibles.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            @Html.HiddenNoName("idCibleSuppr", string.Empty)
+            @Html.HiddenNoName("BrancheSuppr", string.Empty)
+            @Html.HiddenNoName("TempSuppr", string.Empty)
+            @Html.HiddenNoName("splitCharHtml", (ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML))
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder WidthDivCible GroupHeightCiblesFixe" style="margin-right: 12px;">
+                    <div class="GroupTitle">
+                        Recherche de cibles
+                    </div>
+                    <div class="HorizontalHalfWithGroupAdmin GroupHeightCiblesInterieur">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div>
+                                    <div class="FloatLeft labelParamCibleRecherche">
+                                        <label>Code</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="RechercheCode" value="@Model.Code" />
+                                    </div>
+                                </div>
+                                <div style="clear: both;">
+                                    <div class="FloatLeft labelParamCibleRecherche">
+                                        <label>Description</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="RechercheDescription" value="@Model.Description" />
+                                    </div>
+                                    @*</div>*@
+                                    <div class="FloatLeft">
+                                        <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" /></button>
+                                        @*                                    <img class="CursorPointer" src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" onclick="javascript:rechercherCibles(1);" />*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear: both;">
+                                &nbsp;
+                            </div>
+                            <div id="divLstCibles">
+                                <div>
+                                    <table id="tblCibleHeader" class="tableCibleHeader">
+                                        <tr>
+                                            <th class="col_CodeCible tablePersoHead">Code Cible
+                                            </th>
+                                            <th class="col_LibelleCible tablePersoHead">Libellé
+                                            </th>
+                                            <th class="col_GrilleCible tablePersoHead">Grille</th>
+                                            <th class="col4Head tablePersoHead">
+                                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouter" />
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBodyCibles" class="divHeight">
+                                    @if (Model.ListeCibles != null)
+                                    {
+                                        @Html.Partial("ParamListCibles", Model.ListeCibles)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="VoletDetail" class="GroupFull GroupWithBorder WidthConsultCible GroupHeightCiblesFixe FloatLeft" style="display: none">
+                    <div id="cibleDetails">
+                    </div>
+                </div>
+                <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+<div style="display: none; float: left;">
+    <div id="FancyAlert">
+        <div id="divMsg">
+            Code déjà existant
+        </div>
+        <div id="divBtn">
+            <input type="button" id="btnOK" value="OK" />
+        </div>
+    </div>
+</div>
+
+<div id="divAddTemplate" class="None">
+    <div class="overlay-background" style="z-index:8" >
+    </div>
+    <div id="divDataAddTemplate" class="divDataAddTemplate">
+    </div>
+</div>
+<div id="divEditValeur" class="None">
+    <div class="overlay-background" style="z-index:6" >
+    </div>
+    <div id="divDataEditValeur">
+    </div>
+</div>

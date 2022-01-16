@@ -1,0 +1,7 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesInventaire.ModeleInventaireListeCPVille
+@Html.Hidden("TypeListe", Model.Type)
+@Html.Hidden("CountListe", Model.Listes.Count)
+@{
+    var dropWidth = (Model.Type == "Ville") ? "width: 350px;" : "width: 250px;";
+    @Html.AlbDropDownListFor(m => m.Valeur, Model.Listes, "Listes", htmlAttributes: new { id = "Listes", style = dropWidth }, generateTitle: true, replaceHtmlName: "Listes")
+}

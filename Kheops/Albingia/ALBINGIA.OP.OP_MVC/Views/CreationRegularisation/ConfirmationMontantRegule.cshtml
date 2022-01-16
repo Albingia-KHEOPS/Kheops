@@ -1,0 +1,65 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegularisation.ConfirmSaisieRegule
+<div class="FullWidth">
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder" style="width: 511px;">
+            <div class="nHorizontalFullWithGroup" style="width: 511px;">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="text-align: center;">
+                            <label class="AutoWidth">
+                                <b>Attention, vous allez valider les montants ci dessous calculés pour cette régularisation,<br>
+                                    confirmez-vous cette validation ?</b></label>
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="padding-top: 48px">
+                        <div class="FloatLeft" style="padding-left: 200px;">
+                            <label class="AutoWidth"><u><b>Montant régul HT Hors Cat Nat </b></u></label>
+                        </div>
+                        @*<div class="FloatLeft">
+                    <label class="AutoWidth LblTaxeGar"><u><b>Taxe </b></u></label>
+                </div>
+                <div class="FloatLeft LblMntTotalGar">
+                    <label class="AutoWidth"><u><b>Montant total régul hors Cat Nat </b></u></label>
+                </div>*@
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="width: 200px;">
+                            <label class="AutoWidth">@(Model.CodeGar) - @(Model.LibGar)</label>
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 20px;">
+                            <input id="MntRegulHTGar" type="text" name="MntRegulHT" value="@(Model.MntHT)" class="decimal InputField readonly" albmask="decimal" readonly="readonly" />
+                        </div>
+                        @*<div class="FloatLeft InputTaxeGar">
+                    <input id="TaxeGar" type="text" name="Taxe" value="" class="decimal InputField" albmask="decimal" />
+                </div>
+                <div class="FloatLeft InputMntTotalGar">
+                    <input id="MntTotalGar" type="text" name="MntTotal" value="" class="decimal InputField" albmask="decimal" />
+                </div>*@
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="width: 200px;">
+                            <label class="AutoWidth">ATTENTAT</label>
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 20px;">
+                            <input id="MntRegulHTAttentat" type="text" name="MntRegulHT" value="@(Model.AttentatHT)" class="decimal InputField readonly" albmask="decimal" readonly="readonly" />
+                        </div>
+
+                        @*<div class="FloatLeft InputTaxeAtt ">
+                    <input id="TaxeAttentat" type="text" name="Taxe" value="" class="decimal InputField" albmask="decimal " />
+                </div>
+                <div class="FloatLeft InputMntTotalAtt ">
+                    <input id="MntTotalAttentat" type="text" name="MntTotal" value="" class="decimal InputField" albmask="decimal " />
+                </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft" style="width: 511px;">
+            <div class="nActionButtons ActionButtonRight FloatLeft">
+                <button id="btnAnnulConfirm" type="button" style="width: 80px;" albshortcut="true" data-accesskey="n"><u>N</u>on</button>
+                <button id="btnValidConfirm" type="button" style="width: 80px;" albshortcut="true" data-accesskey="o"><u>O</u>ui</button>
+            </div>
+        </div>
+    </div>
+</div>

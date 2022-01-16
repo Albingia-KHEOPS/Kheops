@@ -1,0 +1,25 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleSaisieRegulGarantie.InfoInitSaisieRegul
+<div class="FloatLeft divInfoTauxleft">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="BlockRegulGarTxAppel">Taux appel</label>
+        </div>
+        <div class="FloatLeft">
+            @if (Model.TxAppel_STD == 0)
+            {
+                <input type="text" id="TauxAppelContrat" name="TauxAppelContrat" class="readonly Input txtGAr " readonly="readonly" albmask="pourcentdecimal" value="" />
+            }
+            else
+            {
+                <input type="text" id="TauxAppelContrat" name="TauxAppelContrat" class="readonly Input txtGAr " readonly="readonly" albmask="pourcentdecimal" value="@(Model.TxAppel_STD)" />
+            }
+        </div>
+        <div class="FloatLeft">
+            <label class="BlockRegulGarTxAttentat">Taux ATTENTAT</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="TauxAttentat" name ="TauxAttentat" class="readonly Input txtGAr"  readonly="readonly"  albmask="pourcentdecimal" value="@(Model.TxAttentat_STD)" />
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleLibellesClauses.ModeleClause>
+<table id="tblBloc" class="trHeight">
+    @foreach (var item in Model)
+    {
+        var linkCode = "";
+       if (!string.IsNullOrEmpty(item.GuidId))
+        {
+            linkCode = item.GuidId;
+        }
+        
+        <tr id="@("tr_" + @linkCode)">
+            <td id="@("cod_" + @linkCode)" name="codeBloc" class="linkBloc bCode">
+                @item.Branche
+            </td>
+            <td class="linkBloc bDescr">
+                @item.Cible
+            </td>
+            @if (item.Cible != null && item.Cible != "")
+            {
+                <td class="linkBloc col4" name="caractereBloc" title="Caractère">
+                    @item.Cible
+                </td>
+            }
+            <td class="supprBloc bImg">
+                <img id="@("suppr_" + @linkCode)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprBloc" class="paddingAction" />
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,45 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamClausePage
+<div class="GroupTitle FloatLeft">Actes de gestion par service</div>
+<div class="FloatRight PaddingTop">
+    <button id="AjoutCTX" type="button" albshortcut="true" data-accesskey="c">KHEOP/<u>C</u>TX</button>
+    <button id="AjoutOMP" type="button" albshortcut="true" data-accesskey="o">KHEOP/<u>E</u>MP</button>
+    @Html.Hidden("CodeConcept", string.Empty)
+    @Html.Hidden("LibelleConcept", string.Empty)
+</div>
+
+<div class="HorizontalFullWithGroup ParamWidth">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    @Html.Hidden("CodeService", string.Empty)
+                    @Html.Hidden("CodeActGes", string.Empty)
+                    <label class="Block">Service</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.Service, Model.Services, "Service", htmlAttributes: new { @id = "Service", @class = "WidthInput" }, generateTitle: true)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection ParamHeight">
+        <div id="listParam" class="PaddingLeft">
+            <div id="divHeaderParam">
+                <table id="tblHeaderParam">
+                    <tr>
+                        <th class="colHActe tablePersoHead">Acte
+                        </th>
+                        <th class="colHLibelle tablePersoHead">Libellé
+                        </th>
+                        <th class="colHBtn tablePersoHead">
+                            <img src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" title="Ajouter" id="addActeGestion" />
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divBodyParam" class="AlignCenter">
+                Veuillez choisir un service.
+            </div>
+        </div>
+    </div>
+</div>

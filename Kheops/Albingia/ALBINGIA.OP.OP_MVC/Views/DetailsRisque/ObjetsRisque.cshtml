@@ -1,0 +1,104 @@
+﻿@using OP.WSAS400.DTO
+@model ALBINGIA.OP.OP_MVC.Models.ModelesDetailsRisque.ModeleObjetsRisque
+@{
+    var splitHtmlChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+
+}
+<div class="FieldRow">
+    <div>
+        <table class="tblListInventaire trHeight">
+
+            <tr>
+                <th class="@(Model.IsModeAvenant ? "thListobjAvn" : "thListobj")" title="Liste des objets du risque">
+                    <label class="Lbllistobj FloatLeft">Liste des objets du risque</label>
+                    @if (Model.IsModeAvenant) {
+                        <span class="FloatLeft" style="text-align: right; width: 173px">
+                            <input type="checkbox" id="chkDisplayObjetsSortis" class="FloatLeft" />
+                            <label class="FloatLeft" style="width: 140px;">Afficher les objets sortis</label>
+                        </span>
+                    }
+                </th>
+                @if (Model.IsModeAvenant) {
+                    <th class="thNumIntAvn" title="n°interne">
+                        AVT
+
+                    </th>
+
+                }
+                <th class="@(Model.IsModeAvenant ? "thEntreeAvn" : "thEntree")" title="Entrée">
+                    Entrée
+                </th>
+                <th class="@(Model.IsModeAvenant ? "thSortieAvn" : "thSortie")" title="Sortie">
+                    Sortie
+                </th>
+                <th class="@(Model.IsModeAvenant ? "thIndiceAvn" : "thIndice")" title="Valeur d'indice">
+                    Val. indice
+                </th>
+                <th class="@(Model.IsModeAvenant ? "thValeurAvn" : "thValeur")" title="Valeur">
+                    <img id="imgIndiceValeur" src="@Url.Content("/Content/Images/ico_16_132.gif")" class="@(Model.IsModeAvenant && Model.IsIndexe ? string.Empty : "None")" title="@(Model.Objets != null && Model.Objets.Any() ? "Indice d'origine\t" + Model.Objets.FirstOrDefault().IndiceOrigine.ToString("F2") + "\nIndice actualisé\t" + Model.Objets.FirstOrDefault().IndiceActualise.ToString("F2") : string.Empty)" />
+                    Valeur
+                </th>
+                <th class="@(Model.IsModeAvenant ? "thUniteAvn" : "thUnite")" title="Unité">
+                    U.
+                </th>
+                <th class="@(Model.IsModeAvenant ? "thTypeAvn" : "thType")" title="Type">
+                    T.
+                </th>
+                <th class="@(Model.IsModeAvenant ? "thTxAvn" : "thTx")" title="Taxes">
+                    Tx.
+                </th>
+                <th class="@(Model.IsModeAvenant ? "thInvAvn" : "thInv")" title="Inventaire">Inv.</th>
+
+                @if (Model.IsReadOnly || Model.IsModifHorsAvenant || Model.IsAvnDisabled) {
+                    <th style="width: 20px;">
+                        <img src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" />
+                    </th>
+                }
+                else {
+                    <th id="btnAjouterObjet" class="CursorPointer navigate-step" data-target="@(ContextStepName.DetailsObjetRisque)" data-risque="@(Model.CodeRisque)" data-objet="0" style="width: 20px;" title="Ajouter un objet de risque">
+                        <img src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+                    </th>
+
+                }
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="@(Model.IsModeAvenant ? "divLstObjetsAvn" : "divLstObjets")">
+    <table class="trHeight">
+        <!-- Refaire l'alternance des couleurs-->
+        @{
+            string[] trClass = new string[] { "odd", "even" };
+            int classIndex = 0;
+        }
+        @foreach (var item in Model.Objets) {
+            <tr class="@(trClass[classIndex] + " " + (((!item.IsAfficheAvenant && Model.IsModeAvenant)) ? !item.IsAfficheAvenant ? "None" : string.Empty : string.Empty))" name="@((((!item.IsAfficheAvenant && Model.IsModeAvenant))) ? !item.IsAfficheAvenant ? "objetSorti" : string.Empty : "objet")">
+                <td class="navigate-step @(Model.IsModeAvenant ? "Tddescriptifavn" : "Tddescriptif") @(item.IsSortiAvenant && Model.IsModeAvenant ? "navigorange" : "navig")" name="linkObjet" AlbLinkParam="@(!Model.DateModificationAvenant.HasValue && Model.IsModeAvenant ? Model.CodeRisque + "_" + item.Code + splitHtmlChar + "1" : Model.CodeRisque + "_" + item.Code + splitHtmlChar + "0")" data-target="@(ContextStepName.DetailsObjetRisque)" data-risque="@(Model.CodeRisque)" data-objet="@(item.Code)">@item.Descriptif</td>
+                @if (Model.IsModeAvenant == true) {
+
+                    <td class="tdNumAvn" title="@(item.NumAvenantCreationRsq == "0" ? "Date d'effet d'AN : " + @item.DateEffetAvenantOBJString : "Date d'effet d'AVN:" + @item.DateEffetAvenantOBJString)">@item.NumAvenantCreationRsq</td>
+                }
+
+                <td class="@(Model.IsModeAvenant ? "tdDateEntreeAvn" : "tdDateEntree")">@item.DateEntreeString</td>
+                <td class="@(Model.IsModeAvenant ? "tdDateSortieAvn" : "tdDateSortie")">@item.DateSortieString</td>
+                <td class="@(Model.IsModeAvenant ? "tdIndiceOrigineAvn" : "tdIndiceOrigine")">
+                    <span albmask="decimal">@(item.IndiceOrigine.ToString() != "0.0" ? Math.Round(item.IndiceOrigine, 2).ToString() : string.Empty)</span>
+                </td>
+                <td class="@(Model.IsModeAvenant ? "tdValeurAvn" : "tdValeur") @(item.IsSortiAvenant && Model.IsModeAvenant ? "textOrange" : "textBlue")">
+                    <span albmask="numeric">@(item.Valeur != "0" ? item.Valeur : string.Empty)</span>
+                </td>
+                <td class="@(Model.IsModeAvenant ? item.IsSortiAvenant ? "textOrange tdUniteLibelleAvn" : "textBlue tdUniteLibelleAvn" : "tdUniteLibelle")" title="@item.UniteLibelle" albCFList="unite">@(item.Valeur != "0" || Model.Periodicite == "R" || Model.TypePolice == "M" ? item.Unite : string.Empty)</td>
+                <td class="@(Model.IsModeAvenant ? item.IsSortiAvenant ? "textOrange tdTypeLibelleAvn" : "textBlue tdTypeLibelleAvn" : "tdTypeLibelle")" title="@item.TypeLibelle" albCFList="type" id="typeValeur">@(item.Valeur != "0" || Model.Periodicite == "R" || Model.TypePolice == "M" ? item.Type : string.Empty)</td>
+                <td class="@(Model.IsModeAvenant ? item.IsSortiAvenant ? "textOrange tdValeurHtLibAvn" : "textBlue tdValeurHtLibAvn" : "tdValeurHtLib")" title="@item.ValeurHTLibelle">@(item.Valeur != "0" || Model.Periodicite == "R" || Model.TypePolice == "M" ? item.ValeurHT : string.Empty)</td>
+                <td class="@(Model.IsModeAvenant ? "tdInventaireAvn" : "tdInventaire")" title="@(item.HasInventaires ? "Contient un inventaire" : string.Empty)">
+                    @if (item.HasInventaires) {
+                        <img title="Contient un inventaire" src="@Url.Content("/Content/Images/check_1616.gif")" />
+                    }
+                </td>
+                <td class="Tdindex">&nbsp;</td>
+            </tr>
+            classIndex = (classIndex == 1 ? 0 : 1);
+        }
+    </table>
+</div>

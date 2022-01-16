@@ -1,0 +1,59 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesValidationOffre.ModeleCritereValidation>
+<div id="divHeaderCritere">
+    <table id="tblHeaderCritere">
+        <tr>
+            <th class="tablePersoHead colHCritere">
+                Critère de déclenchement de la validation
+            </th>
+            <th class="tablePersoHead colHNiveau">
+                Niveau de validation requis
+            </th>
+        </tr>
+    </table>
+</div>
+<div id="divBodyCritere">
+    <table id="tblBodyCritere">
+        @{
+            string[] trClass = new string[] { "odd", "even" };
+            int classIndex = 0;
+        }
+        <tr class="@trClass[classIndex]">
+            <td class="PaddingLeft colBCritere">
+                Critère test
+            </td>
+            <td class="colBNiveau">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width:90%; text-align: center;">
+                            Niveau test
+                        </td>
+                        <td style="width: 10%">
+                            <img id="imgDetail" name="imgDetail" src="@Url.Content("/Content/Images/loupe1616.png")" alt="Détail" title="Détails niveau" class="CursorPointer" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        @foreach (var critere in Model)
+        {
+            <tr class="@trClass[classIndex]">
+                <td class="PaddingLeft colBCritere">
+                    @critere.Critere
+                </td>
+                <td class="colBNiveau">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width:80%; text-align: center;">
+                                @critere.NiveauValidation
+                            </td>
+                            <td style="width: 20%">
+                                <img id="imgDetail_@(critere.NiveauValidation)" name="imgDetail" src="@Url.Content("/Content/Images/loupe1616.png")" alt="Détail" title="Détails niveau" class="CursorPointer" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            classIndex = (classIndex == 1 ? 0 : 1);
+        }
+    </table>
+</div>

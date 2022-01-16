@@ -1,0 +1,56 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsDataBasePage
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vInformationsTable.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albInformationsTable.js" }, "~/Scripts/AlbingiaJS/")
+<div>
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+</div>
+
+<div class="CommonForm TotalWidth">
+    <div id="divBodyPage" class="GroupFull GroupWithBorder TotalWidth">
+        <div class="GroupTitle">
+            Description des tables
+        </div>
+        <div class="HorizontalFullWithGroup WidthBody">
+            <div class="GradientSection RechFiltre">
+                <div class="HeightRow">
+                    <div class="ColumnEnvironnement">
+                        <div class="FloatLeft">
+                            <label class="Block">Environnement :</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Environnement" name="Environnement" value="@Model.Environnement" />
+                        </div>
+                    </div>
+                    <div class="ColumnTable">
+                        <div class="lblTable FloatLeft">
+                            <label class="Block">Table :</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Table" name="Table" value="@Model.Table" />
+                        </div>
+                    </div>
+                    <div class="FloatLeft">
+                        <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder TotalWidth">
+        <div id="divResult" class="HorizontalFullWithGroup WidthBody MarginTop">
+            @Html.Partial("ListeColonnes", Model.Colonnes)
+        </div>
+    </div>
+    <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnAnnulerRetour" type="button" albshortcut="true" data-accesskey="t">Re<u>t</u>our</button>
+        </div>
+    </div>
+</div>
+
+

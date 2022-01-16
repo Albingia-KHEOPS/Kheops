@@ -1,0 +1,334 @@
+﻿.btnRechDisabled {
+    background-image: url("/Content/Images/loupegris.png");
+}
+
+.btnRechNormal {
+    background-image: url("/Content/Images/loupe.png");
+}
+
+.ImgRech {
+    padding-left: 12px;
+}
+
+.ColumnsGroupMereAliment {
+    width: 280px;
+}
+
+.LblNumAliment {
+    width: 78px;
+}
+
+#NumAlimentRemplace {
+    width: 36px;
+}
+
+.ColumnContratRemplace {
+    width: 138px;
+    padding-left: 20px;
+}
+
+.ColumnAlimentRemplace {
+    width: 138px;
+}
+
+.MaxInput {
+    width: 323px !important;
+}
+
+.MediumInput {
+    width: 280px !important;
+}
+
+.TripleColumnsGroup {
+    width: 334px;
+}
+
+.labelGpIdentiqueApporteur {
+    font-weight: bolder;
+    padding-left: 5px;
+    width: 308px;
+}
+
+.DoubleGenericColumnAdressContrat {
+    float: left;
+    margin-right: 6px;
+    width: 590px;
+}
+
+.Tab {
+    float: left;
+    width: 110px;
+}
+
+.BlockInfo {
+    margin-right: 12px;
+    margin-top: 6px;
+    width: 570px;
+}
+
+.SubBlockInfo {
+    height: 195px;
+    width: 590px;
+}
+
+.BlockInfoGenAdresse {
+    margin-top: 6px;
+    width: 1176px;
+}
+
+.InformationContratZone {
+    margin-right: 12px;
+    margin-top: 6px;
+    width: 578px;
+}
+
+.ButtonRight {
+    text-align: right;
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-right: 6px;
+    padding-top: 4px;
+}
+
+.ButtonSuivant {
+    height: 24px;
+    width: 140px;
+}
+
+.PaddingNumAliment {
+    padding-right: 10px;
+}
+
+.GroupImg {
+    padding-top: 10px;
+}
+
+.InfoContrat {
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.labelSpace {
+    margin-right: 20px;
+    float: left;
+}
+
+.inputCible {
+    width: 143px !important;
+}
+
+.inputBranche {
+    width: 123px !important;
+}
+
+.inputTemplate {
+    width: 138px !important;
+}
+
+
+.divCible {
+    /* margin-top: -3px;*/
+}
+
+
+
+.Column {
+    float: left;
+    border: 1px solid transparent;
+}
+
+.divSouscripteur {
+    float: left;
+    margin-right: 30px;
+}
+
+.labelDateAccord {
+    padding-left: 11px !important;
+    width: 50px;
+}
+
+.inputTypeContrat {
+    width: 124px !important;
+}
+
+.labelIdentification {
+    padding-left: 18px !important;
+}
+
+.labelAnCourtier {
+    display: block;
+    width: 120px;
+}
+
+.labelCible {
+    display: block;
+    width: 60px;
+}
+
+.labelCourtierCode {
+    display: block;
+    width: 50px;
+}
+
+.labelTemplate {
+    display: block;
+    width: 60px;
+}
+
+.inputInterlocuteur {
+    width: 300px !important;
+    margin-right: 20px;
+}
+
+.inputAnCodeCourtier {
+    width: 60px !important;
+}
+
+.labelNomCourtier {
+    display: block;
+    width: 40px;
+}
+
+.inputNomCourtier {
+    width: 285px !important;
+}
+
+.labelReference {
+    display: block;
+    width: 70px;
+    padding-left: 75px;
+}
+
+.labelDept {
+    width: 50px;
+    display: block;
+}
+
+.inputDept {
+    margin-right: 10px;
+    width: 60px !important;
+}
+
+.inputMotCle {
+    width: 280px !important;
+    margin-right: 10px;
+}
+
+#divAdresse {
+    width: 397px;
+    height: 69px;
+}
+
+.HeightAdresse {
+    height: 101px;
+}
+
+.labelEffet {
+    width: 50px !important;
+    display: block;
+    /*padding-left:40px;*/
+}
+
+#divGestionnairePayeur {
+    display: none;
+}
+
+.ButtonDivFGestPayRight {
+    text-align: right;
+}
+
+#divDataGestionnairePayeur {
+    position: absolute;
+    top: 329px;
+    left: 12%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 173px;
+    width: 671px;
+}
+
+.labelEncaissement {
+    padding-left: 145px;
+    display: block;
+}
+
+.divFCourtiers {
+    height: 166px;
+    width: 652px;
+}
+
+.labelCourtierCodeDivF {
+    display: block;
+    width: 106px;
+}
+
+#divRechercheContrat {
+    display: none;
+}
+
+#divDataRechercheContrat {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: block;
+    z-index: 10;
+    background-color: White;
+    height: 470px;
+    width: 1240px;
+}
+
+.largePaddingLeft {
+    padding-left: 80px;
+    /*padding-left: 132px;*/
+}
+
+
+#divRechercheAvanceeCourtierCreationContrat, #divRechercherCourtierGestion, #divRechercherCourtierApporteur, #divRechercherCourtierPayeur {
+    display: none;
+}
+
+#divDataRechercheAvanceeCourtierCreationCourtier {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 23;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+}
+
+.inputAliment {
+    width: 50px !important;
+}
+
+#PreneurAssurance_Ville {
+    width: 200px;
+}
+
+.PaddingLeft6 {
+    padding-left: 24px;
+}
+
+.MasqueAppor {
+    display: none;
+}
+
+.AffichAppor {
+    display: inline;
+}
+
+.PaddingLefAPPor {
+    padding-left: 16px;
+}
+
+.blkCourtierContrat {
+    height: 170px;
+}
+
+.blkCourtierContratWithoutApporteur {
+    height: 135px;
+}

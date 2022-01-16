@@ -1,0 +1,35 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleRegularisationPage
+    <div class="HeightRow">
+        <div class="FloatLeft PaddingLeft">
+            Régularisations du contrat :
+        </div>
+    </div>
+    <div class="HeightInfoRegul">
+        <div class="FloatLeft">
+            @*nGradientSection *@
+        <div id="dvHeaderRegul">
+            <table id="tblHeaderRegule" class="trHeight">
+                <tr>
+                    <th class="tablePersoHead thNumAvnRegule">N° Int.</th>
+                    <th class="tablePersoHead thTraitementRegule">Type de traitement</th>
+                    <th class="tablePersoHead thPeriodeRegule">Période régularisée</th>
+                    <th class="tablePersoHead thSituationRegule">Situation</th>
+                    <th class="tablePersoHead thQuittanceRegule">N° quittance</th>
+                    <th class="tablePersoHead thAvisQuittanceRegule">N° Avis</th>
+                    <th class="tablePersoHead thActionRegule">Action</th>
+                    <th class="tablePersoHead thBtnRegule">
+                        @if (Model.Regularisations.FindAll(el => el.CodeSituation == "A" && el.CodeEtat != "V").ToList().Count() == 0)
+                        {
+                            <img id="btnAddRegule" class="CursorPointer" src="@(Url.Content("/Content/Images/plusajouter1616.png"))" />
+                        }
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div id="dvBodyRegule" class="divBodyRegule">
+            <table id="tblBodyRegule" class="tableBodyRegule trHeight">
+                @Html.Partial("LignesRegularisation", Model.Regularisations)
+            </table>
+        </div>
+    </div>
+</div>

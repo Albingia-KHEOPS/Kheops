@@ -1,0 +1,711 @@
+﻿.PaddingLeftRow
+{
+    padding-left: 10px;
+}
+
+.PaddingRightRow{
+    padding-right:10px;
+}
+
+.TxtNomModele
+{
+    width: 130px;
+}
+
+.TxtDescriptionModele
+{
+    width: 200px;
+}
+
+.TxtDate
+{
+    width: 100px;
+}
+
+.TxtSql
+{
+    width: 1040px;
+}
+
+#drlModeles
+{
+    width: 400px;
+}
+
+.ButtonRight
+{
+    text-align: right;
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-right: 6px;
+    padding-top: 4px;
+}
+
+.ButtonLeft
+{
+    text-align: left;
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-left: 6px;
+    padding-top: 4px;
+}
+
+.col_code
+{
+    width: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+.col_code_line
+{
+    margin-top: 2px;
+    text-align: center;
+    width: 22px;
+}
+
+.col_code_in
+{
+    /*width: 26px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.col_Libelle
+{
+    width: 111px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Libelle_line
+{
+    /*width: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_Libelle_in
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 113px;
+}
+
+.col_Referentiel
+{
+    width: 111px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Referentiel_line
+{
+    /*overflow: hidden;
+    padding-right: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 113px;*/
+}
+
+.col_Referentiel_in
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 113px;
+}
+
+.col_NumAff
+{
+    width: 56px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_NumAff_line
+{
+    text-align: center;
+    width: 58px;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 5px;*/
+}
+
+.col_NumAff_in
+{
+    /*width: 51px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.col_SautLigne
+{
+    width: 51px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_SautLigne_line
+{
+    width: 53px;
+    text-align: center;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_SautLigne_in
+{
+    /*width: 46px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.col_Modifiable
+{
+    width: 56px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Modifiable_line
+{
+    width: 58px;
+    text-align: center;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_Modifiable_in
+{
+    /*width: 51px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.col_Obligatoire
+{
+    width: 55px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Obligatoire_line
+{
+    width: 57px;
+    text-align: center;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_Obligatoire_in
+{
+    width: 51px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Tcon {
+    width: 67px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Tcon_line {
+    /*width: 65px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 5px;*/
+}
+
+.col_Tcon_in {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 69px;
+}
+
+.col_Tfam {
+    width: 67px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Tfam_line {
+    /*width: 65px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 5px;*/
+}
+
+.col_Tfam_in {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 69px;
+}
+
+
+.col_Presentation
+{
+    width: 70px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Presentation_line
+{
+    width: 72px;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_Presentation_in
+{
+    /*width: 66px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.col_ScriptAffichage
+{
+    width: 71px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_ScriptAffichage_line
+{
+    width: 73px;
+    text-align: center;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_ScriptAffichage_in
+{
+    width: 66px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_ScriptControle
+{
+    width: 71px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_ScriptControle_line
+{
+    width: 73px;
+    text-align: center;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_ScriptControle_in
+{
+    /*width: 66px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.col_LienParent
+{
+    width: 81px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_LienParent_line
+{
+    /*width: 80px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 5px;*/
+}
+
+.col_LienParent_in
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 83px;
+}
+
+.col_ParentComportement
+{
+    width: 86px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_ParentComportement_line
+{
+    /*width: 85px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_ParentComportement_in
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 88px;
+}
+
+.col_ParentEvt
+{
+    width: 76px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_Script
+{
+    width: 76px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_ParentEvt_line
+{
+    /*width: 75px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 4px;*/
+}
+
+.col_ParentEvt_in
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 78px;
+}
+
+.col_Script_in
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 78px;
+}
+
+
+.col_Action
+{
+    width: 43px;
+}
+
+.col_Action_line
+{
+    width: 40px;
+    padding-right: 5px;
+    text-align: center;
+}
+
+
+#tblLignesModeleHeader tr, #tblLignesModeleBodyEmptyLine tr, #tblLignesModeleBody tr
+{
+    height: 1px;
+}
+
+#divDataEditPopIn
+{
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 270px;
+    width: 1050px;
+}
+
+#divFancyVisualiserEntete {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;   
+    max-height: 645px;
+    max-width: 1010px;   
+    padding-left: 10px;
+    padding-top: 10px;
+    border: 5px solid;
+    border-color:white;
+}
+
+#divFancyVisualiserData {
+    height: 100%;
+    max-height: 610px;
+    overflow-y : auto;
+    max-width: 1000px;
+    width:100%;
+    margin-top : 10px;
+}
+
+#divFullScreen, #divFullScreenSelector, #divFancyVisualiser, #divFullScreenSuppr {
+    display: none;
+}
+
+#divSelectPopup
+{
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 540px;
+    width: 1050px;
+}
+
+#divDialogAjoutModele
+{
+    height: 250px;
+    width: 1030px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#divDialogSelectPopup
+{
+    height: 520px;
+    width: 1030px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#divDialogSupprModele
+{
+    height: 250px;
+    width: 1030px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#divDataConfirmSuppr
+{
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 270px;
+    width: 1050px;
+}
+
+#divLignesModeleBodyLinesSuppr
+{
+    height: 120px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+#divLignesModeleBody
+{
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.divHeightSelector
+{
+    height: 420px;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+#divInfoBandeau
+{
+    display: none;
+}
+
+#divLignesModeleBodyEmptyLine
+{
+    display: none;
+}
+/*.paddingReadonly {
+    padding-left: 5px;
+}
+
+.paddingEdition {
+    padding-left: 2px;
+}*/
+
+.SuperInput
+{
+    width: 1040px !important; /*width: 350px !important;*/
+    margin-bottom: 5px;
+    height: 200px;
+}
+
+.SuperInputPopup
+{
+    width: 863px !important; /*width: 350px !important;*/
+}
+
+.SubGroupTitle
+{
+    margin: 2px;
+    margin-left: 5px;
+    color: #800000;
+    cursor: pointer;
+    min-height: 20px;
+}
+
+.requiredField
+{
+    border: 1px solid red;
+    background-color: #fee;
+}
+
+.inputReferentiel
+{
+    width: 111px;
+    padding: 0;
+}
+
+.inputLib
+{
+    width: 111px;
+    padding: 0;
+}
+
+.inputAff
+{
+    width: 56px;
+    padding: 0;
+}
+
+.inputSautLigne
+{
+    width: 51px;
+    padding: 0;
+}
+
+.inputEdition
+{
+    width: 58px;
+}
+
+.inputObligatoire
+{
+    width: 57px;
+}
+
+.inputSQL
+{
+    width: 67px;
+    padding: 0;
+}
+.inputTcon {
+    width: 67px;
+    padding: 0;
+}
+.inputTfam {
+    width: 67px;
+    padding: 0;
+}
+
+.inputSQLOrder
+{
+    width: 56px;
+    padding: 0;
+}
+
+.inputPresentation
+{
+    width: 72px;
+}
+
+.inputScriptAffichage
+{
+    width: 73px;
+}
+
+.inputScriptControle
+{
+    width: 73px;
+}
+
+.inputLnkParent
+{
+    width: 81px;
+    padding: 0;
+}
+
+.inputParentComportement
+{
+    width: 86px;
+    padding: 0;
+}
+
+.inputParentEvenement
+{
+    width: 76px;
+    padding: 0;
+}
+
+#divLstISLignesModeleMenu{
+    overflow-x:auto; 
+    width:1195px;
+}
+
+#divLignesModeleHeader, #divLignesModeleBody{
+    width:1380px;
+}

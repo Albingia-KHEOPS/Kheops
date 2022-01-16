@@ -1,0 +1,82 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModeleContactAdresse
+@Html.Hidden("ContactAdresse.NoChrono", Model.NoChrono, new { albcontext = "adrbase" })
+@Html.Hidden("ContactAdresse.UrlHexavia", ALBINGIA.OP.OP_MVC.MvcApplication.URL_HEXAVIA, new { albcontext = "adrbase" })
+@Html.Hidden("ContactAdresse.UrlBackHexavia", ALBINGIA.OP.OP_MVC.MvcApplication.URL_BACKHEXAVIA, new { albcontext = "adrbase" })
+@Html.Hidden("ContactAdresse.MatriculeHexavia", Model.MatriculeHexavia, new { albcontext = "adrbase" })
+@Html.Hidden("ContactAdresse.Latitude", Model.Latitude, new { albcontext = "adrbase" })
+@Html.Hidden("ContactAdresse.Longitude", Model.Longitude, new { albcontext = "adrbase" })
+<div id="divErrorHexavia" class="FieldRow MsgErrorHexavia">
+    <div>
+        Adresse non valide
+    </div>
+</div>
+<div class="DoubleGenericColumn">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Bâtiment | ZI</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAdresse_Batiment" name="ContactAdresse.Batiment" class="@(Model.ReadOnly ? "readonly DoubleInputHalfBlock" : "DoubleInputHalfBlock")" readonly="readonly" tabindex="@(Model.FirstIndex)" value="@(Model.Batiment)" albcontext="adrbase" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">N° | Ext | Voie</label>
+        </div>
+        <div class="FloatLeft PaddingRight">
+            <input type="text" id="ContactAdresse_No" name="ContactAdresse.No" class="@(Model.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 1)" value="@(Model.No + (string.IsNullOrEmpty(Model.No2) ? "" : "/" + Model.No2))" albcontext="adrbase" />
+        </div>
+        <div class="FloatLeft PaddingRight">
+            <input type="text" id="ContactAdresse_Extension" name="ContactAdresse.Extension" class="@(Model.ReadOnly ? "readonly HalfInput" : "HalfInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 2)" value="@(Model.Extension)" albcontext="adrbase" />
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAdresse_Voie" name="ContactAdresse.Voie" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 3)" value="@(Model.Voie)" albcontext="adrbase" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Distribution</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAdresse_Distribution" name="ContactAdresse.Distribution" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 4)" value="@(Model.Distribution)" albcontext="adrbase" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">CP | Ville</label>
+        </div>
+        <div class="FloatLeft PaddingRight">
+            <input type="text" id="ContactAdresse_CodePostal" name="ContactAdresse.CodePostal" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 5)" value="@(Model.CodePostal)" albcontext="adrbase" />
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAdresse_Ville" name="ContactAdresse.Ville" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 6)" value="@(Model.Ville)" albcontext="adrbase" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">CP | Ville (Cedex)</label>
+        </div>
+        <div class="FloatLeft PaddingRight">
+            <input type="text" id="ContactAdresse_CodePostalCedex" name="ContactAdresse.CodePostalCedex" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 7)" value="@(Model.CodePostalCedex)" albcontext="adrbase" />
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAdresse_VilleCedex" name="ContactAdresse.VilleCedex" class="@(Model.ReadOnly ? "readonly AdresseInput" : "AdresseInput")" readonly="readonly" tabindex="@(Model.FirstIndex + 8)" value="@(Model.VilleCedex)" albcontext="adrbase" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Pays</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="ContactAdresse_Pays" name="ContactAdresse.Pays" class="@(Model.ReadOnly ? "readonly" : "")" readonly="readonly" tabindex="@(Model.FirstIndex + 9)" value="@(Model.Pays)" albcontext="adrbase" />
+        </div>
+    </div>
+</div>
+@if (Model.SaisieHexavia && !Model.IsReadOnlyDisplay)
+{
+    <div class="FieldRow">
+        <div class="Validation PaddingRight">
+            <input type="button" id="btnAdresse" value="Saisir Adresse" tabindex="@(Model.FirstIndex + 10)" albcontext="adrbase" />
+        </div>
+    </div>
+}

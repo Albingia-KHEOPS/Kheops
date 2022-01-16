@@ -1,0 +1,56 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.ModeleSelectionCourrierType
+<div class="FloatLeft" style="width: auto">
+    <div class="GroupFull GroupWithBorder LargeurDetailsSelection">
+        <div class="GradientSection MarginLeft10">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block LargeLabel BoldUnderline">Sélection du courrier type</label>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Filtre</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="INFiltreCourrierType" value="@Model.Filtre"/>
+                </div>
+                <div class="FloatLeft">
+                    <button type="button" id="btnFiltrerCourrierType">
+                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                    </button>
+                </div>
+            </div>           
+            <div class="FloatLeft">
+                <div id="divCourrierTypeHeader" class="PaddingLeft">
+                    <table id="tblCourrierTypeHeader" class="trHeight">
+                        <tr>
+                            <th class="tablePersoHead tdHeadSelection">&nbsp                              
+                            </th>
+                            <th class="tablePersoHead tdHeadCode">Code</th>
+                            <th class="tablePersoHead tdHeadLibelleMedium">Courrier</th>                           
+                        </tr>
+                    </table>
+                </div>
+                <div id="divCourrierTypeBody" class="PaddingLeft divHeightSelectionCourrier">
+                    @Html.HiddenNoName("selectedCourrierType", Model.SelectedValue)
+                    @if (Model.ListeCourriersType != null)
+                    {            
+                        @Html.Partial("LstCourriersType", Model.ListeCourriersType)                      
+                    }
+                </div>
+            </div>         
+        </div>
+    </div>
+
+    <div class="GroupFull GroupWithBorder ButtonsHeight LargeurDetailsSelection">        
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnAnnulerSelectionCourrier" type="button">Annuler</button>
+            <button id="btnValiderSelectionCourrier" type="button">Valider</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+

@@ -1,0 +1,150 @@
+<services>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.SaisieCreationOffre.ConfirmationSaisie">
+    <endpoint address="http://was400.local/OPServiceCreationOffre/ConfirmationSaisie.svc" binding="basicHttpBinding" bindingConfiguration="KheopsBasicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IConfirmationSaisie" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.SaisieCreationOffre.CreationOffre">
+    <endpoint address="http://was400.local/OPServiceCreationOffre/CreationOffre.svc" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.ICreationOffre" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.SaisieCreationOffre.DoubleSaisie">
+    <endpoint address="http://was400.local/OPServiceCreationOffre/DoubleSaisie.svc" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IDoubleSaisie" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.SaisieCreationOffre.PolicesServices">
+    <endpoint address="http://was400.local/OPServiceCreationOffre/PolicesServices.svc" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IPoliceServices" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.SaisieCreationOffre.RechercheSaisie">
+    <endpoint address="http://was400.local/OPServiceCreationOffre/RechercheSaisie.svc" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IRechercheSaisie" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.SaisieCreationOffre.SaisieOffre">
+    <endpoint address="http://was400.local/OPServiceCreationOffre/SaisieOffre.svc" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.ISaisieOffre" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.ClausesRisquesGaranties.RisquesGaranties">
+    <endpoint address="http://was400.local/ClausesRisquesGaranties/RisquesGaranties.svc"
+              binding="basicHttpBinding" bindingConfiguration="KheopsBasicHttpBinding"
+	      contract="OPServiceContract.IClausesRisquesGaranties.IRisquesGaranties" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.ClausesRisquesGaranties.RisqueService">
+    <endpoint address="http://was400.local/OPServiceCreationOffre/RisqueService.svc" binding="basicHttpBinding" contract="OPServiceContract.IRisque" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.Administration.Administration">
+    <endpoint address="http://was400.local/BackOffice/Administration.svc" binding="basicHttpBinding" contract="OPServiceContract.IAdministration.IVoletsBlocsCategories" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.ITraitementsFinOffre.IFinOffre">
+    <endpoint address="http://was400.local/TraitementsFinOffre/FinOffre.svc" binding="basicHttpBinding" contract="OPServiceContract.ITraitementsFinOffre.IFinOffre" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.IAvenant">
+    <endpoint address="http://was400.local/Avenant/AvenantService.svc" binding="basicHttpBinding" contract="OPServiceContract.IAvenant" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.BOParametrage.ParametrageClauses">
+    <endpoint address="http://was400.local/BackOffice/ParametrageClauses.svc" binding="basicHttpBinding"
+              contract="OPServiceContract.IBOParametrage.IParametrageClauses" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.ICommon.ICommonOffre">
+    <endpoint address="http://was400.local/Common/CommonOffre.svc" binding="basicHttpBinding" contract="OPServiceContract.ICommon.ICommonOffre" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.IAffaireNouvelle.IAffaireNouvelle">
+    <endpoint address="http://was400.local/TraitementAffNouv/AffaireNouvelle.svc" binding="basicHttpBinding" bindingConfiguration="KheopsBasicHttpBinding" contract="OPServiceContract.IAffaireNouvelle.IAffaireNouvelle" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.TraitementAffNouv.CommonAffaireNouvelle">
+    <endpoint address="http://was400.local/TraitementAffNouv/CommonAffaireNouvelle.svc" binding="basicHttpBinding" contract="OPServiceContract.ITraitementAffNouv.ICommonAffaireNouvelle" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.ICommon.IAdresseHexavia">
+    <endpoint address="http://was400.local/Hexavia/AdresseHexavia.svc" binding="basicHttpBinding" contract="OPServiceContract.IHexavia.IAdresseHexavia" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.IS.InfoSpecif">
+    <endpoint address="http://was400.local/IS/InfoSpecif.svc" binding="basicHttpBinding"
+              contract="OPServiceContract.IS.IInfoSpecif" bindingConfiguration="KheopsBasicHttpBinding"/>
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.Excel.OffreSimplifieExcel">
+    <endpoint address="http://was400.local/ExcelInfo/ExcelInfo.svc" binding="basicHttpBinding"
+              contract="OPServiceContract.OffreSimple.IOffreSimplifieExcel" bindingConfiguration="KheopsBasicHttpBinding"/>
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.ExternalUse.Edithique">
+    <endpoint address="http://was400.local/ExternalUse/Edithique.svc" binding="basicHttpBinding"
+              contract="OPServiceContract.ExternalUse.IEdithique" bindingConfiguration="KheopsBasicHttpBinding"/>
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service name="OP.Services.Print.PrintJob">
+    <endpoint address="net.tcp://was400.local/Print/PrintJob" binding="netTcpBinding"
+              contract="OPServiceContract.Print.IPrintJob" bindingConfiguration="KheopsNetTcpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.IRegularisation">
+    <endpoint address="http://was400.local/Regularisations/Regularisation.svc" binding="basicHttpBinding" contract="OPServiceContract.IRegularisation" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.INavigationService">
+    <endpoint address="http://was400.local/Navigation/NavigationService.svc" binding="basicHttpBinding" contract="OPServiceContract.INavigationService" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.IStepFinder">
+    <endpoint address="http://was400.local/Navigation/StepFinder.svc" binding="basicHttpBinding" contract="OPServiceContract.IStepFinder" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.ICommonAffaire">
+    <endpoint address="http://was400.local/CommonAffaireService.svc" binding="basicHttpBinding" contract="OPServiceContract.ICommonAffaire" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.IFormule">
+    <endpoint address="http://was400.local/Formules/FormuleService.svc" binding="basicHttpBinding" contract="OPServiceContract.IFormule" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="Albingia.Kheops.OP.Application.Port.Driver.IInfosSpecifiquesPort">
+    <endpoint address="http://was400.local/InfosSpecifiquesService.svc" binding="basicHttpBinding" contract="Albingia.Kheops.OP.Application.Port.Driver.IInfosSpecifiquesPort" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OP.Services.RemiseEnVigueur">
+    <endpoint address="http://was400.local/RemiseEnVigueur/RemiseEnVigueur.svc" binding="basicHttpBinding" contract="OPServiceContract.IRemiseEnVigueur" bindingConfiguration ="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.ISinistres">
+    <endpoint address="http://was400.local/Sinistres/SinistresService.svc" binding="basicHttpBinding" contract="OPServiceContract.ISinistres" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="OPServiceContract.ILablat">
+    <endpoint address="http://was400.local/Lablat/Lablat.svc" binding="basicHttpBinding" contract="OPServiceContract.ILablat" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="Albingia.Kheops.OP.Application.Port.Driver.IReferentielPort">
+    <endpoint address="http://was400.local/ReferentielService.svc" binding="basicHttpBinding" contract="Albingia.Kheops.OP.Application.Port.Driver.IReferentielPort" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="Albingia.Kheops.OP.Application.Port.Driver.IFormulePort">
+    <endpoint address="http://was400.local/FormuleService.svc" binding="basicHttpBinding" contract="Albingia.Kheops.OP.Application.Port.Driver.IFormulePort" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="Albingia.Kheops.OP.Application.Port.Driver.IRisquePort">
+    <endpoint address="http://was400.local/RisqueService.svc" binding="basicHttpBinding" contract="Albingia.Kheops.OP.Application.Port.Driver.IRisquePort" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="Albingia.Kheops.OP.Application.Port.Driver.IAffairePort">
+    <endpoint address="http://was400.local/AffaireService.svc" binding="basicHttpBinding" contract="Albingia.Kheops.OP.Application.Port.Driver.IAffairePort" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="Albingia.Kheops.OP.Application.Port.Driver.IParametrageModelesPort">
+    <endpoint address="http://was400.local/BackOffice/ParametrageModelesService.svc" binding="basicHttpBinding" contract="Albingia.Kheops.OP.Application.Port.Driver.IParametrageModelesPort" bindingConfiguration="KheopsBasicHttpBinding" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="restBehavior" name="RestContracts.IWebAvenant">
+    <endpoint address="" binding="webHttpBinding" contract="RestContracts.IWebAvenant" behaviorConfiguration="web" />
+  </service>
+
+</services>

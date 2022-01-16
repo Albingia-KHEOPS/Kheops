@@ -1,0 +1,43 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestUtilisateursPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vGestUtilisateurs.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albGestUtilisateurs.js" }, "~/Scripts/AlbingiaJS/")
+
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+
+<input type="hidden" id="SplitChar" name="SplitChar" value ="@(ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)" />
+@Html.Hidden("hiddenInputId", string.Empty)
+
+@Html.Hidden("currentAlbContext", Model.Albcontext)
+@Html.Hidden("pageAlbContext", Model.Albcontext)
+@Html.Hidden("rechercheAlbcontext", Model.RechercheAlbcontext)
+
+@Html.Hidden("currentAlbContext", Model.ReloadPageBack.ToString(), new { id = "reloadPageBack" })
+
+<div>
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+</div>
+
+<div id="divGestUtlisateurBody">
+    @Html.Partial("GestUtlisateurBody", Model)
+</div>
+
+
+<div id="divRechercheGestUtilisateur" class="None">
+    <div class="overlay-background" style="z-index:4" >
+    </div>
+    <div id="divDataRechercheGestUtilisateur">
+        <div id="divRGUMain">
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreenListUsers" class="None">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataFullScreenListUsers" style="z-index: 3; position: absolute; top: 5px; left: 10%;">
+    </div>
+</div>
+

@@ -1,0 +1,53 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleStatisque.ResultStatClausesLibreModel
+@using ALBINGIA.Framework.Common.Constants
+
+<div id="divRechercherResult">
+
+    <div id="PaginationSize" style="visibility: hidden; display: none;">@Model.LineCount</div>
+
+    <div id="divLstResultats">
+        <div id="divResultatsHeader">
+            <table id="tblResultatsHeader" class="divListRecherche">
+                <tr>
+                    <th class="thDelegationUser tablePersoHead">Délégation User
+                    </th>
+                    <th class="thCreateUser tablePersoHead">Create User
+                    </th>
+                    <th class="thDateCreation tablePersoHead">Date Creation                                  
+                    </th>
+                    <th class="thDateSaisie tablePersoHead">Date Saisie                                
+                    </th>
+                    <th class="thNumPolice tablePersoHead">Num Police                            
+                    </th>
+                    <th class="thVersion tablePersoHead">Version                              
+                    </th>
+                    <th class="thCodeCourtier tablePersoHead">Code Courtier                                  
+                    </th>
+                    <th class="thNomCourtier tablePersoHead">Nom Courtier                            
+                    </th>
+                    <th class="thDelegationCourtier tablePersoHead">Délégation Courtier                            
+                    </th>
+                    <th class="thCodePreneurass tablePersoHead">Code Preneurass                            
+                    </th>
+                    <th class="thNomPreneurass tablePersoHead">Nom Preneurass                            
+                    </th>
+                    <th class="thSouscripteur tablePersoHead">Souscripteur                          
+                    </th>
+
+                </tr>
+            </table>
+        </div>
+        <div id="divresultatsbody" class="scrollLAB">
+            @if (Model.ListResult != null && Model.ListResult.Count > 0)
+            {
+                @Html.Partial("ListeResultatsRecherche", Model.ListResult)
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

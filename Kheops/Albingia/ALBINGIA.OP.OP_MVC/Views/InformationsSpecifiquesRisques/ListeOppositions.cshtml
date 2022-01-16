@@ -1,0 +1,59 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsSpecifiquesRisquesPage
+<table id="tblOppositionsBody">
+    @foreach (var item in Model.ListOppositions)
+    {       
+        <tr id="@("edit_" + item.GuidId)" albtypedest="@(item.TypeDest)">
+            <td style="display: none" id="@("Guid_" + item.GuidId)" name="EditerOpposition">
+                <label id="@("lblGuidId_" + item.GuidId)">@item.GuidId</label>
+            </td>
+            <td class="col_Type CursorPointer" id="@("Type_" + item.GuidId)" name="EditerOpposition">
+                <label id="@("lblType_" + item.GuidId)" title="@item.TypeFinancementLabel">@item.TypeFinancement</label>
+            </td>
+            <td class="col_Organisme CursorPointer" id="@("Organisme_" + item.GuidId)" name="EditerOpposition">
+                @if (item.LienFichierOrigine == 0)
+                {
+                    <label id="@("lblOrganisme_" + item.GuidId)">@item.CodeOrganisme -@item.NomOrganisme </label>
+                }
+                else
+                {
+                    <label id="@("lblOrganisme_" + item.GuidId)">@item.NomOrganismeWarning </label>
+                }
+
+            </td>
+            <td class="col_Ville" id="@("Ville_" + item.GuidId)" name="EditerOpposition">
+                @if (item.LienFichierOrigine == 0)
+                {
+                    <label id="@("lblVille_" + item.GuidId)" title="@item.CPOrganisme  @item.VilleOrganisme @item.NomPays">@item.VilleOrganisme</label>
+                }
+                else
+                {
+                    <label id="@("lblVille_" + item.GuidId)" title="@item.CPOrganismeWarning  @item.VilleWarning @item.NomPaysWarning">@item.VilleWarning</label>
+                }
+            </td>
+            <td class="col_Description CursorPointer" id="@("Description_" + item.GuidId)" name="EditerOpposition">
+                <label id="@("lblDescription_" + item.GuidId)">@item.Description</label>
+            </td>
+            <td class="col_Reference CursorPointer" id="@("Reference_" + item.GuidId)" name="EditerOpposition">
+                <label id="@("lblReference_" + item.GuidId)">@item.Reference</label>
+            </td>
+            <td class="col_Echeance CursorPointer" id="@("Echeance_" + item.GuidId)" name="EditerOpposition">
+                <label id="@("lblEcheance_" + item.GuidId)">@(item.Echeance == null ? string.Empty : item.Echeance.Value.ToString("dd/MM/yyyy"))</label>
+            </td>
+            <td class="col_Montant CursorPointer" id="@("Montant_" + item.GuidId)" name="EditerOpposition">
+                <span id="@("lblMontant_" + item.GuidId)" albmask="decimal">@item.Montant</span>
+            </td>
+            <td class="col_Action">
+                @if (!Model.IsReadOnly || Model.IsModifHorsAvenant)
+                {
+                    <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("suppr_" + item.GuidId)" alt="Supprimer" title="@item.AppliqueALabel" class="Action CursorPointer paddingBtnAction" name="btnSupprimerOpposition"/>
+                }
+                @if (item.LienFichierOrigine != 0)
+                {
+                    <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")" id="@("warning_" + item.GuidId)" title="Attention : aucun code organisme n'est renseigné" class="paddingImgWarning"/>
+                }
+                <img id="@("btnDetail_" + item.GuidId)"  src="@(Url.Content("/Content/Images/moreinfo.png"))" style="padding-left: 21px; width:22px ; height:22px ;"   name="btnDetailOpp" class="CursorPointer" />
+            </td>
+        </tr>
+    }
+</table>
+

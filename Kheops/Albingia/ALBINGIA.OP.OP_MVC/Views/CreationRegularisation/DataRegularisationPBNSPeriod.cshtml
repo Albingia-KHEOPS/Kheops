@@ -1,0 +1,126 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleSaisieRegulGarantie.InfoInitSaisieRegul
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="AutoWidth"><b>Données de régularisation :</b></label>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft" style="width: 137px;">
+        &nbsp;
+    </div>
+    <div class="FloatLeft" style="text-align: center;">
+        <label class="Block">HT Hors Cat Nat</label>
+    </div>
+</div>
+@* 1ere ligne *@
+<div class="HeightRow">
+    <div class="FloatLeft WidthRegulPB150">
+        <label class="AutoWidth">Cotis. émises sur durée</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CotisEmises" name="CotisEmises"  value="@(Model.CotisEmise_PB)" class="inNumericRegule" albmask="decimal" />
+    </div>
+    <div class="FloatLeft WidthRegulPB140">
+        <label class="AutoWidth" style="padding-left: 10px;">Taux appel</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="TauxAppel" name="TauxAppel" value="@(Model.TxAppelPbns_PB)" class="inSmallNumericRegule" albmask="decimalpourcent" />
+    </div>
+    @*<div class="FloatLeft">
+        <label class="AutoWidth" style="padding-left: 20px;">Ristourne anticipée %</label>
+    </div>
+    <div class="FloatLeft RistInput">
+        <input type="text" id="TxRistourneAnticipee" name="TxRistourneAnticipee" value="@(Model.RistAnticipeeReguL_PB)" class="readonly inNumericRegule" readonly="readonly" albmask="decimalpourcent" />
+    </div>*@
+</div>
+@* 2e ligne *@
+<div class="HeightRow">
+    <div class="FloatLeft WidthRegulPB150">
+        <label class="AutoWidth">Cotis. dues sur durée</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CotisDues" name="CotisDues"  value="@(Model.CotisDue_PB)" class="readonly inNumericRegule " readonly="readonly" albmask="decimal" />
+    </div>
+    @if ( Model.TypeGrille == "PB")
+    {
+        <div class="FloatLeft WidthRegulPB140">
+            <label class="AutoWidth" style="padding-left: 10px;">Nombres d'années</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="NbAnnee" name="NbAnnee" value="@(Model.NbYearRegul_PB)" class="readonly inSmallNumericRegule " readonly="readonly" albmask="numeric" />
+        </div>
+    }
+</div>
+@* 3e ligne *@
+<div class="HeightRow">
+    <div class="FloatLeft WidthRegulPB150">
+        <label class="AutoWidth">Cotis. retenues</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CotisRetenues" name="CotisRetenues" value="@(Model.CotisRetenue_PB)" class="readonly inNumericRegule " readonly="readonly" albmask="decimal" />
+    </div>
+    <div class="FloatLeft WidthRegulPB140">
+        <label class="AutoWidth" style="padding-left: 10px;">Cotisations retenues</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="TxCotisRetenues" name="TxCotisRetenues" value="@(Model.TxCotisRet_PB)" class="inSmallNumericRegule" albmask="decimalpourcent" />
+    </div>
+</div>
+@* 4e ligne *@
+<div class="HeightRow">
+    <div class="FloatLeft WidthRegulPB150">
+        <label class="AutoWidth">Chargement sinistres</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="ChargementSinistres" name="ChargementSinistres" value="@(Model.ChargeSin_PB)" class="inNumericRegule " albmask="decimal" />
+    </div>
+    <div class="FloatLeft" style="padding-top: 4px; padding-left: 681px;">
+        <label>ATTENTAT</label>
+    </div>
+</div>
+@* 5e ligne *@
+<div class="HeightRow">
+    <div class="FloatLeft WidthRegulPB150">
+        <label class="AutoWidth">PB/BNS</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PBBNS" name="PBBNS" value="@(Model.Pbns_PB)" class="readonly inNumericRegule" readonly="readonly " albmask="decimal" />
+    </div>
+    <div class="FloatLeft WidthRegulPB140">
+        <label class="AutoWidth" style="padding-left: 10px;">Ristourne</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="Ristourne" name="Ristourne" value="@(Model.TxRistRegul_PB)" class="inSmallNumericRegule" albmask="decimalpourcent" />
+    </div>
+    <div class="FloatLeft" style="padding-left: 195px;">
+        <label>Montant de la régul.</label>
+    </div>
+    <div class="FloatLeft" style="padding-left: 10px;">
+        <input type="text" class="readonly inNumericRegule" id="MontantRegularisationHT" albmask="decimal" value="@Model.MntRegulHt_STD" />
+    </div>
+    <div class="FloatLeft" style="padding-left: 30px;">
+        <input type="text" class="inNumericRegule" id="AttentatGareat" albmask="decimal" value="@Model.Attentat_STD" />
+    </div>
+</div>
+@* 6e ligne *@
+<div class="HeightRow">
+    <div class="FloatLeft WidthRegulPB150">
+        <label class="AutoWidth">Ristourne anticipée</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="RistourneAnticipee" name="RistourneAnticipee" value="@(Model.RistAnticipee_PB)" class="inNumericRegule" albmask="decimal" />
+    </div>
+    <div class="FloatLeft" style="padding-left: 417px;">
+        <label style="margin-right: 10px; width: 110px">Ou Montant régul forcé </label>
+    </div>
+    <div class="FloatLeft">
+        <input id="MontantForcePrimecalcul" type="text" class="@(Model.Force0_STD == "O" ? "inNumericRegule readonly" : "inNumericRegule") "   readonly="@(Model.Force0_STD == "O" )" albmask="decimal"  value="@((Model.Force0_STD == "O" || Model.topFrc =="N") ? 0 : Model.MntForceCalc_STD)" />
+    </div>
+    <div class="FloatLeft" style="padding-left: 29px;">
+        <input type="checkbox" id="IsCheckForcer" name="IsCheckForcer" checked="@(Model.Force0_STD == "O" )"/>
+    </div>
+    <div class="FloatLeft" style="padding-top: 3px;">
+        <label>Forcer à "0" </label>
+    </div>
+</div>
+

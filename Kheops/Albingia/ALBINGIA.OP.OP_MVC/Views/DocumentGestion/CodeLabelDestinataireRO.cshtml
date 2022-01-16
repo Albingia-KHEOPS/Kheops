@@ -1,0 +1,81 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.DestinataireLigne
+<table>
+    <tr>
+        @if (Model.CodeTypeDestinataire == "AS" || Model.CodeTypeDestinataire == "ASS")
+        {    
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire readonly" readonly="readonly" />
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire readonly" readonly="readonly" title="@Model.NomDestinataire" />
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    &nbsp;
+                </div>
+            </td>
+        }
+        else if (Model.CodeTypeDestinataire == "COURT" || Model.CodeTypeDestinataire == "CT")
+        {
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire readonly" readonly="readonly" />
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire readonly" readonly="readonly" title="@Model.NomDestinataire" />
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    &nbsp;
+                </div>
+            </td>
+        }
+        else if (Model.CodeTypeDestinataire == "CI")
+        {
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" value="" albautocomplete="autoCompAperiteurSelect" albcontext="@Model.GuidId"/>
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire readonly" readonly="readonly" />
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire readonly" readonly="readonly" title="@Model.NomDestinataire" />
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    &nbsp;
+                </div>
+            </td>
+        }
+        else if (Model.CodeTypeDestinataire == "IN")
+        {
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId" albAutoComplete="autoCompIntervenantType"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire readonly" readonly="readonly" />
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire readonly" readonly="readonly" title="@Model.NomDestinataire" />
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    &nbsp;
+                </div>
+            </td>
+        }
+        else
+        {
+            <td class="tdCodeDestinataire" id="@("codeDestinataire_" + Model.GuidId)">
+                <input type="hidden" id="@("INTypeIntervenant_" + Model.GuidId)" value="@Model.TypeIntervenant" albcontext="@Model.GuidId"/>
+                <input id="@("INCodeDestinataire_" + Model.GuidId)" value="@Model.CodeDestinataire" class="INCodeDestinataire readonly" readonly="readonly">
+            </td>
+            <td class="tdNomDestinataire" id="@("nomDestinataire_" + Model.GuidId)">
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    <input id="@("INNomDestinataire_" + Model.GuidId)" value="@Model.NomDestinataire" class="INNomDestinataire readonly" readonly="readonly" title="@Model.NomDestinataire" />
+                </div>
+                <div class="FloatLeft" style="padding-top: 2px;">
+                    &nbsp;
+                </div>
+            </td>
+        }
+    </tr>
+</table>

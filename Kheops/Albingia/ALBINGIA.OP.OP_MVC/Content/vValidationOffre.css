@@ -1,0 +1,269 @@
+﻿#divBodyCritere
+{
+    overflow: auto;
+    max-height: 400px;
+    width: 781px;
+}
+
+#tblHeaderCritere tr, #tblBodyCritere tr, #tblBodyDetail tr
+{
+    height: 1px;
+}
+
+#divBodyDetail
+{
+    overflow: auto;
+    max-height: 190px;
+    width: 410px;
+}
+
+#tblBodyDetail
+{
+    width: 390px;
+}
+
+.CritereHeight
+{
+    height: 357px;
+}
+
+.CritereHeightContrat
+{
+    height: 302px;
+}
+
+.colHCritere
+{
+    width: 550px;
+}
+
+.colHNiveau
+{
+    width: 200px;
+}
+
+.colBCritere
+{
+    width: 548px;
+}
+
+.colBNiveau
+{
+    width: 202px;
+}
+
+#detailNiveau
+{
+    display: none;
+}
+
+#divDataDetailNiv
+{
+    position: absolute;
+    top: 10px;
+    left: 35%;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}
+
+#divContainerEditionDocument
+{
+    position: absolute;
+    top: 41px;
+    left: 1%;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}
+
+#Delegation
+{
+    width: 100px !important;
+}
+
+#MontantReference
+{
+    width: 80px !important;
+}
+
+#DateStatistique
+{
+    width: 80px !important;
+}
+
+.ActionButtonValider
+{
+    padding-top: 6px;
+    display: block;
+    padding-right: 10px;
+}
+
+.montantField
+{
+    width: 50px !important;
+}
+
+.largeLabel
+{
+    width: 165px !important;
+}
+
+.mediumLabel
+{
+    width: 140px !important;
+}
+
+.smallLabel
+{
+    width: 80px !important;
+}
+
+.VeryLargeColumnSecteur
+{
+    width: 350px !important;
+    float: left;
+}
+
+.tinyLabel
+{
+    width: 50px !important;
+}
+
+.LargePaddingLeft
+{
+    padding-left: 8px;
+}
+
+.LargeGenericColumn
+{
+    width: 300px;
+    float: left;
+}
+
+.LargeSecteur
+{
+    width: 300px !important;
+}
+
+.MediumSecteur
+{
+    width: 261px !important;
+}
+
+.SmallColumnCalcul
+{
+    width: 180px !important;
+    float: left;
+}
+
+.SmallGenericColumn
+{
+    width: 200px;
+    float: left;
+}
+
+.HeightEngagementGroup
+{
+    height: 155px;
+}
+
+.tdHeaderTraite
+{
+    width: 150px;
+}
+
+.tdHeaderEngagement
+{
+    width: 75px;
+}
+
+.divTraite
+{
+    height: 85px;
+    overflow: auto;
+}
+
+.tdNomTraite
+{
+    width: 144px;
+}
+
+.tdEngagement
+{
+    padding-right: 5px;
+    text-align: right;
+    width: 69px;
+}
+
+#divMessageAlerte
+{
+    /*width: 660px;*/
+    width: 603px;
+}
+
+#divCotisations
+{
+    /*width: 300px;*/
+    width: 410px;
+}
+
+.colHeaderCoti
+{
+    /*width: 150px;*/
+    width: 123px;
+}
+
+.colHeaderCotiHT
+{
+    /*width: 70px;*/
+    width: 68px;
+}
+
+.colHeaderCotiDontCN
+{
+    /*width: 70px;*/
+    width: 68px;
+}
+
+.colHeaderCotiTTC
+{
+    /*width: 90px;*/
+    width: 88px;
+}
+
+.tableHeaderCotisation
+{
+    width: 250px;
+}
+
+.tableBodyCotisation
+{
+    width: 250px;
+}
+
+.colBodyCoti
+{
+    width: 123px;
+}
+
+.colBodyCotiHT
+{
+    width: 70px;
+}
+
+.colBodyCotiDontCN
+{
+    width: 70px;
+}
+
+.colBodyCotiTTC
+{
+    width: 90px;
+}
+
+.blkObservations {
+    height: 41px;
+}

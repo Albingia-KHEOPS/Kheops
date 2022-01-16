@@ -1,0 +1,239 @@
+﻿table
+{
+    empty-cells: show;
+}
+.OffreContratSearchResult_Grid
+{
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1183px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    background-color: #fff;
+}
+
+
+div.scroll
+{
+    width: 1200px;
+    /*max-height: 653px;*/
+    max-height: 603px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.BackgrdWhite
+{
+    background-color: #fff;
+}
+
+.PageSize
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #000000;
+}
+
+.OffreContratSearchResult_Grid th
+{
+    border-top: 1px solid transparent;
+    border-right: 1px solid #fff;
+    border-left: none;
+    border-bottom: 1px solid #ddd;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+.OffreContratSearchResult_Grid td
+{
+    overflow: hidden;
+    border-right: 1px solid #ddd;
+}
+
+.OffreContratSearchResult_Grid .thExpender
+{
+    width: 45px;
+}
+.OffreContratSearchResult_Grid .thNo
+{
+    /*width:65px;    */
+    width: 68px;
+}
+.OffreContratSearchResult_Grid .thVersion
+{
+    width: 30px;
+}
+.OffreContratSearchResult_Grid .thDate
+{
+    width: 70px;
+}
+.OffreContratSearchResult_Grid .thBranche
+{
+    width: 30px;
+}
+.OffreContratSearchResult_Grid .thPreneurAssurance
+{
+    width: 120px;
+}
+.OffreContratSearchResult_Grid .thCodePostal
+{
+    width: 40px;
+}
+.OffreContratSearchResult_Grid .thEtat
+{
+    /*width: 37px;*/
+    width: 40px;
+}
+.OffreContratSearchResult_Grid .thSituation
+{
+    width: 37px;
+}
+.OffreContratSearchResult_Grid .thQualite
+{
+    width: 48px;
+}
+.OffreContratSearchResult_Grid .thCourtierGestionnaireNom
+{
+    text-align: center;
+    width: 120px;
+}
+.OffreContratSearchResult_Grid .thCourtierGestionnaireCP
+{
+    width: 40px;
+}
+.OffreContratSearchResult_Grid th .thDescriptifRisque
+{
+    border-right: 1px solid transparent;
+}
+.OffreContratSearchResult_Grid .thDescriptifRisque
+{
+    width: 440px;
+}
+
+.OffreContratSearchResult_Grid td
+{
+    border-top: 1px solid transparent;
+    border-right: 1px solid #ddd;
+    border-left: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.OffreContratSearchResult_Grid .tdExpender
+{
+    vertical-align: top;
+    width: 45px;
+}
+.OffreContratSearchResult_Grid .tdNo
+{
+    text-align: right;
+    padding-right: 2px;
+    width: 67px;
+}
+.OffreContratSearchResult_Grid .tdVersion
+{
+    text-align: right;
+    padding-right: 2px;
+    width: 29px;
+}
+.OffreContratSearchResult_Grid .tdDate
+{
+    text-align: center;
+    width: 70px;
+}
+.OffreContratSearchResult_Grid .tdBranche
+{
+    text-align: center;
+    width: 30px;
+}
+.OffreContratSearchResult_Grid .tdPreneurAssurance
+{
+    width: 120px;
+}
+.OffreContratSearchResult_Grid .tdCodePostal
+{
+    text-align: center;
+    width: 40px;
+}
+.OffreContratSearchResult_Grid .tdEtat
+{
+    text-align: center;
+    width: 40px;
+}
+.OffreContratSearchResult_Grid .tdSituation
+{
+    text-align: center;
+    width: 37px;
+}
+.OffreContratSearchResult_Grid .tdQualite
+{
+    text-align: center;
+    width: 48px;
+}
+.OffreContratSearchResult_Grid .tdCourtierGestionnaireNom
+{
+    width: 120px;
+}
+.OffreContratSearchResult_Grid .tdCourtierGestionnaireCP
+{
+    text-align: center;
+    width: 40px;
+}
+.OffreContratSearchResult_Grid .tdDescriptifRisque
+{
+    width: 455px;
+}
+
+.OffreContratSearchResult_Grid .tdExpender img
+{
+    margin-top: 9px;
+    margin-left: 4px;
+}
+.OffreContratSearchResult_Grid .tdExpender input[type=radio]
+{
+    margin-top: 5px;
+    margin-left: 4px;
+}
+.OffreContratSearchResult_Grid .tdExpender img, .OffreContratSearchResult_Grid .tdExpender input[type=radio]
+{
+    display: block;
+    float: left;
+}
+
+.ListOffreContratGrid .DateDerniereMAJ
+{
+    width: 92px;
+}
+
+.field-hide
+{
+    display: none;
+}
+
+.field-show
+{
+    display: inline;
+}
+
+.field-right
+{
+    float: right;
+}
+
+.Pagination
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #000000;
+    /*padding-right: 5px;*/
+    margin-right:-3px;
+    padding-top: 5px;
+}
+.MsgAffinement {
+    margin-left:200px;
+}

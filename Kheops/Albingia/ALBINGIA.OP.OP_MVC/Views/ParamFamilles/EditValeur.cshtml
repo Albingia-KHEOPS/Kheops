@@ -1,0 +1,218 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamFamilles.Valeur
+<div id="divSectionInfoValeur">
+    <div class="GradientSection">
+        @Html.HiddenFor(m => m.ModeOperation)
+        <div class="HeightRow">
+            @switch (Model.ModeOperation)
+            {
+                case "I": <label class="TitledivSection">Création d'une valeur</label>
+                    break;
+                case "U":<label class="TitledivSection"> Modification de la valeur</label>
+                    break;
+                case "D":<label class="TitledivSection"> Duplication de la valeur</label>
+                    break;
+                default: <label class="TitledivSection">Création / Modification d'une valeur</label>            
+                    break;
+            }
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Concept</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.HiddenNoName("CodeConcept", Model.CodeConcept)
+                <input id="CodeLibelleConcept" type="text" class="InputLong readonly" readonly="readonly" value="@(Model.CodeConcept + " - " + Model.LibelleConcept)" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Famille</label>
+            </div>
+            <div class="FloatLeft">
+                <input id="CodeLibelleFamille" type="text" class="InputLong readonly" readonly="readonly" value="@(Model.CodeFamille + " - " + Model.LibelleFamille)" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Code*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (!string.IsNullOrEmpty(Model.CodeValeur) && @Model.ModeOperation == "U")
+                    {
+                        
+                        <input id="CodeValeur" class="readonly" maxlength="15" readonly="readonly" type="text" value="@Model.CodeValeur" />
+                    }
+                    else
+                    {
+                        if (Model.TypeCode == "A")
+                        {
+                        <input id="CodeValeur" type="text" maxlength="@Model.Longueur" value="@Model.CodeValeur" />
+                        }
+                        else
+                        {
+                        <input id="CodeValeur" type="text" albMask="numeric" maxlength="@Model.Longueur" value="@Model.CodeValeur" />
+                        }
+                    }
+                </div>
+            </div>
+            <div class="ColumnLibelleCourtValeur">
+                <div class="FloatLeft">
+                    <input id="LibelleValeur" maxlength="20" type="text" value="@Model.LibelleValeur" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <input id="LibelleLongValeur" maxlength="40" class="InputLibelleLongValeur" type="text" value="@Model.LibelleLongValeur" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Description</label>
+            </div>
+
+            <div class="FloatLeft">
+                <input id="Description1" maxlength="70" type="text" class="InputLong" value="@Model.Description1" />
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <input id="Description2" maxlength="70" type="text" class="InputLong" value="@Model.Description2" />
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <input id="Description3" maxlength="70" type="text" class="InputLong" value="@Model.Description3" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <label class="TitledivSection">Variables</label>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnLibelleValeurVariable">
+                <div class="FloatLeft">
+                    <label class="Block">Num 1</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleLongNum1" type="text" class="InputLibelleLong readonly" readonly="readonly" value="@Model.LibelleLongNum1" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @if (!string.IsNullOrEmpty(Model.LibelleLongNum1))
+                    {
+                        if (Model.TypeNum1 == "D")
+                        {                           
+                        @Html.AlbDateFormat(m => ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Convert.ToInt32(m.ValeurNum1)), new { @class = "datepicker", @id = "ValeurNum1" }, "dd/MM/yyyy", "ValeurNum1")
+                        }
+                        else
+                        {
+                        <input id="ValeurNum1" class="InputValVariable" albMask="decimal" type="text" value="@Model.ValeurNum1" />
+                        }
+                    }
+                    else
+                    {
+                        <input id="ValeurNum1" class="InputValVariable readonly" readonly="readonly" type="text" value="" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnLibelleValeurVariable">
+                <div class="FloatLeft">
+                    <label class="Block">Num 2</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleLongNum2" type="text" class="InputLibelleLong readonly" readonly="readonly" value="@Model.LibelleLongNum2" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @if (!string.IsNullOrEmpty(Model.LibelleLongNum2))
+                    {
+                        if (Model.TypeNum2 == "D")
+                        {                           
+                        @Html.AlbDateFormat(m => ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Convert.ToInt32(m.ValeurNum2)), new { @class = "datepicker", @id = "ValeurNum2" }, "dd/MM/yyyy", "ValeurNum2")
+                        }
+                        else
+                        {
+                        <input id="ValeurNum2" class="InputValVariable" albMask="decimal" type="text" value="@Model.ValeurNum2" />
+                        }
+                    }
+                    else
+                    {
+                        <input id="ValeurNum2" class="InputValVariable readonly" readonly="readonly" type="text" value="" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnLibelleValeurVariable">
+                <div class="FloatLeft">
+                    <label class="Block">Alpha 1</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleLongAlpha1" type="text"  class="InputLibelleLong readonly" readonly="readonly" value="@Model.LibelleLongAlpha1" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @if (!string.IsNullOrEmpty(Model.LibelleLongAlpha1))
+                    {
+                        <input id="ValeurAlpha1" class="InputValVariable" maxlength="15" type="text" value="@Model.ValeurAlpha1" />
+                    }
+                    else
+                    {
+                        <input id="ValeurAlpha1" class="InputValVariable readonly" maxlength="15" readonly="readonly" type="text" value="" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnLibelleValeurVariable">
+                <div class="FloatLeft">
+                    <label class="Block">Alpha 2</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleLongAlpha2" type="text" class="InputLibelleLong readonly" readonly="readonly" value="@Model.LibelleLongAlpha2" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @if (!string.IsNullOrEmpty(Model.LibelleLongAlpha2))
+                    {
+                        <input id="ValeurAlpha2" class="InputValVariable" type="text" maxlength="15" value="@Model.ValeurAlpha2" />
+                    }
+                    else
+                    {
+                        <input id="ValeurAlpha2" class="InputValVariable readonly" maxlength="15" readonly="readonly" type="text" value="" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Filtre</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.AlbDropDownListFor(m => m.CodeFiltre, Model.Filtres, "CodeFiltre", htmlAttributes: new { @id = "CodeFiltre", @tabindex = "18", @class = "InputLong" }, generateTitle: false, genEmptyLine: true)
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Restriction</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.AlbDropDownListFor(m => m.Restriction, Model.Restrictions, "Restriction", htmlAttributes: new { @id = "Restriction", @tabindex = "19", @class = "InputDDL" }, generateTitle: false, genEmptyLine: false)
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divButtons" class="GroupFull GroupWithBorder ButtonsHeight">
+    <div class="ActionButtons ActionButtonRight">
+        <button id="btnAnnulerDivF" type="button" albshortcut="true" data-accesskey="v"><u>A</u>nnuler</button>
+        <button id="btnValider" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+    </div>
+</div>
+

@@ -1,0 +1,24 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleDoubleSaisiePage
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albDoubleSaisie.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("DblSaisieBody", Model)
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnAnnulerDbl" type="button" albshortcut="true" data-accesskey="f" tabindex="16"><u>F</u>ermer</button>
+            </div>
+        </div>
+    </div>
+</div>

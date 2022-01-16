@@ -1,0 +1,41 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesBlocageTermes.ModeleDeblocageTermes
+<div class="GroupFull GroupWithBorder" id="divDeblocageHeight">
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                Déblocage des termes
+            </div>
+        </div>
+        <div class="GradientSection divHeightDeblocage">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="largeLabelWidth Block">Période précédant l'échéance à émettre : </label>
+                </div>
+                <div class="FloatLeft">
+                    <label>Du</label>
+                    <input id="DebutPeriodeEcheance" class="readonly" readonly="readonly" value="@(Model.DebutPeriodeEcheance.HasValue ? Model.DebutPeriodeEcheance.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+                    <label>au</label>
+                    <input id="FinPeriodeEcheance" class="readonly" readonly="readonly" value="@(Model.FinPeriodeEcheance.HasValue ? Model.FinPeriodeEcheance.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="VerylargeLabelWidth Block">Echéance à émettre le </label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="DateEcheance" class="readonly" readonly="readonly" value="@(Model.DateEmissionEcheance.HasValue ? Model.DateEmissionEcheance.Value.ToString("dd/MM/yyyy") : string.Empty)" />
+                </div>
+            </div>
+            <div class="HeightRow">             
+                <div class="FloatLeft">
+                    <input type="checkbox" id="chkIsEmissionImmediate" checked="checked">Emettre la prime immédiatement
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+        <div class="ButtonRight">
+            <button id="btnValiderDeblocage" type="button">OK</button>
+        </div>
+    </div>
+</div>

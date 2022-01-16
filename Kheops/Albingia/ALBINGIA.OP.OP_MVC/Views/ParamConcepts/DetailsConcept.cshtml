@@ -1,0 +1,46 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamConcepts.ModeleLigneConcept
+@Html.HiddenNoName("modeSaisie", Model.ModeSaisie)
+<div class="GroupTitle">
+    Création/Modification concept
+</div>
+<div class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Code concept*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AdditionalParam == "**" || Model.AdditionalParam == "30")
+                    {
+                        <input id="codeConceptEdit" class="DoubleInput @(Model.ModeSaisie == "Update" ? "readonly" : string.Empty)" value="@Model.CodeConcept" readonly="@(Model.ModeSaisie == "Update" )" maxlength="5"/>
+                    }
+                    else
+                    {
+                        <input id="codeConceptEdit" class="DoubleInput readonly" value="@Model.CodeConcept" readonly="readonly"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Description*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AdditionalParam == "**" || Model.AdditionalParam == "30" || Model.AdditionalParam == "20")
+                    {
+                        <input id="descriptionConceptEdit" class="DoubleInput" value="@Model.DescriptionConcept" maxlength="35"/>
+                    }
+                    else
+                    {
+                        <input id="descriptionConceptEdit" class="DoubleInput readonly" value="@Model.DescriptionConcept" readonly="readonly"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="Validation">
+            <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+        </div>
+    </div>
+</div>

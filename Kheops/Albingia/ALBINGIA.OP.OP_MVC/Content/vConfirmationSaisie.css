@@ -1,0 +1,39 @@
+﻿.TiersGroup
+{
+    clear: both;
+}
+
+.TotalWidthPrive
+{
+    width: 1205px !important;
+}
+
+.divAdresse
+{
+    width: 500px;
+    height: 70px;
+    float: left;
+}
+
+.inputApporteur
+{
+    width: 200px !important;
+}
+
+.divDataApporteur
+{
+    float: left;
+    margin-right: 24px;
+}
+
+.divInfoPreneur
+{
+    height: 184px;
+}
+.divInfoApporteur{
+    height: 142px;
+}
+
+.EmptyColLeft{
+    margin-left:182px;    
+}

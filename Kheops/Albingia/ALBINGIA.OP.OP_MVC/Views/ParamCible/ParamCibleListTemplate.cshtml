@@ -1,0 +1,60 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamCible.InfoTemplate>
+<div id="divHeaderTemplate">
+    <table id="tblHeaderTemplate" class="trHeight">
+        <tr>
+            <th class="tablePersoHead tdCodeTemplate">Code</th>
+            <th class="tablePersoHead tdDescriptionTemplate">Description</th>
+            <th class="tablePersoHead tdTypeDefaultTemplate">Type</th>
+            <th class="tablePersoHead tdTypeDefaultTemplate">Défaut</th>
+            <th class="tablePersoHead tdImgTemplate">&nbsp;</th>
+            <th class="tablePersoHead tdImgTemplate">
+                <img id="tabRefresh" name="tabRefresh" class="CursorPointer" src="@Url.Content("/Content/Images/arrow-refresh.png")" alt="Refresh" title="Rafraîchir" />
+            </th>
+        </tr>
+    </table>
+</div>
+<div id="divBodyTemplate" class="divBodyTemplate">
+    @{
+        var splitChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+        var albIndexLst = ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST;   
+    }
+    @Html.Hidden("urlWinOpen", string.Empty)
+    <table id="tblBodyTemplate" class="trHeight tableTemplate">
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var temp in Model)
+            {
+            <tr id="Temp@(splitChar)@(temp.GuidId)">
+                <td class="tdCodeTemplate">@temp.CodeTemplate</td>
+                <td class="tdDescriptionTemplate">@temp.DescriptionTemplate</td>
+                <td class="tdTypeDefaultTemplate">@temp.TypeTemplate</td>
+                <td class="tdTypeDefaultTemplate">
+                    <input type="checkbox" id="checkTemp@(splitChar)@(temp.TypeTemplate)@(splitChar)@(temp.GuidId)" name="checkTemp" checked="@(temp.Default )" />
+                </td>
+                <td class="tdImgTemplate">
+                    <img id="updTemp@(splitChar)@(temp.GuidId)" name="updTemp" class="CursorPointer" src="@Url.Content("/Content/Images/editer1616.png")" alt="Update" title="Mise à jour" albTypeTemp="@(temp.TypeTemplate)" albparam="" />
+                </td>
+                <td class="tdImgTemplate">
+                    <img id="delTem@(splitChar)@(temp.GuidId)" name="delTemp" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Delete" title="Suppression" albTypeTemp="@(temp.TypeTemplate)" />
+                </td>
+            </tr>
+            }
+        }
+        <tr id="Temp@(splitChar)@(albIndexLst)">
+            <td class="tdCodeTemplate">
+                <input type="hidden" id="idTemp@(splitChar)@(albIndexLst)" name="idTemp@(splitChar)@(albIndexLst)" value="" albAutoComplete="autoCompIdTemplateCible" />
+                <input type="text" class="inputCodeTemp" id="codeTemp@(splitChar)@(albIndexLst)" name="codeTemp@(splitChar)@(albIndexLst)" value="" albAutoComplete="autoCompCodeTemplateCible" />
+            </td>
+            <td class="tdDescriptionTemplate">
+                <input type="text" class="inputDescTemp" id="descTemp@(splitChar)@(albIndexLst)" name="descTemp@(splitChar)@(albIndexLst)" value="" albAutoComplete="autoCompLibTemplateCible" />
+            </td>
+            <td class="tdTypeDefaultTemplate">&nbsp;</td>
+            <td class="tdTypeDefaultTemplate">&nbsp;
+            </td>
+            <td class="tdImgTemplate">&nbsp;</td>
+            <td class="tdImgTemplate">
+                <img id="insTemp@(splitChar)@(albIndexLst)" name="insTemp" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Insert" title="Ajouter" />
+            </td>
+        </tr>
+    </table>
+</div>

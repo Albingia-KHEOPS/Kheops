@@ -1,0 +1,28 @@
+﻿@model List<ALBINGIA.Framework.Common.Models.Common.LogPerf>
+@if (Model == null || Model.Count == 0)
+{
+    <br />
+    <b>@Html.Raw("Aucune trace de log")</b>
+    <br />
+    <br />
+}
+else
+{
+    <table id="tblBody" class="trHeight">
+        @foreach (var trace in Model)
+        {                        
+            <tr class="trLogTrace">
+                 <td class="colPDate">@trace.DateLog
+                </td>
+                 <td class="colPUser">@trace.User
+                </td>
+                 <td class="colPScreen">@trace.Screen
+                </td>
+                 <td class="colPAction">@trace.Action
+                </td>
+                <td class="colPTime">@trace.ElapsedTime
+                </td>
+            </tr>
+        }
+    </table>
+}

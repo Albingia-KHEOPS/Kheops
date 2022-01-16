@@ -1,0 +1,74 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesCreationAvenant.ModeleAvenantResiliation
+@*<div>*@
+@Html.Hidden("AvenantError", Model.ErrorAvt)
+@Html.Hidden("EcheanceHisto", (Model.ProchaineEchHisto))
+<div class="HeightRow PaddingTop">
+    <div class="FloatLeft PaddingLeft">
+        <input type="text" id="TypeAvt" name="TypeAvt" value="@Model.TypeAvt - @Model.LibelleAvt" readonly="readonly" class="readonly inputTypeAvt" />
+    </div>
+    <div class="FloatRight PaddingRight">
+        <input type="text" id="NumInterne" name="NumInterne" value="@Model.NumInterneAvt" readonly="readonly" class="readonly inputNumInterne" />
+    </div>
+    <div class="FloatRight">
+        <label class="Block cssType">N° avt</label>
+    </div>
+</div>
+<div class="@(Model.AvenantEchPossible ? "HeightRow" : "HeightRow None")">
+    <div class="FloatLeft">
+        <input type="checkbox" id="ResilAvenant" name="ResilAvenant" checked="@(Model.AvenantEch )" />
+        <label>Résiliation à échéance</label>
+    </div>
+</div>
+<div id="dvNumAvt" class="HeightRow None">
+    <div class="FloatLeft">
+        <label class="Block">N° d'avenant*</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.HiddenNoName("NumAvtHide", Model.NumAvt)
+        @Html.HiddenFor(m => m.NumAvt, new { albmask = "numeric", @class = "numerique" })
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block">Fin des garanties*</label>
+    </div>
+    <div class="@(Model.AvenantEch ? "FloatLeft" : "FloatLeft None")" id="dvDateFinEch">
+        @if (Model.DatesFin != null && Model.DatesFin.Count == 1)
+        {
+            @Html.AlbDropDownListFor(m => Model.DateFin, Model.DatesFin, "DateFin", htmlAttributes: new { @id = "DateFin", @class = "selectDate readonly", @disabled = "disabled" }, genEmptyLine: false)
+        }
+        else
+        {
+            @Html.AlbDropDownListFor(m => Model.DateFin, Model.DatesFin, "DateFin", htmlAttributes: new { @id = "DateFin", @class = "selectDate" })
+        }
+    </div>
+    <div class="@(Model.AvenantEch ? "FloatLeft None" : "FloatLeft")" id="dvDateFinHEch">
+        @Html.AlbDateFormat(m => m.DateFinGarantie, new { @class = "datepicker inputDate" })
+    </div>
+    <div class="FloatLeft">
+        @if (Model.AvenantEch)
+        {
+            @Html.AlbTimePicker(m => m.HeureFinGarantie, "HeureFinGaranties", new { @class = "HourMinute readonly", @disabled = "disabled" })
+        }
+        else
+        {
+            @Html.AlbTimePicker(m => m.HeureFinGarantie, "HeureFinGaranties", new { @class = "HourMinute" })
+        }
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block">Motif*</label>
+    </div>
+    <div class="FloatLeft" id="dvMotifAvt">
+        @Html.Partial("AvenantResilMotif", Model)
+    </div>
+</div>
+<div class="dvDesc">
+    <div class="FloatLeft">
+        <label class="Block">Réf. de gestion</label>
+    </div>
+    <div class="FloatLeft">
+        <textarea id="Description" name="Description" albcontext="Description" class="textareaDesc NonReprisCP" style="margin: 0px;width: 433px;height: 65px;max-width: 441px;max-height: 385px;">@Model.DescriptionAvt</textarea>
+    </div>
+</div>

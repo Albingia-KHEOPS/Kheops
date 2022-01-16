@@ -1,0 +1,210 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@inherits AlbToReadOnlyHtml<ModeleInformationsSpecifiquesRisquesPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vInformationsSpecifiquesRisques.css", "vInformationsSpecifiques.css", "vLCIFranchise.css" }, "~/Content/")
+@{ Layout = null; }
+    <div id="GestionErreur">
+    </div>
+    <div class="FullWidth">
+        <div class="CommonForm FloatLeft">
+            @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+            @Html.HiddenFor(m => m.Code)
+            @Html.HiddenNoName("NomEcran", Model.NomEcran.ToString())
+            @Html.Hidden("CurrentExpression", string.Empty)
+            @Html.Hidden("NewExpr", string.Empty)
+            @Html.HiddenNoName("CodeObjet", 0)
+            @Html.HiddenNoName("Params", (Model.Parameters))
+            @Html.HiddenNoName("etapeIS", (ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.Etapes.Risque))
+            @Html.HiddenNoName("SpecificParams", (Model.SpecificParameters))
+            @Html.HiddenNoName("splitChar", ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)
+            @Html.HiddenNoName("TypeOperation", string.Empty)
+            @if (Model.IsModifHorsAvenant)
+            {
+                @Html.HiddenNoName("IsHorsAvnRegularisable", Model.IsHorsAvnRegularisable.ToString())
+            }
+            <div class="nGroupFull nGroupWithBorder">
+                <div class="nHorizontalFullWithGroup">
+                    <div class="nGradientSection">
+                        @Html.Partial("InformationsSpecifiquesBody", Model)
+                    </div>
+                </div>
+                <div class="nHorizontalFullWithGroup">
+                    <div class="nGradientSection">
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block AutoWidth partBenefLib" style="width: 140px;">Présence de</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.PartBenef, Model.ListPbBNS, "PB", htmlAttributes: new { @id = "PB", @style = "width: 84px;" }, generateTitle: true, genEmptyLine: false)</div>
+                            </div>
+                            <div class="FloatLeft" style="padding-left: 10px">
+                                <label class="Block partBenefLib">Taux d'appel (%)</label>
+                            </div>
+                            <input class="FloatLeft HalfInput numerique" id="TauxAppel" value="@(Model.TauxAppel == 0 ? "" : Model.TauxAppel.ToString())" name="TauxAppel" albMask="pourcentnumeric" />
+                        </div>
+                        <div id="dvInfosPartBenef" class="@(string.IsNullOrEmpty(Model.PartBenef) || Model.PartBenef == "N" ? "None" : string.Empty)">
+                            <div class="HeightRow">
+                                <div class="GenericColumn">
+                                    <div class="FloatLeft">
+                                        <label class="Block partBenefLib" style="width: 140px;">Nombre d'années</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="NbAnnee" name="NbYear" albmask="nbnumeric" class="numerique" value="@(Model.NbYear)" style="width: 80px;" />
+                                    </div>
+                                </div>
+                                <div class="GenericColumn">
+                                    <div class="FloatLeft">
+                                        <label class="Block partBenefLib" style="width: 140px;">Seuil de S/P (%)</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="SeuilSP" name="Seuil" value="@(Model.Seuil)" albmask="pourcentnum" class="numerique" style="width: 80px;" />
+                                    </div>
+                                </div>
+                                <div class="GenericColumn">
+                                    <div class="FloatLeft">
+                                        <label class="Block partBenefLib" style="width: 140px;">Ristourne (%)</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="Ristourne" name="Ristourne" value="@(Model.Ristourne)" albmask="pourcentnumeric" class="numerique" style="width: 80px;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="HeightRow">
+                                <div class="GenericColumn">
+                                    <div class="FloatLeft">
+                                        <label class="Block partBenefLib" style="width: 140px;">Cotisation retenue (%)</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="CotisationRet" name="CotisRetenue" value="@(Model.CotisRetenue)" albmask="pourcentnumeric" class="numerique" style="width: 80px;" />
+                                    </div>
+                                </div>
+                                <div class="GenericColumn">
+                                    <div class="FloatLeft partBenefLib">
+                                        <label id="lblTauxMaxi" class="Block" style="width: 140px;">Taux maxi (%)</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="TauxMaxi" name="TauxMaxi" value="@(Model.TauxMaxi)" albmask="pourcentdec" class="numerique" style="width: 80px;" />
+                                    </div>
+                                </div>
+                                <div class="FloatLeft">
+                                    <div class="FloatLeft partBenefLib">
+                                        <label id="lblPrimeMaxi" class="Block" style="width: 140px;">Prime maxi (HT)</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="PrimeMaxi" name="PrimeMaxi" value="@(Model.PrimeMaxi)" albmask="decimal" class="numerique" />
+                                    </div>
+                                </div>
+                                <div class="GenericColumn None">
+                                    <div class="FloatLeft partBenefLib">
+                                        <label class="Block" style="width: 140px;">Taux complémentaire (%)</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="TauxComp" name="TauxComp" value="@(Model.TauxComp == 0 ? string.Empty : Model.TauxComp.ToString())" albmask="pourcentnumeric" class="numerique" style="width: 80px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nHorizontalFullWithGroup">
+                    <div id="dvISGtiesResult" style="max-height: 228px; overflow-y: auto">
+                    </div>
+                </div>
+            </div>
+
+            <div class="GroupFull GroupWithBorder ButtonsHeight">
+                <div class="ActionButtons ActionButtonLeft" style="width: 550px;">
+                    <div class="FloatLeft" style="background-color: rgba(0, 51, 152, 1);">
+                        &nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="FloatLeft PaddingLeft partBenefLib">
+                        Champs s'appliquant à l'ensemble des risques.
+                    </div>
+                </div>
+                <div class="ActionButtons ActionButtonRight" style="width: 300px;">
+                    <button id="btnAnnulerISRsq" type="button" albshortcut="true" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>
+                    @if (!Model.IsReadOnly || Model.IsModifHorsAvenant)
+                    {
+                        <button id="btnSuivantISRsq" type="button" albshortcut="true" tabindex="30" data-accesskey="v"><u>V</u>alider</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divFullScreenListeOpposition">
+        <div class="overlay-background" style="z-index:2">
+        </div>
+        <div id="divOppositions">
+            <div class="GroupFull GroupWithBorder" id="divDialogOpposition">
+                <div class="GroupTitle">
+                    Liste des oppositions/bénéficiaires sur le risque "@Model.DescriptifRisque"
+                </div>
+                <div class="HorizontalHalfWithGroupAdmin HeightDialogOpposition">
+                    <div class="GradientSection">
+                        <div id="divLstOppositions">
+                            <div id="divHeaderOppositions">
+                                <table id="tblOppositionsHeader">
+                                    <tr>
+                                        <th class="col_Type tablePersoHead" title="Type Financement">
+                                            Type
+                                        </th>
+                                        <th class="col_Organisme tablePersoHead" title="Organisme">
+                                            Organisme
+                                        </th>
+                                        <th class="col_Ville tablePersoHead" title="Ville">
+                                            Ville
+                                        </th>
+                                        <th class="col_Description tablePersoHead" title="Description">
+                                            Description
+                                        </th>
+                                        <th class="col_Reference tablePersoHead" title="Référence">
+                                            Référence
+                                        </th>
+                                        <th class="col_Echeance tablePersoHead" title="Echéance">
+                                            Echéance
+                                        </th>
+                                        <th class="col_Montant tablePersoHead" title="Montant">
+                                            Montant
+                                        </th>
+                                        <th class="col_Action tablePersoHead">
+                                            @if (!Model.IsReadOnly || Model.IsModifHorsAvenant)
+                                            {
+                                                <img class="CursorPointer Action" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouter" />
+                                            }
+                                            else
+                                            {
+                                                <img class="Action" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" title="Ajouter" id="btnAjouterGris" />
+                                            }
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="divBodyOppositions">
+                                @if (Model.ListOppositions != null)
+                                {
+                                    @Html.Partial("ListeOppositions", Model)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="FloatRight">
+                    <button type="button" id="btnFermerOppositions">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divFullScreenEditOpposition">
+        <div class="overlay-background" style="z-index:3">
+        </div>
+        <div id="divEditOpposition">
+        </div>
+    </div>
+    <div id="divDataOppositions">
+    </div>
+    <div id="divRechercheOppositions">
+        <div class="overlay-background" style="z-index:22">
+        </div>
+        <div id="divDataRechercheOppositions"></div>
+    </div>

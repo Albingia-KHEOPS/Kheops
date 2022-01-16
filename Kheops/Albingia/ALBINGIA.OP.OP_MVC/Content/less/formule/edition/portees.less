@@ -1,0 +1,173 @@
+﻿body {
+    .flex-table.portees-garantie {
+        width: 730px;
+
+        .risque {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .flex-header {
+            width: 100%;
+
+            & > span {
+                &.cell {
+                    width: auto;
+                }
+
+                &.check {
+                    flex: 1;
+                }
+
+                &.risque {
+                    flex: 35;
+                }
+            }
+
+            &.has-bonus > span {
+                &.check {
+                    flex: 2;
+                }
+
+                &.risque {
+                    flex: 26;
+                }
+
+                &.valeur {
+                    flex: 15;
+                }
+
+                &.forfait-taux {
+                    flex: 17;
+                }
+
+                &.montant-ht {
+                    flex: 12;
+                }
+            }
+        }
+
+        .flex-body {
+            width: 100%;
+
+            &.scroll {
+                max-height: 180px;
+            }
+
+            & > div {
+                .cell {
+                    width: auto;
+                    background-color: white;
+                }
+
+                .check {
+                    flex: 1;
+
+                    input {
+                        margin: auto;
+                    }
+                }
+
+                .risque {
+                    flex: 35;
+                }
+
+                &.has-bonus {
+                    .check {
+                        flex: 2;
+                    }
+
+                    .risque {
+                        flex: 26;
+                    }
+
+                    .valeur-detail {
+                        flex: 15;
+                        display: flex;
+                        margin: 0 1px;
+
+                        .valeur {
+                            margin-left: 0;
+                            flex: 7;
+                            text-align: center;
+                        }
+
+                        .unite {
+                            flex: 5;
+                        }
+
+                        .type {
+                            flex: 5;
+                            margin-right: 0;
+                        }
+                    }
+
+                    .forfait-taux {
+                        flex: 17;
+                        display: flex;
+                        margin: 0 1px;
+
+                        .valeur {
+                            flex: 10;
+                            margin-left: 0;
+
+                            input {
+                                text-align: right;
+                            }
+                        }
+
+                        .unite {
+                            flex: 8;
+                        }
+
+                        .type {
+                            flex: 8;
+                            margin-right: 0;
+                        }
+                    }
+
+                    .montant-ht {
+                        flex: 12;
+                        text-align: right;
+
+                        span {
+                            padding-right: 7px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .flex-footer {
+            display: flex;
+            font-weight: bold;
+            width: 100%;
+
+            span.cell {
+                background-color: #EDEEFF;
+            }
+
+            .line-span {
+                flex: 86;
+            }
+
+            .montant-label {
+                flex: 34;
+
+                .cell {
+                    padding-left: 7px;
+                }
+            }
+
+            .montant {
+                flex: 24;
+                text-align: right;
+
+                .cell {
+                    padding-right: 7px;
+                }
+            }
+        }
+    }
+}

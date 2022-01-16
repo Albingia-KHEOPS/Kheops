@@ -1,0 +1,44 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.DetailsTypesValeur
+<div class="CommonForm FloatLeft">
+    @Html.HiddenNoName("idTypeValeurSuppr", string.Empty)
+    <div class="nHorizontalFullWithGroup WidthGroupTypesValeur">
+        <div class="nGradientSection GradientSectionTypesValeur">
+            <div class="HeightRow">
+                <label class="TitleTypesValeur">Sélection des types de valeurs</label>
+            </div>
+            <div class="HeightRow">
+                <div id="divLstTypesValeur">
+                    <div>
+                        <table id="tblTypesValeurHeader">
+                            <tr>
+                                <th class="col_HeaderOrdre tablePersoHead">Ordre
+                                </th>
+                                <th class="col_HeaderTypeValeur tablePersoHead">Type de valeurs
+                                </th>
+                                <th class="col_HeaderButtonsTypesValeur tablePersoHead">
+                                    <img id="AjouterTypeValeur" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter un type de valeur" />
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyTypesValeur" class="divHeightTypeValeur">
+                        @if (Model.ListeLigneTypesValeur != null && Model.ListeLigneTypesValeur.Count > 0)
+                        {
+                            @Html.Partial("ListTypesValeur", Model.ListeLigneTypesValeur)
+                        }
+                        else
+                        {
+                            <div class="HeightRow" id="divPaneauDynamic" style="display: none">
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight DivButtonsFermerTypesValeur">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFermerTypesValeur" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>

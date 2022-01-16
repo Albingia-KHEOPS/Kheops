@@ -1,0 +1,113 @@
+﻿.LstSuspHeader {
+    width: 67px;
+    text-align: center;
+}
+
+
+
+.LstSusp {
+    width: 65px;
+    text-align: center;
+}
+
+
+.LstSuspRadioButtonHeader {
+    width: 30px;
+    text-align: center;
+}
+
+
+
+.LstSuspRadioButton {
+    width: 30px;
+    text-align: center;
+}
+
+
+.LblSearchSmall {
+    width: 40px !important;
+}
+
+.LblSearch {
+    width: 70px !important;
+}
+
+.widthSearch {
+    width: 100px !important;
+}
+
+.widthSearchSmall {
+    width: 20px !important;
+}
+
+.tableSuspensionHeader {
+    table-layout: fixed;
+    width: 870px;
+}
+
+.trHeight tr {
+    height: 1px;
+}
+
+.dvBodySuspension {
+    overflow-y: auto;
+    height: 130px;
+    width: 890px;
+    margin-bottom: 8px;
+}
+
+.tblSuspHeader {
+    width: 870px;
+}
+
+#divDataVisuSuspension {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 29;
+    background-color: White;
+    height: 501px;
+    width: 1044px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.firstLabel {
+    width: 110px;
+}
+
+.secondLabel {
+    width: 125px;
+}
+
+.thirdLabel {
+    width: 70px;
+}
+
+.widthCourtier {
+    width: 174px !important;
+}
+
+
+
+.left-column {
+    width: 50%;
+    float: left;
+}
+.right-coulumn {
+    width: 50%;
+    float: right;
+}
+
+.form-label {
+    display: inline-block;
+    width: 140px;
+    vertical-align: top;
+}
+
+.form-input {width: 250px !important;}
+
+#zoneTxtArea {
+    margin-bottom: 5px;
+}

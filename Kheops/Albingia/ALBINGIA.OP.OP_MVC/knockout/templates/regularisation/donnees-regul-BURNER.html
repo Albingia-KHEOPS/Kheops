@@ -1,0 +1,83 @@
+﻿
+<div class="nGradientSection dvInfoDataRegul">
+    <div class="HeightRow PaddingLeft">
+        <div class="FloatLeft">
+            <b>Données de régularisation :</b>
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <span class="title-center-text short">HT Hors Cat Nat</span>
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Cotisations dûes sur la période</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" data-bind="autoNumeric: CotisationPeriode, disable: $root.isReadonly" albmask="decimal" />
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Chargement sinistre</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" data-bind="autoNumeric: ChargementSinistres, disable: $root.isReadonly" albmask="decimal" />
+        </div>
+
+        <div class="FloatLeft paddingLeft50">
+            <label class="Block lblInfo">S/P retenu %</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="inputDate numerique" data-bind="autoNumeric: SeuilSPRetenu, disable: $root.isReadonly" albmask="pourcentnumeric" />
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Assiette</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" data-bind="autoNumeric: Assiette, disable: $root.isReadonly" albmask="decimal" />
+        </div>
+
+        <div class="FloatLeft paddingLeft50">
+            <label class="Block lblInfo">Taux Maxi %</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: TauxMaxi" albmask="decimal" />
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Prime Maxi</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: PrimeMaxi" albmask="decimal" />
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Prime Calculée</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: PrimeCalculee" albmask="decimal" />
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblLibelleMnt" data-bind="text: LibelleMontant"></label>
+        </div>
+        <div class="FloatLeft">
+            <label class="Block lblSigneMnt" data-bind="text: SigneMontant"></label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: { value: MontantAffiche, min: -999999999.99 }" albmask="decimal" />
+        </div>
+    </div>
+
+</div>

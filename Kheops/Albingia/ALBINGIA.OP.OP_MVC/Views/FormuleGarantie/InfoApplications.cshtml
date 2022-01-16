@@ -1,0 +1,23 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@model ModeleFormuleGarantiePage
+@{
+    var currentModel = Model as ModeleFormuleGarantiePage;
+}
+
+<script type="text/javascript">
+    window.infoApplications = @Html.Raw(MetaModelsBase.GetJsonFromData(currentModel.InfoApplication));
+</script>
+
+@AlbAddCssJsScripts.AlbAddJsToViews(
+    new UrlHelper(ViewContext.RequestContext),
+    new[]
+    {
+        "info-formule-applications/info-formule-applications.initializer.js", "info-formule-applications/info-formule-applications.viewmodel.js"
+    },
+    "~/knockout/components/",
+    false)
+
+
+<info-formule-applications params="isReadonly: @(currentModel.IsReadOnly.ToString().ToLower()),isModifHorsAvenant:@(currentModel.IsModifHorsAvenant.ToString().ToLower()), formGen: '@(currentModel.FormGen)'">
+</info-formule-applications>

@@ -1,0 +1,80 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesDocumentGestion.DocumentGestionDoc>
+<input type="hidden" id="LotId" value="@(Model != null && Model.Any() ? Model.FirstOrDefault().ListDocInfos.FirstOrDefault().LotId : 0)" />
+<table id="tblBodyDocument" style="table-layout: fixed; width: 932px;" class="trHeight">
+    @{
+        var i = 0;
+        foreach (var item in Model)
+        {
+            foreach (var docInfo in item.ListDocInfos)
+            {
+                if (docInfo.IdDoc > 0)
+                {
+        <tr class="@(i % 2 == 0 ? "odd" : "even")">
+            <td style="width: 24px;">
+                <table cellpadding="0" cellspacing="0">
+                    <tr style="height: 20px;">
+                        <td style="width: 24px; text-align: center;">
+                            <input type="checkbox" id="checkId@(docInfo.IdLotDetail)" name="checkDoc" checked="@(docInfo.Situation != "N" )" disabled="@(docInfo.Nature == "O" )" alblotid="@(docInfo.LotId)" albdocid="@(docInfo.IdDoc)" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 24px; text-align: center;">@(docInfo.Statut == "I" ? docInfo.Statut : docInfo.Imprimable)</td>
+            <td style="width: 248px; padding-left: 5px;">
+                <table cellpadding="0" cellspacing="0" style="width: 248px; table-layout: fixed;">
+                    <tr>
+                        <td albdocid="@(docInfo.IdDoc)" name="@(docInfo.Extension == ".doc" || docInfo.Extension == ".docx" || string.IsNullOrEmpty(docInfo.NomDoc.Trim()) ? "tdNomDoc" : "")" class="CursorPointer navig" style="width: 232px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" title="@(string.Format("{0} - {1}", docInfo.TypeDoc.Trim(), !string.IsNullOrEmpty(docInfo.NomDoc.Trim()) ? docInfo.NomDoc.Trim() : !string.IsNullOrEmpty(docInfo.LibDoc) ? docInfo.LibDoc.Trim() : string.Empty))" albStatutDoc="@(docInfo.Statut)">
+                            @if (docInfo.Extension == ".doc" || docInfo.Extension == ".docx" || string.IsNullOrEmpty(docInfo.NomDoc.Trim()))
+                            {
+                                @(string.Format("{0} - {1}", docInfo.TypeDoc, docInfo.LibDoc))
+                            }
+                            else
+                            {
+                                @Html.ActionLink(Html.Raw(string.Format("{0} - {1}", docInfo.TypeDoc.Trim(), docInfo.NomDoc.Trim())).ToHtmlString(), "DownloadFile", "CommonNavigation", new { fileName = docInfo.NomDoc.Trim(), fullNameFile = string.Concat(docInfo.Chemin.Trim(), docInfo.NomDoc.Trim()), pathFile = docInfo.Chemin.Trim() }, new { @target = "_blank" })
+                            }
+                        </td>
+                        <td style="width: 15px;">
+                            @if (docInfo.Statut == "G")
+                            {
+                                <img id="icoVoyant@(docInfo.IdLotDetail)" name="icoVoyant" src="@Url.Content("/Content/Images/voyant_vert_petit.png")" />
+                            }
+                            else
+                            {
+                                <img id="icoVoyant@(docInfo.IdLotDetail)" name="icoVoyant" src="@Url.Content("/Content/Images/voyant_rouge_petit.png")" />
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 248px; padding-left:5px; border-right: 1px solid #EEEEEE;" albIdDest="@docInfo.Destinataire" albTypeDest="@docInfo.TypeDestinataire" albTypeEnvoi="@docInfo.TypeEnvoi">@(docInfo.TypeDestinataire == "CT" ? "Courtier" : docInfo.TypeDestinataire == "AS" ? "Réf. assurés" : "Autre courtier")</td>
+            <td style="width: 97px; overflow: hidden; padding-left: 5px; border-right-color: rgb(238, 238, 238); border-right-width: 1px; border-right-style: solid; white-space: nowrap; text-overflow: ellipsis;" title="@docInfo.TypeEnvoi.Trim()">@docInfo.TypeEnvoi</td>
+            <td style="width: 40px; padding-left: 5px; border-right: 1px solid #EEEEEE;">@(docInfo.NbExempleSupp > 0 ? string.Format("{0} + {1}", docInfo.NbExemple, docInfo.NbExempleSupp) : docInfo.NbExemple.ToString())</td>
+            <td style="width: 57px; padding-left: 5px; border-right: 1px solid #EEEEEE;" title="@(string.Format("{0} - {1}", docInfo.Tampon, docInfo.LibTampon))">@docInfo.LibTampon</td>
+            <td name="@(docInfo.IdLettre != 0 ? "tdNomDoc" : "")" albdocid="@(docInfo.IdLettre)" title="@(!string.IsNullOrEmpty(docInfo.LettreAccomp.Trim()) ? docInfo.LettreAccomp.Trim() : !string.IsNullOrEmpty(docInfo.LibLettre) ? docInfo.LibLettre.Trim() : string.Empty)" style="width: 97px; padding-left: 5px; border-right: 1px solid #EEEEEE; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+                @docInfo.LibLettre
+            </td>
+            @if (docInfo.Email != "0")
+            {
+                <td style="width: 43px; text-align: center;">@(docInfo.Email)</td>
+            }
+            else
+            {
+                <td style="width: 43px; text-align: center;">&nbsp;</td>
+            }
+            @if (docInfo.IsModifiable && docInfo.TypeDoc.Trim() == "LETTYP")
+            {
+                <td style="width: 46px; text-align: center;">
+                    <img id="@("editLot_" + docInfo.IdLotDetail)" name="editLot" class="CursorPointer" src="@Url.Content("/Content/Images/editer1616.png")" title="Modifier la liste d'envoi" />
+                </td>
+            }
+            else
+            {
+                <td style="width: 46px; text-align: center;">&nbsp;</td>
+            }
+        </tr>
+            i++;
+                }
+            }
+        }
+    }
+</table>

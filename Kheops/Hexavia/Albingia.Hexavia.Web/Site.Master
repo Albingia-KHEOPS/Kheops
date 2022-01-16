@@ -1,0 +1,74 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Albingia.Hexavia.Web.SiteMaster" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/960.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <telerik:RadScriptManager ID="RadScriptManager1" runat="server" EnablePageMethods="true">
+        <CompositeScript>
+            <Scripts>
+                <asp:ScriptReference Path="~/Scripts/jquery-1.6.3.js" ScriptMode="Release" />
+            </Scripts>
+        </CompositeScript>
+    </telerik:RadScriptManager>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    </telerik:RadAjaxManager>
+    <div class="page">
+        <div class="spacer">
+        </div>
+        <div class="clear">
+        </div>
+        <div class="header container_16">
+            <div class="grid_2">
+                <div class="logoalbingia">
+                </div>
+            </div>
+            <div class="grid_6">
+                <h1 class="title">
+                    Outils de Production
+                </h1>
+            </div>
+            <div class="grid_8">
+                <asp:ContentPlaceHolder ID="InfosContent" runat="server" />
+            </div>
+            <div class="clear">
+            </div>
+            <div class="spacer grid_16">
+            </div>
+            <div class="clear">
+            </div>
+            <div class="hideSkiplink grid_16">
+                <asp:Menu ID="AlbingiaMenu" runat="server" CssClass="menu" EnableViewState="false"
+                    IncludeStyleBlock="false" Orientation="Horizontal">
+                </asp:Menu>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="container_12">
+            <div class="grid_12 spacer">
+            </div>
+            <div class="clear">
+            </div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <div class="grid_12 spacer">
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright © 2011 Albingia
+    </div>
+    </form>
+</body>
+</html>

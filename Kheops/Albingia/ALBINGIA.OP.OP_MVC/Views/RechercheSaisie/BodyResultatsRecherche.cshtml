@@ -1,0 +1,225 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleResultRecherche
+@using ALBINGIA.Framework.Common.Constants
+<div class="GroupFull GroupWithBorder TotalWidth RechercheSaisie" id="RechercherResultContainerDiv">
+    @Html.HiddenNoName("selectedRow", string.Empty)
+    @Html.HiddenNoName("oldSelectedRow", string.Empty)
+    @Html.HiddenNoName("isLoadingBandeau", 0)
+    <div id="divRechercherResult">
+        <div class="scroll" style="width: 1220px;">
+            <div id="PaginationSize" style="visibility: hidden; display: none;">@Model.LineCount</div>
+            <input id="ResultCount" type="hidden" value="@(Model.ListResult != null ? Model.ListResult.Count : 0)" />
+            <div>
+
+                <div id="divLstResultats">
+                    <div id="divResultatsHeader">
+                        <table id="tblResultatsHeader" class="divListRecherche">
+                            <tr>
+                                <th class="thExpender tablePersoHead">
+                                    &nbsp;
+                                </th>
+                                <th class="thIcone tablePersoHead">
+                                    &nbsp;
+                                </th>
+                                <th class="thNo tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divNo">N°</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="OffreContratNumi" class="field-right field-show" name="tri" value="CodeOffre_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="OffreContratNumh" class="field-right field-hide" name="tri" value="CodeOffre_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="OffreContratNumb" class="field-right field-hide" name="tri" value="CodeOffre_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thVersion tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divVersion" title="N° de version ou d'aliment"></div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="Versioni" class=" field-right field-show" name="tri" value="Version_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="Versionh" class="field-right field-hide" name="tri"  value="Version_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="Versionb" class="field-right field-hide" name="tri"  value="Version_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thAvenant tablePersoHead">
+                                    <div class="FloatLeft PaddingTop" title="Dernier avenant">Avt.</div>
+                                </th>
+                                <th class="thDate tablePersoHead">
+                                    @{ var typeDate = "Date"+ Model.TypeDate.ToString(); }
+                                    @if (Model.TypeDate == AlbConstantesMetiers.TypeDateRecherche.Saisie)
+                                    {
+                                        <div class="FloatLeft PaddingTop divDateRecherche" title="Date de saisie ou d'accord">Date S/A</div>
+                                    }
+                                    else if (Model.TypeDate == AlbConstantesMetiers.TypeDateRecherche.Effet)
+                                    {
+                                        <div class="FloatLeft PaddingTop divDateRecherche" title="Date d'effet">Date effet</div>
+                                    }
+                                    else if (Model.TypeDate == AlbConstantesMetiers.TypeDateRecherche.MAJ)
+                                    {
+                                        <div class="FloatLeft PaddingTop divDateRecherche" title="Date de mise à jour">Date Màj</div>
+
+                                    }
+                                    else if (Model.TypeDate == AlbConstantesMetiers.TypeDateRecherche.Creation)
+                                    {
+                                        <div class="FloatLeft PaddingTop divDateRecherche" title="Date de création">Date Création</div>
+                                    }
+                                    <div class="FloatLeft">
+                                        <input type="image" id="Datei" class="field-right field-show" name="tri" value="@(typeDate)_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="Dateh" class="field-right field-hide" name="tri" value="@(typeDate)_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="Dateb" class="field-right field-hide" name="tri" value="@(typeDate)_Asc" src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thBranche tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divBranche" title="Branche">Br.</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="Branchei" class="field-right field-show" name="tri" value="CodeBranche_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="Brancheh" class="field-right field-hide" name="tri" value="CodeBranche_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="Brancheb" class="field-right field-hide" name="tri" value="CodeBranche_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thCible tablePersoHead">
+                                    <div class="FloatLeft PaddingTop">Cible</div>
+                                </th>
+                                <th class="thEtat tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divEtat">Etat</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="Etati" class="field-right field-show" name="tri" value="CodeEtat_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="Etath" class="field-right field-hide" name="tri" value="CodeEtat_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="Etatb" class="field-right field-hide" name="tri" value="CodeEtat_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thSituation tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divSituation">Sit.</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="Situationi" class="field-right field-show" name="tri" value="CodeSit_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="Situationh" class="field-right field-hide" name="tri" value="CodeSit_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="Situationb" class="field-right field-hide" name="tri" value="CodeSit_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thQualite tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divQualite">Qual.</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="Qualitei" class="field-right field-show" name="tri" value="CodeQualite_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="Qualiteh" class="field-right field-hide" name="tri" value="CodeQualite_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="Qualiteb" class="field-right field-hide" name="tri" value="CodeQualite_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thDescriptifRisque tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divDescription">Descriptif</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="DescriptifRisquei" class="field-right field-show" name="tri" value="DescriptifSort_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="DescriptifRisqueh" class="field-right field-hide" name="tri" value="DescriptifSort_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="DescriptifRisqueb" class="field-right field-hide" name="tri" value="DescriptifSort_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thPreneurAssurance tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divPreneurAssurance">Pren. Ass.</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="PreneurAssuranceNomi" class="field-right field-show" name="tri" value="NomAss_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="PreneurAssuranceNomh" class="field-right field-hide" name="tri" value="NomAss_Desc"  src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="PreneurAssuranceNomb" class="field-right field-hide" name="tri" value="NomAss_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thCodePostal tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divCodePostal">C.P.</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="PreneurAssuranceCPi" class="field-right field-show" name="tri" value="CpAss_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="PreneurAssuranceCPh" class="field-right field-hide" name="tri" value="CpAss_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="PreneurAssuranceCPb" class="field-right field-hide" name="tri" value="CpAss_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+
+                                <th class="thCourtierGestionnaireNom tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divCourtierGestionnaireNom">Courtier Gest.</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="CourtierGestionnaireNomi" class="field-right field-show" name="tri" value="NomCourt_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="CourtierGestionnaireNomh" class="field-right field-hide" name="tri" value="NomCourt_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="CourtierGestionnaireNomb" class="field-right field-hide" name="tri" value="NomCourt_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                                <th class="thCourtierGestionnaireCP tablePersoHead">
+                                    <div class="FloatLeft PaddingTop divCourtierGestionnaireCP">C.P.</div>
+                                    <div class="FloatLeft">
+                                        <input type="image" id="CourtierGestionnaireCPi" class="field-right field-show" name="tri" value="CpCourt_Asc" src="@Url.Content("/Content/Images/tri.png")" />
+                                        <input type="image" id="CourtierGestionnaireCPh" class="field-right field-hide" name="tri" value="CpCourt_Desc" src="@Url.Content("/Content/Images/tri_asc.png")" />
+                                        <input type="image" id="CourtierGestionnaireCPb" class="field-right field-hide" name="tri" value="CpCourt_Asc"  src="@Url.Content("/Content/Images/tri_desc.png")" />
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divResultatsBody" style="width: 1200px; overflow: auto; height: 484px !important;">
+                        @if (Model.ListResult != null && Model.ListResult.Count > 0) {
+                            @Html.Partial("ListeResultatsRecherche", Model.ListResult)
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divPagination">
+            <span id="spanMsgInfo" class="FloatLeft error PaddingTop None PaddingLeft"></span>
+            @*@if (Model.NbCount > Model.LineCount)*@
+            @if (Model.LineCount == ALBINGIA.OP.OP_MVC.MvcApplication.PAGINATION_SIZE) {
+                <span class="FloatLeft error PaddingTop MsgAffinement">
+                    Le nombre réel de lignes trouvées dépasse @Model.LineCount, veuillez affiner votre recherche
+                </span>
+            }
+            <table class="field-right Pagination None">
+                <tr>
+                    @if (Model.PageNumber > 1) {
+                        <td>
+                            <img id="PaginationPremierePage" src="@Url.Content("/Content/Images/1340965186_pagination_1_first.png")" />
+                        </td>
+                        <td>
+                            <img id="PaginationPrecedent" src="@Url.Content("/Content/Images/1340965176_pagination_1_previous.png")" />
+                        </td>
+                    }
+                    else {
+                        <td>
+                            <img src="@Url.Content("/Content/Images/1340965186_pagination_1_first_disabled.png")" />
+                        </td>
+                        <td>
+                            <img src="@Url.Content("/Content/Images/1340965176_pagination_1_previous_disabled.png")" />
+                        </td>
+                    }
+                    <td>
+                        <span id="PaginationPageActuelle">@Model.PageNumber</span>
+                    </td>
+                    @if (Model.PageNumber * (Model.EndLigne - Model.StartLigne + 1) < Model.LineCount) {
+                        <td>
+                            <img id="PaginationSuivant" src="@Url.Content("/Content/Images/1340965171_pagination_1_next.png")" />
+                        </td>
+                        <td>
+                            <img id="PaginationDernierePage" src="@Url.Content("/Content/Images/1340965180_pagination_1_last.png")" />
+                        </td>
+                    }
+                    else {
+                        <td>
+                            <img src="@Url.Content("/Content/Images/1340965171_pagination_1_next_disabled.png")" />
+                        </td>
+                        <td>
+                            <img src="@Url.Content("/Content/Images/1340965180_pagination_1_last_disabled.png")" />
+                        </td>
+                    }
+                    @if (Model.NbCount > Model.LineCount) {
+                        <td class="PageSize">
+                            <span id="PaginationStart">@Html.DisplayFor(m => m.StartLigne)</span> - <span id="PaginationEnd">@Html.DisplayFor(m => m.EndLigne)</span>
+                            [total : <span id="PaginationTotal">@Html.DisplayFor(m => m.LineCount)</span>]
+                        </td>
+                    }
+                    else {
+                        <td class="PageSize">
+                            <span id="PaginationStart">@Html.DisplayFor(m => m.StartLigne)</span> - <span id="PaginationEnd">@Html.DisplayFor(m => m.EndLigne)</span>
+                            [total : <span id="PaginationTotal">@Html.DisplayFor(m => m.NbCount)</span>]
+                        </td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+@if (Model.CritereParam == AlbConstantesMetiers.CriterParam.Standard) {
+    @Html.Partial("/Views/RechercheSaisie/BandeauResultatRechercheDynamique.cshtml", Model)
+}
+else if (Model.CritereParam == AlbConstantesMetiers.CriterParam.ContratOnly) {
+    @Html.Partial("/Views/RechercheSaisie/BandeauResultatRechercheContrat.cshtml", Model)
+}
+else if (Model.CritereParam == AlbConstantesMetiers.CriterParam.CopyOffre) {
+    @Html.Partial("/Views/RechercheSaisie/BandeauResultatRechercheOffre.cshtml", Model)
+}
+<div id="divConteneurBandeauRecherche"></div>

@@ -1,0 +1,249 @@
+﻿@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+@using ALBINGIA.Framework.Common.Constants
+
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleDocumentGestionPage
+
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbDocumentGestion")
+@AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbDocumentGestion")
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    var model = Model as ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleDocumentGestionPage;
+}
+
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0)
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULPB:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0)
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULBNS:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0)
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULBURNER:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0)
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0)
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR_NO_MODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection" style="height: 444px;">
+                    <div id="divHeaderDocument" class="PaddingLeft">
+                        @Html.Hidden("hiddenInputId", string.Empty)
+                        @Html.Hidden("IsChekedEch", ((Model.Contrat != null ? Model.Contrat.IsCheckedEcheance : false).ToString()), new { id = "IsChekedEch" })
+                        <table id="tblHeaderDocument" style="table-layout: fixed; width: 932px;" class="trHeight">
+                            <tr>
+                                <th class="tablePersoHead" style="width: 22px;">&nbsp;</th>
+                                <th class="tablePersoHead" style="width: 22px;">&nbsp;</th>
+                                <th class="tablePersoHead" style="width: 250px;">Document</th>
+                                <th class="tablePersoHead" style="width: 250px;">Destinataire</th>
+                                <th class="tablePersoHead" style="width: 100px;">Type d'envoi</th>
+                                <th class="tablePersoHead" style="width: 42px;">Nb ex.</th>
+                                <th class="tablePersoHead" style="width: 60px;">Tampon</th>
+                                <th class="tablePersoHead" style="width: 100px;">Lettre d'accomp.</th>
+                                <th class="tablePersoHead" style="width: 42px;">Email</th>
+                                <th class="tablePersoHead" style="width: 44px;">
+                                    @*<img id="addDoc" name="addDoc" class="" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" title="Ajouter une liste d'envoi" />*@
+                                    <img id="addDoc" name="addDoc" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" title="Ajouter une liste d'envoi" />
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyDocument" class="PaddingLeft" style="overflow-y: auto; max-height: 400px;">
+                        @if (Model != null)
+                        {
+                            @Html.Partial("LstDocuments", Model.ListeDocuments)
+
+                            if (Model.IsErrorOccured)
+                            {
+                                <script type="text/javascript">
+                                    ShowErrorDocGeneration();
+                                </script>
+                            }
+                        }
+
+                    </div>
+                </div>
+                <div class="nGradientSection" style="height: 28px;">
+                    <div class="PaddingLeft FloatLeft None">
+                        <button id="btnPrintDoc" name="btnPrintDoc" albshortcut="true" data-accesskey="p">Im<u>p</u>rimer</button>
+                    </div>
+                    <div class="PaddingRight FloatRight None">
+                        <div class="FloatLeft" style="padding-top: 3px;"><span>Afficher la synthèse des documents par destinataires</span></div>
+                        <div class="FloatLeft">
+                            <input type="checkbox" id="checkSynthese" name="checkSynthese" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionLibelle ActionButtonLeft">
+                <div class="FloatLeft PaddingLeft">
+                    <img id="imgGenereAJour" src="@Url.Content("/Content/Images/voyant_vert_petit.png")" alt="généré et à jour" />
+                </div>
+                <div class="FloatLeft">
+                    <label>
+                        généré et à jour
+                    </label>
+                </div>
+                @*<div class="FloatLeft PaddingLeft">
+                        <img id="imgGenerePasJour" src="@Url.Content("/Content/Images/voyant_orange_petit.png")" alt="généré pas à jour" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label>
+                            généré pas à jour</label>
+                    </div>*@
+                <div class="FloatLeft PaddingLeft">
+                    <img id="imgNonGenere" src="@Url.Content("/Content/Images/voyant_rouge_petit.png")" alt="non généré" />
+                </div>
+                <div class="FloatLeft">
+                    <label>
+                        non généré
+                    </label>
+                </div>
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                @if (!Model.IsValidation)
+                {
+                    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                }
+                else
+                {
+                    <button id="btnRetourRecherche" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+
+                }
+                @if (Model.ScreenType == AlbConstantesMetiers.SCREEN_TYPE_ATTES)
+                {
+                    <button id="btnEditer" type="submit" albshortcut="true" accesskey="e" tabindex="28" albcontext="editer"><u>E</u>diter</button>
+                }
+                else
+                {
+                    <button id="btnSuivant" type="button" albshortcut="true" tabindex="28" data-accesskey="s"><u>S</u>uivant</button>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="divDestinataire" class="None" style="background-color: white; padding: 5px; border: 1px solid black; border-radius: 5px;">
+</div>
+
+<div id="divModifierLot" class="None">
+    <div class="overlay-background" style="z-index:2">
+    </div>
+    <div id="divDataModifierLot">
+    </div>
+</div>
+
+<div id="divDocLibre" class="None">
+    <input type="hidden" id="isFirstGen" value="@(Model.ListeDocuments.Count > 0 && Model.ListeDocuments.FirstOrDefault().FirstGeneration ? "O" : "N")" />
+    <div class="overlay-background" style="z-index:4">
+    </div>
+    <div id="divDataDocLibre" class="nGroupFull nGroupWithBorder">
+        <div class="nHorizontalFullWithGroup" style="width: 350px; height: 455px;">
+            <div class="nGradientSection" style="padding-bottom: 5px;">
+                <div class="PaddingLeft">
+                    Quels documents voulez-vous garder ?
+                </div>
+                <div id="dvLstDocLibre" style="margin-top: 10px; height: 380px; overflow-y: auto;">
+                    @if (Model != null)
+                    {
+                        @Html.Partial("LstDocumentsLibre", Model.ListeDocuments)
+                    }
+                </div>
+            </div>
+            <div class="nGradientSection" style="height: 28px;">
+                <div class="FloatRight PaddingRight">
+                    <div class="FloatLeft">
+                        <button id="btnDocOk" type="button" albshortcut="true" data-accesskey="k">O<u>k</u></button>
+                    </div>
+                    @*<div class="FloatLeft PaddingRight">
+                            <button id="btnDocLibreCancel" type="button" albshortcut="true" data-accesskey="n"><u>N</u>on</button>
+                        </div>
+                        <div class="FloatLeft">
+                            <button id="btnDocLibreValid" type="button" albshortcut="true" data-accesskey="o"><u>O</u>ui</button>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divEditionDocument" class="None">
+    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 4; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div id="divContainerEditionDocument" class="nGradientSection">
+        @* style="@(Model.TypePolicePage == "P" ? "height: 372px;" : "height: 272px;")">*@
+        <div id="divDataEditionDocument" class="PaddingLeft">
+        </div>
+    </div>
+</div>

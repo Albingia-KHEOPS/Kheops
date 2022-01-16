@@ -1,0 +1,110 @@
+﻿.styled tr:nth-child(odd) {
+    background: rgba(254, 254, 254, 1);
+}
+
+.styled tr:nth-child(even) {
+    background: rgba(236, 237, 254, 1);
+}
+
+.styled tr:hover {
+    background: #FFDFDF;
+    font-size: 1em;
+    margin: 0 5px;
+}
+
+#FraisTable {
+    table-layout: fixed;
+    width: 702px;
+}
+
+#tblHeaderParam {
+    table-layout: fixed;
+    width: 700px;
+}
+
+    #tblHeaderParam th {
+        width: 128px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+#RechercheFrais  {
+width:1015px;
+}
+
+#FraisTable td {
+    width: 126px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#FraisTable input {
+    width: 121px;
+}
+
+#FraisTable  select {
+    width: 126px;
+}
+
+#FraisTable .numerique {
+float:right;
+}
+
+.BlockInLine div {
+    float: left;
+    margin-left: 5px;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.BlockDate div {
+    display: inline-block;
+}
+
+.DateInput {
+    width: 35px;
+}
+
+
+.filtreCol  select {
+    float: right;
+    width: 118px;
+}
+
+#LigneCount {
+    text-align: right;
+    padding-right: 20px;
+    margin-top: 3px;
+}
+
+.xsmallcol {
+    width: 40px !important;
+}
+
+.smallcol {
+    width: 44px !important;
+}
+
+#btnRetour {
+    float: right;
+    margin-right: 15px;
+    margin-bottom: 3px;
+}
+
+#btnAjouter, .btnsCol {
+    width: 48px !important;
+}
+
+.deleteBtn {
+    margin-left: 15px;
+}
+
+#imgExportExcel {
+    height: 25px !important;
+}

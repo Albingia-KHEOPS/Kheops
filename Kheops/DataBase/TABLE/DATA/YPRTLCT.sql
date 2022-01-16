@@ -1,0 +1,27 @@
+﻿CREATE TABLE ZALBINKHEO.YPRTLCT ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table YPRTLCT de ZALBINKHEO ignoré. 
+	JMIPB CHAR(9) CCSID 297 NOT NULL DEFAULT '' , 
+	JMALX NUMERIC(4, 0) NOT NULL DEFAULT 0 , 
+--  SQL150D   10   EDTCDE ignoré pour la colonne JMALX. 
+	JMLCE CHAR(2) CCSID 297 NOT NULL DEFAULT '' , 
+	JMORD NUMERIC(2, 0) NOT NULL DEFAULT 0 , 
+	JMTXT CHAR(70) CCSID 297 NOT NULL DEFAULT '' )   
+	RCDFMT FPRTLCT    ; 
+  
+LABEL ON TABLE ZALBINKHEO.YPRTLCT 
+	IS 'Poli.RT : LCI Texte libre                       JM' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.YPRTLCT 
+( JMIPB IS 'N° de police' , 
+	JMALX IS 'N° Aliment' , 
+	JMLCE IS 'Expression LCI' , 
+	JMORD IS 'N° ordre' , 
+	JMTXT IS 'Texte' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.YPRTLCT 
+( JMIPB TEXT IS 'N° de Police' , 
+	JMALX TEXT IS 'N° Aliment' , 
+	JMLCE TEXT IS 'Expression complexe LCI' , 
+	JMORD TEXT IS 'N° ordre texte' , 
+	JMTXT TEXT IS 'Texte' ) ; 
+  

@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E00E8B1D-08A8-4A8D-B086-6517E83262B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Albingia.Kheops.OP.Domain</RootNamespace>
+    <AssemblyName>Albingia.Kheops.OP.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>latest</LangVersion>
+    <CodeAnalysisRuleSet>..\..\Rule Sets\Kheops.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Affaire\Affaire.cs" />
+    <Compile Include="Affaire\AffaireId.cs" />
+    <Compile Include="Affaire\AffaireMetadata.cs" />
+    <Compile Include="Affaire\AffaireType.cs" />
+    <Compile Include="Affaire\Assure.cs" />
+    <Compile Include="Affaire\CotisationOffre.cs" />
+    <Compile Include="Affaire\TauxGareat.cs" />
+    <Compile Include="Affaire\Gareat.cs" />
+    <Compile Include="Affaire\TarifAffaire.cs" />
+    <Compile Include="Affaire\Connexite.cs" />
+    <Compile Include="Affaire\ConnexiteId.cs" />
+    <Compile Include="Affaire\Courtier.cs" />
+    <Compile Include="Affaire\Echeance.cs" />
+    <Compile Include="Affaire\LockState.cs" />
+    <Compile Include="Affaire\PeriodeEcheance.cs" />
+    <Compile Include="Affaire\TraitementAffaire.cs" />
+    <Compile Include="Affaire\SituationAffaire.cs" />
+    <Compile Include="Affaire\EtatAffaire.cs" />
+    <Compile Include="Affaire\Expressions.cs" />
+    <Compile Include="Affaire\NouvelleAffaireDto.cs" />
+    <Compile Include="Affaire\NouvelleAffaireFormule.cs" />
+    <Compile Include="Affaire\NouvelleAffaireObjet.cs" />
+    <Compile Include="Affaire\NouvelleAffaireRisque.cs" />
+    <Compile Include="Affaire\Periode.cs" />
+    <Compile Include="Affaire\Value.cs" />
+    <Compile Include="Clauses\Clause.cs" />
+    <Compile Include="Clauses\NomClause.cs" />
+    <Compile Include="Clauses\OrigineClause.cs" />
+    <Compile Include="Clauses\TypeGenerationDoc.cs" />
+    <Compile Include="Clauses\TypologieSensibilite.cs" />
+    <Compile Include="Document\CopyDoc.cs" />
+    <Compile Include="Engagements\Engagement.cs" />
+    <Compile Include="Formule\GarantiesRC.cs" />
+    <Compile Include="Formule\GarantieUniqueId.cs" />
+    <Compile Include="InfosSpecifiques\FiltreLignesIS.cs" />
+    <Compile Include="InfosSpecifiques\InformationSpecifique.cs" />
+    <Compile Include="InfosSpecifiques\ModeleIS.cs" />
+    <Compile Include="InfosSpecifiques\LigneModeleIS.cs" />
+    <Compile Include="InfosSpecifiques\ProprieteIS.cs" />
+    <Compile Include="InfosSpecifiques\SectionIS.cs" />
+    <Compile Include="InfosSpecifiques\TypeAffichage.cs" />
+    <Compile Include="InfosSpecifiques\TypeSection.cs" />
+    <Compile Include="InfosSpecifiques\ValeurInformationSpecifique.cs" />
+    <Compile Include="Garantie\GareatState.cs" />
+    <Compile Include="Garantie\TrancheGareat.cs" />
+    <Compile Include="Inventaire\InventaireItemBase.cs" />
+    <Compile Include="Paramétrage\Clauses\ParamClause.cs" />
+    <Compile Include="Document\Destinataire.cs" />
+    <Compile Include="Document\DocumentExterne.cs" />
+    <Compile Include="Document\DocumentBase.cs" />
+    <Compile Include="Document\Document.cs" />
+    <Compile Include="Document\LienDocument.cs" />
+    <Compile Include="Document\LotDocument.cs" />
+    <Compile Include="Prime\PrimeGarantie.cs" />
+    <Compile Include="Referentiel\ApplicationFraisAccessoire.cs" />
+    <Compile Include="Referentiel\CaractereGarantie.cs" />
+    <Compile Include="Referentiel\Chemin.cs" />
+    <Compile Include="Referentiel\Contexte.cs" />
+    <Compile Include="Referentiel\ActeGestion.cs" />
+    <Compile Include="Referentiel\Tournage.cs" />
+    <Compile Include="Referentiel\Couverture.cs" />
+    <Compile Include="Referentiel\FraisGareat.cs" />
+    <Compile Include="Referentiel\ModeRegularisation.cs" />
+    <Compile Include="Referentiel\CodeSTOP.cs" />
+    <Compile Include="Referentiel\ModeModifiable.cs" />
+    <Compile Include="Referentiel\MotifResiliation.cs" />
+    <Compile Include="Referentiel\MotifSituation.cs" />
+    <Compile Include="Referentiel\NatureTravauxAffaire.cs" />
+    <Compile Include="Referentiel\SituationRegularisation.cs" />
+    <Compile Include="Referentiel\StatutGeneration.cs" />
+    <Compile Include="Referentiel\EtapeGeneration.cs" />
+    <Compile Include="Referentiel\Tampon.cs" />
+    <Compile Include="Document\TypeDestinataire.cs" />
+    <Compile Include="Document\TypeDocument.cs" />
+    <Compile Include="Referentiel\SituationDocument.cs" />
+    <Compile Include="Referentiel\SituationClause.cs" />
+    <Compile Include="Referentiel\Convention.cs" />
+    <Compile Include="Referentiel\UniteTemps.cs" />
+    <Compile Include="Referentiel\TraceTraitement.cs" />
+    <Compile Include="Referentiel\TypeActeDeGestion.cs" />
+    <Compile Include="Referentiel\Quittancement.cs" />
+    <Compile Include="Referentiel\MotifRegularisation.cs" />
+    <Compile Include="Referentiel\TypePolice.cs" />
+    <Compile Include="Referentiel\TypeRelance.cs" />
+    <Compile Include="Referentiel\TypeTraitement.cs" />
+    <Compile Include="Referentiel\TypoDocument.cs" />
+    <Compile Include="Extension\EnumExtension.cs" />
+    <Compile Include="Extension\FilterExtention.cs" />
+    <Compile Include="Extension\ObjectMapExtension.cs" />
+    <Compile Include="Formule\Application.cs" />
+    <Compile Include="Formule\TypeElement.cs" />
+    <Compile Include="Paramétrage\Formules\BlocRelation.cs" />
+    <Compile Include="Paramétrage\Formules\GarantieRelation.cs" />
+    <Compile Include="Paramétrage\Formules\NatureSelection.cs" />
+    <Compile Include="Formule\OptionId.cs" />
+    <Compile Include="Formule\FormuleId.cs" />
+    <Compile Include="Formule\ExpressionComplexe\ExpressionComplexeBase.cs" />
+    <Compile Include="Formule\ExpressionComplexe\ExpressionComplexeDetailBase.cs" />
+    <Compile Include="Formule\ExpressionComplexe\ExpressionComplexeDetailFranchise.cs" />
+    <Compile Include="Formule\ExpressionComplexe\ExpressionComplexeDetailLCI.cs" />
+    <Compile Include="Formule\ExpressionComplexe\ExpressionComplexeFranchise.cs" />
+    <Compile Include="Formule\ExpressionComplexe\ExpressionComplexeLCI.cs" />
+    <Compile Include="Formule\ExpressionComplexe\OrigineExpression.cs" />
+    <Compile Include="Formule\IValidatable.cs" />
+    <Compile Include="Formule\MontantsOption.cs" />
+    <Compile Include="Formule\PorteeGarantie.cs" />
+    <Compile Include="Formule\TarifGarantie.cs" />
+    <Compile Include="Formule\OptionVoletBloc.cs" />
+    <Compile Include="Formule\Formule.cs" />
+    <Compile Include="Formule\Garantie.cs" />
+    <Compile Include="Formule\Option.cs" />
+    <Compile Include="Formule\TaxesIcluded.cs" />
+    <Compile Include="Formule\TypeCalcul.cs" />
+    <Compile Include="Formule\TypeOption.cs" />
+    <Compile Include="Formule\Unite.cs" />
+    <Compile Include="Inventaire\Activite.cs" />
+    <Compile Include="Inventaire\ActiviteLocalisee.cs" />
+    <Compile Include="Inventaire\ActivitesImmobilieres.cs" />
+    <Compile Include="Inventaire\BienAssure.cs" />
+    <Compile Include="Inventaire\Inventaire.cs" />
+    <Compile Include="Inventaire\InventaireItem.cs" />
+    <Compile Include="Inventaire\LocationTiers.cs" />
+    <Compile Include="Inventaire\ManifestationAssure.cs" />
+    <Compile Include="Inventaire\Marchandises.cs" />
+    <Compile Include="Inventaire\MarchandisesStockees.cs" />
+    <Compile Include="Inventaire\MarchandisesTransportees.cs" />
+    <Compile Include="Inventaire\Materiel.cs" />
+    <Compile Include="Inventaire\MaterielAssure.cs" />
+    <Compile Include="Inventaire\MultiplesSituations.cs" />
+    <Compile Include="Inventaire\Personne.cs" />
+    <Compile Include="Inventaire\PersonneDesignee.cs" />
+    <Compile Include="Inventaire\PersonneDesigneeIndispo.cs" />
+    <Compile Include="Inventaire\PorteeInventaire.cs" />
+    <Compile Include="Inventaire\PosteAssure.cs" />
+    <Compile Include="Inventaire\ProductionRealisationAudio.cs" />
+    <Compile Include="Inventaire\TournageAssure.cs" />
+    <Compile Include="Inventaire\VehiculePourTransport.cs" />
+    <Compile Include="Paramétrage\Filtre.cs" />
+    <Compile Include="Paramétrage\Formules\ParamGarantie.cs" />
+    <Compile Include="Paramétrage\Formules\TypologieModele.cs" />
+    <Compile Include="Paramétrage\IFiltered.cs" />
+    <Compile Include="Paramétrage\Inventaire\TypeInventaire.cs" />
+    <Compile Include="Paramétrage\Inventaire\TypeInventaireItem.cs" />
+    <Compile Include="Paramétrage\LigneFiltre.cs" />
+    <Compile Include="Prime\Prime.cs" />
+    <Compile Include="Prime\PrimeId.cs" />
+    <Compile Include="Referentiel\Adresse.cs" />
+    <Compile Include="Referentiel\Alimentation.cs" />
+    <Compile Include="Referentiel\Base.cs" />
+    <Compile Include="Referentiel\Categorie.cs" />
+    <Compile Include="Referentiel\CibleCatego.cs" />
+    <Compile Include="Referentiel\CibleFiltre.cs" />
+    <Compile Include="Referentiel\FamilleReassurance.cs" />
+    <Compile Include="Referentiel\NatureGeneration.cs" />
+    <Compile Include="Referentiel\TypeEnvoi.cs" />
+    <Compile Include="Referentiel\FonctionContrat.cs" />
+    <Compile Include="Regularisation\Motif.cs" />
+    <Compile Include="Regularisation\MouvementGarantie.cs" />
+    <Compile Include="Regularisation\NiveauRegularisation.cs" />
+    <Compile Include="Regularisation\PerimetreSelectionRegul.cs" />
+    <Compile Include="Regularisation\PeriodeGarantie.cs" />
+    <Compile Include="Regularisation\Regularisation.cs" />
+    <Compile Include="Regularisation\RegulRisque.cs" />
+    <Compile Include="Regularisation\SelectionRegularisation.cs" />
+    <Compile Include="Sinistre\SinistreId.cs" />
+    <Compile Include="Sinistre\Sinistre.cs" />
+    <Compile Include="Sinistre\SituationSinistre.cs" />
+    <Compile Include="Transverse\ModifHorsAvn.cs" />
+    <Compile Include="Transverse\Montant.cs" />
+    <Compile Include="Transverse\TypeMontant.cs" />
+    <Compile Include="Transverse\TarifGeneral.cs" />
+    <Compile Include="Transverse\FamilleUtilisateur.cs" />
+    <Compile Include="Transverse\ModeTaxation.cs" />
+    <Compile Include="Referentiel\NatureGarantie.cs" />
+    <Compile Include="Referentiel\RefParamValue.cs" />
+    <Compile Include="Referentiel\DefinitionGarantie.cs" />
+    <Compile Include="Referentiel\TypeControleDate.cs" />
+    <Compile Include="Referentiel\TypeEmission.cs" />
+    <Compile Include="Referentiel\PeriodeApplication.cs" />
+    <Compile Include="Referentiel\TypeValeurRisque.cs" />
+    <Compile Include="Referentiel\UniteDuree.cs" />
+    <Compile Include="Referentiel\Unite.cs" />
+    <Compile Include="Referentiel\Indisponibilite.cs" />
+    <Compile Include="Referentiel\IndisponibiliteTournage.cs" />
+    <Compile Include="Referentiel\Interlocuteur.cs" />
+    <Compile Include="Referentiel\Intervenant.cs" />
+    <Compile Include="Paramétrage\CaractereSelection.cs" />
+    <Compile Include="Paramétrage\Formules\ParamExpressionComplexeLCI.cs" />
+    <Compile Include="Paramétrage\Formules\ParamExpressionComplexeFranchise.cs" />
+    <Compile Include="Paramétrage\Formules\ParamExpressionComplexeBase.cs" />
+    <Compile Include="Paramétrage\Formules\ParamExpressionComplexeDetailFranchise.cs" />
+    <Compile Include="Paramétrage\Formules\ParamExpressionComplexeDetailLCI.cs" />
+    <Compile Include="Paramétrage\Formules\ParamExpressionComplexeDetailBase.cs" />
+    <Compile Include="Paramétrage\Formules\ParamGarantieHierarchie.cs" />
+    <Compile Include="Paramétrage\Formules\ParamModeleGarantie.cs" />
+    <Compile Include="Paramétrage\Formules\ParamBloc.cs" />
+    <Compile Include="Paramétrage\Formules\ParamVolet.cs" />
+    <Compile Include="Paramétrage\Formules\TypeDeValeur.cs" />
+    <Compile Include="Paramétrage\Formules\ValeurDeGarantie.cs" />
+    <Compile Include="Referentiel\MotCle.cs" />
+    <Compile Include="Referentiel\NatureLieux.cs" />
+    <Compile Include="Referentiel\Pays.cs" />
+    <Compile Include="Referentiel\FamilleGarantie.cs" />
+    <Compile Include="Referentiel\QualiteJuridique.cs" />
+    <Compile Include="Referentiel\Renonciation.cs" />
+    <Compile Include="Referentiel\RisqueLocatif.cs" />
+    <Compile Include="Referentiel\TypeGrilleRegul.cs" />
+    <Compile Include="Referentiel\Taxe.cs" />
+    <Compile Include="Referentiel\RegimeTaxe.cs" />
+    <Compile Include="Referentiel\Antecedant.cs" />
+    <Compile Include="Referentiel\Traitement.cs" />
+    <Compile Include="Referentiel\Encaissement.cs" />
+    <Compile Include="Referentiel\TypeImmobilier.cs" />
+    <Compile Include="Referentiel\TypeLocation.cs" />
+    <Compile Include="Referentiel\TypeMateriel.cs" />
+    <Compile Include="Referentiel\TypeProdution.cs" />
+    <Compile Include="Referentiel\Utilisateur.cs" />
+    <Compile Include="Referentiel\Retour.cs" />
+    <Compile Include="Referentiel\Motif.cs" />
+    <Compile Include="Referentiel\Etat.cs" />
+    <Compile Include="Referentiel\Situation.cs" />
+    <Compile Include="Referentiel\Branche.cs" />
+    <Compile Include="Referentiel\Cible.cs" />
+    <Compile Include="Referentiel\Devise.cs" />
+    <Compile Include="Referentiel\RefValue.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referentiel\Indice.cs" />
+    <Compile Include="Referentiel\Nature.cs" />
+    <Compile Include="Referentiel\Periodicite.cs" />
+    <Compile Include="Referentiel\User.cs" />
+    <Compile Include="Risque\Objet.cs" />
+    <Compile Include="Risque\ObjetId.cs" />
+    <Compile Include="Risque\Risque.cs" />
+    <Compile Include="Transverse\Designation.cs" />
+    <Compile Include="Transverse\SimpleTrace.cs" />
+    <Compile Include="Transverse\SituationBase.cs" />
+    <Compile Include="Transverse\TraceContext.cs" />
+    <Compile Include="Transverse\UniteBase.cs" />
+    <Compile Include="Transverse\UpdateMetadata.cs" />
+    <Compile Include="Transverse\ProfileKheops.cs" />
+    <Compile Include="Transverse\ProfileKheopsData.cs" />
+    <Compile Include="Transverse\UtilisateurKheops.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Navigation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Domain.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj">
+      <Project>{a98a2815-a24c-4e02-891e-8b802ee892ea}</Project>
+      <Name>ALBINGIA.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Albingia.Kheops.Common\Albingia.Kheops.Common.csproj">
+      <Project>{7919e1a0-1894-4262-be0c-71cc06369408}</Project>
+      <Name>Albingia.Kheops.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\AssemblyVersion\AssemblyVersion.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

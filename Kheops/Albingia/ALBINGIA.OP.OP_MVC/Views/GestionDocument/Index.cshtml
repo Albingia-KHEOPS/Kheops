@@ -1,0 +1,96 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestionDocumentPage>
+@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vGestionDocument.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albGestionDocument.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    var model = Model as ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestionDocumentPage;
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+            if (Model.ActeGestionRegule == "REGUL" && model.RgId != 0)
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Cotisations })
+            }
+            else
+            {
+                @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            }
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+            @*<div class="GroupTitle">
+                    Gestion des documents
+                </div>*@
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection" style="height: 480px;">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="PaddingLeft FloatLeft">
+                                <button id="btnNewListDist" type="button" albShortcut="true" data-accesskey="n" disabled="@(Model.IsReadOnly)"><u>N</u>ouvelle liste de distribution</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        @Html.Partial("GestionDistribution")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div id="fancyConfirmCreation" style="display: none;">
+        <div id="msgConfirmCreation" class="HeightRow FancyTextCenter">
+        </div>
+        <br />
+        <div class="HeightRow FancyTextCenter" style="margin-top: 15px; margin-left: 92px;">
+            <div class="FloatLeft PaddingRight">
+                <input type="button" id="btnConfirmCancelCreation" value="Annuler" />
+            </div>
+            <div class="FloatLeft PaddingRight">
+                <input type="button" id="btnConfirmOkCreation" value="OK" />
+            </div>
+        </div>
+    </div>*@
+<div id="divDistribution" style="padding: 5;">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataDistribution">
+    </div>
+</div>

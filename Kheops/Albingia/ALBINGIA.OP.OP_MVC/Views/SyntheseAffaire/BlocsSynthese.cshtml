@@ -1,0 +1,272 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModelSyntheseAffaire
+@using ALBINGIA.Framework.Common.Constants
+@Html.Hidden("Offre_CodeOffre_S", Model.NumeroAffaire)
+@Html.Hidden("Offre_Version_S", Model.NumAvenant)
+@Html.Hidden("Offre_Type_S", Model.TypeAffaire)
+@Html.Hidden("NumAvenantPage_S", Model.NumAvenantPage)
+@Html.Hidden("tabGuid_S", Model.TabGuid)
+@Html.Hidden("ModeNavig_S", Model.ModeNavig)
+@Html.Hidden("ActeGestion_S", Model.ActeGestion)
+
+
+<div id="divBlocsSynthese">
+    <div id="blocs_synthese">
+        <div class="bloc-line top">
+            <div class="NW">
+                @Html.HiddenFor(m => m.CodeInterlocuteur)
+                <table class="bloc-synthese">
+                    <tbody>
+                        <tr>
+                            <!-- line 1 -->
+                            <td class="title-label-underline label-big-width">
+                                @if (Model.IsKheopsAffaire)
+                                {
+                                    @Model.TypeAffaire
+                                }
+                                else
+                                {
+                                    <div class="left-img citrix" title="@Model.TypeAffaire Citrix">@Model.TypeAffaire</div>
+                                }
+                            </td>
+                            <td colspan="2" class="branche-cible">@Model.BrancheCible</td>
+                            <td>@Model.NumeroAffaire</td>
+                        </tr>
+                        <tr>
+                            <!-- line Offre -->
+
+                            @if (Model.OffreOrigine != "")
+                            {
+                                <td>&nbsp;</td>
+                                <td class="title-label">Offre Origine</td>
+                                if (Model.IsKheopsAffaire)
+                                {
+                                    <td><span class="offre-origine" name="linkWinOpenOrigine" albparam="@Model.CodeOffreOrigineLink">@Model.OffreOrigine</span></td>
+                                }
+                                else
+                                {
+                                    <td id="link_OffreCitrix"><span class="offre-origine" albparam="@Model.CodeOffreOrigine">@Model.OffreOrigine</span></td>
+                                }
+                            }
+                        </tr>
+                        <tr>
+
+                            <!-- line Contrat -->
+                            @if (Model.getLstContrat.Count() != 0)
+                            {
+                                <td>&nbsp;</td>
+                                <td class="title-label">Contrats crée(s)</td>
+                                <td name="linkOpenContratOrigine" albparam=@(Model.getLstContrat[0].CodeContrat +"_"+ Model.getLstContrat[0].VersionContrat+"_"+ Model.getLstContrat[0].TypeContrat) class="offre-origine">@(Model.getLstContrat[0].CodeContrat + "-" + Model.getLstContrat[0].VersionContrat)  </td>
+                                if (Model.getLstContrat.Count() > 1)
+                                {
+                                    <td name="infos-contrats" class="icon-button info-img" style="float: left;  margin-left: -26px;"></td>
+                                }
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="bloc-synthese">
+                    <tbody>
+                        <tr>
+                            <!-- line 3 -->
+                            <td class="label label-big-width">Preneur Ass.</td>
+                            <td colspan="2" title="@Model.Preneur">@Model.Preneur</td>
+                            <td colspan="2" title="@Model.PreneurVille">@Model.PreneurVille</td>
+                            <td name="infos-assure-@Model.CodePreneur" class="icon-button info-img"></td>
+                        </tr>
+                        <tr>
+                            <!-- line 4 -->
+                            <td class="label">Courtier Apporteur</td>
+                            <td colspan="2" title="@Model.CourtierApporteur">@Model.CourtierApporteur</td>
+                            <td colspan="2" title="@Model.CourtierApporteurVille">@Model.CourtierApporteurVille</td>
+                            <td name="infos-courtierApporteur-@Model.CodeApporteur" class="icon-button info-img"></td>
+                        </tr>
+                        <tr>
+                            <!-- line 5 -->
+                            <td class="label">Courtier Payeur</td>
+                            <td colspan="2" title="@Model.CourtierPayeur">@Model.CourtierPayeur</td>
+                            <td colspan="2" title="@Model.CourtierPayeurVille">@Model.CourtierPayeurVille</td>
+                            <td name="infos-courtierPayeur-@Model.CodePayeur" class="icon-button info-img"></td>
+                        </tr>
+                        <tr>
+                            <!-- line 6 -->
+                            <td class="label">Courtier Gest.</td>
+                            <td colspan="2" title="@Model.CourtierGestionnaire">@Model.CourtierGestionnaire</td>
+                            <td colspan="2" title="@Model.CourtierGestionnaireVille">@Model.CourtierGestionnaireVille</td>
+                            <td name="infos-courtierGestion-@Model.CodeGestionnaire" class="icon-button info-img"></td>
+                        </tr>
+                        <tr class="left-indent">
+                            <!-- line 7 -->
+                            <td class="label">Encaissement</td>
+                            <td colspan="5">@Model.Encaissement</td>
+                        </tr>
+                        <tr class="left-indent">
+                            <!-- line 8 -->
+                            <td class="label">Délégation</td>
+                            <td class="value">@Model.Delegation</td>
+                            <td class="label label-width">Inspecteur</td>
+                            <td colspan="3">@Model.Inspecteur</td>
+                        </tr>
+                        <tr class="left-indent">
+                            <!-- line 9 -->
+                            <td class="label">Secteur</td>
+                            <td colspan="5">@Model.Secteur</td>
+                        </tr>
+                        <tr>
+                            <!-- line 10 -->
+                            <td class="label">Souscripteur</td>
+                            <td>@Model.Souscripteur</td>
+                            <td class="label">Gestionnaire</td>
+                            <td colspan="3">@Model.Gestionnaire</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="NE">
+                <!-- line 1 -->
+                <div class="title-affaire">@(Model.Affaire?.Descriptif)</div>
+                <table class="bloc-synthese">
+                    <tbody>
+                        <tr>
+                            <!-- line 2 -->
+                            <td class="label label-width">Effet du</td>
+                            <td class="date-effet">@(Model.Affaire?.DateEffet?.ToShortDateString())</td>
+                            <td class="label short-width">au</td>
+                            <td colspan="4">@(Model.Affaire?.DateFin?.ToShortDateString())</td>
+                        </tr>
+                        <tr>
+                            <!-- line 3 -->
+                            <td class="label label-big-width">Avt n°</td>
+                            <td colspan="2">@Model.Affaire.NumeroAvenant</td>
+                            <td class="label label-width">A effet du</td>
+                            <td colspan="3">@(Model.Affaire.DateEffetAvenant?.ToShortDateString())</td>
+                        </tr>
+                        <tr>
+                            <!-- line 4 -->
+                            <td class="label">Périodicité</td>
+                            <td colspan="2" title="@Model.PeriodiciteAffaire">@Model.PeriodiciteAffaire</td>
+                            <td class="label label-width">Ech. Princ.</td>
+                            <td>@Model.EcheancePrincipale</td>
+                            <td class="label">Préavis</td>
+                            <td>@Model.Preavis</td>
+                        </tr>
+                        <tr>
+                            <!-- line 5 -->
+                            <td class="label">Nature</td>
+                            <td colspan="2">@Model.NatureAffaire</td>
+                            <td class="label">Part</td>
+                            <td colspan="3">@Model.PourcentagePart</td>
+                        </tr>
+                        <tr>
+                            <!-- line 6 -->
+                            <td class="label">Régime taxes</td>
+                            <td colspan="2">@Model.RegimeTaxes</td>
+                            <td class="label">CATNAT ?</td>
+                            <td colspan="3">@Model.HasCATNAT</td>
+                        </tr>
+                        <tr>
+                            <!-- line 7 -->
+                            <td class="label">Indice</td>
+                            <td colspan="2" title="@Model.LibelleIndice">@Model.LibelleIndice</td>
+                            <td class="label">Valeur</td>
+                            <td colspan="3">@Model.ValeurIndice</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="bloc-line">
+            <div class="SW">
+                <table class="bloc-synthese">
+                    <tbody>
+                        <tr>
+                            <!-- line 2 -->
+                            <td class="label label-big-width">Montant de référence</td>
+                            <td colspan="3">@Model.MontantRef</td>
+                        </tr>
+                        <tr>
+                            <!-- line 3 -->
+                            <td class="label">Prochaine éch.</td>
+                            <td>@(Model.DateProchaineEcheance)</td>
+                            <td class="label">Code STOP</td>
+                            <td>@Model.CodeSTOP</td>
+                        </tr>
+                        <tr>
+                            <!-- line 4 -->
+                            <td class="label">Tx com. H CATNAT</td>
+                            <td colspan="3">@Model.PourcentageTauxCommission</td>
+                        </tr>
+                        <tr>
+                            <!-- line 5 -->
+                            <td class="label">Tx com. CATNAT</td>
+                            <td colspan="3">@Model.PourcentageTauxCommissionCATNAT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="SE">
+                @if (Model.HasAlertes)
+                {
+                    <div class="floating-alertes left-img alertes">Attention, ce contrat contient des alertes.</div>
+                }
+                <!-- line 1 -->
+                <div class="label-value">
+                    <div class="title">Dernière action</div>
+                    <div class="text">@Model.DerniereActionLibelle</div>
+                </div>
+                <!-- line 2 -->
+                <div class="label-value">
+                    <div class="title">Motif</div>
+                    <div class="text">@Model.DerniereActionMotif</div>
+                </div>
+                <table class="bloc-synthese">
+                    <tbody>
+                        <tr>
+                            <!-- line 3 -->
+                            <td class="label">Etat</td>
+                            <td class="long-value">@Model.EtatAffaire</td>
+                            <td class="label">Situation</td>
+                            <td>@Model.SituationAffaire</td>
+                            <td class="label short-width">le</td>
+                            <td>@Model.DateSituation</td>
+                        </tr>
+                        <tr>
+                            <!-- line 4 -->
+                            <td colspan="2">&nbsp;</td>
+                            <td class="label">Créé par</td>
+                            <td>@(Model.Affaire?.CodeUserCreate)</td>
+                            <td class="label">le</td>
+                            <td>@(Model.Affaire?.DateCreation.ToShortDateString())</td>
+                        </tr>
+                        <tr>
+                            <!-- line 5 -->
+                            <td colspan="2">&nbsp;</td>
+                            <td class="label">Modifié par</td>
+                            <td>@(Model.Affaire?.CodeUserUpdate)</td>
+                            <td class="label">le</td>
+                            <td>@(Model.Affaire?.DateModification.ToShortDateString())</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divLstContrat" class="ui-dialog ui-widget ui-widget-content ui-corner-all undefined ui-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-1" style="display: none; z-index: 1002; outline: 0px; position: absolute; height: auto; width: auto; top: 238px; left: 721px;">
+
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span class="ui-dialog-title" id="ui-dialog-title-1">Confirmation</span>
+    </div>
+    <div>
+        <div>
+            <div class="GroupTitle" style="color:black; padding-left: 0;">Un contrat a déjà été établi à partir de l'offre, voulez-vous continuer ?</div>
+            <div class="Validation">
+                <button id="btnValidationContrat" type="button" albshortcut="false">Oui</button>
+                <button id="btnRefusContrat" type="button" albshortcut="false">Non</button>
+                <!-- /ko -->
+            </div>
+        </div>
+
+    </div>
+</div>
+

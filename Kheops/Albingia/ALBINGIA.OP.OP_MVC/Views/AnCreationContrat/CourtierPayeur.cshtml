@@ -1,0 +1,38 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.Courtier
+<div class="HeightRow" data-courtier="payeur">
+    <div class="FloatLeft">
+        @Html.HiddenNoName("inInvalidCourtierPay", string.Empty)
+        <label class="labelAnCourtier">Courtier payeur</label>
+    </div>
+    <div class="FloatLeft hide-it">
+        <i class="alerte-blacklisted"></i>
+    </div>
+    <div id="CourtierInvalidePayeurDiv" class="FloatLeft error PaddingLeft"></div>
+</div>
+<div class="HeightRow" data-courtier="payeur">
+    <div class="FloatLeft">
+        <label class="labelCourtierCode">Code*</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CourtierPayeur_Courtier_CodeCourtier" albhorsavn name="CodeCourtierPayeur" albcontext="courtierPayeur" tabindex="22" value="@Model.CodeCourtier"  class="@(Model.IdentiqueChecked ? "readonly" : string.Empty) inputAnCodeCourtier" disabled="@(Model.IdentiqueChecked)" albAutoComplete="autoCompCodeCourtierPayeur" albname="codeCourtier"/>
+    </div>
+    <div class="FloatLeft">
+        <label class="labelNomCourtier">Nom</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CourtierPayeur_Courtier_NomCourtier" albhorsavn name="NomCourtierPayeur" albcontext="courtierPayeur" tabindex="23" class="inputNomCourtier @(Model.IdentiqueChecked ? "readonly" : string.Empty)" disabled="@(Model.IdentiqueChecked)" value="@Model.NomCourtier" albAutoComplete="autoCompNomCourtierPayeur" albname="nomCourtier"/>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.IdentiqueChecked || !Model.EditMode)
+        {
+            <img src="@Url.Content("/Content/Images/loupegris.png")" albcontext="courtierPayeur" alt="" class="" name="RechercherCourtier" />
+        }
+        else
+        {
+            <img src="@Url.Content("/Content/Images/loupe.png")" albcontext="courtierPayeur" alt="" class="CursorPointer" name="RechercherCourtier" />
+        }
+    </div>
+    <div class="FloatLeft">
+        <img alt="Informations" src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" class="CursorPointer PaddingLeft PaddingTopLittle" albAutoComplete="autoCompImgInfoCourtierPayeur" albIdInfo="@Model.CodeCourtier" albcontext="courtierPayeur"/>
+    </div>
+</div>

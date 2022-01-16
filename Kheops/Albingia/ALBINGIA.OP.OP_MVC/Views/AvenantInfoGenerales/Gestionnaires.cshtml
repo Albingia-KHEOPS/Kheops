@@ -1,0 +1,9 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Avenant.ModelesAvenant.ModeleAvenantInfoGeneralesPage
+<div class="FloatLeft">
+    <label class="Block">Gestionnaire*</label>
+</div>
+<div class="FloatLeft">
+    @Html.Hidden("GestionnaireSelect", string.Empty, new { albautocomplete = "autoCompGestionnaireSelect" })
+    @Html.HiddenFor(m => m.GestionnaireCode, new { albAutoComplete = "autoCompGestionnaireCode" })
+    <input type="text" id="GestionnaireNom" albhorsavn name="GestionnaireNom" value="@(Model.GestionnaireNom)" tabindex="30" class="SuperInput" albAutoComplete="autoCompGestionnaireNom" /> 
+</div>

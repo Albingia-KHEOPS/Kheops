@@ -1,0 +1,18 @@
+﻿body .bloc-gareat {
+  padding: 3px 5px 10px 5px;
+  margin: 4px;
+  border-color: lightgrey;
+  border-radius: 7px;
+}
+body .bloc-gareat span {
+  display: inline-block;
+}
+body .bloc-gareat span label {
+  margin-right: 5px;
+}
+body .bloc-gareat span input {
+  margin-right: 10px;
+}
+body .bloc-gareat span input.short {
+  width: 70px;
+}

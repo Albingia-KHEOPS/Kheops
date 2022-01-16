@@ -1,0 +1,28 @@
+﻿.MaxInput {
+    width: 372px !important;
+}
+
+.nDivExcel {
+    width: 1194px;
+}
+
+.FileGroup {
+    width: 600px;
+    height: 160px;
+}
+
+.AdresseGroup {
+    width: 590px;
+    height: 160px;
+}
+
+#NumeroVoie, #ExtensionVoie {
+    width: 38px !important;
+}
+#NomVoie {
+    width: 282px !important;
+}
+
+.dropzone_nb_file {
+    margin-top: 10px;
+}

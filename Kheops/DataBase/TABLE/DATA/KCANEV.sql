@@ -1,0 +1,51 @@
+﻿CREATE TABLE ZALBINKHEO.KCANEV ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KCANEV de ZALBINKHEO ignoré. 
+--  SQL1506   30   Clé ou attribut ignoré pour KCANEV de ZALBINKHEO. 
+	KGOID NUMERIC(15, 0) NOT NULL DEFAULT 0 , 
+	KGOTYP CHAR(1) CCSID 297 NOT NULL DEFAULT '' , 
+	KGOCNVA CHAR(9) CCSID 297 NOT NULL DEFAULT '' , 
+	KGODESC CHAR(60) CCSID 297 NOT NULL DEFAULT '' , 
+	KGOKAIID NUMERIC(15, 0) NOT NULL DEFAULT 0 , 
+	KGOCDEF CHAR(1) CCSID 297 NOT NULL DEFAULT '' , 
+	KGOCRU CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KGOCRD NUMERIC(8, 0) NOT NULL DEFAULT 0 , 
+	KGOCRH NUMERIC(6, 0) NOT NULL DEFAULT 0 , 
+	KGOMAJU CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KGOMAJD NUMERIC(8, 0) NOT NULL DEFAULT 0 , 
+	KGOMAJH NUMERIC(6, 0) NOT NULL DEFAULT 0 , 
+	KGOSIT CHAR(1) CCSID 297 NOT NULL DEFAULT '' )   
+	RCDFMT FCANEV     ; 
+  
+LABEL ON TABLE ZALBINKHEO.KCANEV 
+	IS 'Canevas de saisie                              KGO' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KCANEV 
+( KGOID IS 'ID unique' , 
+	KGOTYP IS 'Type O/P' , 
+	KGOCNVA IS 'Code canevas' , 
+	KGODESC IS 'Description' , 
+	KGOKAIID IS 'Lien KCIBLEF' , 
+	KGOCDEF IS 'Canevas par défaut' , 
+	KGOCRU IS 'Création User' , 
+	KGOCRD IS 'Création Date' , 
+	KGOCRH IS 'Création Heure' , 
+	KGOMAJU IS 'Maj User' , 
+	KGOMAJD IS 'Maj Date' , 
+	KGOMAJH IS 'MAJ Heure' , 
+	KGOSIT IS 'Code situation' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KCANEV 
+( KGOID TEXT IS 'ID unique' , 
+	KGOTYP TEXT IS 'Type O Offre / P Contrat' , 
+	KGOCNVA TEXT IS 'Code canevas CNVA**** (IPB)' , 
+	KGODESC TEXT IS 'Description' , 
+	KGOKAIID TEXT IS 'Lien KCIBLEF' , 
+	KGOCDEF TEXT IS 'Canevas par défaut  O/N' , 
+	KGOCRU TEXT IS 'Création user' , 
+	KGOCRD TEXT IS 'Création Date' , 
+	KGOCRH TEXT IS 'Création Heure' , 
+	KGOMAJU TEXT IS 'Maj User' , 
+	KGOMAJD TEXT IS 'MAJ Date' , 
+	KGOMAJH TEXT IS 'MAJ Heure' , 
+	KGOSIT TEXT IS 'Code situation ''N'' ''V''' ) ; 
+  

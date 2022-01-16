@@ -1,0 +1,54 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaData.ListInventaires_MetaData
+<div class="GradientSection HeightAdresse">
+    @Html.HiddenFor(m => m.CodeInventaire)
+    <div class="DoubleGenericColumn">
+        <div class="HeightRow">
+            <div class="FloatLeft">@Html.AlbLabelFor(m => m.TypeInventaire, "Block")</div>
+            <div class="FloatLeft PaddingRight">@Html.AlbDropDownListFor(m => m.TypeInventaire, Model.TypesInventaire, "ListInventairesMetaData_TypeInventaire", htmlAttributes: new { @id = "ListInventairesMetaData_TypeInventaire", @tabindex = "19" }, generateTitle: true)</div>
+            <div class="FloatLeft CursorPointer">
+                <img src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" id="btnAjouterInventaire" tabindex="20" />
+            </div>
+        </div>
+    </div>
+    <div class="FieldRow">
+        <div>
+            <table class="tblListInventaire" width="420px">
+                <tr>
+                    <th class="colBtn tablePersoHead">
+                        &nbsp;
+                    </th>
+                    @if (Model.TypeList == "Garantie")
+                    {
+                        <th class="colBtn tablePersoHead">
+                            &nbsp;
+                        </th>
+                    }
+                    <th id="2" class="colTxt tablePersoHead">
+                        Liste inventaires <span class="spImg" style="float: right;">
+                            <img class="imageTri" alt="" src="../../../Content/Images/tri_desc.png" />
+                        </span>
+                    </th>
+                    @if (Model.TypeList == "")
+                    { 
+                        <th id="3" class="colTxt tablePersoHead">
+                            Spécificité <span class="spImg" style="display: none; float: right;">
+                                <img class="imageTri" alt="" src="../../../Content/Images/tri_desc.png" />
+                            </span>
+                        </th>
+                    }
+                    else if (Model.TypeList == "Garantie")
+                    { 
+                        <th id="3" class="colTxt tablePersoHead">
+                            S'applique à <span class="spImg" style="display: none; float: right;">
+                                <img class="imageTri" alt="" src="../../../Content/Images/tri_desc.png" />
+                            </span>
+                        </th>
+                    }
+                </tr>
+            </table>
+        </div>
+        <div id="divLstInventaires">
+            @Html.Partial("DetailsRisque_ListeInventaires", Model.Inventaires)
+        </div>
+    </div>
+</div>

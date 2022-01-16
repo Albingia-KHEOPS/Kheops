@@ -1,0 +1,989 @@
+﻿/*
+body::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+    */
+
+/***********************************************************/
+/***********     Style Assurés Additionnels     ************/
+/***********************************************************/
+
+
+
+#divAssureAdditionnels {
+    display: none;
+}
+
+#divDataBehindBandeau {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 555px;
+    width: 1045px;
+}
+
+#divDataAssureAdditionnels {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 555px;
+    width: 1045px;
+}
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+
+/***********************************************************/
+/***********     Style Actes de gestion     ************/
+/***********************************************************/
+#divActeGestion {
+    display: none;
+}
+
+#divDataActeGestion {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 558px;
+    width: 1045px;
+}
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+
+
+
+/***********************************************************/
+/***********     Style Eléments Transverse      ************/
+/***********************************************************/
+
+
+.overlay-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+    background-color: Gray;
+}
+
+#divLoading {
+    display: none;
+}
+
+    #divLoading:before {
+        transition: opacity linear .3s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        content: '';
+        z-index: 2000;
+        background-color: Gray;
+        opacity: 0;
+    }
+
+    #divLoading.shown:before {
+        opacity: 0.3;
+    }
+
+
+@keyframes spinner {
+    from {
+        -moz-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+
+    to {
+        -moz-transform: rotateY(-360deg);
+        -ms-transform: rotateY(-360deg);
+        transform: rotateY(-360deg);
+    }
+}
+
+#divDataLoading {
+    transition: opacity linear 2s;
+    opacity: 0;
+    position: absolute;
+    top: 290px;
+    left: 50%;
+    display: block;
+    z-index: 2010;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    font-weight: bold;
+    perspective: 600px;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    width: 0;
+}
+
+
+
+
+    #divDataLoading:before {
+        position: absolute;
+        top: -85px;
+        left: -75px;
+        width: 150px;
+        height: 150px;
+        background-image: url("/Content/Images/logo_out.png");
+        background-size: 100% 100%;
+        content: '';
+        display: block;
+    }
+
+    #divDataLoading div {
+        position: relative;
+        top: -49px;
+        left: -45px;
+        width: 93px;
+        height: 67px;
+        content: '';
+        display: block;
+        background-image: url("/Content/Images/logo_in.png");
+        background-size: 100% 100%;
+        animation-name: spinner;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-duration: 1s;
+        transform-style: preserve-3d;
+    }
+
+/*#divDataLoading:before {
+        position: relative;
+        top:-33px;
+        left:-33px;
+        height: 66px;
+        width: 66px;
+        content: '';
+        display: block;
+        background-image: url("/Content/Images/loading2r.gif");
+        background-size: 100% 100%;
+    }
+*/
+#divLoading.shown #divDataLoading {
+    opacity: 1;
+}
+
+
+#divGenDocument {
+    display: none;
+}
+
+#divDataGenDocument {
+    position: absolute;
+    top: 20%;
+    left: 43%;
+    display: block;
+    z-index: 91;
+    background-color: White;
+    padding: 5px 5px 5px 5px; /*height: 713px;*/
+    height: 80px;
+    width: 250px;
+    text-align: center;
+    font-weight: bold;
+    color: #B11F1F;
+    border-radius: 10px;
+    vertical-align: central;
+}
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+
+
+/***********************************************************/
+/***********     Style Connexites     ************/
+/***********************************************************/
+
+#divWordDocument {
+    display: none;
+}
+
+#divDataWordDocument {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 656px;
+    width: 1045px;
+}
+
+/***********************************************************/
+/***********     Style Connexites     ************/
+/***********************************************************/
+#divConnexites {
+    display: none;
+}
+
+#divConnexitesEng {
+    display: none;
+}
+
+#divDataConnexitesEng {
+    position: absolute;
+    top: 40px;
+    left: 16px;
+    display: block;
+    z-index: 15;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 645px;
+    width: 1045px;
+}
+
+#divDetailsConnexites {
+    display: none;
+}
+
+#divWordDocument {
+    display: none;
+}
+
+#divDetailsConnexites,
+#divFullScreenAjoutConnexite,
+#divFullScreenConnexite,
+#divFullScreenRecherche,
+#divConfirmationAction {
+    display: none;
+}
+
+
+#divDataDetailsConnexites {
+    position: absolute;
+    top: 40px;
+    left: 12px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 645px;
+    width: 1045px;
+}
+
+#divDataConnexites {
+    position: absolute;
+    top: 52px;
+    left: 12px;
+    display: block;
+    z-index: 13;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 645px;
+    width: 1045px;
+}
+
+/***********************************************************/
+/***********     Style Visu quittances          ************/
+/***********************************************************/
+#divVisuListeQuittances {
+    display: none;
+}
+
+
+#divDataVisuListeQuittances {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 31;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 600px;
+    width: 1045px;
+}
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********     Style Liste des clauses     ************/
+/***********************************************************/
+#divListeClauses {
+    display: none;
+}
+
+#divDataListeClauses {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 456px;
+    width: 1021px;
+}
+
+#divDataClausierRech {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 583px;
+    width: 1045px;
+    /*
+    background-color: #ccc;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 2px;
+    border-color: #eee;
+        */
+}
+
+
+.ZoneRechercheHeight {
+    height: 448px;
+}
+
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********     Style gestion des doc contrat     ************/
+/***********************************************************/
+#divDocumentContrat, #divDocumentContratPieceJointe {
+    display: none;
+}
+
+#divDataDocumentContrat {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 456px;
+    width: 1041px;
+}
+
+#divDataDocumentContratPieceJointe {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 342px;
+    width: 841px;
+}
+
+
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********     Style gestion des intervenants     ************/
+/***********************************************************/
+
+#divGestionIntervenants {
+    display: none;
+}
+
+#divDataGestionIntervenants {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 464px;
+    width: 1045px;
+}
+
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********    Style des informations spe risques     *****/
+/***********************************************************/
+#divInformationsSpecifiquesRisque {
+    display: none;
+}
+
+#divDataInformationsSpecifiquesRisque {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 597px;
+    width: 1046px;
+}
+
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+
+#divRechercheCopyOffre {
+    display: none;
+}
+
+
+#divDataWordContainer {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 62;
+    background-color: White;
+    width: 1220px;
+}
+
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+/***********     Style documents joints     ************/
+/***********************************************************/
+
+#divDocJoints {
+    display: none;
+}
+
+#divDataDocJoints {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 475px;
+    width: 1045px;
+}
+
+#divAddDocument {
+    display: none;
+}
+
+#divDataAddDocument {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 242px;
+    width: 445px;
+}
+
+#divDataDocumentInter {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 11;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 300px;
+    width: 995px;
+}
+
+.DocJointInput {
+    width: 260px !important;
+}
+
+.FileUpload {
+    width: 20px;
+    /*top: 111px;*/
+    position: absolute;
+    /*left: 393px;*/
+    opacity: 0;
+}
+
+.MoreInfo {
+    background: url("/Content/Images/moreinfo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background-size: 20px 20px;
+    width: 20px !important;
+    height: 20px !important;
+    float: left;
+    border: medium none;
+    overflow: hidden !important;
+    cursor: pointer;
+}
+
+
+#divSuiviGestionDocuments {
+    display: none;
+}
+
+#divDataSuiviGestionDocuments {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 15;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 560px;
+    max-height: 764px;
+    width: 1220px;
+}
+
+
+/*#region Suivi Documents*/
+
+.tableSuiviDocGen {
+    table-layout: fixed;
+    width: 1172px;
+}
+
+.tableSuiviDocAff {
+    table-layout: fixed;
+    width: 1086px;
+}
+
+.divBodyDoc {
+    overflow: auto;
+    height: 234px;
+    /*height: 220px;*/
+    padding-left: 5px;
+}
+
+.tdHeaderCheckBox {
+    width: 15px;
+}
+
+.tdHeaderCheckBoxLarge {
+    width: 28px;
+}
+
+.tdCheckBox {
+    width: 16px;
+    /*width: 15px;*/
+    text-align: center;
+    padding-left: 2px;
+}
+
+.tdCheckBoxLarge {
+    width: 34px;
+    /*width: 33px;*/
+    text-align: center;
+    padding-left: 2px;
+}
+
+.tdHeaderLot {
+    width: 45px;
+}
+
+.tdLot {
+    width: 46px;
+    /*width: 45px;*/
+    text-align: center;
+    padding-left: 2px;
+}
+
+.tdUpdDoc {
+    width: 30px;
+    text-align: center;
+}
+
+.tdHeaderSituation {
+    /*width: 70px;*/
+    width: 112px;
+}
+
+.tdSituation {
+    width: 84px;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.tdSuiviDocSituation {
+    width: 113px;
+    /*width: 71px;*/
+    text-align: left;
+    padding-left: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderActeGestion {
+    width: 82px;
+}
+
+.tdActeGestion {
+    /*width: 82px;*/
+    width: 83px;
+    padding-left: 2px;
+}
+
+.tdHeaderNumInterne {
+    width: 60px;
+}
+
+.tdNumInterne {
+    /*width: 60px;*/
+    width: 58px;
+    text-align: right;
+    padding-left: 5px;
+}
+
+.tdHeaderNomDoc {
+    /*width: 237px;*/
+    width: 170px;
+    /*width: 204px;*/
+}
+
+.tdNomDoc {
+    width: 171px;
+    /*width: 205px;*/
+    /*width: 237px;*/
+    padding-left: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderTypeDoc {
+    width: 120px;
+}
+
+.tdTypeDoc {
+    width: 121px;
+    /*width: 120px;*/
+    padding-left: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderDestinataire {
+    width: 150px;
+}
+
+.tdDestinataire {
+    width: 148px;
+    /*width: 150px;*/
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderUtilisateur {
+    width: 84px;
+}
+
+.tdUtilisateur {
+    /*width: 84px;*/
+    width: 82px;
+    padding-left: 5px;
+}
+
+.tdHeaderDiffusion {
+    /*width: 100px;*/
+    width: 58px;
+}
+
+.tdDiffusion {
+    /*width: 100px;*/
+    width: 59px;
+    padding-left: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdHeaderImg {
+    width: 15px;
+}
+
+.tdImg {
+    width: 16px;
+    /*width: 15px;*/
+    text-align: center;
+    padding-left: 2px;
+}
+
+.tdHeaderCodeOffre {
+    width: 80px;
+}
+
+.tdCodeOffre {
+    width: 81px;
+    /*width: 80px;*/
+    padding-left: 2px;
+}
+
+.situationRed {
+    color: red;
+}
+
+.situationBlue {
+    color: blue;
+}
+
+#divDataMsgSuiviDoc {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 81;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}
+
+#divDataPJDoc {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 81;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 670px;
+}
+
+.dvDataIframeDoc {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 101;
+    background-color: white;
+    padding: 5px 0 0 5px;
+    width: 700px;
+    height: 600px;
+}
+
+.dvDataIframeDownLoadDoc {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 101;
+    background-color: white;
+    padding: 5px 0 0 5px;
+    width: 700px;
+    height: 430px;
+}
+
+#dvExitCopyFiles {
+    margin-left: 10px;
+}
+
+.GroupFullSuiviDoc {
+    width: 650px !important;
+}
+
+.HorizontalFullWithGroupSuiviDoc {
+    width: 645px !important;
+}
+
+.SectionSuiviDoc {
+    width: 633px !important;
+    height: 45px;
+}
+
+.tabBodyListPJ {
+    width: 606px;
+    table-layout: fixed;
+}
+
+.thDesi {
+    width: 200px;
+}
+
+.thDoc {
+    width: 308px;
+}
+
+.thSize {
+    width: 100px;
+}
+
+.trDesi {
+    width: 198px;
+    overflow: hidden;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.trDoc {
+    width: 306px;
+    overflow: hidden;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.trSize {
+    width: 102px;
+    text-align: center;
+}
+
+/*#endregion*/
+
+/*#region Clausier*/
+
+#tblHeaderClausier {
+    /*     width: 980px; */
+    table-layout: fixed;
+}
+
+.tdEmptyHistoHeader {
+    width: 62px;
+}
+
+    .tdEmptyHistoHeader:first-child {
+        width: 39px;
+    }
+
+.col_HeaderRubrique {
+    width: 92px;
+}
+
+.col_HeaderSousRubrique {
+    width: 105px;
+}
+
+.col_HeaderSequence {
+    width: 75px;
+    text-align: center;
+}
+
+.col_HeaderVersionClausier {
+    width: 65px;
+    text-align: center;
+}
+
+.col_HeaderLibelle {
+    width: 570px;
+    text-align: center;
+}
+
+#divBodyClausier {
+    overflow: auto;
+    max-height: 354px;
+}
+
+#tblBodyClausier {
+    table-layout: fixed;
+    /*     width: 980px; */
+}
+
+.tdEmptyBody {
+    width: 39px;
+}
+
+.col_RubriqueBody {
+    width: 92px;
+    text-align: center;
+}
+
+.col_SousRubriqueBody {
+    width: 105px;
+    text-align: center;
+}
+
+.col_SequenceBody {
+    width: 75px;
+    text-align: center;
+}
+
+.col_VersionBody {
+    width: 65px;
+    text-align: center;
+}
+
+.col_LibelleBody {
+    width: 570px;
+}
+
+.tdEmptyHistoBody {
+    width: 40px;
+}
+
+th.sortable {
+    cursor: pointer;
+    position: relative;
+    padding-right: 7px;
+}
+
+    th.sortable:after {
+        position: absolute;
+        right: 2px;
+        top: 3px;
+        content: '';
+        display: block;
+        background-image: url('images/tri.png');
+        width: 10px;
+        height: 22px;
+    }
+
+    th.sortable.asc:after {
+        background-image: url('images/tri_asc.png');
+    }
+
+    th.sortable.asc:after {
+    }
+
+    th.sortable.desc:after {
+        background-image: url('images/tri_desc.png');
+    }
+
+    th.sortable.desc:after {
+    }
+/*#endregion*/
+
+#dvRechercheGeneral th, #dvRechercheGeneral td {
+    box-sizing: border-box;
+}

@@ -1,0 +1,44 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleInformationsSpecifiquesGarantiePage
+<input type="hidden" id="CodeFormule" value="@(Model.CodeFormule)" />
+<input type="hidden" id="CodeOption" value="@(Model.CodeOption)" />
+<input type="hidden" id="LibelleFormule" value="@(Model.LibelleFormule)" />
+<input type="hidden" id="LettreLibelleFormule" value="@(Model.LettreLibelleFormule)" />
+
+<input type="hidden" id="Params" albContext="Garantie" value="@(Model.Parameters)" />
+<input type="hidden" id="SpecificParams" albContext="Garantie" value="@(Model.SpecificParameters)" />
+<input type="hidden" id="splitChar" value="@ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML" />
+
+<div class="nGradientSection">
+    <table class="trHeight tblInfoOffreSimp">
+        <tr>
+            <td class="columnLabelFormule">
+                @Html.AlbLabelFor(m => m.CodeFormule, "Block labelFormule")
+            </td>
+            <td class="readonly columnFormule">
+                @Model.CodeFormule
+                <input type="hidden" id="CodeFormule" value="@Model.CodeFormule"/>
+            </td>
+            <td class="columnLabelLettre">
+                @Html.AlbLabelFor(m => m.LettreLibelleFormule, "Block labelLettre")
+            </td>
+            <td class="readonly columnLettre">
+                @Model.LettreLibelleFormule
+                <input type="hidden" id="LettreLibelleFormule" value="@Model.LettreLibelleFormule"/>
+            </td>
+            <td class="columnLabelLibelle">
+                @Html.AlbLabelFor(m => m.LibelleFormule, "Block labelLibelle")
+            </td>
+            <td class="readonly columnLibelle" title="@Model.LibelleFormule">
+                @Model.LibelleFormule
+                <input type="hidden" id="LibelleFormule" value="@Model.LibelleFormule"/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="FloatLeft">
+    <div id="dvISGtiesResult" albcontext="Garantie" class="dvISGtiesResultGarantie">
+        @*<iframe id="frameIS" src="@Url.Content("/ExcelWeb/InformationsSpecifiques/Template.aspx?" + @Model.Parameters)" width="600px" height="400px" frameborder="0"></iframe>*@
+    </div>
+</div>
+
+

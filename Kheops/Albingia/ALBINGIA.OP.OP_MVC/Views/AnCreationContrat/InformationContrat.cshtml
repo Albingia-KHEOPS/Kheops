@@ -1,0 +1,25 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.InformationContrat
+@Html.Hidden("NumChronoObsv", Model.NumChronoObsv, new { id = "InformationContrat_NumChronoObsv" })
+
+<div class="HeightRow" id="divMotsCles">
+    @Html.Partial("MotsCles", Model)
+</div>
+<div class="HeightRow">
+    <div id="divAdresse" class="FloatLeft">
+    </div>
+    <div class="FloatLeft" style="padding-left: 107px;">
+        <label class="Block">Observations</label>
+    </div>
+    
+    <div class="FloatLeft">
+        @if (Model.IsReadOnly && !Model.IsModifHorsAvn)
+        {
+            <div id="InformationContrat_Observation" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Observation)</div>
+        }
+        else
+        {
+            <textarea id="InformationContrat_Observation" albhorsavn name="Observation" tabindex="37" class="DoubleInputHalfBlock NonReprisCP heightAreaInfosDeBase">@(Model.Observation)</textarea>
+        }
+    </div>
+</div>
+

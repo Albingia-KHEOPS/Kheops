@@ -1,0 +1,120 @@
+﻿.SuperInput {
+    width: 385px !important;
+}
+
+.inputMotCle {
+    width: 291px !important;
+    margin-right: 10px;
+}
+
+.heightZoneTextArea {
+    height: 30px;
+}
+
+.ZoneTextAreaWidth {
+    width: 867px !important;
+}
+
+.ZoneTextAreaWidthSmall {
+    width: 727px !important;
+}
+
+.marginRight {
+    margin-right: 10px;
+}
+
+.inputRegimesTaxe {
+    width: 253px !important;
+}
+
+.labelStop {
+    margin-left: 65px;
+    width: 54px;
+}
+
+.labelPreavis {
+    width: 130px !important;
+}
+
+.divDateInfoGen {
+    margin-right: 15px;
+    float: left;
+}
+
+.divHeure {
+    margin-right: 29px;
+    float: left;
+}
+
+.divEffetCheck {
+    width: 110px;
+    float: left;
+}
+
+.labelIntercalaire {
+    width: 140px;
+}
+
+.ButtonRight {
+    text-align: right;
+    padding-top: 4px;
+    padding-right: 6px;
+    padding-bottom: 13px;
+    margin-top: 11px;
+    display: block;
+}
+
+
+#divFullScreen {
+    display: none;
+}
+
+#divDataEditPopIn {
+    position: absolute;
+    top: 5px;
+    left: 350px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 270px;
+    width: 1050px;
+}
+
+#divDialogEditCoAssureur {
+    height: 250px;
+    width: 1030px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.divEditLigne {
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-right: 6px;
+    padding-top: 4px;
+}
+
+.editColCode {
+    width: 120px;
+}
+
+.editColLibelle {
+    width: 500px;
+}
+
+.editColInterlocuteur {
+    width: 235px;
+}
+
+.editColReference {
+    width: 400px;
+}
+
+.SuperInputLight {
+    width: 365px !important;
+}
+
+.PourcentWidth {
+    width: 60px !important;
+}

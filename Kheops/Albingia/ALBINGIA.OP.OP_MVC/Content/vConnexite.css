@@ -1,0 +1,678 @@
+﻿
+.col_Contrat {
+    width: 80px;
+}
+
+.col_Branche {
+    width: 60px;
+}
+
+.col_Cible {
+    width: 70px;
+}
+
+.col_Commentaires {
+    width: 518px;
+}
+
+.ColCommentaire {
+    width: 497px;
+}
+
+.ColCommentaire_pleinEcran {
+    width: 482px;
+}
+
+.col_Preneur {
+    width: 150px;
+}
+
+.col_Action {
+    width: 51px;
+}
+
+.col_Contrat_Body {
+    width: 80px;
+}
+
+.col_Branche_Body {
+    width: 60px;
+}
+
+.col_Etat {
+    width: 40px;
+}
+
+.col_Situation {
+    width: 60px;
+}
+
+.col_Engagement {
+    width: 130px;
+}
+
+.col_Cible_Body {
+    width: 70px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_Commentaires_Body {
+    width: 522px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_Commentaires_Body_PleinEcran {
+    width: 508px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_Preneur_Body {
+    width: 148px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_Engagement_Body {
+    width: 130px;
+}
+
+.col_Etat_Body {
+    width: 41px;
+}
+
+.col_Sit_Body {
+    width: 60px;
+}
+
+.col_Action_Body {
+    width: 35px;
+}
+
+.col_Action_Body_PleinEcran {
+    width: 50px;
+}
+
+#tblHeaderEngagement tr, #tblHeaderRemplacement tr, #tblHeaderInformation tr, #tblHeaderResiliation tr, #tblHeaderRegularisation tr, #tblBody tr, #tblEngagementBody tr, #tblRemplacementBody tr, #tblEngagementBody2 tr,
+#tblInformationBody tr, #tblResiliationBody tr, #tblRegularisationBody tr, #tblPleinEcranBody tr, #tblGrpActuelBody tr, #tblGrpOrigineBody tr, #tblHeaderEngagement2 tr, #tblConnexitePeriodesBody tr, #tblHeaderConnexitePeriodes tr, #tblBodyBtn tr,
+#tblHeaderConnexitePeriodesTraites tr,
+#tblHeaderConnexitePeriodesActions tr,
+#tblConnexitePeriodesBodyTraites tr,
+#tblConnexitePeriodesBodyActions tr {
+    height: 20px;
+}
+
+#tblHeaderEngagement2,
+#tblEngagementBody2,
+#tblHeaderConnexitePeriodesTraites,
+#tblConnexitePeriodesBodyTraites,
+#tb1body {
+    table-layout: fixed;
+}
+
+#tblHeaderConnexitePeriodesTraites {
+    width: 300px;
+}
+
+#tblConnexitePeriodesBodyTraites {
+    width: 300px;
+}
+
+#tblHeaderConnexitePeriodes, #tblConnexitePeriodesBody {
+    width: 500px;
+}
+
+.paddingRight {
+    padding-right: 6px;
+}
+
+.paddingLeft {
+    padding-left: 5px;
+}
+
+.paddingCenterCol {
+    padding-left: 25px;
+}
+
+.paddingBottom {
+    padding-bottom: 5px;
+}
+
+.CenterPadding {
+    padding-right: 370px;
+}
+
+.CenterPaddingRemplacement {
+    padding-right: 376px;
+}
+
+.BigPadLeft {
+    padding-left: 450px;
+}
+
+.Height15 {
+    clear: both;
+    height: 15px;
+}
+
+.TinyInput {
+    width: 40px;
+}
+
+.btn-action {
+    height: 16px;
+    width: 16px;
+}
+
+#divDataAjoutConnexite {
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    display: block;
+    z-index: 19;
+    background-color: White;
+    height: 330px;
+    width: 765px;
+}
+
+#divDataPleinEcranConnexite {
+    position: absolute;
+    top: 26px;
+    left: 10px;
+    display: block;
+    z-index:14;
+    background-color: White;
+    height: 670px;
+    width: 1035px;
+}
+
+#divDataRechercheContrat {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: block;
+    z-index: 21;
+    background-color: White;
+    height: 470px;
+    width: 1240px;
+}
+
+#divDataConfirmationAction {
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    display: block;
+    z-index: 21;
+    background-color: White;
+    height: 330px;
+    width: 765px;
+}
+
+.table-alternate tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.table-alternate tr:nth-child(even) {
+    background-color: #edeeff;
+}
+
+/*#divFullScreenAjoutConnexite, #divFullScreenConnexite, #divFullScreenRecherche, #divConfirmationAction {
+    display: none;
+}*/
+
+#divDialogAjoutConnexite {
+    height: 310px;
+    width: 740px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#divDialogPleinEcranConnexite {
+    height: 650px;
+    width: 1010px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#divBodyResiliation, #divBodyInformation, #divBodyRegularisation {
+    max-height: 75px;
+    overflow-y: auto;
+}
+
+
+
+
+
+
+#divBodyRemplacement {
+    max-height: 92px;
+    overflow-y: auto;
+}
+
+#divBodyGrpActuel, #divBodyGrpOrigine {
+    max-height: 175px;
+    margin-left: 10px;
+    overflow-y: auto;
+}
+
+#divBodyPleinEcran {
+    height: 520px;
+    overflow-y: auto;
+}
+
+.msgErreur {
+    height: 22px;
+    text-align: center;
+}
+
+.marginRightAjouter {
+    margin-right: 17px;
+}
+
+.marginLeftSuppr {
+    margin-left: 12px;
+}
+
+.marginLeftSupprRemplacement {
+    padding-left: 11px;
+}
+
+.labelTableau {
+    font-weight: bold;
+    width: 100px;
+}
+
+.resizeNone {
+    resize: none;
+}
+
+.largeInput {
+    width: 250px;
+}
+
+.MarginTop {
+    margin-top: -5px;
+}
+
+
+.MsgConfirmation {
+    font-weight: bold;
+    padding-left: 0 !important;
+    padding-top: 0 !important;
+}
+
+.Bold {
+    font-weight: bold;
+}
+
+
+.divMsgConfirmation {
+    margin-left: 81px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.Alerte {
+    margin: 8px 10px 5px 14px;
+}
+
+.IconeAlerte {
+    margin-right: 10px;
+    width: 21px;
+}
+
+.ColumnContratAjoute {
+    width: 573px;
+}
+
+.ColumnGrpOrigine {
+    width: 210px;
+    margin-top: 5px;
+}
+
+.ColumnGrpCible {
+    width: 234px;
+    margin-top: 5px;
+}
+
+.PaddingFusionDetach {
+    padding-left: 156px;
+    padding-right: 107px;
+    padding-top: 77px;
+}
+
+#btnFusionner {
+    background-image: url("/Content/Images/fusionner.png");
+    background-repeat: no-repeat;
+    height: 21px;
+    width: 100px;
+}
+
+#btnDetacher {
+    background-image: url("/Content/Images/deplacer16.png");
+    background-repeat: no-repeat;
+    height: 21px;
+    width: 100px;
+}
+
+.HeightRowFusion {
+    margin-bottom: 9px;
+}
+
+.HeightRowDetacher {
+    margin-bottom: 5px;
+}
+
+#btnAnnulerConfirmation {
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+.InputOffreOrigine {
+    width: 141px !important;
+}
+
+.InputOffreActuelle {
+    width: 141px !important;
+}
+
+#divHeaderGrpOrigine {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+#divHeaderGrpActuel {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+
+.tablePersoHeadConnexite {
+    background-image: url("/Content/Images/RechercheSaisieGridHeaderThBg.png");
+    background-position: center center;
+    background-repeat: repeat-x;
+    height: 1px;
+}
+
+#tblRemplacementBody,
+#tblInformationBody, #tblResiliationBody, #tblRegularisationBody, #tblPleinEcranBody {
+    table-layout: fixed;
+    width: 900px;
+    max-height: 100px;
+}
+
+
+.SuperInputConnexite {
+    width: 510px !important; /*width: 350px !important;*/
+    height: 100px;
+}
+
+.errorContratInactif {
+    color: #FF0000;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+#msgErreurDivContratInactif {
+    max-height: 36px;
+    overflow-y: auto;
+}
+
+.ContratInactif {
+    color: #FFF168;
+}
+
+
+.textLightGrey {
+    color: #606060; /*gris leger pour les sans couleurs*/
+}
+
+.textGreen {
+    color: green;
+    font-weight: bold;
+}
+
+.textBlack {
+    color: black;
+}
+
+.textRed {
+    color: #EE0000;
+}
+
+.textOrange {
+    color: #F79B43;
+}
+
+#divConnexe {
+    /*padding-left: 350px;*/
+}
+
+#divConnexeBody {
+    /*max-width: 300px;*/
+    /*float: left;*/
+    overflow: hidden;
+    font-size: 0;
+}
+
+#tbl1Body {
+    width: auto;
+}
+
+.input-traite {
+    width: 76px !important;
+}
+
+#divHeaderEngagement1 {
+    float: left;
+    width: 500px;
+    padding-top: 10px;
+}
+
+#divBodyEngagement1 {
+    overflow: hidden;
+    float: left;
+    max-height: 100px;
+    width: 500px;
+}
+
+#tblEngagementBody {
+    table-layout: fixed;
+    width: 500px;
+}
+
+#divHeaderEngagement2 {
+    float: left;
+    max-width: 400px;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+#tblHeaderEngagement2 {
+    width: 300px;
+}
+
+#tblHeaderEngagement {
+    width: 500px;
+    table-layout: fixed;
+}
+
+
+
+#divBodyEngagement2 {
+    float: left;
+    max-width: 400px;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.HeightFixe {
+    height: 480px;
+}
+
+#tblEngagementBody2 {
+   width: 300px;
+}
+
+
+
+#divHeaderBtn {
+    float: left;
+    padding-right: 10px;
+}
+
+#divBodyBtn {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 100px;
+}
+
+.widthCommun {
+    width: 80px;
+}
+
+.widthCommunCol {
+    width: 78px;
+}
+
+#divHeader {
+    float: left;
+    width: 400px;
+    padding-top: 10px;
+}
+
+#tblHeader {
+    width: 400px;
+    table-layout: fixed;
+}
+
+#divHeaderEng {
+    float: left;
+    overflow: hidden;
+    max-width: 500px;
+    padding-top: 10px;
+}
+
+.colUtiliseeHeader {
+    width: 102px;
+}
+
+.colUtilisee {
+    width: 100px;
+}
+
+.colDateDebHeader {
+    width: 202px;
+}
+
+.colDateDeb {
+    width: 200px;
+}
+
+.colDateFinHeader {
+    width: 202px;
+}
+
+.colDateFin {
+    width: 200px;
+}
+
+.padding0 {
+    padding: 0px;
+}
+
+
+
+.hscroll {
+    margin-top: 5px;
+    margin-left: 500px;
+    width: 300px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+
+.divTopCnxLeft, .divTopCnxLeftHeader {
+    display: inline-block;
+    width: 500px;
+    overflow: hidden;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+.divTopCnxCenter, .divTopCnxCenterHeader {
+    display: inline-block;
+    max-width: 300px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+
+
+.divTopCnxRight, .divTopCnxRightHeader {
+    display: inline-block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+.divBottomCnxLeft, .divBottomCnxLeftHeader {
+    display: inline-block;
+    width: 500px;
+    overflow: hidden;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+.divBottomCnxCenter, .divBottomCnxCenterHeader {
+    display: inline-block;
+    max-width: 300px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    vertical-align: top;
+}
+
+
+.divTopCnxCenterHeader, .divBottomCnxCenterHeader {
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.divBottomCnxRight, .divBottomCnxRightHeader {
+    display: inline-block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 12px;
+}
+
+.divBottomCnxRight,
+.divBottomCnxCenter,
+.divBottomCnxLeft,
+.divTopCnxRight,
+.divTopCnxCenter,
+.divTopCnxLeft {
+    max-height: 120px;
+    font-size: 12px;
+}
+
+
+
+.divTopCnxEnCours, .divTopCnxEnCoursHeader {
+    display: inline-block;
+    max-width: 300px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#divPeriodesConnexites h3 {
+    font-size: 12px;
+}

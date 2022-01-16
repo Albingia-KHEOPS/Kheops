@@ -1,0 +1,176 @@
+﻿
+.HeightListeEngagementPeriodes {
+    height: 470px;
+    padding-left: 5px;
+}
+
+#divEngagementPeriodesBody {
+    max-height: 390px;
+    overflow-y: auto;
+}
+
+.col_HeaderActif {
+    width: 50px;
+}
+
+.col_HeaderDateDeb {
+    width: 128px;
+}
+
+.col_HeaderDateFin {
+    width: 128px;
+}
+
+.col_HeaderPart {
+    width: 128px;
+}
+
+.col_HeaderEngagementTotal {
+    width: 128px;
+}
+
+.col_HeaderEngagementAlbingia {
+    width: 128px;
+}
+
+.col_HeaderUtilise {
+    width: 50px;
+}
+
+.col_HeaderButtons {
+    width: 118px;
+}
+
+
+.col_Actif {
+    width: 52px;
+}
+
+.inputModeActif {
+    width: 50px !important;
+}
+
+.col_DateDeb {
+    width: 130px;
+}
+
+.inputDateDeb {
+    width: 126px !important;
+}
+
+.col_DateFin {
+    width: 130px;
+}
+
+.inputDateFin {
+    width: 126px !important;
+}
+
+.col_Part {
+    width: 130px;
+}
+
+.inputPart {
+    width: 126px !important;
+}
+
+.col_EngagementTotal {
+    width: 130px;
+}
+
+.inputEngagementTotal {
+    width: 126px !important;
+}
+
+.col_EngagementAlbingia {
+    width: 130px;
+}
+
+.inputEngagementAlbingia {
+    width: 126px !important;
+}
+
+.col_Utilise {
+    width: 52px;
+}
+
+.inputModeUtilise {
+    width: 50px !important;
+}
+
+.col_Buttons {
+    width: 120px;
+}
+
+.ImgSave {
+    margin-left: 45px;
+}
+
+#divEngagementPeriode {
+    display: none;
+}
+
+#divAjoutPeriode{
+    display:none;
+}
+
+#divDataEngagementPeriode {
+    position: absolute;
+    top: 50px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 190px;
+}
+
+#divAjoutPeriodeData{
+     position: absolute;
+    top: 50px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 156px;
+    width:510px;
+}
+
+#newEngagementPeriode {
+    display: none;
+}
+
+.alerteDiscontinuite {
+    display: none;
+    margin-left: 10px;
+}
+
+.iconeAlerte {
+    margin-right: 10px;
+    width: 21px;
+}
+
+.imgUpdate {
+    /*margin-left: 24px;
+    margin-right: 32px;*/
+    margin-left: 6px;
+    margin-right: 14px;
+}
+
+.colEdition {
+    display: none;
+}
+
+#tblEngagementPeriodesHeader tr, #tblEngagementPeriodesBody tr, #tblEngagementPeriodesBodyEmptyLine tr {
+    height: 1px !important;
+}
+
+.requiredRow {
+  color:red;
+  font-weight:bold;
+}
+
+.columnHidden {
+    display: none;
+}

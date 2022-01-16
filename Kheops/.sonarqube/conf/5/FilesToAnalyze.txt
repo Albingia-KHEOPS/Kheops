@@ -1,0 +1,3 @@
+﻿C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.IOWebService.LightInject\LightInject.WcfCustom.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.IOWebService.LightInject\Properties\AssemblyInfo.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.IOWebService.LightInject\packages.config

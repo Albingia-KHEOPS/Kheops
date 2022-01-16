@@ -1,0 +1,23 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.QuittanceForceTotal
+<div class="HeightRow">
+    <div class="FloatLeft">Vous allez forcer le montant total <b>@(Model.TypeHTTC)</b> de la cotisation :</div>
+</div>
+<div class="HeightRow">
+    <table>
+        <tr>
+            <td>&nbsp;</td>
+            <td style="text-align:center;"><b>HT</b></td>
+            <td style="text-align:center;"><b>TTC</b></td>
+        </tr>
+        <tr>
+            <td style="width:200px;">Montant actuel:</td>
+            <td><input type="text" id="MontantCalculeHT" name="MontantCalculeHT" value="@(Model.MontantCalculeHT)" readonly="readonly" class="decimal readonly" albMask="calculdecimal" /></td>
+            <td><input type="text" id="MontantCalculeTTC" name="MontantCalculeTTC" value="@(Model.MontantCalculeTTC)" readonly="readonly" class="decimal readonly" albMask="calculdecimal" /></td>
+        </tr>
+        <tr>
+            <td style="width:200px;">Montant:</td>
+            <td><input type="text" id="MontantForceHT" name="MontantForceHT" value="" class="decimal None" albMask="calculdecimal" /></td>
+            <td><input type="text" id="MontantForceTTC" name="MontantForceTTC" value="" class="decimal None" albMask="calculdecimal" /></td>
+        </tr>
+    </table>
+</div>

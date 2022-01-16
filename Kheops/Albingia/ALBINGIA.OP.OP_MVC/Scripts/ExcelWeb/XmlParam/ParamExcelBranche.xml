@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Branches>
+   <Branche Name="RS" FileName="infos_spec_RS.xlsm" />
+   <Branche Name="IA" FileName="IA"/>
+  </Branches>
+</Root>

@@ -1,0 +1,86 @@
+﻿
+<div>
+    <div class="container container-details">
+        <div class="main-big-title" data-bind="text: title"></div>
+        <div class="container-lines">
+            <div>
+                <div class="input-line">
+                    <label class="block-line">Action</label>
+                    <select data-bind="options: Actions, value: CodeAction, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', disable: isReadonly"></select>
+                </div>
+
+                <div class="input-line" data-bind="ifnot: hasBonus"><div>Cocher les objets à Inclure ou Exclure parmi les objets auxquels s'applique la Formule.</div></div>
+                
+                <div class="flex-table portees-garantie" data-bind="visible: ObjetsRisque() && ObjetsRisque().length > 0">
+                    <div class="flex-header vertical-gradient" data-bind="css: { 'has-bonus': hasBonus }">
+                        <span class="cell check"></span>
+                        <span class="cell risque" data-bind="text: labelRisque, attr: { title: labelRisque }">Prénom</span>
+                        <!-- ko if: hasBonus -->
+                        <span class="cell valeur">Valeur</span>
+                        <span class="cell forfait-taux">Forfait/taux HT</span>
+                        <span class="cell montant-ht">Montant HT calculé</span>
+                        <!-- /ko -->
+                    </div>
+                    <div class="flex-body scroll"  data-bind="css: { 'has-bonus': hasBonus }">
+                        <!-- ko foreach: ObjetsRisque -->
+                        <div data-bind="css: { 'has-bonus': $component.hasBonus }">
+                            <div class="cell check"><input type="checkbox" data-bind="disable: $component.isReadonly, checked: IsSelected" /></div>
+                            <div class="cell risque" data-bind="text: label, attr: { title: label }"></div>
+                            <!-- ko if: $component.hasBonus -->
+                            <div class="valeur-detail">
+                                <div class="cell valeur" data-bind="text: Valeur"></div>
+                                <div class="cell unite" data-bind="text: CodeUnite"></div>
+                                <div class="cell type" data-bind="text: CodeType"></div>
+                            </div>
+                            <div class="forfait-taux">
+                                <div class="cell valeur single-input"><input type="text" data-bind="autoNumeric: {value: ValeurPortee, nbDecimals: 4}, readonly: $component.isReadonly, css: { 'invalid-value': !ValeurPortee.requireState.isValid() }" albmask="decimal" /></div>
+                                <div class="cell unite single-input"><select data-bind="enable: canChangeUniteTaux, css: { 'invalid-value': !UniteTaux.requireState.isValid(), readonly: !canChangeUniteTaux() }, valueAllowUnset: true, optionsCaption: '', options: $component.UnitesTaux, value: UniteTaux, optionsValue: 'Code', optionsText: 'Code_Label'"></select></div>
+                                <div class="cell type single-input"><select data-bind="disable: $component.isReadonly, css: { 'invalid-value': !TypeCalculPortee.requireState.isValid(), readonly: $component.isReadonly }, valueAllowUnset: true, options: $component.TypesCalculs, value: TypeCalculPortee, optionsValue: 'Code', optionsText: 'Code_Label'"></select></div>
+                            </div>
+                            <div class="cell montant-ht"><span class="cell" albmask="decimal" data-bind="autoNumeric: { value: primeCalculee, nbDecimals: 4, min: 0, max: 9999999999999.99 }"></span></div>
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- ko if: hasBonus -->
+                    <div class="flex-footer">
+                        <span class="cell line-span"></span>
+                        <span class="cell montant-label">
+                            <span class="cell">Montant Total HT Calculé</span>
+                        </span>
+                        <span class="cell montant">
+                            <span class="cell" albmask="decimal" data-bind="autoNumeric: { value: totalObjsAmount, nbDecimals: 4, min: 0, max: 9999999999999.99 }"></span>
+                        </span>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                
+                <!-- ko if: $component.hasBonus -->
+                <div class="top-away clear-float">
+                    <label class="align-right block-long-line">
+                        <input type="checkbox" id="chckReportCal" data-bind="checked: ReportCalcul, disable: isReadonly" />&nbsp;
+                        <i>Reporter le montant calculé</i>
+                    </label>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container container-foot">
+        <div class="input-line ok-cancel">
+            <div class="empty-zone"></div>
+            <div class="button-zone">
+                <!-- ko if: isReadonly -->
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" accesskey="f" tabindex="29" data-bind="click: cancelEdit"><u>F</u>ermer</button>
+                <!-- /ko -->
+                <!-- ko ifnot: isReadonly -->
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" accesskey="a" tabindex="29" data-bind="click: cancelEdit"><u>A</u>nnuler</button>
+                <button id="btnFancyValider" type="button" albshortcut="true" accesskey="v" tabindex="28" data-bind="click: validateEdit"><u>V</u>alider</button>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>
+
+

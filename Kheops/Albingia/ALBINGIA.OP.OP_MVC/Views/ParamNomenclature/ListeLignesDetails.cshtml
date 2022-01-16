@@ -1,0 +1,15 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamNomenclature.ModeleLigneDetails>
+<table id="tblDetailsNomenclaturesBody" class="trHeight">
+    @{    
+        if (Model != null && Model.Count > 0)
+        {
+            foreach (var ligne in Model)
+            {
+                <tr id="ligneDetails_@(ligne.GuidId)" >
+                     @Html.Partial("LigneDetailsReadOnly", ligne)
+                </tr>
+            }
+        }    
+    }
+</table>
+

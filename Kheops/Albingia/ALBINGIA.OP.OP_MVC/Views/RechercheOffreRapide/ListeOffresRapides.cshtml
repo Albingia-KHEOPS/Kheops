@@ -1,0 +1,162 @@
+﻿@using ALBINGIA.Framework.Common.Constants
+@model ALBINGIA.OP.OP_MVC.Models.ModeleRechercheOffreRapide.ModeleOffreRapideResult
+
+
+<div class="GradientSection">
+    <div id="divHeaderListeOffres">
+        <table id="tblHeader" class="trHeight">
+            <tr>
+                <th class="thType tablePersoHead" id="th_1"></th>
+                <th class="thNum tablePersoHead" id="th_2">N°</th>
+                <th class="thVersion tablePersoHead" id="th_3">Version</th>
+                <th class="thNumAvn tablePersoHead" id="th_4">Num.Avn</th>
+                <th class="thDateSaisie tablePersoHead" id="th_5">Date saisie</th>
+                <th class="thBranche tablePersoHead" id="th_6">Branche</th>
+                <th class="thCible tablePersoHead" id="th_7">Cible</th>
+                <th class="thEtat tablePersoHead" id="th_8">Etat</th>
+                <th class="thSit tablePersoHead" id="th_9">Situation</th>
+                <th class="thPeriodicite tablePersoHead" id="th_11">Periodicité</th>
+                <th class="thDescriptif tablePersoHead" id="th_10">Descriptif</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<div id="divBodyListeOffres">
+    @if (Model.Offres == null || Model.Offres.Count == 0) {
+        <br />
+        <b>@Html.Raw("Aucun enregistrement")</b>
+        <br />
+        <br />
+    }
+    else {
+
+        <table id="tblBody" class="trHeight">
+            @foreach (var offre in Model.Offres) {
+                <tr>
+                    <td class="tdType">
+                        <div class="div-ellipsed">
+                            @if (offre.CodeTypeOffre == AlbConstantesMetiers.TYPE_CONTRAT) {
+                                <img src='@Url.Content("/Content/Images/type_C_16.png")' title="Contrat standard'" />
+                            }
+                            else if (offre.CodeTypeOffre == AlbConstantesMetiers.TYPE_OFFRE) {
+                                <img src='@Url.Content("/Content/Images/type_O_16.png")' title="Offre" />
+                            }
+
+
+                        </div>
+
+                    </td>
+                    <td class="tdNum" title="@offre.CodeOffre">
+                        <div class="div-ellipsed">
+                            @offre.CodeOffre
+                        </div>
+
+                    </td>
+                    <td class="tdVersion" title="@offre.Version">
+                        <div class="div-ellipsed">
+                            @offre.Version
+                        </div>
+
+                    </td>
+                    <td class="tdNumAvn" title="@offre.CodeAvenant">
+                        <div class="div-ellipsed">
+                            @offre.CodeAvenant
+                        </div>
+
+                    </td>
+                    <td class="tdDateSaisie" title='@(offre.DateDeSaisieDate.HasValue ? offre.DateDeSaisieDate.Value.ToString("dd/MM/yyyy") : String.Empty)'>
+                        <div class="div-ellipsed">
+                            @(offre.DateDeSaisieDate.HasValue ? offre.DateDeSaisieDate.Value.ToString("dd/MM/yyyy") : String.Empty)
+                        </div>
+
+                    </td>
+                    <td class="tdBranche" title=" @offre.LibelleBranche">
+                        <div class="div-ellipsed">
+                            @offre.LibelleBranche
+                        </div>
+
+                    </td>
+                    <td class="tdCible" title=" @offre.CodeCible">
+                        <div class="div-ellipsed">
+                            @offre.CodeCible
+                        </div>
+
+                    </td>
+                    <td class="tdEtat" title=" @offre.LibellleEtat">
+                        <div class="div-ellipsed">
+                            @offre.LibellleEtat
+                        </div>
+
+                    </td>
+                    <td class="tdSit" title=" @offre.LibelleSituation">
+                        <div class="div-ellipsed">
+                            @offre.LibelleSituation
+                        </div>
+
+                    </td>
+                    <td class="tdPeriodicite" title="">
+                        <div class="div-ellipsed">
+                            @offre.LibelllePeriodicite
+                        </div>
+                    </td>
+                    <td class="tdDescriptif" title="@offre.Descriptif">
+                        <div class="div-ellipsed">@offre.Descriptif</div>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    }
+</div>
+
+<table class="field-right Pagination">
+    <tr>
+        @if (Model.PageNumber > 1) {
+            <td>
+                <img id="PaginationPremierePage" src='@Url.Content("/Content/Images/1340965186_pagination_1_first.png")' />
+            </td>
+            <td>
+                <img id="PaginationPrecedent" src='@Url.Content("/Content/Images/1340965176_pagination_1_previous.png")' />
+            </td>
+        }
+        else {
+            <td>
+                <img src='@Url.Content("/Content/Images/1340965186_pagination_1_first_disabled.png")' />
+            </td>
+            <td>
+                <img src='@Url.Content("/Content/Images/1340965176_pagination_1_previous_disabled.png")' />
+            </td>
+        }
+        <td>
+            <span id="PaginationPageActuelle">@(Model.NbCount == 0 ? 0 : Model.PageNumber)</span>
+        </td>
+        @if (Model.PageNumber * Model.PageSize < Model.NbCount) {
+            <td>
+                <img id="PaginationSuivant" src='@Url.Content("/Content/Images/1340965171_pagination_1_next.png")' />
+            </td>
+            <td>
+                <img id="PaginationDernierePage" src='@Url.Content("/Content/Images/1340965180_pagination_1_last.png")' />
+            </td>
+        }
+        else {
+            <td>
+                <img src='@Url.Content("/Content/Images/1340965171_pagination_1_next_disabled.png")' />
+            </td>
+            <td>
+                <img src='@Url.Content("/Content/Images/1340965180_pagination_1_last_disabled.png")' />
+            </td>
+        }
+
+        <td class="PageSize">
+            <span id="PaginationStart">@(Model.NbCount == 0 ? 0 : Model.PageNumber * Model.PageSize - Model.PageSize + 1)</span> - <span id="PaginationEnd">@(Model.PageNumber * Model.PageSize > Model.NbCount ? Model.NbCount : Model.PageNumber * Model.PageSize)</span>
+            [total : <span id="PaginationTotal">@Html.DisplayFor(m => m.NbCount)</span>]
+            @Html.HiddenFor(m => m.PageNumber)
+            @Html.HiddenFor(m => m.NbCount)
+            @Html.HiddenFor(m => m.PageSize)
+        </td>
+
+    </tr>
+</table>

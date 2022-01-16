@@ -1,0 +1,62 @@
+﻿#divEngmentColonne {
+    height: 460px;
+}
+
+.HeightEngment {
+    height: 540px;
+}
+
+.tdHeaderCode {
+    width: 18px;
+    text-align: center;
+}
+
+.tdHeaderLib {
+    width: 452px;
+    text-align: center;
+}
+
+.tdHeaderSepa {
+    width: 60px;
+}
+
+.tdHeaderImg {
+    text-align: center;
+    width: 54px;
+}
+
+.tdBodyCode {
+    width: 20px;
+    text-align: center;
+}
+
+.tdBodyLib {
+    width: 450px;
+    padding-left: 5px;
+}
+
+.tdBodySepa {
+    width: 62px;
+    text-align: center;
+}
+
+.tdBodyImg {
+    width: 25px;
+    text-align: center;
+}
+
+.inCodeCol {
+    width: 35px !important;
+}
+
+.inLibCol {
+    width: 450px !important;
+}
+
+.lstTraite {
+    width: 250px;
+}
+
+.LargePaddingLeft {
+    padding-left: 15px;
+}

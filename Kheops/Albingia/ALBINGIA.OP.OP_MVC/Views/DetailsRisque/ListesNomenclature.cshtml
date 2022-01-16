@@ -1,0 +1,37 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDetailsRisque.ModeleInformationsGeneralesRisqueNomenclatures
+@*Première ligne nomenclatures*@
+<div class="HeightRow">
+    <div class="FloatLeft labelNomenclatureEllip Block" title="@Model.Nomenclature1.LibelleNomenclature.Trim()">
+        <label class="labelDescriptifNomenclature">@Model.Nomenclature1.LibelleNomenclature.Trim()@if (Model.IsModeObjet)
+                                                                                                  {<span style="color: green">**</span>}</label></div>
+    <div class="FloatLeft" id="divConteneurNomenclature1">
+        @Html.Partial("/Views/DetailsRisque/DropDownNomenclature.cshtml", Model.Nomenclature1)
+    </div>
+    <div class="FloatLeft labelNomenclatureEllip Block" title="@Model.Nomenclature2.LibelleNomenclature.Trim()">
+        <label class="labelDescriptifNomenclature">@Model.Nomenclature2.LibelleNomenclature.Trim()@if (Model.IsModeObjet)
+                                                                                                  {<span style="color: green">**</span>}</label></div>
+    <div class="FloatLeft" id="divConteneurNomenclature2">
+        @Html.Partial("/Views/DetailsRisque/DropDownNomenclature.cshtml", Model.Nomenclature2)
+    </div>
+    <div class="FloatLeft labelNomenclatureEllip Block" title="@Model.Nomenclature3.LibelleNomenclature.Trim()">
+        <label class="labelDescriptifNomenclature">@Model.Nomenclature3.LibelleNomenclature.Trim()@if (Model.IsModeObjet)
+                                                                                                  {<span style="color: green">**</span>}</label></div>
+    <div class="FloatLeft" id="divConteneurNomenclature3">
+        @Html.Partial("/Views/DetailsRisque/DropDownNomenclature.cshtml", Model.Nomenclature3)
+    </div>
+</div>
+@*Deuxième ligne nomenclatures*@
+<div class="HeightRow">
+    <div class="FloatLeft labelNomenclatureEllip Block" title="@Model.Nomenclature4.LibelleNomenclature.Trim()">
+        <label class="labelDescriptifNomenclature">@Model.Nomenclature4.LibelleNomenclature.Trim()@if (Model.IsModeObjet)
+                                                                                                  {<span style="color: green">**</span>}</label></div>
+    <div class="FloatLeft" id="divConteneurNomenclature4">
+        @Html.Partial("/Views/DetailsRisque/DropDownNomenclature.cshtml", Model.Nomenclature4)
+    </div>
+    <div class="FloatLeft labelNomenclatureEllip Block" title="@Model.Nomenclature5.LibelleNomenclature.Trim()">
+        <label class="labelDescriptifNomenclature">@Model.Nomenclature5.LibelleNomenclature.Trim()@if (Model.IsModeObjet)
+                                                                                                  {<span style="color: green">**</span>}</label></div>
+    <div class="FloatLeft" id="divConteneurNomenclature5">
+        @Html.Partial("/Views/DetailsRisque/DropDownNomenclature.cshtml", Model.Nomenclature5)
+    </div>
+</div>

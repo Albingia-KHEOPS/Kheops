@@ -1,0 +1,122 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamFamilles.Famille
+<div class="GroupTitle TitleValeursBackgroundColor">
+    Gestion des valeurs
+</div>
+<div id="divSectionInfoBaseFamille" class="HorizontalHalfWithGroupAdmin">
+
+    @Html.HiddenNoName("LibelleLongNum1", Model.LibelleLongNum1)
+    @Html.HiddenNoName("NbrDecimal1", Model.NbrDecimal1)
+    @Html.HiddenNoName("TypeNum1", Model.TypeNum1)
+
+    @Html.HiddenNoName("LibelleLongNum2", Model.LibelleLongNum2)
+    @Html.HiddenNoName("TypeNum2", Model.TypeNum2)
+    @Html.HiddenNoName("NbrDecimal2", Model.NbrDecimal2)
+
+    @Html.HiddenFor(m => m.TypeCode)
+    @Html.Hidden("RestrictionFamille", Model.Restriction)
+
+    @Html.HiddenNoName("LibelleLongAlpha1", Model.LibelleLongAlpha1)
+    @Html.HiddenNoName("LibelleLongAlpha2", Model.LibelleLongAlpha2)
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                @Html.AlbLabelFor(m => m.CodeConcept, "Block")
+            </div>
+            <div class="FloatLeft">
+                <input id="CodeLibelleConcept" type="text" class="InputFamille readonly" readonly="readonly" value="@(Model.CodeConcept + " - " + Model.LibelleConcept)" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                @Html.AlbLabelFor(m => m.CodeFamille, "Block")
+            </div>
+            <div class="FloatLeft">
+                <input id="CodeFamille" type="text" class="InputFamille readonly" readonly="readonly" value="@Model.CodeFamille" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                @Html.AlbLabelFor(m => m.LibelleFamille, "Block")
+            </div>
+            <div class="FloatLeft">
+                <input id="LibelleFamille" type="text" class="InputFamille readonly" readonly="readonly" value="@Model.LibelleFamille" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                @Html.AlbLabelFor(m => m.Longueur, "Block")
+            </div>
+            <div class="FloatLeft">
+                @Html.AlbDropDownListFor(m => m.Longueur, Model.Longueurs, "Longueur", htmlAttributes: new { @id = "Longueur", @tabindex = "3", @class = "InputDDL readonly", @disabled = "disabled" }, generateTitle: false, genEmptyLine: false)
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @Html.AlbLabelFor(m => m.TypeCode, "Block")
+                </div>
+                <div class="FloatLeft">
+                    <input type="radio" name="rbt" id="AlphaType" disabled="disabled" checked="@(Model.TypeCode == "A" )" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Alpha</label>
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <input type="radio" name="rbt" id="NumType" disabled="disabled" checked="@(Model.TypeCode == "N" )" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Num</label>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                @Html.AlbLabelFor(m => m.AcceptNullValue, "Block WidthLabelCodeVideAutorise")
+            </div>
+            <div class="FloatLeft">
+                <input type="checkbox" id="AcceptNullValue" disabled="disabled" checked="@(Model.AcceptNullValue == true )" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divSectionValeurs" class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection divSectionValeursHeight">
+        <div class="HeightRow">
+            <label class="TitledivSection">Valeurs</label>
+        </div>
+        <div class="HeightRow">
+            <div id="divLstValeurs">
+                <div>
+                    <table id="tblFamillesHeader">
+                        <tr>
+                            <th class="col_HeaderCodeValeur tablePersoHead">Code
+                            </th>
+                            <th class="col_HeaderLibelleValeur tablePersoHead">Libellé
+                            </th>
+                            <th class="col_HeaderFiltre tablePersoHead">Filtre
+                            </th>
+                            <th class="col_HeaderButtons tablePersoHead">
+                                <img id="AjouterValeur" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter une valeur" />
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divBodyValeurs" style="overflow-y: auto; max-height: 307px;">
+                    @if (Model.Valeurs != null)
+                    {
+                        @Html.Partial("../ParamFamilles/ParamListValeurs", Model.Valeurs)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divEditValeur" class="None">
+    <div class="overlay-background" style="z-index:6" >
+    </div>
+    <div id="divDataEditValeur">
+    </div>
+</div>
+

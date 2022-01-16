@@ -1,0 +1,85 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.ModelePage.AnAssuresAdditionnelsPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albAnAssuresAdditionnels.css" }, "~/Content/AffaireNouvelle/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albAnAssuresAdditionnels.js" }, "~/Scripts/AlbingiaJS/AffaireNouvelle/")
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    //var splitChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_FILE;
+}
+
+<div id="divAssuresAdditionnels">
+    <div class="GroupFull GroupWithBorder">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        @Html.Hidden("SplitChar", ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)
+        @Html.Hidden("DelAssu", string.Empty)
+        <div class="GroupTitle">
+            Assurés
+        </div>
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection">
+                <div class="HeightRow PaddingLeft">
+                    <input type="button" id="addAssureRef" value="Ajouter" />
+                </div>
+                <div id="divAssureRefHeader" class="PaddingLeft">
+                    <table id="tblAssureRefHeader">
+                        <tr>
+                            <th class="tablePersoHead" style="width: 81px;">Code</th>
+                            <th class="tablePersoHead" style="width: 201px;">Nom assuré</th>
+                            <th class="tablePersoHead" style="width: 49px;">C.P.</th>
+                            <th class="tablePersoHead" style="width: 201px;">Ville</th>
+                            <th class="tablePersoHead" style="width: 317px;">Qualités</th>
+                            <th class="tablePersoHead" style="width: 48px;">Autre</th>
+                            <th class="tablePersoHead" style="width: 48px;">&nbsp;</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divAssureRefBody" class="PaddingLeft">
+                    @if (Model.AssuresReference != null) {
+                        @Html.Hidden("AssureBase", (Model.AssuresReference[0].AssureBase))
+                        <table id="tblAssureRefBody">
+                            @Html.Partial("LstAssuresRef", Model)
+                        </table>
+                    }
+                </div>
+                <br />
+                <div class="HeightRow PaddingLeft">
+                    <input type="button" id="addAssureNonRef" value="Ajouter" />
+                </div>
+                <div id="divAssureNonRefHeader" class="PaddingLeft">
+                    <table id="tblAssureNonRefHeader">
+                        <tr>
+                            <th class="tablePersoHead" style="width: 317px;">Qualités</th>
+                            <th class="tablePersoHead" style="width: 48px;">Autre</th>
+                            <th class="tablePersoHead" style="width: 48px;">&nbsp;</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divAssureNonRefBody" class="PaddingLeft">
+                    @if (Model.AssuresNonReference != null) {
+                        <table id="tblAssureNonRefBody">
+                            @Html.Partial("LstAssuresNonRef", Model)
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonLeft">
+        </div>
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnAnnuler" type="button" albShortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+            <button id="btnSuivant" type="button" albShortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>
+<div id="divAssure">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataAssure">
+    </div>
+</div>

@@ -1,0 +1,158 @@
+﻿tr
+{
+    height: 25px !important;
+}
+
+.RedFont
+{
+    color: Red;
+}
+
+#divRisque
+{
+    overflow: hidden;
+    height: 368px;
+    float: left;
+}
+
+#divFormule
+{
+    width: 500px;
+    height: 385px;
+    overflow: scroll;
+    float: left;
+}
+
+.HeightTab
+{
+    height: 481px;
+}
+
+.divTitleFormule
+{
+    margin: 0;
+    padding-top: 0px;
+}
+
+.tableHeaderInven
+{
+    height: 20px;
+    width: 500px;
+}
+
+.cellTitleFormule
+{
+    height: 20px;
+    width: 454px;
+    /*width: 50px;*/
+    text-align: left;
+    padding-left: 25px;
+    border: 0px;
+}
+
+.HeaderFormule
+{
+    width: 483px;
+    overflow: hidden;
+}
+
+.cellRisque
+{
+    width: 70px;
+    border: 0px;
+}
+
+.tableRisque
+{
+    text-align: center;
+    width: 100%;
+    height: 20px;
+}
+
+.tableBodyRisque
+{
+    width: 500px;
+    border: 0px;
+    table-layout: fixed;
+}
+
+.cellAutre
+{
+    width: 20px;
+}
+
+.imgExpand
+{
+    margin: 5px;
+    cursor: pointer;
+}
+
+.cellVoletDescr
+{
+    padding-left: 5px;
+    border-left: 1px solid gray;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.borderGrayBottom
+{
+    border-bottom: 1px solid gray;
+}
+
+.tableBloc
+{
+    border: 0px;
+    width: 480px;
+    table-layout: fixed;
+}
+
+.cellBlocDescr
+{
+    padding-left: 15px;
+    border-left: 1px solid gray;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.cellNiv
+{
+    width: 20px;
+    text-align: center;
+    border-left: 1px solid gray;
+}
+
+.cellNiv2Descr
+{
+    padding-left: 20px;
+    border-left: 1px solid gray;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.cellNiv3Descr
+{
+    padding-left: 35px;
+    border-left: 1px solid gray;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.cellNiv4Descr
+{
+    padding-left: 35px;
+    border-left: 1px solid gray;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.cellImgCheck
+{
+    width: 70px;
+    text-align: center;
+}

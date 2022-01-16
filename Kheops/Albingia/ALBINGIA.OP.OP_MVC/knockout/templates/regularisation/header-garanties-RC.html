@@ -1,0 +1,126 @@
+﻿
+<div class="nGradientSection">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label style="font-weight: bold;"><span data-bind="html: title" /></label>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class=" Block tblabelPeriod">Période du</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="inputDate readonly " disabled data-bind="value: debutPeriode" />
+        </div>
+        <div class="FloatLeft">
+            <label class=" Block tblabel">au</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="inputDate readonly " disabled data-bind="value: finPeriode" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <div class="FloatLeft">
+                <label class="Block tblabelRisque">Risque</label>
+            </div>
+            <div class="FloatLeft" style="padding-left: 35px;">
+                <input type="text" class="readonly DoubleInput" disabled data-bind="value: risque" />
+            </div>
+            <div class="FloatLeft">
+                <label class="BlockRegimeTaxe">Régime taxe</label>
+            </div>
+            <div class="FloatLeft" style="padding-left: 20px;">
+                <input type="text" class="readonly" disabled data-bind="value: regimeTaxe" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="nGradientSection divInfoFormuleSaisie " style="height: 60px;">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblField">Formule</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="readonly DoubleInput" disabled data-bind="value: formule" />
+        </div>
+        <div class="FloatLeft">
+            <button type="button" style="margin-left: 30px" data-bind="click: showAppliqueRisque">S'applique à</button>
+            <div id="divAppliqueA" class="None nInfoBandeau">
+                <div class="even" style="width: 410px; padding: 5px;"><!-- ko text: risqueApplique.title --><!-- /ko --></div>
+                <div class="odd" style="width: 400px; padding: 5px; padding-left: 15px;" data-bind="foreach: risqueApplique.objects">
+                    <!-- ko text: label --><!-- /ko -->
+                </div>
+                <div class="ActionButtons ActionButtonRight">
+                    <button type="button" data-bind="click: hideAppliqueRisque" albshortcut="true" accesskey="f"><u>F</u>ermer</button>
+                </div>
+            </div>
+        </div>
+        <div class="FloatLeft None">
+            <label class="Block ">Code Taxe</label>
+        </div>
+        <div class="FloatLeft None" style="padding-left: 20px;">
+            <input type="text" class="readonly WidthCodeTaxe" disabled data-bind="value: codeTaxes" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblField">Type de régul.</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="readonly DoubleInput" disabled data-bind="value: regulType" />
+        </div>
+        <!-- ko if: IsGarantieAuto -->
+        <div class="FloatLeft">
+            <label class="Block lblField">Garantie automatique</label>
+        </div>
+        <div class="FloatLeft" style="margin-right: 5px">
+            <input type="text" class="readonly Input txtGAr" disabled data-bind="autoNumeric: ValGarAuto" albmask="numeric" />
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="readonly inUnite txtGAr" disabled data-bind="value: UnitGarAuto" />
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+<div class="nGradientSection divInfoRegule" style="height: 55px">
+    <div class="FloatLeft divInfoTauxleft">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="BlockRegulGarTxAppel">Taux appel</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" class="readonly Input txtGAr " disabled data-bind="value: txAppelPrc" albmask="decimal" />
+            </div>
+            <div class="FloatLeft">
+                <label class="BlockRegulGarTxAttentat">Taux ATTENTAT</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" class="readonly Input txtGAr" disabled data-bind="autoNumeric: TxAttentat" albmask="decimal" />
+            </div>
+        </div>
+    </div>
+    <!-- ko if: showCotisProAquis -->
+    <div class="FloatLeft divInfoTauxleft None">
+        <div class="HeightRow">
+            <!-- ko if: HasCotisationPro -->
+            <div class="FloatLeft">
+                <label class="BlockRegulGar">Cotis. Pro sur contrat</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" disabled class="readonly Input txtGAr " data-bind="autoNumeric: MntCotisProv" albmask="decimal" />
+            </div>
+            <!-- /ko -->
+            <!-- ko if: HasCotisationAquis -->
+            <div class="FloatLeft">
+                <label class="BlockRegulGar">Cotis. Acquises sur contrat</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" disabled class="readonly Input txtGAr" data-bind="autoNumeric: MntCotisAquis" albmask="decimal" />
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
+</div>
+

@@ -1,0 +1,125 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRetoursPage
+<div class="CommonForm FloatLeft">
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <div class="nGroupFull GroupWithBorder">
+        <div class="nHorizontalFullWithGroup">
+            <div class="nGradientSection HeightRow">
+                <div class="FloatLeft PaddingLeft">
+                    <label class="AutoWidth"><b>Contrat</b> @(Model.Contrat.CodeContrat + " - " + Model.Contrat.VersionContrat)</label>
+                </div>
+                <div class="FloatLeft" style="padding-left: 50px;">
+                    <label class="AutoWidth"><b>N° interne</b> @(Model.Contrat.NumAvenant)</label>
+                </div>
+                <div class="FloatLeft" style="padding-left: 50px;">
+                    <label class="AutoWidth"><b>Référence</b> @(Model.Contrat.Descriptif)</label>
+                </div>
+            </div>
+            <div class="nGradientSection HeightRow">
+                <input type ="hidden" id="inRetourCodeAffaire" name="inRetourCodeAffaire" value="@(Model.Contrat.CodeContrat)" />
+                <input type ="hidden" id="inRetourVersion" name="inRetourVersion" value="@(Model.Contrat.VersionContrat)" />
+                <input type ="hidden" id="inRetourType" name="inRetourType" value="@(Model.Contrat.Type)" />
+                <input type ="hidden" id="inRetourAvenant" name="inRetourAvenant" value="@(Model.Contrat.NumAvenant)" />
+                <div class="FloatLeft">
+                    <label class="Block">Nature du contrat</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" value="@(Model.Contrat.NatureContrat + " - " + Model.Contrat.LibelleNatureContrat)" readonly="readonly" class="readonly"/>
+                </div>
+                <div class="FloatLeft ">
+                    <label class="Block">Etat</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" value="@(Model.Contrat.Etat + " - " + Model.Contrat.LibelleEtat)" readonly="readonly" class="readonly"/>
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Situation</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" value="@(Model.Contrat.Situation + " - " + Model.Contrat.LibelleSituation)" readonly="readonly" class="readonly"/>
+                </div>
+            </div>
+            <div class="nGradientSection HeightSection">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="titre">Retour du preneur d'assurance</label>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Situation actuelle</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" class="readonly" disabled="disabled" name="dateRetour" id="inDateRetourActuel" value="@(Model.DateRetourPreneurActuel != 0 ? ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateRetourPreneurActuel).Value.ToString("dd/MM/yyyy") : string.Empty)"/>
+                    </div>
+                    <div class="FloatLeft PaddingLeft">&nbsp</div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.SelectedTypeAccordPreneurActuel, Model.TypeAccordPreneurActuel, "TypeAccordPreneurActuel", htmlAttributes: new { id = "TypeAccordPreneurActuel", @tabindex = "4", @class = "inputTypeAccord readonly", @disabled = "disabled" }, generateTitle: true, genEmptyLine: false, replaceHtmlName: "typeAccordInput")
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="chkReglementRecu" checked="@(Model.IsReglementRecu)" disabled="disabled">Règlement reçu<br>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    @if (!Model.IsReadOnly)
+                    {
+                        <div class="FloatLeft">
+                            <label class="Block">Date de retour</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" class="datepicker" name="dateRetour" id="inDateRetour" disabled="@(Model.SelectedTypeAccordPreneur == "R" )" value="@(Model.DateRetourPreneur != 0 ? ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateRetourPreneur).Value.ToString("dd/MM/yyyy") : string.Empty)"/>
+                        </div>
+                        <div class="FloatLeft PaddingLeft">&nbsp</div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.SelectedTypeAccordPreneur, Model.TypeAccordPreneur, "TypeAccordPreneur", htmlAttributes: new { id = "TypeAccordPreneur", @tabindex = "4", @class = "inputTypeAccord" }, generateTitle: true, genEmptyLine: false, replaceHtmlName: "typeAccordInput")
+                        </div>
+                    }
+                </div>
+
+                @if ((Model.Contrat.NatureContrat == "A" || Model.Contrat.NatureContrat == "D") && Model.ListeRetoursCoAss != null && Model.ListeRetoursCoAss.Any())
+                {
+                    <div id="divCoassureurs">
+                        <div class="HeightRow"></div>
+                        <div class="HeightRow">
+                            <label class="titre">Retours des coassureurs</label>
+                        </div>
+                        <div id="divRetoursCoAssHeader">
+                            <table id="tblRetoursCoAssHeader" class="trHeight">
+                                <tr>
+                                    <th class="col_HeaderCoAssureurs tablePersoHead">Coassureurs
+                                    </th>
+                                    <th class="col_HeaderPart tablePersoHead">Part
+                                    </th>
+                                    <th class="col_HeaderDateRetour tablePersoHead">Date retour
+                                    </th>
+                                    <th class="col_HeaderTypeAccord tablePersoHead">Type accord
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divRetoursCoAssBody">
+                            <div id="divRetoursCoAssBodyLines" style="max-height: 215px; overflow: auto;">
+                                @if (Model.ListeRetoursCoAss != null)
+                                {
+                                    @Html.Partial("ListeRetoursCoAss", Model.ListeRetoursCoAss)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonRight">
+            @if (Model.IsReadOnly)
+            {
+                <button id="btnAnnulerRetours" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+            }
+            else
+            {
+                <button id="btnAnnulerRetours" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivantRetours" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            }
+        </div>
+    </div>
+</div>

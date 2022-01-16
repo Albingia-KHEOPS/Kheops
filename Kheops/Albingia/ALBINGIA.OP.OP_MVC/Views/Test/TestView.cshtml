@@ -1,0 +1,598 @@
+﻿@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using ALBINGIA.Framework.Common.Constants
+@{ Layout = null; }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head runat="server">
+    <link rel="shortcut icon" href="/Content/Images/LogoAlbingia.ico" />
+    <link rel="icon" type="image/gif" href="/Content/Images/AnimatedLogoAlbingia.gif" />
+    @AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "_Site.css", "vBandeau.css"
+                                                            , "FormCommon.css", "Layout.css"
+                                                            , "LayoutArbre.css"
+                                                            ,"themes/base/jquery.ui.all.css"
+                                                            , "themes/base/jquery-ui.min.css"
+                                                            , "fancybox/jquery.fancybox.css"
+                                                            , "fancybox/jquery.fancybox-buttons.css"
+                                                            , "fancybox/jquery.fancybox-thumbs.css"
+                                                            , "CLEditor/jquery.cleditor.css"
+                                                            , "jquery.contextMenu.css"
+                                                            , "albContextMenu.css"}, "~/Content/")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>
+        @string.Format("{0}-[{1}]", "Outil de production", AlbSessionHelper.ConnectedUser)
+    </title>
+</head>
+    <body >
+        @{ var IsReadOnly = true;
+                var types = new String[] {
+                    "ManifestationAssurees",
+                    "TournagesAssures",
+                    "PersonneDesigneeIndispo",
+                    "PersonneDesignee",
+                    "PersonneDesigneeIndispoTournage",
+                    "Materielsassures",
+                    "Biensassures",
+                    "Postesassures",
+                    "MultiplesSituations",
+                    "Audioproduction",
+                    "Audiolocation",
+                    "ProImmo",
+                    "Marchandises",
+                    "Stockage",
+                    "ParcVehicules" };
+
+            }
+            @foreach (var InventaireType in Enumerable.Range(1, 15))
+        {
+        <hr/>
+        <b>@(InventaireType) </b>
+                @(types[InventaireType - 1])
+        <table id="tblHeaderInventaire" style="@(InventaireType == 9 ? "width:1336px;" : string.Empty)">
+            <tr albnamecontext="headerinven" class="CursorPointer">
+                @if (InventaireType == 1 || InventaireType == 2 || InventaireType == 6 || InventaireType == 7 || InventaireType == 8) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDescription">
+                        Désignation
+                    </th>
+                }
+                @if (InventaireType == 9) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDescription">Raison Sociale</th>
+                }
+                @if (InventaireType == 13 || InventaireType == 14) {
+                    <th name="headerTab" class="thNatureMarchandise tablePersoHead" title="Nature des marchandises">
+                        Nature des marchandises
+                    </th>
+                }
+                @if (InventaireType == 15) {
+                    <th name="headerTab" class="tablePersoHead thMarque">
+                        Marque
+                    </th>
+                    <th name="headerTab" class="tablePersoHead thModele">
+                        Modèle
+                    </th>
+                    <th name="headerTab" class="tablePersoHead thImmatriculation">
+                        Immatriculation
+                    </th>
+                }
+                @if (InventaireType == 13) {
+                    <th name="headerTab" class="tablePersoHead thDepart">
+                        Départ
+                    </th>
+                    <th name="headerTab" class="tablePersoHead thDestination">
+                        Destination
+                    </th>
+                    <th name="headerTab" class="tablePersoHead thModalite">
+                        Modalités
+                    </th>
+                }
+
+                @if (InventaireType == 1 || InventaireType == 2 || InventaireType == 14) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Lieu
+                    </th>
+                }
+                @if (InventaireType == 9) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Adresse
+                    </th>
+                }
+
+                @if (InventaireType == 1 || InventaireType == 9 || InventaireType == 14) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderCP">
+                        CP
+                    </th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Ville
+                    </th>
+                }
+                @if (InventaireType == 14) {
+                    <th name="headerTab" class="tablePersoHead thPays">
+                        Pays
+                    </th>
+                }
+
+                @if (InventaireType == 1 || InventaireType == 2 || InventaireType == 9 || InventaireType == 13 || InventaireType == 15) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDate" title="Date de début">
+                        Date deb
+                    </th>
+                }
+                @if (InventaireType == 1 || InventaireType == 9) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderHeure" title="Heure de début">
+                        Heure deb
+                    </th>
+                }
+
+                @if (InventaireType == 1 || InventaireType == 2 || InventaireType == 9 || InventaireType == 13 || InventaireType == 15) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderDate" title="Date de fin">
+                        Date fin
+                    </th>
+                }
+                @if (InventaireType == 1 || InventaireType == 9) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderHeure" title="Heure de fin">
+                        Heure fin
+                    </th>
+                }
+                @if (InventaireType == 3 || InventaireType == 4 || InventaireType == 5) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNom">
+                        Nom
+                    </th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderNom">
+                        Prénom
+                    </th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderFonction">
+                        Fonction
+                    </th>
+                }
+                @if (InventaireType == 3) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Année de naissance
+                    </th>
+                }
+                @if (InventaireType == 4 || InventaireType == 5) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Date de naissance
+                    </th>
+                }
+                @if (InventaireType == 3 || InventaireType == 5) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Extension
+                    </th>
+                }
+                @if (InventaireType == 10) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie" title="Production et/ou réalisation">Prod./Réal.</th>
+                }
+                @if (InventaireType == 11) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie" title="Location à des tiers">Loc. Tiers</th>
+                }
+                @if (InventaireType == 12) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie" title="Pro de l'immo">Pro Immo</th>
+                }
+                @if (InventaireType == 10 || InventaireType == 11 || InventaireType == 12) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant">CA(%)</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant">CA(€)</th>
+                }
+                @if (InventaireType == 1 || InventaireType == 3 || InventaireType == 5 || InventaireType == 8 || InventaireType == 13 || InventaireType == 14 || InventaireType == 15) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant">
+                        @( InventaireType == 15 ? "Montant /véhicule" : "Montant")
+                    </th>
+                }
+                @if (InventaireType == 1 || InventaireType == 2) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Nature lieu
+                    </th>
+                }
+                @if (InventaireType == 3 || InventaireType == 5) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate">
+                        Franchise
+                    </th>
+                }
+                @if (InventaireType == 6) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie">
+                        Référence
+                    </th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderNumSerie">Code matériel</th>
+                }
+                @if (InventaireType == 9) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate" title="Qualité de l'assuré">Qualité</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate" title="Renonciation à recours">Renonce</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderLieuVilleDate" title="Risques locatifs O/N/Exonéré">Rsq loc.</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Risques locatifs (€)">Rsq. loc. (€)</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Surface (m²)">Surface</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Contenu (€)">Contenu</th>
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant" title="Matériels de bureautique (€)">Mat. bur.</th>
+                }
+                @if (InventaireType == 6 || InventaireType == 7) {
+                    <th name="headerTab" class="tablePersoHead tdHeaderMontant">
+                        Valeur
+                    </th>
+                }
+                <th class="@(InventaireType == 1 || InventaireType == 2 || InventaireType == 6 ? "tablePersoHead tdHeaderImg tdHeaderImgDesc" : "tablePersoHead tdHeaderImg")">
+                    @if (IsReadOnly) {
+                        <img id="addInventaire" name="addInventaire" alt="Ajout inventaire" title="Ajout inventaire" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" />
+                    } else {
+                        <img id="addInventaire" name="addInventaire" alt="Ajout inventaire" title="Ajout inventaire" src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" />
+                    }
+                </th>
+            </tr>
+
+            <tr id="tr" class="CursorPointer" name="rowInventaire" albNameContext="inventaire" albinvenId="">
+                @if (InventaireType == 1 || InventaireType == 2 || InventaireType == 6 || InventaireType == 7 || InventaireType == 8 || InventaireType == 9) {
+                    <td name="lock" id="divCode" class="tdBodyDescription invenEllipsis" title="row.Designation">
+                        <input type="hidden" id="InventaireCode" name="InventaireCode" value="" />
+                        row.Designation
+                    </td>
+                    <td name="edit" id="tdCode" class="tdBodyDescription">
+                        <input class="inputDescription" type="text" id="InventaireDesignation" name="InventaireDesignation" value="row.Designation" maxlength="40" />
+                    </td>
+                }
+                @if (InventaireType == 15) {
+
+                    <td name="lock" id="divMarque" class="tdMarque invenEllipsis" title="row.Marque"> row.Marque </td>
+                    <td name="edit" id="tdMarque" class="">
+                        <input class="inputMarque" type="text" id="InventaireMarque" name="InventaireMarque" value="row.Marque" maxlength="40" />
+                    </td>
+
+                    <td name="lock" id="divModelee" class="tdModele invenEllipsis" title="row.Modele"> row.Modele </td>
+                    <td name="edit" id="tdModele" class="tdModele">
+                        <input class="inputModele" type="text" id="InventaireModele" name="InventaireModele" value="row.Modele" maxlength="40" />
+                    </td>
+
+                    <td name="lock" id="divImmatriculation" class="tdImmatriculation invenEllipsis" title="row.Immatriculation"> row.Immatriculation</td>
+                    <td name="edit" id="tdImmatriculation" class="tdImmatriculation">
+                        <input class="inputImmatriculation" type="text" id="InventaireImmatriculation" name="InventaireImmatriculation" value="row.Immatriculation" maxlength="40" />
+                    </td>
+
+                }
+                @if (InventaireType == 13 || InventaireType == 14) {
+                    <td name="lock" id="divNatureMarchandise" class="tdNatureMarchandise invenEllipsis" title="row.DescNatureMarchandise"> row.DescNatureMarchandise</td>
+                    <td name="edit" id="tdNatureMarchandise" class="tdNatureMarchandise">
+                        <input class="inputNatureMarchandise" type="text" id="InventaireNatureMarchandise" name="InventaireNatureMarchandise" value="row.DescNatureMarchandise" maxlength="40" />
+                    </td>
+                }
+                @if (InventaireType == 13) {
+                    <td name="lock" id="divdepart" class="tdDepart invenEllipsis" title="row.DescDepart"> row.DescDepart</td>
+                    <td name="edit" id="tdDepart" class="tdDepart">
+                        <input class="inputDepart" type="text" id="InventaireDepart" name="InventaireDepart" value="row.DescDepart" maxlength="40" />
+                    </td>
+
+                    <td name="lock" id="divDestination" class="tdDestination invenEllipsis" title="row.DescDestination"> row.DescDestination</td>
+                    <td name="edit" id="tdDestination" class="tdDestination">
+                        <input class="inputDestination" type="text" id="InventaireDestination" name="InventaireDestination" value="row.DescDestination" maxlength="40" />
+                    </td>
+
+                    <td name="lock" id="divModalite" class="tdModalite invenEllipsis" title="row.DescModalite"> row.DescModalite</td>
+                    <td name="edit" id="tdModalite" class="tdModalite">
+                        <input class="inputModalite" type="text" id="InventaireModalite" name="InventaireModalite" value="row.DescModalite" maxlength="40" />
+                    </td>
+                }
+
+                @if (InventaireType == 1 || InventaireType == 2 || InventaireType == 9 || InventaireType == 14) {
+                    <td name="lock" id="divLieu" class="tdBodyLieuVilleDate invenEllipsis" title="row.Lieu">
+                        row.Lieu
+                    </td>
+                    <td name="edit" id="tdLieu" class="tdBodyLieuVilleDate">
+                        <input class="inputLieuVilleDate" type="text" id="InventaireLieu" name="InventaireLieu" value="row.Lieu" maxlength="40" />
+                    </td>
+                }
+                @if (InventaireType == 1 || InventaireType == 9 || InventaireType == 14) {
+                    <td name="lock" id="divCodePostal" class="tdBodyCP">
+                        <span>row.CodePostal</span>
+                    </td>
+                    <td name="edit" id="tdCodePostal" class="tdBodyCP">
+                        <input class="inputCP numerique" albMask="cpnumeric" type="text" id="InventaireCodePostal" name="InventaireCodePostal" value="row.CodePostal" maxlength="5" albautocomplete="autoCompCodePostal" albcontext="" />
+                    </td>
+                    <td name="lock" id="divVille" class="tdBodyLieuVilleDate invenEllipsis" title="row.Ville">
+                        row.Ville
+                    </td>
+                    <td name="edit" id="tdVille" class="tdBodyLieuVilleDate">
+                        <input class="inputLieuVilleDate" type="text" id="InventaireVille" name="InventaireVille" value="row.Ville" albautocomplete="autoCompVille" albcontext="" maxlength="30" />
+                    </td>
+                }
+                @if (InventaireType == 14) {
+                    <td name="lock" id="divPays" class="tdPays invenEllipsis" albCFList="pays" title="row.Pays- row.DescPays">
+                        row.DescPays row.Pays
+                    </td>
+                    <td name="edit" id="tdPays" class="tdPays">
+                        row.Pays
+                    </td>
+                }
+
+
+                @if (InventaireType == 1 || InventaireType == 2 || InventaireType == 9 || InventaireType == 13 || InventaireType == 15) {
+                    <td name="lock" id="divDateDeb" class="tdBodyDate">
+                        row.DateDebStr
+                    </td>
+                    <td name="edit" id="tdDateDeb" class="tdBodyDate">
+                        <input class="inputDate datepicker" type="text" id="InventaireDateDeb" name="InventaireDateDeb" value="row.DateDebStr" />
+                    </td>
+                }
+                @if (InventaireType == 1 || InventaireType == 9) {
+                    <td name="lock" id="divHeureDeb" class="tdBodyHeure">
+                       row.HeureDebStr
+                    </td>
+                    <td name="edit" id="tdHeureDeb" class="tdBodyHeure">
+                        <input class="inputHeure" type="text" id="InventaireHeureDeb" name="InventaireHeureDeb" value=" row.HeureDebStr" readonly="readonly" />
+                    </td>
+                }
+                @if (InventaireType == 1 || InventaireType == 2 || InventaireType == 9 || InventaireType == 13 || InventaireType == 15) {
+                    <td name="lock" id="divDateFin" class="tdBodyDate">
+                        row.DateFinStr
+                    </td>
+                    <td name="edit" id="tdDateFin" class="tdBodyDate">
+                        <input class="inputDate datepicker" type="text" id="InventaireDateFin" name="InventaireDateFin" value="row.DateFinStr" />
+                    </td>
+                }
+                @if (InventaireType == 1 || InventaireType == 9) {
+                    <td name="lock" id="divHeureFin" class="tdBodyHeure">
+                         row.HeureFinStr
+                    </td>
+                    <td name="edit" id="tdHeureFin" class="tdBodyHeure">
+                        <input class="inputHeure" type="text" id="InventaireHeureFin" name="InventaireHeureFin" value="row.HeureFinStr" readonly="readonly" />
+                    </td>
+                }
+                @if (InventaireType == 3 || InventaireType == 4 || InventaireType == 5) {
+                    <td name="lock" id="divNom" class="tdBodyNom invenEllipsis" title="row.Nom">
+                        row.Nom
+                    </td>
+                    <td name="edit" id="tdNom" class="tdBodyNom">
+                        <input type="text" id="InventaireNom" name="InventaireNom" value="row.Nom" maxlength="40" />
+                    </td>
+                    <td name="lock" id="divPrenom" class="tdBodyNom invenEllipsis" title="row.Prenom">
+                        row.Prenom
+                    </td>
+                    <td name="edit" id="tdPrenom" class="tdBodyNom">
+                        <input type="text" id="InventairePrenom" name="InventairePrenom" value="row.Prenom" maxlength="30" />
+                    </td>
+                    <td name="lock" id="divFonction" class="tdBodyFonction invenEllipsis" title="row.Fonction">
+                        row.Fonction
+                    </td>
+                    <td name="edit" id="tdFonction" class="tdBodyFonction">
+                        <input type="text" id="InventaireFonction" name="InventaireFonction" value="row.Fonction" maxlength="30" />
+                    </td>
+                }
+                @if (InventaireType == 3) {
+                    <td name="lock" id="divDateNaissance" class="tdBodyLieuVilleDate" style="text-align:center;">
+                        row.AnneeNaissance
+                    </td>
+                    <td name="edit" id="tdDateNaissance" class="tdBodyLieuVilleDate">
+                        <input type="text" class="inputLieuVilleDate numerique" id="InventaireAnneeNaissance" name="InventaireAnneeNaissance" albmask="yearnumeric" maxlength="4" value="row.AnneeNaissance" />
+                    </td>
+                }
+                @if (InventaireType == 4 || InventaireType == 5) {
+                    <td name="lock" id="divDateNaissance" class="tdBodyLieuVilleDate">
+                        row.DateNaissanceStr
+                    </td>
+                    <td name="edit" id="tdDateNaissance" class="tdBodyLieuVilleDate">
+                        <input type="text" class="inputLieuVilleDate datepicker" id="InventaireDateNaissance" name="InventaireDateNaissance" value="row.DateNaissanceStr" />
+                    </td>
+                }
+                @if (InventaireType == 3 || InventaireType == 5) {
+                    <td name="lock" id="divExtension" class="tdBodyLieuVilleDate invenEllipsis" albCFList="codeextension" title="row.CodeExtension - row.DescExtension">
+                        row.CodeExtension - row.DescExtension
+                    </td>
+                    <td name="edit" id="tdExtension" class="tdBodyLieuVilleDate">
+                        row.CodeExtension
+                    </td>
+                }
+                @if (InventaireType == 6) {
+                    <td name="lock" id="divNumSerie" class="tdBodyNumSerie invenEllipsis" title="row.NumSerie">
+                        row.NumSerie
+                    </td>
+                    <td name="edit" id="tdNumSerie" class="tdBodyNumSerie">
+                        <input type="text" id="InventaireNumSerie" name="InventaireNumSerie" value="row.NumSerie" maxlength="40" />
+                    </td>
+                }
+                @if (InventaireType == 6 || InventaireType == 10 || InventaireType == 11 || InventaireType == 12) {
+                    <td name="lock" id="divCodeMat" class="tdBodyNumSerie invenEllipsis" albCFList="codemateriel" title="row.CodeMateriel - row.DescMat">
+                        row.CodeMateriel - row.DescMat
+                    </td>
+                    <td name="edit" id="tdCodeMat" class="tdBodyNumSerie">
+                        row.CodeMateriel
+                    </td>
+                }
+                @if (InventaireType == 9) {
+                    <td name="lock" id="divQualite" class="tdBodyLieuVilleDate invenEllipsis" albCFList="codequalite" title="row.CodeQualite - row.DescQualite">
+                        row.CodeQualite - row.DescQualite
+                    </td>
+                    <td name="edit" id="tdQualite" class="tdBodyLieuVilleDate">
+                        row.CodeQualite
+                    </td>
+                    <td name="lock" id="divRenonce" class="tdBodyLieuVilleDate invenEllipsis" albCFList="coderenonce" title="row.CodeRenonce - row.DescRenonce">
+                        row.CodeRenonce - row.DescRenonce
+                    </td>
+                    <td name="edit" id="tdRenonce" class="tdBodyLieuVilleDate">
+                        row.CodeRenonce
+                    </td>
+                    <td name="lock" id="divRsqLoc" class="tdBodyLieuVilleDate invenEllipsis" albCFList="codersqloc" title="row.CodeRsqLoc - row.DescRsqLoc">
+                        row.CodeRsqLoc - row.DescRsqLoc
+                    </td>
+                    <td name="edit" id="tdRsqLoc" class="tdBodyLieuVilleDate">
+                        row.CodeRsqLoc
+                    </td>
+                }
+                @if (InventaireType == 1 || InventaireType == 3 || InventaireType == 5 || InventaireType == 6 || InventaireType == 7 || InventaireType == 8 || InventaireType == 9 || InventaireType == 10 || InventaireType == 11 || InventaireType == 12 || InventaireType == 13 || InventaireType == 14 || InventaireType == 15) {
+                    <td name="lock" id="divMontant" class="tdBodyMontant">
+                        <span albmask="@(InventaireType == 10 || InventaireType == 11 || InventaireType == 12 ? " numerique" : "decimal" )">row.Montant</span>
+                    </td>
+                    <td name="edit" id="tdMontant" class="tdBodyMontant">
+                        <input class="@(InventaireType == 10 || InventaireType == 11 || InventaireType == 12 ? " inputMontant numerique" : "inputMontant decimal" )" albMask="@(InventaireType == 10 || InventaireType == 11 || InventaireType == 12 ? " pourcentnumeric" : "decimal" )" type="text" id="InventaireMontant" name="InventaireMontant" value="row.Montant" />
+                    </td>
+                }
+                @if (InventaireType == 9 || InventaireType == 10 || InventaireType == 11 || InventaireType == 12) {
+                    <td name="lock" id="divMnt2" class="tdBodyMontant">
+                        <span albmask="decimal">row.Mnt2</span>
+                    </td>
+                    <td name="edit" id="tdMnt2" class="tdBodyMontant">
+                        <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireMnt2" name="InventaireMnt2" value="row.Mnt2" />
+                    </td>
+                }
+                @if (InventaireType == 9) {
+                    <td name="lock" id="divContenu" class="tdBodyMontant">
+                        <span albmask="decimal">row.Contenu</span>
+                    </td>
+                    <td name="edit" id="tdContenu" class="tdBodyMontant">
+                        <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireContenu" name="InventaireContenu" value="row.Contenu" />
+                    </td>
+                    <td name="lock" id="divMatBur" class="tdBodyMontant">
+                        <span albmask="decimal">row.MatBur</span>
+                    </td>
+                    <td name="edit" id="tdMatBur" class="tdBodyMontant">
+                        <input class="inputMontant decimal" albMask="decimal" type="text" id="InventaireMatBur" name="InventaireMatBur" value="row.MatBur" />
+                    </td>
+                }
+                @if (InventaireType == 1 || InventaireType == 2) {
+                    <td name="lock" id="divNatureLieu" class="tdBodyLieuVilleDate invenEllipsis" albCFList="naturelieu" title="row.NatureLieu - row.DescNatLieu">
+                        row.NatureLieu - row.DescNatLieu
+                    </td>
+                    <td name="edit" id="tdNatureLieu" class="tdBodyLieuVilleDate">
+                        row.NatureLieu
+                    </td>
+                }
+                @if (InventaireType == 3 || InventaireType == 5) {
+                    <td name="lock" id="divFranchise" class="tdBodyLieuVilleDate invenEllipsis" title="row.Franchise">row.Franchise</td>
+                    <td name="edit" id="tdFranchise" class="tdBodyLieuVilleDate">
+                        <input type="text" id="InventaireFranchise" name="InventaireFranchise" class="inputLieuVilleDate" value="row.Franchise" maxlength="40" />
+                    </td>
+                }
+                @* @if (InventaireType == 4)
+            {
+            <td name="lock" id="divCapitalDeces" class="tdBodyMontant">
+                row.CapitalDeces
+            </td>
+            <td name="edit" id="tdCapitalDeces" class="tdBodyMontant">
+                <input type="text" class="inputMontant" albMask="numeric" id="InventaireCapitalDeces" name="InventaireCapitalDeces" value="row.CapitalDeces" />
+            </td>
+            <td name="lock" id="divCapitalIP" class="tdBodyMontant">
+                row.CapitalIP
+            </td>
+            <td name="edit" id="tdCapitalIP" class="tdBodyMontant">
+                <input type="text" class="inputMontant" albMask="numeric" id="InventaireCapitalIP" name="InventaireCapitalIP" value="row.CapitalIP" />
+            </td>
+            }*@
+                <td class="@(InventaireType == 1 || InventaireType == 2 || InventaireType == 6 ? " tdBodyImgDesc" : "tdBodyImg" )">
+                    @if (!IsReadOnly) {
+                        if (InventaireType == 1 || InventaireType == 2 || InventaireType == 6) {
+                            <img id="descInventaire" name="descInventaire" alt="Description inventaire" title="Description de l'inventaire" src="@Url.Content("/Content/Images/moreinfo.png")" width="17" height="17" class="CursorPointer" />
+                            <div id="divDescInven" class="DescrInven">
+                                row.Description
+                            </div>
+                        }
+                        <img id="delInventaire" name="delInventaire" alt="Supprimer l'inventaire" title="Supprimer l'inventaire" src="@Url.Content("/Content/Images/poubelle1616.png")" class="CursorPointer" />
+                        <img id="updateInventaire" name="updateInventaire" alt="Sauver l'inventaire" title="Sauver l'inventaire" src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer" />
+                    }
+                </td>
+            </tr>
+            
+            
+        </table>
+        }
+
+        @*<input type="checkbox" onchange="f(this.checked)">*@
+        <script >
+            var t = [
+                { "Code": "Code", "Col": "KBFID" },
+                { "Code": "Designation", "Col": "KBFDESC" },
+                { "Code": "Lieu", "Col": "KBFSITE" },
+                { "Code": "CodePostal", "Col": "KBFCP" },
+                { "Code": "Ville", "Col": "KBFVILLE" },
+                { "Code": "DateDebDB", "Col": "KBFDATDEB" },
+                { "Code": "HeureDebDB", "Col": "KBFDEBHEU" },
+                { "Code": "DateFinDB", "Col": "KBFDATFIN" },
+                { "Code": "HeureFinDB", "Col": "KBFFINHEU" },
+                { "Code": "NbEvenement", "Col": "KBFNBEVN" },
+                { "Code": "NbPers", "Col": "KBFNBPER" },
+                { "Code": "Montant", "Col": "KBFMNT1" },
+                { "Code": "Nom", "Col": "KBFNOM" },
+                { "Code": "Prenom", "Col": "KBFPNOM" },
+                { "Code": "Fonction", "Col": "KBFFONC" },
+                { "Code": "DateNaissanceDB", "Col": "KBFDATNAI" },
+                { "Code": "CapitalDeces", "Col": "KBFCDEC" },
+                { "Code": "CapitalIP", "Col": "KBFCIP" },
+                { "Code": "AccidentSeulDB", "Col": "KBFACCS" },
+                { "Code": "AvantProdDB", "Col": "KBFAVPR" },
+                { "Code": "NumSerie", "Col": "KBFMSR" },
+                { "Code": "DateDeb", "Col": "KBFDATDEB" },
+                { "Code": "HeureDeb", "Col": "KBFDEBHEU" },
+                { "Code": "DateFin", "Col": "KBFDATFIN" },
+                { "Code": "HeureFin", "Col": "KBFFINHEU" },
+                { "Code": "DateDebStr", "Col": "KBFDATDEB" },
+                { "Code": "HeureDebStr", "Col": "KBFDEBHEU" },
+                { "Code": "DateFinStr", "Col": "KBFDATFIN" },
+                { "Code": "HeureFinStr", "Col": "KBFFINHEU" },
+                { "Code": "DateNaissance", "Col": "KBFDATNAI" },
+                { "Code": "DateNaissanceStr", "Col": "KBFDATNAI" },
+                { "Code": "AccidentSeul", "Col": "KBFACCS" },
+                { "Code": "AvantProd", "Col": "KBFAVPR" },
+                { "Code": "Description", "Col": "KBFKADID-DESI" },
+                { "Code": "NatureLieu", "Col": "KBFNTLI" },
+                { "Code": "DescNatLieu", "Col": "KBFNTLI-TPLIB" },
+                { "Code": "CodeMateriel", "Col": "KBFCMAT" },
+                { "Code": "DescMat", "Col": "KBFCMAT-TPLIB" },
+                { "Code": "CodeExtension", "Col": "KBFEXT" },
+                { "Code": "DescExtension", "Col": "KBFEXT-TPLIB" },
+                { "Code": "Franchise", "Col": "KBFKADFH-DESI" },
+                { "Code": "AnneeNaissance", "Col": "KBFDATNAI" },
+                { "Code": "Mnt2", "Col": "KBFMNT2" },
+                { "Code": "Contenu", "Col": "KBFMNT3" },
+                { "Code": "MatBur", "Col": "KBFMNT4" },
+                { "Code": "NatureMarchandise", "Col": "KBFKADID" },
+                { "Code": "DescNatureMarchandise", "Col": "KBFKADID-DESI" },
+                { "Code": "Modele", "Col": "KBFMOD" },
+                { "Code": "Marque", "Col": "KBFMRQ" },
+                { "Code": "Immatriculation", "Col": "KBFMIM" },
+                { "Code": "Depart", "Col": "KBFSIT2" },
+                { "Code": "DescDepart", "Col": "KBFSIT2-DESI" },
+                { "Code": "Destination", "Col": "KBFSIT3 " },
+                { "Code": "DescDestination", "Col": "KBFSIT3-DESI" },
+                { "Code": "Modalite", "Col": "KBFDES2" },
+                { "Code": "DescModalite", "Col": "KBFDES2-DESI" },
+                { "Code": "Pays", "Col": "KBFPAY" },
+                { "Code": "DescPays", "Col": "KBFPAY-TPLIB" },
+                { "Code": "CodeQualite", "Col": "KBFQUA" },
+                { "Code": "DescQualite", "Col": "KBFREN-TPLIB" },
+                { "Code": "CodeRenonce", "Col": "KBFREN" },
+                { "Code": "DescRenonce", "Col": "KBFREN-TPLIB" },
+                { "Code": "CodeRsqLoc", "Col": "KBFRLO" },
+                { "Code": "DescRsqLoc", "Col": "KBFRLO-TPLIB" }
+
+            ];
+            var m = t.reduce((a, x) => { a[x.Code] = x.Col; return a; }, {});
+            function f(e) {
+                $("[name=edit]").toggle(!!e)
+                $("[name=lock]").toggle(!e)
+            } 
+            //f();
+            $("[name=edit]").remove()
+            function rep(node) {
+                if (node instanceof HTMLInputElement) {
+                    node.value = node.value.replace(/row\.(\w+)/g, (x, p1) => `${x} (${m[p1]})`);
+                }
+                else if (node instanceof Node && node.nodeType == node.TEXT_NODE) {
+                    node.textContent = node.textContent.replace(/row\.(\w+)?/g, (x, p1) => `${x} (${m[p1]})`);
+                }
+                if (node instanceof Node) {
+                    node.childNodes.forEach(rep);
+                }
+            }
+            rep(document.documentElement);
+            $("table").each(function () {
+                var $this = $(this);
+                var newrows = [];
+                $this.find("tr").each(function () {
+                    var i = 0;
+                    $(this).find("td,th").each(function () {
+                        i++;
+                        if (newrows[i] === undefined) { newrows[i] = $("<tr></tr>"); }
+                        newrows[i].append($(this));
+                    });
+                });
+                $this.find("tr").remove();
+                $.each(newrows, function () {
+                    $this.append(this);
+                });
+            })
+        </script>
+    </body>
+   
+
+</html>

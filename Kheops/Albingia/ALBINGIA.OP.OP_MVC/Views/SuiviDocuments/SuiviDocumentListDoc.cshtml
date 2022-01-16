@@ -1,0 +1,283 @@
+﻿@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Tools
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleSuiviDocumentsPage
+@{
+    var splitHtmlChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+}
+<div class="HeightRow FloatLeft" style="width: 1185px;">
+    <div class="ActionButtonRight">
+        <button id="btnEditerSuiviDoc" type="button" albshortcut="true" tabindex="28" data-accesskey="e" disabled="@(!(Model.ListSuiviDocuments.SuiviDocumentsPlat != null && Model.ListSuiviDocuments.SuiviDocumentsPlat.Any() ))">Editer</button>
+    </div>
+    <div style="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_AFFAIRE ? "padding-right: 106px; float: right;" : "padding-right: 19px; float: right;")">
+        <table class="trHeight">
+            <tbody>
+                <tr>
+                    <td>Tout sélectionner ?</td>
+                    <td style="width: 16px; text-align: center;">
+                        <input id="checkAllDoc" type="checkbox" value="" title="Permet de choisir l'impression de tous les documents.">
+                    </td>
+                    <td style="width: 32px; text-align: center;">
+                        <input id="checkAllDocNoLogo" type="checkbox" value="" title="Permet de choisir si l'impression sera avec ou sans logo.">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="dvHeaderLstDoc" class="PaddingLeft">
+    @Html.HiddenNoName("PageNumberDoc", (Model.ListSuiviDocuments.PageNumber))
+    <table id="tblHeaderLstDoc" class="trHeight" @*style="width:@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_AFFAIRE ? "1453px;" : "1609px;")"*@>
+        @switch (Model.DisplayType) {
+            case AlbConstantesMetiers.DISPLAY_AFFAIRE:
+                <tr>
+                    <th class="tablePersoHead tdHeaderLot">N° Lot</th>
+                    <th class="tablePersoHead tdHeaderSituation">Situation</th>
+                    <th class="tablePersoHead tdHeaderActeGestion">Acte de gestion</th>
+                    <th class="tablePersoHead tdHeaderNumInterne">N° int.</th>
+                    <th class="tablePersoHead tdHeaderNomDoc">Nom document</th>
+                    <th class="tablePersoHead tdHeaderTypeDoc">Type document</th>
+                    <th class="tablePersoHead tdHeaderDestinataire">Destinataire</th>
+                    <th class="tablePersoHead tdHeaderUtilisateur">Utilisateur</th>
+                    <th class="tablePersoHead tdHeaderDiffusion">Diffusion</th>
+                    <th class="tablePersoHead tdHeaderImg">&nbsp;</th>
+                    <th class="tablePersoHead tdHeaderCheckBox">&nbsp;</th>
+                    <th class="tablePersoHead tdHeaderCheckBoxLarge">Sans logo?</th>
+                    <th class="tablePersoHead tdHeaderCheckBoxLarge">&nbsp;</th>
+                </tr>
+                break;
+            case AlbConstantesMetiers.DISPLAY_GENERAL:
+                <tr>
+                    <th class="tablePersoHead tdHeaderLot">N° Lot</th>
+                    <th class="tablePersoHead tdHeaderUtilisateur">Utilisateur</th>
+                    <th class="tablePersoHead tdHeaderCodeOffre">N° Contrat/Offre</th>
+                    <th class="tablePersoHead tdHeaderSituation">Situation</th>
+                    <th class="tablePersoHead tdHeaderActeGestion">Acte de gestion</th>
+                    <th class="tablePersoHead tdHeaderNumInterne">N° int.</th>
+                    <th class="tablePersoHead tdHeaderNomDoc">Nom document</th>
+                    <th class="tablePersoHead tdHeaderTypeDoc">Type document</th>
+                    <th class="tablePersoHead tdHeaderDestinataire">Destinataire</th>
+                    <th class="tablePersoHead tdHeaderDiffusion">Diffusion</th>
+                    <th class="tablePersoHead tdHeaderImg">&nbsp;</th>
+                    <th class="tablePersoHead tdHeaderCheckBox">&nbsp;</th>
+                    <th class="tablePersoHead tdHeaderCheckBoxLarge">Sans logo?</th>
+                    <th class="tablePersoHead tdHeaderCheckBoxLarge">&nbsp;</th>
+                    <th class="tablePersoHead tdHeaderCheckBoxLarge">&nbsp;</th>
+                </tr>
+                break;
+        }
+    </table>
+</div>
+<div id="dvBodyLstDoc" class="divBodyDoc PaddingLeft" style="overflow-y: scroll;">
+    @if (Model.ListSuiviDocuments.SuiviDocumentsPlat != null) {
+        var prevNumAff = string.Empty;
+        var prevNumInt = -999;
+        var prevActeGes = string.Empty;
+        var prevTypeDocument = string.Empty;
+        var prevDestinataire = -999;
+        string typeAffichage;
+
+        string currentTypeDoc;
+
+        switch (Model.DisplayType) {
+            case AlbConstantesMetiers.DISPLAY_AFFAIRE:
+                <table id="tblBodyLstDoc" class="trHeight tableSuiviDocAff" @*style="width:@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_AFFAIRE ? "1453px;" : "1609px;")"*@>
+                    @foreach (var item in Model.ListSuiviDocuments.SuiviDocumentsPlat) {
+                        currentTypeDoc = (!string.IsNullOrEmpty(item.TypeDoc.Trim()) ? item.TypeDoc.Trim() : string.Empty) + (!string.IsNullOrEmpty(item.CodeDoc.Trim()) ? string.Concat(" - ", item.CodeDoc.Trim()) : string.Empty);
+                        if (prevNumAff == item.CodeOffre && prevNumInt == item.NumInterne && prevActeGes == item.ActeGestion && prevTypeDocument == currentTypeDoc && prevDestinataire == item.CodeDestinataire) {
+                            typeAffichage = "T";
+                        }
+                        else {
+                            typeAffichage = "A";
+                        }
+
+                        prevNumAff = item.CodeOffre;
+                        prevNumInt = item.NumInterne;
+                        prevActeGes = item.ActeGestion;
+                        prevTypeDocument = currentTypeDoc;
+                        prevDestinataire = item.CodeDestinataire;
+
+                        <tr albtypeaff="@(typeAffichage)">
+                            <td albdocid="@(item.DocId)" name="tdLot" class="@(item.LinkSituation ? "CursorPointer tdLot" : "tdLot")" title="@(!string.IsNullOrEmpty(item.LotLibelle) ? item.LotLibelle.Trim() : string.Empty)" alblotid="@(item.LotId)">
+                                @(item.LotId)
+                            </td>
+                            <td albdocid="@(item.DocId)" name="tdSituation" class="tdSuiviDocSituation @(item.ColorSituation)" title="@(!string.IsNullOrEmpty(item.TitleSituation.Trim()) ? item.TitleSituation.Trim() : string.Empty)" alblotid="@(item.LotId)" albsituation="@(item.CodeSituation)">
+                                @(AlbConvert.ConvertIntToDate(item.DateSituation).Value.ToString("dd/MM/yyyy"))&nbsp;@(AlbConvert.ConvertIntToTimeMinute(item.HeureSituation))
+                                @*@(item.CodeSituation) - @(!string.IsNullOrEmpty(item.LibSituation.Trim()) ? item.LibSituation.Trim() : string.Empty)*@
+                            </td>
+                            <td albdocid="@(item.DocId)" class="tdActeGestion" title="@(!string.IsNullOrEmpty(item.ActeGestion.Trim()) ? item.ActeGestion.Trim() : string.Empty) - @(!string.IsNullOrEmpty(item.ActeGestionLib.Trim()) ? item.ActeGestionLib.Trim() : string.Empty)">@(!string.IsNullOrEmpty(item.ActeGestion.Trim()) ? item.ActeGestion.Trim() : string.Empty)</td>
+                            <td albdocid="@(item.DocId)" class="tdNumInterne" title="@(item.NumExterne)">@(item.NumInterne)</td>
+                            <td albdocid="@(item.DocId)" name="tdNomDoc" class="tdNomDoc" title="@(!string.IsNullOrEmpty(item.TitleDoc.Trim()) ? item.TitleDoc.Trim() : string.Empty)" albdocnom="@(!string.IsNullOrEmpty(item.NomDoc.Trim()) ? item.NomDoc.Trim() : "test.docx")" albdocpath="@(item.CheminDoc.Trim())">@(item.DocId) - @(!string.IsNullOrEmpty(item.NomDoc.Trim()) ? item.NomDoc.Trim() : "test.docx")</td>
+                            <td albdocid="@(item.DocId)" name="tdTypeDoc" albcodetypedoc="@(item.CodeDoc.Trim())" albtypedoc="@(item.TypeDoc.Trim())" class="tdTypeDoc" title="@(!string.IsNullOrEmpty(item.TypeDocLib.Trim()) ? item.TypeDocLib.Trim() : string.Empty)@(!string.IsNullOrEmpty(item.CodeDoc.Trim()) ? string.Concat(" - ", item.CodeDoc.Trim()) : string.Empty)">@(!string.IsNullOrEmpty(item.TypeDoc.Trim()) ? item.TypeDoc.Trim() : string.Empty)@(!string.IsNullOrEmpty(item.CodeDoc.Trim()) ? string.Concat(" - ", item.CodeDoc.Trim()) : string.Empty)</td>
+                            <td albdocid="@(item.DocId)" name="tdDestDoc" class="tdDestinataire" albtypedest="@(item.TypeDestinataire.Trim())" albiddest="@(item.CodeDestinataire)" albnomdest="@(item.NomDestinataire.Trim())">@(item.CodeDestinataire > 0 ? string.Concat(item.CodeDestinataire, " - ", !string.IsNullOrEmpty(item.NomDestinataire.Trim()) ? item.NomDestinataire.Trim() : string.Empty) : string.Empty)<br />@(item.CodeInterlocuteur > 0 ? string.Concat(item.CodeInterlocuteur, " - ", item.NomInterlocuteur.Trim()) : string.Empty)</td>
+                            <td albdocid="@(item.DocId)" class="tdUtilisateur" title="@(!string.IsNullOrEmpty(item.TitleUtilisateur.Trim()) ? item.TitleUtilisateur.Trim() : string.Empty)">@(!string.IsNullOrEmpty(item.CodeUtilisateur.Trim()) ? item.CodeUtilisateur.Trim() : string.Empty)</td>
+                            <td albdocid="@(item.DocId)" class="tdDiffusion" title="@(!string.IsNullOrEmpty(item.CodeDiffusion.Trim()) ? item.CodeDiffusion.Trim() : string.Empty)@(!string.IsNullOrEmpty(item.LibDiffusion.Trim()) ? string.Concat(" - ", item.LibDiffusion.Trim()) : string.Empty)">@(!string.IsNullOrEmpty(item.CodeDiffusion.Trim()) ? item.CodeDiffusion.Trim() : string.Empty)@(!string.IsNullOrEmpty(item.LibDiffusion.Trim()) ? string.Concat(" - ", item.LibDiffusion.Trim()) : string.Empty)</td>
+                            <td class="tdImg">
+                                @if (item.DocExterne > 0) {
+                                    <img class="CursorPointer" name="pjdoc" albdocid="@(item.DocId)" src="@(Url.Content("/Content/Images/ContextMenu/m_documents.gif"))" alt="PJ" />
+                                }
+                            </td>
+                            <td class="tdCheckBox">
+                                @if (item.Situation == AlbConstantesMetiers.EditionSituations.E) {
+                                    <input type="checkbox" id="checkEditLogo@(splitHtmlChar)@(item.LotId)" name="checkEditLogo" albnumaff="@(item.CodeOffre)" albvers="@(item.Version)" albtypaff="@(item.TypeAffaire)" albavtaff="@(item.NumInterne)" albdocid="@(item.DocId)" albsituation="@(item.Situation)" title="Permet de choisir l'impression d'un document." />
+                                }
+                            </td>
+                            <td class="tdCheckBoxLarge">
+                                @if (item.Situation == AlbConstantesMetiers.EditionSituations.E) {
+                                    <input type="checkbox" id="checkEditNoLogo@(splitHtmlChar)@(item.LotId)" name="checkEditNoLogo" albnumaff="@(item.CodeOffre)" albvers="@(item.Version)" albtypaff="@(item.TypeAffaire)" albavtaff="@(item.NumInterne)" albdocid="@(item.DocId)" albsituation="@(item.Situation)" title="Permet de choisir si l'impression sera avec ou sans logo." />
+                                }
+                            </td>
+                            @*@if (item.TypeDoc.Trim() == "CP" || item.TypeDoc.Trim() == "CS")*@
+                            @if (item.EmptyLine == 1) {
+                                <td class="tdUpdDoc">
+                                    <img id="updDoc@(splitHtmlChar)@(item.DocId)" name="updDoc" albDocId="@(item.DocId)" class="CursorPointer" src="@(Url.Content("/Content/Images/editer1616.png"))" />
+                                </td>
+                            }
+                            else {
+                                <td>&nbsp;</td>
+                            }
+                            @if (item.RefreshDoc) {
+                                <td class="tdUpdDoc">
+                                    <img id="refreshDoc@(splitHtmlChar)@(item.DocId)" name="resfreshDoc" albDocId="@(item.DocId)" class="CursorPointer" src="@(Url.Content("/Content/Images/arrow-refresh.png"))" />
+                                </td>
+                            }
+                            else {
+                                <td>&nbsp;</td>
+                            }
+                        </tr>
+                    }
+                </table>
+                break;
+            case AlbConstantesMetiers.DISPLAY_GENERAL:
+                <table id="tblBodyLstDoc" class="trHeight tableSuiviDocGen" @*style="width:@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_AFFAIRE ? "1453px;" : "1609px;")"*@>
+                    @foreach (var item in Model.ListSuiviDocuments.SuiviDocumentsPlat) {
+                        typeAffichage = string.Empty;
+                        currentTypeDoc = (!string.IsNullOrEmpty(item.TypeDoc.Trim()) ? item.TypeDoc.Trim() : string.Empty) + (!string.IsNullOrEmpty(item.CodeDoc.Trim()) ? string.Concat(" - ", item.CodeDoc.Trim()) : string.Empty);
+                        if (prevNumAff == item.CodeOffre && prevNumInt == item.NumInterne && prevActeGes == item.ActeGestion && prevTypeDocument == currentTypeDoc && prevDestinataire == item.CodeDestinataire) {
+                            typeAffichage = "T";
+                        }
+                        else {
+                            typeAffichage = "A";
+                        }
+
+                        prevNumAff = item.CodeOffre;
+                        prevNumInt = item.NumInterne;
+                        prevActeGes = item.ActeGestion;
+                        prevTypeDocument = currentTypeDoc;
+                        prevDestinataire = item.CodeDestinataire;
+
+                        <tr albtypeaff="@(typeAffichage)">
+                            <td albdocid="@(item.DocId)" name="tdLot" alblotid="@(item.LotId)" alblotlib="@(item.LotLibelle)" class="@(item.LinkSituation ? "CursorPointer tdLot" : "tdLot")" title="@(!string.IsNullOrEmpty(item.LotLibelle) ? item.LotLibelle.Trim() : string.Empty)" alblotid="@(item.LotId)">
+                                @(item.LotId)
+                            </td>
+                            <td albdocid="@(item.DocId)" class="tdUtilisateur" title="@(!string.IsNullOrEmpty(item.TitleUtilisateur.Trim()) ? item.TitleUtilisateur.Trim() : string.Empty)">@(!string.IsNullOrEmpty(item.CodeUtilisateur.Trim()) ? item.CodeUtilisateur.Trim() : string.Empty)</td>
+                            <td albdocid="@(item.DocId)" class="tdCodeOffre @(item.ColorSituation)">@(item.CodeOffre)</td>
+                            <td albdocid="@(item.DocId)" name="tdSituation" class="tdSuiviDocSituation @(item.ColorSituation)" title="@(!string.IsNullOrEmpty(item.TitleSituation.Trim()) ? item.TitleSituation.Trim() : string.Empty)" alblotid="@(item.LotId)" albsituation="@(item.CodeSituation)">
+                                @(AlbConvert.ConvertIntToDate(item.DateSituation).Value.ToString("dd/MM/yyyy"))&nbsp;@(AlbConvert.ConvertIntToTimeMinute(item.HeureSituation))
+                                @*@(item.CodeSituation) - @(!string.IsNullOrEmpty(item.LibSituation.Trim()) ? item.LibSituation.Trim() : string.Empty)*@
+                            </td>
+                            <td albdocid="@(item.DocId)" class="tdActeGestion" title="@(!string.IsNullOrEmpty(item.ActeGestion.Trim()) ? item.ActeGestion.Trim() : string.Empty) - @(!string.IsNullOrEmpty(item.ActeGestionLib.Trim()) ? item.ActeGestionLib.Trim() : string.Empty)">@(!string.IsNullOrEmpty(item.ActeGestion.Trim()) ? item.ActeGestion.Trim() : string.Empty)</td>
+                            <td albdocid="@(item.DocId)" class="tdNumInterne" title="@(item.NumExterne)">@(item.NumInterne)</td>
+                            <td albdocid="@(item.DocId)" name="tdNomDoc" class="tdNomDoc" title="@(!string.IsNullOrEmpty(item.TitleDoc.Trim()) ? item.TitleDoc.Trim() : string.Empty)" albdocnom="@(!string.IsNullOrEmpty(item.NomDoc.Trim()) ? item.NomDoc.Trim() : "test.docx")" albdocpath="@(item.CheminDoc.Trim())">@(item.DocId) - @(!string.IsNullOrEmpty(item.NomDoc.Trim()) ? item.NomDoc.Trim() : "test.docx")</td>
+                            <td albdocid="@(item.DocId)" name="tdTypeDoc" albcodetypedoc="@(item.CodeDoc.Trim())" albtypedoc="@(item.TypeDoc.Trim())" class="tdTypeDoc" title="@(!string.IsNullOrEmpty(item.TypeDocLib.Trim()) ? item.TypeDocLib.Trim() : string.Empty)@(!string.IsNullOrEmpty(item.CodeDoc.Trim()) ? string.Concat(" - ", item.CodeDoc.Trim()) : string.Empty)">@(!string.IsNullOrEmpty(item.TypeDoc.Trim()) ? item.TypeDoc.Trim() : string.Empty)@(!string.IsNullOrEmpty(item.CodeDoc.Trim()) ? string.Concat(" - ", item.CodeDoc.Trim()) : string.Empty)</td>
+                            <td albdocid="@(item.DocId)" name="tdDestDoc" class="tdDestinataire" albtypedest="@(item.TypeDestinataire.Trim())" albiddest="@(item.CodeDestinataire)" albnomdest="@(item.NomDestinataire.Trim())">@(item.CodeDestinataire > 0 ? string.Concat(item.CodeDestinataire, " - ", !string.IsNullOrEmpty(item.NomDestinataire.Trim()) ? item.NomDestinataire.Trim() : string.Empty) : string.Empty)<br />@(item.CodeInterlocuteur > 0 ? string.Concat(item.CodeInterlocuteur, " - ", item.NomInterlocuteur.Trim()) : string.Empty)</td>
+                            <td albdocid="@(item.DocId)" class="tdDiffusion" title="@(!string.IsNullOrEmpty(item.CodeDiffusion.Trim()) ? item.CodeDiffusion.Trim() : string.Empty)@(!string.IsNullOrEmpty(item.LibDiffusion.Trim()) ? string.Concat(" - ", item.LibDiffusion.Trim()) : string.Empty)">@(!string.IsNullOrEmpty(item.CodeDiffusion.Trim()) ? item.CodeDiffusion.Trim() : string.Empty)@(!string.IsNullOrEmpty(item.LibDiffusion.Trim()) ? string.Concat(" - ", item.LibDiffusion.Trim()) : string.Empty)</td>
+                            <td class="tdImg">
+                                @if (item.DocExterne > 0) {
+                                    <img class="CursorPointer" name="pjdoc" albdocid="@(item.DocId)" src="@(Url.Content("/Content/Images/ContextMenu/m_documents.gif"))" />
+                                }
+                            </td>
+                            <td class="tdCheckBox">
+                                @if (item.Situation == AlbConstantesMetiers.EditionSituations.E) {
+                                    <input type="checkbox" id="checkEditLogo@(splitHtmlChar)@(item.LotId)" name="checkEditLogo" albnumaff="@(item.CodeOffre)" albvers="@(item.Version)" albtypaff="@(item.TypeAffaire)" albavtaff="@(item.NumInterne)" albdocid="@(item.DocId)" albsituation="@(item.Situation)" title="Permet de choisir l'impression d'un document." />
+                                }
+                            </td>
+                            <td class="tdCheckBoxLarge">
+                                @if (item.Situation == AlbConstantesMetiers.EditionSituations.E) {
+                                    <input type="checkbox" id="checkEditNoLogo@(splitHtmlChar)@(item.LotId)" name="checkEditNoLogo" albnumaff="@(item.CodeOffre)" albvers="@(item.Version)" albtypaff="@(item.TypeAffaire)" albavtaff="@(item.NumInterne)" albdocid="@(item.DocId)" albsituation="@(item.Situation)" title="Permet de choisir si l'impression sera avec ou sans logo." />
+                                }
+                            </td>
+                            @*@if (item.TypeDoc.Trim() == "CP" || item.TypeDoc.Trim() == "CS")*@
+                            @if (item.EmptyLine == 1) {
+                                <td class="tdUpdDoc">
+                                    <img id="updDoc@(splitHtmlChar)@(item.DocId)" name="updDoc" albDocId="@(item.DocId)" class="CursorPointer" src="@(Url.Content("/Content/Images/editer1616.png"))" />
+                                </td>
+                            }
+                            else {
+                                <td>&nbsp;</td>
+                            }
+                            @if (item.RefreshDoc) {
+                                <td class="tdUpdDoc">
+                                    <img id="refreshDoc@(splitHtmlChar)@(item.DocId)" name="resfreshDoc" albDocId="@(item.DocId)" class="CursorPointer" src="@(Url.Content("/Content/Images/arrow-refresh.png"))" />
+                                </td>
+                            }
+                            else {
+                                <td>&nbsp;</td>
+                            }
+                        </tr>
+                    }
+                </table>
+                break;
+        }
+    }
+</div>
+<div id="divPaginationSuiviDoc" style="height: 39px;">
+    @if (Model.ListSuiviDocuments.CountLine > ALBINGIA.OP.OP_MVC.MvcApplication.PAGINATIONSIZE_DOC) {
+        <span class="FloatLeft error PaddingTop MsgAffinement" style="padding-top: 8px;">
+            Le nombre réel de lignes trouvées dépasse @ALBINGIA.OP.OP_MVC.MvcApplication.PAGINATIONSIZE_DOC, veuillez affiner votre recherche
+        </span>
+    }
+    <table class="field-right Pagination" style="padding-top: 1px; padding-right: 6px;">
+        <tr>
+            @if (Model.ListSuiviDocuments.PageNumber > 1) {
+                <td>
+                    <img id="PaginationDocPremierePage" src="@Url.Content("/Content/Images/1340965186_pagination_1_first.png")" />
+                </td>
+                <td>
+                    <img id="PaginationDocPrecedent" src="@Url.Content("/Content/Images/1340965176_pagination_1_previous.png")" />
+                </td>
+            }
+            else {
+                <td>
+                    <img src="@Url.Content("/Content/Images/1340965186_pagination_1_first_disabled.png")" />
+                </td>
+                <td>
+                    <img src="@Url.Content("/Content/Images/1340965176_pagination_1_previous_disabled.png")" />
+                </td>
+            }
+            <td>
+                <span id="PaginationDocPageActuelle">@Model.ListSuiviDocuments.PageNumber</span>
+            </td>
+            @if (Model.ListSuiviDocuments.PageNumber * (Model.ListSuiviDocuments.EndLine - Model.ListSuiviDocuments.StartLine + 1) < Model.ListSuiviDocuments.CountLine
+                && (Model.ListSuiviDocuments.PageNumber * (Model.ListSuiviDocuments.EndLine - Model.ListSuiviDocuments.StartLine + 1) < ALBINGIA.OP.OP_MVC.MvcApplication.PAGINATIONSIZE_DOC)) {
+                <td>
+                    <img id="PaginationDocSuivant" src="@Url.Content("/Content/Images/1340965171_pagination_1_next.png")" />
+                </td>
+                <td>
+                    <img id="PaginationDocDernierePage" src="@Url.Content("/Content/Images/1340965180_pagination_1_last.png")" />
+                </td>
+            }
+            else {
+                <td>
+                    <img src="@Url.Content("/Content/Images/1340965171_pagination_1_next_disabled.png")" />
+                </td>
+                <td>
+                    <img src="@Url.Content("/Content/Images/1340965180_pagination_1_last_disabled.png")" />
+                </td>
+            }
+            @if (Model.ListSuiviDocuments.CountLine > ALBINGIA.OP.OP_MVC.MvcApplication.PAGINATIONSIZE_DOC) {
+                <td class="PageSize">
+                    <span id="PaginationStartDoc">@Html.DisplayFor(m => m.ListSuiviDocuments.StartLine)</span> - <span id="PaginationEndDoc">@Html.DisplayFor(m => m.ListSuiviDocuments.EndLine)</span>
+                    [total : <span id="PaginationTotalDoc">@(ALBINGIA.OP.OP_MVC.MvcApplication.PAGINATIONSIZE_DOC)</span>]
+                </td>
+            }
+            else {
+                <td class="PageSize">
+                    <span id="PaginationStartDoc">@Html.DisplayFor(m => m.ListSuiviDocuments.StartLine)</span> - <span id="PaginationEndDoc">@Html.DisplayFor(m => m.ListSuiviDocuments.EndLine)</span>
+                    [total : <span id="PaginationTotalDoc">@Html.DisplayFor(m => m.ListSuiviDocuments.CountLine)</span>]
+                </td>
+            }
+        </tr>
+    </table>
+</div>
+<div id="divDestinataire" class="None" style="background-color: white; padding: 5px; border: 1px solid black; border-radius: 5px;">
+</div>

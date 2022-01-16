@@ -1,0 +1,41 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamFiltres.ModeleLigneBrancheCible
+<td class="col_ActionBrancheCible" albclikable="selectableColPaire" name="col_ActionBrancheCible_@(Model.GuidIdPaire)">
+    <div class="col_ActionBrancheCible_in paddingReadonly" name="divReadOnly_@(Model.GuidIdPaire)" >
+        @(Model.ListeActions.FirstOrDefault(el => el.Value == Model.Action) == null ? string.Empty : Model.ListeActions.FirstOrDefault(el => el.Value == Model.Action).Text)
+    </div>
+    <div class="colEdition col_ActionBrancheCible_in paddingEdition" name="divEdition_@(Model.GuidIdPaire)">
+        @Html.AlbDropDownListFor(m => Model.Action, Model.ListeActions, "dvAction", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlAction_" + Model.GuidIdPaire, @class = "col_ActionBrancheCible_in" })
+    </div>
+</td>
+<td class="col_Branche" albclikable="selectableColPaire" name="col_Branche_@(Model.GuidIdPaire)">
+    <div class="col_Branche_in paddingReadonly" name="divReadOnly_@(Model.GuidIdPaire)" >
+        @(Model.ListeBranches.FirstOrDefault(el => el.Value == Model.Branche) == null ? string.Empty : Model.ListeBranches.FirstOrDefault(el => el.Value == Model.Branche).Text)
+    </div>
+    <div class="colEdition col_Branche_in paddingEdition" name="divEdition_@(Model.GuidIdPaire)">
+        @Html.AlbDropDownListFor(m => Model.Branche, Model.ListeBranches, "dvBranche", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlBranche_" + Model.GuidIdPaire, @class = "col_Branche_in", @name = "dvBranche" },replaceHtmlName:"dvBranche")
+    </div>
+</td>
+<td class="col_Cible" albclikable="selectableColPaire" name="col_Cible_@(Model.GuidIdPaire)">
+    <div class="col_Cible_in paddingReadonly" name="divReadOnly_@(Model.GuidIdPaire)" >
+        @(Model.DrlCibles.ListeCibles.FirstOrDefault(el => el.Value == Model.Cible) == null ? string.Empty : Model.DrlCibles.ListeCibles.FirstOrDefault(el => el.Value == Model.Cible).Text)
+    </div>
+    <div class="colEdition col_Cible_in paddingEdition" name="divEdition_@(Model.GuidIdPaire)" id="divListeCible_@(Model.GuidIdPaire)">
+        @*        @Html.AlbDropDownListFor(m => Model.Cible, Model.DrlCibles.ListeCibles, "dvCible", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlCible_" + Model.GuidIdPaire, @class = "col_Cible_in" })*@
+        @if (Model.DrlCibles != null)
+        {
+            @Html.Partial("DrlCibles", Model.DrlCibles)
+        }
+    </div>
+</td>
+<td class="col_Action">
+    <div class="col_Action paddingReadonly" name="divReadOnly_@(Model.GuidIdPaire)">
+        @if (Model.AdditionalParam == "**")
+        {
+            <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSupprPaireBrancheCible_" + @Model.GuidIdPaire)" alt="Supprimer" title="Supprimer" class="Action CursorPointer" name="btnSupprimerPaireBrancheCible"/>
+        }
+    </div>
+    <div class="colEdition col_Action paddingEdition" name="divEdition_@(Model.GuidIdPaire)">
+        <img src="@Url.Content("/Content/Images/Save_16.png")" id="@("btnEnregistrerPaireBrancheCible_" + @Model.GuidIdPaire)" alt="Enregistrer" title="Enregistrer" class="Action CursorPointer" name="btnEnregistrerPaireBrancheCible"/>
+    </div>
+</td>
+

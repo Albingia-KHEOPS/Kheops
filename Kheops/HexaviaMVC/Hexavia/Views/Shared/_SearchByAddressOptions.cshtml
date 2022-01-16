@@ -1,0 +1,56 @@
+﻿<div class="panel-heading clearfix" id="divOptions">
+
+    <div class="pull-left"> 
+        <div class="form-inline">
+            <div class="form-group lg-margin-right">
+                <label for="idEchelle" class="control-label">Zone de recherche &nbsp;</label>
+                <div class="input-group text-left">
+                    <input type="text" class="form-control echelle-input" id="idEchelle" value="0.1" maxlength="5" onkeypress='validate(event)'>
+                    <div class="input-group-text" style="width:30px">Km</div>
+                </div>
+                <button type="button" class="btn btn-light btn-circle sm-margin-left" id="btnZoneCircle" title="Afficher/Masquer la zone de recherche">
+                    <span class="fa fa-times-circle fa-lg"></span>
+                </button>
+            </div>
+            <div class="divider" style=""></div>
+            <div>
+                <button type="button" class="btn btn-primary desactivate-option "  id="btnLoadContractsAround">
+                    Contrats
+                </button>
+                <button type="button" class="btn btn-offer desactivate-option "  id="btnLoadOffersAround">
+                    Offres
+                </button>
+                @*<button type="button" class="btn btn-loss desactivate-option " id="btnLoadSinistresAround">
+                    Sinistres
+                </button>*@
+                <button type="button" class="btn btn-insured desactivate-option "  id="btnLoadInsuredsAround">
+                    Assurés
+                </button>
+                <button type="button" class="btn btn-success desactivate-option "  id="btnLoadBrokersAround">
+                    Courtiers
+                </button>
+                <button type="button" class="btn btn-expert desactivate-option "  id="btnLoadExpertsAround">
+                    Experts
+                </button>
+            </div>
+
+            <div class="divider"></div>
+        </div>
+    </div>
+    <div class=" pull-right">
+        <div class="col-md-9  custom-file hidden">
+            <input type="file" class="custom-file-input" id="externalContractsAroundUploadFile" name="externalContractsAroundUploadFile" lang="fr" accept=".xml" />
+            <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
+        </div>
+        <button type="button" class="btn btn-external desactivate-option hidden" style="margin-left:3px;color:white" id="btnUploadExternalContractsAround">
+            Externes
+        </button>
+        <button type="button" class="btn btn-light" onclick="exportMapTopdf()" title="Télécharger la carte">
+            Télécharger la carte
+        </button>
+        <div class="divider" style=""></div>
+        <button type="button" class="btn btn-light " style="margin-left:3px" id="btnCleanMarkers">
+            Supprimer tous les marqueurs
+        </button>
+    </div>
+</div>

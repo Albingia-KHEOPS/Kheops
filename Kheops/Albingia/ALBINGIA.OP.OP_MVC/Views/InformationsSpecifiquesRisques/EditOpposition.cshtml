@@ -1,0 +1,189 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRisque.ModeleOpposition
+<div class="GroupFull GroupWithBorder" id="divDialogEditOpposition">
+    <input type="hidden" id="editGuidId" value="@Model.GuidId" />
+    <input type="hidden" id="mode" value="@Model.Mode" />
+    <input type="hidden" id="KDESIRef" value="@Model.KDESIRef" />
+    <input type="hidden" name="autoCompOrganismeSelect" albautocomplete="autoCompOrganismeSelect" />
+    <div class="GroupTitle">
+        <div class="FloatLeft">
+            @if (Model.LienFichierOrigine != 0)
+            {
+                <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")" id="imgWarning" title="Attention : aucun code organisme n'est renseigné" class="paddingImgWarning" />
+            }
+            Ajout / Modification d'une opposition / d'un bénéficiaire
+        </div>
+        <div class="FloatLeft PaddingLeftVeryLarge">
+            @if (Model.Mode == "I")
+            {
+                @Html.AlbDropDownListFor(m => m.TypeDest, Model.ListTypesDest, "dvTypeDest", generateTitle: true, htmlAttributes: new { @id = "dvTypeDest", @class = "HalfGenericColumn" })
+            }
+            else
+            {
+                @Html.AlbDropDownListFor(m => m.TypeDest, Model.ListTypesDest, "dvTypeDest", generateTitle: true, htmlAttributes: new { @id = "dvTypeDest", @class = "HalfGenericColumn readonly", @disabled = "disabled", @albhorsavn = "" })
+            }
+        </div>
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin HeightDialogOpposition">
+        <div class="GradientSection FloatLeft" id="FormOpposition">
+            <div class="HeightRow">
+                <input type="hidden" id="TypeDest" name="TypeDest" value="@(string.IsNullOrEmpty(Model.TypeDest) ? "IN" : Model.TypeDest)" />
+                <div class="QuarterGenericColumn">
+                    <label>Nom*</label>
+                </div>
+                <div class="QuarterGenericColumn">
+                    @if (Model.LienFichierOrigine == 0)
+                    {
+                        <input id="CodeOrganisme" albhorsavn name="CdeOrganisme" albAutoComplete="autoCompOrganismeCode" class="InputQuarterGenericColumn @(Model.Mode == "D" || Model.Mode == "R" ? "readonly" : string.Empty)" value="@(Model.CodeOrganisme == 0 ? string.Empty : Model.CodeOrganisme.ToString())" @(Model.Mode == "D" || Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                    }
+                    else
+                    {
+                        <input id="CodeOrganisme" albhorsavn name="CdeOrganisme" albAutoComplete="autoCompOrganismeCode" class="InputQuarterGenericColumn @(Model.Mode == "D" || Model.Mode == "R" ? "readonly" : string.Empty)" value="@(Model.CodeOrganisme == 0 ? string.Empty : Model.CodeOrganisme.ToString())" @(Model.Mode == "D" || Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                    }
+                </div>
+                <div style="width: 360px; float: left;">
+                    @if (Model.LienFichierOrigine == 0)
+                    {
+                        <input id="NomOrganisme" albhorsavn name="NomOrganisme" albAutoComplete="autoCompOrganismeNom" class="GenericColumnAndQuarter @(Model.Mode == "D" || Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.NomOrganisme" @(Model.Mode == "D" || Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                    }
+                    else
+                    {
+                        <input id="NomOrganisme" albhorsavn name="NomOrganisme" albAutoComplete="autoCompOrganismeNom" class="GenericColumnAndQuarter @(Model.Mode == "D" || Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.NomOrganismeWarning" @(Model.Mode == "D" || Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                    }
+                </div>
+                <div>
+                    <img src="@Url.Content("/Content/Images/loupe.png")" id="btnRechercheOpp" class="@(Model.Mode != "R" ? "CursorPointer" : "CursorPointer None")" name="btnRechercheOpp" />
+                </div>
+
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Adresse</label>
+                </div>
+                <div class="GenericColumnAndAHalf">
+                    @if (Model.LienFichierOrigine == 0)
+                    {
+                        <input id="Adresse1" name="Adresse1" class="GenericColumnAndAHalf readonly" albAutoComplete="autoCompOrganismeAdresse1" value="@Model.Adresse1" readonly="readonly" />
+                    }
+                    else
+                    {
+                        <input id="Adresse1" name="Adresse1" class="GenericColumnAndAHalf readonly" albAutoComplete="autoCompOrganismeAdresse1" value="@Model.Adresse1Warning" readonly="readonly" />
+                    }
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumnAdresse2">
+                    @if (Model.LienFichierOrigine == 0)
+                    {
+                        <input id="Adresse2" name="Adresse2" class="GenericColumnAndAHalf readonly" albAutoComplete="autoCompOrganismeAdresse2" value="@Model.Adresse2" readonly="readonly" />
+                    }
+                    else
+                    {
+                        <input id="Adresse2" name="Adresse2" class="GenericColumnAndAHalf readonly" albAutoComplete="autoCompOrganismeAdresse2" value="@Model.Adresse2Warning" readonly="readonly" />
+                    }
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>CP / Ville / Pays</label>
+                </div>
+                <div class="QuarterGenericColumn">
+                    @if (Model.LienFichierOrigine == 0)
+                    {
+                        <input id="CPOrganisme" name="CPOrganisme" albAutoComplete="autoCompOrganismeCP" class="InputQuarterGenericColumn readonly" value="@Model.CPOrganisme" readonly="readonly" />
+                    }
+                    else
+                    {
+                        <input id="CPOrganisme" name="CPOrganisme" albAutoComplete="autoCompOrganismeCP" class="InputQuarterGenericColumn readonly" value="@Model.CPOrganismeWarning" readonly="readonly" />
+                    }
+                </div>
+                <div class="HalfGenericColumn">
+                    @if (Model.LienFichierOrigine == 0)
+                    {
+                        <input id="VilleOrganisme" name="VilleOrganisme" albAutoComplete="autoCompOrganismeVille" class="InputHalfGenericColumn readonly" value="@Model.VilleOrganisme" readonly="readonly" />
+                    }
+                    else
+                    {
+                        <input id="VilleOrganisme" name="VilleOrganisme" albAutoComplete="autoCompOrganismeVille" class="InputHalfGenericColumn readonly" value="@Model.VilleWarning" readonly="readonly" />
+                    }
+                </div>
+                <div class="QuarterGenericColumn">
+                    @if (Model.LienFichierOrigine == 0)
+                    {
+                        <input id="PaysOrganisme" name="PaysOrganisem" albAutoComplete="autoCompOrganismePays" class="QuarterGenericColumn readonly" value="@((!string.IsNullOrEmpty(Model.NomPays) && Model.NomPays.StartsWith("-")) ? Model.NomPays.Remove(0, 1) : Model.NomPays)" readonly="readonly" />
+                    }
+                    else
+                    {
+                        <input id="PaysOrganisme" name="PaysOrganisem" albAutoComplete="autoCompOrganismePays" class="QuarterGenericColumn readonly" value="@((!string.IsNullOrEmpty(Model.NomPaysWarning) && Model.NomPaysWarning.StartsWith("-")) ? Model.NomPaysWarning.Remove(0, 1) : Model.NomPaysWarning)" readonly="readonly" />
+                    }
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Description</label>
+                </div>
+                <div class="GenericColumnAndAHalf">
+                    <input id="Description" albhorsavn class="GenericColumnAndAHalf @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.Description" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Référence financeur</label>
+                </div>
+                <div class="GenericColumnAndAHalf">
+                    <input id="Reference" albhorsavn class="GenericColumnAndAHalf @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.Reference" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Echéance</label>
+                </div>
+                <div class="QuarterGenericColumn">
+                    <input id="Echeance" albhorsavn class="InputQuarterGenericColumn datepicker @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@(@Model.Echeance == null ? string.Empty : @Model.Echeance.Value.ToString("dd/MM/yyyy"))" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                </div>
+                <div class="QuarterGenericColumn">
+                    <label>Type*</label>
+                </div>
+                <div class="HalfGenericColumn">
+                    @if (Model.Mode == "R" || Model.Mode == "D")
+                    {
+                        @Html.AlbDropDownListFor(m => @Model.TypeFinancement, @Model.TypesFinancement, "dvTypeFinancement", generateTitle: true, htmlAttributes: new { @id = "drlTypeFinancement", @class = "HalfGenericColumn readonly", @disabled = "disabled", @albhorsavn = "" })
+                    }
+                    else
+                    {
+                        @Html.AlbDropDownListFor(m => @Model.TypeFinancement, @Model.TypesFinancement, "dvTypeFinancement", generateTitle: true, htmlAttributes: new { @id = "drlTypeFinancement", @class = "HalfGenericColumn", @albhorsavn = "" })
+                    }
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="QuarterGenericColumn">
+                    <label>Montant</label>
+                </div>
+                <div class="QuarterGenericColumn">
+                    <input id="Montant" albMask="decimal" albhorsavn class="InputMontant InputQuarterGenericColumn @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" value="@Model.Montant" @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly=\"readonly\"" : string.Empty) />
+                </div>
+            </div>
+            <div class="HeightRow">
+            </div>
+        </div>
+        <div class="GradientSection FloatLeft" id="FormRisque">
+            @Html.Partial("DetailOpposition", Model)
+        </div>
+    </div>
+    <div class="FloatRight">
+        <button type="button" id="btnFermerEditOpposition">Annuler</button>
+        @if (@Model.Mode == "I")
+        {
+            <button type="button" id="btnActionOpposition">Ajouter</button>
+        }
+        else if (@Model.Mode == "U")
+        {
+            <button type="button" id="btnActionOpposition">Enregistrer</button>
+        }
+        else if (@Model.Mode == "D")
+        {
+            <button type="button" id="btnActionOpposition">Supprimer</button>
+        }
+    </div>
+</div>

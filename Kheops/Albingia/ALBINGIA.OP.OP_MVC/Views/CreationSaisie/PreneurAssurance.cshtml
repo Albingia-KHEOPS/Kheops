@@ -1,0 +1,90 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModelePreneurAssurance
+<div class="HeightRow" data-preneur="preneur">
+    <div class="FloatLeft">
+        @Html.HiddenNoName("inInvalidPreneurAssu", string.Empty, new { albcontext = "assure" })
+        <label class="labelPreneurAssu labelSearch">Preneur d'assurance&nbsp;&nbsp;&nbsp;</label>
+    </div>
+    <div id="PreneurAssuInvalideDiv" class="FloatLeft error PaddingLeft" albcontext="assure"></div>
+    <div class="FloatLeft hide-it">
+        <i class="alerte-blacklisted"></i>
+    </div>
+    <a class="textInfo lnkBlackList" href="#" id="lnkBlackList">Portefeuille de contrats assuré</a>
+</div>
+<div class="HeightRow" data-preneur="preneur">
+    <div class="FloatLeft">
+        <label class="labelCourtier Block">Code*</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.IsReadOnlyDisplay && !Convert.ToBoolean(@ViewData["IsCanevas"])) {
+            <input type="text" id="PreneurAssurance_CodePreneurAssurance" name="PreneurAssurance.CodePreneurAssurance" tabindex="11" value="@(Model.CodePreneurAssurance)" albAutoComplete="autoCompCodeAssure" albcontext="assure" class="inputCodeCourtier readonly" disabled="disabled" maxlength="7" />
+        }
+        else {
+            <input type="text" id="PreneurAssurance_CodePreneurAssurance" name="PreneurAssurance.CodePreneurAssurance" tabindex="11" value="@(Model.CodePreneurAssurance)" albAutoComplete="autoCompCodeAssure" albcontext="assure" class="inputCodeCourtier" maxlength="7" />
+        }
+    </div>
+    <div class="FloatLeft">
+        <label class="labelNomCourtier Block">Nom</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.IsReadOnlyDisplay && !Convert.ToBoolean(@ViewData["IsCanevas"])) {
+            <input type="text" id="PreneurAssurance_NomPreneurAssurance" name="PreneurAssurance.NomPreneurAssurance" tabindex="12" value="@(Model.NomPreneurAssurance)" class="inputNomCourtier readonly" albAutoComplete="autoCompNomAssure" albcontext="assure" disabled="disabled" />
+        }
+        else {
+            <input type="text" id="PreneurAssurance_NomPreneurAssurance" name="PreneurAssurance.NomPreneurAssurance" tabindex="12" value="@(Model.NomPreneurAssurance)" class="inputNomCourtier" albAutoComplete="autoCompNomAssure" albcontext="assure" />
+        }
+    </div>
+    <div class="FloatLeft Loupe">
+        @if (!Model.IsReadOnlyDisplay) {
+            <img src="@Url.Content("/Content/Images/loupe.png")" id="RechercheAvanceePreneurAssurance" alt="" class="CursorPointer" albcontext="assure" />
+        }
+        else {
+            <img src="@Url.Content("/Content/Images/loupegris.png")" id="RechercheAvanceePreneurAssurance" alt="" albcontext="assure" />
+        }
+    </div>
+    <div class="FloatLeft hide-it">
+        <i id="linkAlertesPreneur" class="alerte-impayes-sinistres"></i>
+    </div>
+    <div class="FloatLeft">
+        <img alt="Informations" src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" class="CursorPointer PaddingLeft PaddingTopLittle" albAutoComplete="autoCompImgInfoAssure" albIdInfo="@Model.CodePreneurAssurance" albcontext="assure" />
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="labelDept Block">Dépt</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PreneurAssurance_Departement" name="PreneurAssurance.Departement" readonly="readonly" class="readonly inputDept" tabindex="13" value="@(Model.Departement)" albAutoComplete="autoCompCodePostalAssure" albcontext="assure" />
+    </div>
+    <div class="FloatLeft">
+        <label class="labelNomCourtier Block">Ville</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="PreneurAssurance_Ville" name="PreneurAssurance.Ville" readonly="readonly" class="DoubleInput readonly" tabindex="14" value="@(Model.Ville)" albAutoComplete="autoCompVilleAssure" albcontext="assure" />
+    </div>
+
+    <div class="FloatLeft PaddingLeft">
+        @Html.Hidden("PreneurAssurance.PreneurEstAssure", Model.PreneurEstAssure.ToString(), new { id = "PreneurEstAssure_" })
+        @Html.HiddenNoName("PreneurAssuranceIdOrigine", Model.CodePreneurAssurance.HasValue ? Model.CodePreneurAssurance.Value.ToString() : string.Empty)
+        @if (!Model.IsReadOnlyDisplay)
+        {
+            <img id="btnOpenAssu" class="CursorPointer @(Model.NbAssuAdditionnel > 0 ? "backgroundColorOrange" : "backgroundColorWhite")" title="Assurés additionnels" src="@Url.Content("/Content/Images/u132_normal.png")" />
+        }
+
+        @*code du preneur d'assurance à l'ouverture de l'écran*@
+    </div>
+    <div class="FloatRight">
+        <div class="FloatLeft">
+            @if (Model.PreneurEstAssure)
+            {
+                <input type="checkbox" id="PreneurEstAssure" tabindex="33" name="PreneurEstAssure" checked="checked" />
+            }
+            else
+            {
+                <input type="checkbox" id="PreneurEstAssure" tabindex="33" name="PreneurEstAssure" />
+            }
+        </div>
+        <div class="FloatLeft">
+            <label class="Block labelGpIdentiqueApporteur">Le preneur d'assurance est un assuré</label>
+        </div>
+    </div>
+</div>

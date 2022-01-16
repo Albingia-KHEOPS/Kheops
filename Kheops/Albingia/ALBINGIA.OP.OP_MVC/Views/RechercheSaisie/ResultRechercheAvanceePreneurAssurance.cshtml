@@ -1,0 +1,160 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleRechercheAvancee
+@Html.HiddenNoName("NbCountPreneurAssurance", Model.NbCount)
+@Html.HiddenNoName("LineCountPreneurAssurance", Model.LineCount)
+<div id="PaginationSizePreneurAssurance" style="visibility: hidden; display: none;">@Model.LineCount</div>
+
+<div id="divPreneurAssuranceHeader" style="margin-left: 5px;">
+    <table id="tblPreneurAssuranceHeader" style="width: 1200px;">
+        <tr>
+            <th class="tablePersoHeadRechercheSaisie TablePersoHeadPreneursAssuranceTd1 TablePersoTdHead" id="1">Code<span class="spImg" style="float: right;">
+                @if (Model.By == 1)
+                {
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                }
+            </span>
+            </th>
+            <th class="tablePersoHeadRechercheSaisie TablePersoHeadPreneursAssuranceTd2 TablePersoTdHead" id="2">Nom<span class="spImg" style="float: right;">
+                @if (Model.By == 2)
+                {
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                }
+            </span>
+            </th>
+            <th class="tablePersoHeadRechercheSaisie TablePersoHeadPreneursAssuranceTd3 TablePersoTdHead" id="3">Nom Secondaires<span class="spImg" style="float: right;">
+                @if (Model.By == 3)
+                {
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                }
+            </span>
+            </th>
+            <th class="tablePersoHeadRechercheSaisie TablePersoHeadPreneursAssuranceTd4 TablePersoTdHead" id="4">Code Postal<span class="spImg" style="float: right;">
+                @if (Model.By == 4)
+                {
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                }
+            </span>
+            </th>
+            <th class="tablePersoHeadRechercheSaisie TablePersoHeadPreneursAssuranceTd5 TablePersoTdHead" title="Code Postal" id="5">Ville<span class="spImg" style="float: right;">
+                @if (Model.By == 5)
+                {
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                }
+            </span>
+            </th>
+            <th class="tablePersoHeadRechercheSaisie TablePersoHeadPreneursAssuranceTd6 TablePersoTdHead" id="6">SIREN<span class="spImg" style="float: right;">
+                @if (Model.By == 6)
+                {
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_" + Model.Order.ToLower() + ".png")" />
+                }
+            </span>
+            </th>
+            <th class="tablePersoHeadRechercheSaisie TablePersoHeadPreneursAssuranceTd7" id="7">Sinistre</th>
+            <th class="tablePersoHeadRechercheSaisie TablePersoHeadPreneursAssuranceTd8" id="8">Impayés</th>
+        </tr>
+    </table>
+</div>
+<div id="divLstResultatPreneurAssurance">
+    @if (Model.CabinetsPreneurs != null && Model.CabinetsPreneurs.Count > 0)
+    {
+        <div id="divPreneurAssuranceBody">
+            <table id="tblPreneursAssurance" class="trHeight" style="width: 1200px; table-layout: fixed;">
+                @foreach (var preneurAssurance in Model.CabinetsPreneurs)
+                {
+                    <tr id="tr_@(preneurAssurance.Code)">
+                        <td class="TablePersoPreneursAssuranceTd1">
+                            @preneurAssurance.Code
+                        </td>
+                        <td class="TablePersoPreneursAssuranceTd2" title="@(preneurAssurance.Nom)">
+                            @preneurAssurance.Nom
+                        </td>
+                        <td class="TablePersoPreneursAssuranceTd3" title="@(preneurAssurance.NomSecondaires.FirstOrDefault())">
+                            @foreach (var nomSecondaire in preneurAssurance.NomSecondaires)
+                            {
+                                @nomSecondaire 
+                            }
+                        </td>
+                        <td class="TablePersoPreneursAssuranceTd4">
+                            @preneurAssurance.CodePostalString
+                        </td>
+                        <td class="TablePersoPreneursAssuranceTd5" title="@(preneurAssurance.Ville)">
+                            @preneurAssurance.Ville
+                        </td>
+                        <td class="TablePersoPreneursAssuranceTd6" title="@(preneurAssurance.SIREN)">
+                            @preneurAssurance.SIREN
+                        </td>
+                        <td class="TablePersoPreneursAssuranceTd7">
+                            @(preneurAssurance.Sinistre ? "Oui" : "Non")
+                        </td>
+                        <td class="TablePersoPreneursAssuranceTd8">
+                            @(preneurAssurance.RetardsPaiements ? "Oui" : "Non")
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>         
+    }
+</div>
+<div>
+    <table class="field-right Pagination">
+        <tr class="@(Model.IsSinglePage ? "hide-it" : string.Empty)">
+            @if (Model.PageNumber > 1)
+            {
+                <td>
+                    <img id="PreneurAssurancePaginationPremierePage" src="@Url.Content("/Content/Images/1340965186_pagination_1_first.png")" class="CursorPointer" />
+                </td>
+                <td>
+                    <img id="PreneurAssurancePaginationPrecedent" src="@Url.Content("/Content/Images/1340965176_pagination_1_previous.png")" class="CursorPointer" />
+                </td>
+            }
+            else
+            {
+                <td>
+                    <img src="@Url.Content("/Content/Images/1340965186_pagination_1_first_disabled.png")" />
+                </td>
+                <td>
+                    <img src="@Url.Content("/Content/Images/1340965176_pagination_1_previous_disabled.png")" />
+                </td>
+            }
+            <td>
+                <span id="PreneurAssurancePaginationPageActuelle">@Model.PageNumber</span>
+            </td>
+            @if (Model.IsLastPage)
+            {
+                <td>
+                    <img src="@Url.Content("/Content/Images/1340965171_pagination_1_next_disabled.png")" />
+                </td>
+                <td>
+                    <img src="@Url.Content("/Content/Images/1340965180_pagination_1_last_disabled.png")" />
+                </td>
+            }
+            else
+            {
+                <td>
+                    <img id="PreneurAssurancePaginationSuivant" src="@Url.Content("/Content/Images/1340965171_pagination_1_next.png")" class="CursorPointer" />
+                </td>
+                <td>
+                    <img id="PreneurAssurancePaginationDernierePage" src="@Url.Content("/Content/Images/1340965180_pagination_1_last.png")" class="CursorPointer" />
+                </td>
+            }
+            <td class="PageSize">
+                <span id="PreneurAssurancePaginationStart">@Html.DisplayFor(m => m.StartLigne)</span> - <span id="PreneurAssurancePaginationEnd">@Html.DisplayFor(m => m.EndLigne)</span>
+                [total : <span id="PreneurAssurancePaginationTotal">
+                    @if (Model.NbCount > Model.LineCount)
+                    {
+                        @Html.DisplayFor(m => m.LineCount)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(m => m.NbCount)
+                    }
+
+                </span>]
+            </td>
+        </tr>
+        <tr class="@(Model.IsSinglePage ? string.Empty : "hide-it")">
+            <td class="PageSize">
+                [total : <span id="PreneurAssurancePaginationTotal">@Html.DisplayFor(m => m.NbCount)</span>]
+            </td>
+        </tr>
+    </table>
+</div>

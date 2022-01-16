@@ -1,0 +1,47 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleQuittancePage  
+@using ALBINGIA.Framework.Common.Constants
+@Html.HiddenFor(m => m.EffetAnnee)
+@Html.HiddenNoName("hiddenInputId", string.Empty)
+@Html.HiddenFor(m => m.PeriodiciteContrat)
+@Html.Hidden("NatureContrat", (Model.Contrat != null ? Model.Contrat.NatureContrat : string.Empty), new { id = "NatureContrat" })
+<input type="hidden" id="ModeAffichage" name="ModeAffichage" value="@Model.ModeAffichage" albcontext="@(Model.ModeAffichage == "Visu" ? "quitTrans" : string.Empty)" />
+@Html.Hidden("numQuittanceVisu", (Model.NumQuittance))
+@Html.HiddenNoName("ReguleId", (Model.ReguleId))
+@Html.Hidden("ModeAvt", Model.ModAvt)
+@Html.HiddenNoName("MntCalcul", string.Empty)
+<input type="hidden" id ="DateDebEffetContrat" value="@(Model.DateDebEffetContrat.HasValue ? Model.DateDebEffetContrat.Value.ToShortDateString() : string.Empty)" />
+<input type="hidden" id ="DateFinEffetContrat" value="@(Model.DateFinEffetContrat.HasValue ? Model.DateFinEffetContrat.Value.ToShortDateString() : string.Empty)" />
+
+<div class="nGroupFull nGroupWithBorder FloatLeft">
+    <div class="nHorizontalFullWithGroup">
+        <div class="nGradientSection HeightQuittConsult">
+            <span class="CursorPointer navig" id="LienQuittance" name="LienQuittance" title="Visu.Quittance" style="padding-left: 30px">Visu des quittances </span>
+        </div>
+
+    </div>
+</div>
+@Html.HiddenNoName("hiddenActionQuitt", string.Empty)
+<div id="fancyConfirmQuitt" style="display: none;">
+    <table>
+        <tr>
+            <td style="background-color: #EDEDED;" colspan="2">
+                <b>Message de Confirmation</b><br />
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2" valign="middle">
+                <img src="/Content/Images/alertes/notif_icn_warn.png" alt="" />
+            </td>
+            <td>
+                <div id="msgConfirmQuitt" class="FloatLeft FancyTextCenter">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <button type="button" id="btnConfirmCancelQuitt" value="Non" data-accesskey="n"><u>N</u>on</button>
+                <button type="button" id="btnConfirmOkQuitt" value="Oui" data-accesskey="o"><u>O</u>ui</button>
+            </td>
+        </tr>
+    </table>
+</div>

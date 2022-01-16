@@ -1,0 +1,262 @@
+﻿@using ALBINGIA.Framework.Common.Constants
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleSuiviDocumentsPage
+<div class="CommonForm FloatLeft">
+    <div class="nGroupFull nGroupWithBorder" style="width: 1200px;">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        <div class="nHorizontalFullWithGroup" style="width: 1199px;">
+            @Html.Hidden("inDisplayType", (Model.DisplayType))
+            @Html.Hidden("inCodeOffre", (Model.Filtre.CodeOffre))
+            @Html.Hidden("inVersion", (Model.Filtre.Version))
+            @Html.Hidden("inType", (Model.Filtre.Type))
+            @Html.Hidden("splitChar", (ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML))
+            @if (Model.ListSuiviDocuments != null) {
+                if (Model.DisplaySearch) {
+                    if (!string.IsNullOrEmpty(Model.Filtre.Type) && Model.DisplayType == AlbConstantesMetiers.DISPLAY_AFFAIRE) {
+                        <div class="nGradientSection">
+                            <div class="HeightRow PaddingLeft">
+                                <b>@(Model.Filtre.Type == AlbConstantesMetiers.TYPE_OFFRE ? "Offre N° " : "Contrat N°") checked="@(Model.Filtre.CodeOffre)" - @(Model.Filtre.Version)</b>
+                            </div>
+                            <div class="HeightRow None">
+                                <div class="FloatLeft" style="width: 150px;">
+                                    <div class="FloatLeft">
+                                        <label class="Block" style="width: 80px;">Générale</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="radio" id="radioGen" name="radioType" value="@(AlbConstantesMetiers.DISPLAY_GENERAL)" checked="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL )" />
+                                    </div>
+                                </div>
+                                <div class="FloatLeft">
+                                    <div class="FloatLeft">
+                                        <label class="Block" style="width: 80px;">Par Affaire</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="radio" id="radioAff" name="radioType" value="@(AlbConstantesMetiers.DISPLAY_AFFAIRE)" checked="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_AFFAIRE )" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div id="dvFiltres">
+                        <div id="dvGenerale" class="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL ? "HeightRow nGradientSection" : "HeightRow nGradientSection None")">
+                            <div id="dvFiltreUser" class="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL ? "FloatLeft" : "FloatLeft None")">
+                                <div class="FloatLeft">
+                                    <label class="Block" style="width: 95px;">Utilisateur</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="hidden" id="inFiltreUserSelect" name="inFiltreUserSelect" value="" albautocomplete="autoCompUserSelect" />
+                                    <input type="text" id="inFiltreUser" name="inFiltreUser" value="@(Model.Filtre != null ? Model.Filtre.User : string.Empty)" albAutoComplete="autoCompUserNom" />
+                                </div>
+                            </div>
+                            <div id="dvFiltreTypeAff" class="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL ? "FloatLeft" : "FloatLeft None")" style="width: 350px;">
+                                <div class="FloatLeft" style="padding-left: 50px;">
+                                    <label class="Block" style="width: 85px;">Type Affaire</label>
+                                </div>
+                                <div class="FloatLeft" style="padding-left: 10px;">
+                                    <label class="Block" style="width: 30px;">Offre</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="radio" id="inFiltreTypeOffre" name="inFiltreType" value="@(AlbConstantesMetiers.TYPE_OFFRE)" checked="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL && Model.Filtre.Type == AlbConstantesMetiers.TYPE_OFFRE )" />
+                                </div>
+                                <div class="FloatLeft PaddingLeft">
+                                    <label class="Block" style="width: 43px;">Contrat</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="radio" id="inFiltreTypeContrat" name="inFiltreType" value="@(AlbConstantesMetiers.TYPE_CONTRAT)" @(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL && Model.Filtre.Type == AlbConstantesMetiers.TYPE_CONTRAT ? "checked:checked" : string.Empty) />
+                                </div>
+                            </div>
+                            <div id="dvFiltreNumOffre" class="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL ? "FloatLeft" : "FloatLeft None")">
+                                <div class="FloatLeft" style="padding-left: 8px;">
+                                    <label class="Block">Num Offre/Contrat</label>
+                                </div>
+                                <div class="FloatLeft" style="padding-left: 15px;">
+                                    <input type="text" id="inFiltreNumOffreContrat" name="inFiltreNumOffreContrat" style="width: 105px;" value="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL ? Model.Filtre.CodeOffre : string.Empty)" />
+                                </div>
+                                <div class="FloatLeft" style="padding-left: 10px;">
+                                    <input type="text" id="inFiltreVersion" name="inFiltreVersion" style="width: 50px;" value="@(Model.DisplayType == AlbConstantesMetiers.DISPLAY_GENERAL ? Model.Filtre.Version : string.Empty)" class="numerique" albmask="numeric" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="HeightRow nGradientSection">
+                            <div class="FloatLeft">
+                                <label class="Block" style="width: 95px;">N° int.</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="inFiltreAvenant" name="inFiltreAvenant" style="width: 41px;" value="@(Model.Filtre.Avenant >= 0 ? Model.Filtre.Avenant.ToString() : string.Empty)" class="numerique" albmask="numeric" />
+                            </div>
+                            <div class="FloatLeft" style="padding-left: 50px;">
+                                <label class="Block" style="width: 30px;">Lot</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="inFiltreLot" name="inFiltreLot" style="width: 50px;" value="" class="numerique" albmask="numeric" />
+                            </div>
+                            <div class="FloatLeft" style="padding-left: 50px; width: 65px;">
+                                <label class="Block">Situation</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => Model.Situation, Model.Situations, "inFiltreSituation", htmlAttributes: new { id = "inFiltreSituation", name = "inFiltreSituation" }, generateTitle: true, replaceHtmlName: "inFiltreSituation")
+                            </div>
+                            <div class="FloatLeft" style="padding-left: 50px;">
+                                <label class="Block" style="width: 120px;">Date situation entre le</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDateFormat(m => ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(m.Filtre.DateDebSituation), new { @id = "inFiltreSituationDeb", @class = "inputDate datepicker", @name = "inFiltreSituationDeb" }, htmlName: "inFiltreSituationDeb")
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block" style="width: 20px;">et</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="inputDate datepicker" id="inFiltreSituationFin" name="inFiltreSituationFin" value="" />
+                            </div>
+                            <div class="FloatLeft" style="padding-left: 50px;">
+                                <label class="Block">Mode affichage</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => Model.ModeAffichage, Model.ModeAffichages, "inFiltreAffichage", htmlAttributes: new { @id = "inFiltreAffichage", name = "inFiltreAffichage" }, generateTitle: true, genEmptyLine: false, replaceHtmlName: "inFiltreAffichage")
+                            </div>
+                        </div>
+                        <div class="nGradientSection">
+                            <div id="dvExpandCollapse" class="HeightRow CursorPointer">
+                                <div class="FloatLeft">
+                                    <label class="Block" style="width: 120px;"><u>Recherche avancée</u></label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <img id="imgExpandCollapse" src="@Url.Content("/Content/Images/expand.png")" albAction="expand" />
+                                </div>
+                            </div>
+                            <div id="dvRechAvancee" class="None">
+                                <div class="HeightRow">
+                                    <div class="FloatLeft">
+                                        <label class="Block" style="width: 95px;">Unité service</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="inFiltreUnite" name="inFiltreUnite" value="" />
+                                    </div>
+                                    <div class="FloatLeft" style="padding-left: 50px;">
+                                        <label class="Block" style="width: 120px;">Date édition entre le</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" class="inputDate datepicker" id="inFiltreEditionDeb" name="inFiltreEditionDeb" value="" />
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <label class="Block" style="width: 20px;">et</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" class="inputDate datepicker" id="inFiltreEditionFin" name="inFiltreEditionFin" value="" />
+                                    </div>
+                                </div>
+                                <div class="HeightRow">
+                                    <div class="FloatLeft">
+                                        <label class="Block" style="width: 95px;">Type destinataire</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="inFiltreTypeDestinataire" name="inFiltreTypeDestinataire" value="" />
+                                    </div>
+                                    <div class="FloatLeft" style="padding-left: 50px;">
+                                        <label class="Block" style="width: 85px;">Destinataire</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        @Html.Hidden("inFiltreCodeDestinataire", 0)
+                                        <input type="text" id="inFiltreDestinataire" name="inFiltreDestinataire" value="" />
+                                    </div>
+                                    <div class="FloatLeft" style="padding-left: 50px;">
+                                        <label class="Block" style="width: 120px;">Interlocuteur</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="hidden" id="inFiltreCodeInterlocuteur" name="inFiltreCodeInterlocuteur" value="0" albautocomplete="autoCompCodeInterlocuteur" albcontext="suividoc" />
+                                        <input type="text" id="inFiltreInterlocuteur" name="inFiltreInterlocuteur" value="" albautocomplete="autoCompNomInterlocuteur" albcontext="suividoc" />
+                                    </div>
+                                </div>
+                                <div class="HeightRow">
+                                    <div class="FloatLeft">
+                                        <label class="Block" style="width: 95px;">Type document</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="inFiltreTypeDoc" name="inFiltreTypeDoc" value="" />
+                                    </div>
+                                    <div class="FloatLeft" style="padding-left: 50px;">
+                                        <label class="Block" style="width: 85px;">Type courrier</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input type="text" id="inFiltreTypeCour" name="inFiltreTypeCour" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nGradientSection">
+                            <div id="dvButton" style="height: 30px;">
+                                <div class="FloatRight PaddingRight">
+                                    <button id="btnFiltrer" type="button" albshortcut="true" tabindex="29" data-accesskey="h">Rec<u>h</u>ercher</button>
+                                </div>
+                                <div class="FloatRight PaddingRight">
+                                    <button id="btnRAZ" type="button" albshortcut="true" tabindex="29" data-accesskey="n">Réi<u>n</u>itialiser</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div id="dvListDoc" class="nGradientSection" style="height: 323px;">
+                    @if (Model.ListSuiviDocuments.SuiviDocumentsPlat != null) {
+                        @Html.Partial("SuiviDocumentListDoc", Model)
+                    }
+                    else {
+                        <div>Aucun document</div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 1200px;">
+        <div class="ActionButtons ActionButtonLeft">
+        </div>
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnAnnulerSuiviDoc" type="button" albshortcut="true" tabindex="29" data-accesskey="f"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>
+<div id="divMsgSuiviDoc" class="None">
+    <div class="overlay-background" style="z-index:80" ></div>
+    <div id="divDataMsgSuiviDoc">
+        <table width="100%">
+            <tr>
+                <td class="PaddingLeft" style="background-color: #EDEDED;" colspan="2">
+                    <b>Message d'information</b><br />
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" valign="middle" style="width: 50px;">
+                    <img src="/Content/Images/alertes/notif_icn_info.png" alt="" />
+                </td>
+                <td>
+                    <div id="msgSuiviDocInfoReedit" class="FloatLeft FancyTextCenter None">
+                        Vous allez rééditer le document xxNomDocxx xxTypeDocxx xxCodeTypeDocxx
+                        <br />
+                        destiné à xxTypeDestxx xxCodeDestxx xxNomDestxx
+                    </div>
+                    <div id="msgSuiviDocInfoGenerateLot" class="FloatLeft FancyTextCenter None">
+                        Vous allez générer le lot xxLotxx xxLotLibxx
+                        <br />
+                        et imprimer les documents non édités
+                    </div>
+                    <div id="msgSuiviDocInfoPrintLot" class="FloatLeft FancyTextCenter None">
+                        Vous allez imprimer les documents non édités du lot xxLotxx xxLotLibxx
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <button type="button" id="btnConfirmCancelSuiviDoc" data-accesskey="n">An<u>n</u>uler</button>
+                    <button type="button" id="btnConfirmOkSuiviDoc" class="None" value="" data-accesskey="f">Con<u>f</u>irmer</button>
+                    <button type="button" id="btnConfirmGenSuiviDoc" class="None" value="" data-accesskey="g"><u>G</u>énérer</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="divPJDoc" class="None">
+    <div class="overlay-background" style="z-index:80" ></div>
+    <div id="divDataPJDoc"></div>
+</div>
+

@@ -1,0 +1,45 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleActeGestion.ActeGestion>
+@using ALBINGIA.Framework.Common.Tools
+<table id="tblActesGestionBody" class="tableActGesBody">
+    @{ 
+        var prevNum = -999;
+        var prevTypeTraitement = string.Empty;
+        var prevCodeTraitement = string.Empty;
+        var typeAffichage = string.Empty;
+
+        if (Model != null && Model.Count > 0)
+        {
+            foreach (var acte in Model)
+            {
+                typeAffichage = string.Empty;
+                if (prevNum == acte.Numero && prevTypeTraitement == acte.TypeTraitement && prevCodeTraitement == acte.CodeTraitement)
+                {
+                    typeAffichage = "T";
+                }
+                else
+                {
+                    typeAffichage = "A";
+                }
+
+                prevNum = acte.Numero;
+                prevTypeTraitement = acte.TypeTraitement;
+                prevCodeTraitement = acte.CodeTraitement;
+
+                var description = (acte.CodeTraitement == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TRAITEMENT_AFFNV && acte.Numero == 0 ?
+                string.Format("{0} {1}", acte.DateCreation.HasValue ? "Date créat° " + acte.DateCreation.Value.ToString("dd/MM/yyyy") : string.Empty,
+                !string.IsNullOrEmpty(acte.Description) ? acte.Description : string.Empty) : acte.Description);
+            
+        <tr albutilisateur="@(acte.Utilisateur)" albdatetrait="@(AlbConvert.ConvertDateToInt(AlbConvert.ConvertStrToDate(acte.Date)))" albtraitement="@(acte.CodeTraitement)" albtypeaffichage="@(typeAffichage)">
+            <td title="Traité le @acte.Date à @acte.Heure" class="col_ActeDate" style="text-align:center">@acte.Date</td>
+            <td class="col_ActeHeure" style="text-align: center">@acte.Heure</td>
+            <td class="col_ActeNumero" style="text-align: center">@acte.Numero</td>
+            <td class="col_ActeTypeActe">@acte.TypeTraitement</td>
+            <td title="@acte.CodeTraitement" class="col_ActeLibelle">@acte.Libelle</td>
+            <td class="col_ActeDescription" title="@(description)">@(description)</td>
+            <td class="col_ActeUtilisateur" style="text-align: center">@acte.Utilisateur</td>
+        </tr>
+            }
+        }
+    }
+
+</table>

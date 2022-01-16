@@ -1,0 +1,175 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamISAssocier.ParamISModele
+@Html.HiddenNoName("modeAssociation", Model.ModeAssociation.ToString())
+@Html.HiddenNoName("selectedRow", string.Empty)
+<div class="nGradientSection nDivEntete">
+    <div id="divDetailsEnteteTitle" class="SubGroupTitle CursorPointer" title="Agrandir">
+        <div class="FloatLeft">
+            <img id="imgDetailsEnteteTitle" title="" src="@Url.Content("/Content/Images/expand-red-right.png")" />
+        </div>
+        <div class="FloatLeft TxtMenuTitle">
+            @Html.Raw("Détails")
+        </div>
+        <div id="divDetailsEnteteEllipsis" class="FloatLeft TxtMenuTitle ">...</div>
+    </div>
+    <div id="divDetailsEnteteMenu" class="None">
+        @Html.HiddenNoName("codeModele", Model.NomModele)
+        <div class="HeightRow PaddingLeftRow">
+            <div class="FloatLeft">
+                <label class="Block">Nom :</label>
+            </div>
+            <div class="FloatLeft ">
+                <input  class="TxtNomModele readonly" id="nomModele" readonly="readonly" value="@Model.NomModele"/>
+            </div>
+            <div class="FloatLeft ">
+                <label class="Block">Description :</label>
+            </div>
+            <div class="FloatLeft ">
+                <input  class="TxtDescriptionModele readonly" id="descriptionModele" readonly="readonly" value="@Model.Description"/>
+            </div>
+            <div class="FloatLeft ">
+                <label class="Block">Date début :</label>
+            </div>
+            <div class="FloatLeft ">
+                <input  class="TxtDate datepicker" id="dateDebutModele" value="@(Model.DateDebut != 0 ? ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateDebut).Value.ToString("dd/MM/yyyy") : string.Empty)"/>
+            </div>
+            <div class="FloatLeft ">
+                <label class="Block">Date fin :</label>
+            </div>
+            <div class="FloatLeft ">
+                <input  class="TxtDate datepicker" id="dateFinModele" value="@(Model.DateFin != 0 ? ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateFin).Value.ToString("dd/MM/yyyy") : string.Empty)"/>
+            </div>
+        </div>
+        <div class="HeightRow PaddingLeftRow">
+            <div class="FloatLeft ">
+                <label class="Block">Script affichage :</label>
+            </div>
+            <div class="FloatLeft">
+                <div class="FloatLeft TxtSql">
+                    <input class="ReadOnly TxtSql" disabled="disabled" value="@(!string.IsNullOrEmpty(Model.ScriptAffichage) ? Model.ScriptAffichage.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)">
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow PaddingLeftRow">
+            <div class="FloatLeft ">
+                <label class="Block">Script contrôle :</label>
+            </div>
+            <div class="FloatLeft TxtSql">
+                <input class="ReadOnly TxtSql" disabled="disabled" value="@(!string.IsNullOrEmpty(Model.ScriptControle) ? Model.ScriptControle.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)">
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ButtonRight">
+                <button id="btnAnnulerModele" disabled="disabled" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                                         
+                    <button id="btnSupprimerModele" disabled="disabled" type="button" albshortcut="true" data-accesskey="u">S<u>u</u>pprimer</button>         
+                
+                <button id="btnSaveModele" disabled="disabled" type="button" albshortcut="true" data-accesskey="s"><u>S</u>auvegarder</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+@if (Model.ModeAssociation)
+{
+    <div class="nGradientSection nDivEntete">
+        <div id="divLstISLignesModeleTitle" class="SubGroupTitle CursorPointer" title="Agrandir">
+            <div class="FloatLeft">
+                <img id="imgLstISLignesModeleTitle" title="" src="@Url.Content("/Content/Images/expand-red-right.png")" />
+            </div>
+            <div class="FloatLeft TxtMenuTitle">
+                @Html.Raw("Lignes modèle")
+            </div>
+            <div id="divLstISLignesModeleTitleEllipsis" class="FloatLeft TxtMenuTitle">...</div>
+        </div>
+        <div id="divLstISLignesModeleMenu" class="None FloatLeft">
+            <div id="divLignesModeleHeader">
+                <table id="tblLignesModeleHeader" style="table-layout:fixed">
+                    <tr>
+                        <th class="col_Action tablePersoHead">
+                            <img class="Action" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" title="Ajouter" id="ajouterLigneModele" />
+                        </th>
+                        <th class="col_code tablePersoHead" title="Num ligne"></th>
+                        <th class="col_Referentiel tablePersoHead" title="Référentiel">
+                            Référentiel
+                        </th>
+                        <th class="col_Libelle tablePersoHead paddingReadonly" title="Libellé affiché">
+                            Lib.
+                        </th>
+                        <th class="col_NumAff tablePersoHead paddingReadonly" title="N° ordre affichage">
+                            N° aff.
+                        </th>
+                        <th class="col_SautLigne tablePersoHead paddingReadonly" title="Saut de ligne">
+                            St. lgn.
+                        </th>
+                        <th class="col_Modifiable tablePersoHead paddingReadonly" title="Modifiable">
+                            Mod.
+                        </th>
+                        <th class="col_Obligatoire tablePersoHead paddingReadonly" title="Obligatoire">
+                            Requis
+                        </th>
+                        <th class="col_Tcon tablePersoHead paddingReadonly" title="Concept">
+                            Conc.
+                        </th>
+                        <th class="col_Tfam tablePersoHead paddingReadonly" title="Famille">
+                            Fam.
+                        </th>
+                        <th class="col_Presentation tablePersoHead " title="Type présentation">
+                            Prés.
+                        </th>
+                        <th class="col_ScriptAffichage tablePersoHead paddingReadonly" title="Présence script affichage">
+                            Script aff.
+                        </th>
+                        <th class="col_ScriptControle tablePersoHead paddingReadonly" title="Présence script contrôle">
+                            Script cont.
+                        </th>
+                        <th class="col_LienParent tablePersoHead " title="Lien champ parent">
+                            Lnk Parent
+                        </th>
+                        <th class="col_ParentComportement tablePersoHead " title="Parent comportement">
+                            Parent compt.
+                        </th>
+                        <th class="col_ParentEvt tablePersoHead " title="Parent Evénement">
+                            Parent evt.
+                        </th>
+                        <th class="col_Script tablePersoHead " title="Script d'affichage">
+                            Script aff.
+                        </th>
+                        <th class="col_Script tablePersoHead " title="Script de contrôle">
+                            Script ctrl.
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divLignesModeleBody">
+                <div class="floatLeft" id="divLignesModeleBodyEmptyLine">
+                    <table id="tblLignesModeleBodyEmptyLine">
+                        @{                           
+    var albIndexLst = ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST;
+                            <tr id="ligneModeleIS_@(albIndexLst)" name="lineReference">
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <div class="floatLeft" id="divLignesModeleBodyLines">
+                    @if ((Model.ListeLignesModele != null) && (Model.ListeLignesModele.Count > 0))
+                    {                    
+                        @Html.Partial("/Views/ParamISModeleAssocier/ListeISLignesModele.cshtml", Model.ListeLignesModele)                           
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="divInfoBandeau" class="nInfoBandeau">
+    </div>   
+    
+    <div id="divFullScreenSelector">
+        <div class="overlay-background" style="z-index:2" >
+        </div>
+        <div id="divSelectPopup">
+        </div>
+    </div>
+
+ 
+}
+

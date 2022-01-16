@@ -1,0 +1,79 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamTemplates.ModeleLigneTemplate
+@Html.HiddenNoName("modeSaisie", Model.ModeSaisie)
+@Html.HiddenNoName("idTemplateEdit", Model.GuidId)
+<div class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Code template*</label>
+                </div>
+                <div class="FloatLeft">  
+                    <input value="CV" class="readonly codeInputEntete" readonly="readonly" /> 
+                    <input id="codeTemplateEdit" class="codeInput @(Model.ModeSaisie == "Update" ? "readonly" : string.Empty)" value="@(!string.IsNullOrEmpty(Model.CodeTemplate) ? Model.CodeTemplate.Split(new[] { "CV" }, StringSplitOptions.None).Length > 1 ? Model.CodeTemplate.Split(new[] { "CV" }, StringSplitOptions.None)[1] :  Model.CodeTemplate : Model.CodeTemplate)" readonly="@(Model.ModeSaisie == "Update" )" maxlength="7"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Description*</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="descriptionTemplateEdit" class="DoubleInput" value="@Model.DescriptionTemplate" maxlength="60"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Type*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.ModeSaisie == "Update"){
+                        @Html.AlbDropDownListFor(m => Model.TypeTemplate, Model.ListeTypesTemplate, "dvTypeTemplate", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlTypeTemplateEdit", @disabled = "disabled", @class = "readonly" }, replaceHtmlName: "dvTypeTemplate");
+                    }
+                    else if (Model.ModeSaisie == "Insert")
+                    {
+                        @Html.AlbDropDownListFor(m => Model.TypeTemplate, Model.ListeTypesTemplate, "dvTypeTemplate", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlTypeTemplateEdit" }, replaceHtmlName: "dvTypeTemplate")
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Créé le :</label>
+                </div>
+                <div class="FloatLeft">
+                    <label>
+                        @Html.Raw(
+                            string.Format("{0} par {1}",
+                                ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateCreation).HasValue ? @ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateCreation).Value.ToString("dd/MM/yyyy") : "-",
+                                !string.IsNullOrEmpty(Model.UserCreation) ? Model.UserCreation : "-").Replace("- par -",string.Empty)
+                        )
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Modifié le :</label>
+                </div>
+                <div class="FloatLeft">
+                    <label>
+                        @Html.Raw(
+                            string.Format("{0} par {1}",
+                                ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateModification).HasValue ? @ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateModification).Value.ToString("dd/MM/yyyy") : "-",
+                                !string.IsNullOrEmpty(Model.UserModification) ? Model.UserModification : "-").Replace("- par -",string.Empty)
+                        )
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="Validation">
+            <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+        </div>
+    </div>
+</div>

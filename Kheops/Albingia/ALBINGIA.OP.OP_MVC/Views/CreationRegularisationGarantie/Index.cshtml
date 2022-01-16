@@ -1,0 +1,180 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegulGarPage>
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albCreationRegularisationGar.js" }, "~/Scripts/AlbingiaJS/Regularisation/")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vCreationRegularisationGar.css" }, "~/Content/Regularisation/")
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @Html.HiddenNoName("DateDebMin", Model.RegularisationIfoGar.MouvementPeriodeDebMin)
+    @Html.HiddenNoName("DateFinMax", Model.RegularisationIfoGar.MouvementPeriodeFinMax)
+    @Html.HiddenNoName("CodeRsq", Model.RegularisationIfoGar.RegulPeriodDetail.CodeRisque)
+    @Html.HiddenNoName("codefor", Model.RegularisationIfoGar.RegulPeriodDetail.CodeFormule)
+    @Html.HiddenNoName("codegar", Model.RegularisationIfoGar.RegulPeriodDetail.CodeGar)
+    @Html.HiddenNoName("idlot", Model.RegularisationIfoGar.idLot)
+    @Html.HiddenNoName("idregul", Model.RegularisationIfoGar.idregul)
+    @Html.HiddenNoName("libgar", Model.RegularisationIfoGar.RegulPeriodDetail.LibGarantie)
+    @Html.HiddenNoName("hiddenInputId", string.Empty)
+
+    @Html.Partial("LayoutArbreRegule", new { NavTree = Model.NavigationArbre, Step = 0 })
+    @Html.Partial("LayoutInfoTab", Model)
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup ">
+                <div class="nGradientSection divInfoRisque ">
+                    <div id="RisqueInfo" class="HeightRow">
+                        <div class="HeightRow">
+                            <label style="font-weight: bold;">Régularisation Garantie  @(Model.RegularisationIfoGar.RegulPeriodDetail.CodeGar) @(Model.RegularisationIfoGar.RegulPeriodDetail.LibGarantie)  Période générale du @(Model.RegularisationIfoGar.RegulPeriodDetail.DateDebPeriodGeneraleStr)    au  @(Model.RegularisationIfoGar.RegulPeriodDetail.DateFinPeriodGeneraleStr)</label>
+                        </div>
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                @Html.AlbLabelFor(m => m.RegularisationIfoGar.RegulPeriodDetail.RisqueIdentification, "Block")
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="RisqueIdentification" name="RisqueIdentification" readonly="readonly" class="readonly DoubleInput" value="@(Model.RegularisationIfoGar.RegulPeriodDetail.CodeRisque) - @(Model.RegularisationIfoGar.RegulPeriodDetail.RisqueIdentification)" />
+                            </div>
+                        </div>
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft" style="padding-left:20px;">
+                                @Html.AlbLabelFor(m => m.RegularisationIfoGar.RegulPeriodDetail.RegimeTaxe, "Block")
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="RegimetaxeID"  readonly="readonly" class="readonly" value="@(Model.RegularisationIfoGar.RegulPeriodDetail.CodeTaxeRegime.Trim())- @(Model.RegularisationIfoGar.RegulPeriodDetail.RegimeTaxe.Trim())" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection divInfoFormule">
+                    <div class="HeightRow">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                @Html.AlbLabelFor(m => m.RegularisationIfoGar.RegulPeriodDetail.FormuleDescriptif, "Block")
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="GarantieDescriptif" name="GarantieDescriptif"  readonly="readonly"  class=" readonly DoubleInput" value="@(Model.RegularisationIfoGar.RegulPeriodDetail.LettreFor)- @(Model.RegularisationIfoGar.RegulPeriodDetail.FormuleDescriptif)" />
+                            </div>
+                        </div>
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft CursorPointer">
+                                <button type="button" id="btnAppliquer">S'applique à </button>
+                                <div id="divApplique" class="None nInfoBandeau">
+                                    <div class="even" style="width: 410px; padding: 5px;">@string.Format("Risque {0} - {1}", Model.RegularisationIfoGar.AppliqueRegule.Code, Model.RegularisationIfoGar.AppliqueRegule.Designation)</div>
+                                    @foreach (var obj in Model.RegularisationIfoGar.AppliqueRegule.Objets)
+                                    {
+                                        <div class="odd" style="width: 400px; padding: 5px; padding-left: 15px;">@string.Format("Objet {0} - {1}", obj.Code, obj.Designation)
+                                        </div>
+                                    }
+                                    <div class="ActionButtons ActionButtonRight">
+                                        <button id="btnFermerpopup" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                @Html.AlbLabelFor(m => m.RegularisationIfoGar.RegulPeriodDetail.TypeRegul, "Block ")
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="TypeRegul" readonly="readonly" name="TypeRegul" class=" readonly DoubleInput " value="@(Model.RegularisationIfoGar.RegulPeriodDetail.TypeRegul)" />
+                            </div>
+
+                        </div>
+
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft" style="padding-left:20px;">
+                                @Html.AlbLabelFor(m => m.RegularisationIfoGar.RegulPeriodDetail.CodeTaxeGar, "Block")
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="CodeTaxe" readonly="readonly" class=" readonly WidthCode " name="CodeTaxe" value="@(Model.RegularisationIfoGar.RegulPeriodDetail.CodeTaxeGar)" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="nGradientSection divInfoMvt">
+                    <div id="MouvementPeriode" class="HeightRow">
+                        <div class="DoubleGenericColumn">
+
+                            <div class="FloatLeft">
+                                <label>Mouvement sur la période : </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow" id="ListMouvements">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                @Html.Partial("ListeMouvementPeriode", Model.RegularisationIfoGar.ListMvtPeriod)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection divInfoMvt">
+                    <div id="RegulPeriode" class="HeightRow">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                <label>Période(s) à régulariser sur cette garantie :</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow" id="ListePeriodeRegularise">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                @Html.Partial("ListePeriodeRegularise", Model.RegularisationIfoGar.ListPeriodRegulGar)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft WidthAddReg">
+            <div class="nActionButtons ActionButtonRight FloatLeft">
+                @*<button id="btnReguleCancel" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>*@
+                <button id="btnRegulePrecedent" type="button" albshortcut="true" data-accesskey="p"><u>P</u>récédent</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div id="dvAddPeriodRegule">
+    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 3; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div id="dvInfoAddReguleData" class="nGroupFull GroupWithBorder">
+
+        @Html.HiddenNoName("codePeriodeCourant", string.Empty)
+        <div class="HorizontalHalfWithGroupAdmin" style="width: 490px ! important">
+            <div class="GradientSection" style="width: 483px ! important">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        Veuillez saisir la période de Mouvement
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label>Du</label>
+                        <input id="dateDebutNewPeriode" class="inputDate datepicker" value="" />
+                        <label>Au</label>
+                        <input id="dateFinNewPeriode" class="inputDate datepicker" value="" />
+                    </div>
+                </div>
+            </div>
+            <div class="GradientSection ButtonsHeight">
+                <div class="ActionButtonRight" style="width: 490px ! important; padding-right: 10px; padding-top: 6px;">
+                    <button id="btnCancelAddPeriodRegule" type="button">Annuler</button>
+                    <button id="btnValidAddPeriodRegule" type="button">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

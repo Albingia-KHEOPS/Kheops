@@ -1,0 +1,9 @@
+﻿C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\Exceptions\BusinessErrorContext.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\Exceptions\BusinessErrorType.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\Exceptions\BusinessException.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\Exceptions\BusinessValidationException.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\Exceptions\RelationError.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\Exceptions\ValidationError.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\Exceptions\ValidationErrorBasic.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\Properties\AssemblyInfo.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\Framework\Albingia.Kheops.Common\TypeRelation.cs

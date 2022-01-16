@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{94E19A5F-60AC-48B8-A8E1-B67C0DDFC53C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Albingia.Kheops.OP.DataAdapter</RootNamespace>
+    <AssemblyName>Albingia.Kheops.OP.DataAdapter</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>latest</LangVersion>
+    <CodeAnalysisRuleSet>..\..\Rule Sets\Kheops.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.FluentMap, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.FluentMap.1.6.0\lib\net451\Dapper.FluentMap.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.5.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FastMember.Signed.1.5.0\lib\net461\FastMember.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="Mapster, Version=3.2.0.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mapster.3.2.0\lib\net45\Mapster.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.EasycomClient, Version=2.0.0.6, Culture=neutral, PublicKeyToken=32fd8354c170411b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\System.Data.EasycomClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ServiceMetierOP\OP.DataAccess\Helper\OutilsHelper.cs">
+      <Link>Helpers\OutilsHelper.cs</Link>
+    </Compile>
+    <Compile Include="ClauseRepository.cs" />
+    <Compile Include="ConnexiteRepository.cs" />
+    <Compile Include="DataModel\DataRepo\BaseTableRepository.cs" />
+    <Compile Include="DataModel\DataRepo\HpctrleRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KCanevRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpGaranRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpRguGRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpRguRRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpRguWpRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpSelWRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KCheminRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KClauseRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpCopDcRepository.cs" />
+    <Compile Include="DataModel\DataRepo\KpCopDcRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocLdWRepository.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocLdRepository.cs" />
+    <Compile Include="DataModel\DataRepo\KpSelWRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YCourtNRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YCourtNRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YplmgaRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YpltGaaRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YpltGalRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YpltGarRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YpoTracRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoTracRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YPrimGaRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YPriPGaRepository.generated.cs" />
+    <Compile Include="DataModel\DTO\KCanev.generated.cs" />
+    <Compile Include="DataModel\DTO\KCanevMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KChemin.generated.cs" />
+    <Compile Include="DataModel\DTO\KCheminMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KClause.generated.cs" />
+    <Compile Include="DataModel\DTO\KClauseMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCopDc.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCopDcMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguR.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguRMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpSelW.generated.cs" />
+    <Compile Include="DataModel\DTO\KpSelWMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YCourtN.generated.cs" />
+    <Compile Include="DataModel\DTO\YCourtNMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoPrime.cs" />
+    <Compile Include="DataModel\DTO\YpoPrimeRetard.cs" />
+    <Compile Include="DataModel\DTO\YpoSinist.cs" />
+    <Compile Include="DataModel\DTO\YpoTrac.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoTracMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YPrime.generated.cs" />
+    <Compile Include="DataModel\DTO\YPrimeMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YPrimGa.generated.cs" />
+    <Compile Include="DataModel\DTO\YPrimGaMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YPriPGa.generated.cs" />
+    <Compile Include="DataModel\DTO\YPriPGaMapper.generated.cs" />
+    <Compile Include="DataModel\Interface\IKpDocLdRepository.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocWRepository.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocRepository.cs" />
+    <Compile Include="DataModel\Interface\IKpDocRepository.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocLWRepository.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocLRepository.cs" />
+    <Compile Include="DataModel\Interface\IKpDocLRepository.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocExtRepository.generated.cs" />
+    <Compile Include="DataModel\DTO\KpDocExt.generated.cs" />
+    <Compile Include="DataModel\DTO\KpDocExtMapper.generated.cs" />
+    <Compile Include="DocumentRepository.cs" />
+    <Compile Include="DataModel\DataRepo\HjobsortiRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HjobsortiRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\HpclauseRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpcotgaRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpcotisRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpctrleRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpctrlRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpdesiRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpengfamRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpenggarRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpengRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpengrsqRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpengvenRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpentRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpexpfrhdRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpexpfrhRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpexplcidRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpexplciRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpforRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpgaranRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpgaranRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\HpgarapRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpgartarRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpinvappRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpinvedRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpinvenRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpioptRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpirsgaRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpirsobRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\HpirsobRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HPISValRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpmatffRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpmatflRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpmatfrRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpmatggRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpmatglRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpmatgrRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpobjRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpobsvRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpoppapRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpoppRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpoptapRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpoptdRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpoptRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HprsqRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\HpsuspRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\IdentifierGenerator.cs" />
+    <Compile Include="DataModel\DataRepo\KblocRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KblorelRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KcatblocRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KcatmodeleRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KcatvoletRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KcibleRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KcliblefRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KDesiRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KedilogRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KExpFrhDRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KExpFrhRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KExpLciDRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KExpLciRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KFiltreRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KFiltrLRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KganparRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KGaranRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KGarFamRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KInvTypRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KISModlRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KISModRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KISModlRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KISRefRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KJobSortiRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KJobSortiRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KnmGriRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KnmRefRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KnmValfRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpAvTrcRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpClauseRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpClauseRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpCopidRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpCotgaRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpCotisRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpCtrlARepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpCtrlERepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpCtrlERepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpCtrlRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpDesiRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpDesiRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpdoblsRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocLdRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpdocldwRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpdoclRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpdoclwRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpDocRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpdocwRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpEngFamRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpEngGarRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpEngRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpEngRsqRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpEngVenRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpEntRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpEntRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpExpFrhDRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpExpFrhRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpExpFrhRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpExpLCIDRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpExpLCIRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpExpLCIRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpForRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpForRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpGaranRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpGarApRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpGarTarRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpInvAppRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpInvAppRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpInveDRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpInveDRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpInvenRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpIoptRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpIrSGaRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpIrsObRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpIrsObRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KPISValRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpMatFfRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpMatFlRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpMatFrRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpMatGgRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpMatGlRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpMatGrRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpObjRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpObsvRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOdblsRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOfEntRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOfOptRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOfRsqRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOfTarRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOppApRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOppRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpoptapDtoRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOptApRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOptDRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOptDRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpOptRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpOptRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpRguGRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpRguRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpRguWeRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpRguWpRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpRsqRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KpRsqRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KpSuspRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KPTraceRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KPTraceRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KReavenRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KUsrDrtRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KVerrouRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\KVerrouRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\KVoletRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\UtilisateurRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YAdressRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YAdressRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YAssNomRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YAssureRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YcategoRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YcourriRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YcourtiRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YcourtiRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YhpassuRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhpassxRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhpassxRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YhpbaseRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhpcoasRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhpcoasRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YhpconxRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhpconxRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YhpcourRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhpecheRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhpinteRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtadrRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtentRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtfooRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtfooRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtforRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtgarRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtobjRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtobtRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YhrtrsqRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YparRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YPlmgaRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpltGaaRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpltGalRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpltGarRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoAssuRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoAssxRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoAssxRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YpoBaseRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoBaseRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YpoCoasRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoCoasRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YpoConxRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoCourRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoEcheRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YpoInteRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YPrimeRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YPrimeRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YprtAdrRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YprtEntRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YprtFooRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YprtForRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YprtGarRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YprtObjRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YprtObtRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YprtPerRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YprtRsqRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YsincouRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YSinCumRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YSinCumRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YSinistRepository.generated.cs" />
+    <Compile Include="DataModel\DataRepo\YSinistRepository.partial.cs" />
+    <Compile Include="DataModel\DataRepo\YyyyParRepository.generated.cs" />
+    <Compile Include="DataModel\DTO\Config.generated.cs" />
+    <Compile Include="DataModel\DTO\CourrierContrat.generated.cs" />
+    <Compile Include="DataModel\DTO\CourrierContratMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\CourrierSinistreContrat.generated.cs" />
+    <Compile Include="DataModel\DTO\CourrierSinistreContratMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Courtier.generated.cs" />
+    <Compile Include="DataModel\DTO\CourtierMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\DocContrat.generated.cs" />
+    <Compile Include="DataModel\DTO\DocContratMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\DocLot.generated.cs" />
+    <Compile Include="DataModel\DTO\DocLotMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kbloc.generated.cs" />
+    <Compile Include="DataModel\DTO\KblocMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kblorel.generated.cs" />
+    <Compile Include="DataModel\DTO\KblorelMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kcatbloc.generated.cs" />
+    <Compile Include="DataModel\DTO\KcatblocMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KCatBloc_BrancheCible.generated.cs" />
+    <Compile Include="DataModel\DTO\KCatBloc_BrancheCibleMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kcatmodele.generated.cs" />
+    <Compile Include="DataModel\DTO\KcatModeleBrancheCible.generated.cs" />
+    <Compile Include="DataModel\DTO\KcatModeleBrancheCibleMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KcatmodeleMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kcatvolet.generated.cs" />
+    <Compile Include="DataModel\DTO\KcatvoletMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KcatVolet_BrancheCible.generated.cs" />
+    <Compile Include="DataModel\DTO\KcatVolet_BrancheCibleMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kcible.generated.cs" />
+    <Compile Include="DataModel\DTO\KcibleMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kcliblef.generated.cs" />
+    <Compile Include="DataModel\DTO\KcliblefMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KDesi.generated.cs" />
+    <Compile Include="DataModel\DTO\KDesiMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kedilog.generated.cs" />
+    <Compile Include="DataModel\DTO\KedilogMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KExpFrh.generated.cs" />
+    <Compile Include="DataModel\DTO\KExpFrhD.generated.cs" />
+    <Compile Include="DataModel\DTO\KExpFrhDMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KExpFrhMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KExpLci.generated.cs" />
+    <Compile Include="DataModel\DTO\KExpLciD.generated.cs" />
+    <Compile Include="DataModel\DTO\KExpLciDMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KExpLciMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KFiltre.generated.cs" />
+    <Compile Include="DataModel\DTO\KFiltreMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KFiltrL.generated.cs" />
+    <Compile Include="DataModel\DTO\KFiltrLMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kganpar.generated.cs" />
+    <Compile Include="DataModel\DTO\KganparMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KGaran.generated.cs" />
+    <Compile Include="DataModel\DTO\KGaranMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KGarFam.generated.cs" />
+    <Compile Include="DataModel\DTO\KGarFamMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KInvTyp.generated.cs" />
+    <Compile Include="DataModel\DTO\KInvTypMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KISMod.generated.cs" />
+    <Compile Include="DataModel\DTO\KISModl.generated.cs" />
+    <Compile Include="DataModel\DTO\KISModlMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KISModMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KISRef.generated.cs" />
+    <Compile Include="DataModel\DTO\KISRefMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KJobSorti.generated.cs" />
+    <Compile Include="DataModel\DTO\KJobSortiMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KnmGri.generated.cs" />
+    <Compile Include="DataModel\DTO\KnmGriMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KnmRef.generated.cs" />
+    <Compile Include="DataModel\DTO\KnmRefMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KnmValf.generated.cs" />
+    <Compile Include="DataModel\DTO\KnmValfMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpAvTrc.generated.cs" />
+    <Compile Include="DataModel\DTO\KpAvTrcMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpClause.generated.cs" />
+    <Compile Include="DataModel\DTO\KpClauseMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCopid.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCopidMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCotga.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCotgaMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCotis.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCotisMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCtrl.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCtrlA.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCtrlAMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCtrlE.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCtrlEMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpCtrlMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpDesi.generated.cs" />
+    <Compile Include="DataModel\DTO\KpDesiMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kpdobls.generated.cs" />
+    <Compile Include="DataModel\DTO\KpdoblsMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kpdobls_Liste.generated.cs" />
+    <Compile Include="DataModel\DTO\Kpdobls_ListeMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpDoc.generated.cs" />
+    <Compile Include="DataModel\DTO\Kpdocl.generated.cs" />
+    <Compile Include="DataModel\DTO\KpDocLd.generated.cs" />
+    <Compile Include="DataModel\DTO\KpDocLdMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpdoclMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpDocMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEng.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngFam.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngFamMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngGar.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngGarMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngRsq.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngRsqMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngVen.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEngVenMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEnt.generated.cs" />
+    <Compile Include="DataModel\DTO\KpEntMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpExpFrh.generated.cs" />
+    <Compile Include="DataModel\DTO\KpExpFrhD.generated.cs" />
+    <Compile Include="DataModel\DTO\KpExpFrhDMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpExpFrhMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpExpLCI.generated.cs" />
+    <Compile Include="DataModel\DTO\KpExpLCID.generated.cs" />
+    <Compile Include="DataModel\DTO\KpExpLCIDMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpExpLCIMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpFor.generated.cs" />
+    <Compile Include="DataModel\DTO\KpForMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpGaran.generated.cs" />
+    <Compile Include="DataModel\DTO\KpGaranMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Kpgaran_GarContrat.generated.cs" />
+    <Compile Include="DataModel\DTO\Kpgaran_GarContratMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpGarAp.generated.cs" />
+    <Compile Include="DataModel\DTO\KpGarApMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpGarTar.generated.cs" />
+    <Compile Include="DataModel\DTO\KpGarTarMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpInvApp.generated.cs" />
+    <Compile Include="DataModel\DTO\KpInvAppMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpInveD.generated.cs" />
+    <Compile Include="DataModel\DTO\KpInveDMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpInven.generated.cs" />
+    <Compile Include="DataModel\DTO\KpInvenMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpIopt.generated.cs" />
+    <Compile Include="DataModel\DTO\KpIoptMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpIrSGa.generated.cs" />
+    <Compile Include="DataModel\DTO\KpIrSGaMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpIrsOb.generated.cs" />
+    <Compile Include="DataModel\DTO\KpIrsObMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KPISVal.generated.cs" />
+    <Compile Include="DataModel\DTO\KPISValMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatFf.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatFfMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatFl.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatFlMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatFr.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatFrMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatGg.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatGgMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatGl.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatGlMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatGr.generated.cs" />
+    <Compile Include="DataModel\DTO\KpMatGrMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpObj.generated.cs" />
+    <Compile Include="DataModel\DTO\KpObjMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpObsv.generated.cs" />
+    <Compile Include="DataModel\DTO\KpObsvMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOdbls.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOdblsMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOfEnt.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOfEntMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOfOpt.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOfOptMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOfRsq.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOfRsqMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOfTar.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOfTarMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOpp.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOppAp.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOppApMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOppMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOpt.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOptAp.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOptApMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOptD.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOptDMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpOptMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRgu.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguG.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguGMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguWe.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguWeMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguWp.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRguWpMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRsq.generated.cs" />
+    <Compile Include="DataModel\DTO\KpRsqMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KpSusp.generated.cs" />
+    <Compile Include="DataModel\DTO\KpSuspMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KPTrace.generated.cs" />
+    <Compile Include="DataModel\DTO\KPTraceMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KReaven.generated.cs" />
+    <Compile Include="DataModel\DTO\KReavenMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KUsrDrt.generated.cs" />
+    <Compile Include="DataModel\DTO\KUsrDrtMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KVerrou.generated.cs" />
+    <Compile Include="DataModel\DTO\KVerrouMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\KVolet.generated.cs" />
+    <Compile Include="DataModel\DTO\KVoletMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Utilisateur.generated.cs" />
+    <Compile Include="DataModel\DTO\UtilisateurMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Utilisateur_ListeNom.generated.cs" />
+    <Compile Include="DataModel\DTO\Utilisateur_ListeNomMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YAdress.generated.cs" />
+    <Compile Include="DataModel\DTO\YAdressMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YAssNom.generated.cs" />
+    <Compile Include="DataModel\DTO\YAssNomMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YAssure.generated.cs" />
+    <Compile Include="DataModel\DTO\YAssureMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Ycatego.generated.cs" />
+    <Compile Include="DataModel\DTO\YcategoMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Ycourri.generated.cs" />
+    <Compile Include="DataModel\DTO\YcourriMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Ycourti.generated.cs" />
+    <Compile Include="DataModel\DTO\YcourtiMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Ypar.generated.cs" />
+    <Compile Include="DataModel\DTO\YparMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YPlmga.generated.cs" />
+    <Compile Include="DataModel\DTO\YPlmgaMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpltGaa.generated.cs" />
+    <Compile Include="DataModel\DTO\YpltGaaMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpltGal.generated.cs" />
+    <Compile Include="DataModel\DTO\YpltGalMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpltGar.generated.cs" />
+    <Compile Include="DataModel\DTO\YpltGarMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoAssu.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoAssuMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoAssx.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoAssxMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoBase.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoBaseMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoCoas.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoCoasMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoConx.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoConxMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoCour.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoCourMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoEche.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoEcheMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoInte.generated.cs" />
+    <Compile Include="DataModel\DTO\YpoInteMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtAdr.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtAdrMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtEnt.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtEntMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtFoo.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtFooMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtFor.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtForMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtGar.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtGarMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtObj.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtObjMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtObt.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtObtMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtPer.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtPerMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtRsq.generated.cs" />
+    <Compile Include="DataModel\DTO\YprtRsqMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\Ysincou.generated.cs" />
+    <Compile Include="DataModel\DTO\YsincouMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YSinCum.generated.cs" />
+    <Compile Include="DataModel\DTO\YSinCumMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YSinist.generated.cs" />
+    <Compile Include="DataModel\DTO\YSinistMapper.generated.cs" />
+    <Compile Include="DataModel\DTO\YyyyPar.generated.cs" />
+    <Compile Include="DataModel\DTO\YyyyParMapper.generated.cs" />
+    <Compile Include="DataModel\ProgramRepo\As400Programs.cs" />
+    <Compile Include="GarantieRepository.cs" />
+    <Compile Include="InfosSpecifiquesRepository.cs" />
+    <Compile Include="NomsCourtiersRepository.cs" />
+    <Compile Include="ObservationRepository.cs" />
+    <Compile Include="TraceRepository.cs" />
+    <Compile Include="RegularisationRepository.cs" />
+    <Compile Include="RelancesRepository.cs" />
+    <Compile Include="SuspensionRepository.cs" />
+    <Compile Include="TransverseRepository.cs" />
+    <Compile Include="AffaireRepository.cs" />
+    <Compile Include="OppositionRepository.cs" />
+    <Compile Include="ControleRepository.cs" />
+    <Compile Include="ConnectionExtension.cs" />
+    <Compile Include="AdresseRepository.cs" />
+    <Compile Include="EacParameterExtension.cs" />
+    <Compile Include="DesignationRepository.cs" />
+    <Compile Include="OffreRepository.cs" />
+    <Compile Include="SinistreRepository.cs" />
+    <Compile Include="PrimeRepository.cs" />
+    <Compile Include="EngagementRepository.cs" />
+    <Compile Include="InformationSpecifiqueRepository .cs" />
+    <Compile Include="QuittanceRepository.cs" />
+    <Compile Include="RawDataFilter.cs" />
+    <Compile Include="RisqueRepository.cs" />
+    <Compile Include="UserRepository.cs" />
+    <Content Include="FormuleHistoRepository.cs" />
+    <Compile Include="FormuleRepository.injection.cs" />
+    <Compile Include="FormuleRepository.cleanups.cs" />
+    <Compile Include="FormuleRepository+RawData.cs" />
+    <Compile Include="InventaireRepository.cs" />
+    <Compile Include="FormuleRepository.cs" />
+    <Compile Include="ParameterRepository.cs" />
+    <Compile Include="RefRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ParametrageModelesRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj">
+      <Project>{A98A2815-A24C-4E02-891E-8B802EE892EA}</Project>
+      <Name>ALBINGIA.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Albingia.Kheops.Common\Albingia.Kheops.Common.csproj">
+      <Project>{7919e1a0-1894-4262-be0c-71cc06369408}</Project>
+      <Name>Albingia.Kheops.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceMetierOP\OP.WSAS400.DTO\OP.WSAS400.DTO.csproj">
+      <Project>{583328B5-C77A-40B6-A9CC-E74BDB583AFB}</Project>
+      <Name>OP.WSAS400.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Albingia.Kheops.OP.Application.Contracts\Albingia.Kheops.OP.Application.Contracts.csproj">
+      <Project>{4e616268-d872-424b-9fc6-6f89a7310fa0}</Project>
+      <Name>Albingia.Kheops.OP.Application.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Albingia.Kheops.OP.Application\Albingia.Kheops.OP.Application.csproj">
+      <Project>{8ebc1eb5-0c73-4857-906a-cf38d5dadaa6}</Project>
+      <Name>Albingia.Kheops.OP.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Albingia.Kheops.OP.Domain\Albingia.Kheops.OP.Domain.csproj">
+      <Project>{e00e8b1d-08a8-4a8d-b086-6517e83262b4}</Project>
+      <Name>Albingia.Kheops.OP.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Compile Include="RisqueRepository.igdep.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="..\AssemblyVersion\AssemblyVersion.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

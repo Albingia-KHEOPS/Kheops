@@ -1,0 +1,12 @@
+﻿
+@Url.IncludeKoComponent("paging-buttons")
+@Url.IncludeKoComponent("sinistres-preneur")
+@Url.IncludeKoComponent("impayes-preneur")
+@Url.IncludeKoComponent("retards-paiement-preneur")
+@Url.IncludeKoComponent("alertes-preneur")
+
+@AlbAddCssJsScripts.AlbAddJsToViews(
+    new UrlHelper(ViewContext.RequestContext),
+    new[] { "alertes-preneurs.js" },
+    "~/Scripts/AlbingiaJS/",
+    false)

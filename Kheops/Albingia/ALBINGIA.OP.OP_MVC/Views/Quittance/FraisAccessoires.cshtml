@@ -1,0 +1,102 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.FraisAccessoires
+<div class="CommonForm FloatLeft">
+    <div class="nHorizontalFullWithGroup WidthGroupFraisAccessoires">
+        <div class="nGradientSection FraisAccessoiresGradientSection">
+            <div class="HeightRow">
+                <label><u>Frais accessoires et FGA automatiques</u> : utilisés pour les différentes émissions automatiques (termes) du contrat </label>
+            </div>
+            <div class="HeightRow">
+                <div class="ColumnTypesFrais">
+                    <div class="FloatLeft">
+                        <label class="Block">Type de frais</label>
+                    </div>
+                    @if (Model.IsReadOnly && !Model.IsModifHorsAvn)
+                    {
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.TypeFrais, Model.TypesFrais, "TypeFrais", htmlAttributes: new { @id = "TypeFrais", @class = "DDLTypesFrais readonly", @albCFList = "fraisAcc", @disabled = "disabled" }, generateTitle: true, genEmptyLine: false)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.TypeFrais, Model.TypesFrais, "TypeFrais", htmlAttributes: new { @id = "TypeFrais", @class = "DDLTypesFrais", @albCFList = "fraisAcc", @albhorsavn = "" }, generateTitle: true, genEmptyLine: false)
+                        </div>
+                    }
+                </div>
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Frais standards</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.TypeFrais == "S" && !string.IsNullOrEmpty(Model.ModifFraisStd) && (!Model.IsReadOnly || Model.IsModifHorsAvn))
+                        {
+                            <input type="text" id="FraisStandards" albhorsavn name="FraisStandards" albMask="numeric" class="decimal" value="@(Model.FraisStandards)" albModifStd="@(Model.ModifFraisStd)" />
+                        }
+                        else
+                        {
+                            <input type="text" id="FraisStandards" name="FraisStandards" readonly="readonly" albMask="numeric" class="readonly decimal" value="@(Model.FraisStandards)" albModifStd="@(Model.ModifFraisStd)" />
+                        }
+                    </div>
+                </div>
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Frais retenus</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.IsReadOnly && !Model.IsModifHorsAvn)
+                        {
+                            <input type="text" class="decimal" albMask="numeric" id="FraisRetenus" disabled="disabled" name="FraisRetenus" value="@(Model.FraisRetenus)" />
+                        }
+                        else
+                        {
+                            <input type="text" class="decimal" albMask="numeric" id="FraisRetenus" albhorsavn name="FraisRetenus" value="@(Model.FraisRetenus)" />
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                @*  sab bug 2567 *@
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">FGA</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="TaxeAttentat" name="TaxeAttentat" disabled="@(Model.IsReadOnly )" checked="@(Model.TaxeAttentat )" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow PaddingCommentaires">
+                <div class="FloatLeft">
+                    <label class="Block">Commentaires</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.HiddenFor(m => m.CodeCommentaires)
+                    @if (Model.IsReadOnly && !Model.IsModifHorsAvn)
+                    {
+                        <div id="CommentairesFraisAcc" style="width: 410px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Commentaires)</div>
+
+                    }
+                    else
+                    {
+                        <textarea id="CommentairesFraisAcc" name="Commentaires" tabindex="6" class="NonReprisCP" style="width: 357px" rows="2">@Model.Commentaires</textarea>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupWithBorder ButtonsHeight DivButtons">
+        <div class="ActionButtons ActionButtonRight">
+            @if (!Model.IsReadOnly || Model.IsModifHorsAvn)
+            {
+                <button id="btnFermerFraisAccessoires" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnValiderFraisAccessoires" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            }
+            else
+            {
+                <button id="btnFermerFraisAccessoires" type="button" albshortcut="true" data-accesskey="e">F<u>e</u>rmer</button>
+            }
+        </div>
+    </div>
+</div>

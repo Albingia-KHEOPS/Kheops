@@ -1,0 +1,160 @@
+﻿.HeightMontantsReference
+{
+    /*height: 375px;*/
+    height: 424px;
+    padding-left: 5px;
+}
+
+#tblMontantsReferenceHeader tr, #tblMontantsReferenceBody tr
+{
+    height: 1px !important;
+}
+
+.tabMontantRef
+{
+    table-layout: fixed;
+    width: 766px;
+}
+
+.col_HeaderFormule
+{
+    width: 50px;
+}
+
+.col_Formule
+{
+    width: 52px;
+    text-align: center;
+}
+
+.col_HeaderRisque
+{
+    width: 462px;
+
+}
+.col_HeaderMntProv
+{
+    width: 70px;
+
+}
+.col_BtnMntProv
+{
+    width: 73px;
+    text-align: center;
+}
+
+.col_Risque
+{
+    width: 459px;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_HeaderMontantCalcule
+{
+    width: 119px;
+}
+
+.col_MontantCalcule
+{
+    width: 119px;
+    padding-right: 5px;
+}
+
+.col_HeaderMontantForce
+{
+    width: 119px;
+}
+
+.col_MontantForce
+{
+    width: 118px;
+    padding-right: 5px;
+}
+
+.col_HeaderAcquis
+{
+    width: 122px;
+}
+
+.col_Acquis
+{
+    width: 120px;
+    padding-right: 5px;
+}
+
+.col_HeaderButtons
+{
+    width: 28px;
+}
+
+.col_Buttons
+{
+    width: 30px;
+    text-align: center;
+}
+
+#divModifMontantFormule
+{
+    display: none;
+}
+
+#divDataModifMontantFormule
+{
+    position: absolute;
+    top: 50px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 247px;
+    width: 388px;
+}
+
+#divModifMontantTotal
+{
+    display: none;
+}
+
+#divDataModifMontantTotal
+{
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 245px;
+    width: 387px;
+}
+
+.WidthLabelDivFlottante
+{
+    width: 130px;
+}
+
+.TrTotal
+{
+    background-color: #DDDDDD !important;
+}
+
+.LabelMntTotal
+{
+    font-weight: bold;
+}
+
+.LabelDateAu
+{
+    float: left;
+    width: 27px !important;
+}
+
+.dvMontantsReferenceBody
+{
+    max-height: 350px;
+    overflow-y: auto;
+}

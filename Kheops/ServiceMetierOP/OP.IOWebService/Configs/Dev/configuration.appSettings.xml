@@ -1,0 +1,72 @@
+﻿<appSettings>
+  <add key="GeolocIdColumn" value="KGEOCHR" />
+  <add key="AppInsightsTraceDebug" value="false" />
+  <add key="AppInsightInstrumntationKey" value="38e1e4f3-a09e-4377-af8b-f42a2328dae5" />
+  <!-- Environnement de travail-->
+  <add key="EnvironnementDeploiment" value="DEV" />
+  <add key="InternalApplicationId" value="OPServices" />
+  <!--clé permettant d'appeler les PGM400 (1) ou non (0)-->
+  <add key="CallPGM400" value="0"/>
+  <!--KheoBridge Keys-->
+  <add key="repertoireTravail" value="\\files01\kheops\Dev\Clausier\"/>
+  <add key="repertoireDocuments" value="\\Files01\Kheops\Dev\Docs\"/>
+  <add key="XmlObjectPath" value="C:\Work\Clients\Albingia\KheopsProduction\KheoBridge\ObjetMetierMapping.xml"/>
+  <add key="RepertoireClausier" value="\\files01\kheops\Dev\Clausier\"/>
+  <add key="RepertoireCpGeneree" value="C:\EdiKheops\Dev\DocGen\"/>
+  <add key="RepertoireClauseTemp" value="\\files01\kheops\Dev\Temp\"/>
+  <add key="RepertoireAideKheoTalk" value="\\files01\kheops\Commun\AideKheoTalk\"/>
+  <add key="NouvelleVersion" value="vrai"/>
+  <add key="PgmDocEnPdf" value="C:\AlbinVs\KheoDocEnPdf\KheoGenPdf.exe"/>
+  <add key="FeuilleStyle" value="\\files01\kheops\Commun\Clauses\AlbingiaStyle.dotx"/>
+  <add key="SQLFolder" value="CopyCanevas"/>
+  <add key="PowerShellPgm" value="psCopyCanevas.ps1"/>
+  <add key="PowershellPath" value="C:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe"/>
+  <add key="PaginationSize" value="20" />
+  <add key="KISVALBypassMandatory" value="true" />
+  <add key="AllowHPISVALInsert" value="true" />
+
+  <!--<add key="KheoBridgeUrl" value=""/>-->
+
+  <!--<add key="KheoBridgeUrl" value="http://editique.ws.real.albingia.local/KheoBridge.asmx"/>-->
+  <!--Support-->
+  <!--<add key="KheoBridgeUrl" value="http://editique.ws.support.albingia.local/KheoBridge.asmx"/>-->
+  <!--HotFix-->
+  <!--<add key="KheoBridgeUrl" value="http://editique.ws.hotfix.albingia.local/KheoBridge.asmx"/>-->
+  <!--Qualif-->
+  <add key="KheoBridgeUrl" value="http://editique.ws.recette.albingia.local/KheoBridge.asmx"/>
+  <!--Formation-->
+  <!--<add key="KheoBridgeUrl" value="http://editique.ws.formation.albingia.local/KheoBridge.asmx"/>-->
+  <!--Preprod-->
+  <!--<add key="KheoBridgeUrl" value="http://editique.ws.preprod.albingia.local/KheoBridge.asmx"/>-->
+  <!--Production-->
+  <!--<add key="KheoBridgeUrl" value="http://kheobridge.production.albingia.local/KheoBridge.asmx"/>-->
+  <!--Serveur Test New Version-->
+  <!--<add key="KheoBridgeUrl" value="http://KheoBridge2:8089/KheoBridge.asmx"/>-->
+
+  <!--<add key="UrlServeurPush" value="http://push.ws.real.albingia.local/signalr/hubs/"/>-->
+  <!--Support-->
+   <!--<add key="UrlServeurPush" value="http://push.ws.support.albingia.local/signalr/hubs/"/>-->
+
+  <!--HotFix-->
+  <!--<add key="UrlServeurPush" value="http://push.ws.hotfix.albingia.local/signalr/hubs/"/>-->
+  <!--Qualif-->
+  <add key="UrlServeurPush" value="http://push.ws.recette.albingia.local/signalr/hubs/"/>
+  <!--Formation-->
+  <!--<add key="UrklServeurPush" value="http://push.ws.formation.albingia.local/signalr/hubs/"/>-->
+  <!--Preprod-->
+  <!--<add key="UrlServeurPush" value="http://push.ws.preprod.albingia.local/signalr/hubs/"/>-->
+  <!--Production-->
+  <!--<add key="UrlServeurPush" value="http://push.production.albingia.local/signalr/hubs/"/>-->
+  <!--LAB/LAT-->
+  <add key="UrlLablatWebApi" value="http://lab.albingia.local:88/Recette/WebApi/"/>
+  <add key="UrlVerificationPartenaire" value="api/Search"/>
+  <add key="UrlRESTwsadel" value="http://adelia:8080/wsadelrec/rest/Calcul/ProvisionsPrevisionsChargement" />
+  <add key="LablatTimeOut" value="5"/><!--Par défaut 5 s-->
+
+  <!-- Grp Web Service -->
+  <add key="grpBaseUrl" value="https://grp365.albingia.fr/Albingia/main.aspx"/>
+  <add key="grpServiceUrl" value="https://grp365.albingia.fr/Albingia/api/data/v8.2/"/>
+  <add key="grpUserName" value="userlab"/>
+  <add key="grpPassword" value="userlab"/>
+  <!-- End Grp Web Service -->
+</appSettings>

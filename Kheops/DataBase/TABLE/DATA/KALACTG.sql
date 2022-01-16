@@ -1,0 +1,21 @@
+﻿CREATE TABLE ZALBINKHEO.KALACTG ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KALACTG de ZALBINKHEO ignoré. 
+--  SQL1506   30   Clé ou attribut ignoré pour KALACTG de ZALBINKHEO. 
+	KEGID NUMERIC(15, 0) NOT NULL DEFAULT 0 , 
+	KEGSERV CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KEGACTG CHAR(10) CCSID 297 NOT NULL DEFAULT '' )   
+	RCDFMT FALACTG    ; 
+  
+LABEL ON TABLE ZALBINKHEO.KALACTG 
+	IS 'Param  Actes de gestion                        KEG' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KALACTG 
+( KEGID IS 'ID unique' , 
+	KEGSERV IS 'Service' , 
+	KEGACTG IS 'Acte de gestion' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KALACTG 
+( KEGID TEXT IS 'ID unique' , 
+	KEGSERV TEXT IS 'Service  (Produ,Sinistre...)' , 
+	KEGACTG TEXT IS 'Acte de gestion' ) ; 
+  

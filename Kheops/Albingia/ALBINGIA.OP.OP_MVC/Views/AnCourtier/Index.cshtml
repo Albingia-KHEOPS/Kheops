@@ -1,0 +1,31 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.ModelePage.AnCourtier>
+@section stylesheets {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbCourtiers")
+}
+@section scripts {
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbCourtiers")
+}
+@if (Model.LoadedFromQuittance) {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbCourtiers")
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbCourtiers")
+}
+
+@if (string.IsNullOrEmpty(Model.Contexte)) {
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<div class="FullWidth">
+    @if (string.IsNullOrEmpty(Model.Contexte)) {
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+        @Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+    }
+    @Html.Partial("/Views/AnCourtier/CourtiersBody.cshtml", Model)
+    @if (string.IsNullOrEmpty(Model.Contexte)) {
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="p"><u>P</u>récédent</button>
+                <button id="btnSuivant" class="next-step" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    }
+</div>
+

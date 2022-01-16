@@ -1,0 +1,101 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesEcheance.ModeleEcheance>
+@{     
+    var i = 0;
+    double totalMontantEcheance = 0;
+    double total = 0;
+    <table id="tblEcheancesBody">
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var echeance in Model)
+            {
+                i++;
+                if (i == Model.Count)
+                {
+                    @Html.Hidden("DateDerniereEcheance", echeance.EcheanceDate)
+                    @Html.Hidden("PrimeDerniereEcheance", echeance.PourcentagePrime, new { albMask = "decimal" })
+                    @Html.Hidden("FraisDerniereEcheance", echeance.FraisAccessoire, new { albMask = "decimal" })
+                    @Html.Hidden("TaxeAttentatDerniereEcheance", echeance.TaxeAttentat)
+                }
+            <tr id="tr@(i)">
+                <td id="datEch@(i)" class="col_Date">
+                    @echeance.EcheanceDate.Value.ToShortDateString()
+                </td>
+                <td class="col_Pourcentage decimal">
+                    @if (echeance.PourcentagePrime != 0)
+                    {
+                        <span name="EchPourcent" albmask="pourcentdecimal">@(echeance.PourcentagePrime)</span>
+                        @Html.HiddenNoName("tauxEch", echeance.PourcentagePrime, new { albcontext = i })
+                    }
+                    else
+                    {
+                        <span name="EchPourcent" albmask="pourcentdecimal">@(echeance.PourcentageCalcule)</span>
+                        @Html.HiddenNoName("tauxEch", echeance.PourcentageCalcule, new { albcontext = i })
+                    }
+
+                </td>
+                <td class="col_Montant decimal">
+                    @if (echeance.MontantEcheanceHT != 0)
+                    {
+                        total += @echeance.MontantEcheanceHT;
+                    }
+                    else
+                    {
+                        total += @echeance.MontantEcheanceCalcule;
+                    }
+                    @*  @if (i == Model.Count)
+                {
+                    <span><i>restant dû</i></span>
+                }
+                else
+                {*@
+                    @if (echeance.MontantEcheanceHT != 0)
+                    {
+                        <span albmask="decimal">@echeance.MontantEcheanceHT</span>
+                        @Html.HiddenNoName("montantEch", echeance.MontantEcheanceHT, new { albcontext = i })
+                        totalMontantEcheance += @echeance.MontantEcheanceHT;
+                    }
+                    else
+                    {
+                        <span albmask="decimal">@echeance.MontantEcheanceCalcule</span>
+                        @Html.HiddenNoName("montantEch", echeance.MontantEcheanceCalcule, new { albcontext = i })
+                        totalMontantEcheance += @echeance.MontantEcheanceCalcule;
+                    }
+                    @* }*@
+                </td>
+                <td class="col_Frais decimal">
+                    <span albmask="decimal">@echeance.FraisAccessoire</span>
+                </td>
+                <td class="col_Attentat">
+                    @if (@echeance.TaxeAttentat)
+                    {
+                        <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                    }
+                </td>
+                <td class="col_Buttons">
+                    @if (!echeance.IsEcheanceEmise && !echeance.IsReadonly)
+                    {
+                        <img id="modif_@(i + "_" + ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertDateToInt(echeance.EcheanceDate) + "_" + echeance.MontantEcheanceHT + "_" + echeance.PourcentagePrime + "_" + echeance.FraisAccessoire + "_" + echeance.TaxeAttentat)" name="modifEcheance" title="Modifier" alt="Modifier" class="CursorPointer ImgModif" src="@Url.Content("/Content/Images/editer1616.png")" />
+                    }
+                    else
+                    {
+                        <img name="modifEcheanceDesactive" title="Modifier" alt="Modifier" class="ImgModif" src="@Url.Content("/Content/Images/editer1616_gris.png")" />
+                    }
+                    @*Verifier si l'echeance est déjà émise*@
+                    @if (!echeance.IsEcheanceEmise && !echeance.IsReadonly)
+                    {
+                        <img id="suppr_@(ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertDateToInt(echeance.EcheanceDate))" name="supprEcheance" title="Supprimer" alt="Supprimer" class="CursorPointer ImgSuppr" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+                    }
+                    else
+                    {                
+                        <img name="supprEcheanceDesactive" title="Supprimer" alt="Supprimer" class="ImgSuppr" src="@Url.Content("/Content/Images/poubelle1616_gris.png")" />
+                    }
+                </td>
+            </tr>
+            }
+        }
+
+    </table>
+    @Html.Hidden("TotalMontantEcheanceSansDerniere", totalMontantEcheance, new { albMask = "decimal" })
+    @Html.Hidden("TotalMontantEcheance", total, new { albMask = "decimal" })
+    @Html.Hidden("NbrEcheances", Model.Count)
+}

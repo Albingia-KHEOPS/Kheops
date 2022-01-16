@@ -1,0 +1,26 @@
+﻿CREATE TABLE ZALBINKHEO.YSECTEU ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table YSECTEU de ZALBINKHEO ignoré. 
+	ABHSEC CHAR(3) CCSID 297 NOT NULL DEFAULT '' , 
+	ABHDES CHAR(30) CCSID 297 NOT NULL DEFAULT '' , 
+	ABHLIB CHAR(20) CCSID 297 NOT NULL DEFAULT '' , 
+	ABHORD NUMERIC(3, 0) NOT NULL DEFAULT 0 , 
+	ABHINS CHAR(2) CCSID 297 NOT NULL DEFAULT '' )   
+	RCDFMT FSECTEU    ; 
+  
+LABEL ON TABLE ZALBINKHEO.YSECTEU 
+	IS 'Secteur/inspection                             ABH' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.YSECTEU 
+( ABHSEC IS 'Code secteur' , 
+	ABHDES IS 'Désignation' , 
+	ABHLIB IS 'désignation abrégé' , 
+	ABHORD IS 'N° Ordre' , 
+	ABHINS IS 'Code inspection' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.YSECTEU 
+( ABHSEC TEXT IS 'Code Secteur' , 
+	ABHDES TEXT IS 'Désignation' , 
+	ABHLIB TEXT IS 'Désignation abrégée' , 
+	ABHORD TEXT IS 'N° Ordre' , 
+	ABHINS TEXT IS 'Code inspection' ) ; 
+  

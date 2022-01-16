@@ -1,0 +1,416 @@
+﻿
+<script type="text/html" id="activite_localisee">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell">Désignation</span>
+            <span class="cell">Lieu</span>
+            <!-- ko if: isManif -->
+            <span class="cell">CP</span>
+            <span class="cell">Ville</span>
+            <!-- /ko -->
+            <span class="cell">Date deb</span>
+            <span class="cell" data-bind="visible: isManif">Heure deb</span>
+            <span class="cell">Date fin</span>
+            <span class="cell" data-bind="visible: isManif">Heure fin</span>
+            <!-- ko if: isManif -->
+            <span class="cell">Montant</span>
+            <!-- /ko -->
+            <span class="cell">Nature lieu</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: Infos -->
+            <div>
+                <div class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Designation" /></div>
+                <div class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Lieu" /></div>
+                <!-- ko if: $component.isManif -->
+                <div class="cell single-input"><input type="text" maxlength="5" data-bind="textInput: CodePostal" /></div>
+                <div class="cell single-input"><input type="text" maxlength="30" data-bind="textInput: Ville" /></div>
+                <!-- /ko -->
+                <div class="cell single-input"><input type="text" maxlength="10" class="datepicker" data-bind="textInput: DateDebut" /></div>
+                <div class="cell single-input" data-bind="visible: isManif"><input type="text" maxlength="5" data-bind="value: heureDebut" /></div>
+                <div class="cell single-input"><input type="text" maxlength="10" class="datepicker" data-bind="textInput: DateFin" /></div>
+                <div class="cell single-input" data-bind="visible: isManif"><input type="text" maxlength="5" data-bind="value: heureFin" /></div>
+                <!-- ko if: $component.isManif -->
+                <div class="cell single-input"><input type="text" data-bind="autoNumeric: Montant" albmask="decimal" /></div>
+                <!-- /ko -->
+                <div class="cell single-input"><select data-bind="value: NatureLieu.Value, options: NaturesLieus, valueAllowUnset: true, optionsCaption: ''"></select></div>
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="personne_assuree">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell long">Nom</span>
+            <span class="cell long">Prénom</span>
+            <span class="cell long">Fonction</span>
+            <span class="cell text-wrap" data-bind="text: birthdayTitle"></span>
+            <!-- ko if: isIndispo -->
+            <span class="cell">Extension</span>
+            <span class="cell longer">Montant</span>
+            <span class="cell">Franchise</span>
+            <!-- /ko -->
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem , css: { 'disabled' : disableAddItem }"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: { data: Infos, afterAdd: itemAdded, afterRender: itemRendered } -->
+            <div>
+                <div class="cell long single-input"><input type="text" name="Nom" maxlength="40" data-bind="textInput: Nom, readonly: isReadonly , css: { 'invalid-value': !Nom.requireState.isValid() }" /></div>
+                <div class="cell long single-input"><input type="text" maxlength="30" data-bind="textInput: Prenom, readonly: isReadonly" /></div>
+                <div class="cell long single-input"><input type="text" maxlength="30" data-bind="textInput: Fonction, readonly: isReadonly" /></div>
+                <!-- ko if: showBirthYear -->
+                <div class="cell single-input"><input type="text" name="birthday" data-bind="autoNumeric: { value: birthday, min: 1, max: 9999, allowNull: true, stuckAllDigits: true }, attr: { maxlength: birthdayLength }, readonly: isReadonly, css: { 'invalid-value': invalidDate }" /></div>
+                <!-- /ko -->
+                <!-- ko if: showBirthDate -->
+                <div class="cell single-input"><input type="text" name="birthday" data-bind="dateselector: { value: birthday, pickerOptions: { dateFormat: 'dd/mm/yy' }, onlyTriggerChange: true }, attr: { maxlength: birthdayLength }, readonly: isReadonly, disable: isReadonly , css: { 'invalid-value': invalidDate }" /></div>
+                <!-- /ko -->
+                <!-- ko if: $component.isIndispo -->
+                <div class="cell single-input"><select data-bind="value: CodeExtension, options: $component.CodesExtensions, valueAllowUnset: true, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', disable: isReadonly , readonly : isReadonly"></select></div>
+                <div class="cell longer single-input"><input type="text" data-bind="autoNumeric: Montant, readonly: isReadonly" albmask="decimal" /></div>
+                <div class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Franchise, readonly: isReadonly" /></div>
+                <!-- /ko -->
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save , visible: canSave"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <div class="reset-img-cell" data-bind="click: reset , visible: canReset"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="materiel_assuree">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell">Désignation</span>
+            <!-- ko if: isMateriel -->
+            <span class="cell">Référence</span>
+            <span class="cell">Code matériel</span>
+            <!-- /ko -->
+            <span class="cell">Valeur</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem" colspan="2"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: Infos -->
+            <div>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Designation, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Reference, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><select data-bind="value: Code.Value, options: $component.CodesMateriels, valueAllowUnset: true, optionsCaption: '', optionsValue: 'Value', optionsText: 'Text'"></select></span>
+                <span class="cell single-input"><input type="text" data-bind="autoNumeric: Valeur, readonly: $component.isReadonly" albmask="decimal" /></span>
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="poste_personne">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell">Désignation</span>
+            <span class="cell">Montant</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: Infos -->
+            <div>
+                <div class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Designation, readonly: $component.isReadonly" /></div>
+                <div class="cell single-input"><input type="text" data-bind="autoNumeric: Montant, readonly: $component.isReadonly" albmask="decimal" /></div>
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="multiples_situations">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell">Raison Sociale</span>
+            <span class="cell">Adresse</span>
+            <span class="cell">CP</span>
+            <span class="cell">Ville</span>
+            <span class="cell">Date deb</span>
+            <span class="cell">Heure deb</span>
+            <span class="cell">Date fin</span>
+            <span class="cell">Heure fin</span>
+            <span class="cell" title="Qualité de l'assuré">Qualité</span>
+            <span class="cell" title="Renonciation à recours">Renonce</span>
+            <span class="cell" title="Risques locatifs O/N/Exonéré">Rsq loc.</span>
+            <span class="cell" title="Risques locatifs (€)">Rsq loc. (€)</span>
+            <span class="cell" title="Surface (m²)">Surface</span>
+            <span class="cell" title="Contenu (€)">Contenu</span>
+            <span class="cell" title="Matériels de bureautique (€)">Mat. bur.</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: Infos -->
+            <div>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: RaisonSociale, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Adresse, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="5" data-bind="textInput: CodePostal, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="30" data-bind="textInput: Ville, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" class="datepicker" data-bind="textInput: dateDebut, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" data-bind="textInput: heureDebut, readonly: true" /></span>
+                <span class="cell single-input"><input type="text" class="datepicker" data-bind="textInput: dateFin, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" data-bind="textInput: heureFin, readonly: true" /></span>
+                <span class="cell single-input"><select data-bind="value: Qualite.Value, options: $component.CodesQualites, valueAllowUnset: true, optionsValue: 'Value', optionsText: 'Text', disable: $component.isReadonly"></select></span>
+                <span class="cell single-input"><select data-bind="value: Renonciation.Value, options: $component.CodesRenonciations, valueAllowUnset: true, optionsValue: 'Value', optionsText: 'Text', disable: $component.isReadonly"></select></span>
+                <span class="cell single-input"><select data-bind="value: RisquesLocatifs.Value, options: $component.CodesRisquesLocatifs, valueAllowUnset: true, optionsValue: 'Value', optionsText: 'Text', disable: $component.isReadonly"></select></span>
+                <span class="cell single-input"><input type="text" data-bind="autoNumeric: ValeurRisquesLocatifs, readonly: $component.isReadonly" albmask="decimal" /></span>
+                <span class="cell single-input"><input type="text" data-bind="autoNumeric: Surface, readonly: $component.isReadonly" albmask="decimal" /></span>
+                <span class="cell single-input"><input type="text" data-bind="autoNumeric: Contenu, readonly: $component.isReadonly" albmask="decimal" /></span>
+                <span class="cell single-input"><input type="text" data-bind="autoNumeric: ValeurMaterielsBureautique, readonly: $component.isReadonly" albmask="decimal" /></span>
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="activites_avec_CA">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell" data-bind="text: activityShortLabel, attr: { title: activityLongLabel }"></span>
+            <span class="cell">CA(%)</span>
+            <span class="cell">CA(€)</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: Infos -->
+            <div>
+                <div class="cell single-input"><select data-bind="value: Code.Value, options: $component.CodesMateriels, valueAllowUnset: true, optionsValue: 'Value', optionsText: 'Text', disable: $component.isReadonly"></select></div>
+                <div class="cell single-input"><input type="text" data-bind="autoNumeric: PourcentageChiffreAffaire, readonly: $component.isReadonly" albmask="pourcentnumeric" /></div>
+                <div class="cell single-input"><input type="text" data-bind="autoNumeric: ChiffreAffaire, readonly: $component.isReadonly" albmask="decimal" /></div>
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="marchandises_stockees">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell">Nature des marchandises</span>
+            <span class="cell">Lieu</span>
+            <span class="cell">CP</span>
+            <span class="cell">Ville</span>
+            <span class="cell">Pays</span>
+            <span class="cell">Montant</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: Infos -->
+            <div>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Nature, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Lieu, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="5" albmask="cpnumeric" data-bind="textInput: CodePostal, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Ville, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><select data-bind="value: Pays.Value, options: $component.ListePays, valueAllowUnset: true, optionsValue: 'Value', optionsText: 'Text', disable: $component.isReadonly"></select></span>
+                <span class="cell single-input"><input type="text" data-bind="textInput: Montant, readonly: $component.isReadonly" albmask="decimal" /></span>
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="marchandises_transportees">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell">Nature des marchandises</span>
+            <span class="cell">Départ</span>
+            <span class="cell">Destination</span>
+            <span class="cell">Modalités</span>
+            <span class="cell">Date deb</span>
+            <span class="cell">Date fin</span>
+            <span class="cell">Montant</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: Infos -->
+            <div>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Nature, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Depart, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Destination, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Modalites, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" class="datepicker" data-bind="textInput: DateDebut, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" class="datepicker" data-bind="textInput: DateFin, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" data-bind="textInput: Montant, readonly: $component.isReadonly" albmask="decimal" /></span>
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="vehicule_transport">
+    <div class="flex-table" data-bind="visible: Infos && Infos().length > 0">
+        <div class="flex-header vertical-gradient">
+            <span class="cell">Marque</span>
+            <span class="cell">Modèle</span>
+            <span class="cell">Immatriculation</span>
+            <span class="cell">Date deb</span>
+            <span class="cell">Date fin</span>
+            <span class="cell">Montant / Véhicule</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addItem"></span>
+            <span class="tiny"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll">
+            <!-- ko foreach: Infos -->
+            <div>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Marque, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Modele, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" maxlength="40" data-bind="textInput: Immatriculation, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" class="datepicker" data-bind="textInput: DateDebut, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" class="datepicker" data-bind="textInput: DateFin, readonly: $component.isReadonly" /></span>
+                <span class="cell single-input"><input type="text" data-bind="textInput: Montant, readonly: $component.isReadonly" albmask="decimal" /></span>
+                <!-- ko ifnot: $component.isReadonly -->
+                <div class="save-img-cell" data-bind="click: save"></div>
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<div class="ko-cloak conceal">
+    <div class="container container-details">
+        <div class="container-lines">
+            <div>
+                <div class="input-line">
+                    <div>
+                        <label class="block-line" for="description_inventaire">Libellé*</label>
+                        <input type="text" class="xl" tabindex="1" maxlength="40" data-bind="textInput: Descriptif, readonly: isReadonly, css: { 'invalid-value': !Descriptif.requireState.isValid() }" />
+                    </div>
+
+                    <div>
+                        <label class="block-line" for="type_inventaire">Type</label>
+                        <input type="text" id="type_inventaire" tabindex="2" data-bind="value: CodeType, readonly: true, attr: { title: label }" />
+                    </div>
+                </div>
+
+                <div class="center-content input-line padding5">
+                    <div class="input-line text-img32" style="width: 130px" data-bind="visible: Infos && Infos().length == 0"><span>Ajouter une ligne</span><i class="add-img-cell" data-bind="click: addItem"></i></div>
+                </div>
+
+                <div class="flex-table-container" data-bind="template: { name: typeId, data: $component }"></div>
+
+                <div class="input-line">
+                    <label class="block-line">Description</label>
+                    <div id="zoneTxtArea" class="observations-apercu">
+                        <span data-bind="text: descriptionGlimpse"></span>
+                        <div id="txtArea" data-context="Observations">
+                            <!-- ko if: isReadonly -->
+                            <div id="Observations" class="observations-readonly" data-bind="html: Description"></div>
+                            <!-- /ko -->
+                            <!-- ko ifnot: isReadonly -->
+                            <textarea data-bind="textInput: Description" class="observations700-50"></textarea>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <div id="txtAreaLnk" name="txtAreaLnk" class="CursorPointer" data-bind="click: showOrHideFullDescription" >
+                        <img src="/Content/Images/moreinfo.png" width="22" height="22" />
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- ko ifnot: isReadonly -->
+            <div>
+                <div class="center-content padding5">
+                    <input type="button" value="Recalculer" id="btnSum" title="Recalculer la somme des inventaires" data-bind="click: recalculer, disable: isReadonly" />
+                </div>
+
+                <div class="valeur-unite-type-taxe">
+                    <label class="block-line">Valeur</label>
+                    <input type="text" class="valeur" data-bind="autoNumeric: { value: valeur, min: 0.00, max: 99999999999.99 }, visible: isNotPercent, enable: enableManualSum" albmask="decimal" />
+                    <input type="text" class="valeur" data-bind="autoNumeric: { value: valeurPrc, min: 0.00, max: 100.00 }, visible: isPercent, enable: enableManualSum" albmask="pourcentdecimal" />
+                    <select class="unites" data-bind="enable: enableManualSum, options: UniteListe, valueAllowUnset: true, css: { 'invalid-value': !UniteValeur.requireState.isValid() }, value: UniteValeur, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label'"></select>
+                    <select class="types" data-bind="enable: enableManualSum, options: TypeListe, valueAllowUnset: true, css: { 'invalid-value': !TypeValeur.requireState.isValid() }, value: TypeValeur, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label'"></select>
+                    <select class="taxe" data-bind="enable: enableManualSum, options: TaxeListe, valueAllowUnset: true, css: { 'invalid-value': !TypeTaxe.requireState.isValid() }, value: TypeTaxe, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label'"></select>
+                </div>
+                <!-- add check for risque inventaire -->
+                <div>
+                    <label>
+                        <input type="checkbox" data-bind="checked: ActiverReport, disable: isReadonly" />
+                        Activer Report
+                    </label>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+
+    <div class="container container-foot">
+        <div class="input-line">
+            <div class="flex2-12">
+                <!-- ko ifnot: isReadonly -->
+                <button id="btnSupprimerInventaire" name="btnSupprimerInventaire" type="button" data-bind="click: deleteWhole">Supprimer</button>
+                <!-- /ko -->
+            </div>
+
+            <div class="textRouge flex8-12"></div>
+
+            <div class="flex2-12">
+                <button id="btnAnnulerInventaire" type="button" data-bind="click: cancelInventaire">Annuler</button>
+                <!-- ko ifnot: isReadonly -->
+                <button type="button" data-bind="click: validateInventaire, enable: allowValidate">Valider</button>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>

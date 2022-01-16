@@ -1,0 +1,94 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleSuiviActesGestionPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albActesGestion.css" }, "~/Content/")
+
+<div class="CommonForm FloatLeft">
+    <div class="GroupFull GroupWithBorder">
+        <div class="GroupTitle">
+            <div class="FloatLeft">Suivi des actes de gestion @(Model.Type == "O" ? "de l'offre" : Model.Type == "P" ? "du contrat" : string.Empty) : @Model.CodeOffre</div>
+        </div>
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection PaddingLeft">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Affichage</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.Affichage, Model.Affichages, "Affichages", htmlAttributes: new { @id = "Affichages" }, generateTitle: true, genEmptyLine: false)
+                    </div>
+                    <div class="FloatLeft" style="padding-left: 50px;">
+                        <label class="Block">Date de traitement</label>
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        @Html.AlbDateFormat(m => m.DateTraitDeb, new { @id = "DateTraitDeb", @class = "inputDate datepicker" })
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        <label class="Block" style="width: 20px;">au</label>
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        @Html.AlbDateFormat(m => m.DateTraitFin, new { @id = "DateTraitFin", @class = "inputDate datepicker" })
+                    </div>
+                    <div class="FloatRight PaddingRight">
+                        <button id="btnFiltrerActe" type="button" albshortcut="true" data-accesskey="t">Fil<u>t</u>rer</button>
+                    </div>
+                    <div class="FloatRight PaddingRight">
+                        <button id="btnResetActe" type="button" albshortcut="true" data-accesskey="n">Réi<u>n</u>itialiser</button>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Utilisateur</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.Utilisateur, Model.Utilisateurs, "Utilisateurs", htmlAttributes: new { @id = "Utilisateurs" }, genEmptyLine: true, generateTitle: true)
+                    </div>
+                    <div class="FloatLeft" style="padding-left: 50px;">
+                        <label class="Block">Type de traitement</label>
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        @Html.AlbDropDownListFor(m => m.TypeTraitement, Model.TypeTraitements, "Traitements", htmlAttributes: new { @id = "Traitements" }, genEmptyLine: true, generateTitle: true)
+                    </div>
+                </div>
+            </div>
+            <div class="GradientSection HeightActesGestion">
+                <div id="divActesGestionHeader">
+                    <table id="tblActesGestionHeader">
+                        <tr>
+                            <th class="col_HeaderActeDate tablePersoHead">Date
+                            </th>
+                            <th class="col_HeaderActeHeure tablePersoHead">Heure
+                            </th>
+                            @if (Model.Type == "P")
+                            {
+                                <th class="col_HeaderActeNumero tablePersoHead">n° int
+                                </th>
+                            }
+                            else if (Model.Type == "O")
+                            {
+                                <th class="col_HeaderActeNumero tablePersoHead">Ver
+                                </th>
+                            }
+                            <th class="col_HeaderActeTypeActe tablePersoHead">Gest° / Validat°
+                            </th>
+                            <th class="col_HeaderActeLibelle tablePersoHead">Type de traitement
+                            </th>
+                            <th class="col_HeaderActeDescription tablePersoHead"></th>
+                            <th class="col_HeaderActeUtilisateur tablePersoHead">Utilisateur
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divActesGestionBody">
+                    @if (Model.ActesGestion != null)
+                    {
+                        @Html.Partial("ListeActesGestion", Model.ActesGestion)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFermer" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>

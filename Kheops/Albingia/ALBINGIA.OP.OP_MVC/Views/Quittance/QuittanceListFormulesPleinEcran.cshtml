@@ -1,0 +1,51 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.ListFormules
+<div class="GradientSection DivListFormules">
+    <div id="divFormulesHeader" style="text-align: center;">
+        <table id="tblFormulesHeader" class="trHeight">
+            <tr>
+                <th class="col_HeaderFormule tablePersoHead">Formule
+                </th>
+                <th class="col_HeaderRisque tablePersoHead">Risque
+                </th>
+                <th class="col_HeaderHTCATNAT tablePersoHead">HT hors CATNAT
+                </th>
+                <th class="col_HeaderHTCATNAT tablePersoHead">CATNAT
+                </th>
+                <th class="col_HeaderCATNAT tablePersoHead">Taxes
+                </th>
+                <th class="col_HeaderTaxes tablePersoHead">TTC
+                </th>
+                <th class="col_HeaderFinEffet tablePersoHead">Fin d'effet
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div id="divFormulesBody" class="formulepleinHeight">
+        <table id="tblFormulesBodyPleinEcran" class="trHeight">
+            @{
+                foreach (var formuleInfo in Model.Formules)
+                {
+                <tr>
+                    <td class="col_Formule" title="@formuleInfo.Libelle">@formuleInfo.Libelle</td>
+                    <td class="col_Risque" title="@formuleInfo.Risque">@formuleInfo.Risque</td>
+                    <td class="col_HTCATNAT"><span albmask="decimal">@formuleInfo.HtHorsCatnat</span></td>
+                    <td class="col_CATNAT"><span albmask="decimal">@formuleInfo.CatNat</span></td>
+                    <td class="col_Taxes"><span albmask="decimal">@formuleInfo.Taxes</span></td>
+                    <td class="col_TTC"><span albmask="decimal">@formuleInfo.Ttc</span></td>
+                    <td class="col_FinEffet" style="text-align: center;">@formuleInfo.FinEffet</td>
+                </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder ButtonsHeight divBtnFullScreenFermer">
+    <div class="ActionButtons ActionButtonLeft">
+    </div>
+    <div id="dvLinkClose" class="FloatLeft" style="padding-top: 6px;">
+        <button id="btnNoFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Fermer le plein écran">
+            <img src="@Url.Content("/Content/Images/window_nofullscreen.png")" alt="Fermer" />
+        </button>
+    </div>
+</div>
+

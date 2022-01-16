@@ -1,0 +1,97 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamFamillesPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamFamilles.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamFamilles.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    @Html.HiddenNoName("idValeurSuppr", string.Empty)
+    @Html.HiddenNoName("idFamilleSuppr", string.Empty)
+    @Html.Hidden("codeConceptRech", Model.CodeConcept, new { id = "CodeConcept" })
+    @Html.Hidden("libConceptRech", Model.LibelleConcept, new { id = "LibelleConcept" })
+    @Html.HiddenFor(m => m.AdditionalParam)
+    @Html.HiddenFor(m => m.RestrictionParam)
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div class="GroupFull GroupWithBorder GroupBackOffice GroupFamilles">
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        @*@Html.AlbLabelFor(m => m.CodeConcept, "Block")*@
+                        <label class="Block">Concept *</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @*<input id="Concept" type="text" class="readonly InputConcept" readonly="readonly" value="@(Model.CodeConcept + " - " + Model.LibelleConcept)" />*@
+                        <input id="Concept" class="InputConcept" maxlength="5" albautocompleteconcept="autoCompCodeLibConcept" albautocomplete="autoCompCodeConcept" value="@(!string.IsNullOrEmpty(Model.CodeConcept) ? Model.CodeConcept + " - " + Model.LibelleConcept : "")" />
+                        <input type="hidden" id="RechercheDescription" albautocomplete="autoCompLibConcept" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div id="divRecherche" class="GradientSection">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Code</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="CodeFamilleRecherche" name="CodeFamilleRecherche"  value="@Model.CodeFamilleRecherche" albAutoComplete="autoCompCodeFamille" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Description</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="LibelleFamilleRecherche" name="LibelleFamilleRecherche"  value="@Model.LibelleFamilleRecherche" albAutoComplete="autoCompDescFamille" />
+                            </div>
+                        </div>
+                        <div class="FloatLeft">
+                            @*                            <img id="RechercherFamilles" class="CursorPointer" src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Lancer la recherche" />*@
+                            <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div id="divLstFamilles">
+                    <div>
+                        <table id="tblFamillesHeader">
+                            <tr>
+                                <th class="col_HeaderCodeFamille tablePersoHead">Code Famille
+                                </th>
+                                <th class="col_HeaderDescriptionFamille tablePersoHead">Description
+                                </th>
+                                @if (ALBINGIA.OP.OP_MVC.Common.CacheUserRights.IsUserAdmin)
+                                {
+                                    <th class="col_HeaderButtons tablePersoHead" colspan="2">
+                                        <img id="AjouterFamille" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter une famille" />
+
+                                    </th>
+                                }
+                                else
+                                {
+                                    <th class="col_HeaderButtons tablePersoHead" colspan="2">&nbsp;</th>
+                                }
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyFamilles">
+                        @if (Model.ListeFamilles != null)
+                        {
+                            @Html.Partial("ParamListFamilles", Model.ListeFamilles)
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ZoneDynamic" class="GroupFull GroupWithBorder GroupBackOffice HeightZoneDynamic FloatLeft" style="display: none">
+        </div>
+        <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnulerRetourConcept" type="button" albshortcut="true" data-accesskey="t">Re<u>t</u>our au concept</button>
+            </div>
+        </div>
+    </div>

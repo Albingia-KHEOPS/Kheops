@@ -1,0 +1,32 @@
+﻿@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+
+@model ModeleRegularisationPage
+
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/albRegul_Step4_ChoixPeriodeGarantie.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    ViewBag.Title = "CreationRegule";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.ChoixPeriodesGarantie, RsqId = Model.GarInfo.RegulPeriodDetail.CodeRisque, GrId = Model.GarInfo.GrId })
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.Partial("CreationPeriodRegule", Model.GarInfo)
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnRegulePrec" type="button" albshortcut="true" data-accesskey="P"><u>P</u>récedent</button>
+                @if (Model.IsValidRegul)
+                {
+                    <button id="btnReguleSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleExclusionFormuleGarantiePage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vExclusionFormuleGarantie.css"}, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albExclusionFormuleGarantie.js" },"~/Scripts/AlbingiaJS/")
+@using (Html.BeginForm("ExclusionRsqInventaireEnregistrer", "ExclusionFormuleGarantie", FormMethod.Post, new { @id = "frmMain" }))
+{ 
+    <div id="GestionErreur">
+    </div>
+    <div class="CommonForm">
+        @Html.HiddenFor(m => m.Offre.CodeOffre)
+        @Html.HiddenFor(m => m.Offre.Version)
+        @Html.HiddenFor(m => m.Offre.Type)
+        @Html.HiddenFor(m => m.CodeFormule)
+        @Html.HiddenFor(m => m.CodeOption)
+        <div class="GroupFull GroupWithBorder GroupNoTitle">
+            <div id="Contrat" class="LigneInfo">
+                <div class="HorizontalQuarterWithGroup DivInfoGen">
+                    <div class="FieldLabelFor FieldLabelLib">
+                        @Html.LabelFor(m => m.LettreFormule)
+                    </div>
+                    <div class="FieldTextBoxLettreLib">
+                        @Html.TextBoxFor(m => m.LettreFormule, new { @readonly = "readonly", @class = "readonly" })
+                    </div>
+                    <div class="FieldLabelFor">
+                        @Html.LabelFor(m => m.Descriptif)
+                    </div>
+                    <div class="FieldTextBoxFor">
+                        @Html.TextBoxFor(m => m.Descriptif, new { @readonly = "readonly", @class = "readonly" })
+                    </div>
+                    <div class="FieldLabelFor">
+                        @Html.LabelFor(m => m.ObjetRisque)
+                    </div>
+                    <div class="FieldTextBoxFor divApplique">
+                        @Html.TextBoxFor(m => m.ObjetRisque, new { @readonly = "readonly", @class = "readonly" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder GroupNoTitle">
+            <div class="HorizontalFullWithGroup">
+                <div id="divRsqObj">
+                    <div class="divLabelRsqObj">
+                        Exclusion d'objets de risque ou de postes de l'inventaire du risque
+                    </div>
+                    <div id="divListRsqObj">
+                        @Html.Partial("ListRsqObj", Model.ObjetsRisques)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Validation">
+            <input type="button" id="btnAnnuler" value="Annuler" tabindex="29" />
+            <input type="button" id="btnSuivant" value="Valider" tabindex="28" />
+        </div>
+    </div>
+}

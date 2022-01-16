@@ -1,0 +1,669 @@
+﻿textarea {
+    width: 330px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+.GroupSplitDescription {
+    width: 405px;
+}
+
+.GroupSplitPeriode {
+    width: 525px;
+}
+
+.GroupeInformationsGenerales {
+    height: 120px;
+}
+
+.FieldLabelDetails {
+    display: block;
+    float: left;
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.FieldLabelInfoDetails {
+    display: block;
+    float: left;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.FieldLabelColumn2 {
+    display: block;
+    float: left;
+    width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.GroupColumn {
+    float: left;
+}
+
+.GroupAlignRight {
+    padding-left: 10px;
+}
+
+.Column3 {
+    /*width:175px;    */
+}
+
+.GroupValeur {
+    width: 125px;
+}
+
+.FieldLabelValeur {
+    display: block;
+    float: left;
+    width: 45px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right; /*padding-right: 5px;*/
+}
+
+.FieldInputValeur input {
+    width: 75px;
+}
+
+.FieldInputUnite input {
+    width: 115px;
+}
+
+.FieldInputType input {
+    width: 150px;
+}
+
+.FieldInfosDetails input {
+    width: 60px;
+}
+
+.FieldDateTime input {
+    width: 70px;
+}
+
+.FieldInputTypeVal input {
+    width: 50px;
+}
+
+.cibleWidth {
+    width: 80px;
+}
+
+.tblListInventaire th {
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-left: none;
+    border-bottom: none;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+
+.thDescriptif {
+    padding-left: 5px;
+    width: 180px;
+}
+
+.thDate {
+    width: 100px;
+}
+
+.thAutre {
+    width: 80px;
+}
+
+    .thAutre td {
+        text-align: right;
+        padding-right: 5px;
+    }
+
+.thHT {
+    width: 55px;
+}
+
+    .thHT td {
+        text-align: center;
+    }
+
+.colBtn {
+    width: 20px;
+}
+
+.colTxt {
+    width: 300px;
+    text-align: center;
+}
+
+.colBtn img {
+    border: 1px solid transparent;
+}
+
+.divRadio {
+    float: left;
+}
+
+.infoMulti {
+    margin-left: 250px;
+}
+
+#divLstObjets {
+    margin-bottom: 10px;
+    height: 88px;
+    overflow: auto;
+}
+
+#divLstObjetsAvn {
+    margin-bottom: 10px;
+    height: 60px;
+    overflow: auto;
+}
+
+#divLstObjetsPleinEcran {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow: auto;
+}
+
+#divDataPleinEcranObjets {
+    background-color: White;
+    display: block;
+    height: 586px;
+    left: 12px;
+    padding: 5px;
+    position: absolute;
+    top: 50px;
+    width: 1027px;
+    z-index: 6;
+}
+
+#divFullScreenObjets {
+    display: none;
+}
+
+#divDialogPleinEcran {
+    height: 650px;
+    width: 1010px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.HeigtListeObjetsRisque {
+    height: 234px !important;
+}
+
+.CenterPadding {
+    padding-right: 450px;
+}
+
+.BigPadLeft {
+    padding-left: 450px;
+}
+
+.TextAreaReadOnly {
+    width: 334px;
+    height: 35px;
+    border: 1px solid #cdcdcd;
+    color: #cdcdcd;
+    background-color: #ebebe4 !important;
+}
+
+.divDescriptif {
+    width: 335px;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.labelDescriptif {
+    display: block;
+    width: 90px;
+}
+
+.labelDescriptifNomenclature {
+    display: block;
+    width: 100px;
+}
+
+.labelDateAu {
+    display: block;
+    width: 20px;
+}
+
+.labelDate {
+    display: block;
+    width: 50px;
+}
+
+.inputDescriptif {
+    width: 330px !important;
+}
+
+.inputValeur {
+    width: 120px !important;
+}
+
+.lstUnite {
+    width: 58px !important;
+}
+
+.lstType {
+    width: 57px !important;
+}
+
+.lstTaux {
+    width: 56px !important;
+}
+
+
+.inputUnite {
+    width: 72px !important;
+}
+
+.inputType {
+    width: 196px !important;
+}
+
+.inputTaux {
+    width: 65px !important;
+}
+
+#divAdresse {
+    width: 275px;
+    height: 69px;
+}
+
+#divInfosReport {
+    /*padding-right: 63px;
+    padding-top: 191px;*/
+    padding-bottom: 5px;
+    /*padding-right: 26px;*/
+}
+
+.inputDDL {
+    width: 230px !important;
+}
+
+.paddingRight10 {
+    padding-right: 10px;
+}
+
+.forcedWidthTextArea {
+    width: 308px !important;
+}
+
+.legendNomenclature {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.fieldsetNomenclature {
+    padding-top: 8px;
+    padding-bottom: 0px;
+    border-right-color: rgb(238, 238, 238);
+    border-left-color: rgb(238, 238, 238);
+}
+
+
+
+/* Modif*/
+
+
+.Tddescriptifavn {
+    width: 378px;
+    padding-left: 5px;
+}
+
+.Tddescriptif {
+    width: 374px;
+}
+
+.TddescriptifavnPE {
+    width: 380px;
+}
+
+
+.tdNumAvn {
+    width: 40px;
+    text-align: center;
+}
+
+.tdNumAvnPE {
+    width: 42px;
+    text-align: center;
+}
+
+
+.tdDateEntreeAvn {
+    width: 76px;
+    text-align: center;
+}
+
+.tdDateEntreeAvnPE {
+    width: 75px;
+    text-align: center;
+}
+
+.tdDateEntree {
+    width: 67px;
+    text-align: center;
+}
+
+.tdDateSortieAvn {
+    width: 76px;
+    text-align: center;
+}
+
+
+.tdDateSortieAvnPE {
+    width: 75px;
+    text-align: center;
+}
+
+
+.tdDateSortie {
+    width: 68px;
+    text-align: center;
+}
+
+.tdValeurAvn {
+    width: 80px;
+    text-align: right;
+}
+
+.tdValeurAvnPE {
+    width: 80px;
+    text-align: right;
+}
+
+.tdValeur {
+    width: 124px;
+    text-align: right;
+}
+
+.tdIndiceOrigineAvn {
+    width: 80px;
+    text-align: right;
+}
+
+.tdIndiceOrigine {
+    width: 119px;
+    text-align: right;
+}
+
+.tdUniteLibelleAvn {
+    width: 53px;
+    text-align: center;
+}
+
+.tdUniteLibelle {
+    width: 49px;
+    text-align: center;
+}
+
+.tdTypeLibelleAvn {
+    width: 48px;
+    text-align: center;
+}
+
+.tdTypeLibelle {
+    width: 49px;
+    text-align: center;
+}
+
+.tdValeurHtLibAvn {
+    width: 53px;
+    text-align: center;
+}
+
+.tdValeurHtLib {
+    width: 49px;
+    text-align: center;
+}
+
+.tdInventaireAvn {
+    width: 51px;
+    text-align: center;
+}
+
+.tdInventaire {
+    width: 49px;
+    text-align: center;
+}
+
+.TdindexAvn {
+    width: 21px;
+}
+
+.Tdindex {
+    width: 21px;
+}
+
+.thNumIntAvn {
+    width: 40px;
+}
+
+.thNumInt {
+    width: 40px;
+}
+
+.thListobj {
+    width: 373px;
+}
+
+.thListobjAvn {
+    width: 380px;
+}
+
+.Lbllistobj {
+    text-align: left;
+    width: 173px;
+    float: left;
+}
+
+.LbllistobjAvn {
+    text-align: left;
+    width: 170px;
+    float: left;
+}
+
+
+.thEntree {
+    width: 66px;
+}
+
+.thEntreeAvn {
+    width: 74px;
+}
+
+.thSortie {
+    width: 66px;
+}
+
+.thSortieAvn {
+    width: 74px;
+}
+
+.thIndice {
+    width: 120px;
+}
+
+.thIndiceAvn {
+    width: 80px;
+}
+
+.thValeur {
+    width: 122px;
+}
+
+.thValeurAvn {
+    width: 80px;
+}
+
+.thUnite {
+    width: 48px;
+}
+
+.thUniteAvn {
+    width: 51px;
+}
+
+.thType {
+    width: 48px;
+}
+
+.thTypeAvn {
+    width: 48px;
+}
+
+.thTx {
+    width: 48px;
+}
+
+.thTxAvn {
+    width: 51px;
+}
+
+.thInv {
+    width: 48px;
+}
+
+.thInvAvn {
+    width: 51px;
+}
+
+.thbntajouter {
+    width: 20px;
+}
+
+
+/*Activite*/
+
+#divDataRechercheActivite {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 23;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+}
+
+#divRechercheActivite {
+    display: none;
+}
+
+.RechercheActivite {
+    height: 540px;
+}
+
+.GroupTitle {
+    color: #800000;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11pt;
+    font-style: italic;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.CodeActiviteLabel {
+    float: left;
+    margin-left: 20px;
+}
+
+
+.CodeTextBox {
+    float: left;
+    margin-left: 20px;
+}
+
+.NomActiviteLabel {
+    float: left;
+    margin-left: 20px;
+}
+
+.NomActiviteTextBox {
+    float: left;
+    margin-left: 20px;
+}
+
+
+.tablePersoHeadActivite {
+    background-image: url("/Content/Images/RechercheSaisieGridHeaderThBg.png");
+    background-position: center center;
+    background-repeat: repeat-x;
+    height: 36px;
+}
+
+.TablePersoHeadActiviteTd1 {
+    width: 54px;
+}
+
+.TablePersoTdHead {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.TablePersoActiviteTd1 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 80px;
+}
+
+.TablePersoActiviteTd2 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 223px;
+}
+
+.TablePersoActiviteTd3 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 223px;
+}
+
+.TablePersoActiviteTd4 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 206px;
+}
+
+.TablePersoActiviteTd5 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 206px;
+}
+
+.TablePersoActiviteTd6 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 221px;
+}
+
+/*#divLstResultatActivite
+{
+    margin-left: 5px;
+    overflow-y: scroll;
+    max-height: 348px;
+}*/
+.ligneRed {
+    color: red;
+}
+.classLeft {
+    padding-left:95px;
+}

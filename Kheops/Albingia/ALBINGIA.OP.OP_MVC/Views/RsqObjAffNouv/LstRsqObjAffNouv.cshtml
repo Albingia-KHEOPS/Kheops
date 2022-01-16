@@ -1,0 +1,48 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesCreationAffaireNouvelle.ModeleRsqObjAffNouv>
+@if (Model != null && Model.Count > 0)
+{ 
+    <table id="tblRsqObj">
+        @foreach (var row in Model)
+        {
+            switch (row.TypeEnr)
+            {
+                case "R":
+            <tr class="even">
+                <td style="width: 49px;">
+                    @if (row.CheckRow)
+                    {
+                        <input type="checkbox" id="checkRsq_@(row.CodeRsq)" name="checkRsq_@(row.CodeRsq)" checked="checked" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="checkRsq_@(row.CodeRsq)" name="checkRsq_@(row.CodeRsq)" />
+                    }
+                </td>
+                <td class="PaddingRsqLib">
+                    <b>Risque @row.CodeRsq - @row.Libelle</b>
+                </td>
+            </tr>
+                                        break;
+                case "O":
+            <tr class="odd" name="rsq_@(row.CodeRsq)">
+                <td style="width: 23px; padding-left: 27px;">
+                    @if (row.CheckRow)
+                    { 
+                        <input type="checkbox" id="checkObj_@(row.CodeRsq)_@(row.CodeObj)" name="checkObj_@(row.CodeRsq)_@(row.CodeObj)" checked="checked" />
+                    }
+                    else
+                    { 
+                        <input type="checkbox" id="checkObj_@(row.CodeRsq)_@(row.CodeObj)" name="checkObj_@(row.CodeRsq)_@(row.CodeObj)" />
+                    }
+                </td>
+                <td class="PaddingObjLib">
+                    Objet @row.CodeObj - @row.Libelle
+                </td>
+            </tr>
+                                    break;
+                default:
+                                    break;
+            }
+        }
+    </table>
+}

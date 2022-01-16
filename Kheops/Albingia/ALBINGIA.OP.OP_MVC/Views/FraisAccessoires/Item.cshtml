@@ -1,0 +1,15 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFraisAccessoires.FraisAccessoiresModel
+<tr id="@Model.Id">
+    <td title="@Model.BrancheLabel" class="Branche"><span class="None">@Model.Branche</span>@Model.BrancheLabel</td>
+    <td title="@Model.SousBrancheLabel" class="SousBranche"><span class="None">@Model.SousBranche</span>@Model.SousBrancheLabel</td>
+    <td title="@Model.Categorie" class="Categorie">@Model.Categorie</td>
+    <td title="@Model.Annee" class="Annee"><span albmask="numeric" class="numerique">@Model.Annee</span></td>
+    <td title="@Model.Montant" class="Montant"><span albmask="numeric" class="numerique">@Model.Montant</span></td>
+    <td title="@Model.FRaiSACCMIN" class="FRaiSACCMIN"><span albmask="numeric" class="numerique">@Model.FRaiSACCMIN</span></td>
+    <td title="@Model.FRaiSACCMAX" class="FRaiSACCMAX" ><span albmask="numeric" class="numerique">@Model.FRaiSACCMAX</span></td>
+    <td class="btnsCol">
+        <span class="deleteBtn" ItemId="@Model.Id" title="Supprimer" albcontext="@Model.Albcontext">
+            <img  class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+        </span>
+    </td>
+</tr>

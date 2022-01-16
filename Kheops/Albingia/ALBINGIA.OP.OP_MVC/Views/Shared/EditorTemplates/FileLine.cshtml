@@ -1,0 +1,32 @@
+﻿@model List<ALBINGIA.Framework.Common.Models.FileModel.FileDescription>
+@if (Model.Count > 0)
+{
+    int i = 0;
+    foreach (var item in Model)
+    {
+        if (item == null)
+        {
+            continue;
+        }
+        //string fileType = Path.GetExtension(item.Name);
+        //string completeUrl = ALBINGIA.Framework.Common.IOFile.FileContentManager.GetConfigValue("VirtuelDirectoryInventory") + item.WebPath;
+     
+              <tr id="tr@(item.Name.Replace(".", "").Replace(" ",""))" name="tr@(item.Name.Replace(".", "").Replace(" ",""))" class=@(i % 2 == 0 ? "odd" : "even")>
+                                <td class="TablePersoTd1 TablePersoTdBody1">
+                        <a id="@(item.Name.Replace(".", "~").Replace(" ","*"))" href="#" onclick=" ConfirmDeleteFile(this) ">
+                            <img alt="" src="@Url.Content("/Content/Images/icoDelete.png")" /></a>
+                    </td>
+                    <td class="TablePersoTd2 TablePersoTd">
+                        @Html.ActionLink(Html.Raw(item.Name).ToHtmlString(), "DownloadFile","CommonNavigation", new {fileName = item.Name, fullNameFile = item.FullName, pathFile = item.FilePath}, new {@target = "_blank"})
+                    </td>
+                    <td class="TablePersoTd3 TablePersoTdBody1">
+                        @Html.Encode(Convert.ToString(item.DateCreated.ToString("dd/MM/yyyy")))
+                    </td>
+                    <td class="TablePersoTd4 TablePersoTdBody2">
+                        @Html.Encode(item.Size)
+                    </td>
+                </tr>
+
+        i++;
+    }
+}

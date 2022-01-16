@@ -1,0 +1,23 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestionDocumentPage
+<div id="divHeaderDocument" class="PaddingLeft">
+    <table id="tblHeaderDocument">
+        <tr>
+            <th class="tablePersoHead tdDocNameH">Document à distribuer
+            </th>
+            <th class="tablePersoHead tdDiffusionH">Diffusion
+            </th>
+            <th class="tablePersoHead tdPartenaireH">Type partenaire
+            </th>
+            <th class="tablePersoHead tdDestinataireH">Destinataire
+            </th>
+            <th class="tablePersoHead tdDate">Créé le
+            </th>
+            <th class="tablePersoHead tdDate">Traité le
+            </th>
+            <th class="tablePersoHead tdEmpty">&nbsp;
+            </th>
+        </tr>
+    </table>
+</div>
+@Html.Partial("GestionDistributionLigne", Model.Distributions)
+

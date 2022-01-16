@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A98A2815-A24C-4E02-891E-8B802EE892EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ALBINGIA.Framework.Common</RootNamespace>
+    <AssemblyName>ALBINGIA.Framework.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>latest</LangVersion>
+    <CodeAnalysisRuleSet>..\..\Rule Sets\Kheops.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\..\ThirdBinaries\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation">
+      <HintPath>..\..\ThirdBinaries\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Lib.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=92212eec0425916e, processorArchitecture=MSIL">
+      <HintPath>..\..\ThirdBinaries\Lib.Web.Mvc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="LightInject, Version=5.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LightInject.5.1.2\lib\net46\LightInject.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\ThirdBinaries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Windows\assembly\GAC\Microsoft.Office.Interop.Outlook\12.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Outlook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.OutlookViewCtl, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Windows\assembly\GAC\Microsoft.Office.Interop.OutlookViewCtl\12.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.OutlookViewCtl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.EasycomClient, Version=2.0.0.6, Culture=neutral, PublicKeyToken=32fd8354c170411b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\System.Data.EasycomClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\ThirdBinaries\System.Web.Mvc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivityMode.cs" />
+    <Compile Include="AlbingiaAttributes\BusinessCodeAttribute.cs" />
+    <Compile Include="AlbingiaAttributes\ErrorMessageHandlerAttribute.cs" />
+    <Compile Include="AlbingiaAttributes\ICodeAttribute.cs" />
+    <Compile Include="AlbingiaAttributes\RollbackableAttribute.cs" />
+    <Compile Include="AlbingiaAttributes\ErrorHandlerAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AlbingiaAttributes\AlbEnumInfoValue.cs" />
+    <Compile Include="AlbingiaAttributes\HandledByMvcErrorAttribute.cs" />
+    <Compile Include="AlbingiaAttributes\HandleJsonErrorAttribute.cs" />
+    <Compile Include="AlbingiaExceptions\AlbApiException.cs" />
+    <Compile Include="AlbingiaExceptions\BlacklistAlert.cs" />
+    <Compile Include="AlbingiaExceptions\BlacklistException.cs" />
+    <Compile Include="Business\Blacklisting.cs" />
+    <Compile Include="Business\Enums\AccessMode.cs" />
+    <Compile Include="Business\Enums\LablatResult.cs" />
+    <Compile Include="Business\Enums\PipedParameter.cs" />
+    <Compile Include="Business\Enums\TypePartenaireAs400.cs" />
+    <Compile Include="Business\Enums\TypePartenaireKheops.cs" />
+    <Compile Include="Business\Enums\TypeConnexite.cs" />
+    <Compile Include="Business\IPartner.cs" />
+    <Compile Include="Business\Observation.cs" />
+    <Compile Include="Business\Partner.cs" />
+    <Compile Include="CacheTools\FolderKey.cs" />
+    <Compile Include="Extensions\Numerics.cs" />
+    <Compile Include="Extensions\RouteValueDictionaryExtensions.cs" />
+    <Compile Include="IScopedTransaction.cs" />
+    <Compile Include="SuccessIndicator.cs" />
+    <Compile Include="ISuccessIndicator.cs" />
+    <Compile Include="AlbingiaExceptions\AlbException.cs" />
+    <Compile Include="AlbingiaExceptions\AlbFoncException.cs" />
+    <Compile Include="AlbingiaExceptions\AlbTechException.cs" />
+    <Compile Include="Behaviours\ExceptionBehaviorExtensionElement.cs" />
+    <Compile Include="Behaviours\ExceptionBehaviour.cs" />
+    <Compile Include="Behaviours\RefererTelemetryInitializer.cs" />
+    <Compile Include="Behaviours\SourceTelemetryInitializer.cs" />
+    <Compile Include="Business\Folder.cs" />
+    <Compile Include="CacheTools\AlbSessionHelper.cs" />
+    <Compile Include="CacheTools\BaseCache.cs" />
+    <Compile Include="CacheTools\BaseCacheInstance.cs" />
+    <Compile Include="CacheTools\BaseCacheMem.cs" />
+    <Compile Include="CacheTools\CacheDictionnaryAccesOffre.cs" />
+    <Compile Include="CacheTools\CacheDictionnaryFormuleGaranties.cs" />
+    <Compile Include="CacheTools\CacheDictionnaryObjetOffre.cs" />
+    <Compile Include="CacheTools\CacheKeyConstants.cs" />
+    <Compile Include="CacheTools\OfferAccesAuthorization.cs" />
+    <Compile Include="Constants\AlbConstantesMetiers.cs" />
+    <Compile Include="Constants\AlbOpConstants.cs" />
+    <Compile Include="Business\Enums\AlbContextMenu.cs" />
+    <Compile Include="Business\Enums\AlbNameVarAddParam.cs" />
+    <Compile Include="Business\Enums\AlbTypeDocRefresh.cs" />
+    <Compile Include="Business\Enums\AlbUserProfileTask.cs" />
+    <Compile Include="Business\Enums\Booleen.cs" />
+    <Compile Include="Business\Enums\CallModeExecution.cs" />
+    <Compile Include="Business\Enums\KUSRDRT_COl.cs" />
+    <Compile Include="Business\Enums\ModeConsultation.cs" />
+    <Compile Include="Business\Enums\NomsInternesEcran.cs" />
+    <Compile Include="Business\Enums\OrigineAppel.cs" />
+    <Compile Include="Business\Enums\PerimetreDesignation.cs" />
+    <Compile Include="Business\Enums\PerimetreInventaire.cs" />
+    <Compile Include="Business\Enums\ResiliationTraceType.cs" />
+    <Compile Include="Business\Enums\SimpleFolderInfoData.cs" />
+    <Compile Include="Business\Enums\SimpleFolderState.cs" />
+    <Compile Include="Business\Enums\TypeDroit.cs" />
+    <Compile Include="Business\Enums\WHERE_OPER.cs" />
+    <Compile Include="Data\ConnectionStringSettingsExtensions.cs" />
+    <Compile Include="Data\ConnectionWrapper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\Dapper\ColumnAttributeTypeMapper.cs" />
+    <Compile Include="Data\Dapper\FallbackTypeMapper.cs" />
+    <Compile Include="Data\Dapper\EacNullableDatetimeTypeHandler.cs" />
+    <Compile Include="Data\DatabaseExtensions.cs" />
+    <Compile Include="Data\DataReaderToListEventHandler.cs" />
+    <Compile Include="Data\DbCountOptions.cs" />
+    <Compile Include="Data\DbExecOptions.cs" />
+    <Compile Include="Data\DbSelectInt32Options.cs" />
+    <Compile Include="Data\DbSelectStringsOptions.cs" />
+    <Compile Include="Data\DbSPOptions.cs" />
+    <Compile Include="Data\DbStatementOptions.cs" />
+    <Compile Include="Data\DbSelectOptions.cs" />
+    <Compile Include="Data\EacParameterExtension.cs" />
+    <Compile Include="Data\Mapping\CannotMapMappingException.cs" />
+    <Compile Include="Data\Mapping\ColumnExpression.cs" />
+    <Compile Include="Data\Mapping\MappingException.cs" />
+    <Compile Include="Data\Mapping\OnlyNullableMappingException.cs" />
+    <Compile Include="Data\Mapping\TypeNotHandledMappingException.cs" />
+    <Compile Include="Data\DbCommandWrapper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExcelXmlMap\CommonExcel.cs" />
+    <Compile Include="ExcelXmlMap\ISLigneInfo.cs" />
+    <Compile Include="ExcelXmlMap\LigneInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExcelXmlMap\XmlInfo.cs" />
+    <Compile Include="Extensions\AddParamValueHelper.cs" />
+    <Compile Include="Extensions\AlbAjaxRedirect.cs" />
+    <Compile Include="Extensions\AlbJsExtendConverter.cs" />
+    <Compile Include="Extensions\AlbNullableInt.cs" />
+    <Compile Include="Extensions\AlbSelectListItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\ArrayDeconstructionExtensions.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\Strings.cs" />
+    <Compile Include="Extensions\Types.cs" />
+    <Compile Include="IOFile\DirectoryManager.cs" />
+    <Compile Include="IOFile\FileDownloadResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LightInject\LightInject.Mvc.cs" />
+    <Compile Include="LightInject\LightInject.Web.cs" />
+    <Compile Include="Mvc\LightInjectDependencyResolver.cs" />
+    <Compile Include="MessageInspector\ContextMessageInspector.cs" />
+    <Compile Include="ServiceFactory\ServiceFactory.cs" />
+    <Compile Include="Tools\AlbHtmlTools.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\AlbNetworkInfo.cs" />
+    <Compile Include="Tools\AlbParameters.cs" />
+    <Compile Include="Tools\GeoDistance.cs" />
+    <Compile Include="Tools\GoogleCoordinate.cs" />
+    <Compile Include="Tools\Models\Common\LogPerf.cs" />
+    <Compile Include="Tools\Models\Common\UserRights.cs" />
+    <Compile Include="Tools\Models\XmlSerializer.cs" />
+    <Compile Include="Tools\Models\Common\LogTrace.cs" />
+    <Compile Include="Tools\Models\Common\MailModel.cs" />
+    <Compile Include="Tools\Models\Common\NavigationTrace.cs" />
+    <Compile Include="Tools\Models\FileModel\FileDescriptions.cs" />
+    <Compile Include="Tools\Models\GridColumnModel\ModelColumnBase.cs" />
+    <Compile Include="Tools\Models\GridColumnModel\GridModelColumnData.cs" />
+    <Compile Include="IOFile\ExportToCSV.cs" />
+    <Compile Include="IOFile\FileContentManager.cs" />
+    <Compile Include="IOFile\IOFileManager.cs" />
+    <Compile Include="IOFile\ManageProperty.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\AlbConvert.cs" />
+    <Compile Include="Tools\AlbGenericSingPattInstance.cs" />
+    <Compile Include="Tools\AlbLog.cs" />
+    <Compile Include="Tools\AlbMailing.cs" />
+    <Compile Include="ExcelXmlMap\ExcelInfo.cs" />
+    <Compile Include="Tools\MvcHelper.cs" />
+    <Compile Include="Tools\Paging.cs" />
+    <Compile Include="Tools\PagingList.cs" />
+    <Compile Include="Tools\RestfulServiceHelper.cs" />
+    <Compile Include="Tools\ParallelHelper.cs" />
+    <Compile Include="Tools\TelemetryHelper.cs" />
+    <Compile Include="Tools\WCFHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

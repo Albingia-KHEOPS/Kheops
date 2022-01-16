@@ -1,0 +1,4 @@
+﻿<connectionStrings>
+  <add providerName="System.Data.EasycomClient" name="EasyCom" connectionString="Server=10.1.2.36;User Id=YALBIN;Password=YALBIN;Init Libl=&quot;ZALBINKQUA;ZALBINKMOD;LAUNCHER;YAlbinPgm;YALBIN400;GENERALE&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />
+  <add providerName="System.Data.EasycomClient" name="VstoClause" connectionString="Server=10.1.2.36;User Id=KDEV400;Password=KDEV400;Init Libl=&quot;ZALBINCLAU;YAlbinPgm;GENERALE&quot;;Pooled=true;PoolLimit=20;PoolTimeout=120" />
+</connectionStrings> 

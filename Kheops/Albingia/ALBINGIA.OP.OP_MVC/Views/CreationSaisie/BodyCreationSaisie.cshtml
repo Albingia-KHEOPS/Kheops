@@ -1,0 +1,90 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationSaisiePage
+@Html.HiddenFor(m => m.EditMode)
+@Html.HiddenFor(m => m.CopyMode)
+@Html.HiddenFor(m => m.CodeOffreCopy)
+@Html.HiddenFor(m => m.VersionCopy)
+@Html.HiddenNoName("DateDuJour", DateTime.Now.ToString("dd/MM/yyyy"))
+@Html.HiddenNoName("idBlacklistedPartenaire", string.Empty)
+<div class="CommonForm FloatLeft">
+    <div class="nGroupFull nGroupWithBorder FloatLeft" @*style="width: 1204px ! important; padding-right: 7px;"*@>
+        <div id="CreationInformationSaisieDiv" class="nHorizontalFullWithGroup HeightSection" @*style="width: 1199px;"*@>
+            @Html.Hidden("CreationSaisieAction", Model.AffaireUniqueId)
+            @Html.Hidden("EditModeCible", 0)
+            @Html.Hidden("HistoCible", 0)
+            <!--Informations Saisie-->
+            <div class="nGradientSection">
+                @Html.Partial("../CreationSaisie/InformationsSaisie", Model.InformationSaisie)
+            </div>
+            <!--Courtier-->
+            <div class="nGradientSection">
+
+                @Html.Hidden("hideInterlocuteur", string.Empty)
+                @Html.Hidden("hideRefCourtier", string.Empty)
+                @Html.Partial("../CreationSaisie/CabinetCourtage", Model.CabinetCourtage)
+            </div>
+            <!--Preneur Assurance-->
+            <div class="nGradientSection">
+                @Html.Partial("../CreationSaisie/PreneurAssurance", Model.PreneurAssurance)
+            </div>
+            <div class="nGradientSection HeightAdresse">
+                <!--Description-->
+                @Html.Raw(@Html.Partial("../CreationSaisie/Description", Model.Description).ToString())
+            </div>
+            <div id="divHideAdresse" class="None">
+                <!--Adresse-->
+                @Html.Partial("../DetailsObjetRisque/ObjetAdresse", Model.ContactAdresse)
+            </div>
+        </div>
+    </div>
+    <div id="divRecherche">
+        <div class="overlay-background" style="z-index:11" >
+        </div>
+        <div id="divDataRecherche">
+        </div>
+    </div>
+    <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+        <div class="nActionButtons ActionButtonLeft">
+
+        </div>
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        @if (!Model.IsReadOnlyDisplay) {
+            if (Model.IsConfirmation) {
+                <div class="nActionButtons ActionButtonRight">
+                    <button id="btnAnnulerConf" type="button" albshortcut="true" data-accesskey="a" tabindex="20"><u>A</u>nnuler</button>
+                    <button id="btnValidConf" type="button" albshortcut="true" data-accesskey="v" tabindex="19"><u>V</u>alider</button>
+                </div>
+            }
+            else {
+                <div class="nActionButtons ActionButtonRight">
+                    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="20"><u>A</u>nnuler</button>
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s" tabindex="19"><u>S</u>uivant</button>
+                </div>
+            }
+        }
+        else {
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnAnnulerConf" type="button" albshortcut="true" data-accesskey="f" tabindex="20"><u>F</u>ermer</button>
+            </div>
+        }
+    </div>
+</div>
+<div id="divConfirmRsq" class="ui-dialog ui-widget ui-widget-content ui-corner-all undefined ui-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-1" style="display: none; z-index: 1002; outline: 0px; position: absolute; height: auto; width: auto; top: 0px; left: 396.5px;">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span class="ui-dialog-title" id="ui-dialog-title-1">Confirmation</span>
+    </div>
+    <div id="divWinListRsq">
+        <div class="GroupFull GroupWithBorder" style="width: 400px;">
+            <div style="padding: 8px 12px;" >Vous avez changé la cible de l'offre le changement entraînera la suppression de tous les risques et de toutes les formules. </div>
+
+                <div style="padding: 8px 12px;">Voulez-vous continuer ?</div>
+                <div class="Validation">
+                    <button id="btnOuiEditCible" type="button" albshortcut="false" accesskey="#**#v"><u>O</u>k</button>
+                    <button id="btnCancelEditCible" type="button" albshortcut="false" accesskey="#**#a"><u>A</u>nnuler</button>
+                    <!-- /ko -->
+                </div>
+            </div>
+
+        </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFormuleGarantie.ModeleFormuleGarantieLstObjRsq
+<table id="tbl@(Model.TableName)">
+    @foreach (var rsq in Model.Risques)
+    {
+        <tr id="@(rsq.Code)_0" name="@(rsq.Designation)">
+            <td class="lgnNiv1">
+                <input id="@(rsq.Code)" name="radioRsq" type="radio" value="@(rsq.Code)_0" branche="@(rsq.Cible.Id)" />
+                @rsq.Designation
+            </td>
+        </tr>
+           foreach (var obj in rsq.Objets)
+           {
+        <tr id="@(rsq.Code)_@(obj.Code)" name="@(obj.Designation)">
+            <td class="lgnNiv2">
+                <input id="check_@(rsq.Code)_@(obj.Code)" name="checkObj" type="checkbox" value="@(rsq.Code)_@(obj.Code)" />
+                @obj.Designation
+            </td>
+        </tr>
+           }
+    }
+</table>

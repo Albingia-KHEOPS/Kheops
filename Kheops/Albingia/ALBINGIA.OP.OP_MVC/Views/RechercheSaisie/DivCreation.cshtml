@@ -1,0 +1,145 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleDivCreation
+@using ALBINGIA.Framework.Common.Constants
+
+<div id="divCreate">
+    <div class="overlay-background" style="z-index:30">
+    </div>
+    @Html.HiddenNoName("TypeEcran", Model.TypeEcran)
+    
+    <input type="hidden" albautocomplete="autoCompTypeTemplateCNVA" value="@(Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_OFFRE ? AlbConstantesMetiers.TYPE_OFFRE : AlbConstantesMetiers.TYPE_CONTRAT)" />
+    <div id="divDataCreate">
+        <table width="99%">
+            <tr>
+                <td style="background-color: #EDEDED;" colspan="2">
+                    @if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_OFFRE)
+                    {
+                        <b>&nbsp;Création d'une saisie</b><br />
+                    }
+                    else if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_CONTRAT)
+                    {
+                        <b>&nbsp;Création d'un contrat</b><br />
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_OFFRE)
+                    {
+                        <div>
+                            @*                            Voulez-vous créer une saisie à partir d'une offre existante (copie) ?
+                                <br />
+                                    <br />*@
+                            Voulez-vous créer une saisie vierge ?
+                            <br />
+                            <br />
+                        </div>
+                    }
+                    else if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_CONTRAT)
+                    {
+                        <div>
+                            @*                            Voulez-vous créer un contrat à partir d'un canevas ?
+                                <br />
+                                    <br />*@
+                            Voulez-vous créer un contrat vierge ?
+                            <br />
+                            <br />
+                        </div>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <input type="button" id="btnCreateAnnuler" value="Annuler" />
+                </td>
+                <td style="text-align: right;">
+                    <input type="button" id="btnCreateNo" value="Non" style="width: 55px;" />
+                    <input type="button" id="btnCreateYes" value="Oui" style="width: 55px;" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="divCopie">
+    <div class="overlay-background" style="z-index:40" >
+    </div>
+    <div id="divDataCopie">
+        <input type="hidden" id="copyOffreContrat" name="copyOffre" value="" />
+        <table width="99%">
+            <tr>
+                <td style="background-color: #EDEDED;" colspan="2" id="tdTxtCopie">
+                    @if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_OFFRE) {
+                        <b>&nbsp;Création d'une saisie</b><br />
+                    }
+                    else if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_CONTRAT) {
+                        <b>&nbsp;Création d'un contrat</b><br />
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @*@if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_OFFRE)
+                        {
+                            <div class="FloatLeft">
+                                Veuillez saisir le numéro d'offre à copier
+                            </div>
+                            <div class="FloatRight">
+                                Canevas
+                            <input type="checkbox" id="chkCanevas" />
+                            </div>
+                        }
+                        else if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_CONTRAT)
+                        {
+                            <div class="FloatLeft">
+                                Veuillez saisir le numéro du canevas
+                            </div>
+                            <div id="divCheckCanevas" class="FloatRight">
+                                Canevas
+                            <input type="checkbox" id="chkCanevas" checked="checked"/>
+                            </div>
+                        }*@
+
+
+                    <div class="FloatLeft">
+                        Veuillez saisir le numéro d'offre/contrat à copier
+                    </div>
+                    <div class="FloatRight">
+                        Canevas
+                        <input type="checkbox" id="chkCanevas" />
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div>
+                        @if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_OFFRE) {
+                            <label class="FloatLeft">Offre - version :</label>
+                        }
+                        else if (Model.TypeEcran == AlbConstantesMetiers.SCREEN_TYPE_CONTRAT) {
+                            <label class="FloatLeft">Contrat - version :</label>
+                        }
+                        <input class="WidthCopyOffreContrat FloatLeft" type="text" id="CodeOffreContratCopy" name="CodeOffreContratCopy" value="" style="text-transform: uppercase;" />
+                        <input type="text" id="CanevasCopy" name="CanevasCopy" style="width: 25px; display: none; float: left;" value="CV" readonly="readonly" />
+                        <input type="text" id="CodeCanevasCopy" name="CodeCanevasCopy" style="width: 160px; display: none; float: left; text-transform: uppercase;" albautocomplete="autoCompCodeTemplateCNVA" maxlength="7" />
+                        <label id="labSeparator" class="FloatLeft WidthSeparator">-</label>
+                        <input class="WidthCopyVers numerique FloatLeft" albmask="numeric" type="text" id="VersionCopy" name="VersionCopy"
+                               value="0" />
+                        <div class="FloatLeft ImgRech">
+                            <img id="btnRechPolice" src="@Url.Content("/Content/Images/loupe.png")" alt="" class="CursorPointer" />
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <input type="button" id="btnCopyAnnuler" value="Annuler" />
+                </td>
+                <td style="text-align: right;">
+                    <input type="button" id="btnCopyValid" value="Valider" style="width: 55px;" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

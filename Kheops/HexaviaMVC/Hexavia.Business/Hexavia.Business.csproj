@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{682235B0-0A9C-4810-82CB-AF14CF3FE058}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hexavia.Business</RootNamespace>
+    <AssemblyName>Hexavia.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdresseBusiness.cs" />
+    <Compile Include="BusinessModule.cs" />
+    <Compile Include="Interfaces\ILayerBusiness.cs" />
+    <Compile Include="Interfaces\IReferentielBusiness.cs" />
+    <Compile Include="LayerBusiness.cs" />
+    <Compile Include="OfferContractBusiness.cs" />
+    <Compile Include="GrpUrlBusiness.cs" />
+    <Compile Include="Interfaces\IOfferContractBusiness.cs" />
+    <Compile Include="Interfaces\IAdresseBusiness.cs" />
+    <Compile Include="Interfaces\IGrpUrlBusiness.cs" />
+    <Compile Include="Interfaces\ILatitudeLogitudeBusiness.cs" />
+    <Compile Include="Interfaces\IPaysBusiness.cs" />
+    <Compile Include="Interfaces\IKheopsUrlBusiness.cs" />
+    <Compile Include="Interfaces\IPartnerBusiness.cs" />
+    <Compile Include="LatitudeLogitudeBusiness.cs" />
+    <Compile Include="PartnerBusiness.cs" />
+    <Compile Include="PaysBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="KheopsUrlBusiness.cs" />
+    <Compile Include="ReferentielBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hexavia.Models\Hexavia.Models.csproj">
+      <Project>{263636c4-b1b7-49df-b397-3b14232a32bc}</Project>
+      <Name>Hexavia.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hexavia.Repository\Hexavia.Repository.csproj">
+      <Project>{625f2784-0b3c-4235-851a-b207d947ae40}</Project>
+      <Name>Hexavia.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hexavia.Tools\Hexavia.Tools.csproj">
+      <Project>{d6d1e361-1570-4196-8376-e3bda06512c6}</Project>
+      <Name>Hexavia.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,72 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleRechercheAvancee
+<div class="GroupFull GroupWithBorder TotalWidth">
+    <div id="divRechercheResultPreneur">
+        <div class="FloatLeft ">
+            @Html.HiddenNoName("RechercheAvanceePreneurAssuContexte", Model.Contexte)
+            <div class="GroupTitle">
+                Recherche de preneurs d'assurance
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Code du Preneur</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="numerique HalfInput" albMask="numericCodePreneur" id="CodePreneurAssuranceRechercheTrans"  value="@(Model.CodePreneurAssuranceRecherche)" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Nom du Preneur</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="FloatLeft" id="NomPreneurAssuranceRechercheTrans" value="@(Model.NomPreneurAssuranceRecherche)" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Code postal</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="numerique HalfInput" id="CodePostalPreneurAssuranceRechercheTrans" />
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <button type="button" id="btnLancerRecherchePreneursAssurance" albshortcut="true" data-accesskey="r">
+                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" class="paddingLoupe" />
+                    </button>
+                </div>
+            </div>
+            <div class="HeightRow"></div>
+            <div class="FloatLeft">
+                <div id="divResRecherchePreneurAssuHeader">
+                    <table id="tblResRecherchePreneurAssuHeader" class="trHeight">
+                        <tr>
+                            <th class="col_HeaderCodePreneur tablePersoHead">Code
+                            </th>
+                            <th class="col_HeaderNomPreneur tablePersoHead">Nom
+                            </th>
+                            <th class="col_HeaderNomSecPreneur tablePersoHead">Nom secondaire
+                            </th>
+                            <th class="col_HeaderDepartementPreneur tablePersoHead">Département
+                            </th>
+                            <th class="col_HeaderVillePreneur tablePersoHead">Ville
+                            </th>
+                            <th class="col_HeaderSirenPreneur tablePersoHead">SIREN
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divResRecherchePreneurAssuBody">
+                    @if (Model.CabinetsPreneurs != null)
+                    {
+                        @Html.Partial("/Views/RecherchesAvanceesTransverses/RecherchePreneursAssurancesResult.cshtml", Model.CabinetsPreneurs)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+    <div id="LoadingDivSearchPreneur" class="FloatLeft">
+        <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+    </div>
+    <div style="padding-top: 15px; float: left;"><span id="MsgAffinementPreneurAssurance" style="display: none" class="errorRechAvancee"></span></div>
+    <div class="ActionButtons ActionButtonsSearchRight ActionButtonRight">
+        <button type="button" id="btnCloseAdvanced">Fermer</button>
+    </div>
+</div>

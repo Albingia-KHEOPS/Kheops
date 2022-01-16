@@ -1,0 +1,108 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.Commission
+@using ALBINGIA.Framework.Common.Constants
+<div>
+    <div class="FloatLeft">
+        <table id="tblHeaderCommissionL" class="trHeight" style="width: 250px">
+            <tr>
+                <td style="width: 55px;">&nbsp</td>
+                <th class="tablePersoHead" style="width: 100px; text-align: center">Prochaine échéance</th>
+            </tr>
+        </table>
+
+        <table id="tblBodyCommissionL" class="trHeight" style="width: 250px;">
+            <tr>
+                <td style="width: 55px; padding-left: 2px;">
+                    Date
+                </td>
+                <td class="" style="width: 100px; padding-left: 3px; text-align: center">
+                    <span>@(Model.ProchaineEcheance.HasValue ? string.Format("{0}/{1}/{2}", Model.ProchaineEcheance.Value.Day.ToString().PadLeft(2, '0'), Model.ProchaineEcheance.Value.Month.ToString().PadLeft(2, '0'), Model.ProchaineEcheance.Value.Year) : string.Empty)</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 55px; padding-left: 2px;">
+                    Hors CATNAT
+                </td>
+                <td style="width: 100px; padding-left: 2px; padding-right: 2px" class="decimal">
+                    <span albmask="decimal">@(Model.MontantHTHRCN)</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 55px; padding-left: 2px;">
+                    CATNAT
+                </td>
+                <td style="width: 100px; padding-left: 2px; padding-right: 2px" class="decimal">
+                    <span albmask="decimal">@(Model.MontantCN)</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 55px; padding-left: 2px;">
+                    <b>Total</b>
+                </td>
+                <td style="width: 100px; padding-left: 2px; padding-right: 2px" class="decimal">
+                    <span albmask="decimal">@(Model.MontantHTHRCN + Model.MontantCN)</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="FloatRight">
+        <table id="tblHeaderCommissionR" class="trHeight" style="width: 250px;">
+            <tr>
+                <th colspan="2" class="tablePersoHead" style="text-align: center">Commissions</th>
+            </tr>
+            <tr>
+                <th class="tablePersoHead" style="width: 80px; text-align: center">Taux</th>
+                <th class="tablePersoHead" style="width: 80px; text-align: center">Montant</th>
+            </tr>
+        </table>
+
+        <table id="tblBodyCommissionR" class="trHeight" style="width: 250px;">
+            <tr>
+                <td style="width: 80px; padding-right: 2px" class="decimal"><span albmask="pourcentdecimal">@(Model.TauxHRCatNatRetenu)</span></td>
+                <td style="width: 80px; padding-right: 2px" class="decimal"><span albmask="decimal">@(Model.MontantHRCatNatRetenu)</span></td>
+            </tr>
+            <tr>
+                <td style="width: 80px; padding-right: 2px" class="decimal"><span albmask="pourcentdecimal">@(Model.TauxCatNatRetenu)</span></td>
+                <td style="width: 80px; padding-right: 2px" class="decimal"><span albmask="decimal">@(Model.MontantCatNatRetenu)</span></td>
+            </tr>
+            <tr>
+                <td style="width: 80px; padding-right: 2px" class="decimal"></td>
+                <td style="width: 80px; padding-right: 2px" class="decimal"><span albmask="decimal">@(Model.MontantTotalRetenu)</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+@*@if (Model.Periodicite != "U" && Model.Periodicite != "E" && Model.Periodicite != "R" && Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGUL)*@
+@if (Model.Periodicite != "U" && Model.Periodicite != "E" && Model.Periodicite != "R"
+    && (Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.TypeAvt != AlbConstantesMetiers.TYPE_AVENANT_REGUL
+        || (Model.TypeAvt == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_REGUL)))
+{
+    <div class="None" style="padding-top: 8px">
+        <div class="FloatLeft PaddingLeft"><b>Prochaine échéance</b></div>
+        <div class="FloatLeft PaddingLeft">@(Model.ProchaineEcheance.HasValue ? string.Format("{0}/{1}/{2}", Model.ProchaineEcheance.Value.Day.ToString().PadLeft(2, '0'), Model.ProchaineEcheance.Value.Month.ToString().PadLeft(2, '0'), Model.ProchaineEcheance.Value.Year) : string.Empty)</div>
+        @*@if (Model.TraceCC) {
+                <div class="FloatRight" style="color: red; font-weight: bold; padding-right: 21px;">Le taux de commission a changé.</div>
+            }*@
+    </div>
+    <div class="PaddingTop None" style="clear: both;">
+        <div class="FloatLeft PaddingLeft"><b>Montant HT hors CN</b></div>
+        <div class="FloatLeft PaddingLeft">
+            <span albmask="decimal" style="width: 80px; text-align: right; display: block;">@(Model.MontantHTHRCN)</span>
+        </div>
+        <div class="FloatLeft PaddingLeft" style="padding-left: 20px;"><b>CATNAT</b></div>
+        <div class="FloatLeft PaddingLeft">
+            <span albmask="decimal" style="width: 80px; text-align: right; display: block;">@(Model.MontantCN)</span>
+        </div>
+    </div>
+}
+else
+{
+    if (Model.TraceCC)
+    {
+        @*<div class="FloatRight" style="color: red; font-weight: bold; padding-right: 10px;">Le taux de commission a changé</div>*@
+    }
+}
+@if (Model.TraceCC)
+{
+    <div class="FloatRight" style="color: red; font-weight: bold; padding-right: 10px;">Le taux de commission a changé</div>
+}

@@ -1,0 +1,198 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleEngagementsConnexitePage>
+
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vEngagementsConnexite.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albEngagemensConnexite.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/knockout/components/connexites/connexites-engagements.template.html")))
+    <script type="text/javascript">
+        var connexites = @(Html.Raw(MetaModelsBase.GetJsonFromData(Model.Connexites)));
+        $(function () {
+            $.get("/Connexites/GetEmptyModel").done(function (data) {
+                let model = new affaire.connexites.ConnexitesViewModel(
+                    { dataLoaded: true, modeNavig: '@(Model.ModeNavig)', isReadonly: @(Model.IsReadOnly.ToString().ToLower()), affair: window.currentAffair },
+                    data,
+                    window.connexites
+                );
+                ko.applyBindings(model, common.dom.get("divCnxEng"));
+            });
+        });
+    </script>
+}
+
+<div class="FullWidth">
+    @Html.Hidden("fieldInput", string.Empty)
+    @Html.HiddenNoName("Provenance", Model.Provenance)
+    @Html.HiddenNoName("NumConnexite", Model.NumConnexite)
+    @switch (Model.ScreenType) {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection HeightListeContratsConnexes">
+                    <div id="divCnxEng">
+                        <!-- ko template: { name: 'connexites_engagements', data: $root } -->
+                        <!-- /ko -->
+                        <div>
+                            <button data-bind="visible: periodesChanged, click: resetPeriodeList">Réinitialiser les périodes</button>
+                            <button data-bind="visible: periodesChanged, click: modifyPeriodes">Valider les périodes</button>
+                        </div>
+                    </div>
+                    @*<div class="HeightRow">
+                                    <div class="GenericColumn">
+                                        <label class="titre">Contrats connexes</label>
+                                    </div>
+                                    <div class="GenericColumn">
+                                        <div class="FloatLeft">
+                                            <input id="rbPartAlbingia" type="radio" name="rbPart" checked="checked" />
+                                        </div>
+                                        <div class="FloatLeft paddingLabel">
+                                            Part Albingia
+                                        </div>
+                                    </div>
+                                    <div class="GenericColumn">
+                                        <div class="FloatLeft">
+                                            <input id="rbPartTotale" type="radio" name="rbPart" />
+                                        </div>
+                                        <div class="FloatLeft paddingLabel">
+                                            Part totale
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="HeightRow">
+                                    <div id="divEngagementHeader">
+                                        <table id="tblEngagementHeader">
+                                            <tr>
+                                                <th class="col_HeaderEngagementVide tablePersoHead"></th>
+                                                <th class="col_HeaderDateDeb tablePersoHead">Début
+                                                </th>
+                                                <th class="col_HeaderDateFin tablePersoHead">Fin
+                                                </th>
+                                                @if (Model.ListCodeTraites != null)
+                                                {
+                                                    foreach (var traite in Model.ListCodeTraites)
+                                                    {
+                                                    <th class="col_HeaderTraite tablePersoHead">@(traite.Code + "-" + traite.Libelle)
+                                                    </th>
+                                                    }
+                                                }
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div id="divEngagementBody">
+                                        <table id="tblEngagementBody">
+                                            @Html.Partial("ContratsConnexes", Model.ContratsConnexes)
+
+                                            <tr>
+                                                <td class="col_Contrat">Total</td>
+                                                <td class="col_DateDeb"></td>
+                                                <td class="col_DateFin"></td>
+                                                @if (Model.TotalPartAlbingia != null)
+                                                {
+                                                    for (int i = 0; i < Model.TotalPartAlbingia.Length; i++)
+                                                    {
+                                                    <td name="partAlbingia" class="col_Traite decimal">@Model.TotalPartAlbingia[i]</td>
+                                                    <td name="partTotale" class="col_Traite decimal">@Model.TotalPartTotale[i]</td>
+                                                    }
+                                                }
+
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nHorizontalFullWithGroup">
+                            <div class="nGradientSection HeightListeMontants">
+                                <div class="HeightRow">
+                                    <div class="GenericColumn">
+                                        <label class="titre">Montant des engagements de connexité</label>
+                                    </div>
+                                </div>
+                                <div class="HeightRow">
+                                    <div id="divMontantHeader">
+                                        <table id="tblMontantHeader">
+                                            <tr>
+                                                <th class="col_HeaderButonVide tablePersoHead">
+                                                    @if (Model.IsReadOnly)
+                                                    {
+                                                        <img id="ajouterEngagementPeriode" title="Ajouter une période d'engagement" alt="Ajouter" name="ajoutEngagementPeriode" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img id="ajouterEngagementPeriode" title="Ajouter une période d'engagement" alt="Ajouter" name="ajoutEngagementPeriode" src="@Url.Content("~/Content/Images/plusajouter1616.png")" class="CursorPointer" />
+                                                    }
+                                                </th>
+                                                <th class="col_HeaderStatut tablePersoHead">Statut</th>
+                                                <th class="col_HeaderDateDeb tablePersoHead">Début
+                                                </th>
+                                                <th class="col_HeaderDateFin tablePersoHead">Fin
+                                                </th>
+                                                @foreach (var traite in Model.ModeleEngagement.ListCodeTraites)
+                                                {
+                                                    <th class="col_HeaderTraite tablePersoHead">@(traite.Code + "-" + traite.Libelle)
+                                                    </th>
+                                                }
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div id="divMontantBody">
+                                        <table id="tblMontantBody">
+                                            @Html.Partial("MontantEngagements", Model.ModeleEngagement)
+                                        </table>
+                                    </div>
+
+                                </div>*@
+                </div>
+            </div>
+            @*<div id="alerteDiscontinuiteDiv" class="alerteDiscontinuite">
+                    <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")"  title="Attention" class="iconeAlerte" />
+                    Attention, il y a une discontinuité des dates entre le...
+                </div>*@
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonRight">
+                @if (Model.IsReadOnly == true) {
+                    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="p"><u>P</u>récédent</button>
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+                }
+                else {
+                    <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                    <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

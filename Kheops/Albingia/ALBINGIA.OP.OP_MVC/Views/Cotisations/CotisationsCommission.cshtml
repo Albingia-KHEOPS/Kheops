@@ -1,0 +1,65 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesCotisations.ModeleCommission
+<div>
+    <table id="tblHeaderCommission" style="width: 490px; text-align: center;" class="trHeight">
+        <tr>
+            <td class="tablePersoHead" style="width: 146px;">Commissions</td>
+            <td class="tablePersoHead" style="width: 161px;">
+                <table style="width: 100%">
+                    <tr>
+                        <td colspan="2" style="width: 167px;">Taux (%)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Standard</td>
+                        <td>Forcé</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="tablePersoHead" style="width: 157px;">Montant (€)</td>
+        </tr>
+    </table>
+    <table id="tblBodyCommission" style="width: 490px;" class="trHeight">
+        <tr>
+            <td style="width: 148px; padding-left: 5px;">Hors CATNAT
+            </td>
+            <td style="width: 80px; padding: 0; text-align: right; padding-right: 5px;">
+                @Html.HiddenNoName("TauxStandardHCATNAT", Model.TauxStd)
+                <span albmask="pourcentdecimal">@(Model.TauxStd)</span>
+            </td>
+            <td style="width: 80px; padding: 0; text-align: right;">
+                <input type="text" id="TauxForce" name="TauxForce" value="@(Model.TauxForce)" albmask="pourcentdecimal" class="numerique" readonly="@(Model.isReadonly )"/>
+                @Html.Hidden("TauxForceOld", (Model.TauxForce))
+            </td>
+            <td style="width: 160px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="decimal">@(Model.MontantForce > 0 ? Model.MontantForce.ToString() : Model.MontantStd.ToString())</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 148px; padding-left: 5px;">CATNAT
+            </td>
+            <td style="width: 80px; padding: 0; text-align: right; padding-right: 5px;">
+                @Html.HiddenNoName("TauxStandardCATNAT", Model.TauxStdCatNat)
+                <span albmask="pourcentdecimal">@(Model.TauxStdCatNat)</span>
+            </td>
+            <td style="width: 80px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="pourcentdecimal">@(Model.TauxForceCatNat)</span>
+            </td>
+            <td style="width: 160px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="decimal">@(Model.MontantForceCatNat > 0 ? Model.MontantForceCatNat.ToString() : Model.MontantStdCatNat.ToString())</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; padding-left: 5px; font-weight: bold;" colspan="2">Total
+            </td>
+            <td style="width: 80px; padding: 0; text-align: right; padding-right: 5px;">&nbsp;
+            </td>
+            <td style="width: 160px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="decimal">@(Model.MontantForceTotal > 0 ? Model.MontantForceTotal.ToString() : Model.MontantStdTotal.ToString())</span>
+            </td>
+        </tr>
+    </table>
+</div>
+@if (Model.TraceCC)
+{
+    <div class="FloatRight" style="color: red; font-weight: bold; padding-right: 10px;">Le taux de commission a changé.</div>
+}

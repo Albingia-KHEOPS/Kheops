@@ -1,0 +1,10 @@
+﻿@model Hexavia.Models.UrlModel
+@Html.HiddenFor(model => Model.Url)
+<script>
+    $(document).ready(function () {
+
+        var url = document.getElementById('Url').value;
+
+        window.open(url,"_self");
+    });
+</script>

@@ -1,0 +1,274 @@
+﻿.PaddingSum {
+    padding-right: 24px !important;
+}
+
+#tblCourtiersHeader tr, #tblCourtiersBody tr {
+    height: 1px !important;
+}
+
+#divCourtiersHeader {
+    width: 985px;
+}
+
+#divCourtiersBody {
+    max-height: 390px;
+    overflow-y: auto;
+}
+
+.NumeroCourtierColumn {
+    width: 198px;
+    float: left;
+    margin-right: 15px;
+}
+
+.CommissionColumn {
+    width: 198px;
+    float: left;
+    margin-right: 15px;
+}
+
+.Label {
+    float: left;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-top: 24px;
+}
+
+.NomTxt {
+    width: 260px !important;
+    margin-top: 24px;
+}
+
+.NumCourtierTxt {
+    width: 130px;
+    margin-top: 24px;
+}
+
+.CommissionTxt {
+    width: 130px !important;
+    margin-top: 24px;
+}
+
+.GradientSectionAjoutCourtier {
+    background-attachment: fixed !important;
+    background-color: #EEEEEE;
+    background-image: -moz-linear-gradient(center top, #FFFFFF, #DDDDDD);
+    border: 1px outset #DDDDDD;
+    border-radius: 5px 5px 5px 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 5px;
+    height: 136px;
+}
+
+.GradientSectionEntetePopup {
+    background-attachment: fixed !important;
+    background-color: #EEEEEE;
+    background-image: -moz-linear-gradient(center top, #FFFFFF, #DDDDDD);
+    border: 1px outset #DDDDDD;
+    border-radius: 5px 5px 5px 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 5px;
+    height: 24px;
+}
+
+.HeightRowButtons {
+    clear: both;
+    height: 4px;
+    margin-bottom: 6px;
+    margin-left: 698px;
+    padding-right: 10px;
+    padding-top: 24px;
+}
+
+.spanText {
+    float: left;
+    margin-left: 12px;
+}
+
+.ImgAjout {
+    float: left;
+    margin-left: 7px;
+}
+
+.ButtonRight {
+    text-align: right;
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-right: 6px;
+    padding-top: 4px;
+}
+
+.ButtonSuivant {
+    height: 24px;
+    width: 140px;
+}
+
+.col_HeaderCodeCourtier {
+    width: 50px;
+}
+
+.col_HeaderNomCourtier {
+    /*width: 535px;*/
+    width:365px;
+}
+
+.col_HeaderCodePostal {
+    width: 50px;
+}
+
+.col_HeaderCommission {
+    width: 100px;
+}
+
+.col_HeaderApport {
+    width: 50px;
+}
+
+.col_HeaderGest {
+    width: 50px;
+}
+
+.col_HeaderPay {
+    width: 50px;
+}
+
+.col_HeaderButtons {
+    width: 50px;
+}
+
+.col_CodeCourtier {
+    padding-left: 5px;
+    width: 48px;
+}
+
+.col_NomCourtier {
+    padding-left: 5px;
+    /*width: 533px;*/
+     width: 365px;
+}
+
+.col_CodePostal {
+    text-align: center;
+    width: 52px;
+}
+
+.col_Commission {
+    width: 102px;
+}
+
+.col_ApportGestPay {
+    text-align: center;
+    width: 52px;
+}
+
+.col_Gest {
+    width: 50px;
+}
+
+.col_Pay {
+    width: 50px;
+}
+
+.col_Buttons {
+    padding-left: 10px;
+    width: 44px;
+}
+
+.col_Total {
+    width: 535px;
+}
+
+#divFullScreenCourtier {
+    display: none;
+}
+
+#divDataFullScreenCourtier {
+    position: absolute;
+    top: 50px;
+    left: 20%;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 190px;
+    width:854px;
+}
+
+.lableEntete {
+    text-decoration: underline;
+}
+
+.TripleColumnsGroup {
+    width: 312px;
+}
+
+.HeightCoCourtier {
+    height: 479px;
+    padding-left: 5px;
+}
+
+.HeightCoCourtierCommission {
+    height: 349px;
+    padding-left: 5px;
+}
+
+.HeightCommissionCourtier {
+    height: 120px;
+    padding-left: 5px;
+}
+
+.FullColumn {
+    width: 390px;
+}
+
+.FullColumnComment {
+width:750px;
+}
+
+.inputTaux {
+    width: 80px;
+}
+
+.ColCheckBox {
+    width: 140px;
+    padding-left: 5px;
+}
+
+.ColTaux {
+    width: 100px;
+    padding-left: 5px;
+}
+
+.ColCommentaire {
+    width: 501px;
+}
+.PaddingR {
+ padding-right:130px;
+}
+
+
+.PaddingTitle {
+    margin-bottom: 0px;
+}
+
+.SuperInput {
+    width: 501px !important; /*width: 350px !important;*/
+    margin-bottom: 5px;
+    height: 100px;
+}
+
+/*
+#tblCourtiersBody
+{
+    height: 437px;
+    overflow: scroll;
+    width: 100%;
+}
+*/
+
+.AffichePopup{
+    width:850px;
+}

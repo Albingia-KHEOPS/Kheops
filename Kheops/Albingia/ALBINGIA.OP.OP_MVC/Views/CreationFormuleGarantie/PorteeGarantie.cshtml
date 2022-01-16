@@ -1,0 +1,153 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFormuleGarantie.ModelePorteeGarantie
+<div class="CommonForm FloatLeft" style="width: 790px;">
+    @Html.Hidden("isReadonly", Model.isReadOnly, new { id = "isReadOnly" })
+    @Html.Hidden("IdGarantiePortee", (Model.SequenceGarantie))
+    @Html.Hidden("CodeGarantiePortee", (Model.CodeGarantie))
+    @Html.Hidden("TypeAlimAssiette", (Model.AlimAssiette))
+    <div class="GroupFull GroupWithBorder" style="width: 775px;">
+        <div class="GroupTitle">@(Model.CodeGarantie) - @(Model.LibelleGarantie)</div>
+        <div class="HorizontalFullWithGroup" style="width: 770px">
+            <div class="GradientSection" style="height: 300px;">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Action</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (!Model.isReadOnly)
+                        {
+                            @Html.AlbDropDownListFor(m => m.Action, Model.Actions, "Action", htmlAttributes: new { @id = "Action" }, generateTitle: true)
+                        }
+                        else
+                        {
+                            @Html.AlbDropDownListFor(m => m.Action, Model.Actions, "Action", htmlAttributes: new { @id = "Action", @disabled = "disabled", @class = "readonly" }, generateTitle: true)
+                        }
+                    </div>
+                </div>
+                <div class="">
+                    <div class="@(Model.AlimAssiette == "B" || Model.AlimAssiette == "C" ? "PaddingLeft None" : "PaddingLeft")">Cocher les objets à Inclure ou Exclure parmi les objets auxquels s'applique la Formule.</div>
+                    @if (Model.Risque != null)
+                    {
+                        double mntTotal = 0;
+                        bool errMntTotal = false;
+                        <div id="divHeaderLstRsq">
+                            @Html.Hidden("CodeRsqPortee", (Model.Risque.Code))
+                            <table id="tblHeaderLstRsq">
+                                <tr class="even">
+                                    <th class="tdImgCheckBox">&nbsp;</th>
+                                    <th class="@(Model.AlimAssiette == "B" || Model.AlimAssiette == "C" ? "thLibObjPrime" : "thLibObj")">Risque @(Model.Risque.Code) - @(Model.Risque.Designation)</th>
+                                    @if (Model.AlimAssiette == "B" || Model.AlimAssiette == "C")
+                                    {
+                                        <th class="thValeur">Valeur
+                                        </th>
+                                        <th class="thForfait">Forfait/taux HT</th>
+                                        <th class="thMontant">Montant HT calculé</th>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                                    if (Model.Risque.Objets != null && Model.Risque.Objets.Count > 0)
+                                    {
+                        <div id="divBodyLstObj" class="dvBodyLstObj">
+                            <table id="tblBodyLstObj" class="tableBodyLstObj">
+                                @foreach (var obj in Model.Risque.Objets)
+                                {
+                                    <tr class="odd" name="lineObjPortee" albcodeobj="@(obj.Code)">
+                                        <td class="tdImgCheckBox">
+                                            <input type="checkbox" id="chkObjPortee" name="chkObjPortee" albCodeObjet="@(obj.Code)" checked="@(!string.IsNullOrEmpty(obj.Action) || ((Model.AlimAssiette == "B" || Model.AlimAssiette == "C") && Model.IdPortee == 0 && Model.Risque.Objets.Count == 1))" disabled="@(Model.isReadOnly)" />
+                                        </td>
+                                        <td class="@(Model.AlimAssiette == "B" || Model.AlimAssiette == "C" ? "tdLibObjPrime" : "tdLibObj")">Objet @(obj.Code) - @(obj.Designation)</td>
+                                        @if (Model.AlimAssiette == "B" || Model.AlimAssiette == "C")
+                                        {
+                                            <td class="tdValeur">
+                                                <span name="valObj_@(obj.Code)" albmask="numeric">@(obj.Valeur)</span>
+                                            </td>
+                                            <td class="tdUnitType">
+                                                @(obj.Unite.Code)
+                                            </td>
+                                            <td class="tdUnitType">
+                                                @(obj.Type.Code)
+                                            </td>
+                                            <td class="tdValeur">
+                                                <input type="text" id="inValObj_@(obj.Code)" name="inValObj" class="@(Model.isReadOnly ? "inputValObj numerique readonly" : "inputValObj numerique")" value="@(obj.ValPorteeObj)" albmask="decimal" readonly="@(Model.isReadOnly)" />
+                                            </td>
+                                            <td class="tdUnitTypePortee">
+                                                @if (obj.TypePorteeCal == "M" || Model.isReadOnly)
+                                                {
+                                                    @Html.AlbDropDownListFor(m => obj.UnitPorteeObj, Model.UnitesTaux.Select(u => { u.Selected = (u.Value == obj.UnitPorteeObj ? true : false); return u; }).ToList(), "UnitePortee_" + obj.Code, htmlAttributes: new { @id = "UnitePortee_" + obj.Code, @class = "selectUnitType", @disabled = "disabled" }, genEmptyLine: true, generateTitle: true, replaceHtmlName: "UnitePortee")
+                                                }
+                                                else
+                                                {
+                                                    @Html.AlbDropDownListFor(m => obj.UnitPorteeObj, Model.UnitesTaux.Select(u => { u.Selected = (u.Value == obj.UnitPorteeObj ? true : false); return u; }).ToList(), "UnitePortee_" + obj.Code, htmlAttributes: new { @id = "UnitePortee_" + obj.Code, @class = "selectUnitType" }, genEmptyLine: true, generateTitle: true, replaceHtmlName: "UnitePortee")
+                                                }
+                                            </td>
+                                            <td class="tdUnitTypePortee">
+                                                @if (Model.isReadOnly)
+                                                {
+                                                    @Html.AlbDropDownListFor(m => obj.TypePorteeCal, Model.TypesCalTaux.Select(u => { u.Selected = (u.Value == obj.TypePorteeCal ? true : false); return u; }).ToList(), "TypePorteeCal_" + obj.Code, htmlAttributes: new { @id = "TypePorteeCal_" + obj.Code, @class = "selectUnitType", @disabled = "disabled" }, genEmptyLine: true, generateTitle: true, replaceHtmlName: "TypePorteeCal")
+                                                }
+                                                else
+                                                {
+                                                    @Html.AlbDropDownListFor(m => obj.TypePorteeCal, Model.TypesCalTaux.Select(u => { u.Selected = (u.Value == obj.TypePorteeCal ? true : false); return u; }).ToList(), "TypePorteeCal_" + obj.Code, htmlAttributes: new { @id = "TypePorteeCal_" + obj.Code, @class = "selectUnitType" }, genEmptyLine: true, generateTitle: true, replaceHtmlName: "TypePorteeCal")
+                                                }
+                                            </td>
+                                            <td class="tdPrime">
+                                                <span name="primeCalObj_@(obj.Code)" albmask="decimal">@(obj.PrimeMntCal)</span>
+                                            </td>
+                                                if (!string.IsNullOrEmpty(obj.Action))
+                                                {
+                                                    mntTotal += obj.PrimeMntCal;
+                                                    if (obj.PrimeMntCal == 0)
+                                                    {
+                                                        errMntTotal = true;
+                                                    }
+                                                }
+                                        }
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                                    }
+                                    if (Model.AlimAssiette == "B" || Model.AlimAssiette == "C")
+                                    {
+                        <div id="divFooterPortee">
+                            <table>
+                                <tr class="even">
+                                    <th class="thFooter">&nbsp;</th>
+                                    <th class="thFooterMontant">Montant Total HT Calculé</th>
+                                    <th class="thFooterMntTotal">
+                                        <span name="mntTotal" albmask="decimal">@(errMntTotal ? 0 : mntTotal)</span>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="HeightRow" style="padding-top: 20px;">
+                            <div class="FloatRight" style="padding-right: 24px;">
+                                <input type="checkbox" id="chckReportCal" checked="@(Model.ReportCal)" disabled="@(Model.isReadOnly )" />
+                                <i>Reporter le montant calculé</i>
+                            </div>
+                        </div>
+                                    }
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 775px">
+        <div class="ActionButtons ActionButtonRight">
+            @if (!Model.isReadOnly)
+            {
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnFancyValider" type="button" albshortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+
+            }
+            else
+            {
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+            }
+        </div>
+    </div>
+</div>

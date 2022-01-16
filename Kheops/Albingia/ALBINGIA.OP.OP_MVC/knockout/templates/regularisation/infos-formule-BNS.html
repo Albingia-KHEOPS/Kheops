@@ -1,0 +1,32 @@
+﻿
+<div class="input-box nGradientSection">
+    <div style="height: 78px;">
+        <div class="FloatLeft">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Taux appel %</label>
+                </div>
+                <div class="FloatLeft" style="padding-right:100px;">
+                    <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: TauxAppel" albmask="pourcentnumeric" />
+                </div>
+
+                <div class="FloatLeft">
+                    <label class="Block lblInfo">Ristourne %</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: Ristourne" albmask="pourcentnumeric" />
+                </div>
+            </div>
+
+            <input type="hidden" disabled class="numerique" albmask="decimal" id="InitialCotisationPeriode" data-bind="autoNumeric: InitialCotisationPeriode" />
+            <input type="hidden" disabled class="inputDate numerique" albmask="pourcentnumeric" id="InitialTauxAppelRetenu" data-bind="autoNumeric: InitialTauxAppelRetenu" />
+
+        </div>
+        <div class="FloatRight PaddingRight">
+            <div class="HeightRow">
+               
+            </div>
+
+        </div>
+    </div>
+</div>

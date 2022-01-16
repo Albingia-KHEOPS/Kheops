@@ -1,0 +1,295 @@
+﻿@using OP.WSAS400.DTO
+@model ALBINGIA.OP.OP_MVC.Models.ModelesDetailsRisque.ModeleInformationsGeneralesRisque
+@Html.HiddenNoName("ModeMultiObjet", Model.ModeMultiObjet.ToString())
+<input type="hidden" id="ModeReadOnlyInfoGen" value="@((Model.ReadOnly || (Model.MultiObjet || !Model.CibleModifiable)).ToString())" />
+
+@*Ligne Cible*@
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="labelDescriptif">Cible*</label>
+    </div>
+    <div class="divDescriptif" style="width: 355px;">
+        @if (Model.ReadOnly || (Model.MultiObjet || !Model.CibleModifiable))
+        {
+            @Html.AlbDropDownListFor(m => m.Cible, Model.Cibles, "InformationsGenerales_Cible", htmlAttributes: new { @id = "InformationsGenerales_Cible", @tabindex = "6", @class = "readonly inputDescriptif", @disabled = "disabled", @name = "InformationsGenerales.Cible" }, generateTitle: true, replaceHtmlName: "InformationsGenerales.Cible")
+        }
+        else
+        {
+            @Html.AlbDropDownListFor(m => m.Cible, Model.Cibles, "InformationsGenerales_Cible", htmlAttributes: new { @id = "InformationsGenerales_Cible", @tabindex = "6", @class = "inputDescriptif", @name = "InformationsGenerales.Cible" }, generateTitle: true, replaceHtmlName: "InformationsGenerales.Cible")
+        }
+    </div>
+</div>
+
+<fieldset class="fieldsetNomenclature">
+    <legend class="legendNomenclature">Nomenclatures</legend>
+    <div class="FloatLeft" id="divConteneurNomenclatures">
+        @if (Model.ListesNomenclatures != null)
+        {
+            @Html.Partial("/Views/DetailsRisque/ListesNomenclature.cshtml", Model.ListesNomenclatures)
+        }
+    </div>
+</fieldset>
+@*Ligne descriptif + période de garantie*@
+<div class="HeightRow">
+    @Html.Hidden("oldCible", string.Empty)
+    <div class="FloatLeft">
+        <label class="labelDescriptif">Descriptif*</label>
+    </div>
+    <div class="divDescriptif" style="width: 335px;">
+        @if ((Model.ReadOnly && !Model.IsModeAvenant) || !Model.DateModifiable)
+        {
+            <input tabindex="1" class="readonly inputDescriptif" readonly="readonly" name="InformationsGenerales.Descriptif" id="InformationsGenerales_Descriptif" maxlength="40" value="@Model.Descriptif" />
+        }
+        else
+        {
+            <input tabindex="1" class="inputDescriptif" name="InformationsGenerales.Descriptif" id="InformationsGenerales_Descriptif" albhorsavn maxlength="40" value="@Model.Descriptif" />
+        }
+    </div>
+    <div class="FloatLeft" style="width: 135px;">
+        <label class="AutoWidth">Période de garantie du</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.ReadOnly || !Model.DateModifiable || (Model.IsModeAvenant && Model.NumAvenantCourant != Model.NumAvenantCreationRsq))
+        {
+            @Html.AlbDateFormat(m => m.DateEntreeGarantie, new { @id = "InformationsGenerales_DateEntreeGarantie", @tabindex = "2", @class = "readonly inputDate", @readonly = "readonly", @disabled = "disabled", @name = "InformationsGenerales.DateEntreeGarantie" }, htmlName: "InformationsGenerales.DateEntreeGarantie")
+        }
+        else
+        {
+            @Html.AlbDateFormat(m => m.DateEntreeGarantie, new { @id = "InformationsGenerales_DateEntreeGarantie", @tabindex = "2", @class = "datepicker inputDate", @name = "InformationsGenerales.DateEntreeGarantie" }, htmlName: "InformationsGenerales.DateEntreeGarantie")
+        }
+    </div>
+    <div class="FloatLeft">
+        @* || Model.DateDebEffet == null)*@
+        @if (Model.ReadOnly || !Model.DateModifiable || (Model.IsModeAvenant && Model.NumAvenantCourant != Model.NumAvenantCreationRsq))
+        {
+            @Html.AlbTimePicker(m => m.HeureEntreeGarantie, "InformationsGenerales_HeureEntreeGarantie", new { @class = "readonly HourMinute", @disabled = "disabled", @tabindex = "3" }, htmlName: "InformationsGenerales.HeureEntreeGarantie")
+        }
+        else
+        {
+            @Html.AlbTimePicker(m => m.HeureEntreeGarantie, "InformationsGenerales_HeureEntreeGarantie", new { @class = "HourMinute", @tabindex = "3" }, htmlName: "InformationsGenerales.HeureEntreeGarantie")
+        }
+    </div>
+    <div class="FloatLeft" style="text-align: center; width: 25px; padding-right: 5px;">
+        <label class="labelDateAu">au</label>
+    </div>
+    <div class="FloatLeft">
+        @if ((Model.ReadOnly || !Model.DateModifiable))
+        {
+            @Html.AlbDateFormat(m => m.DateSortieGarantie, new { @tabindex = "4", @class = "readonly inputDate", @readonly = "readonly", @disabled = "disabled", @name = "InformationsGenerales.DateSortieGarantie", @id = "InformationsGenerales_DateSortieGarantie" }, htmlName: "InformationsGenerales.DateSortieGarantie")
+        }
+        else
+        {
+            @Html.AlbDateFormat(m => m.DateSortieGarantie, new { @tabindex = "4", @class = "datepicker inputDate", @name = "InformationsGenerales.DateSortieGarantie", @id = "InformationsGenerales_DateSortieGarantie" }, htmlName: "InformationsGenerales.DateSortieGarantie")
+        }
+    </div>
+    <div class="FloatLeft">
+        @if ((Model.ReadOnly || !Model.DateModifiable)
+               || !Model.IsDateFinGarantieModifiable)
+        {
+            @Html.AlbTimePicker(m => m.HeureSortieGarantie, "InformationsGenerales_HeureSortieGarantie", new { @class = "readonly HourMinute", @disabled = "disabled", @tabindex = "5" }, htmlName: "InformationsGenerales.HeureSortieGarantie")
+        }
+        else
+        {
+            @Html.AlbTimePicker(m => m.HeureSortieGarantie, "InformationsGenerales_HeureSortieGarantie", new { @class = "HourMinute", @tabindex = "5" }, htmlName: "InformationsGenerales.HeureSortieGarantie")
+        }
+    </div>
+</div>
+@*Ligne désignation et période descriptive*@
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <div class="FloatLeft">
+            <label class="labelDescriptif">Désignation</label>
+        </div>
+        <div class="divDescriptif">
+
+            <div id="FloatLeft">
+                @if (Model.IsReadOnly || Model.ReadOnly || !Model.DateModifiable)
+                {
+                    <div class="TextAreaReadOnly" style="overflow-y: auto;">@Html.Raw(string.IsNullOrEmpty(Model.Designation) ? string.Empty : Model.Designation)</div>
+                    <textarea id="InformationsGenerales_Designation" name="InformationsGenerales.Designation" tabindex="11" style="display: none;">@(string.IsNullOrEmpty(Model.Designation) ? string.Empty : Model.Designation)</textarea>
+                }
+                else
+                {
+                    <textarea id="InformationsGenerales_Designation" name="InformationsGenerales.Designation" tabindex="11" class="NonReprisCP" style="min-height: 30px !important;">@(string.IsNullOrEmpty(Model.Designation) ? "" : Model.Designation)</textarea>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="FloatLeft" style="width: 135px;">
+        <label class="AutoWidth">Période descriptive du</label>
+    </div>
+    <div class="FloatLeft">
+        @* style="width: 205px;">*@
+        @if (Model.ReadOnly || !Model.DateModifiable)
+        {
+            @Html.AlbDateFormat(m => m.DateEntreeDescr, new { @id = "InformationsGenerales_DateEntreeDescr", @tabindex = "4", @class = "readonly inputDate", @readonly = "readonly", @disabled = "disabled", @name = "InformationsGenerales.DateEntreeDescr" }, htmlName: "InformationsGenerales.DateEntreeDescr")
+        }
+        else
+        {
+            @Html.AlbDateFormat(m => m.DateEntreeDescr, new { @tabindex = "4", @class = "datepicker inputDate", @name = "InformationsGenerales.DateEntreeDescr", @id = "InformationsGenerales_DateEntreeDescr" }, htmlName: "InformationsGenerales.DateEntreeDescr")
+        }
+    </div>
+    <div class="FloatLeft">
+        @if (Model.ReadOnly || !Model.DateModifiable)
+        {
+            @Html.AlbTimePicker(m => m.HeureEntreeDescr, "InformationsGenerales_HeureEntreeDescr", new { @class = "readonly HourMinute", @disabled = "disabled", @tabindex = "5" }, htmlName: "InformationsGenerales.HeureEntreeDescr")
+        }
+        else
+        {
+            @Html.AlbTimePicker(m => m.HeureEntreeDescr, "InformationsGenerales_HeureEntreeDescr", new { @class = "HourMinute", @tabindex = "5" }, htmlName: "InformationsGenerales.HeureEntreeDescr")
+        }
+    </div>
+    <div class="FloatLeft" style="text-align: center; width: 25px; padding-right: 5px;">
+        <label class="labelDateAu">au</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.ReadOnly || !Model.DateModifiable)
+        {
+            @Html.AlbDateFormat(m => m.DateSortieDescr, new { @id = "InformationsGenerales_DateSortieDescr", @tabindex = "4", @class = "readonly inputDate", @readonly = "readonly", @disabled = "disabled", @name = "InformationsGenerales.DateSortieDescr" }, htmlName: "InformationsGenerales.DateSortieDescr")
+        }
+        else
+        {
+            @Html.AlbDateFormat(m => m.DateSortieDescr, new { @tabindex = "4", @class = "datepicker inputDate", @name = "InformationsGenerales.DateSortieDescr", @id = "InformationsGenerales_DateSortieDescr" }, htmlName: "InformationsGenerales.DateSortieDescr")
+        }
+    </div>
+    <div class="FloatLeft">
+        @if (Model.ReadOnly || !Model.DateModifiable)
+        {
+            @Html.AlbTimePicker(m => m.HeureSortieDescr, "InformationsGenerales_HeureSortieDescr", new { @class = "readonly HourMinute", @disabled = "disabled", @tabindex = "5" }, htmlName: "InformationsGenerales.HeureSortieDescr")
+        }
+        else
+        {
+            @Html.AlbTimePicker(m => m.HeureSortieDescr, "InformationsGenerales_HeureSortieDescr", new { @class = "HourMinute", @tabindex = "5" }, htmlName: "InformationsGenerales.HeureSortieDescr")
+        }
+    </div>
+    @*Ligne valeurs *@
+
+    @if (Model.DisplayInfosValeur)
+    {
+        <div class="FloatLeft">
+            <label class="labelDate">Valeur</label>
+        </div>
+        <div class="FloatLeft">
+            @if (Model.ReadOnly)
+            {
+                <input type="text" value="@(Model.Valeur != 0 && Model.Valeur != null ? Model.Valeur.ToString() : string.Empty)" tabindex="7" name="InformationsGenerales.Valeur" id="InformationsGenerales_Valeur" class="readonly numerique" albMask="@(Model.Unite == "%" ? "pourcentnumeric" : "numeric")" readonly="readonly" />
+            }
+            else
+            {
+                <input type="text" value="@(Model.Valeur != 0 && Model.Valeur != null ? Model.Valeur.ToString() : string.Empty)" tabindex="7" name="InformationsGenerales.Valeur" id="InformationsGenerales_Valeur" class="numerique" albMask="@(Model.Unite == "%" ? "pourcentnumeric" : "numeric")" />
+            }
+        </div>
+        <div class="FloatLeft">
+            @if (Model.ReadOnly)
+            {
+                @Html.AlbDropDownListFor(m => m.Unite, Model.Unites.Select(u => { u.Selected = (u.Value == (Model.Valeur != 0 && Model.Valeur != null ? Model.Unite : string.Empty) ? true : false); return u; }).ToList(), "InformationsGenerales_Unite", htmlAttributes: new { @id = "InformationsGenerales_Unite", @tabindex = "8", @class = "readonly inputUnite", @disabled = "disabled", @name = "InformationsGenerales.Unite", @albCFList = "unite" }, generateTitle: true, replaceHtmlName: "InformationsGenerales.Unite")
+            }
+            else
+            {
+                @Html.AlbDropDownListFor(m => m.Unite, Model.Unites.Select(u => { u.Selected = (u.Value == (Model.Valeur != 0 && Model.Valeur != null ? Model.Unite : string.Empty) ? true : false); return u; }).ToList(), "InformationsGenerales_Unite", htmlAttributes: new { @id = "InformationsGenerales_Unite", @tabindex = "8", @class = "inputUnite", @name = "InformationsGenerales.Unite", @albCFList = "unite" }, generateTitle: true, replaceHtmlName: "InformationsGenerales.Unite")
+            }
+        </div>
+        <div class="FloatLeft">
+            @if (Model.ReadOnly)
+            {
+                @Html.AlbDropDownListFor(m => m.Type, Model.Types.Select(u => { u.Selected = (u.Value == (Model.Valeur != 0 && Model.Valeur != null ? Model.Type : string.Empty) ? true : false); return u; }).ToList(), "InformationsGenerales_Type", htmlAttributes: new { @id = "InformationsGenerales_Type", @tabindex = "9", @class = "readonly inputType", @disabled = "disabled", @name = "InformationsGenerales.Type", @albCFList = "type" }, generateTitle: true, replaceHtmlName: "InformationsGenerales.Type")
+            }
+            else
+            {
+                @Html.AlbDropDownListFor(m => m.Type, Model.Types.Select(u => { u.Selected = (u.Value == (Model.Valeur != 0 && Model.Valeur != null ? Model.Type : string.Empty) ? true : false); return u; }).ToList(), "InformationsGenerales_Type", htmlAttributes: new { @id = "InformationsGenerales_Type", @tabindex = "9", @class = "inputType", @name = "InformationsGenerales.Type", @albCFList = "type" }, generateTitle: true, replaceHtmlName: "InformationsGenerales.Type")
+            }
+        </div>
+        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.ValeurHT, Model.ValeursHT.Select(u => { u.Selected = (u.Value == (Model.Valeur != 0 && Model.Valeur != null ? Model.ValeurHT : string.Empty) ? true : false); return u; }).ToList(), "InformationsGenerales_ValeurHT", htmlAttributes: new { @id = "InformationsGenerales_ValeurHT", @tabindex = "10", @class = "inputTaux", @name = "InformationsGenerales.ValeurHT" }, generateTitle: true, replaceHtmlName: "InformationsGenerales.ValeurHT")</div>
+
+        @*<div class="FloatLeft">
+                @if (Model.ReadOnly)
+                {
+                    <input type="text" value="@(Model.CoutM2 != 0 && Model.CoutM2 != null ? Model.CoutM2.ToString() : string.Empty)" tabindex="7" name="InformationsGenerales.CoutM2" id="InformationsGenerales_CoutM2" class="readonly numerique" albMask="numeric" readonly="readonly" />
+                }
+                else
+                {
+                    <input type="text" value="@(Model.CoutM2 != 0 && Model.CoutM2 != null ? Model.CoutM2.ToString() : string.Empty)" tabindex="7" name="InformationsGenerales.CoutM2" id="InformationsGenerales_CoutM2" class="numerique" albMask="numeric" />
+                }
+
+            </div>*@
+    }
+</div>
+
+<div class="HeightRow">
+    @if (Model.IsExistLoupe)
+    {
+        <div class="FloatLeft">
+            <label class="labelDescriptif">Code activité</label>
+        </div>
+        <div class="FloatLeft">
+            <input id="InformationsGenerales_CodeTre" albhorsavn class="readonly inputDDL" readonly="readonly" type="text" name="InformationsGenerales.CodeTre" value="@(!string.IsNullOrEmpty(Model.CodeTre) ? string.Format("{0} - {1}", Model.CodeTre, Model.LibTre) : string.Empty)" />
+        </div>
+        if (Model.NomenclatureRisqueModifiable && !Model.IsReadOnly)
+        {
+            <div class="FloatLeft Loupe" id="btnrechercheActivite" title="Recherche">
+                <img src="@Url.Content("/Content/Images/loupe.png")" alt="Rechercher" title="Rechercher" class="CursorPointer" />
+            </div>
+            <div class="FloatLeft Loupe" id="btnResetActivite" title="supprimer activité ">
+                <img src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Reset" title="Réinitialiser" class="CursorPointer" width="20" height="20" />
+            </div>
+        }
+    }
+
+    <div class="@(Model.IsExistLoupe ? "FloatLeft classLeft" : "FloatLeft")">
+        <label class="labelDescriptif" style="width: 45px; padding-left: 50px;">Classe</label>
+    </div>
+
+    <div class="FloatLeft">
+        <input type="text" class="readonly" readonly="readonly" id="InformationsGenerales_CodeClasse" name="InformationsGenerales.CodeClasse" value="@Model.CodeClasse" albCFList="codeClasse" />
+    </div>
+    @if (Model.ModeRisque)
+    {
+        <div class="FloatRight paddingRight10" style="padding-right: 13px;">
+            <button id="btnInfoSpeRsq" class="fake-step" data-target="@(ContextStepName.InformationsSpecifiquesRisque)">Informations complémentaires du risque</button>
+        </div>
+    }
+</div>
+@*Ligne territorialité*@
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="labelDescriptif">Territorialité</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.ReadOnly || Model.NomenclatureRisqueModifiable)
+        {
+            @Html.AlbDropDownListFor(m => m.Territorialite, Model.Territorialites, "InformationsGenerales_Territorialite", htmlAttributes: new { @id = "InformationsGenerales_Territorialite", @tabindex = "15", @class = "inputDDL", @name = "InformationsGenerales.Territorialite", @albCFList = "territorialite" }, generateTitle: true, genEmptyLine: true, replaceHtmlName: "InformationsGenerales.Territorialite")
+        }
+        else
+        {
+            @Html.AlbDropDownListFor(m => m.Territorialite, Model.Territorialites, "InformationsGenerales_Territorialite", htmlAttributes: new { @id = "InformationsGenerales_Territorialite", @tabindex = "15", @class = "readonly inputDDL", @readonly = "readonly", @disabled = "disabled", @name = "InformationsGenerales.Territorialite", @albCFList = "territorialite" }, generateTitle: true, genEmptyLine: true, replaceHtmlName: "InformationsGenerales.Territorialite")
+        }
+    </div>
+
+    @if (Model.CodePeriodicite != "U" && Model.CodePeriodicite != "E" && Model.CodePeriodicite != "R" && !string.IsNullOrEmpty(Model.CodePeriodicite))
+    {
+        if (Model.ModeMultiObjet)
+        {
+            <div class="FloatRight" style="padding-right: 10px;">
+                <label class="FloatLeft Block" title=" coché : utilisé dans le montant de référence " style="padding-left: 5px;">Risque temporaire</label>
+                @Html.Hidden("InformationsGenerales.IsRisqueTemporaire", Model.IsRisqueTemporaire.ToString().ToLower(), new { id = "IsRisqueTemporaire" })
+                @if (Model.ReadOnly || !Model.DateModifiable)
+                {
+                    <input id="chkIsRisqueTemporaire" class="FloatLeft readonly" disabled="disabled" type="checkbox" checked="@(Model.IsRisqueTemporaire )" />
+                }
+                else
+                {
+                    <input id="chkIsRisqueTemporaire" class="FloatLeft" type="checkbox" checked="@(Model.IsRisqueTemporaire )" />
+                }
+            </div>
+        }
+        else
+        {
+            <div class="FloatRight" style="padding-right: 10px;">
+                <label class="FloatLeft Block" title=" coché : utilisé dans le montant de référence " style="padding-left: 5px;">Risque temporaire</label>
+                @Html.Hidden("InformationsGenerales.IsRisqueTemporaire", Model.IsRisqueTemporaire.ToString().ToLower(), new { id = "IsRisqueTemporaire" })
+                <input id="chkIsRisqueTemporaire" class="FloatLeft readonly" disabled="disabled" type="checkbox" checked="@(Model.IsRisqueTemporaire )" />
+            </div>
+        }
+    }
+
+</div>

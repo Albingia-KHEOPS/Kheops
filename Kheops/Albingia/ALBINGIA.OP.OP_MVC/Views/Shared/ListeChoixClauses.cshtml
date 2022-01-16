@@ -1,0 +1,110 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.Liste
+<div class="CommonForm FloatLeft">
+    <div class="nGroupFull GroupWithBorder">
+        <div class="GroupTitle">Clausier</div>
+        <div class="nHorizontalFullWithGroup">
+            @if (!Model.SearchScreen)
+            {
+                <div class="nGradientSection">
+                    <input type="hidden" id="CodeRisqueObjet" name="CodeRisqueObjet" value="@Model.CodeRisqueObjet"/>
+                    <input type="hidden" id="CodeFormuleApplique" name="CodeFormuleApplique" value="" />
+                    @*<input type="hidden" id="NbrObjets" name="NbrObjets" value="@(Model.NbrObjets)" />*@
+                    @*<input type="hidden" id="isRisqueSelected" name="isRisqueSelected" value="@Model.IsRsqSelected" />*@
+                    <input type="hidden" id="CodeContexte" name="CodeContexte" value="@(Model.CodeContexte)"/>
+                    <input type="hidden" id="CodeEtapeAjout" name="CodeEtapeAjout" value="@(Model.CodeEtapeAjout)"/>
+                    <table @(!string.IsNullOrEmpty(Model.CodeEtapeAjout) && (Model.CodeEtapeAjout == "RSQ" || Model.CodeEtapeAjout == "OPT" || Model.CodeEtapeAjout == "GAR") ? "class=tblInfo" : "class=trHeight")>
+                        <tr>
+                            @*<td class="columnLabelOffre">
+                            <label class="Block labelOffre">Offre</label>
+                        </td>
+                        <td class="columnOffre readonly" id="CodeOffre" name="CodeOffre">
+                            @Model.CodeOffre
+                        </td>*@
+                            <td class="columnLabelOffre">
+                                <label class="Block labelOffre">Etape</label>
+                            </td>
+                            <td class="columnOffre readonly" id="Etape" title="@Model.LibelleEtapeAjout">
+                                @Model.LibelleEtapeAjout
+                            </td>
+                            <td class="columnLabelOffre">
+                                <label class="Block labelOffre">Contexte</label>
+                            </td>
+                            <td class="columnOffre readonly" id="Contexte" title="@Model.LibelleContexte">
+                                @Model.LibelleContexte
+                            </td>
+                            @if (!string.IsNullOrEmpty(Model.CodeEtapeAjout) && (Model.CodeEtapeAjout == "RSQ" || Model.CodeEtapeAjout == "OPT" || Model.CodeEtapeAjout == "GAR"))
+                            {
+                                <td class="Block LabelObjetRisque">S'applique à *</td>
+                                <td class="columnObjetRisque readonly" id="AppliqueA" name="AppliqueA">
+                                    @if (Model.CodeEtapeAjout == "RSQ" && Model.NbrRisques == 1)
+                                    {
+                                        @Model.RisqueObjet
+                                    }
+                                </td>
+                                <td>
+                                    <div id="divBtnMultiObj" name="btnMultiObj" class="FloatLeft CursorPointer">
+                                        <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22"/>
+                                    </div>
+                                </td>
+
+                            }
+                        </tr>
+                    </table>
+                </div>
+            }
+            <div class="nGradientSection ZoneRechercheHeight">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Libellé</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="Libelle" name="Libelle" value="@(Model.Titre)"/>
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        <label class="Block">Mots-Clés</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.MotCle1, Model.MotCles1, "MotCle1", htmlAttributes: new { @id = "MotCle1" }, generateTitle: true)
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        @Html.AlbDropDownListFor(m => m.MotCle2, Model.MotCles2, "MotCle2", htmlAttributes: new { @id = "MotCle2" }, generateTitle: true)
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        @Html.AlbDropDownListFor(m => m.MotCle3, Model.MotCles3, "MotCle3", htmlAttributes: new { @id = "MotCle3" }, generateTitle: true)
+                    </div>
+                    <div class="FloatRight PaddingRight">
+                        <button id="@(Model.SearchScreen ? "btnRechercherClausierSearch" : "btnRechercherClausier")" type="button" albshortcut="true" accesskey="h">
+                            <img class="FloatLeft MarginLeftButton" title="BackOffice" alt="BackOffice" src="@Url.Content("/Content/Images/ico_16_1039_advFind.gif")"/>
+                            <span class="spanText FloatLeft CursorPointer">C<u>h</u>ercher</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Rubrique</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.Rubrique, Model.Rubriques, "Rubrique", htmlAttributes: new { @id = "Rubrique" }, generateTitle: true)
+                    </div>
+                    @Html.Partial("../Clausier/ListSousRubriques", Model.ModeleDDLSousRubrique)
+                </div>
+                <div id="dvRechercheGeneral">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nGroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonRight">
+            @if (Model.SearchScreen)
+            {
+                <button id="btnCloseClausier" type="button" albshortcut="true" accesskey="f"><u>F</u>ermer</button>
+            }
+            else
+            {
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnFancyValider" type="button" albshortcut="true" accesskey="v" tabindex="28" disabled="disabled"><u>V</u>alider</button>
+            }
+        </div>
+    </div>
+
+</div>

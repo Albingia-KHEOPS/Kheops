@@ -1,0 +1,32 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleTransverse.ModeleCommonCabinetPreneur
+<div class="HeightRow">
+    @if (string.IsNullOrEmpty(Model.NomInterlocuteur) && string.IsNullOrEmpty(Model.PrenomInterlocuteur))
+    { 
+        <label class="titleBold">Aucun interlocuteur</label>
+    }
+    else
+    {
+        <label class="titleBold" title="@(Model.NomInterlocuteur + " " + Model.PrenomInterlocuteur)">@(Model.NomInterlocuteur + " " + Model.PrenomInterlocuteur)</label>
+    }
+</div>
+@if (!string.IsNullOrEmpty(Model.FonctionInterlocuteur))
+{
+    <div class="HalfHeightRow">
+         <img alt="Telephone" src="@Url.Content("/Content/Images/travail.gif")" class="PaddingLeft FloatLeft" title="Fonction de l'interlocuteur"/>
+        <label class="Block FloatLeft DialogLabel" title="@Model.FonctionInterlocuteur">@Model.FonctionInterlocuteur</label>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.TelephoneInterlocuteur))
+{
+    <div class="HalfHeightRow">
+         <img alt="Telephone" src="@Url.Content("/Content/Images/telephone.gif")" class="PaddingLeft FloatLeft" title="Téléphone personnel"/>
+        <label class="Block FloatLeft DialogLabel" title="@Model.TelephoneInterlocuteur">@Model.TelephoneInterlocuteur</label>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.MailInterlocuteur) && !string.IsNullOrEmpty(Model.MailInterlocuteur.Trim()))
+{
+    <div class="HalfHeightRow">
+         <img alt="Telephone" src="@Url.Content("/Content/Images/email.gif")" class="PaddingLeft FloatLeft" title="Adresse email"/>
+        <label class="Block FloatLeft DialogLabel" title="@Model.MailInterlocuteur">@Model.MailInterlocuteur</label>
+    </div>
+}

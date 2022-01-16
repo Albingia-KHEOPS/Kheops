@@ -1,0 +1,208 @@
+﻿@using System.Globalization
+@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+@using ALBINGIA.OP.OP_MVC
+@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@{
+    var layoutModel = (MetaModelsBase)Model;
+    var isModeNavigHisto = (layoutModel.ModeNavig == ModeConsultation.Historique.AsCode());
+    var avn = layoutModel.Bandeau != null ? layoutModel.Bandeau.NumAvenant.ToString(CultureInfo.InvariantCulture) : string.Empty;
+    var metaController = ViewContext.Controller as ALBINGIA.OP.OP_MVC.Common.IMetaModelsController;
+}
+@Html.Hidden("urlWinOpen", AlbOpConstants.UrlWinPageTarget)
+@Html.Hidden("urlWinOpenOrigine", AlbOpConstants.UrlWinPageTarget)
+@Html.Hidden("WinUserConnected", HttpContext.Current.User.Identity.Name)
+@Html.Hidden("NameUser", layoutModel.NameUser)
+@Html.Hidden(nameof(layoutModel.CodePolicePage), layoutModel.CodePolicePage)
+@Html.Hidden(nameof(layoutModel.VersionPolicePage), layoutModel.VersionPolicePage)
+@Html.Hidden(nameof(layoutModel.TypePolicePage), layoutModel.TypePolicePage)
+@Html.Hidden(nameof(layoutModel.NumAvenantPage), int.TryParse(layoutModel.NumAvenantPage, out int i) ? i : 0)
+
+@if (layoutModel.Offre != null) {
+    @Html.Hidden("Offre.CodeOffre", (layoutModel.Offre.CodeOffre != null ? layoutModel.Offre.CodeOffre.Trim() : string.Empty), new { id = "Offre_CodeOffre" })
+    @Html.Hidden("Offre.Version", layoutModel.Offre.Version, new { id = "Offre_Version" })
+    @Html.Hidden("Offre.Type", layoutModel.Offre.Type, new { id = "Offre_Type" })
+
+    @Html.Hidden("Offre.AddParamType", layoutModel.AddParamType, new { id = "AddParamType" })
+    @Html.Hidden("Offre.AddParamValue", layoutModel.AddParamValue, new { id = "AddParamValue" })
+    @Html.Hidden("Offre.Branche", (layoutModel.Offre.Branche != null ? layoutModel.Offre.Branche.Code : string.Empty), new { id = "Offre_Branche" })
+    @Html.Hidden("Branche", (layoutModel.Offre.Branche != null ? layoutModel.Offre.Branche.Code : string.Empty), new { id = "Branche" })
+}
+else if (layoutModel.Contrat != null) {
+    @Html.Hidden("Contrat.CodeContrat", (layoutModel.Contrat.CodeContrat != null ? layoutModel.Contrat.CodeContrat.Trim() : string.Empty), new { id = "Offre_CodeOffre" })
+    @Html.Hidden("Contrat.VersionContrat", layoutModel.Contrat.VersionContrat, new { id = "Offre_Version" })
+    @Html.Hidden("Contrat.Type", layoutModel.Contrat.Type, new { id = "Offre_Type" })
+
+    @Html.Hidden("Contrat.AddParamType", layoutModel.AddParamType, new { id = "AddParamType" })
+    @Html.Hidden("Contrat.AddParamValue", layoutModel.AddParamValue, new { id = "AddParamValue" })
+    @Html.Hidden("Offre.Branche", layoutModel.Contrat.Branche, new { id = "Offre_Branche" })
+}
+//Création/Modification des informations de base d'un contrat
+else if (layoutModel.ContratInfoBase != null) {
+    @Html.Hidden("ContratInfoBase.CodeContrat", (layoutModel.ContratInfoBase.CodeContrat != null ? layoutModel.ContratInfoBase.CodeContrat.Trim() : string.Empty), new { id = "Offre_CodeOffre" })
+    @Html.Hidden("ContratInfoBase.VersionContrat", layoutModel.ContratInfoBase.VersionContrat, new { id = "Offre_Version" })
+    @Html.Hidden("ContratInfoBase.Type", layoutModel.ContratInfoBase.Type, new { id = "Offre_Type" })
+
+    @Html.Hidden("ContratInfoBase.AddParamType", layoutModel.AddParamType, new { id = "AddParamType" })
+    @Html.Hidden("ContratInfoBase.AddParamValue", layoutModel.AddParamValue, new { id = "AddParamValue" })
+    @Html.Hidden("Offre.Branche", layoutModel.ContratInfoBase.Branche, new { id = "Offre_Branche" })
+}
+else {
+    @Html.Hidden("Offre.CodeOffre", (!string.IsNullOrEmpty(layoutModel.CodePolicePage) ? layoutModel.CodePolicePage : string.Empty), new { id = "Offre_CodeOffre" })
+    @Html.Hidden("Offre.Version", (!string.IsNullOrEmpty(layoutModel.CodePolicePage) ? layoutModel.VersionPolicePage : string.Empty), new { id = "Offre_Version" })
+    <input type="hidden" id="Offre_Type" name="Offre.Type" value="@(!string.IsNullOrEmpty(layoutModel.CodePolicePage) ? layoutModel.TypePolicePage : "O")" />
+
+    <input type="hidden" id="AddParamType" name="Offre.AddParamType" value="" />
+    <input type="hidden" id="AddParamValue" name="Offre.AddParamValue" value="" />
+    <input type="hidden" id="Offre_Branche" name="Offre.Branche" value="" />
+}
+
+
+<script type="text/javascript">
+    var currentAffair = {
+        codeOffre: $("#Offre_CodeOffre").val(),
+        version: parseInt($("#Offre_Version").val()),
+        type: $("#Offre_Type").val(),
+        numeroAvenant: parseInt($("#NumAvenantPage").val()),
+        getUrlId: function () {
+            return this.codeOffre + "_" + this.version + "_" + this.type;
+        }
+    };
+    if (isNaN(currentAffair.numeroAvenant)) {
+        currentAffair.numeroAvenant = 0;
+    }
+</script>
+
+@Html.Hidden("OffreReadOnly", metaController.IsBackOfficeContext ? false : metaController.IsReadonly)
+@Html.Hidden("IsForceReadOnly", layoutModel.IsForceReadOnly)
+
+@* Avec numero d'avenant *@
+@Html.HiddenNoName("IsModeConsultationEcran", metaController.IsBackOfficeContext ? false : metaController.IsReadonly)
+@Html.Hidden("IsModifHorsAvn", metaController.IsModifHorsAvenant)
+@Html.Hidden("SelectionPossible", layoutModel.SelectionPossible)
+@Html.Hidden("ModaliteAffichage", layoutModel.ModaliteAffichage)
+@Html.Hidden("Date", layoutModel.Date)
+@Html.Hidden("FormatDecimalInput", AlbOpConstants.FormatDecimalInput)
+@Html.Hidden("FormatDecimalSpan", AlbOpConstants.FormatDecimalSpan)
+@Html.Hidden("FormatPourcentInput", AlbOpConstants.FormatPourcentInput)
+@Html.Hidden("FormatPourcentSpan", AlbOpConstants.FormatPourcentSpan)
+@Html.Hidden("FormatPourmilleInput", AlbOpConstants.FormatPourmilleInput)
+@Html.Hidden("FormatPourmilleSpan", AlbOpConstants.FormatPourmilleSpan)
+@Html.Hidden("SplitFileChar", (MvcApplication.SPLIT_CONST_FILE))
+@Html.Hidden("SplitFileChar", (MvcApplication.SPLIT_CONST_HTML), new { id = "SplitHtmlChar" })
+@Html.Hidden("ModeNavig", (layoutModel.ModeNavig))
+@Html.Hidden("ClientWorkEnvironment", AlbOpConstants.ClientWorkEnvironment)
+@Html.Hidden("ClientWorkEnvironment", MvcApplication.ENVIRONMENT_NAME, new { id = "EnvironmentName" })
+
+@Html.Hidden("wClauseDocType", AlbConstantesMetiers.WDOC_CLAUSE)
+@Html.Hidden("wCPDocType", AlbConstantesMetiers.WDOC_CP)
+@Html.Hidden("wDodDocType", AlbConstantesMetiers.WDOC_DOC, new { id = "wDocDocType" })
+@Html.Hidden("wBlocDocType", AlbConstantesMetiers.WDOC_BLOC)
+@Html.HiddenNoName("targetGenClauseLibre", MvcApplication.PathGenClauseLibre)
+@Html.HiddenNoName("urlVirtGenDoc", MvcApplication.URL_VIRTGENDOC)
+@Html.HiddenNoName("executeLoadIs", true.ToString().ToLower())
+@Html.Hidden("DateMin", DateTime.Now.AddYears(-200).ToString("dd/MM/yyyy"))
+@Html.Hidden("DateMax", DateTime.Now.AddYears(200).ToString("dd/MM/yyyy"))
+@Html.HiddenNoName("hiddenParamCheckLock", string.Empty)
+@Html.HiddenNoName("currentAutocompleteIntervenantContext", string.Empty)
+@Html.HiddenNoName("ISRedirect", string.Empty)
+@Html.Hidden("ActeGestion", layoutModel.ActeGestion)
+@Html.Hidden("ActeGestionRegule", (layoutModel.ActeGestionRegule))
+@Html.Hidden("TypeMenuOffre", (AlbConstantesMetiers.TYPE_MENU_OFFRE))
+@Html.Hidden("TypeMenuContrat", (AlbConstantesMetiers.TYPE_MENU_CONTRAT))
+@Html.Hidden("TypeMenuPolice", (AlbConstantesMetiers.TYPE_MENU_POLICE))
+@Html.Hidden("AdrContext", string.Empty)
+
+@Html.HiddenNoName("globalTypeAddParamAvn", AlbOpConstants.GLOBAL_TYPE_ADD_PARAM_AVN)
+
+@Html.HiddenNoName("hiddenMenu", MvcApplication.HIDDEN_MENU)
+@Html.HiddenNoName("gdmAppName", MvcApplication.GDMAPPNAME)
+@Html.HiddenNoName("IsOpenedFromHeader", string.Empty)
+
+@Html.HiddenNoName("MagneticUrl", (MvcApplication.MAGNETIC_URL))
+@Html.HiddenNoName("MagneticUrlXml", (MvcApplication.MAGNETIC_URL_XML))
+@Html.HiddenNoName("PaginationMaxSize", (MvcApplication.PAGINATION_SIZE))
+
+
+@if (AlbOpConstants.ClientWorkEnvironment == AlbOpConstants.OPENV_DEV) {
+    ///En DEV, on n'a pas besoin de la form, passage de l'url directement
+    ///dans le window.open
+    <form id='formWinOpen' method='post'>
+        <input type='hidden' id="paramWinOpen" name='paramWinOpen' value='' />
+    </form>
+}
+else {
+    ///En QUALIF, la form est nécessaire pour simuler le submit de celle-ci
+    ///pour récupérer l'input paramWinOpen en Request
+    <form id='formWinOpen' method='post' action='/' target="newWin">
+        <input type='hidden' id="paramWinOpen" name='paramWinOpen' value='' />
+    </form>
+}
+<input type='hidden' id="urlHost" name='urlHost' value='@HttpContext.Current.Request.Url.Host' />
+<input type="hidden" id="printSrc" value="@string.Format("http://{0}/PrintPublish/ALBINGIA.PrintContainer.xbap?id=##id##", Context.Request.Url.Host)" />
+
+@*
+    Redirection details risque
+*@
+@Html.HiddenNoName("RedirectRsqOpenIS", (AlbOpConstants.REDIRECTRSQ_OPEN_IS))
+@Html.HiddenNoName("RedirectRsqOpenObj", (AlbOpConstants.REDIRECTRSQ_OPEN_OBJ))
+@Html.HiddenNoName("RedirectRsqAddObj", (AlbOpConstants.REDIRECTRSQ_ADD_OBJ))
+@*
+    Valeur de l'action du bouton de confirmation d'une POP-UP
+*@
+@Html.HiddenNoName("hiddenAction", string.Empty)
+@*
+    Valeur de l'action du bouton de confirmation d'une POP-UP
+*@
+@Html.HiddenNoName("DefaultDisplayDocModule", MvcApplication.DefaultDocDisplayModule.ToString().ToLower())
+
+
+<div id="dvFancyIframe" class="None">
+    <div class="overlay-background" style="z-index:91"></div>
+    <div id="dvDataFancyIframe" style="padding: 10px; left: 21px; top: 10px; width: 300px; text-align: center; float: left; display: block; position: absolute; z-index: 92; background-color: rgb(255, 255, 255);">
+        <table id="tblIframeError" width="100%">
+            <tr>
+                <td style="background-color: #EDEDED;" colspan="2">
+                    <b>Message d'erreur</b><br />
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" valign="middle" style="width: 50px;">
+                    <img src="/Content/Images/alertes/notif_icn_critical.png" alt="" />
+                </td>
+                <td>
+                    <div id="msgIframeError" class="FloatLeft FancyTextCenter">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <button type="button" id="btnErrorOk" value="OK">OK</button>
+                </td>
+            </tr>
+        </table>
+        <table id="tblIframeConfirm">
+            <tr>
+                <td style="background-color: #EDEDED;" colspan="2">
+                    <b>Message de Confirmation</b><br />
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" valign="middle">
+                    <img src="/Content/Images/alertes/notif_icn_warn.png" alt="" />
+                </td>
+                <td>
+                    <div id="msgIframeConfirm" class="FloatLeft FancyTextCenter">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <button type="button" id="btnConfirmCancel" value="Non">Non</button>
+                    <button type="button" id="btnConfirmOk" value="Oui">Oui</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

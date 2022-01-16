@@ -1,0 +1,117 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesConnexite.ModelePleinEcranConnexite
+@{
+    var context = "";
+}
+<div class="GroupFull GroupWithBorder" id="divDialogPleinEcranConnexite">
+    @Html.HiddenNoName("NumConnexitePleinEcran", Model.NumConnexite)
+    @Html.Hidden("observation", Model.Observation, new { id = "ObservationPleinEcran", albcontext = "commentairesPleinEcran" })
+    @Html.Hidden("codeObservation", Model.CodeObservation, new { id = "CodeObservationPleinEcran", albcontext = "commentairesPleinEcran" })
+    @Html.HiddenNoName("IdeConnexitePleinEcran", Model.IdeConnexite)
+    @Html.HiddenNoName("CodeTypeConnexitePleinEcran", Model.CodeTypeConnexite)
+    @if (Model.CodeTypeConnexite == "20")
+    {
+        context = "eng";
+        <div class="GroupTitle">Connexités d'engagement</div>
+    }
+    @if (Model.CodeTypeConnexite == "01")
+    {
+        context = "rem";
+        <div class="GroupTitle">Connexités de remplacement</div>
+    }
+    @if (Model.CodeTypeConnexite == "10")
+    {
+        context = "inf";
+        <div class="GroupTitle">Connexités d'information</div>
+    }
+    @if (Model.CodeTypeConnexite == "30")
+    {
+        context = "res";
+        <div class="GroupTitle">Connexités de résiliation</div>
+    }
+    <div class="Height15">
+        <div id="FermerFullScreen" class="CursorPointer TxtLink BigPadLeft">
+            ^ Réduire écran ^
+        </div>
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection paddingLeft paddingBottom">
+            <div class="GradientSection paddingLeft">
+                <div id="divHeaderEngagement">
+                    <table id="tblHeaderEngagement">
+                        <tr>
+                            <th class="col_Contrat tablePersoHead">Contrat
+                            </th>
+                            <th class="col_Branche tablePersoHead">Branche
+                            </th>
+                            <th class="col_Cible tablePersoHead">Cible
+                            </th>
+                            <th class="col_Commentaires tablePersoHead">Commentaires
+                            </th>
+                            <th class="col_Preneur tablePersoHead">Preneur
+                            </th>
+                            <th class="col_Action tablePersoHead">
+                                @if (Model.CodeTypeConnexite != "01" && !Model.IsConnexiteReadOnly)
+                                {
+                                    <img class="CursorPointer Action" src="@Url.Content("~/Content/Images/plusajouter1616.png")" name="btnAjouter" alt="Ajouter" title="Ajouter une connexité" id="AjouterPleinEcran"/>
+                                }
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                @if ((Model.listeConnexite != null) && (Model.listeConnexite.Count > 0))
+                {
+                    <div id="divBodyPleinEcran">
+                        <table id="tblPleinEcranBody">
+                            @foreach (var ligne in Model.listeConnexite)
+                            {
+                                <tr id="@("tr_" + @ligne.GuidId)">
+                                    <td  name="linkWinOpen" albparam="@(ligne.Contrat.Replace('-', '_'))_PReadOnly" class="col_Contrat_Body TxtLink CursorPointer" title="@ligne.DescriptionContrat" albcontext="@(context)">
+                                        <label class="CursorPointer">@ligne.Contrat</label>
+                                    </td>
+                                    <td class="col_Branche_Body" title="@ligne.LibelleBranche">
+                                        @ligne.Branche
+                                    </td>
+                                    <td class="col_Cible_Body" title="@(ligne.Cible + " - " + ligne.LibelleCible)">
+                                        @ligne.Cible
+                                    </td>
+                                    <td class="col_Commentaires_Body_PleinEcran" title="@ligne.Commentaire" albcontext="@("commentairesPleinEcran_" + ligne.GuidId)">
+                                        <div class="FloatLeft " id="divCommentaires">
+                                            <div class="FloatLeft ">
+                                                <div id="zoneTxtArea" class="FloatLeft divTextArea ColCommentaire_pleinEcran" albcontext="@("commentairesPleinEcran_" + ligne.GuidId)" title="@ligne.Commentaire">@Html.Raw(!string.IsNullOrEmpty(ligne.Commentaire.Split('\n')[0]) ? ligne.Commentaire.Split('\n')[0] : string.Empty)</div>
+                                                <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="@("commentairesPleinEcran_" + ligne.GuidId)">
+                                                    <img src="@Url.Content("/Content/Images/moreinfo.png")" width="20" height="20" />
+                                                </div>
+                                                <div id="txtArea" albcontext="@("commentairesPleinEcran_" + ligne.GuidId)">
+                                                    <div class="FloatLeft">
+                                                        @if (Model.IsConnexiteReadOnly)
+                                                        {
+                                                            <div id="@("commentairesPleinEcran_" + ligne.GuidId)" style="width: 500px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(ligne.Commentaire)</div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <textarea id="@("commentairesPleinEcran_" + ligne.GuidId)" name="txtCommentaires" class="SuperInputConnexite" style="margin-bottom: 5px; overflow-y: auto;" tabindex="6">@ligne.Commentaire</textarea>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="col_Preneur_Body" title="@ligne.PreneurInfo">
+                                        @ligne.Preneur
+                                    </td>
+                                    <td class="col_Action_Body_PleinEcran">
+                                        @if (Model.ContratTraite != ligne.Contrat && Model.CodeTypeConnexite != "01" && !Model.IsConnexiteReadOnly)
+                                        {
+                                            <img src="@Url.Content("~/Content/Images/poubelle1616.png")" id="@("suppr_" + @ligne.GuidId)" alt="Supprimer" title="Supprimer" class="Action marginLeftSuppr CursorPointer" name="btnSupprimer"/>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div> 
+                }
+            </div>
+        </div>
+    </div>
+</div>

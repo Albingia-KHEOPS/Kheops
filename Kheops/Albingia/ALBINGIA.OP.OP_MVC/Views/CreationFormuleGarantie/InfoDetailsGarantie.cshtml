@@ -1,0 +1,79 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFormuleGarantie.ModeleInfoDetailsGarantie
+<div id="dltInfoGarantie" class="CommonForm FloatLeft" style="width: 430px;">
+    <div class="GroupFull GroupWithBorder GroupNoTitle" style="width: 410px;">
+        <div style="font-weight: bold; padding-bottom: 10px; padding-left: 10px;">
+            @(Model.CodeGarantie) - @(Model.LibGarantie)
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 405px;">
+            <div class="GradientSection">
+                <div class="PaddingLeft">
+                    <table id="tblInfoDetail1" class="trHeight" style="table-layout: fixed; width: 390px;">
+                        <tr>
+                            <td class="labelInfo1">Type de contrôle</td>
+                            <td class="PaddingLeft">@string.Format("{0} - {1}", Model.CodeTypeControle, Model.LibTypeControle)</td>
+                        </tr>
+                        <tr>
+                            <td class="labelInfo1">Groupe alternatif</td>
+                            <td class="PaddingLeft">@(Model.GroupeAlternatif)</td>
+                        </tr>
+                        <tr>
+                            <td class="labelInfo1">Type appli prime</td>
+                            <td class="PaddingLeft">@Model.TypeApplication</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="GradientSection">
+                <div class="PaddingLeft">
+                    <table id="tblInfoDetail2" class="trHeight" style="table-layout: fixed; width: 390px;">
+                        <tr>
+                            <th class="labelInfo2">&nbsp;</th>
+                            <th style="">Valeur</th>
+                            <th style="width: 40px;">Unité</th>
+                            <th style="width: 40px;">Base</th>
+                            <th style="width: 40px;">MAJ</th>
+                            <th style="width: 40px;">Obli.</th>
+                        </tr>
+                        <tr>
+                            <td class="labelInfo2">Franchise</td>
+                            <td class="numerique"><span albMask="@(Model.FranchiseUnite == "%" ? "pourcentdecimal" : "decimal")">@(Model.FranchiseValeur == 0 && Model.FranchiseUnite == "" ? string.Empty : Model.FranchiseValeur.ToString())</span></td>
+                            <td style="text-align: center;">@Model.FranchiseUnite</td>
+                            <td style="text-align: center;">@Model.FranchiseType</td>
+                            <td style="text-align: center;">@Model.FranchiseMAJ</td>
+                            <td style="text-align: center;">@Model.FranchiseOblig</td>
+                        </tr>
+                        <tr>
+                            <td class="labelInfo2">LCI</td>
+                            <td class="numerique"><span albMask="@(Model.LCIUnite == "%" ? "pourcentdecimal" : "decimal")">@(Model.FranchiseValeur == 0 && Model.FranchiseUnite == "" ? string.Empty : Model.LCIValeur.ToString())</span></td>
+                            <td style="text-align: center;">@Model.LCIUnite</td>
+                            <td style="text-align: center;">@Model.LCIType</td>
+                            <td style="text-align: center;">@Model.LCIMAJ</td>
+                            <td style="text-align: center;">@Model.LCIOblig</td>
+                        </tr>
+                        <tr>
+                            <td class="labelInfo2">Assiette</td>
+                            <td class="numerique"><span albMask="@(Model.AssietteUnite == "%" ? "pourcentdecimal" : "decimal")">@(Model.FranchiseValeur == 0 && Model.FranchiseUnite == "" ? string.Empty : Model.AssietteValeur.ToString())</span></td>
+                            <td style="text-align: center;">@Model.AssietteUnite</td>
+                            <td style="text-align: center;">@Model.AssietteType</td>
+                            <td style="text-align: center;">@Model.AssietteMAJ</td>
+                            <td style="text-align: center;">@Model.AssietteOblig</td>
+                        </tr>
+                        <tr>
+                            <td class="labelInfo2">Prime</td>
+                            <td class="numerique"><span albMask="@(Model.PrimeUnite == "%" ? "pourcentdecimal" : Model.PrimeUnite == "%0" ? "pourmilledecimal" : "decimal")">@(Model.FranchiseValeur == 0 && Model.FranchiseUnite == "" ? string.Empty : Model.PrimeValeur.ToString())</span></td>
+                            <td style="text-align: center;">@Model.PrimeUnite</td>
+                            <td style="text-align: center;">@Model.PrimeType</td>
+                            <td style="text-align: center;">@Model.PrimeMAJ</td>
+                            <td style="text-align: center;">@Model.PrimeOblig</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 410px;">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnCloseInfoDetail" type="button" albshortcut="true" data-accesskey="m">Fer<u>m</u>er</button>
+        </div>
+    </div>
+</div>

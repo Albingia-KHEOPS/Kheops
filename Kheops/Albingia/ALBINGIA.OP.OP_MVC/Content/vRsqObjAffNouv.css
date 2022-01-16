@@ -1,0 +1,22 @@
+﻿#tblRsqObj
+{
+    width: 995px;
+}
+
+.HeightListRsObj
+{
+    height: 480px;
+    overflow-y: auto;
+    /*padding-top: 10px;
+    padding-left: 10px;*/
+}
+
+.PaddingRsqLib
+{
+    padding-left: 5px;
+}
+
+.PaddingObjLib
+{
+    padding-left: 40px;
+}

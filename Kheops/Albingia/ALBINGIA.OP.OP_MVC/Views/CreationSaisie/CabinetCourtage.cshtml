@@ -1,0 +1,111 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModeleCabinetCourtage
+<div class="HeightRow" data-courtier="gestionnaire">
+    <div class="FloatLeft">
+        @Html.HiddenNoName("inInvalidCourtierApp", string.Empty)
+        <label class="labelPreneurAssu"><u>Courtier Gestionnaire</u></label>
+    </div>
+    <div class="FloatLeft hide-it">
+        <i class="alerte-blacklisted"></i>
+    </div>
+    <div id="CourtierInvalideDiv" class="FloatLeft error"></div>
+</div>
+<div class="HeightRow" data-courtier="gestionnaire">
+    <div class="FloatLeft">
+        <label class="labelCourtier">Code*</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Convert.ToBoolean(@ViewData["IsCanevas"]))
+        {
+            if (Model.CodeCabinetCourtage == 0)
+            {
+                <input type="text" id="CabinetCourtage_CodeCabinetCourtage" name="CabinetCourtage.CodeCabinetCourtage" tabindex="7" value="" class="inputCodeCourtier" albAutoComplete="autoCompCodeCourtier" albcontext="courtierGestion" albname="codeCourtier" maxlength="5" />
+            }
+            else
+            {
+                <input type="text" id="CabinetCourtage_CodeCabinetCourtage" name="CabinetCourtage.CodeCabinetCourtage" tabindex="7" value="@(Model.CodeCabinetCourtage)" class="inputCodeCourtier" albAutoComplete="autoCompCodeCourtier" albcontext="courtierGestion" albname="codeCourtier" maxlength="5" />
+
+            }
+
+        }
+        else if ((!Model.EditMode || Model.CopyMode == true) && !Model.IsReadOnlyDisplay)
+        {
+            if (Model.CodeCabinetCourtage == 0)
+            {
+                <input type="text" id="CabinetCourtage_CodeCabinetCourtage" name="CabinetCourtage.CodeCabinetCourtage" tabindex="7" value="" class="inputCodeCourtier" albAutoComplete="autoCompCodeCourtier" albcontext="courtierGestion" albname="codeCourtier" maxlength="5" />
+            }
+            else
+            {
+                <input type="text" id="CabinetCourtage_CodeCabinetCourtage" name="CabinetCourtage.CodeCabinetCourtage" tabindex="7" value="@(Model.CodeCabinetCourtage)" class="inputCodeCourtier" albAutoComplete="autoCompCodeCourtier" albcontext="courtierGestion" albname="codeCourtier" maxlength="5" />
+
+            }
+        }
+        else
+        {
+            <input type="text" id="CabinetCourtage_CodeCabinetCourtage" name="CabinetCourtage.CodeCabinetCourtage" tabindex="7" value="@(Model.CodeCabinetCourtage)" readonly="readonly" class="readonly inputCodeCourtier" albAutoComplete="autoCompCodeCourtier" albcontext="courtierGestion" albname="codeCourtier" />
+        }
+        @Html.ValidationMessageFor(m => m.CodeCabinetCourtage, string.Empty, new { @style = "display: none" })
+    </div>
+    <div class="FloatLeft">
+        <label class="labelNomCourtier">Nom</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Convert.ToBoolean(@ViewData["IsCanevas"]))
+        {
+            <input type="text" id="CabinetCourtage_NomCabinetCourtage" name="CabinetCourtage.NomCabinetCourtage" tabindex="8" style="text-align:left; float:right;" value="@(Model.NomCabinetCourtage)" class="inputNomCourtier" albAutoComplete="autoCompNomCourtier" albcontext="courtierGestion" albname="nomCourtier" />
+        }
+        else if ((!Model.EditMode || Model.CopyMode == true) && !Model.IsReadOnlyDisplay)
+        {
+            <input type="text" id="CabinetCourtage_NomCabinetCourtage" name="CabinetCourtage.NomCabinetCourtage" tabindex="8" style="text-align:left; float:right;" value="@(Model.NomCabinetCourtage)" class="inputNomCourtier" albAutoComplete="autoCompNomCourtier" albcontext="courtierGestion" albname="nomCourtier" />
+        }
+        else
+        {
+            <input type="text" id="CabinetCourtage_NomCabinetCourtage" name="CabinetCourtage.NomCabinetCourtage" tabindex="8" style="text-align:left; float:right;" value="@(Model.NomCabinetCourtage)" readonly="readonly" class="inputNomCourtier readonly" albAutoComplete="autoCompNomCourtier" albcontext="courtierGestion" albname="nomCourtier" />
+        }
+    </div>
+    <div class="FloatLeft">
+        @if (((!Model.EditMode || Model.CopyMode == true) && !Model.IsReadOnlyDisplay) || Convert.ToBoolean(@ViewData["IsCanevas"]))
+        {
+            <img src="@Url.Content("/Content/Images/loupe.png")" albcontext="courtierGestion" alt="" class="CursorPointer" name="RechercherCourtier" />
+        }
+        else
+        {
+            <img src="@Url.Content("/Content/Images/loupegris.png")" albcontext="courtierGestion" alt="" class="" name="RechercherCourtier" />
+        }
+    </div>
+    <div class="FloatLeft">
+        <img alt="Informations" src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" class="CursorPointer PaddingLeft PaddingTopLittle" albAutoComplete="autoCompImgInfoCourtier" albIdInfo="@Model.CodeCabinetCourtage" albcontext="courtierGestion" />
+    </div>
+    <div class="FloatLeft">
+        <label class="Block labelNomInterlocuteur">Interlocuteur</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.Hidden(
+            "CabinetCourtage.CodeInterlocuteur",
+            Model.CodeInterlocuteur,
+            new { albAutoComplete = "autoCompCodeInterlocuteur", albcontext = "courtierApporteur", albIdInterlocuteur = Model.CodeInterlocuteur })
+
+        @if (Model.IsReadOnlyDisplay && !Convert.ToBoolean(@ViewData["IsCanevas"]))
+        {
+            <input type="text" id="CabinetCourtage_NomInterlocuteur" name="CabinetCourtage.NomInterlocuteur" tabindex="9" value="@(Model.NomInterlocuteur)" class="inputGes readonly" albAutoComplete="autoCompNomInterlocuteur" disabled="disabled" />
+        }
+        else
+        {
+            <input type="text" id="CabinetCourtage_NomInterlocuteur" name="CabinetCourtage.NomInterlocuteur" tabindex="9" value="@(Model.NomInterlocuteur)" class="inputGes" albAutoComplete="autoCompNomInterlocuteur" />
+        }
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="labelReference Alinea">Réf.</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.IsReadOnlyDisplay && !Convert.ToBoolean(@ViewData["IsCanevas"]))
+        {
+            <input type="text" id="CabinetCourtage_Reference" name="CabinetCourtage.Reference" tabindex="10" maxlength="25" value="@(Model.Reference)" title="Référence du dossier courtier" class="inputNomCourtier readonly" disabled="disabled" />
+        }
+        else
+        {
+            <input type="text" id="CabinetCourtage_Reference" name="CabinetCourtage.Reference" tabindex="10" maxlength="25" value="@(Model.Reference)" title="Référence du dossier courtier" class="inputNomCourtier" />
+        }
+    </div>
+</div>

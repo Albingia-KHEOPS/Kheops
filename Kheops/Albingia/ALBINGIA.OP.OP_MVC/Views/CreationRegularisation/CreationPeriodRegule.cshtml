@@ -1,0 +1,149 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegulGar.RegularisationGarInfo
+
+ <div class="nHorizontalFullWithGroup ">
+     <div class="nGradientSection divInfoRisque ">
+
+         @Html.HiddenNoName("DateDebMin", Model.MouvementPeriodeDebMin)
+         @Html.HiddenNoName("DateFinMax", Model.MouvementPeriodeFinMax)
+         @Html.HiddenNoName("CodeRsq", Model.RegulPeriodDetail.CodeRisque)
+         @Html.HiddenNoName("codefor", Model.RegulPeriodDetail.CodeFormule)
+         @Html.HiddenNoName("idgar", Model.RegulPeriodDetail.IdGar)
+         @Html.HiddenNoName("codegar", Model.RegulPeriodDetail.CodeGar)
+         @Html.HiddenNoName("idlot", Model.idLot)
+         @Html.HiddenNoName("idregul", Model.idregul)
+         @Html.HiddenNoName("libgar", Model.RegulPeriodDetail.LibGarantie)
+         @Html.HiddenNoName("hiddenInputId", string.Empty)
+
+         <div id="RisqueInfo">
+             <div class="HeightRow">
+                 <label style="font-weight: bold;">Régularisation Garantie  @(Model.RegulPeriodDetail.CodeGar) @(Model.RegulPeriodDetail.LibGarantie)  Période générale du @(Model.RegulPeriodDetail.DateDebPeriodGeneraleStr)    au  @(Model.RegulPeriodDetail.DateFinPeriodGeneraleStr) </label>
+             </div>
+             <div>
+                 <div class="DoubleGenericColumn">
+                     <div class="FloatLeft">
+                         <label class="Block">Risque</label>
+                     </div>
+                     <div class="FloatLeft">
+                         <input type="text" id="RisqueIdentification" name="RisqueIdentification" readonly="readonly" class="readonly DoubleInput" value="@(Model.RegulPeriodDetail.CodeRisque) - @(Model.RegulPeriodDetail.RisqueIdentification)" />
+                     </div>
+                 </div>
+                 <div class="DoubleGenericColumn">
+                     <div class="FloatLeft" style="padding-left: 20px;">
+                         <label class="Block">Régime de taxe</label>
+                     </div>
+                     <div class="FloatLeft">
+                         <input type="text" id="RegimetaxeID" readonly="readonly" class="readonly" value="@(Model.RegulPeriodDetail.CodeTaxeRegime.Trim())- @(Model.RegulPeriodDetail.RegimeTaxe.Trim())" />
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+        <div class="nGradientSection divInfoFormule">
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Formule</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="GarantieDescriptif" name="GarantieDescriptif" readonly="readonly" class=" readonly DoubleInput" value="@(Model.RegulPeriodDetail.LettreFor)- @(Model.RegulPeriodDetail.FormuleDescriptif)" />
+                    </div>
+                </div>
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft CursorPointer">
+                        <button type="button" id="btnAppliquer">S'applique à </button>
+                        <div id="divApplique" class="None nInfoBandeau">
+                            <div class="even" style="width: 410px; padding: 5px;">@string.Format("Risque {0} - {1}", Model.AppliqueRegule.Code, Model.AppliqueRegule.Designation)</div>
+                            @foreach (var obj in Model.AppliqueRegule.Objets)
+                            {
+                                <div class="odd" style="width: 400px; padding: 5px; padding-left: 15px;">
+                                    @string.Format("Objet {0} - {1}", obj.Code, obj.Designation)
+                                </div>
+                            }
+                            <div class="ActionButtons ActionButtonRight">
+                                <button id="btnFermerpopup" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Type de régul</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (!string.IsNullOrEmpty(Model.RegulPeriodDetail.CodeTypeRegule) || !string.IsNullOrEmpty(Model.RegulPeriodDetail.TypeRegul))
+                        {
+                            <input type="text" id="TypeRegul" readonly="readonly" name="TypeRegul" class=" readonly DoubleInput " value="@(Model.RegulPeriodDetail.CodeTypeRegule) - @(Model.RegulPeriodDetail.TypeRegul)" />
+                        }
+                        else
+                        {
+                           <input type="text" id="TypeRegul" readonly="readonly" name="TypeRegul" class=" readonly DoubleInput " value="" />
+                        }
+                    </div>
+                </div>
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft" style="padding-left: 20px;">
+                        <label class="Block">Type de Taxe</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="CodeTaxe" readonly="readonly" class=" readonly WidthCode " name="CodeTaxe" value="@(Model.RegulPeriodDetail.CodeTaxeGar)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGradientSection divInfoMvt PaddingLeft">
+            <div id="MouvementPeriode" class="HeightRow">
+                <label>Mouvement sur la période : </label>
+            </div>
+            <div id="ListMouvements" style="height: 135px;">
+                @Html.Partial("ListMvtPeriod", Model.ListMvtPeriod)
+            </div>
+        </div>
+        <div class="nGradientSection divInfoMvt PaddingLeft">
+            <div id="RegulPeriode" class="HeightRow">
+                <label>Période(s) à régulariser sur cette garantie :</label>
+            </div>
+            <div id="ListePeriodeRegularise" style="height: 135px;">
+                @if (Model.ListPeriodRegulGar != null && Model.ListPeriodRegulGar.Any())
+                {
+                    @Html.Partial("ListPeriodRegule", Model.ListPeriodRegulGar)
+                }
+            </div>
+        </div>
+
+    </div>
+
+
+<div id="dvAddPeriodRegule" class="None">
+    <div class="overlay-background" style="z-index:10" >
+    </div>
+    <div id="dvInfoAddReguleData" class="nGroupFull GroupWithBorder">
+        @Html.HiddenNoName("codePeriodeCourant", string.Empty)
+        <div class="HorizontalHalfWithGroupAdmin" style="width: 490px ! important">
+            <div class="GradientSection" style="width: 483px ! important">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        Veuillez saisir la période de Mouvement
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label>Du</label>
+                        <input id="dateDebutNewPeriode" class="inputDate datepicker" value="" />
+                        <label>Au</label>
+                        <input id="dateFinNewPeriode" class="inputDate datepicker" value="" />
+                    </div>
+                </div>
+            </div>
+            <div class="GradientSection ButtonsHeight">
+                <div class="ActionButtonRight" style="width: 490px ! important; padding-right: 10px; padding-top: 6px;">
+                    <button id="btnCancelAddPeriodRegule" type="button">Annuler</button>
+                    <button id="btnValidAddPeriodRegule" type="button">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

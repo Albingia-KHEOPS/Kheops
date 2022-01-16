@@ -1,0 +1,142 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegularisation.ModeleCreationRegule
+<div class="HeightRow">
+    @Html.HiddenNoName("lotId", (Model.LotId))
+    @Html.HiddenNoName("ReguleId", (Model.ReguleId))
+    @Html.HiddenNoName("inRetourPGM", (Model.RetourPGM))
+    @Html.HiddenFor(m => m.HasSelections)
+    <div class="FloatLeft">
+        <label class="Block lblRegule">Courtier sur la période</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="inCourtier" class="inCourtier readonly" value="@(!string.IsNullOrEmpty(Model.CodeCourtier) && Model.CodeCourtier != "0" ? string.Concat(Model.CodeCourtier, " - ", Model.NomCourtier) : string.Empty)" readonly="readonly" albcode="@(Model.CodeCourtier)" />
+        @Html.HiddenNoName("inCourtierCom", !string.IsNullOrEmpty(Model.CodeCourtierCom) && Model.CodeCourtierCom != "0" ? $"{Model.CodeCourtierCom} - {Model.NomCourtierCom}" : string.Empty, new { albcode = Model.CodeCourtierCom })
+    </div>
+    @if (!string.IsNullOrEmpty(Model.CodeCourtier) && Model.CodeCourtier != "0")
+    {
+        <div class="PaddingLeft FloatLeft">
+            <img id="btnModifCourtier" class="CursorPointer" src="@(Url.Content("/Content/Images/editer1616.png"))" title="Sélection courtier" alt="Select" />
+        </div>
+    }
+    @if (Model.MultiCourtier)
+    {
+        <div class="PaddingLeft FloatLeft" style="padding-top: 2px;">
+            <img id="icoAlert" src="@(Url.Content("/Content/Images/alertes/notif_icn_warn16.png"))" title="Plusieurs courtiers existent sur la période" alt="Alerte" />
+        </div>
+    }
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        @*<label class="Block lblRegule">Taux hors CATNAT</label>*@
+        <label class="Block lblRegule">Commissions hors CATNAT</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="inHorsCATNAT" class="inCATNAT decimal readonly" value="@(!string.IsNullOrEmpty(Model.CodeCourtier) && Model.CodeCourtier != "0" ? Model.TauxHCATNAT : 0)" albmask="decimal" readonly="readonly" />
+    </div>
+    <div class="FloatLeft" style="padding-left: 37px;">
+        @*<label class="Block lblRegule">Taux CATNAT</label>*@
+        <label class="Block lblRegule">Commissions CATNAT</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="inCATNAT" class="inCATNAT decimal readonly" value="@(!string.IsNullOrEmpty(Model.CodeCourtier) && Model.CodeCourtier != "0" ? Model.TauxCATNAT : 0)" albmask="decimal" readonly="readonly" />
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block lblRegule">Quittancement</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="inQuittancement" class="readonly" value="@(!string.IsNullOrEmpty(Model.CodeCourtier) && Model.CodeCourtier != "0" ? !string.IsNullOrEmpty(Model.CodeQuittancement) ? string.Concat(Model.CodeQuittancement, " - ", Model.LibQuittancement) : string.Empty : string.Empty)" readonly="readonly" albcode="@(Model.CodeQuittancement)" />
+    </div>
+</div>
+
+<div id="dvChoixCourtier" class="None">
+    <div class="overlay-background" style="z-index:5" >
+    </div>
+    <div id="dvInfoChoixCourtier" class="divInfoChoixCourtier">
+        <div class="nGroupFull nGroupWithBorder WidthCourtierRegule">
+            <div class="nHorizontalFullWithGroup WidthCourtierRegule">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        @if (Model.MultiCourtier && !Model.IsReadOnly)
+                        {
+                            <div class="FloatLeft PaddingLeft"><u>Plusieurs courtiers sont intervenus sur la période</u> :</div>
+                        }
+                        else
+                        {
+                            <div class="FloatLeft PaddingLeft"><u>Courtier sur la période</u> :</div>
+                        }
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Adressé à</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("oldCourtier", (Model.CodeCourtier))
+                            @if (Model.Courtiers.Count > 1 && !Model.IsReadOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => m.CodeCourtier, Model.Courtiers, "ddlCourtiers", htmlAttributes: new { @id = "ddlCourtiers", @class = "inCourtier" }, genEmptyLine: false, replaceHtmlName: "ddlCourtiers")
+                            }
+                            else
+                            {
+                                <input type="text" id="ddlCourtiers" name="ddlCourtiers" class="inCourtier readonly" value="@(!string.IsNullOrEmpty(Model.CodeCourtier) && Model.CodeCourtier != "0" ? string.Concat(Model.CodeCourtier, " - ", Model.NomCourtier) : string.Empty)" title="@(!string.IsNullOrEmpty(Model.CodeCourtier) && Model.CodeCourtier != "0" ? string.Concat(Model.CodeCourtier, " - ", Model.NomCourtier) : string.Empty)" readonly="readonly" />
+                            }
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Commissioné</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("oldCourtierCom", (Model.CodeCourtierCom))
+                            @if (Model.Courtiers.Count > 1 && !Model.IsReadOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => m.CodeCourtierCom, Model.Courtiers, "ddlCourtiersCom", htmlAttributes: new { @id = "ddlCourtiersCom", @class = "inCourtier" }, genEmptyLine: false, replaceHtmlName: "ddlCourtiersCom")
+                            }
+                            else
+                            {
+                                <input type="text" id="ddlCourtiersCom" name="ddlCourtiersCom" class="inCourtier readonly" value="@(!string.IsNullOrEmpty(Model.CodeCourtierCom) && Model.CodeCourtierCom != "0" ? string.Concat(Model.CodeCourtierCom, " - ", Model.NomCourtierCom) : string.Empty)" title="@(!string.IsNullOrEmpty(Model.CodeCourtierCom) && Model.CodeCourtierCom != "0" ? string.Concat(Model.CodeCourtierCom, " - ", Model.NomCourtierCom) : string.Empty)" readonly="readonly" />
+                            }
+                        </div>
+                        <div class="FloatLeft PaddingLeft">
+                            <label class="Block">Quittancement</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("oldQuittancement", (Model.CodeQuittancement))
+                            @if (!Model.IsReadOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => m.CodeQuittancement, Model.Quittancements, "ddlQuittancements", htmlAttributes: new { @id = "ddlQuittancements" }, genEmptyLine: false, generateTitle: true, replaceHtmlName: "ddlQuittancements")
+                            }
+                            else
+                            {
+                                <input type="text" class="readonly" value="@(Model.CodeQuittancement) - @(Model.LibQuittancement)" readonly="readonly" />
+                            }
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Com hors CATNAT</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.HiddenNoName("oldHCATNAT", Model.TauxHCATNAT, new { albmask = "pourcentdecimal" })
+                            <input type="text" id="ComHCATNAT" name="ComHCATNAT" class="@(Model.CodeQuittancement == "D" || Model.IsReadOnly ? "inCATNAT decimal readonly" : "inCATNAT decimal")" albmask="pourcentdecimal" value="@(Model.TauxHCATNAT)" readonly="@(Model.CodeQuittancement == "D" || Model.IsReadOnly )" />
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 50px;">
+                            <label class="AutoWidth" style="display: block;">Com CATNAT</label>
+                        </div>
+                        <div class="FloatLeft PaddingLeft">
+                            @Html.HiddenNoName("oldCATNAT", Model.TauxCATNAT, new { albmask = "pourcentdecimal" })
+                            <input type="text" id="ComCATNAT" name="ComCATNAT" class="@(Model.CodeQuittancement == "D" || Model.IsReadOnly ? "inCATNAT decimal readonly" : "inCATNAT decimal")" albmask="pourcentdecimal" value="@(Model.TauxCATNAT)" readonly="@(Model.CodeQuittancement == "D" || Model.IsReadOnly )" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft WidthCourtierRegule">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnCancelCourtier" type="button" class="None">Annuler</button>
+                <button id="btnCloseCourtier" type="button">Fermer</button>
+                <button id="btnValidCourtier" type="button" class="@(Model.IsReadOnly ? "None" : "")" disabled="disabled">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>

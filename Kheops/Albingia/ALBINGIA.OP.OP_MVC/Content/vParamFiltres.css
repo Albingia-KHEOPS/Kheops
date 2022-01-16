@@ -1,0 +1,141 @@
+﻿
+.col_HCodeFiltre
+{
+    width: 100px;
+}
+
+.col_HDescriptionFiltre
+{
+    width: 412px;
+}
+
+.col_HAction
+{
+    width: 25px;
+}
+
+.col_BCodeFiltre
+{
+    width: 102px;
+}
+
+.col_BDescriptionFiltre
+{
+    width: 414px;
+}
+
+.col_BAction
+{
+    width: 27px;
+    text-align: center;
+}
+
+.divHeight
+{
+    overflow-y: auto;
+    height: 475px;
+}
+
+.divHeightPaire
+{
+    overflow-y: auto;
+    height: 333px;
+}
+
+.Validation
+{
+    clear: both;
+    padding-bottom: 5px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.PaddingLeft10
+{
+    /*padding-left: 37px;*/
+}
+
+.PaddingLeft5
+{
+    padding-left: 10px;
+}
+
+.GroupHeight
+{
+    height: 575px;
+    margin-left: 12px;
+}
+
+#VoletDetails
+{
+    display: none;
+}
+
+#divPairesBrancheCibleLigneVide
+{
+    display: none;
+}
+
+.searchField
+{
+    width: 250px;
+}
+
+.col_HActionBrancheCible
+{
+    width: 95px;
+}
+
+.col_ActionBrancheCible_in
+{
+    width: 97px;
+}
+
+.col_HBranche
+{
+    width: 205px;
+}
+
+.col_Branche_in
+{
+    width: 204px;
+    padding-left: 3px;
+}
+
+.col_HCible
+{
+    width: 205px;
+}
+
+.col_Cible_in
+{
+    width: 207px;
+}
+
+.colEdition
+{
+    display: none;
+}
+
+.requiredButton
+{
+    border: 1px solid red;
+}
+
+.Gras
+{
+    font-weight: bold;
+}
+
+.HeightSmallRow
+{
+    height: 12px;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.col_Action
+{
+    width: 27px;
+    text-align: center;
+}

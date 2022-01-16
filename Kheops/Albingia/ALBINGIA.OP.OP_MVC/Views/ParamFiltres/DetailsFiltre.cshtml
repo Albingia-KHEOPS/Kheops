@@ -1,0 +1,126 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamFiltres.ModeleDetailsFiltre
+@Html.HiddenNoName("modeSaisie", Model.ModeSaisie)
+@Html.HiddenNoName("filtreEditId", Model.GuidIdFiltre)
+@Html.HiddenNoName("idPaireSuppr", string.Empty)
+@Html.HiddenNoName("idLigneVide", Model.LigneVideBrancheCible.GuidIdPaire)
+@Html.HiddenNoName("selectedRowPaire", string.Empty)
+<div class="GroupTitle">
+    Création/Modification filtre
+</div>
+<div class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Code filtre*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AdditionalParam == "**" || Model.AdditionalParam == "30")
+                    {
+                        <input id="codeFiltreEdit" class="DoubleInput @(Model.ModeSaisie == "Update" ? "readonly" : string.Empty)" value="@Model.CodeFiltre" readonly="@(Model.ModeSaisie == "Update" )" maxlength="10"/>
+                    }
+                    else
+                    {
+                        <input id="codeFiltreEdit" class="DoubleInput readonly" value="@Model.CodeFiltre" readonly="readonly"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Description*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AdditionalParam == "**" || Model.AdditionalParam == "30" || Model.AdditionalParam == "20")
+                    {
+                        <input id="descriptionFiltreEdit" class="DoubleInput" value="@Model.DescriptionFiltre" maxlength="60"/>
+                    }
+                    else
+                    {
+                        <input id="descriptionFiltreEdit" class="DoubleInput readonly" value="@Model.DescriptionFiltre" readonly="readonly"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                @if (Model.ModeSaisie == "Update")
+                {
+                    <div class="FloatLeft Block">
+                        <label class="Block Gras">Créé le :</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <label>@(Model.dDateCreation.Value != null ? Model.dDateCreation.Value.ToString("dd/MM/yyyy") : string.Empty)</label>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="Validation">
+            <div id="divbtnEnregistrer" class="FloatRight">
+                <button id="btnEnregistrer" type="button" albshortcut="true" data-accesskey="e"><u>E</u>nregistrer</button>
+            </div>
+        </div>
+        <div class="HeightSmallRow"></div>
+        <div id="divLstPairesBrancheCible">
+            <div id="divPairesBrancheCibleHeader">
+                <table id="tblPairesBrancheCibleHeader">
+                    <tr>
+                        <th class="col_HActionBrancheCible tablePersoHead">Inclure/Exclure
+                        </th>
+                        <th class="col_HBranche tablePersoHead">Branche
+                        </th>
+                        <th class="col_HCible tablePersoHead">Cible
+                        </th>
+                        <th class="col_HAction tablePersoHead">
+                            @if (Model.AdditionalParam == "**" || Model.AdditionalParam == "30")
+                            {
+                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouterPaireBrancheCible" />
+                            }
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divPairesBrancheCibleLigneVide">
+                <table id="tblPairesBrancheCibleLigneVide" class="trHeight">
+                    <tr>
+                        <td class="col_ActionBrancheCible">
+                            <div class="col_ActionBrancheCible_in paddingEdition" name="divEdition_@(Model.LigneVideBrancheCible.GuidIdPaire)">
+                                @Html.AlbDropDownListFor(m => Model.LigneVideBrancheCible.Action, Model.LigneVideBrancheCible.ListeActions, "dvAction", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlAction_" + Model.LigneVideBrancheCible.GuidIdPaire, @class = "col_ActionBrancheCible_in" })
+                            </div>
+                        </td>
+                        <td class="col_Branche">
+                            <div class="col_Branche_in paddingEdition" name="divEdition_@(Model.LigneVideBrancheCible.GuidIdPaire)">
+                                @Html.AlbDropDownListFor(m => Model.LigneVideBrancheCible.Branche, Model.LigneVideBrancheCible.ListeBranches, "dvBranche", generateTitle: true, genEmptyLine: false, htmlAttributes: new { @id = "drlBranche_" + Model.LigneVideBrancheCible.GuidIdPaire, @class = "col_Branche_in" }, replaceHtmlName: "dvBranche")
+                            </div>
+                        </td>
+                        <td class="col_Cible">
+                            <div class="col_Cible_in paddingEdition" name="divEdition_@(Model.LigneVideBrancheCible.GuidIdPaire)" id="divListeCible_@(Model.LigneVideBrancheCible.GuidIdPaire)">
+                                @if (Model.LigneVideBrancheCible.DrlCibles != null)
+                                {
+                                    @Html.Partial("DrlCibles", Model.LigneVideBrancheCible.DrlCibles)
+                                }
+                            </div>
+                        </td>
+                        <td class="col_Action">
+                            <div class="col_Action paddingEdition" name="divEdition_@(Model.LigneVideBrancheCible.GuidIdPaire)">
+                                <img src="@Url.Content("/Content/Images/Save_16.png")" id="@("btnEnregistrerPaireBrancheCible_" + @Model.LigneVideBrancheCible.GuidIdPaire)" alt="Enregistrer" title="Enregistrer" class="Action CursorPointer PaddingLeft10" name="btnEnregistrerPaireBrancheCible"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divPairesBrancheCibleBody" class="divHeightPaire">
+                @if (Model.ListePairesBrancheCible != null)
+                {
+                    @Html.Partial("ListePairesBrancheCible", Model.ListePairesBrancheCible)
+                }
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatRight">
+                <button id="btnCheckFiltre" type="button" albshortcut="true" data-accesskey="v"><u>V</u>érifier filtre</button>
+            </div>
+        </div>
+    </div>
+</div>

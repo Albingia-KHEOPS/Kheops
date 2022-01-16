@@ -1,0 +1,13 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleTransverse.SouscripteurModel>
+@Html.Hidden("countSouscripteur", (Model.Count))
+<table>
+    @foreach (var souscripteur in Model)
+    {
+        <tr>
+            <td>@souscripteur.Code
+            </td>
+            <td>@souscripteur.Libelle
+            </td>
+        </tr>
+    }
+</table>

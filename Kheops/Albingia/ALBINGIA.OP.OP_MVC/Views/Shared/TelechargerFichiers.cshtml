@@ -1,0 +1,27 @@
+﻿@model ALBINGIA.Framework.Common.Models.FileModel.FileDescriptions
+<div>
+    <table class="tabFichier">
+        <tr>
+            <th class="tablePersoHead TablePersoTd1 TablePersoTdHead">
+                &nbsp;
+            </th>
+            <th class="tablePersoHead TablePersoTd2 TablePersoTdHead">
+                Nom du fichier
+            </th>
+            <th class="tablePersoHead TablePersoTd3 TablePersoTdHead">
+                Date
+            </th>
+            <th class="tablePersoHead TablePersoTd4 TablePersoTdHead">
+                Taille KB
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+    </table>
+    <div class="divFichier">
+        <table id="tblTableFichier" class="tabFichier">
+            @Html.EditorFor(m => m.ListFileDescription, "FileLine")
+        </table>
+    </div>
+</div>

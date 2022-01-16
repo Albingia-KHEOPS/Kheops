@@ -1,0 +1,60 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause
+<div class="GroupFull GroupWithBorder" id="divDataVisu">
+    @Html.HiddenFor(m => m.NbrObjets)
+    @Html.Hidden("ClauseId", Model.Id)
+    @Html.Hidden("CodeRisqueObjet", Model.IdObj)
+    @Html.Hidden("CodeFormuleApplique", Model.CodeFormule)
+    @if (!string.IsNullOrEmpty(Model.Risque))
+    {
+        @Html.Hidden("CodeEtapeAjout", "RSQ")
+    }
+    else if(!string.IsNullOrEmpty(Model.CodeFormule)){
+         @Html.Hidden("CodeEtapeAjout", "GAR")
+    }
+
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="HeightRow">
+                <div class="FloatLeft PaddingRight">
+                    <label>Libellé de la clause*</label>
+                </div>
+                <div class="FloatLeft PaddingRight">
+                    <input type="text" id="TitreClauseLibre" name="TitreClauseLibre" value="@Model.Titre" class="LargeDoubleColumn" />
+                </div>
+                @if (!string.IsNullOrEmpty(Model.Risque) || !string.IsNullOrEmpty(Model.CodeFormule))
+                {
+                    <div class="FloatLeft PaddingRight">
+                        <label id="LabelObjetRisque">@(Model.LibApplique)</label>
+                    </div>
+                    <div class="FloatLeft PaddingRight">
+                        @*<input type="text" id="ObjetRisque" name="ObjetRisque" value="@(Model.DescRsqObj)" />*@
+                         <input type="text" id="AppliqueA" name="AppliqueA" readonly="readonly" class="readonly" value="@(Model.DescRsqObj)" />
+                    </div>
+                    <div id="divBtnMultiObj" name="btnMultiObj" class="FloatLeft CursorPointer">
+                        <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="GradientSection">
+            @if (Model.IsReadOnlyMode)
+            {
+                <div style="width: 995px; height: 325px; margin-left: 5px; margin-bottom: 5px; border: 1px solid #cdcdcd; background-color: #f5f5f5;">
+                    @Html.Raw(@Model.TexteClauseLibre)
+                </div>
+            }
+            else
+            {
+                <textarea id="TexteClauseLibreVisualisation" class="SuperInput" rows="20">@Model.TexteClauseLibre</textarea>
+            }
+        </div>
+    </div>
+    <div class="HeightSmallRow"></div>
+    <div class="HeightRow">
+        <div class="FloatRight">
+            <button id="btnFermerVisualisation" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+            <button id="btnModifierTexte" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>
+

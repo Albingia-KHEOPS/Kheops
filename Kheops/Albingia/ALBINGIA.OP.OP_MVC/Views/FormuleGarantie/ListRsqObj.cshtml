@@ -1,0 +1,23 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFormuleGarantie.ModeleFormuleGarantieLstObjRsq
+<table id="tbl@(Model.TableName)">
+    @foreach (var rsq in Model.Risques)
+    {
+        var rsqUsed = rsq.IsUsed || !rsq.Objets.Exists(obj => obj.IsUsed == false);
+
+        <tr id="@(rsq.Code)_0" name="@(rsq.Designation)" class="@(rsq.IsOut ? "None" : string.Empty)">
+            <td class="@(rsqUsed ? "lgnNiv1 NotAffecte" : "lgnNiv1")" albcontext="rsq_@(rsq.Code)">
+                <input id="@(rsq.Code)" name="radioRsq" type="radio" value="@(rsq.Code)_0" branche="@(rsq.Cible.Id)" disabled="@(rsqUsed || rsq.IsOut || Model.IsReadonly )" />
+                @rsq.Designation
+            </td>
+        </tr>
+        foreach (var obj in rsq.Objets)
+        {
+        <tr id="@(rsq.Code)_@(obj.Code)" name="@(obj.Designation)" class="@(obj.IsOut ? "None" : string.Empty)">
+            <td class="@(obj.IsUsed ? "lgnNiv2 NotAffecte" : "lgnNiv2")" albcontext="obj_@(rsq.Code)_@(obj.Code)">
+                <input id="check_@(rsq.Code)_@(obj.Code)" name="checkObj" type="checkbox" value="@(rsq.Code)_@(obj.Code)" disabled="@(obj.IsUsed || obj.IsOut || Model.IsReadonly )" />
+                @obj.Designation
+            </td>
+        </tr>
+        }
+    }
+</table>

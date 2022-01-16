@@ -1,0 +1,30 @@
+﻿@model  List<ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.LigneFamilleReassurance>
+<table id="tblBodyFamillesReassurance" class="trHeight">
+    @foreach (var ligne in Model)
+    {       
+        <!--Mode Affichage-->  
+        <tr name="trFamilleReassuranceReadOnly" id="trFamilleReassuranceReadOnly_@(ligne.CodeBranche + "_" + ligne.CodeSousBranche + "_" + ligne.CodeCategorie + "_" + ligne.CodeFamille)">
+            <td class="col_Br">
+                <label title="@ligne.LibelleBranche">@ligne.CodeBranche</label>
+            </td>
+            <td class="col_SsBr">
+                <label title="@ligne.LibelleSousBranche">@ligne.CodeSousBranche</label>
+            </td>
+            <td class="col_Cat">
+                <label title="@ligne.LibelleCategorie">@ligne.CodeCategorie</label>
+            </td>
+            <td class="col_Famille">
+                <label title="@ligne.LibelleCategorie">@ligne.CodeFamille@(!string.IsNullOrEmpty(ligne.LibelleFamille) ? " - " + ligne.LibelleFamille : "")</label>
+            </td>
+            <td class="col_ButtonsFamillesReassurace">
+                @if (ligne.AdditionalParam == "**")
+                {
+                    <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSuppr_" +ligne.CodeBranche + "_" + ligne.CodeSousBranche + "_" + ligne.CodeCategorie + "_" + ligne.CodeFamille)" alt="Supprimer" title="Supprimer" class="Action CursorPointer PaddingLeft10" name="btnSupprimer"/>
+                }
+            </td>
+        </tr>
+        <!--Mode Edition-->
+        <tr name="trFamilleReassuranceEdition" id="trFamilleReassuranceEdition_@(ligne.CodeBranche + "_" + ligne.CodeSousBranche + "_" + ligne.CodeCategorie + "_" + ligne.CodeFamille)">
+        </tr>    
+    }
+</table>

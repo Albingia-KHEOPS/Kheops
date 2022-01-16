@@ -1,0 +1,34 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesCreationAffaireNouvelle.ModeleCreationAffaireNouvelleContrat>
+<table id="tblBodyParam">
+    @foreach (var contrat in Model)
+    {
+        <tr class="trContrat">
+            @if (contrat.CodeAvn > 0)
+            { 
+                <td class="colCodeContrat PaddingLeft">@(contrat.CodeContrat)_@(contrat.VersionContrat)
+                </td>
+            }
+            else
+            {
+                <td name="codeContrat" class="colCodeContrat PaddingLeft TxtLink CursorPointer" albEtat="@(contrat.Etat)" albContrat="@(contrat.CodeContrat)_@(contrat.VersionContrat)">@(contrat.CodeContrat)_@(contrat.VersionContrat)
+                </td>
+            }
+            <td class="colType PaddingLeft">
+                @(contrat.TypeContrat + " - " + contrat.LibTypeContrat)
+            </td>
+            <td class="colDateEffet PaddingLeft">@(contrat.DateEffet.HasValue ? contrat.DateEffet.Value.ToString("dd/MM/yyyy") : string.Empty)
+            </td>
+            <td class="colDateAccord PaddingLeft">@contrat.DateAccord.ToString("dd/MM/yyyy")
+            </td>
+            <td class="colContratRemplace PaddingLeft">
+                @(!string.IsNullOrEmpty(contrat.CodeContratRemplace) ? contrat.CodeContratRemplace + "_" + contrat.ContratRemplaceAliment : string.Empty)
+            </td>
+            <td class="colSouscripteur PaddingLeft">@contrat.Souscripteur
+            </td>
+            <td class="colGestionnaire PaddingLeft">@contrat.Gestionnaire
+            </td>
+            <td class="colEtat PaddingLeft">@(contrat.Etat == "V" ? "Etabli" : "En cours")
+            </td>
+        </tr>
+    }
+</table>

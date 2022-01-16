@@ -1,0 +1,55 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRisque.ModeleRechercheOpp
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "pagination/pagination.css" }, "~/Content/")
+
+<div id="divOppHeader" style="margin-left: 5px;">
+    <table id="tblOppHeader" style="width: 1178px;">
+        <tr>
+            <th class="tablePersoHeadRechercheOpp TablePersoHeadCodeTd1 TablePersoTdHead" id="1">Code Organisme </th>
+            <th class="tablePersoHeadRechercheOpp TablePersoHeadNomTd2 TablePersoTdHead" id="2">Nom Organisme </th>
+            <th class="tablePersoHeadRechercheOpp TablePersoHeadAdresse1Td3 TablePersoTdHead" id="3">Adresse1 </th>
+            <th class="tablePersoHeadRechercheOpp TablePersoHeadAdresse2Td3 TablePersoTdHead" id="12">Adresse2 </th>
+            <th class="tablePersoHeadRechercheOpp TablePersoHeadCPTd4 TablePersoTdHead" id="4">CP </th>
+            <th class="tablePersoHeadRechercheOpp TablePersoHeadVilleTd5 TablePersoTdHead" id="5">Ville </th>
+            <th class="tablePersoHeadRechercheOpp TablePersoHeadPaysd6 TablePersoTdHead" id="6">Pays </th>
+        </tr>
+    </table>
+</div>
+<div id="divLstResultatOppositions">
+    @if (Model.lstOppositions != null && Model.lstOppositions.Count > 0)
+    {
+        <div id="divRechercheOppBody">
+            <table id="tblOppBody" class="trHeight" style="width: 1178px; table-layout:fixed;">
+                @foreach (var opposition in Model.lstOppositions)
+                {
+                    <tr id="tr_@(opposition.Code)">
+                        <td class="tdCodeorganisme">
+                            @opposition.Code
+                        </td>
+                        <td class="tdNomorganisme" title="@(opposition.Nom)">
+                            @opposition.Nom
+                        </td>
+                        <td class="tdAdresse1" title="@(opposition.Adresse1)">
+                            @opposition.Adresse1
+                        </td>
+                        <td class="tdAdresse2" title="@(opposition.Adresse2)">
+                            @opposition.Adresse2
+                        </td>
+                        <td class="tdCP">
+                            @opposition.CP
+                        </td>
+                        <td class="tdVilleorg" title="@(opposition.Ville)">
+                            @opposition.Ville
+                        </td>
+                        <td class="tdPays" title="@(opposition.NomPays)">
+                            @opposition.NomPays
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+        <br />
+    }
+</div>
+<div>
+</div>

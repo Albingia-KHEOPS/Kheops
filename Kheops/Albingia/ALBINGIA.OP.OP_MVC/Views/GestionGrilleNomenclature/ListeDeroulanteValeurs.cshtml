@@ -1,0 +1,5 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGestionNomenclature.ModeleTypologie
+@{
+    var splitHtmlChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML; 
+}
+@Html.AlbDropDownListFor(m => Model.Valeur, Model.Valeurs.Select(u => { u.Selected = (u.Value == Model.Valeur ? true : false); return u; }).ToList(), "Valeur", htmlAttributes: new { @id = "Valeur" + splitHtmlChar + Model.Niveau, @name = "Valeur" + splitHtmlChar + Model.Niveau, @albLien = Model.Lien }, generateTitle: true, replaceHtmlName: "NiveauValeur")

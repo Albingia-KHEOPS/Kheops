@@ -1,0 +1,24 @@
+<bindings>
+  <basicHttpBinding>
+    <binding name="KheopsBasicHttpBinding" closeTimeout="00:05:00"
+      openTimeout="00:05:00" receiveTimeout="00:10:00" sendTimeout="00:10:00"
+      allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+      maxBufferPoolSize="2147483647" maxReceivedMessageSize="2147483647"
+      textEncoding="utf-8" transferMode="Buffered" useDefaultWebProxy="true"
+      >
+      <readerQuotas maxDepth="64" maxStringContentLength="8192" maxArrayLength="16384"
+        maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+    </binding>
+  </basicHttpBinding>
+  <netTcpBinding>
+    <binding name="KheopsNetTcpBinding" closeTimeout="00:01:00"
+      openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+      hostNameComparisonMode="StrongWildcard"
+      maxBufferPoolSize="2147483647" maxReceivedMessageSize="2147483647"
+      transferMode="Buffered">
+      <readerQuotas maxDepth="64" maxStringContentLength="8192" maxArrayLength="16384"
+        maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+    </binding>
+  </netTcpBinding>
+</bindings>
+

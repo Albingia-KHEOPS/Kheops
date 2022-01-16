@@ -1,0 +1,17 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesCategories.ModeleCategorie>
+<table id="tblCategorie" class="trHeight">
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (HttpContext.Current.Request.FilePath == "/Volets/ConsultVolet" || HttpContext.Current.Request.FilePath == "/Volets/AssocieCategorie")
+            { 
+                <td class="bBranche">@item.CodeBranche
+                </td>
+                <td class="bCible">@(item.Code + " - " + item.Description)
+                </td>
+                <td class="bCarac">@item.Caractere
+                </td>
+            }
+        </tr>
+    }
+</table>

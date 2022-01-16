@@ -1,0 +1,9 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamFiltres.ModeleLigneFiltre>
+<table id="tblFiltresBody" class="trHeight">
+    @foreach (var ligne in Model)
+    {
+        <tr name="ligneFiltre" id="@("ligneFiltre_" + @ligne.GuidId)">
+            @Html.Partial("LigneFiltre", @ligne)
+        </tr>
+    }
+</table>

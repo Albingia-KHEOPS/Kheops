@@ -1,0 +1,136 @@
+﻿<script type="text/html" id="liste_connexites">
+    <!-- ko if: connexites().length == 0 -->
+    <!-- ko if: isReadonly -->
+    <div>Pas de connexité <span data-bind="text: innerLabel"></span></div>
+    <!-- /ko -->
+    <!-- ko ifnot: isReadonly -->
+    <div>Ajouter une nouvelle connexité <span data-bind="text: innerLabel"></span> <i class="add-img-cell" data-bind="click: addConnexite"></i></div>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: connexites().length > 0 -->
+    <div class="flex-table">
+        <div class="flex-header vertical-gradient">
+            <span class="cell">Contrat</span>
+            <span class="cell">Libellé</span>
+            <span class="cell">Branche</span>
+            <span class="cell">Cible</span>
+            <span class="cell very-long">Commentaires</span>
+            <span class="cell long">Preneur</span>
+            <!-- ko ifnot: isReadonly -->
+            <span class="add-img-cell" data-bind="click: addConnexite"></span>
+            <!-- /ko -->
+            <!-- ko if: isReadonly -->
+            <span class="cell"></span>
+            <!-- /ko -->
+        </div>
+        <div class="flex-body scroll connexites">
+            <!-- ko foreach: connexites -->
+            <div>
+                <div class="cell">
+                    <a data-bind="text: Folder.CodeOffre, attr: { href: linkGoToAffair, target: '_blank' }"></a>
+                </div>
+                <div class="cell auto-shorten" data-bind="text: NomContrat, attr: { title: NomContrat }"></div>
+                <div class="cell" data-bind="text: CodeBranche"></div>
+                <div class="cell" data-bind="text: CodeCible"></div>
+                <div class="cell auto-shorten very-long" data-bind="text: Commentaires, attr: { title: Commentaires }"></div>
+                <div class="cell long" data-bind="text: Preneur, attr: { title: Preneur }"></div>
+                <!-- ko if: canRemove -->
+                <div class="delete-img-cell" data-bind="click: remove"></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+
+</script>
+
+<div name="confirm-selection" class="hide-it">
+    <div class="container container-details">
+
+        <div class="container-lines">
+            <div>
+                <div class="input-line">
+                    <div>
+                        <label class="margin5">Code</label>
+                        <input class="margin5" type="text"  data-bind="value: CodeContrat,css: {'required_dt':CodeContratRq }"/>
+                       
+
+                    </div>
+                    <div>
+                        <input class="margin5 short" type="text" data-bind="value: VersionContrat,css: {'required_dt':VersionContratRq }" />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="sub-title center-content">Observation</div>
+                <div class="input-line center-content">
+                    <textarea class="inline-w95p" data-bind="textInput: Commentaires"></textarea>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container container-foot">
+        <div class="input-line">
+            <div class="textRouge flex8-10"></div>
+            <div class="flex2-10">
+                <button type="button" data-bind="click: doNotConnect">Annuler</button>
+                <button type="button" data-bind="click: connect">Valider</button>
+                <!--<button type="button" data-bind="click: connect">Valider</button>,disable: isFilterMissing-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="ko-cloak conceal">
+    <div class="container container-details">
+        <div class="container-lines">
+            <div class="input-line">
+                <div data-bind="jqUiTabs: { className: 'tabbed-view', options: {} }">
+                    <ul>
+                        <li><a href="#tabEngagement" data-bind="click: contextChanged">Engagement</a></li>
+                        <li><a href="#tabRemplacement" data-bind="click: contextChanged">Remplacement</a></li>
+                        <li><a href="#tabInformation" data-bind="click: contextChanged">Information</a></li>
+                        <li><a href="#tabResiliation" data-bind="click: contextChanged">Resiliation</a></li>
+                        <li><a href="#tabRegularisation" data-bind="click: contextChanged">Regularisation</a></li>
+                    </ul>
+
+                    <div id="tabEngagement">
+                        <!-- ko template: { name: 'connexites_engagements', data: $component } -->
+                        <!-- /ko -->
+                    </div>
+                    <div id="tabRemplacement">
+                        <!-- ko template: { name: 'liste_connexites', data: { connexites: Remplacements, innerLabel: 'de remplacement', addConnexite: addRemplacement, isReadonly: isReadonly } } -->
+                        <!-- /ko -->
+                    </div>
+                    <div id="tabInformation">
+                        <!-- ko template: { name: 'liste_connexites', data: { connexites: Informations, innerLabel: 'd\'information', addConnexite: addInformation, isReadonly: isReadonly } } -->
+                        <!-- /ko -->
+                    </div>
+                    <div id="tabResiliation">
+                        <!-- ko template: { name: 'liste_connexites', data: { connexites: Resiliations, innerLabel: 'de résiliation', addConnexite: addResiliation, isReadonly: isReadonly } } -->
+                        <!-- /ko -->
+                    </div>
+                    <div id="tabRegularisation">
+                        <!-- ko template: { name: 'liste_connexites', data: { connexites: Regularisations, innerLabel: 'de régularisation', addConnexite: addRegularisation, isReadonly: isReadonly } } -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container-foot">
+        <div class="input-line">
+            <div class="textRouge flex8-12">
+                <button data-bind="visible: periodesChanged, click: resetPeriodeList">Réinitialiser les périodes</button>
+                <button data-bind="visible: periodesChanged, click: modifyPeriodes">Valider les périodes</button>
+            </div>
+            <div class="flex1-12">
+                <button type="button" data-bind="click: terminate">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>

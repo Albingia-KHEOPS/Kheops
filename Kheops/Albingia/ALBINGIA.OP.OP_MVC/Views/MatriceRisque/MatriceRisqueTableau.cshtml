@@ -1,0 +1,248 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleMatriceRisquePage
+<div id="divHeaderGen" class="PaddingLeft">
+    <div class="FloatLeft">
+        <table id="tblHeaderRisque" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+
+
+                @if (!Model.IsReadOnly)
+                {
+                    <td class="PaddingLeft tablePersoHead tdEmpty">
+                        <img id="btnCopyRisque" class="CursorPointer" title="Copier Risques" src="@Url.Content("/Content/Images/Copy_16.png")" style="visibility:hidden;" />
+                    </td>
+                }
+               
+                @if (!Model.IsReadOnly)
+                {
+                    <td class="PaddingLeft tablePersoHead tdEmpty">
+                        @Html.Hidden("rsqExpandCollapseVal", 0)
+                        <img id="rsqExpandCollapse" class="CursorPointer" src="@(Url.Content("/Content/Images/Cl.png"))" alt="Déplier" />
+                    </td>
+                }
+                else { 
+                    <td class="PaddingLeft tablePersoHead tdEmpty" style="padding-left:29px">
+                        @Html.Hidden("rsqExpandCollapseVal", 0)
+                        <img id="rsqExpandCollapse" class="CursorPointer" src="@(Url.Content("/Content/Images/Cl.png"))" alt="Déplier" />
+                    </td>
+                }
+                <td class="tablePersoHead tdRisque">
+                    Risques
+                </td>
+                @if ((Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF))
+                {
+
+                    <td class="tablePersoHead">
+                        <input type="checkbox" id="displayAllCB" />
+                    </td>
+                    <td class="tablePersoHead tdRisque">
+                        Afficher les risques sortis
+                    </td>
+
+                }
+            </tr>
+        </table>
+    </div>
+    <div id="divHeadInfo" class="FloatLeft">
+        <table id="tblHeaderInfo" cellpadding="0" cellspacing="0" border="0">
+            <tbody style="border: 0px;">
+                <tr>
+                    <td class="BorderBlackLeft tablePersoHead libHeadFormule">
+                        Formule
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadCible">
+                        Cible
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadValeur">
+                        Valeur
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadUnite">
+                        Unité
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadType">
+                        Type
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadDate" title="Entrée de garantie">
+                        Entrée
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadDate" title="Sortie de garantie">
+                        Sortie
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadAutre" title="Indexé">
+                        Ind.
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadAutre" title="Nombre d'objets">
+                        Nb obj.
+                    </td>
+                    <td class="BorderGrayLeft tablePersoHead libHeadAutre" title="Inventaires">
+                        Inv.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="divBodyGen" class="PaddingLeft">
+    <div id="divRisque" class="FloatLeft">
+        <table id="tblBodyRisque" cellpadding="0" cellspacing="0" border="0">
+
+            @foreach (var risque in Model.Risques)
+            {
+
+            <tr class="even" albniv="RSQ" albbaddate="@(((Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF) && risque.isBadDate).ToString())" albcodersq="@(risque.Code)">
+               
+                <td class="PaddingLeft tdEmpty BorderGrayBottom">
+                    @if (!Model.IsReadOnly)
+                    {
+                        <input type="checkbox" id="checkboxCopy" name="risque_@(risque.Code)" />
+                    }
+                  
+                </td>
+               
+
+                <td class="PaddingLeft tdEmpty BorderGrayBottom">
+                    <input type="hidden" id="input_risque_@(risque.Code)" name="input_risque_@(risque.Code)" value="0" />
+                    @*                        class="@(risque.isBadDate ? "None" : "CursorPointer")"*@
+                    <img id="risque_@(risque.Code)" class="CursorPointer" src="@Url.Content("/Content/Images/Cl.png")" alt="Dépiler" />
+                </td>
+                <td class="@((risque.isBadDate && (Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF)) ? "textOrange BorderGrayLeft BorderGrayBottom PaddingLeft CursorPointer TxtLink" : "BorderGrayLeft BorderGrayBottom PaddingLeft CursorPointer TxtLink")" name="Risque_@(risque.Code)" id="tdRsq_@(risque.Code)">
+                    @risque.Designation
+                </td>
+
+            </tr>
+                if (risque.Objets.Count > 0)
+                {
+                    foreach (var objet in risque.Objets)
+                    {
+                        <tr class="odd None" albniv="OBJ" name="risque_@(risque.Code)" albbaddate="@(((Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF) && objet.isBadDate).ToString())" albcodersq="@(risque.Code)">
+                            <td class="tdEmpty BorderGrayBottom">&nbsp;</td>
+                            <td class="tdEmpty BorderGrayBottom">&nbsp;</td>
+                            @if (!objet.isAffecte)
+                            {
+                                <td class="BorderGrayBottom Entete3 @((objet.isBadDate && (Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD
+                                                                  || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR
+                                                                  || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF)) ?
+                                           " textOrange" : "") ">
+                                    @objet.Designation
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="NotAffecte BorderGrayBottom Entete3">
+                                    @objet.Designation
+                                </td>
+                            }
+                        </tr>
+                    }
+                }
+            }
+        </table>
+    </div>
+    <div id="divInfo" class="FloatLeft">
+        <table id="tblBodyInfo" class="tableBodyInfo" cellpadding="0" cellspacing="0">
+            @foreach (var risque in Model.Risques)
+            {
+                <tr class="even" albniv="RSQ" albbaddate="@(((Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF) && risque.isBadDate).ToString())" albcodersq="@(risque.Code)">
+
+                    <td class="BorderBlackLeft BorderGrayBottom cellFormule" title="@risque.CodeAlpha">
+                        @risque.CodeAlpha
+                </td>
+                <!-- <td class="BorderBlackLeft BorderGrayBottom cellFormule CursorPointer TxtLink" title="@risque.CodeAlpha" name="RisqueFormule_@(risque.CodeAlpha)" id="tdRsqFormule">
+                     @risque.CodeAlpha
+                 </td>-->
+                <td class="BorderGrayBottom BorderGrayLeft cellCible" title="@risque.Cible.Code">
+                    @risque.Cible.Code
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellValeur">
+                    @if (risque.Valeur != "0")
+                    {
+                        <span albmask="@(risque.Unite.Code == "%" ? "pourcentnumeric" : "numeric")">@(risque.Valeur)</span>
+                    }
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellUnite">
+                    @if (risque.Unite.Code != "")
+                    {
+                        @(risque.Unite.Code)
+                    }
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellType">
+                    @if (risque.Type.Code != "")
+                    {
+                        @(risque.Type.Code)
+                    }
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellDate">
+                    @(string.IsNullOrEmpty(risque.EntreeGarantieStr) ? Model.StrDateDebutEffetGenerale : risque.EntreeGarantieStr)
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellDate">
+                    @(string.IsNullOrEmpty(risque.SortieGarantieStr) ? Model.StrDateFinEffetGenerale : risque.SortieGarantieStr)
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellAutre">
+                    @if (risque.isIndexe)
+                    {
+                        <img src="@Url.Content("/Content/Images/check_1616.gif")" alt="Est indexé" title="Est indexé" />
+                    }
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellAutre">
+                    @(risque.Objets.Count > 0 ? risque.Objets.Count.ToString() : "-")
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellAutre">
+                    @if (risque.hasInventaire)
+                    {
+                        <img src="@Url.Content("/Content/Images/check_1616.gif")" alt="Contient un ou des inventaires" title="Contient un ou des inventaires" />
+                    }
+                </td>
+            </tr>
+            if (risque.Objets.Count > 0)
+            {
+                foreach (var objet in risque.Objets)
+                {
+                    <tr class="odd None" albniv="OBJ" name="risque_@(risque.Code)" albbaddate="@(((Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR || Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF) && objet.isBadDate).ToString())" albcodersq="@(risque.Code)">
+                        <td class="BorderBlackLeft BorderGrayBottom cellFormule" title="@objet.CodeAlpha">
+                            @objet.CodeAlpha
+                    </td>
+                    <td class="BorderGrayBottom BorderGrayLeft cellCible" title="@objet.Cible.Code">
+                        @objet.Cible.Code
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellValeur">
+                    @if (objet.Valeur != "0")
+                    {
+                        <span albmask="@(objet.Unite.Code == "%" ? "pourcentnumeric" : "numeric")">@(objet.Valeur)</span>
+                    }
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellUnite">
+                    @if (objet.Unite.Code != "")
+                    {
+                        @(objet.Unite.Code)
+                    }
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellType">
+                    @if (objet.Type.Code != "")
+                    {
+                        @(objet.Type.Code)
+                    }
+                </td>
+                <td class="BorderGrayBottom BorderGrayLeft cellDate">
+                    @objet.EntreeGarantieStr
+            </td>
+            <td class="BorderGrayBottom BorderGrayLeft cellDate">
+                @objet.SortieGarantieStr
+        </td>
+        <td class="BorderGrayBottom BorderGrayLeft cellAutre">
+            &nbsp;
+        </td>
+        <td class="BorderGrayBottom BorderGrayLeft cellAutre">
+            -
+        </td>
+        <td class="BorderGrayBottom BorderGrayLeft cellAutre">
+            @if (objet.hasInventaires)
+            {
+                <img src="@Url.Content("/Content/Images/check_1616.gif")" alt="Contient un ou des inventaires" title="Contient un ou des inventaires" />
+            }
+        </td>
+    </tr>
+}
+}
+}
+        </table>
+    </div>
+</div>

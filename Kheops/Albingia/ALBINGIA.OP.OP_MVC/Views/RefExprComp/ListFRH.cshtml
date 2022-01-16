@@ -1,0 +1,13 @@
+﻿@model List<ALBINGIA.Framework.Common.Extensions.AlbSelectListItem>
+<table id="tblBodyFRH" class="trHeight tBodyLCIFRH">
+    @foreach (var frh in Model)
+    {
+        <tr>
+            <td class="tdExpCode selectableCol" name="Franchise_@(frh.Value)">@frh.Text</td>
+            <td class="tdExpLib selectableCol" title="@frh.Descriptif"  name="Franchise_@(frh.Value)">@frh.Descriptif</td>
+            <td class="tdExpImg">
+                <img id="imgDelFRH_@(frh.Value)" name="imgDelFRH" src="@Url.Content("/Content/Images/poubelle1616.png")" class="CursorPointer" />
+            </td>
+        </tr>
+    }
+</table>

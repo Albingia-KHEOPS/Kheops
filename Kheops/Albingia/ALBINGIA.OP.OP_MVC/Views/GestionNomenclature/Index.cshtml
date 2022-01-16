@@ -1,0 +1,68 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestionNomenclaturePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vGestionNomenclature.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albGestionNomenclature.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft TotalWidth">
+        <div class="nGroupFull nGroupWithBorder TotalWidth">
+            <div class="nHorizontalFullWithGroup widthNomenclature">
+                <div class="nGradientSection widthNomenclatureSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Branche</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "Branche", htmlAttributes: new { id = "Branche", albcflist = "branche" }, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Cible</label>
+                        </div>
+                        <div id="divCibles" class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Cible, Model.Cibles, "Cible", htmlAttributes: new { id = "Cible" }, generateTitle: true)
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection FloatLeft widthNomenclatureSemiSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Typologie</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Typologie, Model.Typologies, "Typologie", htmlAttributes: new { id = "Typologie", albcflist = "typologie" }, generateTitle: true)
+                        </div>
+
+                        <div class="FloatLeft">
+                            <label class="Block">Libellé</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="txtLibelle" name="txtLibelle"/>
+                        </div>
+                    </div>
+                    <div class="HeightRow PaddingTop">
+                        <div class="FloatLeft">
+                            <label><u>Liste des nomenclatures</u></label>
+                        </div>
+                    </div>
+                    <div id="divListNomenclatures" class="PaddingLeft">
+                        @Html.Hidden("selNomenclatureCode", string.Empty)
+                        @Html.Partial("ListeNomenclatures", Model)
+                    </div>
+                </div>
+                <div id="divInfoNomenclature">
+                    <div class="nGradientSection FloatLeft widthNomenclatureSemiSection">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupeFull GroupWithBorder ButtonsHeight TotalWidth">
+            <div class="ActionButtons ActionButtonRight">
+                <input type="button" id="btnCancel" value="Retour" tabindex="29" />
+            </div>
+        </div>
+    </div>
+</div>

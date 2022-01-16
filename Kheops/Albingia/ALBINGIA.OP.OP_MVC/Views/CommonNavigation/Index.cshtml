@@ -1,0 +1,25 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.CommonNavigation.CommonNavigationModel>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vConnexite.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albConnexite.js" }, "~/Scripts/AlbingiaJS/")
+@if (!string.IsNullOrEmpty(Model.Contexte))
+{
+    Layout = Url.Content("~/Views/Shared/Layout.cshtml");
+}
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albCommonNavigation.js" }, "~/Scripts/AlbingiaJS/")
+
+@Html.HiddenNoName("commonNavigationContexte", string.Empty)
+@Html.HiddenNoName("commonNavigationParametres", string.Empty)
+@Html.HiddenNoName("CodeContrat", Model.CodeContrat)
+@Html.HiddenNoName("VersionContrat", Model.VersionContrat)
+@Html.HiddenNoName("TypeContrat", Model.TypeContrat)
+@Html.HiddenNoName("Contexte", Model.Contexte)
+@Html.HiddenNoName("Parametres", Model.Parametres)
+@Html.HiddenNoName("selectedOffreContrat", string.Empty)
+
+@Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+@if (Model.Connexite != null)
+{
+    @Html.Partial("/Views/Connexite/Index.cshtml", Model.Connexite)
+}
+

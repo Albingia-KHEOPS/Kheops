@@ -1,0 +1,155 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationAttestation.ModeleAttestationGarantie
+<table id="tblBodyGarantie" class="trHeight tblGarantie">
+    @{
+        var i = 0;
+        foreach (var rsq in Model.Risques)
+        {
+            foreach (var formule in rsq.Formules)
+            {
+                foreach (var garantieNiv1 in formule.Garanties)
+                {
+        <tr id="trRsq_@(garantieNiv1.CodeGarantie)" class="@(i % 2 == 0 ? "odd" : "even")" style="font-weight: bold;" albCodeRsq="@(rsq.Code)" albCodeFor="@(formule.LettreFormule)" albisshown="@(garantieNiv1.IsShown ? "1" : "0")">
+            <td class="tdCheck">
+                <input type="checkbox" id="checkGar_@(garantieNiv1.CodeGarantie)" name="checkGar" checked="@(garantieNiv1.IsUsed)" albidgar="@(garantieNiv1.IdGaran)" albcharfor="@formule.LettreFormule" />
+            </td>
+            <td class="tdGarRsq">R@(rsq.Code)</td>
+            <td class="tdGarObj">@(rsq.CodesObj)</td>
+            <td class="tdGarFor" title="@(formule.LettreFormule) - @(formule.LibFormule)">@formule.LettreFormule</td>
+            <td class="tdGarantie">
+                <table>
+                    <tr>
+
+                        <td>
+                            @if (garantieNiv1.Garanties != null && garantieNiv1.Garanties.Count > 0)
+                            {
+                                if (garantieNiv1.IsUsed)
+                                {
+                                <img id="ExpandGar_@(garantieNiv1.CodeGarantie)" name="ExpandGar" class="CursorPointer" src="@(Url.Content("/Content/Images/Op.png"))" albExpCol="collapse"/>
+                                }
+                                else
+                                {
+                                <img id="ExpandGar_@(garantieNiv1.CodeGarantie)" name="ExpandGar" class="CursorPointer" src="@(Url.Content("/Content/Images/Cl.png"))" albExpCol="expand"/>
+                                }
+                            }
+                            else
+                            {
+                                @Html.Raw("&nbsp;")
+                            }
+                        </td>
+                        <td>@(garantieNiv1.Exclu ? "E" : string.Empty)</td>
+                        <td>@(garantieNiv1.CodeGarantie) - @(garantieNiv1.LibelleGarantie)</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="tdGarValeur" title="@(!string.IsNullOrEmpty(garantieNiv1.Unite) && garantieNiv1.Unite != "CPX" ? string.Format("{0} - {1}", garantieNiv1.Unite, garantieNiv1.LibUnite) : string.Empty)"><span albmask="decimal">@(garantieNiv1.Montant != "0" ? garantieNiv1.Montant : string.Empty)</span>@((garantieNiv1.Montant != "0" || garantieNiv1.Unite == "CPX") && !string.IsNullOrEmpty(garantieNiv1.Unite) ? "-" + garantieNiv1.Unite : string.Empty)@((garantieNiv1.Montant != "0" || garantieNiv1.Unite == "CPX") && !string.IsNullOrEmpty(garantieNiv1.Base) ? "-" : string.Empty)@(!string.IsNullOrEmpty(garantieNiv1.Base) ? garantieNiv1.Base : string.Empty)</td>
+            <td class="tdDates">@(garantieNiv1.DateDebutStr)</td>
+            <td class="tdDates">@(garantieNiv1.DateFinStr)</td>
+        </tr>
+                            if (garantieNiv1.Garanties != null)
+                            {
+                                foreach (var garantieNiv2 in garantieNiv1.Garanties)
+                                {
+        <tr id="trGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)" class="@(i % 2 == 0 ? garantieNiv1.IsUsed ? "odd" : "odd None" : garantieNiv1.IsUsed ? "even" : "even None")" albCodeRsq="@(rsq.Code)" albCodeFor="@(formule.LettreFormule)" albisshown="@(garantieNiv2.IsShown ? "1" : "0")">
+            <td class="tdCheck">
+                <input type="checkbox" id="checkGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)" name="checkGar" checked="@(garantieNiv2.IsUsed )" albidgar="@(garantieNiv2.IdGaran)" albcharfor="@formule.LettreFormule" />
+            </td>
+            <td class="tdGarRsq">R@(rsq.Code)</td>
+            <td class="tdGarObj">@(rsq.CodesObj)</td>
+            <td class="tdGarFor">@formule.LettreFormule</td>
+            <td class="tdGarantie" style="padding-left: 20px;">
+                <table>
+                    <tr>
+
+                        <td>
+                            @if (garantieNiv2.Garanties != null && garantieNiv2.Garanties.Count > 0)
+                            {
+                                if (garantieNiv1.IsUsed)
+                                {
+                                <img id="ExpandGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)" name="ExpandGar" class="CursorPointer" src="@(Url.Content("/Content/Images/Op.png"))" albExpCol="collapse"/>
+                                }
+                                else
+                                {
+                                <img id="ExpandGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)" name="ExpandGar" class="CursorPointer" src="@(Url.Content("/Content/Images/Cl.png"))" albExpCol="expand"/>
+                                }
+                            }
+                            else
+                            {
+                                @Html.Raw("&nbsp;")
+                            }
+                        </td>
+                        <td>@(garantieNiv2.CodeGarantie) - @(garantieNiv2.LibelleGarantie)</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="tdGarValeur" title="@(!string.IsNullOrEmpty(garantieNiv2.Unite) && garantieNiv2.Unite != "CPX" ? string.Format("{0} - {1}", garantieNiv2.Unite, garantieNiv2.LibUnite) : string.Empty)"><span albmask="decimal">@(garantieNiv2.Montant != "0" ? garantieNiv2.Montant : string.Empty)</span>@((garantieNiv2.Montant != "0" || garantieNiv2.Unite == "CPX") && !string.IsNullOrEmpty(garantieNiv2.Unite) ? "-" + garantieNiv2.Unite : string.Empty)@((garantieNiv2.Montant != "0" || garantieNiv2.Unite == "CPX") && !string.IsNullOrEmpty(garantieNiv2.Base) ? "-" : string.Empty)@(!string.IsNullOrEmpty(garantieNiv2.Base) ? garantieNiv2.Base : string.Empty)</td>
+            <td class="tdDates">@(garantieNiv2.DateDebutStr)</td>
+            <td class="tdDates">@(garantieNiv2.DateFinStr)</td>
+        </tr>
+                            if (garantieNiv2.Garanties != null)
+                            {
+                                foreach (var garantieNiv3 in garantieNiv2.Garanties)
+                                {
+        <tr id="trGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv3.CodeGarantie)" class="@(i % 2 == 0 ? garantieNiv1.IsUsed && garantieNiv2.IsUsed ? "odd" : "odd None" : garantieNiv1.IsUsed && garantieNiv2.IsUsed ? "even" : "even None")" albCodeRsq="@(rsq.Code)" albCodeFor="@(formule.LettreFormule)" albisshown="@(garantieNiv2.IsShown ? "1" : "0")">
+            <td class="tdCheck">
+                <input type="checkbox" id="checkGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv3.CodeGarantie)" name="checkGar" checked="@(garantieNiv3.IsUsed )" albidgar="@(garantieNiv3.IdGaran)" albcharfor="@formule.LettreFormule" />
+            </td>
+            <td class="tdGarRsq">R@(rsq.Code)</td>
+            <td class="tdGarObj">@(rsq.CodesObj)</td>
+            <td class="tdGarFor">@formule.LettreFormule</td>
+            <td class="tdGarantie" style="padding-left: 40px;">
+                <table>
+                    <tr>
+
+                        <td>
+                            @if (garantieNiv3.Garanties != null && garantieNiv3.Garanties.Count > 0)
+                            {
+                                if (garantieNiv1.IsUsed)
+                                {
+                                <img id="ExpandGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv3.CodeGarantie)" name="ExpandGar" class="CursorPointer" src="@(Url.Content("/Content/Images/Op.png"))" albExpCol="collapse"/>
+                                }
+                                else
+                                {
+                                <img id="ExpandGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv3.CodeGarantie)" name="ExpandGar" class="CursorPointer" src="@(Url.Content("/Content/Images/Cl.png"))" albExpCol="expand"/>
+                                }
+                            }
+                            else
+                            {
+                                @Html.Raw("&nbsp;")
+                            }
+                        </td>
+                        <td>@(garantieNiv3.CodeGarantie) - @(garantieNiv3.LibelleGarantie)</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="tdGarValeur" title="@(!string.IsNullOrEmpty(garantieNiv3.Unite) && garantieNiv3.Unite != "CPX" ? string.Format("{0} - {1}", garantieNiv3.Unite, garantieNiv3.LibUnite) : string.Empty)"><span albmask="decimal">@(garantieNiv3.Montant != "0" ? garantieNiv3.Montant : string.Empty)</span>@((garantieNiv3.Montant != "0" || garantieNiv3.Unite == "CPX") && !string.IsNullOrEmpty(garantieNiv3.Unite) ? "-" + garantieNiv3.Unite : string.Empty)@((garantieNiv3.Montant != "0" || garantieNiv3.Unite == "CPX") && !string.IsNullOrEmpty(garantieNiv3.Base) ? "-" : string.Empty)@(!string.IsNullOrEmpty(garantieNiv3.Base) ? garantieNiv3.Base : string.Empty)</td>
+            <td class="tdDates">@(garantieNiv3.DateDebutStr)</td>
+            <td class="tdDates">@(garantieNiv3.DateFinStr)</td>
+        </tr>
+                            if (garantieNiv3.Garanties != null)
+                            {
+                                foreach (var garantieNiv4 in garantieNiv3.Garanties)
+                                {
+        <tr id="trGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv3.CodeGarantie)_@(garantieNiv4.CodeGarantie)" class="@(i % 2 == 0 ? garantieNiv1.IsUsed && garantieNiv2.IsUsed && garantieNiv3.IsUsed ? "odd" : "odd None" : garantieNiv1.IsUsed && garantieNiv2.IsUsed && garantieNiv3.IsUsed ? "even" : "even None")" albCodeRsq="@(rsq.Code)" albCodeFor="@(formule.LettreFormule)" albisshown="@(garantieNiv2.IsShown ? "1" : "0")">
+            <td class="tdCheck">
+                <input type="checkbox" id="checkGar_@(garantieNiv1.CodeGarantie)_@(garantieNiv2.CodeGarantie)_@(garantieNiv3.CodeGarantie)_@(garantieNiv4.CodeGarantie)" name="checkGar" checked="@(garantieNiv4.IsUsed )" albidgar="@(garantieNiv4.IdGaran)" albcharfor="@formule.LettreFormule" />
+            </td>
+            <td class="tdGarRsq">R@(rsq.Code)</td>
+            <td class="tdGarObj">@(rsq.CodesObj)</td>
+            <td class="tdGarFor">@formule.LettreFormule</td>
+            <td class="tdGarantie" style="padding-left: 60px;">@(garantieNiv4.CodeGarantie) - @(garantieNiv4.LibelleGarantie)</td>
+            <td class="tdGarValeur" title="@(!string.IsNullOrEmpty(garantieNiv4.Unite) && garantieNiv4.Unite != "CPX" ? string.Format("{0} - {1}", garantieNiv4.Unite, garantieNiv4.LibUnite) : string.Empty)"><span albmask="decimal">@(garantieNiv4.Montant != "0" ? garantieNiv4.Montant : string.Empty)</span>@((garantieNiv4.Montant != "0" || garantieNiv4.Unite == "CPX")  && !string.IsNullOrEmpty(garantieNiv4.Unite) ? "-" + garantieNiv4.Unite : string.Empty)@((garantieNiv4.Montant != "0" || garantieNiv4.Unite == "CPX") && !string.IsNullOrEmpty(garantieNiv4.Base) ? "-" : string.Empty)@(!string.IsNullOrEmpty(garantieNiv4.Base) ? garantieNiv4.Base : string.Empty)</td>
+            <td class="tdDates">@(garantieNiv4.DateDebutStr)</td>
+            <td class="tdDates">@(garantieNiv4.DateFinStr)</td>
+        </tr>
+                                }
+                            }
+                                }
+                            }
+                                }
+                            }
+                }
+            }
+            i++;
+        }
+    }
+</table>

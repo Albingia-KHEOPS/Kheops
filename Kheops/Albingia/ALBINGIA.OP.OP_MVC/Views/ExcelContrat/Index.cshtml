@@ -1,0 +1,312 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleExcelContratPage>
+@*@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albExcelContrat.js" }, "~/Scripts/AlbingiaJS/")*@
+@using ALBINGIA.Framework.Common.CacheTools
+
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbExcelContrat")
+@AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbExcelContrat")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="CommonForm TotalWidth FloatLeft">
+    <input value="@Model.MessageErreur" type="hidden" id="messageErreur" />
+    @{ Html.EnableClientValidation(false); }
+    @using (Html.BeginForm("CreateExcelContrat", "ExcelContrat", FormMethod.Post, new { @id = "formExcelContrat", @class = "well form-horizontal", enctype = "multipart/form-data" }))
+    {
+        <div class="GroupFull GroupWithBorder TotalWidth">
+            <div class="nHorizontalFullWithGroup nHorizontalTotalWidth">
+
+                <div class="nGradientSection nDivExcel" data-search-area="advanced">
+                    <div class="SubGroupTitleSearch">
+                        <div class="FloatLeft TxtMenuTitle">Informations Générales</div>
+                    </div>
+                    <div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">N° Offre source</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.OffreId, new { id = "Offre", @class = "TxtRechercheSaisie", albGroup = "OffreContrat" })
+                            </div>
+                            <div class="FloatLeft PaddingLeft5">
+                                @Html.TextBoxFor(m => m.NumAliment, new { @class = "WidthFieldCode", albmask = "numeric", albGroup = "OffreContrat" })
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Type*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.RadioButtonFor(m => m.Type, "P", new { @class = "" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Contrat</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.RadioButtonFor(m => m.Type, "O", new { @class = "" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Offre</label>
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Designation*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.Designation, new { @class = "MaxInput" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Branche*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.DropDownListFor(m => m.Branche, Model.Branches, htmlAttributes: new { @id = "drlBranches" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Cible*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.DropDownListFor(m => m.Cible, Model.Cibles, htmlAttributes: new { @id = "drlCibles" })
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Souscripteur*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="hidden" id="SouscripteurSelect" name="SouscripteurSelect" value="" albautocomplete="autoCompSouscripteurSelect" />
+                                <input type="hidden" id="SouscripteurActive" name="SouscripteurActive" value="" albautocomplete="autoCompSouscripteurActive" />
+                                <input type="hidden" id="SouscripteurCode" name="SouscripteurCode" value="" albAutoComplete="autoCompSouscripteurCode" />
+                                @Html.TextBoxFor(m => m.Souscripteur, new { @id = "SouscripteurNom", @placeholder = "Souscripteur", albautocomplete = "autoCompSouscripteurNom" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Gestionnaire*</label>
+                            </div>
+                            <div>
+                                <input type="hidden" id="GestionnaireSelect" name="GestionnaireSelect" value="" albautocomplete="autoCompGestionnaireSelect" />
+                                <input type="hidden" id="GestionnaireActive" name="GestionnaireActive" value="" albautocomplete="autoCompGestionnaireActive" />
+                                <input type="hidden" id="GestionnaireCode" name="GestionnaireCode" value="" albAutoComplete="autoCompGestionnaireCode" />
+                                @Html.TextBoxFor(m => m.Gestionnaire, new { @id = "GestionnaireNom", @placeholder = "Gestionnaire", albautocomplete = "autoCompGestionnaireNom" })
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Date d'effet du*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.DateEffetDebut, new { @class = "datepicker", autocomplete = "off", Value = Model.DateEffetDebut.HasValue ? Model.DateEffetDebut.Value.ToString("dd/MM/yyyy") : "" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">au</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDateFormat(m => m.DateEffetFin, new { @class = "datepicker", autocomplete = "off", Value = Model.DateEffetFin.HasValue ? Model.DateEffetFin.Value.ToString("dd/MM/yyyy") : "" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Périodicité*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.DropDownListFor(m => m.Periodicite, Model.Periodicites, htmlAttributes: new { })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Echéance princ.</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.DateEcheance, new { autocomplete = "off" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">(JJ/MM)</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="nGradientSection nDivExcel" data-search-area="advanced">
+                    <div class="SubGroupTitleSearch">
+                        <div class="HeightRow" data-courtier="gestionnaire">
+                            <div class="FloatLeft">
+                                <label class="labelAnCourtier">Courtier gestionnaire</label>
+                            </div>
+                            <div id="CourtierInvalideGestionnaireDiv" class="FloatLeft error"></div>
+                        </div>
+                    </div>
+                    <div>
+                        @Html.HiddenNoName("inInvalidCourtierGest", string.Empty, new { @class = "isInvalidCourtier" })
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Code*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.CodeCourtierGestionnaire, new { @id = "CourtierGestionnaire_Courtier_CodeCourtier", @class = "inputAnCodeCourtier", albhorsavn = "", albcontext = "courtierGestion", albautocomplete = "autoCompCodeCourtierGestion", albname = "codeCourtier" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Nom*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.NomCourtierGestionnaire, new { @id = "CourtierGestionnaire_Courtier_NomCourtier", @class = "inputNomCourtier", albhorsavn = "", albcontext = "courtierGestion", albautocomplete = "autoCompNomCourtierGestion", albname = "nomCourtier" })
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <input type="checkbox" id="GpIdentique" albhorsavn tabindex="23" name="GpIdentique" checked="checked" />
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block labelGpIdentiqueApporteur">Apporteur et payeur identiques au gestionnaire</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="SubGroupTitleSearch">
+                        <div class="FloatLeft">
+                            <label class="labelAnCourtier">Courtier apporteur</label>
+                        </div>
+                        <div id="CourtierInvalideDiv" class="FloatLeft error"></div>
+                    </div>
+                    <div>
+                        @Html.HiddenNoName("inInvalidCourtierApp", string.Empty, new { @class = "isInvalidCourtier" })
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Code*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.CodeCourtierApporteur, new { @id = "CourtierApporteur_Courtier_CodeCourtier", @class = "inputAnCodeCourtier readonly", albhorsavn = "", albcontext = "courtierApporteur", albautocomplete = "autoCompCodeCourtier", albname = "codeCourtier", @readonly = "readonly" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Nom*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.NomCourtierApporteur, new { @id = "CourtierApporteur_Courtier_NomCourtier", @class = "inputNomCourtier readonly", albhorsavn = "", albcontext = "courtierApporteur", albautocomplete = "autoCompNomCourtier", albname = "nomCourtier", @readonly = "readonly" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="SubGroupTitleSearch">
+                        <div class="FloatLeft">
+                            <label class="labelAnCourtier">Courtier payeur</label>
+                        </div>
+                        <div id="CourtierInvalidePayeurDiv" class="FloatLeft error"></div>
+                    </div>
+                    <div>
+                        @Html.HiddenNoName("inInvalidCourtierPay", string.Empty, new { @class = "isInvalidCourtier" })
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Code*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.CodeCourtierPayeur, new { @id = "CourtierPayeur_Courtier_CodeCourtier", @class = "inputAnCodeCourtier readonly", albhorsavn = "", albcontext = "courtierPayeur", albautocomplete = "autoCompCodeCourtierPayeur", albname = "codeCourtier", @readonly = "readonly" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Nom*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.NomCourtierPayeur, new { @id = "CourtierPayeur_Courtier_NomCourtier", @class = "inputNomCourtier readonly", albhorsavn = "", albcontext = "courtierPayeur", albautocomplete = "autoCompNomCourtierPayeur", albname = "nomCourtier", @readonly = "readonly" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection nDivExcel" data-search-area="advanced">
+                    <div class="SubGroupTitleSearch">
+                        <div class="FloatLeft">
+                            <div class="FloatLeft TxtMenuTitle">Preneur d'assurance</div>
+                        </div>
+                        <div id="PreneurAssuInvalideDiv" class="FloatLeft error" albcontext="assure"></div>
+                    </div>
+                    <div>
+                        @Html.HiddenNoName("inInvalidPreneurAssu", string.Empty, new { @class = "isInvalidPreneur", albcontext = "assure" })
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Code*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.CodeAssure, new { @id = "PreneurAssurance_Numero", @class = "inputAnCodeCourtier", albhorsavn = "", albcontext = "assure", albautocomplete = "autoCompCodeAssure" })
+                            </div>
+                            <div class="FloatLeft">
+                                <label class="Block">Nom*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.TextBoxFor(m => m.NomAssure, new { @id = "PreneurAssurance_Nom", @class = "inputNomCourtier", albhorsavn = "", albcontext = "assure", albautocomplete = "autoCompNomAssure" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection nDivExcel FloatLeft FileGroup" data-search-area="advanced" style="display:inline-block;">
+                    <div class="SubGroupTitleSearch">
+                        <div class="FloatLeft TxtMenuTitle">Document</div>
+                    </div>
+                    <div>
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label class="Block">Fichiers</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.HiddenFor(m => m.Files)
+                                <div class="dropzone">
+                                    <input class="dropzone_input" type="file" name="postedFiles" id="file" data-multiple-caption="{count} files selected" multiple style="display:none;" />
+                                    <label for="file"><strong>Choississez des fichiers</strong> ou déposez-les ici.</label>
+                                </div>
+                                <div class="dropzone_nb_file"><strong>0</strong> fichier(s) sélectionné(s)</div>
+                            </div>
+                            <div class="FloatLeft">
+                                <div class="dropzone_list_file">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection nDivExcel FloatLeft AdresseGroup" data-search-area="advanced" style="display:inline-block;">
+                    <div class="SubGroupTitleSearch">
+                        <div class="FloatLeft TxtMenuTitle">Adresse</div>
+                    </div>
+                    <div>
+                        <div class="HeightRow">
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block">N°/Ext/Rue</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @Html.TextBoxFor(m => m.NumeroVoie, new { @class = "adresseInput", type = "number" })
+                                </div>
+                                <div class="FloatLeft PaddingLeft5">
+                                    @Html.TextBoxFor(m => m.ExtensionVoie, new { @class = "adresseInput", maxlength = "1" })
+                                </div>
+                                <div class="FloatLeft PaddingLeft5">
+                                    @Html.TextBoxFor(m => m.NomVoie, new { @class = "adresseInput" })
+                                </div>
+                            </div>
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block">Code Postal</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @Html.TextBoxFor(m => m.CodePostal, new { @class = "adresseInput" })
+                                </div>
+                            </div>
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block">Ville</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    @Html.TextBoxFor(m => m.Ville, new { @class = "adresseInput" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+            <div class="ActionButtons ActionButtonsSearch ActionButtonLeft">
+                @if (AlbSessionHelper.ConnectedUser.ToLower() == "coulm" || AlbSessionHelper.ConnectedUser.ToLower() == "weng" ){
+                    <button type="button" id="btnLoad" albshortcut="true" data-accesskey="c"><u>C</u>harger</button>
+                }
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonsSearch ActionButtonRight">
+                <button type="button" id="btnInitialize" albshortcut="true" data-accesskey="i">Ré<u>i</u>nitialiser</button>
+                <button type="submit" class="cancel" id="btnValiderExcel" onclick="return validateField();" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            </div>
+        </div>
+    }
+</div>

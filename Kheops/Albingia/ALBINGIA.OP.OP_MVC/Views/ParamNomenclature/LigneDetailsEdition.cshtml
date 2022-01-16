@@ -1,0 +1,24 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamNomenclature.ModeleLigneDetails
+<td class="col_TableauDetails">
+    <div class="FloatLeft" id="divDrlValeur_01">
+        @Html.AlbDropDownListFor(m => Model.Valeur01, Model.ListeValeurs01, "dvValeur01_" + Model.GuidId, generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlValeur01_" + Model.GuidId, @class = "col_TableauDetails" }, replaceHtmlName: "dvValeur01")
+    </div>
+</td>
+<td class="col_TableauDetails">
+    <div class="FloatLeft" id="divDrlValeur_02">
+        @Html.AlbDropDownListFor(m => Model.Valeur02, Model.ListeValeurs02, "dvValeur02_" + Model.GuidId, generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlValeur02_" + Model.GuidId, @class = "col_TableauDetails" }, replaceHtmlName: "dvValeur02")
+    </div>
+</td>
+<td class="col_TableauDetails">
+    <div class="FloatLeft" id="divDrlValeur_03">
+        @Html.AlbDropDownListFor(m => Model.Valeur03, Model.ListeValeurs03, "dvValeur03_" + Model.GuidId, generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlValeur03_" + Model.GuidId, @class = "col_TableauDetails" }, replaceHtmlName: "dvValeur03")
+    </div>
+</td>
+<td class="col_TableauDetails">
+    <div class="FloatLeft" id="divDrlValeur_04">
+        @Html.AlbDropDownListFor(m => Model.Valeur04, Model.ListeValeurs04, "dvValeur04_" + Model.GuidId, generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlValeur04_" + Model.GuidId, @class = "col_TableauDetails" }, replaceHtmlName: "dvValeur04")
+    </div>
+</td>
+<td class="col_Action">
+    <img id="@("btnSaveLigne_" + Model.GuidId)" class="CursorPointer" src="@Url.Content("/Content/Images/Save_16.png")" alt="Sauvegarder" title="Sauvegarde de la ligne" />
+</td>

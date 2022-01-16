@@ -1,0 +1,112 @@
+﻿#divBodyListeOffres {
+    height: 300px;
+    overflow-y: scroll;
+    width: 1180px;
+}
+
+.thType {
+    width: 28px;
+}
+
+.thNum,
+.thVersion,
+.thNumAvn,
+.thDateSaisie,
+.thBranche,
+.thCible,
+.thEtat,
+.thSit,
+.thPeriodicite {
+    width: 100px;
+}
+
+.thDescriptif {
+    width: 168px;
+}
+
+
+.tdType {
+    width: 30px;
+    padding: 3px;
+}
+
+.tdNum,
+.tdVersion,
+.tdNumAvn,
+.tdDateSaisie,
+.tdBranche,
+.tdCible,
+.tdEtat,
+.tdSit,
+.tdPeriodicite {
+    width: 102px;
+}
+
+.tdDescriptif {
+    width: 170px;
+}
+
+#Version {
+    width: 38px;
+    margin-left: 5px;
+}
+
+#CodeOffre {
+    width: 130px;
+}
+
+.labelCodeOffre {
+    width: 50px;
+}
+
+.inputRechercheRapide {
+    width: 250px !important;
+}
+
+
+.actionbuttons {
+    margin-right: 50px;
+}
+
+.SubGroupTitleSearch {
+    color: #800000;
+    margin: 5px !important;
+    margin-bottom: 11px !important;
+}
+
+#divAdvancedMenu label {
+    padding-left: 20px !important;
+}
+
+#divResult {
+    padding: 2px;
+}
+
+.ButtonsWidth {
+    width: 1195px!important;
+}
+
+.div-ellipsed {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+#btnRechercher img {
+    height: 12px;
+    width: 12px;
+    padding-right: 2px;
+}
+
+#DateEffetAvnDebut,#DateEffetAvnFin {
+    width: 100px !important;
+}
+#DateEffetAvnFin {
+    margin-left: 5px;
+}
+#divAdvancedMenu select {
+    margin-right: 5px;
+}
+
+

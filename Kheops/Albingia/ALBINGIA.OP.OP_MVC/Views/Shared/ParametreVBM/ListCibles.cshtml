@@ -1,0 +1,12 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleCibles.ModeleCible>
+<table id="tblCible">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td id="@("tr_" + @item.GuidId)" class="linkCat col2">
+                <input name="CodeCible" value="@item.Code" type="hidden" />
+                @item.Code - @item.Description
+            </td>
+        </tr>
+    }
+</table>

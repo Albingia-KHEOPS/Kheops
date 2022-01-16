@@ -1,0 +1,99 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.CourtierGestionnairePayeur
+<div id="GestPay">
+    <div id="CourtGestPay" class="None">
+        <!---Gestionnaire--->
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelAnCourtier">Courtier gestionnaire</label>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelCourtierCode">Code*</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CourtierGestionnaire_Courtier_CodeCourtier" name="CodeCourtierGestionnaire" value="@Model.CourtierGestionnaire.CodeCourtier" tabindex="21"  class="inputAnCodeCourtier"/>
+            </div>
+            <div class="FloatLeft">
+                <label class="labelNomCourtier">Nom</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CourtierGestionnaire_Courtier_NomCourtier" name="NomCourtierGestionnaire" tabindex="22" class="inputNomCourtier readonly" disabled="disabled" value="@Model.CourtierGestionnaire.NomCourtier" />
+            </div>
+            <div class="FloatLeft">
+                <label class="Block">Interlocuteur</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.Hidden("CodeInterlocuteurGestionnaire", Model.CourtierGestionnaire.CodeInterlocuteur, new { id = "CourtierGestionnaire_Courtier_CodeInterlocuteur" })
+                <input type="text" id="CourtierGestionnaire_Courtier_NomInterlocuteur" name="NomInterlocuteurGestionnaire" tabindex="23" value="@(Model.CourtierGestionnaire.NomInterlocuteur)" class="inputInterlocuteur"/>
+            </div>
+            <div class="FloatLeft">
+                <label class="labelReference">Référence</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CourtierGestionnaire_Courtier_Reference" name="ReferenceGestionnaire" tabindex="24"  value="@Model.CourtierGestionnaire.Reference" />
+            </div>
+        </div>
+        <!-----Payeur------>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelAnCourtier">Courtier payeur</label>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="labelCourtierCode">Code*</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CourtierPayeur_Courtier_CodeCourtier" name="CodeCourtierPayeur" tabindex="25" value="@Model.CourtierPayeur.CodeCourtier"  class="inputAnCodeCourtier" />
+            </div>
+            <div class="FloatLeft">
+                <label class="labelNomCourtier">Nom</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CourtierPayeur_Courtier_NomCourtier" name="NomCourtierPayeur" tabindex="26" class="inputNomCourtier"  value="@Model.CourtierPayeur.NomCourtier" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnIterLocCourt FloatLeft" style="display: none">
+                <div class="FloatLeft">
+                    <label class="Block">Interlocuteur</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.Hidden("CodeInterlocuteurPayeur", Model.CourtierPayeur.CodeInterlocuteur, new { id = "CourtierPayeur_Courtier_CodeInterlocuteur" })
+                    <input type="text" id="CourtierPayeur_Courtier_NomInterlocuteur" name="NomInterlocuteurPayeur" tabindex="27" value="@(Model.CourtierPayeur.NomInterlocuteur)" class="MediumInput" />
+                </div>
+            </div>
+            <div class="FloatLeft" style="display: none">
+                <div class="FloatLeft">
+                    <label class="labelReference">Référence</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="CourtierPayeur_Courtier_Reference" name="ReferencePayeur" tabindex="28" class="MediumInput" />
+                </div>
+            </div>       
+        </div>
+    </div>
+    <div id="divInfoGestionnairePayeur" name="divInfoGestionnairePayeur" class="nInfoBandeau">
+        <div class="HeightRow nBGEntete1 PaddingTop">
+            <div style="width: 80px; font-weight: bold;" class="FieldBandeau"><u>Gestionnaire :</u></div>
+            <div class="FieldBandeau">Code</div>
+            <div class="FieldBandeauBold">@(Model.CourtierGestionnaire.CodeCourtier)</div>
+            <div class="FieldBandeau">Nom</div>
+            <div class="FieldBandeauBold">@(Model.CourtierGestionnaire.NomCourtier)</div>
+            <div class="FieldBandeau">Interlocuteur</div>
+            <div class="FieldBandeauBold">@(Model.CourtierGestionnaire.NomInterlocuteur)</div>
+            <div class="FieldBandeau">Référence</div>
+            <div class="FieldBandeauBold">@(Model.CourtierGestionnaire.Reference)</div>
+        </div>
+        <div class="HeightRow nBGEntete1 PaddingTop">
+            <div style="width: 80px; font-weight: bold;" class="FieldBandeau"><u>Payeur :</u></div>
+            <div class="FieldBandeau">Code</div>
+            <div class="FieldBandeauBold">@(Model.CourtierPayeur.CodeCourtier)</div>
+            <div class="FieldBandeau">Nom</div>
+            <div class="FieldBandeauBold">@(Model.CourtierPayeur.NomCourtier)</div>
+            @*<div class="FieldBandeau">Encaissement</div>
+            <div class="FieldBandeauBold">@(Model.Encaissement)</div>*@
+        </div>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGestionIntervenants.ModeleIntervenant
+@{
+    <div id="divDetailsIntervenantConteneur" class="FloatLeft" style="width: auto">
+        <div class="GroupFull GroupWithBorder LargeurDetailsIntervenant">
+            <div class="GradientSection MarginLeft10">
+                @Html.HiddenNoName("GuidIdIntervenant", Model.GuidId)
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Type*</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ModeEcran == "edit" && Model.GuidId < 0 && !Model.IsReadOnly)
+                        {
+                            @Html.AlbDropDownListFor(m => m.Type, Model.ListeTypes, "DDTypeIntervenant", htmlAttributes: new { @id = "DDTypeIntervenant", @albCFList = "typeIntervenant", @name = "DDTypeIntervenant", @albAutoComplete="autoCompIntervenantType" }, generateTitle: true, genEmptyLine: false, replaceHtmlName: "DDTypeIntervenant")
+                        }
+                        else
+                        {
+                            @Html.HiddenNoName("DDTypeIntervenant", Model.Type)
+                            <input id="valTypeIntervenant" value="@(Model.ListeTypes != null && Model.ListeTypes.FindAll(elm => elm.Value == Model.Type).Any() ? Model.ListeTypes.FindAll(elm => elm.Value == Model.Type).FirstOrDefault().Text : string.Empty)" class="readonly" disabled="disabled" albCFList="typeIntervenant" albAutoComplete="autoCompIntervenantType"/>
+                        }
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block LargePaddingLeft">Fin de validité</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="valFinValidite" class="readonly" disabled="disabled" value="@(Model.DFinValidite.HasValue ? Model.DFinValidite.Value.ToString("dd/MM/yyyy") : string.Empty)" albAutoComplete="autoCompIntervenantFinValidite"/>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Dénomination*</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="hidden" id="CodeIntervenant" value="@Model.CodeIntervenant" albAutoComplete="autoCompIntervenantCode"/>
+                        @if (Model.ModeEcran == "edit" && Model.GuidId < 0 && !Model.IsReadOnly)
+                        {
+                            <input id="Denomination" value="@Model.Denomination" albAutoComplete="autoCompIntervenant" class="LargeInput"/>
+                        }
+                        else
+                        {
+                            <input value="@Model.Denomination" class="readonly LargeInput" disabled="disabled"/>
+                        }
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Adresse</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="valAdresse1" class="Readonly LargeInput" disabled="disabled" value="@Model.Adresse1" albAutoComplete="autoCompIntervenantAdresse1"/>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block"></label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="valAdresse2" class="Readonly LargeInput" disabled="disabled" value="@Model.Adresse2" albAutoComplete="autoCompIntervenantAdresse2"/>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block"></label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="valCodePostal" class="Readonly WidthCP" disabled="disabled" value="@Model.CodePostal" albAutoComplete="autoCompIntervenantCodePostal"/>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="valVille" class="Readonly WidthVille" disabled="disabled" value="@Model.Ville" albAutoComplete="autoCompIntervenantVille"/>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Téléphone</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="valTelephone" class="Readonly WidthCP" disabled="disabled" value="@Model.Telephone" albAutoComplete="autoCompIntervenantTelephone"/>
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block WidthSmallLabel">e-mail</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input id="valEmail" class="Readonly WidthEmail" disabled="disabled" value="@Model.Email" albAutoComplete="autoCompIntervenantEmail"/>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Interlocuteur</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="hidden" id="CodeInterlocuteur" value="@Model.CodeInterlocuteur" albAutoComplete="autoCompInterlocuteurIntervenantCode"/>
+                        @if (Model.ModeEcran == "edit" && !Model.IsReadOnly)
+                        {
+                            <input id="Interlocuteur" value="@Model.Interlocuteur" albAutoComplete="autoCompInterlocuteurIntervenant" class="LargeInput"/>
+                        }
+                        else
+                        {
+                            <input value="@Model.Interlocuteur" class="readonly LargeInput" disabled="disabled" />
+                        }
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Référence</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ModeEcran == "edit" && !Model.IsReadOnly)
+                        {
+                            <input id="Reference" value="@Model.Reference" class="LargeInput" maxlength="60"/>
+                        }
+                        else
+                        {
+                            <input value="@Model.Reference" class="readonly LargeInput" disabled="disabled"/>
+                        }
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Principal</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="chkPrincipal" checked="@(Model.IsPrincipal == "O" )" disabled="@(!(Model.ModeEcran == "edit" && !Model.IsReadOnly ))" />
+                    </div>
+                    <div class="FloatLeft @(Model.Type != "DR" ? "None" : string.Empty)" id="groupChkMedecinConseil">
+                        <div class="FloatLeft">
+                            <label class="Block LargePaddingLeft">Médecin conseil</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="checkbox" id="chkMedecin" checked="@(Model.IsMedecinConseil == "O" )" disabled="@(!(Model.ModeEcran == "edit" && !Model.IsReadOnly ))"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (Model.ModeEcran == "edit")
+        {
+            <div class="GroupFull GroupWithBorder ButtonsHeight LargeurDetailsIntervenant">
+                <div class="ActionButtons ActionButtonRight">
+                    <button id="btnAnnulerDetailsIntervenants" type="button">Annuler</button>
+                    @if (!Model.IsReadOnly)
+                    {
+                        <button id="btnValiderDetailsIntervenants" type="button">Valider</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+}

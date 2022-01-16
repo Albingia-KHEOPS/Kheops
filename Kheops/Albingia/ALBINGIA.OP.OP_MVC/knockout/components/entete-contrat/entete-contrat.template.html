@@ -1,0 +1,149 @@
+﻿<div id="infosContrat" class="nGradientSection divInfoContratRegularisation">
+    <div class="divInfoLeftLightDisplay" data-bind="click: displayOrNotDetailedInfo">
+        <div class="divInfoBandeau">
+            <div class="FloatLeft">
+                <label>N° Contrat</label>
+            </div>
+            <div class="FloatLeft">
+                <span class="cssSpanCodeOffre" data-bind="text: CodeOffre"></span>
+            </div>
+            <div class="FloatLeft">
+                <label>Identification</label>
+            </div>
+            <div class="FloatLeft">
+                <span class="cssSpanIdentificationLightDisplay" data-bind="text: Identification"></span>
+            </div>
+            <div class="FloatRight">
+                <span class="cssSpanDateFinEffet" data-bind="text: LblFinEffet"></span>
+            </div>
+            <div class="FloatRight">
+                <label class="lblDateAu">au</label>
+            </div>
+            <div class="FloatRight">
+                <span class="cssSpanDateDebutEffet" data-bind="text: LblDebutEffet"></span>
+            </div>
+            <div class="FloatRight">
+                <label class="lblAvenant">Effet contrat du</label>
+            </div>
+        </div>
+        <div title="Informations Complémentaires">
+            <img name="expandArbre" id="imgExpandInfo" src="/Content/Images/expand.png" />
+        </div>
+    </div>
+    <div class="divDetailedContratInfo" id="contentDetailedContratInfo">
+        <hr />
+        <div class="FloatLeft divInfoLeft">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">N° Contrat / Alim</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="readonly cssCodeOffre" readonly="readonly" data-bind="textInput: CodeOffre" />
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="readonly cssVersion" readonly="readonly" data-bind="textInput: Version" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Type</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="readonly inputTypeContrat" readonly="readonly" data-bind="textInput: DisplayTypeContrat" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Identification</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: Identification" class="readonly inputAvenant" readonly="readonly" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Courtier</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: Courtier" class="readonly inputAvenant" readonly="readonly" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Assuré</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: Assure" class="readonly inputAvenant" readonly="readonly" />
+                </div>
+            </div>
+            <div class="HeightRow">&nbsp;</div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block">Souscripteur</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: Souscripteur" class="readonly inputAvenant" albAutoComplete="autoCompSouscripteur" readonly="readonly" />
+                </div>
+            </div>
+        </div>
+        <div class="FloatRight PaddingRight">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block lblAvenant">Effet contrat du</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: DateDebutEffet" class="readonly inputDate" readonly="readonly" disabled="disabled" id="EffetGaranties" />
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block lblDateAu">au</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: DateFinEffet" class="readonly inputDate" readonly="readonly" disabled="disabled" id="FinEffet" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block lblAvenant">Périodicité / Echéance</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: Periodicite" class="readonly inputPeriodicite" readonly="readonly" />
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <input type="text" data-bind="textInput: Echeance" class="readonly inputDate" readonly="readonly" disabled="disabled" id="Echeance" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block lblAvenant">Nature de contrat</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: NatureContrat" class="readonly inputAvenant" readonly="readonly" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block lblAvenant" title="Retour dernière pièce validée">Ret. dernière pièce validée</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: RetourPiece" class="readonly inputAvenant" readonly="readonly" />
+                </div>
+            </div>
+            <div style="height: 54px;">
+                <div class="FloatLeft">
+                    <label class="Block lblAvenant">Observations</label>
+                </div>
+                <div id="zoneTxtArea" class="FloatLeft divTextArea2 NonReprisCP" albcontext="Observation">
+                    <span data-bind="text: Observation" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block lblAvenant">Gestionnaire</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" data-bind="textInput: Gestionnaire" class="readonly inputAvenant" albAutoComplete="autoCompGestionnaireNom" readonly="readonly" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

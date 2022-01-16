@@ -1,0 +1,20 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamCible.EditBSC
+<td class="col_TableauBSC" id="colBranche_@(Model.Branche)_@(Model.SousBranche)_@(Model.Categorie)">
+    @Html.HiddenFor(m => m.Branche)
+    @Model.Branche - @Model.Branches.FindAll(b => b.Value == Model.Branche).FirstOrDefault().Text
+    @*@Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "Branche", htmlAttributes: new { @id = "Branche" }, generateTitle: true)*@
+</td>
+<td class="col_TableauBSC" id="colSousBranche_@(Model.Branche)_@(Model.SousBranche)_@(Model.Categorie)">
+    <div id="SousBranche_@(Model.GuidId)">
+        @Html.AlbDropDownListFor(m => m.SousBranche, Model.SousBranches, "SousBranche", htmlAttributes: new { @id = "SousBranche", @class = "dropDownWidth", @title = Model.SousBranche }, generateTitle: true)
+    </div>
+</td>
+<td class="col_TableauBSC" id="colCategorie_@(Model.Branche)_@(Model.SousBranche)_@(Model.Categorie)">
+    <div id="Categorie_@(Model.GuidId)">
+        @Html.AlbDropDownListFor(m => m.Categorie, Model.Categories, "drlCategories", htmlAttributes: new { @id = "drlCategories", @class = "dropDownWidth", @title = Model.Categorie }, generateTitle: true)
+    </div>
+</td>
+<td class="col_Templates">&nbsp;</td>
+<td class="modifBranche col_ModifierBSC CursorPointer">
+    <img id="@("modif_" + Model.GuidId)" src="@Url.Content("/Content/Images/editer1616.png")" name="modifBranche" alt="Modifier" title="Modifier"/>
+</td>

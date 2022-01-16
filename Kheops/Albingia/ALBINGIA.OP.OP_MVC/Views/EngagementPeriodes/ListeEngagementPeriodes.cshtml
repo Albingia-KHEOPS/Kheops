@@ -1,0 +1,99 @@
+﻿@using ALBINGIA.Framework.Common.Tools
+@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+@model ModeleEngagementPeriodesPage
+@{ bool isAnyReadonly = Model.IsReadOnly || Model.IsModifHorsAvenant; }
+<table id="tblEngagementPeriodesBody">
+    @{
+        if (Model.EngagementPeriodes != null && Model.EngagementPeriodes.Count > 0) {
+            foreach (var engagementPeriode in Model.EngagementPeriodes) {
+                <tr id="tr_@(engagementPeriode.Code)" name="lineEngagementPeriode" class="@(engagementPeriode.Actif == "A" ? "" : "textOrange")" albPeriodeActive="@(engagementPeriode.Actif)">
+                    <td class="col_Actif" name="selectableCol" id="colActif_@(engagementPeriode.Code)" style="text-align:center;">
+                        <label title="@((engagementPeriode.Utilise == "U" ? "Utilisé" : "Non Utilisé") + " - " + (engagementPeriode.Actif == "A" ? "Actif" : "Inactif"))">
+                            @(engagementPeriode.Utilise == "U" ? "OUI" : "NON")
+                        </label>
+                        <input type="hidden" id="actif_@(engagementPeriode.Code)" name="statutActif" value="@engagementPeriode.Actif" />
+                        <input type="hidden" id="utilise_@(engagementPeriode.Code)" name="statutUtilise" value="@engagementPeriode.Utilise" />
+                    </td>
+                    <td class="col_DateDeb" name="selectableCol" id="col_DateDeb_@(engagementPeriode.Code)">
+                        <div class="FloatLeft" name="colReadOnly_@(engagementPeriode.Code)">
+                            @if (engagementPeriode.DateDebut != 0) {
+                                <label id="lblDateDeb_@(engagementPeriode.Code)">@AlbConvert.ConvertIntToDate(engagementPeriode.DateDebut).Value.ToString("dd/MM/yyyy")</label>
+                            }
+                            else {
+                                <label id="lblDateDeb_@(engagementPeriode.Code)">@AlbConvert.ConvertDateToStr(AlbConvert.ConvertIntToDate(Model.Contrat.DateEffetAnnee * 10000 + Model.Contrat.DateEffetMois * 100 + Model.Contrat.DateEffetJour))</label>
+                            }
+                        </div>
+                        <input type="hidden" id="dateDeb_@(engagementPeriode.Code)" value="@engagementPeriode.DateDebut" />
+                    </td>
+                    <td class="col_DateFin" name="selectableCol" id="col_DateFin_@(engagementPeriode.Code)">
+                        <div class="FloatLeft" name="colReadOnly_@(engagementPeriode.Code)">
+                            @if (engagementPeriode.DateFin != 0) {
+                                <label id="lblDateFin_@(engagementPeriode.Code)">@AlbConvert.ConvertIntToDate(engagementPeriode.DateFin).Value.ToString("dd/MM/yyyy")</label>
+                            }
+                            else {
+                                <label id="lblDateFin_@(engagementPeriode.Code)">@AlbConvert.ConvertDateToStr(AlbConvert.ConvertIntToDate(Model.Contrat.FinEffetAnnee * 10000 + Model.Contrat.FinEffetMois * 100 + Model.Contrat.FinEffetJour))</label>
+                            }
+                        </div>
+                        <input type="hidden" id="dateFin_@(engagementPeriode.Code)" value="@engagementPeriode.DateFin" />
+                    </td>
+                    <td class="col_Part decimal" name="selectableCol" id="col_Part_@(engagementPeriode.Code)">
+                        @engagementPeriode.Part
+                        <input type="hidden" id="Part_@(engagementPeriode.Code)" value="@engagementPeriode.Part" />
+                    </td>
+                    <td class="col_EngagementTotal decimal" name="selectableCol" id="col_EngagementTotal_@(engagementPeriode.Code)">
+                        <div class="decimal" name="colReadOnly_@(engagementPeriode.Code)">
+                            <span albMask="decimal">@engagementPeriode.EngagementTotal</span>
+                            <input type="hidden" id="EngagementTotal_@(engagementPeriode.Code)" value="@engagementPeriode.EngagementTotal" />
+                        </div>
+                    </td>
+                    <td class="col_EngagementAlbingia decimal" name="selectableCol" id="col_EngagementAlbingia_@(engagementPeriode.Code)">
+                        <div class=" decimal" name="colReadOnly_@(engagementPeriode.Code)">
+                            <span albMask="decimal">@engagementPeriode.EngagementAlbingia</span>
+                            <input type="hidden" id="EngagementAlbingia_@(engagementPeriode.Code)" value="@engagementPeriode.EngagementAlbingia" />
+                        </div>
+                    </td>
+                    <td class="col_Buttons">
+                        <div class="FloatLeft" name="colReadOnly_@(engagementPeriode.Code)">
+                            @if (engagementPeriode.Actif == "I") {
+                                if (engagementPeriode.Utilise == "N")
+                                {
+                                    <img id="updateEngagementPeriode_@(engagementPeriode.Code)" name="updateEngagementPeriodeGris" title="Modifier la période d'engagement" alt="Modifier la période d'engagement" class="imgUpdate" src="@Url.Content("/Content/Images/editer1616_gris.png")" />
+                                    
+                                    
+                                    <img id="deleteEngagementPeriode_@(engagementPeriode.Code)" name="deleteEngagementPeriodeGris" title="Supprimer la période d'engagement" alt="Supprimer la période d'engagement" src="@Url.Content("/Content/Images/poubelle1616_gris.png")" />
+                                    
+                                }
+                                if (engagementPeriode.Utilise == "U") {
+                                    <img id="consultEngagementPeriode_@(engagementPeriode.Code)" name="consultEngagementPeriode" title="Consulter la période d'engagement" alt="Consulter la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/ContextMenu/m_consulter.png")" />
+                                    if (!isAnyReadonly) {
+                                        <img id="disableEngagementPeriode_@(engagementPeriode.Code)" name="disableEngagementPeriodeGris" title="Inactiver la période d'engagement" alt="Modifier la période d'engagement" class="imgUpdate" src="@Url.Content("/Content/Images/desactiverOFF.png")" />
+                                    }
+                                }
+                            }
+                            else if (engagementPeriode.Utilise == "U") {
+                                <img id="consultEngagementPeriode_@(engagementPeriode.Code)" name="consultEngagementPeriode" title="Consulter la période d'engagement" alt="Consulter la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/ContextMenu/m_consulter.png")" />
+                                if (!Model.IsReadOnly) {
+                                    <img id="updateEngagementPeriode_@(engagementPeriode.Code)" name="updateEngagementPeriode" title="Modifier la période d'engagement" alt="Modifier la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/editer1616.png")" />
+                                }
+                                if (!isAnyReadonly) {
+                                    <img id="disableEngagementPeriode_@(engagementPeriode.Code)" name="disableEngagementPeriode" title="Inactiver la période d'engagement" alt="Modifier la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/desactiver.png")" />
+                                }
+                            }
+                            else if (engagementPeriode.Utilise == "N") {
+                                <img id="consultEngagementPeriode_@(engagementPeriode.Code)" name="consultEngagementPeriode" title="Consulter la période d'engagement" alt="Consulter la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/ContextMenu/m_consulter.png")" />
+                                if (!Model.IsReadOnly) {
+                                    <img id="updateEngagementPeriode_@(engagementPeriode.Code+"_"+engagementPeriode.INHPENG)" name="updateEngagementPeriode" title="Modifier la période d'engagement" alt="Modifier la période d'engagement" class="CursorPointer imgUpdate" src="@Url.Content("/Content/Images/editer1616.png")" />
+                                }
+                                if (!isAnyReadonly && engagementPeriode.INHPENG == "N") {
+                                    <img id="deleteEngagementPeriode_@(engagementPeriode.Code)" name="deleteEngagementPeriode" title="Supprimer la période d'engagement" alt="Supprimer la période d'engagement" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+                                }
+                            }
+                        </div>
+                    </td>
+                    <td class="requiredRow columnHidden" id="colRequired_@(engagementPeriode.Code)">*</td>
+                </tr>
+            }
+        }
+    }
+</table>
+

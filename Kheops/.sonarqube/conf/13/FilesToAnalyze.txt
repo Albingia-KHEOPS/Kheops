@@ -1,0 +1,2 @@
+﻿C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services.Excel\OffreSimplifieExcel.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services.Excel\Properties\AssemblyInfo.cs

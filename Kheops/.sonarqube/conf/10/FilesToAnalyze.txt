@@ -1,0 +1,69 @@
+﻿C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Administration\Administration.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Avenant\AvenantRestService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Avenant\AvenantService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\BLServices\BLCommon.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\BLServices\BLRemiseEnVigueur.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\BLServices\FolderService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Cibles\CibleService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\ClausesRisquesGaranties\RisqueService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\CommonAffaireService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\DocumentService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\EngagementService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Formules\FormuleService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Historization\ArchiverUpdateHorsAvn.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Lablat\Lablat.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Connexites\ConnexiteService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Navigation\NavigationService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Navigation\StepFinder.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Regularisations\RegularisationManager.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Regularisations\StepManagerRegularisation.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Historization\Archiver.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Historization\Archiver.Disposable.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Historization\ArchiverHistoLess.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Historization\ArchiverUpdate.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Historization\ArchiverCreation.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Historization\HistorizationService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Print\PrintJob.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\ExternalUse\Edithique.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\IS\InfoSpecif.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Hexavia\AdresseHexavia.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Regularisations\Regularisation.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\RemiseEnVigueur\RemiseEnVigueur.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\REST\wsadel\CalculChargementRequest.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\REST\wsadel\CalculChargementResponse.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\REST\wsadel\CALCUL_CHARGEMENTReturn.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\REST\wsadel\CALCUL_CHARGEMENTReturnResultats.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\REST\wsadel\SinistresRestClient.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Sinistres\SinistresService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\TraceService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\TraitementAffNouv\AffaireNouvelle.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\TraitementAffNouv\BLAffNouv\InitAffNouv.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\BLServices\BLFormuleGarantie.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\BLServices\BLInventaire.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\BOParametrage\ParametrageClauses.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Common\CommonOffre.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Properties\AssemblyInfo.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\ClausesRisquesGaranties\RisquesGaranties.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\SaisieCreationOffre\ConfirmationSaisie.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\SaisieCreationOffre\CreationOffre.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\SaisieCreationOffre\DoubleSaisie.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\SaisieCreationOffre\PoliceServices.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\SaisieCreationOffre\RechercheSaisie.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\SaisieCreationOffre\SaisieOffre.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\TraitementAffNouv\BLAffNouv\InitCommonAffNouv.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\TraitementAffNouv\CommonAffaireNouvelle.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\TraitementsFinOffre\FinOffre.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\BOParametrage\ParametrageModelesService.cs
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Properties\Settings.settings
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\FormuleGarantieDto_KBridge.datasource
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\FormuleGarantiePlatDto_KBridge.datasource
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\FormuleOpDto.datasource
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\KheoBridge.disco
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\packages.config
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\app.config
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\KheoBridge.wsdl
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\KpClauseRet.datasource
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\KtIsAffiche.datasource
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\KtRet.datasource
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\OffreRechPlatDto.datasource
+C:\Users\ifall\Documents\IFALL\Recette\Kheops\ServiceMetierOP\OP.Services\Web References\WSKheoBridge\Reference.map

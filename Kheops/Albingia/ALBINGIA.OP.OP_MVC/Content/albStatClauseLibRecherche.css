@@ -1,0 +1,259 @@
+﻿
+
+.SubGroupTitleSearch
+{
+    margin: 2px;
+    margin-left: 5px;
+    color: #800000;
+    /*cursor: pointer;*/
+    min-height: 20px;
+}
+
+.blockjustif{
+    padding-top:2px;
+    padding-left:5px;
+    font-size:12px;
+    width:40px;
+    display: block;
+}
+.requiredField
+{
+    border: 1px solid red !important;
+    background-color: #fee !important;
+}
+
+.scrollLAB{
+      width: 1200px;
+    max-height: 603px;
+    overflow-x: auto;
+    overflow-y: auto;
+    height:550px;
+}
+
+.TotalWidthLAB {
+    width: 1200px !important;
+}
+
+.SmallWidthLAB {
+    width: 1200px !important;
+     overflow-x: auto;
+}
+
+
+.thDelegationUser {
+    width: 70px;
+}
+
+.thCreateUser {
+    width: 80px;
+}
+
+.thDateCreation {
+    width: 90px;
+}
+
+.thDateSaisie {
+    width: 80px;
+}
+
+.thNumPolice {
+    width: 80px;
+}
+
+.thVersion {
+    width: 80px;
+}
+
+.thCodeCourtier {
+    width: 80px;
+}
+
+.thNomCourtier {
+    width: 130px;
+}
+
+.thDelegationCourtier {
+    width: 100px;
+}
+
+.thCodePreneurass {
+    width: 80px;
+}
+
+.thNomPreneurass {
+    width: 130px;
+}
+
+.thSouscripteur {
+    width: 110px;
+}
+
+
+.tdDelegationUser {
+    width: 70px;
+    padding-left:3px;
+}
+
+.tdCreateUser {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdDateCreation {
+    width: 90px;
+     padding-left:3px;
+}
+
+.tdAge {
+    width: 30px;
+     padding-left:3px;
+}
+
+.tdDateSaisie {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdNumPolice {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdVersion {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdCodeCourtier {
+    width: 80px;
+     padding-left:3px;
+}
+
+
+
+.tdNomCourtier {
+    width: 130px;
+     padding-left:3px;
+}
+
+.tdDateMort {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdDelegationCourtier {
+    width: 100px;
+     padding-left:3px;
+}
+
+.tdCodePreneurass {
+    width: 80px;
+     padding-left:3px;
+}
+.tdNomPreneurass {
+    width: 130px;
+     padding-left:3px;
+}
+
+.tdSouscripteur {
+    width: 110px;
+     padding-left:3px;
+}
+
+
+#divResultatsBody{
+    height:552px;
+}
+
+.widthNumber{
+    width:50px;
+}
+
+.smallFullScreenBtn
+{
+    height: 25px;
+    width: 29px;
+    padding: 0;
+}
+
+
+.divDelegationUser {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 70px;
+}
+.divCreateUse {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 80px;
+}
+
+.divDateSaisie {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 80px;
+}
+.divDateCreation {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 140px;
+}
+.divNumPolice {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+}
+
+.divVersion {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+}
+
+.divCodeCourtier {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:100px;
+}
+
+.divNomCourtier {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 140px;
+}
+.divCourtier {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+}
+
+.divCodePreneurass {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+}
+
+.divNomPreneurass {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+}
+
+
+.divSouscripteur {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:100px;
+}

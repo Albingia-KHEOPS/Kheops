@@ -1,0 +1,138 @@
+﻿.Bold
+{
+    font-weight: bold;
+}
+
+#divAssure
+{
+    display: none;
+}
+
+#divDataAssure
+{
+    position: absolute;
+    top: 100px;
+    left: 15%;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 217px;
+}
+
+#divDataMsgConfirmAssure
+{
+    position: absolute;
+    top: 100px;
+    left: 15%;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    /*height: 100px;*/
+    height: 130px;
+    width: 304px;
+}
+
+#divAssuresAdditionnels
+{
+    width: 800px;
+}
+
+#tblAssureRefHeader, #tblAssureRefBody
+{
+    width: 980px;
+}
+
+#tblAssureNonRefHeader, #tblAssureNonRefBody
+{
+    width: 980px;
+}
+
+    #tblAssureRefHeader tr, #tblAssureRefBody tr, #tblAssureNonRefHeader tr, #tblAssureNonRefBody tr
+    {
+        height: 1px;
+    }
+
+#divAssureRefBody, #divAssureNonRefBody
+{
+    height: 175px;
+    overflow-y: auto;
+}
+
+.tdHeadCodeRef
+{
+    width: 81px;
+}
+
+.tdHeadNomRef
+{
+    width: 201px;
+}
+
+.tdHeadCPRef
+{
+    width: 49px;
+}
+
+.tdHeadVillRef
+{
+    width: 201px;
+}
+
+.tdHeadQualitesRef
+{
+    width: 317px;
+}
+
+.tdHeadAutreRef
+{
+    width: 48px;
+}
+
+.tdBodyCodeRef
+{
+    width: 80px;
+    padding-left: 5px;
+}
+
+.tdBodyNomRef
+{
+    width: 200px;
+    padding-left: 5px;
+}
+
+.tdBodyCPRef
+{
+    width: 50px;
+    text-align: center;
+}
+
+.tdBodyVilleRef
+{
+    width: 200px;
+    padding-left: 5px;
+}
+
+.tdBodyQualitesRef
+{
+    width: 100px;
+    padding-left: 5px;
+}
+
+.tdBodyAutreRef
+{
+    width: 50px;
+    text-align: center;
+}
+
+.tdHeadQualitesNonRef
+{
+    width: 864px;
+}
+
+.tdBodyQualitesNonRef
+{
+    width: 282px;
+    padding-left: 5px;
+}

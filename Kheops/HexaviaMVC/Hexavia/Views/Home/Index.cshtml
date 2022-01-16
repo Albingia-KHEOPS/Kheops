@@ -1,0 +1,86 @@
+﻿@model Hexavia.Models.Adresse
+@{
+    ViewBag.Title = "Home Page";
+    var useGmap = Hexavia.Tools.Helpers.AppSettingsHelper.UseGoogleMaps;
+    var url = Hexavia.Tools.Helpers.AppSettingsHelper.GenerateGoogleMapsBaseLink() + "&libraries=drawing,places&callback=initialize&lang=fr&sensor=false";
+    var urlLeaflet = Hexavia.Tools.Helpers.AppSettingsHelper.GenerateGoogleMapsBaseLink() + "&libraries=places&callback=initAutocomplete&lang=fr&sensor=false";
+}
+@Html.HiddenFor(model => Model.AdresseComplete)
+@Html.HiddenFor(model => Model.MatriculeHexavia)
+@Html.HiddenFor(model => Model.UrlExterieur)
+@Html.HiddenFor(model => Model.Separateur)
+@Html.HiddenFor(model => Model.Latitude)
+@Html.HiddenFor(model => Model.Longitude)
+@if (useGmap)
+{
+    @Scripts.Render("~/bundles/hexaviaGmap")
+}
+else
+{
+    @Scripts.Render("~/bundles/hexaviaLeafletMap")
+
+}
+<script src="~/Content/Js/L.Control.Sidebar.js"></script>
+
+<br />
+<div id="accordion">
+    <div class="card-header main-color" id="headingOne">
+        <h5 class="mb-0">
+            <button class="btn btn-lg btn-primary btnMenu" id="btnAdresseSearch" data-number="1">
+                Recherche par adresse
+            </button>
+            <button class="btn btn-lg btn-light btnMenu collapsed" id="btnDesignationSearch" data-number="2">
+                Recherche par désignation
+            </button>
+            <button class="btn btn-lg btn-light btnMenu collapsed" id="btnPartnerSearch" data-number="3">
+                Recherche par partenaire
+            </button>
+        </h5>
+    </div>
+
+    <div class="tab-content" id="nav-tabContent">
+
+        @Html.Partial("_SearchByAddress")
+        @Html.Partial("_SearchByDesignation")
+        @Html.Partial("_SearchByPartner")
+
+    </div>
+</div>
+
+<br />
+
+<div class="panel panel-default">
+    @Html.Partial("_SearchByAddressOptions")
+    @Html.Partial("_SearchByDesignationOptions")
+    @Html.Partial("_SearchByPartnerOptions")
+    <div class="panel-body container" id="map" style="height: 400px; z-index:1"></div>
+    <div id="gMap" class="panel-body container" style="height: 400px; z-index:1; display:none"></div>
+    @if (!useGmap)
+    {
+        <div id="sidebar" style="width : 200px; max-height: 350px;" class="panel panel-default">
+            <h4>liste contrats</h4>
+            <hr />
+            <div class="panel-body container">
+                <ul class="list-group"></ul>
+            </div>
+        </div>
+    }
+    @*@Html.Partial("_SearchOptionsFooter")*@
+</div>
+
+@*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFvFQGJhY-5bMYhHmblzKsGY96EFi_tuU&libraries=places&callback=initialize&lang=fr&sensor=false&libraries=drawing,places"
+            async defer>
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>*@
+
+@if (useGmap)
+{
+    <script src="@url">
+
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+}
+else
+{
+    <script src="@urlLeaflet" async defer></script>
+}

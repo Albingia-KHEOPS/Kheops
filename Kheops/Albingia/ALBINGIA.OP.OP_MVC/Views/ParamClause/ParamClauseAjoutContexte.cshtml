@@ -1,0 +1,178 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamAjoutContexte
+<div class="CommonForm FloatLeft" style="width: 775px;">
+    <div class="GroupFull GroupWithBorder" style="width: 755px;">
+        <div class="GroupTitle">
+            @Html.Hidden("ParamType", "Contexte")
+            @Html.HiddenFor(m => m.CodeService)
+            @Html.HiddenFor(m => m.CodeActGes)
+            @Html.HiddenFor(m => m.CodeEtape)
+            Affectation contexte de @Model.LibelleEtape
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 750px;">
+            <div class="GradientSection" style="height: 330px;">
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Service</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Service" name="Service" value="@(Model.CodeService) - @(Model.LibelleService)" readonly="readonly" class="readonly WidthInput" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Acte de gestion</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="ActGes" name="ActGes" value="@(Model.CodeActGes) - @(Model.LibelleActGes)" readonly="readonly" class="readonly WidthInput" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Etape</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Etape" name="Etape" value="@(Model.CodeEtape) - @(Model.LibelleEtape)" readonly="readonly" class="readonly WidthInput" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Contexte</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (!string.IsNullOrEmpty(Model.CodeContexte))
+                            {
+                                @Html.HiddenFor(m => m.IdContexte)
+                                <input type="text" id="Contexte" name="Contexte" value="@(Model.CodeContexte) - @(Model.LibelleContexte)" readonly="readonly" class="readonly WidthInput" />
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => m.Contexte, Model.Contextes, "Contexte", htmlAttributes: new { @id = "Contexte", @class = "WidthInput" }, generateTitle: true)
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Spécificité</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @*2016-10-21 bug 2217 : suppression du test sur le contexte pour afficher la spécificité*@
+                            @*@if (!string.IsNullOrEmpty(Model.CodeContexte))
+                            {                      
+                                @Html.Hidden("Specificite", Model.CodeSpecificite)
+                                <input type="text"  value="@(Model.CodeSpecificite) - @(Model.LibelleSpecificite)" readonly="readonly" class="readonly WidthInput" />
+                            }
+                            else
+                            {*@
+                            @Html.AlbDropDownListFor(m => m.Specificite, Model.Specificites, "Specificite", htmlAttributes: new { @id = "Specificite", @class = "WidthInput" }, generateTitle: true)
+                            @*}*@
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="labelEmplModif">Emplacement modifiable</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.EmplacementModif)
+                            {
+                                <input type="checkbox" id="EmplacementModif" name="EmplacementModif" checked="checked" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" id="EmplacementModif" name="EmplacementModif" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Emplacement</label>
+                    </div>
+                    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.Emplacement, Model.Emplacements, "Emplacement", htmlAttributes: new { @id = "Emplacement" }, generateTitle: true)</div>
+                    <div class="FloatLeft">
+                        <label class="Block">Sous emplacement</label>
+                    </div>
+                    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.SousEmplacement, Model.SousEmplacements, "SousEmplacement", htmlAttributes: new { @id = "SousEmplacement" }, generateTitle: true)</div>
+                    <div class="FloatLeft">
+                        <label class="Block">Num Ord.</label>
+                    </div>
+                    <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.NumOrdonnancement, Model.NumOrdonnancements, "NumOrdonnancement", htmlAttributes: new { @id = "NumOrdonnancement" }, generateTitle: true)</div>
+                </div>
+                <hr />
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Ajout Clausier</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.AjoutClausier)
+                        {
+                            <input type="checkbox" id="AjoutClausier" name="AjoutClausier" checked="checked" />
+                        }
+                        else
+                        {
+                            <input type="checkbox" id="AjoutClausier" name="AjoutClausier" />
+                        }
+                    </div>
+                </div>
+                <hr />
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Ajout Libre</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.AjoutLibre)
+                            {
+                                <input type="checkbox" id="AjoutLibre" name="AjoutLibre" checked="checked" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" id="AjoutLibre" name="AjoutLibre" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div id="ModelesClauseLibre" class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Clause modèle</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => m.Rubrique, Model.Rubriques, "Rubrique", htmlAttributes: new { @id = "Rubrique" }, generateTitle: true)
+                    </div>
+                    @Html.Partial("ParamClauseSousRubrique", Model.ModeleDDLSousRubrique)
+                </div>
+                <hr />
+                <div class="HeightRow">
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Script contrôle</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.ScriptControle, Model.ScriptsControle, "ScriptControle", htmlAttributes: new { @id = "ScriptControle", @class = "WidthInput" }, generateTitle: true)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 755px;">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <input type="button" id="btnFancyValider" value="Valider" tabindex="29" />
+            <input type="button" id="btnFancyAnnuler" value="Annuler" tabindex="30" />
+        </div>
+    </div>
+</div>

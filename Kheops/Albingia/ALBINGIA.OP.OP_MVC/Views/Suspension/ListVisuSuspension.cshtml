@@ -1,0 +1,29 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.Avenant.ModelesAvenant.ModeleVisuListSuspension>
+<table id="tblSusp" class="trHeight tableSuspensionHeader">
+    @foreach (var item in Model)
+    {
+        <tr id="@("tr_" + @item.Id)" >
+            <td class="LstSuspRadioButton tdBackOfficeOnly">
+                <input type="radio" id="@("supension_"+item.CodeOffre + "_"+item.Version+"_"+item.Type)" name="suspensions" />
+            </td>
+            <td class="LstSusp tdBackOfficeOnly">
+                @item.CodeOffre
+            </td>
+            <td class="LstSusp">
+                @(item.DateMise.HasValue ? item.DateMise.Value.ToString("dd/MM/yyyy") : string.Empty)
+            </td>
+            <td class="LstSusp">
+                @(item.DateDebut.HasValue ? item.DateDebut.Value.ToString("dd/MM/yyyy HH:mm") : string.Empty)
+            </td>
+            <td class="LstSusp">
+                @(item.DateFin.HasValue ? item.DateFin.Value.ToString("dd/MM/yyyy HH:mm") : string.Empty)
+            </td>
+            <td class="LstSusp">
+                @(item.DateResil.HasValue ? item.DateResil.Value.ToString("dd/MM/yyyy HH:mm") : string.Empty)
+            </td>
+            <td class="LstSusp">
+                @(item.DateRemise.HasValue ? item.DateRemise.Value.ToString("dd/MM/yyyy") : string.Empty)
+            </td>
+        </tr>
+    }
+</table>

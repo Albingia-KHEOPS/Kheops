@@ -1,0 +1,55 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCotisationsPage
+@Html.Hidden("fieldInput", string.Empty)
+@Html.Hidden("valueInput", string.Empty)
+@Html.Hidden("valueInputOld", string.Empty)
+@Html.Hidden("garantieUpdate", string.Empty)
+
+<div class="nGroupFull nGroupWithBorder">
+    <div class="nHorizontalFullWithGroup">
+        <div class="nGradientSection">
+            <input type="checkbox" id="chkGarantiePorteuse" checked="@Model.isChecked" />Afficher uniquement les garanties porteuses de prime
+            <div id="divListGaranties" class="tblCotis" style="margin-right: 5px; margin-left: 5px;">
+                @Html.Partial("CotisationsListGarantie", Model.GarantiesInfo)
+            </div>
+        </div>
+        <div class="FloatLeft" id="divBandeauInferieur">
+            @Html.Partial("CotisationsBandeau", Model.GarantiesInfo)
+        </div>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder ButtonsHeight">
+
+    <div id="divCommentForce" class="FloatLeft dvCommentForce">
+        @Html.Hidden("MontantForce", Model.MontantForce ? 1 : 0)
+        <div class="FloatLeft">
+            <label class="Block">Commentaires</label>
+        </div>
+        <textarea id="CommentForce" class="FloatLeft NonReprisCP heightAreaMntRef" albcontext="CommentForce">@Html.Raw(!string.IsNullOrEmpty(Model.CommentForce) ? Model.CommentForce.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</textarea>
+    </div>
+    <div class="ActionButtonsComment ActionButtonRight" style="width: 250px;">
+        @if (Model.IsReadOnly)
+        {
+            <div id="divReset" class="FloatLeft PaddingLeft" style="margin-top: -4px;">
+                <img id="btnReset" src="@Url.Content("/Content/Images/reset_formgris32.png")" alt="RAZ" title="RAZ" />
+            </div>
+        }
+        else
+        {
+            <div id="divReset" class="FloatLeft PaddingLeft CursorPointer" style="margin-top: -4px;">
+                <img id="btnReset" src="@Url.Content("/Content/Images/reset_form32.png")" alt="RAZ" title="RAZ" />
+            </div>
+        }
+        <div id="divRefresh" class="FloatLeft PaddingLeft" style="margin-top: -4px;">
+            <img id="btnRefresh" src="@Url.Content("/Content/Images/boutonRefresh_gris3232.png")" alt="Rechargement" title="Rechargement" />
+        </div>
+        <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+        <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s" tabindex="28"><u>S</u>uivant</button>
+    </div>
+</div>
+<div id="divFullScreenListGaranties">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataFullScreenListGaranties">
+        @Html.Partial("CotisationsListGarantiePleinEcran", Model.GarantiesInfo)
+    </div>
+</div>

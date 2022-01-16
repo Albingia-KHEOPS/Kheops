@@ -1,0 +1,87 @@
+﻿<services>
+  <service behaviorConfiguration="OffreServiceBehavior" name="ConfirmationSaisieService">
+    <endpoint address="http://qualifwas400.albingia.local/OPServiceCreationOffre/ConfirmationSaisie" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IConfirmationSaisie" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="CreationOffreService">
+    <endpoint address="http://qualifwas400.albingia.local/OPServiceCreationOffre/CreationOffree" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.ICreationOffre" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="DoubleSaisieService">
+    <endpoint address="http://qualifwas400.albingia.local/OPServiceCreationOffre/DoubleSaisie" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IDoubleSaisie" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="PolicesServicesService">
+    <endpoint address="http://qualifwas400.albingia.local/OPServiceCreationOffre/PolicesServices" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IPoliceServices" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="RechercheSaisieService">
+    <endpoint address="http://qualifwas400.albingia.local/OPServiceCreationOffre/RechercheSaisie" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IRechercheSaisie" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="SaisieOffreService">
+    <endpoint address="http://qualifwas400.albingia.local/OPServiceCreationOffre/SaisieOffre" binding="basicHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.ISaisieOffre" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="RisquesGarantiesService">
+    <endpoint address="http://qualifwas400.albingia.local/ClausesRisquesGaranties/RisquesGaranties"
+              binding="basicHttpBinding"
+              contract="OPServiceContract.IClausesRisquesGaranties.IRisquesGaranties" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="VoletBlocModeleService">
+    <endpoint address="http://qualifwas400.albingia.local/BackOffice/Administration" binding="basicHttpBinding" contract="OPServiceContract.IAdministration.IVoletsBlocsCategories" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="TraitementFinOffre">
+    <endpoint address="http://qualifwas400.albingia.local/TraitementsFinOffre/FinOffre" binding="basicHttpBinding" contract="OPServiceContract.ITraitementsFinOffre.IFinOffre" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="BackGestionClausesModeleService">
+    <endpoint address="net.tcp://qualifwas400.albingia.local/BackOffice/GestionClauses" binding="netTcpBinding" contract="OPServiceContract.IAdministration.IGestionClauses" />
+    <endpoint address="mex"  binding="mexTcpBinding" contract="IMetadataExchange"  />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="ParametrageClauses">
+    <endpoint address="http://qualifwas400.albingia.local/BackOffice/ParametrageClauses" binding="basicHttpBinding"
+              contract="OPServiceContract.IBOParametrage.IParametrageClauses" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="CommonOffre">
+    <endpoint address="http://qualifwas400.albingia.local/CommonOffre/CommonOffre" binding="basicHttpBinding" contract="OPServiceContract.ICommon.ICommonOffre" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="TraitementAffNouv">
+    <endpoint address="http://qualifwas400.albingia.local/TraitementAffNouv/AffaireNouvelle" binding="basicHttpBinding" contract="OPServiceContract.ITraitementAffNouv.IAffaireNouvelle" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="CommonAffNouv">
+    <endpoint address="http://qualifwas400.albingia.local/TraitementAffNouv/CommonAffaireNouvelle" binding="basicHttpBinding" contract="OPServiceContract.ITraitementAffNouv.ICommonAffaireNouvelle" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="AdresseHexavia">
+    <endpoint address="http://qualifwas400.albingia.local/Hexavia/AdresseHexavia" binding="basicHttpBinding" contract="OPServiceContract.IHexavia.IAdresseHexavia" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="InfoSpecifique">
+    <endpoint address="http://qualifwas400.albingia.local/IS/InfoSpecif" binding="basicHttpBinding"
+              contract="OPServiceContract.IS.IInfoSpecif" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="ExcelInfo">
+    <endpoint address="http://qualifwas400.albingia.local/ExcelInfo/ExcelInfo" binding="basicHttpBinding"
+              contract="OPServiceContract.OffreSimple.IOffreSimplifieExcel" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="Edithique">
+    <endpoint address="http://qualifwas400.albingia.local/ExternalUse/Edithique" binding="basicHttpBinding"
+              contract="OPServiceContract.ExternalUse.IEdithique" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+</services>
+

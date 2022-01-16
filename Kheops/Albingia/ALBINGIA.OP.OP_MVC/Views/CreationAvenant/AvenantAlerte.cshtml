@@ -1,0 +1,52 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesCreationAvenant.ModeleAvenantAlerte>
+    <div class="@(Model.Count > 0 ? "HeightRow paddingleft150" : "HeightRow paddingleft150 None")">
+        <div class="FloatLeft">
+            <img src="@Url.Content("/Content/Images/ControleFin/A.png")" />
+        </div>
+        <div class="FloatLeft PaddingLeft"><u>Alertes</u></div>
+    </div>
+    <div class="dvAlertes">
+        <table id="tblAlerteAvenant" class="trHeight tblAlertes">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="PaddingTop tdImgAlerte">
+                    @if (item.TypeBloquante == "B")
+                    {
+                        <img src="@Url.Content("/Content/Images/ControleFin/B.png")" />
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("/Content/Images/ControleFin/A.png")" />
+                    }
+                </td>
+                <td class="PaddingTop tdMsgAlerte" title="@item.MessageAlerte">
+                    @item.MessageAlerte
+            </td>
+            @if (item.TypeBloquante == "B")
+            {
+                <td id="linkAlerte" class="navig PaddingTop tdLinkAlerte" albParam="@item.TypeAlerte">
+                            @Html.Hidden("inputAlerte", item.TypeAlerte, new { id = $"inputAlerte{item.TypeAlerte}" })
+                            @item.LienMessage
+                </td>
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(item.TypeAlerte))
+                {
+                    <td id="linkAlerte" class="PaddingTop tdLinkAlerte" albParam="@item.TypeAlerte">
+                        &nbsp;
+                    </td>
+                }
+                else
+                {
+                    <td id="linkAlerte" class="navig PaddingTop tdLinkAlerte" albParam="@item.TypeAlerte">
+                            @Html.Hidden("inputAlerte", string.Empty, new { id = $"inputAlerte{item.TypeAlerte}" })
+                            @item.LienMessage
+                        </td>
+                    }
+            }
+                </tr>
+            }
+        </table>
+    </div>

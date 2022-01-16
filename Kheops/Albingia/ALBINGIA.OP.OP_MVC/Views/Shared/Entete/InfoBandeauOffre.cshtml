@@ -1,0 +1,172 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaData.Bandeau_MetaData
+<div id="@(Model.ContexteBandeau == "recherche" ? "divInfoBandeauRecherche" : "divInfoBandeau")" class="nInfoBandeau">
+    <div class="HeightRow">
+        <div class="Block1">
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivEntete1">
+                    <label class="TitleOffre">Offre</label>
+                </div>
+                <div style="width: 80px;" class="FieldBandeauBoldEntete">@(Model.IdOffre + "-" + Model.Version)</div>
+                <div class="FieldBandeau DivEntete1">@Html.AlbLabelFor(m => m.CodeDevise)</div>
+                <div class="FieldBandeauBoldEntete" title="@Model.LibelleDevise">@Model.CodeDevise</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                <div class="FieldBandeauBoldEntete EntetePaddingLeft">@Model.Description</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeauBoldEntete EntetePaddingLeft" title="@Model.LibelleBranche-@Model.LibelleCible">@Model.Branche - @Model.Cible</div>
+                <div class="FieldBandeau DivEntete2">
+                    <label>Saisie du</label>
+                </div>
+                <div class="FieldBandeauBoldEntete">@Model.DateSaisie</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                <div class="FieldBandeau DivCourtierPreneur">@Html.AlbLabelFor(m => m.IdCourtier)</div>
+                <div class="FieldBandeauBoldEntete">@Model.IdCourtier</div>
+                <div style="width: 120px; overflow: hidden; text-overflow: ellipsis;" class="FieldBandeauBoldEntete" title="@Model.NomCourtier">@Html.Raw(Model.NomCourtier != null ? Model.NomCourtier.Replace(" ", "&nbsp;") : "&nbsp;")</div>
+                <div class="FieldBandeauBoldEntete">@Model.CPCourtier @Model.VilleCourtier</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivCourtierPreneur">@Html.AlbLabelFor(m => m.IdAssure)</div>
+                <div class="FieldBandeauBoldEntete">@Model.IdAssure</div>
+                <div style="width: 120px; overflow: hidden; text-overflow: ellipsis;" class="FieldBandeauBoldEntete" title="@Model.NomAssure">@Html.Raw(Model.NomAssure != null ? Model.NomAssure.Replace(" ", "&nbsp;") : "&nbsp;")</div>
+                <div class="FieldBandeauBoldEntete">@Model.CPAssure @Model.VilleAssure</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+            </div>
+        </div>
+        <div class="Block1">
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">
+                    <label>Effet du</label>
+                </div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.DateDebEffet</div>
+                @if (!string.IsNullOrEmpty(Model.DateFinEffet))
+                {
+                    <div class="FieldBandeau DivEntete1 TitleColumnBandeau">
+                        <label>au</label>
+                    </div>
+                    <div class="FieldBandeauBoldEntete DualColumnBandeau">@Model.DateFinEffet</div>
+                }
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                <div class="FieldBandeau DivEntete3 TitleColumnBandeau">@Html.AlbLabelFor(m => m.NatureContrat)</div>
+                <div class="FieldBandeauBoldEntete SingleColumnBandeau">@Model.NatureContrat - @Model.LibelleNatureContrat</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.Part)</div>
+                <div class="FieldBandeauBoldEntete TripleColumnBandeau">@Model.Part</div>
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.Couverture)</div>
+                <div class="FieldBandeauBoldEntete TripleColumnBandeau">@Model.Couverture</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.Delegation)</div>
+                <div class="FieldBandeauBoldEntete TripleColumnBandeau" title="@Model.Delegation">@Model.Delegation</div>
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.Inspecteur)</div>
+                <div class="FieldBandeauBoldEntete TripleColumnBandeau">@Model.Inspecteur</div>
+                <div class="FieldBandeau DivEntete2 SmallColumnTitle">@Html.AlbLabelFor(m => m.Secteur)</div>
+                <div class="FieldBandeauBoldEnteteNoMargin TinyColumnBandeau">@Model.Secteur - @Model.LibSecteur</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.CodeRegime)</div>
+                <div class="FieldBandeauBoldEntete TripleColumnBandeau" title="@Model.CodeRegime - @Model.LibelleRegime">@Model.CodeRegime - @Model.LibelleRegime</div>
+                <div class="FieldBandeau DivEntete32 TitleColumnBandeau" title="CATNAT possible">@Html.AlbLabelFor(m => m.SoumisCatNat)</div>
+                <div class="FieldBandeauBoldEntete TripleColumnBandeau">@Model.SoumisCatNat</div>
+                <div class="FieldBandeau DivEntete2 SmallColumnTitle">@Html.AlbLabelFor(m => m.Territorialite)</div>
+                <div class="FieldBandeauBoldEnteteNoMargin TinyColumnBandeau">@Model.Territorialite</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.SouscripteurCode)</div>
+                <div class="FieldBandeauBoldEntete TripleColumnBandeau" title="@Model.SouscripteurCode - @Model.SouscripteurNom @Model.SouscripteurPrenom" >@Model.SouscripteurCode - @Model.SouscripteurNom @Model.SouscripteurPrenom</div>
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.GestionnaireNom)</div>
+                <div class="FieldBandeauBoldEntete TripleColumnBandeau" title="@Model.GestionnaireCode - @Model.GestionnaireNom @Model.GestionnairePrenom">@Model.GestionnaireCode - @Model.GestionnaireNom @Model.GestionnairePrenom</div>
+            </div>
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="Block1">
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau">@Html.AlbLabelFor(m => m.MontantReference)</div>
+                <div class="FieldBandeauBoldEntete">@Model.MontantReference</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                <div class="FieldBandeau Block">@Html.AlbLabelFor(m => m.LCIGenerale)</div>
+                @if (Model.LCIGenerale == 0 && string.IsNullOrEmpty(Model.LCIGeneraleType) && string.IsNullOrEmpty(Model.LCIGeneraleUnit))
+                {
+                    <div class="FieldBandeauBoldEntete">-</div>
+                }
+                else
+                {
+                    <div class="FieldBandeauBoldEntete">@(Model.LCIGenerale + " " + Model.LCIGeneraleUnit + " - " + Model.LCIGeneraleType) </div>
+                }
+                <div class="FieldBandeau Block">@Html.AlbLabelFor(m => m.FranchiseGenerale)</div>
+                @if (Model.FranchiseGenerale == 0 && string.IsNullOrEmpty(Model.FranchiseGeneraleUnit) && string.IsNullOrEmpty(Model.FranchiseGeneraleType))
+                {
+                    <div class="FieldBandeauBoldEntete">-</div>
+                }
+                else
+                {
+                    <div class="FieldBandeauBoldEntete">@(Model.FranchiseGenerale + " " + Model.FranchiseGeneraleUnit + " - " + Model.FranchiseGeneraleType) </div>
+                }
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivEntete5"><u>@Html.AlbLabelFor(m => m.Indexation)</u></div>
+                <div class="FieldBandeauBoldEntete">@Model.Indexation</div>
+            </div>
+            @if (Model.Indexation != "non")
+            {
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete2">@Html.AlbLabelFor(m => m.CodeIndice)</div>
+                    <div class="FieldBandeauBoldEntete">@Model.CodeIndice - @Model.LibelleIndice</div>
+                    <div class="FieldBandeau DivEntete2">@Html.AlbLabelFor(m => m.Valeur)</div>
+                    <div class="FieldBandeauBoldEntete">@Model.Valeur</div>
+                </div>
+            }
+            else
+            {
+                <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                    <div class="FieldBandeau DivEntete2">@Html.AlbLabelFor(m => m.CodeIndice)</div>
+                    <div class="FieldBandeauBoldEntete">-</div>
+                    <div class="FieldBandeau DivEntete2">@Html.AlbLabelFor(m => m.Valeur)</div>
+                    <div class="FieldBandeauBoldEntete">-</div>
+                </div>
+            }
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+            </div>
+        </div>
+        <div class="Block1">
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivEntete4 TitleColumnBandeau">@Html.AlbLabelFor(m => m.CodeAction)</div>
+                <div class="FieldBandeauBoldEntete SingleColumnBandeau">@Model.CodeAction - @Model.LibelleAction</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.CodeEtat)</div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.LibelleEtat">@Model.CodeEtat - @Model.LibelleEtat</div>
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.CodeMotif)</div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.LibelleMotif">@Model.CodeMotif - @Model.LibelleMotif</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.CodeSituation)</div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.LibelleSituation">@Model.CodeSituation - @Model.LibelleSituation</div>
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.DateSituation)</div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau">@(Model.DateSituation.HasValue ? Model.DateSituation.Value.ToShortDateString() : "-")</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete2 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.DateEnregistrement)</div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau">@(Model.DateEnregistrement.HasValue ? Model.DateEnregistrement.Value.ToShortDateString() : "-")</div>
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.CodeUsrCreateur)</div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.NomUsrCreateur">@Model.CodeUsrCreateur - @Model.NomUsrCreateur</div>
+            </div>
+            <div class="HeightRow SmallMarginBottom nBGEntete1 PaddingTop">
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.DateMAJ)</div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau">@(Model.DateMAJ.HasValue ? Model.DateMAJ.Value.ToShortDateString() : "-")</div>
+                <div class="FieldBandeau DivEntete2 TitleColumnBandeau">@Html.AlbLabelFor(m => m.CodeUsrModificateur)</div>
+                <div class="FieldBandeauBoldEntete DualColumnBandeau" title="@Model.NomUsrModificateur">@Model.CodeUsrModificateur - @Model.NomUsrModificateur</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

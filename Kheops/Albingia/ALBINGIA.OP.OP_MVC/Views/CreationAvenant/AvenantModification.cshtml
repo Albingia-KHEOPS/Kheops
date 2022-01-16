@@ -1,0 +1,65 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesCreationAvenant.ModeleAvenantModification
+@*<div>*@
+@Html.Hidden("AvenantError", Model.ErrorAvt)
+@Html.Hidden("EcheanceHisto", (Model.ProchaineEchHisto))
+@Html.Hidden("DateFRegul", (Model.DateEffetAvt))
+@Html.Hidden("HeureFRegul", (Model.HeureEffetAvt))
+<div class="HeightRow PaddingTop">
+    <div class="FloatLeft PaddingLeft">
+        <input type="text" id="TypeAvt" name="TypeAvt" value="@Model.TypeAvt - @Model.LibelleAvt" readonly="readonly" class="readonly inputTypeAvt" />
+    </div>
+    <div class="FloatRight PaddingRight">
+        <input type="text" id="NumInterne" name="NumInterne" value="@Model.NumInterneAvt" readonly="readonly" class="readonly inputNumInterne" />
+    </div>
+    <div class="FloatRight">
+        <label class="Block cssType">N° avt</label>
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block">Début effet avt*</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDateFormat(m => m.DateEffetAvt, new { @class = "datepicker inputDate" })
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbTimePicker(m => m.HeureEffetAvt, "HeureEffetAvt", new { @class = "HourMinute"})
+    </div>
+    @*}*@
+
+</div>
+@if (Model.ModeAvt == "CREATE")
+{
+    <div class="dvWarning">
+        <label class="Block avtWarning">Attention, vous allez créer un nouvel acte de gestion. Toutes les informations du contrat en cours vont être mises en historique.</label>
+        <br />
+        <label class="Block avtWarning">Cette action est définitive</label>
+    </div>
+}
+<div class="HeightRow None">
+    <div class="FloatLeft">
+        <label class="Block">N° d'avenant*</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.HiddenFor(m => m.NumAvt, new { albmask = "numeric", @class = "numerique" })
+    </div>
+</div>
+<div class="HeightRow None">
+    <div class="FloatLeft">
+        <label class="Block">Motif*</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.AlbDropDownListFor(m => Model.MotifAvt, Model.Motifs, "MotifAvt", htmlAttributes: new { id = "MotifAvt", albCFList = "motifavt", disabled = string.Empty }, generateTitle: true)
+    </div>
+</div>
+<div class="dvDesc">
+    <div class="FloatLeft">
+        <label class="Block">Réf. de gestion</label>
+    </div>
+    
+    <div class="FloatLeft">
+        <textarea id="Description" name="Description" albcontext="Description" class="textareaDesc NonReprisCP" style="margin: 0px;width: 433px;height: 65px;max-width: 441px;max-height: 385px;">@Model.DescriptionAvt</textarea>
+    </div>
+    
+</div>
+@*</div>*@

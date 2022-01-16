@@ -1,0 +1,31 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestionGrilleNomenclaturePage
+@{
+    var splitCharHtml = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+}
+<div id="divHeaderGrille">
+    <table id="tblHeaderGrille" class="trHeight tableGrille">
+        <tr>
+            <th class="tablePersoHead thCode">Code</th>
+            <th class="tablePersoHead thLibelle">Libellé</th>
+            <th class="tablePersoHead thTypologie">Typologie</th>
+            <th class="tablePersoHead thImg">
+                <img id="addGrille" name="addGrille" class="CursorPointer" alt="AddGrille" title="Ajouter une nomenclature" src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+                <img id="blkGrille" name="blkGrille" class="None" src="@Url.Content("/Content/Images/blank.png")" />
+            </th>
+        </tr>
+    </table>
+</div>
+<div id="divBodyGrille" class="dvBodyGrille">
+    @Html.Hidden("selGrilleCode", string.Empty)
+    <table id="tblBodyGrille" class="trHeight tableGrille">
+        @foreach (var item in Model.Grilles)
+        {
+            <tr>
+                <td class="CursorPointer tdCode" id="codeGrille@(splitCharHtml)@(item.Code)" albOpenGrille="@item.Code" title="@(item.Code)">@item.Code</td>
+                <td class="CursorPointer tdLibelle" albOpenGrille="@item.Code" title="@(item.Libelle)">@item.Libelle</td>
+                <td class="CursorPointer tdTypologie" albOpenGrille="@item.Code" title="@(item.TypologieGrille)">@item.TypologieGrille</td>
+                <td class="CursorPointer tdImg" albOpenGrille="@item.Code">&nbsp;</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,49 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFormuleGarantie.ModeleAjoutFormuleGarantie
+<div id="addGarantie" class="CommonForm FloatLeft">
+    @Html.HiddenFor(m => m.CodeGarantie)
+    <div class="GroupFull GroupWithBorder" style="width: 1025px;">
+        <div class="GroupTitle">
+            Ajout d'un inventaire de garantie
+        </div>
+        <div id="Contrat" class="HorizontalFullWithGroup" style="width: 1020px;">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">@Html.AlbLabelFor(m => m.LettreFormule, "Block")</div>
+                        <div class="FloatLeft">@Html.TextBoxFor(m => m.LettreFormule, new { @class = "readonly", @readonly = "readonly" })</div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">@Html.AlbLabelFor(m => m.Descriptif, "Block")</div>
+                        <div class="FloatLeft">@Html.TextBoxFor(m => m.Descriptif, new { @class = "readonly", @readonly = "readonly" })</div>
+                    </div>
+                    <div class="DoubleGenericColumn">
+                        <div class="FloatLeft">@Html.AlbLabelFor(m => m.ObjetRisque, "Block")</div>
+                        <div class="FloatLeft">
+                            <input id="AjoutObjetRisque" class="readonly" type="text" value="" readonly="readonly"
+                                name="AjoutObjetRisque" style="width: 250px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 1020px;">
+            <div class="GradientSection">
+                <div id="divInventaire" class="HeightRow PaddingLeft">
+                    Ajouter un inventaire de garantie
+                </div>
+            </div>
+            <div>
+                @Html.Partial("ListInventaires", Model.Inventaires)
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 1025px">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFancyAnnuler" type="button" albShortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+            <button id="btnFancyValider" type="button" albShortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>

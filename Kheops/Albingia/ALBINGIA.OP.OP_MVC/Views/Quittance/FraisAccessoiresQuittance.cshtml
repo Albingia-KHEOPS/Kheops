@@ -1,0 +1,47 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.FraisAccessoires
+@using ALBINGIA.Framework.Common.Constants
+<div class="CommonForm FloatLeft">
+    <div class="nHorizontalFullWithGroup WidthGroupFraisAccessoires">
+        <div class="nGradientSection FraisAccessoiresGradientSection">
+            <div class="HeightRow">
+                <label class="TitlesFraisAccessoires">Montants spécifiques à l'émission</label>
+            </div>
+            <div class="HeightRow">
+                <div class="GenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block">Frais retenus</label>
+                    </div>
+                    <div class="FloatLeft">
+
+
+                        <input type="text" id="FraisRetenusAvn" disabled="@(Model.IsReadOnly )" name="FraisRetenus" albMask="numeric" value="@(Model.Frais)" class="numerique" />
+
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                @*bug 2567  *@
+                @*  <div class="@(Model.AttCatego == "O" ? "GenericColumn" : "GenericColumn None")">*@
+                <div class="GenericColumn">
+                    <div class="@(Model.ActeGestion == AlbConstantesMetiers.TYPE_AVENANT_REGUL || (Model.ActeGestion == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_MODIF) ? "FloatLeft None" : "FloatLeft")">
+                        <label class="LabelTaxeAttentat">FGA</label>
+                    </div>
+                    <div class="@(Model.ActeGestion == AlbConstantesMetiers.TYPE_AVENANT_REGUL || (Model.ActeGestion == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF && Model.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_MODIF) ? "FloatLeft None" : "FloatLeft")">
+                        <input type="checkbox" disabled="@(Model.IsReadOnly )" id="TaxeAttentatAvn" name="TaxeAttentatAvn" checked="@(Model.TaxeAttentat )" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupWithBorder ButtonsHeight DivButtons">
+        <div class="ActionButtons ActionButtonRight">
+            @if (!Model.IsReadOnly) {
+                <button id="btnFermerFraisAccessoiresAvn" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnValiderFraisAccessoiresAvn" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            }
+            else {
+                <button id="btnFermerFraisAccessoiresAvn" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+            }
+        </div>
+    </div>
+</div>

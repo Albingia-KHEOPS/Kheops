@@ -1,0 +1,26 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.LigneTypeValeur>
+<div class="HeightRow" id="divPaneauDynamic" style="display: none">
+</div>
+<table id="tblBodyTypesValeur" class="trHeight">
+    @foreach (var ligne in Model)
+    {       
+        <!--Mode Affichage-->  
+        <tr name="trTypeValeurReadOnly" id="trTypeValeurReadOnly_@(ligne.Id)">
+            <td class="col_Ordre">
+                <label id="@("lblOrdre_" + @ligne.NumOrdre)">@ligne.NumOrdre</label>
+            </td>
+            <td class="col_HeaderTypeValeur">
+                <label id="@("lblTypeValeur_" + @ligne.Id)">@ligne.CodeTypeValeur@(!string.IsNullOrEmpty(ligne.LibelleTypeValeur) ? " - " + ligne.LibelleTypeValeur : "")</label>
+            </td>
+            <td class="col_ButtonsTypesValeur">
+                @if (ligne.AdditionalParam == "**")
+                {
+                    <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSuppr_" + @ligne.Id)" alt="Supprimer" title="Supprimer" class="Action CursorPointer PaddingLeft10" name="btnSupprimer"/>
+                }
+            </td>
+        </tr>
+        <!--Mode Edition-->
+        <tr class="noDisplay" name="trTypeValeurEdition" id="trTypeValeurEdition_@(ligne.Id)">
+        </tr>    
+    }
+</table>

@@ -1,0 +1,215 @@
+﻿
+@right-panel-width: 1040px;
+@right-feildset-width: @right-panel-width - 20px;
+@short-width: 120px;
+@medium-width: 170px;
+@long-width: 300px;
+@little-width: 75px;
+@tiny-width: 40px;
+
+body {
+    .regul-rc-container {
+        overflow-y: auto;
+        height: 300px;
+    }
+
+    .fieldset-container {
+        border-radius: 5px;
+        border-width: 0;
+        float: left;
+        margin-left: 5px;
+        margin-bottom: 5px;
+        margin-top: 6px;
+        width: 1027px;
+        padding-left: 2px;
+        padding-bottom: 2px;
+        height: 1%;
+
+        .input-box {
+            border: 1px solid #EEE;
+            background-color: #F7F7F7;
+            border-radius: 7px;
+            width: @right-feildset-width;
+            height: auto;
+            padding: 10px;
+            box-sizing: border-box;
+            margin: 5px 0 0 0;
+
+            .title {
+                font-weight: bold;
+            }
+
+            &:after {
+                content: "";
+                clear: both;
+                display: block;
+            }
+
+            .long {
+                width: @long-width;
+            }
+
+            .medium {
+                width: @medium-width;
+            }
+
+            .short {
+                width: @short-width;
+            }
+
+            .little {
+                width: @little-width;
+            }
+
+            .tiny {
+                width: @tiny-width;
+            }
+
+            .autosize {
+                width: auto;
+            }
+
+            .row {
+                margin-bottom: 10px;
+
+                &:after {
+                    content: "";
+                    clear: both;
+                    display: block;
+                }
+
+                input[type='text'] {
+                    background-color: #F7F7F7;
+                    border: 1px #AAA solid;
+                    border-radius: 4px;
+                    padding: 2px 5px;
+                    margin-right: 5px;
+                    float: left;
+
+                    &:disabled {
+                        background-color: #CCC;
+                    }
+                }
+
+                label {
+                    display: inline-block;
+                    float: left;
+                    margin-right: 3px;
+                }
+
+                span {
+                    display: inline-block;
+
+                    &.title-center-text {
+                        text-decoration: underline;
+                        text-align: center;
+                    }
+                }
+
+                &.to-left {
+                    float: left;
+                }
+
+                &.to-right {
+                    float: right;
+                }
+            }
+
+            .check-list {
+                table {
+                    margin: auto;
+                    width: 100%;
+
+                    th {
+                        font-weight: bold;
+                        text-align: center;
+                        vertical-align: top;
+                        padding: 2px;
+                        word-wrap: break-word;
+                    }
+
+                    tbody tr {
+                        td {
+                            vertical-align: top;
+                            text-align: center;
+                            padding: 2px;
+
+                            &.link-to-check {
+                                text-align: left;
+
+                                .link {
+                                    text-decoration: underline;
+                                    font-weight: bold;
+                                    cursor: pointer;
+                                    color: blue;
+
+                                    &:hover, &:visited, &:active {
+                                        text-decoration: underline;
+                                        color: blue;
+                                    }
+                                }
+
+                                .link-no-click {
+                                    text-decoration: none;
+                                    font-weight: bold;
+                                    cursor: default;
+                                    color: #000;
+                                }
+                            }
+                        }
+
+                        &:nth-child(2n) {
+                            background-color: #edeeff;
+                        }
+
+                        &:nth-child(2n + 1) {
+                            background-color: #fff;
+                        }
+                    }
+
+                    .medium {
+                        width: 200px;
+                    }
+
+                    .small {
+                        width: @short-width;
+                    }
+
+                    .little {
+                        width: @little-width;
+                    }
+                }
+            }
+
+            &.regul-rc {
+                table {
+                    margin: auto;
+                    width: 100%;
+
+                    thead {
+                        font-weight: bold;
+                    }
+
+                    tbody {
+                        tr {
+                            &:first-child {
+                                text-decoration: underline;
+                                text-align: center;
+                                vertical-align: top;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        fieldset.input-box {
+            legend {
+                border: 1px #ddd solid;
+                background: #eee;
+                border-radius: 10px;
+                padding: 3px 4px;
+            }
+        }
+    }
+}

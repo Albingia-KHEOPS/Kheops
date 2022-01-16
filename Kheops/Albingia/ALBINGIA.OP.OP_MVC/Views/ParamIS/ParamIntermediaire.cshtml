@@ -1,0 +1,144 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamIS.ParamModeleIntermediaire
+<div id="divLstLignesInfo">
+    <div id="divHeaderLignesInfo">
+        <table id="tblLigneInfoHeader">
+            <tr>
+                <th class="col_SqlOrder tablePersoHead" title="SqlOrder">#
+                </th>
+                <th class="col_Lib tablePersoHead" title="Lib">Lib
+                </th>
+                <th class="col_Cells tablePersoHead" title="Cells">Cells
+                </th>
+                <th class="col_DbMapCol tablePersoHead" title="DbMapCol">DbMapCol
+                </th>
+                <th class="col_Link tablePersoHead" title="Link">Link
+                </th>
+                <th class="col_Type tablePersoHead" title="Type">Type
+                </th>
+                <th class="col_SqlRequest tablePersoHead" title="SqlRequest">SqlRequest
+                </th>
+                <th class="col_ConvertTo tablePersoHead" title="ConvertTo">ConvertTo
+                </th>
+                <th class="col_TextLabel tablePersoHead" title="TextLabel">TextLabel
+                </th>
+                <th class="col_HierarchyOrder tablePersoHead" title="HierarchyOrder">Hierarchy Order
+                </th>
+                <th class="col_LineBreak tablePersoHead" title="LineBreak">LineBreak
+                </th>
+                <th class="col_Required tablePersoHead" title="Required">Required
+                </th>
+                <th class="col_TypeUIControl tablePersoHead" title="TypeUIControl">TypeUIControl
+                </th>
+                <th class="col_LinkBehaviour tablePersoHead" title="LinkBehaviour">LinkBehaviour
+                </th>
+                <th class="col_Behaviour tablePersoHead" title="Behaviour">Behaviour
+                </th>
+                <th class="col_EventBehaviour tablePersoHead" title="EventBehaviour">EventBehaviour
+                </th>
+                <th class="col_Disabled tablePersoHead" title="Disabled">Disabled
+                </th>
+                <th class="col_Action tablePersoHead">&nbsp;
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div id="divBodyLignesInfo">
+        @if (Model.ListLignesInfo != null)
+        {
+            @Html.Partial("ParamListLignesInfo", Model.ListLignesInfo)
+        }
+    </div>
+    <div id="divLigneInfoVide">
+        <table id="tblLigneVide">
+            <tr id="trLigneVide">
+                <td class="col_SqlOrder">
+                    <input class="col_SqlOrder" id="inSqlOrder" />
+                </td>
+                <td class="col_Lib">
+                    <input class="col_Lib" id="inLib" />
+                </td>
+                <td class="col_Cells">
+                    <input class="col_Cells" id="inCells" />
+                </td>
+                <td class="col_DbMapCol">
+                    <input class="col_DbMapCol" id="inDbMapCol" />
+                </td>
+                <td class="col_Link">
+                    @Html.AlbDropDownListFor(m => m.LigneInfoVide.Link, Model.LigneInfoVide.ListesGeneriques.ListLink, "dvLink", generateTitle: true, htmlAttributes: new { @id = "drlLink", @class = "col_Link" })
+                </td>
+                <td class="col_Type">
+                    @Html.AlbDropDownListFor(m => m.LigneInfoVide.Type, Model.LigneInfoVide.ListesGeneriques.ListType, "dvType", generateTitle: true, htmlAttributes: new { @id = "drlType", @class = "col_Type" })
+                </td>
+                <td class="col_SqlRequest">
+                    <input class="col_SqlRequest" id="inSqlRequest" />
+                </td>
+                <td class="col_ConvertTo">
+                    @Html.AlbDropDownListFor(m => m.LigneInfoVide.ConvertTo, Model.LigneInfoVide.ListesGeneriques.ListConvertTo, "dvConvertTo", generateTitle: true, htmlAttributes: new { @id = "drlConvertTo", @class = "col_ConvertTo" })
+                </td>
+                <td class="col_TextLabel">
+                    <input class="col_TextLabel" id="inTextLabel" />
+                </td>
+                <td class="col_HierarchyOrder">
+                    @Html.AlbDropDownListFor(m => m.LigneInfoVide.HierarchyOrder, Model.LigneInfoVide.ListesGeneriques.ListHierarchyOrder, "dvHierarchyOrder", generateTitle: true, htmlAttributes: new { @id = "drlHierarchyOrder", @class = "col_HierarchyOrder" })
+                </td>
+                <td class="col_LineBreak">
+                    @Html.AlbDropDownListFor(m => m.LigneInfoVide.LineBreak, Model.LigneInfoVide.ListesGeneriques.ListLineBreak, "dvLineBreak", generateTitle: true, htmlAttributes: new { @id = "drlLineBreak", @class = "col_LineBreak" })
+                </td>
+                <td class="col_LineBreak">
+                    @Html.AlbDropDownListFor(m => m.LigneInfoVide.Required, Model.LigneInfoVide.ListesGeneriques.ListRequired, "dvRequired", generateTitle: true, htmlAttributes: new { @id = "drlRequired", @class = "col_Required" })
+                </td>
+                <td class="col_TypeUIControl">
+                    @Html.AlbDropDownListFor(m => m.LigneInfoVide.TypeUIControl, Model.LigneInfoVide.ListesGeneriques.ListUIControl, "dvUIControl", generateTitle: true, htmlAttributes: new { @id = "drlUIControl", @class = "col_TypeUIControl" })
+                </td>
+                <td class="col_LinkBehaviour">
+                    <input class="col_LinkBehaviour" id="inLinkBehaviour" />
+                </td>
+                <td class="col_Behaviour">
+                    <input class="col_Behaviour" id="inBehaviour" />
+                </td>
+                <td class="col_EventBehaviour">
+                    <input class="col_EventBehaviour" id="inEventBehaviour" />
+                </td>
+                <td class="col_Disabled">
+                    @Html.AlbDropDownListFor(m => m.LigneInfoVide.Disabled, Model.LigneInfoVide.ListesGeneriques.ListDisabled, "dvDisabled", generateTitle: true, htmlAttributes: new { @id = "drlDisabled", @class = "col_Disabled" })
+                </td>
+                <td class="col_Action">
+                    <input type="button" id="btnEnregistrerNouvelleLigne" value="OK" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="padTop">
+    @if (Model.SqlRequest != null)
+    {
+        <div class="HeightRow">
+            <div class="FloatLeft padLeft CursorPointer" id="btnEditerSelect">
+                <img src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" class="Action" name="btnEditer" />
+            </div>
+            <label class="FloatLeft">Select :</label>
+            <input class="FloatLeft sqlRequestLbl readonly" id="lblSelect" title="@Model.SqlRequest.Select" value="@Model.SqlRequest.Select" readonly/>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft padLeft CursorPointer" id="btnEditerInsert">
+                <img src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" class="Action" name="btnEditer" />
+            </div>
+            <label class="FloatLeft">Insert :</label>
+            <input class="FloatLeft sqlRequestLbl readonly" id="lblInsert" title="@Model.SqlRequest.Insert" value="@Model.SqlRequest.Insert" readonly/>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft padLeft CursorPointer" id="btnEditerUpdate">
+                <img src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" class="Action" name="btnEditer" />
+            </div>
+            <label class="FloatLeft">Update :</label>
+            <input class="FloatLeft sqlRequestLbl readonly" id="lblUpdate" title="@Model.SqlRequest.Update" value ="@Model.SqlRequest.Update" readonly/>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft padLeft CursorPointer" id="btnEditerSelectExist">
+                <img src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" class="Action" name="btnEditer" />
+            </div>
+            <label class="FloatLeft">SelectExist :</label>
+            <input class="FloatLeft sqlRequestLbl readonly" id="lblSelectExist" title="@Model.SqlRequest.SelectExist" value="@Model.SqlRequest.SelectExist"readonly/>
+        </div>       
+    }
+</div>

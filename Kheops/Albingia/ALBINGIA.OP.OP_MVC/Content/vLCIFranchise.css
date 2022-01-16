@@ -1,0 +1,351 @@
+﻿/*Région LCIFranchise*/
+.divInfoExpr
+{
+    width: 660px;
+    max-height: 107px;
+    overflow: auto;
+}
+
+.divInfoExprMax
+{
+    width: 660px;
+    max-height: 442px;
+    overflow: auto;
+}
+
+#divDetail
+{
+    width: 661px;
+    max-height: 100px;
+    overflow: auto;
+}
+
+#divExprComplexe
+{
+    display: none;
+}
+
+#divDataExprComp
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}
+
+.LabelLCIGenerale
+{
+    margin-left: 5px;
+    margin-right: 41px;
+    margin-top: 3px;
+}
+
+.GlobalWidthComplexe
+{
+    width: 699px;
+}
+
+.WidthComplexe
+{
+    width: 680px;
+}
+
+.HeightExpr
+{
+    padding-bottom: 5px;
+}
+
+.WidthInfoComplexe
+{
+    width: 676px !important;
+}
+
+.DivLienCpx
+{
+    background-color: #EBEBE4;
+    border-color: #FFFFFF;
+    border-style: ridge hidden hidden ridge;
+    margin-left: 65px;
+    text-align: center;
+    text-decoration: underline;
+    width: 55px;
+}
+
+.ColumnUniteType_Generale
+{
+    float: left;
+    width: 123px;
+}
+
+.thCode
+{
+    width: 73px;
+    text-align: center;
+}
+
+.thOrigine
+{
+    width: 62px;
+    text-align: center;
+}
+
+.thModif
+{
+    width: 60px;
+    text-align: center;
+}
+
+.thImg
+{
+    text-align: center;
+    width: 22px;
+}
+
+#tblHeaderExpr, #tblInfoExpr, #tblHeaderLCI, #tblHeaderFranchise, #tblDetail
+{
+    width: 643px;
+}
+
+    #tblHeaderExpr tr, #tblHeaderLCI tr, #tblHeaderFranchise tr
+    {
+        height: 1px !important;
+    }
+
+.tdTitleExpr
+{
+    padding-left: 5px;
+    width: 335px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*width: 425px;*/
+}
+
+.tdCodeExpr
+{
+    text-align: center;
+    width: 75px;
+    /*width: 116px;*/
+}
+
+.tdOrigine
+{
+    width: 64px;
+    text-align: center;
+}
+
+.tdModif
+{
+    width: 62px;
+    text-align: center;
+}
+
+.tdImg
+{
+    text-align: center;
+    width: 24px;
+}
+
+.thTitleType
+{
+    text-align: center;
+    width: 338px;
+    /*width: 423px;*/
+}
+
+.inputValFRH
+{
+    width: 96px !important;
+}
+
+.inputValLCI
+{
+    width: 157px !important;
+}
+
+.tdValTitleLCI
+{
+    text-align: center;
+    width: 158px;
+}
+
+.tdUnitTypeTitle
+{
+    text-align: center;
+    width: 65px;
+}
+
+.DetailSelect
+{
+    width: 64px !important;
+}
+
+.tdUnitTypeTitle
+{
+    text-align: center;
+    width: 65px;
+}
+
+.FullTextarea
+{
+    width: 631px;
+}
+
+.LargeInput
+{
+    width: 378px !important;
+}
+
+.tdValLCI
+{
+    width: 160px;
+}
+
+.tdUnitTypeVal
+{
+    width: 67px;
+}
+
+.tdConcurUnitType
+{
+    width: 65px;
+}
+
+.tdConcurUnitType
+{
+    width: 65px;
+}
+
+.HeightTextarea
+{
+    height: 90px;
+}
+
+.LabelLCIRisque
+{
+    margin-left: 5px;
+    margin-right: 48px;
+    margin-top: 3px;
+}
+
+.LabelFranchiseGenerale
+{
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.LabelFranchiseRisque
+{
+    margin-right: 23px;
+    margin-top: 3px;
+}
+
+.ColumnUniteType_Risque
+{
+    float: left;
+    /*width: 253px;*/
+    width: 160px;
+}
+
+.tdValFRH
+{
+    width: 101px;
+}
+
+.tdDate
+{
+    width: 74px;
+}
+
+.tdValMinMaxTitleFRH
+{
+    width: 99px;
+    text-align: center;
+}
+
+.tdDateTitleFRH
+{
+    width: 72px;
+    text-align: center;
+}
+
+.tdValMinMaxTitleFRH
+{
+    width: 99px;
+    text-align: center;
+}
+
+.tdImgTitle
+{
+    width: 22px;
+    text-align: center;
+}
+
+.tblLstExprComp
+{
+    table-layout: fixed;
+    width: 652px;
+}
+
+.divBodyLstExprCompRef
+{
+    width: 670px;
+    height: 380px;
+    overflow: auto;
+}
+
+.thSelExpr
+{
+    width: 20px;
+}
+
+.thTypeExpr
+{
+    width: 60px;
+}
+
+.thLibExpr
+{
+    width: 475px;
+}
+
+.thModifExpr
+{
+    width: 70px;
+}
+
+.tdSelExpr
+{
+    width: 22px;
+    text-align: center;
+}
+
+.tdTypeExpr
+{
+    padding-left: 5px;
+    width: 58px;
+}
+
+.tdLibExpr
+{
+    padding-left: 5px;
+    width: 472px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdModifExpr
+{
+    width: 72px;
+    text-align: center;
+}
+
+.divInfoEpxrMax
+{
+    max-height: 250px;
+    overflow-y: auto;
+}

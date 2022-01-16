@@ -1,0 +1,66 @@
+﻿#divTemplatesCaneva {
+    display: block;
+    z-index: 12;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 2px;
+    border-color: #eee;
+    padding-top: 5px;
+    padding-right: 5px;
+    width: 690px;
+    height: 130px;
+}
+
+.popup-overlay {
+    visibility: hidden;
+    position: absolute;
+    left: 25%;
+}
+
+.popup-overlay.active {
+    /*displays pop-up when "active" class is present*/
+    visibility: visible;
+    /*text-align: center; */    
+}
+
+.popup-header {
+    margin: 3px;
+    padding: 5px;
+    height: 20px;
+    vertical-align: middle;
+    text-align:center;
+}
+
+.popup-footer {
+    margin: 3px;
+    padding: 5px;
+    vertical-align: middle;
+    height:30px;
+}
+
+.popup-content {
+    /*Hides pop-up content when there is no "active" class */
+    visibility: hidden;
+    margin: 3px;
+    padding:10px;
+}
+
+    .popup-content.active {
+        /*Shows pop-up content when "active" class is present */
+        visibility: visible;
+        margin: 3px;
+    }
+
+.popup-button {
+    margin: 5px;
+    width : 98%;
+}
+
+.HorizontalHalfWithGroupCopyCanevas {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    width: 99%;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+}

@@ -1,0 +1,62 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleListeClauses
+<div id="divHeaderClausier">
+    <table id="tblHeaderClausier">
+        <tr>
+            <th class="tablePersoHead tdEmptyHistoHeader"></th>
+            <th id="th_rubrique" class="col_HeaderRubrique tablePersoHead sortable">
+                Rubrique
+            </th>
+            <th id="th_sousrubrique" class="col_HeaderSousRubrique tablePersoHead sortable">
+                Sous Rubrique
+            </th>
+            <th id="th_sequence" class="col_HeaderSequence tablePersoHead sortable">
+                Séquence
+            </th>
+            <th id="th_Version" class="col_HeaderVersionClausier tablePersoHead sortable">
+                Version
+            </th>
+            <th id="th_libelle" class="col_HeaderLibelle tablePersoHead sortable">
+                Libellé
+            </th>
+            <th class="tablePersoHead tdEmptyHistoHeader"></th>
+        </tr>
+    </table>
+</div>
+<div id="divBodyClausier">
+    <table id="tblBodyClausier" class="trHeight">
+        @foreach (var item in Model.Clauses)
+        {
+            @Html.Partial("../Clausier/LigneClause", item)
+        }
+    </table>
+</div>
+<div id="bandeauPleinEcran" class="GroupFull GroupWithBorder ButtonsHeight" style="display: none">
+    <div class="ActionButtons ActionButtonLeft">
+    </div>
+    <div id="dvLinkClose" class="FloatLeft" style="padding-top: 6px;">
+        <button id="btnNoFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Fermer le plein écran">
+            <img src="@Url.Content("/Content/Images/window_nofullscreen.png")" alt="Fermer" />
+        </button>
+    </div>
+    <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+        <button id="btnSuivantPleinEcran" type="button" albshortcut="true" data-accesskey="s" disabled="disabled"><u>S</u>uivant</button>
+    </div>
+</div>
+<div id="divVisualisationClause" class="None">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataVisualisationClause">
+    </div>
+</div>
+<div id="divHistoriqueClause" class="None">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataHistoriqueClause" style="width: 537px">
+    </div>
+</div>
+<div id="divHistoriqueClauseInvalide" class="None">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataHistoriqueClauseInvalide" style="width: 537px">
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaData.Bandeau_MetaData
+
+@if (ViewContext.Controller is ALBINGIA.OP.OP_MVC.Controllers.SyntheseAffaireController) { }
+else {
+    @AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "synthese.css" }, "~/Content/less/affaire")
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "synthese-affaire.js" })
+}
+
+@*Ajouter les bundles*@
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AnEntete/AnEnteteStyle")
+<div class="HeightRow">
+    <input type="hidden" id="CodeAffaireRech" value="@(Model.IdOffre)" />
+    <input type="hidden" id="VersionRech" value="@(Model.Version)" />
+    <input type="hidden" id="TypeAffaireRech" value="@(Model.Type)" />
+    <input type="hidden" id="CodeAvnRech" value="@(Model.NumAvenant)" />
+    <table class="tabBandeau" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            @if ((Model.Type == "P") && (@Model.Version != "0")) {
+                <td class="AlbNoWrap cellBandeauOffre"><b>@Model.IdOffre - @Model.Version</b></td>
+            }
+            else {
+                if (Model.Type == "O") {
+                    <td class="AlbNoWrap cellBandeauOffre"><b>@Model.IdOffre - @Model.Version</b></td>
+                }
+                else {
+                    <td class="AlbNoWrap cellBandeauOffre"><b>@Model.IdOffre</b></td>
+                }
+            }
+            <td class="AlbNoWrap cellBandeauDescr" title="@Model.Description">@Model.Description</td>
+            <td class="AlbNoWrap cellBandeauBranche" title="@Model.Branche - @Model.Cible">@Model.Branche - @Model.Cible</td>
+            <td class="AlbNoWrap cellBandeauAssu" title="@Model.Delegation - @Model.Inspecteur">@Model.Delegation - @Model.Inspecteur</td>
+            <td class="AlbNoWrap cellBandeauAssu" title="@Model.IdAssure - @Model.NomAssure">@Model.IdAssure - @Model.NomAssure</td>
+            <td class="AlbNoWrap cellBandeauImg">
+                @if (Model.HasDoubleSaisie) {
+                    <img id="DblSaisieBandeau" class="CursorPointer" src="@Url.Content("/Content/Images/ico_16_formorder.png")" alt="DoubleSaisie" title="Contient une double saisie" />
+                }
+            </td>
+            <td id="imgInfoBandeau" class="AlbNoWrap cellBandeauImg CursorPointer">
+                <img src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" alt="Informations" />
+            </td>
+            @*            <td id="imgInfoBandeau2" class="AlbNoWrap cellBandeauImg CursorPointer">
+                    <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")" alt="Informations" />
+                </td>*@
+        </tr>
+    </table>
+</div>
+<div @(Model.ContexteBandeau == "recherche" ? "id=divInfoBandeauRecherche" : "id=divInfoBandeau") class="nInfoBandeau backgroundBandeauInfo" style="width: 1185px; height: 560px"></div>
+@*@Html.Partial("Entete/InfoBandeau", Model)*@
+<div id="divBandeauInfo" class="None">
+</div>

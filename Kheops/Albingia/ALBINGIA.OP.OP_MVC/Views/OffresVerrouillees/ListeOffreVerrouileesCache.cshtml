@@ -1,0 +1,71 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesOffresVerrouillees.ModeleOffreVerrouillee>
+<div id="lstOffreCache" class="CommonForm FloatLeft" style="width: 790px;">
+    @Html.Hidden("splitCharHtml", (ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML))
+    <div class="GroupFull GroupWithBorder GroupNoTitle" style="width: 775px;">
+        <div class="HorizontalFullWithGroup" style="width: 770px">
+            <div class="GradientSection ParamHeight">
+                @if (Model == null || Model.Count == 0)
+                {
+                    <br />
+                    <b>@Html.Raw("Aucune offre verrouillée")</b>
+                    <br />
+                    <br />
+                }
+                else
+                {
+                    <div id="divHeaderParam">
+                        <table id="tblHeaderParam">
+                            <tr>
+                                <th class="colHTypeOffre tablePersoHead" id="th_1">Type Offre
+                                </th>
+                                <th class="colHCodeOffre tablePersoHead" id="th_2">Code Offre<span class="spImg" style="float: right;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" /></span>
+                                </th>
+                                <th class="colHVersion tablePersoHead" id="th_3">Version<span class="spImg" style="float: right;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" /></span>
+                                </th>
+                                <th class="colHAvenant tablePersoHead" id="th_4">Num AVN
+                                </th>
+                                <th class="colHUtilisateur tablePersoHead" id="th_5">Utilisateur<span class="spImg" style="float: right; display: none;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" /></span>
+                                </th>
+                                @*Mise en commentaire, date récupérée erronée.*@
+                                @*<th class="colHDateVerrouillage tablePersoHead" id="th_6">Date de verrouillage<span class="spImg" style="float: right; display: none;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" /></span>
+                                </th>*@
+                                <th class="tablePersoHead" id="th_6">
+                                    <input id="allCacheCheckbox" type="checkbox" />
+                                </th>
+                                <th>
+                                    <input type="button" id="btnSupprimerCache" class="btnSupprimer" value="" />
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyParam" class="AlignCenter">
+                        <table id="tblBodyParamCache">
+                            @foreach (var offreVerouillee in Model)
+                            {
+                                <tr class="trOffreVerouillee">
+                                    <td class="colTypeOffre">@offreVerouillee.Type</td>
+                                    <td class="colCodeOffre">@offreVerouillee.NumOffre</td>
+                                    <td class="colVersion">@offreVerouillee.Version</td>
+                                    <td class="colNumAvn">@offreVerouillee.NumAvenant</td>
+                                    <td class="colUtilisateur">@offreVerouillee.Utilisateur</td>
+                                    <td class="colSuppression">
+                                        <input class="checkboxSuppression" type="checkbox" name="checkOffreCache" albOffreCache="@(string.Format("{0}_{1}_{2}_{3}", offreVerouillee.NumOffre, offreVerouillee.Version, offreVerouillee.Type, offreVerouillee.NumAvenant))" />
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 775px">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFancyFermer" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>

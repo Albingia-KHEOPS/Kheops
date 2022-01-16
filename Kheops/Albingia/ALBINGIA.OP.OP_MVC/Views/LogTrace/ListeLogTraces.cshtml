@@ -1,0 +1,37 @@
+﻿@model List<ALBINGIA.Framework.Common.Models.Common.LogTrace>
+@if (Model == null || Model.Count == 0)
+{
+    <br />
+    <b>@Html.Raw("Aucune trace de log")</b>
+    <br />
+    <br />
+}
+else
+{
+    <table id="tblBody" class="trHeight">
+        @foreach (var trace in Model)
+        {                        
+            <tr class="trLogTrace">
+                <td class="colType">
+                    @if (trace.Level == ALBINGIA.Framework.Common.Tools.AlbLog.LogTraceLevel.Erreur)
+                    {               
+                        <img title="Erreur" src="/Content/Images/alertes/notif_icn_crit16.png" class="ImgType" />
+                    }
+                    @if (trace.Level == ALBINGIA.Framework.Common.Tools.AlbLog.LogTraceLevel.Information)
+                    {               
+                        <img title="Information" src="/Content/Images/alertes/notif_icn_info16.png" class="ImgType" />
+                    }
+                    @if (trace.Level == ALBINGIA.Framework.Common.Tools.AlbLog.LogTraceLevel.Avertissement)
+                    {               
+                        <img title="Avertissement" src="/Content/Images/alertes/notif_icn_warn16.png" class="ImgType" />
+                    }
+                    @trace.Level.ToString()
+                </td>
+                <td name="linkOpen" class="colMessage CursorPointer navig" title="@trace.ContentLog">@trace.ContentLog
+                </td>
+                <td class="colDate">@trace.DateLog
+                </td>
+            </tr>
+        }
+    </table>
+}

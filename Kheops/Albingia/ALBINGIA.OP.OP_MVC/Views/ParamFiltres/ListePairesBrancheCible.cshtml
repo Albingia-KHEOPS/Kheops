@@ -1,0 +1,9 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamFiltres.ModeleLigneBrancheCible>
+<table id="tblPairesBrancheCibleBody" class="trHeight">
+    @foreach (var ligne in Model)
+    {
+        <tr name="lignePaireBrancheCible" id="@("lignePaireBrancheCible_" + @ligne.GuidIdPaire)">
+            @Html.Partial("LignePaireBrancheCible", @ligne)
+        </tr>
+    }
+</table>

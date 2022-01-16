@@ -1,0 +1,31 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationSaisiePage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albRechercherBlackList.css", "vCreationSaisie.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albRechercherBlackList.js" }, "~/Scripts/AlbingiaJS/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albCreationSaisie.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+@Html.Partial("_AlertesPreneur", Model)
+
+<div class="FullWidth FloatLeft">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <div id="divBodyCreationSaisie">
+        @Html.Partial("BodyCreationSaisie", Model)
+    </div>
+</div>
+<div id="resultScript">
+</div>
+
+<div id="divRechercheAvanceeCourtierCreationContrat" albname="divRechercheAvancee">
+    <div class="overlay-background" style="z-index:22" >
+    </div>
+    <div id="divDataRechercheAvanceeCourtierCreationCourtier" albname="divDataRechercheAvancee"></div>
+</div>
+
+<div name="RechercherCourtier" albcontext="courtierGestion" id="divRechercherCourtierGestion">
+    @Html.Partial("/Views/RechercheSaisie/RechercheAvanceeCabinetCourtage.cshtml", Model.ListCabinetCourtageGestion)
+</div>
+
+@Url.IncludeKoComponent("blacklist-affaires")

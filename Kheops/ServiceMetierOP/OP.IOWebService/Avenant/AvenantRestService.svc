@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="RestContracts.IWebAvenant" Factory="OP.IOWebService.LightInject.LightInjectServiceHostFactory" %>

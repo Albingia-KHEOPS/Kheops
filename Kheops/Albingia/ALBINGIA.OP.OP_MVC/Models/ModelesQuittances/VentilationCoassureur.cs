@@ -1,0 +1,11 @@
+﻿using System.Collections.Generic;
+namespace ALBINGIA.OP.OP_MVC.Models.ModelesQuittances
+{
+    public class VentilationCoassureur
+    {
+        public string ModeAffichage { get; set; }
+        public string NumQuittanceVisu { get; set; }
+        public string NatureContrat { get; set; }
+        public List<CoAssureurGarantie> ListeCoAssureurs { get; set; }
+    }
+}

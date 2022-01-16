@@ -1,0 +1,50 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.AssuresAdditionnels.AssuAdditionnels
+@{
+    var splitChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+
+    if (Model != null && Model.AssuresReference != null)
+    {
+        foreach (var assurRef in Model.AssuresReference)
+        {
+    <tr class="@(assurRef.AssureBase == assurRef.CodeAssure ? "Bold" : "")">
+        <td class="tdBodyCodeRef">
+            <div class="FloatRight PaddingRight">
+                @(assurRef.CodeAssure)
+            </div>
+            @if (assurRef.AssureBase == assurRef.CodeAssure)
+            {
+                <div class="FloatLeft">
+                    <input type="checkbox" title="si case cochée : le preneur est un assuré" id="PreneurEstAssureDivF" name="PreneurEstAssureDivF" />
+                </div>
+            }
+        </td>
+        <td class="tdBodyNomRef" name="NomAssure@(splitChar)@(assurRef.CodeAssure)">@(assurRef.NomAssure)</td>
+        <td class="tdBodyCPRef">@(assurRef.CodePostal)</td>
+        <td class="tdBodyVilleRef">@(assurRef.Ville)</td>
+        <td class="tdBodyQualitesRef">@(!string.IsNullOrEmpty(assurRef.CodeQualite1) ? string.Format("{0} - {1}", assurRef.CodeQualite1, assurRef.LibQualite1) : string.Empty)</td>
+        <td class="tdBodyQualitesRef">@(!string.IsNullOrEmpty(assurRef.CodeQualite2) ? string.Format("{0} - {1}", assurRef.CodeQualite2, assurRef.LibQualite2) : string.Empty)</td>
+        <td class="tdBodyQualitesRef">@(!string.IsNullOrEmpty(assurRef.CodeQualite3) ? string.Format("{0} - {1}", assurRef.CodeQualite3, assurRef.LibQualite3) : string.Empty)</td>
+        <td class="tdBodyAutreRef">
+            @if (!string.IsNullOrEmpty(assurRef.QualiteAutre))
+            {
+                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" title="@(assurRef.QualiteAutre)"/>
+            }
+        </td>
+        @if (assurRef.AssureBase != assurRef.CodeAssure)
+        {
+            <td class="tdBodyAutreRef">
+                <img id="updAssRef@(splitChar)@(assurRef.CodeAssure)" name="UpdAssRef" title="Modifier l'assuré" class="CursorPointer" src="@Url.Content("/Content/Images/editer1616.png")" />
+                &nbsp;
+                                            <img id="delAssRef@(splitChar)@(assurRef.CodeAssure)" name="DelAssRef" title="Supprimer l'assuré" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+            </td>
+        }
+        else
+        {
+            <td class="tdBodyAutreRef">
+                <img id="updAssRef@(splitChar)@(assurRef.CodeAssure)" name="UpdAssRef" title="Modifier l'assuré" class="CursorPointer" src="@Url.Content("/Content/Images/editer1616.png")" />
+            </td>
+        }
+    </tr>
+        }
+    }
+}

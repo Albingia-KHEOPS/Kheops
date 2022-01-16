@@ -1,0 +1,1140 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Data.EasycomClient</name>
+    </assembly>
+    <members>
+        <member name="T:System.Data.EasycomClient.EacCommand">
+            <summary>
+            EacCommand représente l'objet Command de Easycom .NET.
+            Ce composant support les types de Commandes Fichier, Sql, Procédure stockée, et programmes natifs (Easycom).
+            Support également les types LOB.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.#ctor">
+            <summary>
+            Crée un objet EacCommand vide.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.#ctor(System.Data.EasycomClient.EacConnection)">
+            <summary>
+            Crée un objet EacCommand vide depuis un objet EacConnection. 
+            </summary>
+            <param name="connection"></param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.#ctor(System.String)">
+            <summary>
+            Crée un objet Command de type SQL basé sur la requête donnée en paramètre <see cref="P:System.Data.EasycomClient.EacCommand.CommandText"/>.
+            </summary>
+            <param name="cmdText"></param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.#ctor(System.String,System.Data.EasycomClient.EacConnection)">
+            <summary>
+            Crée un objet Command de type SQL basé sur la requête donnée en paramètre <see cref="P:System.Data.EasycomClient.EacCommand.CommandText"/>, et depuis l'objet EacConnection fourni.
+            </summary>
+            <param name="cmdText"></param>
+            <param name="connection"></param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.#ctor(System.String,System.Data.EasycomClient.EacConnection,System.Data.EasycomClient.EacTransaction)">
+            <summary>
+            Crée un objet Command de type SQL basé sur la requête donnée en paramètre <see cref="P:System.Data.EasycomClient.EacCommand.CommandText"/>,depuis l'objet EacConnection, et l'objet EacTransaction fournis.
+            </summary>
+            <param name="cmdText"></param>
+            <param name="connection"></param>
+            <param name="txn"></param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.Cancel">
+            <summary>
+            non supporté
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.CreateParameter">
+            <summary>
+            Crée un nouvel objet EacParameter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.Prepare">
+            <summary>
+            Prépare la commande en cours
+            </summary>
+            <remarks>La propriété <see cref="P:System.Data.EasycomClient.EacCommand.Parameters"/> est mise à jour en cas de succès (sauf versions OS/400 inférieures à V4R4)</remarks>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.ExecuteReader">
+            <summary>
+            Ouvre un objet EacDataReader en mode sequentialAccess, si la commande retourne des enregistrements.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.ExecuteNonQuery">
+            <summary>
+            Execute une commande qui ne retourne pas d'enregistrements.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.ExecuteReader(System.Data.CommandBehavior)">
+            <summary>
+            Execute la commande selon le CommandBehavior fourni. Retourne un EacDataReader pour accéder aux enregistrements résultat.
+            </summary>
+            <param name="behavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.ExecuteScalar">
+            <summary>
+            non supporté (utilisé normalement pour retourner un enregistrement)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.Dispose">
+            <summary>
+            Libère l'objet EacCommand
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacCommand.Finalize">
+            <summary>
+            Destructeur de EacCommand
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacCommand.CommandText">
+            <summary>
+            Le texte de commande. Peut obéir a différentes syntaxe suivant la propriété <see cref="P:System.Data.EasycomClient.EacCommand.CommandType"/>.
+            </summary>
+            <example>
+            <c>CommandText = "SELECT * FROM EASYCOM/SP_CUST ORDER BY FIRSTNAME"	// requête classique </c>
+            <c>CommandText = "SELECT * FROM EASYCOM/SP_CUST WHERE CUST_ID =:CUST_ID ORDER BY FIRSTNAME"	// requête classique avec paramètre</c>
+            <c>CommandText = "SELECT * FROM EASYCOM/SP_CUST WHERE CUST_ID = ? ORDER BY FIRSTNAME"	// requête classique avec paramètre, syntaxe standard</c>
+            <c>CommandText = "EASYCOM/SP_CUST // fichier physique ou logique </c>
+            <c>CommandText = "EASYCOM/SQLPROC // procédure stockée</c>
+            <c>CommandText = "*PGM/RPCSAMPLE // procédure Easycom</c>
+            </example>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacCommand.CommandTimeout">
+            <summary>
+            non supporté avec cette version.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacCommand.CommandType">
+            <summary>
+            Définit comment interpréter la propriété <see cref="P:System.Data.EasycomClient.EacCommand.CommandText"/>.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacCommand.Connection">
+            <summary>
+            Retourne ou fixe la connexion associée à la commande.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacCommand.System#Data#IDbCommand#Parameters">
+            <summary>
+            Retourne le tableau de paramètres
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacCommand.Parameters">
+            <summary>
+            Retourne le tableau de paramètres
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacCommand.Transaction">
+            <summary>
+            retourne ou fixe l'objet EacTransaction en cours
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacCommand.UpdatedRowSource">
+            <summary>
+            retourne ou fixe l'objet UpdatedRowSource associé.
+            </summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacConnection">
+            <summary>
+            EacConnection représente l'objet Connection de Easycom .NET
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.#ctor">
+            <summary>
+            Constructeur de EacConnection
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.#ctor(System.String)">
+            <summary>
+            Crée un objet EacConnection avec la chaîne de connexion fournie.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.System#Data#IDbConnection#BeginTransaction">
+            <summary>
+            Crée une transaction.
+            </summary>
+            <remarks>
+            Transactions imbriquées non supportées.
+            </remarks>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.System#Data#IDbConnection#BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Crée une transaction.
+            </summary>
+            <remarks>
+            Transactions imbriquées non supportées.
+            </remarks>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.BeginTransaction">
+            <summary>
+            Creates a transaction
+            </summary>
+            <remarks>
+            Transactions imbriquées non supportées.
+            </remarks>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Creates a transaction
+            </summary>
+            <remarks>
+            Transactions imbriquées non supportées.
+            </remarks>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.ChangeDatabase(System.String)">
+            <summary>
+            Non supporté.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.Open">
+            <summary>
+            Ouvre la connexion. La connexion peut être "poolée". 
+            Ignoré si la connexion est déjà ouverte.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.Close">
+            <summary>
+            Ferme la connexion. La connexion peut être "poolée" (non réellement fermée).
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.CreateCommand">
+            <summary>
+            Crée un objet EacCommand vide lié à la connexion.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.Dispose">
+            <summary>
+            Libère l'objet EacConnection
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.RemoteCommand(System.String)">
+            <summary>
+            Exécute une commande AS/400 native. Une exception est déclenchée si la commande échoue.
+            Ouvre la connexion si nécessaire.
+            </summary>
+            <param name="strCommand"></param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.RemoteRtvCommand(System.String)">
+            <summary>
+            Exécute une commande AS/400, avec possibilité de définir des variables résultat. Une exception est déclenchée si la commande échoue.
+            Ouvre la connexion si nécessaire.
+            </summary>
+            <param name="strRtvCommand"></param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.RemoteRtvCommandGetValue(System.String)">
+            <summary>
+            Retourne une variable résultat correspondant au dernier appel à RemoteRtvCommand.
+            </summary>
+            <param name="strName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacConnection.Finalize">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacConnection.ConnectionString">
+            <summary>
+            Définit des options supplémentaires. 
+            </summary>
+            <example>Voici un exemple de chaîne de connexion:
+            <code>
+            myConnection.ConnectionString = "User ID=QPGMR;Password=QPGMR;Init Libl=MYLIB1;MYLIB2";
+            </code>
+            </example>
+            <remarks>
+            Les options principales sont:
+            <list type="bullet">
+            <item><description>User ID</description></item>
+            <item><description>Password,</description></item>
+            <item><description>Init Libl,</description></item>
+            <item><description>JobName,</description></item>
+            <item><description>EacUnlock,</description></item>
+            <item><description>CodepageFile</description></item>
+            </list>
+            </remarks>
+            
+        </member>
+        <member name="P:System.Data.EasycomClient.EacConnection.ConnectionTimeout">
+            <summary>
+            Non supporté dans cette version.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacConnection.Database">
+            <summary>
+            <para>Retourne la base de données en cours, cad l'adresse IP ou le nom de la machine.</para>
+            <para>Cette option est fixée à l'aide de la propriété <see cref="P:System.Data.EasycomClient.EacConnection.ConnectionString"/></para>
+            </summary>
+            <remarks>Cette propriété est en lecture seule.
+             </remarks>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacConnection.State">
+            <summary>
+            Retoure l'état en cours.
+            </summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacDataAdapter">
+            <summary>
+            EacDataAdapter est une classe utilitaire destinée à simplifier certaines tâches. Elle peut notamment être utilisée pour remplir facilement un objet DataSet ou bien permettre des mises à jour dynamiques.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.#ctor">
+            <summary>
+            Crée un EacdataAdapter vide.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.Update(System.Data.DataRow[],System.Data.Common.DataTableMapping)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.Fill(System.Data.DataSet,System.Int32,System.Int32,System.String,System.Data.IDbCommand,System.Data.CommandBehavior)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.Fill(System.Data.DataSet)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.FillSchema(System.Data.DataTable,System.Data.SchemaType,System.Data.IDbCommand,System.Data.CommandBehavior)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.CreateRowUpdatedEvent(System.Data.DataRow,System.Data.IDbCommand,System.Data.StatementType,System.Data.Common.DataTableMapping)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.CreateRowUpdatingEvent(System.Data.DataRow,System.Data.IDbCommand,System.Data.StatementType,System.Data.Common.DataTableMapping)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.OnRowUpdating(System.Data.Common.RowUpdatingEventArgs)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataAdapter.OnRowUpdated(System.Data.Common.RowUpdatedEventArgs)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataAdapter.SelectCommand">
+            <summary></summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataAdapter.System#Data#IDbDataAdapter#SelectCommand">
+            <summary>
+            Fixe ou retourne la commande associée au DataAdapter, représentant une requête de sélection, une procédure stockée ou un fichier.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataAdapter.InsertCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataAdapter.System#Data#IDbDataAdapter#InsertCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataAdapter.UpdateCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataAdapter.System#Data#IDbDataAdapter#UpdateCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataAdapter.DeleteCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataAdapter.System#Data#IDbDataAdapter#DeleteCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="E:System.Data.EasycomClient.EacDataAdapter.RowUpdating">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="E:System.Data.EasycomClient.EacDataAdapter.RowUpdated">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacRowUpdatingEventHandler">
+            <summary></summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacRowUpdatedEventHandler">
+            <summary></summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacRowUpdatingEventArgs">
+            <summary></summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacRowUpdatingEventArgs.#ctor(System.Data.DataRow,System.Data.IDbCommand,System.Data.StatementType,System.Data.Common.DataTableMapping)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacRowUpdatingEventArgs.Command">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacRowUpdatedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacRowUpdatedEventArgs.#ctor(System.Data.DataRow,System.Data.IDbCommand,System.Data.StatementType,System.Data.Common.DataTableMapping)">
+            <summary></summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacRowUpdatedEventArgs.Command">
+            <summary></summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacDataReader">
+            <summary>
+            EacDataReader est une classe permettant la lecture d'un résultat, sous forme d'un flux séquentiel d'enregistrements.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.Close">
+            <summary>
+            Ferme l'objet <see cref="T:System.Data.EasycomClient.EacDataReader"/>. Ferme physiquement le résultat.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.NextResult">
+            <summary>
+            Met à jour l'objet pour lire le "resultset" suivant, lors de l'utilisation de procédures stockées SQL.            
+            </summary>
+            <returns>vrai si un résultat suivant a été trouvé, faux sinon.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.Read">
+            <summary>L'objet <see cref="T:System.Data.EasycomClient.EacDataReader"/> passe à l'enregistrement suivant.</summary>
+            <returns>vrai si un enregistrement a été lu, faux si la fin du fichier a été dépassée.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetSchemaTable">
+            <summary>
+            non supporté
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetName(System.Int32)">
+            <summary>
+            Retoune le nom de la colonne spécifiée.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>Le nom de la colonne spécifiée.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetDataTypeName(System.Int32)">
+            <summary>
+            Retourne le nom du type de la colonne.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>Le nom du type de données.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetFieldType(System.Int32)">
+            <summary>
+            Retourne le l'objet <see cref="T:System.Type"/> associé à la colonne
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>L'objet <see cref="T:System.Type"/> associé à la colonne.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetValue(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne, dans le type de données le plus proche du natif. 
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>Cette méthode retourne la value ou System.DBNull pour les valeurs nulles.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetValues(System.Object[])">
+            <summary>
+            Retourne toutes les valeurs de colonnes de l'enregistrement courant sous forme d'un tableau.
+            </summary>
+            <param name="values">Un tableau de System.Object dans lequel copier les valeurs de colonnes.</param>
+            <returns>Le nombre d'éléments copiés dans le tableau.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetOrdinal(System.String)">
+            <summary>
+            Retourne le numéro de colonne à partir du nom de la colonne.  
+            </summary>
+            <param name="name">Le nom de la colonne (du champ).</param>
+            <returns>Le numéro de colonne, indexée à partir de zéro.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetBoolean(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme de booléen.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetByte(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme d'octet.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+             Remplit un flux d'octets, à partir d'un offset dans la colonne dans le tampon à partir d'un offset dans le tampon.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <param name="buffer">Le tampon dans lequel écrire les données. </param>
+            <param name="length">Le nombre maximum d'octets à écrire dans le tampon.</param>
+            <param name="fieldOffset">L'indice dans le champ à partir duquel réaliser l'oparation. </param>
+            <param name="bufferoffset">L'indice dans le tampon à partir duquel réaliser l'opération. </param>
+            <returns> Le nombre d'octets traités.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetChar(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme de caractère.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Remplit un flux de caractères, à partir d'un offset dans la colonne dans le tampon à partir d'un offset dans le tampon.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <param name="buffer">Le tampon dans lequel écrire les données. </param>
+            <param name="length">Le nombre maximum de caractères à écrire dans le tampon.</param>
+            <param name="fieldOffset">L'indice dans le champ à partir duquel réaliser l'oparation. </param>
+            <param name="bufferoffset">L'indice dans le tampon à partir duquel réaliser l'opération. </param>
+            <returns> Le nombre de caractères traités.</returns>
+         </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetGuid(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme de GUID.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetInt16(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme d'entier 16 bits.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetInt32(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme d'entier 32 bits.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetInt64(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme d'entier 64 bits.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetFloat(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme de flotant simple précision
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetDouble(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme de flotant double précision.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetString(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme de chaîne de caractères.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetDecimal(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne sous forme d'objet <see cref="T:System.Decimal"/>. 
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetDateTime(System.Int32)">
+            <summary>
+             Retourne la valeur de la colonne sous forme d'objet <see cref="T:System.DateTime"/>.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>La valeur de la colonne.  </returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.GetData(System.Int32)">
+            <summary>Not supported</summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.IsDBNull(System.Int32)">
+            <summary>
+            Retourne vrai si la colonne est nulle.
+            </summary>
+            <param name="i">i: Le numéro de colonne, indexée à partir de zéro.</param>
+            <returns>vrai si la valeur de la colonne est nulle.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.Dispose">
+            <summary>
+            Libère l'objet, et les resources associées.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacDataReader.Finalize">
+            <summary> </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataReader.Depth">
+            <summary>
+            Retourne toujours 0 cas l'imbrication n'est pas supportée.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataReader.IsClosed">
+            <summary>
+            Retourne vrai si le datareader est fermé.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataReader.RecordsAffected">
+            <summary>
+            Retourne le nombre de lignes affectées par la dernière exécution (lignes modifiées, insérées ou effacées).
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataReader.FieldCount">
+            <summary>Retourne le nombre de colonnes pour la ligne en cours</summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataReader.Item(System.Int32)">
+            <summary>
+            Retourne la valeur de la colonne, dans le type de données le plus proche du natif.
+            </summary>
+            <returns>Cette méthode retourne System.DBNull pour les colonnes nulles.</returns>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacDataReader.Item(System.String)">
+            <summary>
+            Retourne la valeur de la colonne à partir de son nom, dans le type de données le plus proche du natif.
+            </summary>
+            <returns>Cette méthode retourne System.DBNull pour les colonnes nulles.</returns>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacParameter">
+            <summary>
+            Représente un paramètre de <see cref="T:System.Data.EasycomClient.EacCommand"/>
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameter.#ctor">
+            <summary>
+             Crée une nouvelle instance de <see cref="T:System.Data.EasycomClient.EacParameter"/>.  
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameter.#ctor(System.String,System.Data.DbType)">
+            <summary>
+            Crée une nouvelle instance de <see cref="T:System.Data.EasycomClient.EacParameter"/> avec le nom et le type du paramètre.  
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="type">Une des valeurs de <see cref="T:System.Data.DbType"/>.</param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameter.#ctor(System.String,System.Data.DbType,System.Int32)">
+            <summary>
+            Crée une nouvelle instance de <see cref="T:System.Data.EasycomClient.EacParameter"/> avec le nom et le type et la taille du paramètre.  
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="type">Une des valeurs de <see cref="T:System.Data.DbType"/>.</param>
+            <param name="Size">La taille du paramètre.</param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameter.#ctor(System.String,System.Object)">
+            <summary>
+            Crée une nouvelle instance de <see cref="T:System.Data.EasycomClient.EacParameter"/> avec le nom et une valeur initiale.  
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="value">Valeur initiale du paramètre.</param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameter.#ctor(System.String,System.Data.DbType,System.String)">
+            <summary>
+            Crée une nouvelle instance de <see cref="T:System.Data.EasycomClient.EacParameter"/> avec le nom, le type et la colonne source du paramètre.  
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="type">Une des valeurs de <see cref="T:System.Data.DbType"/>.</param>
+            <param name="sourceColumn">Le nom de la colonne source (utilisé notamment par EacDataAdapter). </param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameter.#ctor(System.String,System.Data.DbType,System.Int32,System.String)">
+            <summary>
+            Crée une nouvelle instance de <see cref="T:System.Data.EasycomClient.EacParameter"/> avec le nom, le type, la taille et la colonne source du paramètre.  
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="dbType">Une des valeurs de <see cref="T:System.Data.DbType"/>.</param>
+            <param name="Size">La taille du paramètre.</param>
+            <param name="sourceColumn">Le nom de la colonne source (utilisé notamment par EacDataAdapter). </param>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.DbType">
+            <summary>
+            Représente le type du paramètre par une des valeurs de <see cref="T:System.Data.DbType"/>.  
+            </summary>
+            <remarks>Le changement de cette propriété peut changer la valeur de la propriété <see cref="T:Easycom.EasycomType"/>.</remarks>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.EacType">
+            <summary>
+            Représente  le type du paramètre par une des valeurs de <see cref="T:Easycom.EasycomType"/>.  
+            </summary>
+            <remarks>Le changement de cette propriété peut changer la valeur de la propriété <see cref="P:System.Data.EasycomClient.EacParameter.DbType"/>.</remarks>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.Direction">
+            <summary>
+            Indique si le paramètre est en entrée seule, en sortie seule, ou bidirectionnel.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.IsNullable">
+            <summary>
+            Indique si la valeur du paramètre peut être nulle.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.ParameterName">
+            <summary>
+            Représente le nom du paramètre <see cref="T:System.Data.EasycomClient.EacParameter"/>.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.SourceColumn">
+            <summary>
+            Représente le nom de la colonne source mappée à un objet  <see cref="T:System.Data.DataSet"/>  et utilisée pour charger ou retourner <see cref="P:System.Data.EasycomClient.EacParameter.Value"/>.
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.SourceVersion">
+            <summary>
+            non supporté (ignoré)
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.Value">
+            <summary>
+            Représente la valeur du paramètre.
+            </summary>
+            <remarks>Changer cette valeur peut changer également les valeurs des propriétés <see cref="P:System.Data.EasycomClient.EacParameter.DbType"/> et <see cref="T:Easycom.EasycomType"/></remarks>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.Precision">
+            <summary>
+            Représente le nombre de chiffres significatifs pour le paramètre (décimales comprises).  
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.Scale">
+            <summary>
+            Représente le nombre de décimales pour le paramètre  
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameter.Size">
+            <summary>
+            Représnet la taille en octets du paramètre.
+            </summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacParameterCollection">
+            <summary>
+            Représente une collection de paramètres pour l'objet <see cref="T:System.Data.EasycomClient.EacCommand"/> ainsi que les éventuels mappages vers des colonnes d'un objet<see cref="T:System.Data.DataSet"/>. 
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.Contains(System.String)">
+            <summary>
+            Indique si la collection contient le paramètre indiqué.
+            </summary>
+            <param name="parameterName">Nom de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> à trouver.</param>
+            <returns>vrai si la collection contient le paramètre.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.IndexOf(System.String)">
+            <summary>
+            Retourne l'indice de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> spécifié par son nom.  
+            </summary>
+            <param name="parameterName">Nom de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> à trouver.</param>
+            <returns>L'indice de la position de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/>, indexée à partir de zéro.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.RemoveAt(System.String)">
+            <summary>
+            Supprime l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> spécifié par son nom.  
+            </summary>
+            <param name="parameterName">Nom de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> à trouver.</param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.Add(System.Object)">
+            <summary>
+            Ajoute l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/>.  
+            </summary>
+            <param name="value">value: l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> à ajouter</param>
+            <returns>L'indice de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> ajouté.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.Add(System.Data.EasycomClient.EacParameter)">
+            <summary>
+            Ajoute l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/>.  
+            </summary>
+            <param name="value">value: l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> à ajouter</param>
+            <returns>L'indice de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> ajouté.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.Add(System.String,System.Data.DbType)">
+            <summary>
+            Ajoute nouvel objet <see cref="T:System.Data.EasycomClient.EacParameter"/> en utilisant le nom et le type du paramètre. 
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="type">Une des valeurs de <see cref="T:System.Data.DbType"/>.</param>
+            <returns>L'indice de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> ajouté.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.Add(System.String,System.Object)">
+            <summary>
+            Ajoute nouvel objet <see cref="T:System.Data.EasycomClient.EacParameter"/> en utilisant le nom et la valeur du paramètre. 
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="value">Valeur initiale du paramètre.</param>
+            <returns>L'indice de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> ajouté.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.Add(System.String,System.Data.DbType,System.String)">
+            <summary>
+            Ajoute nouvel objet <see cref="T:System.Data.EasycomClient.EacParameter"/> en utilisant le nom, le type, et la colonne source du paramètre. 
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="dbType">Une des valeurs de <see cref="T:System.Data.DbType"/>.</param>
+            <param name="sourceColumn">Le nom de la colonne source (utilisé notamment par EacDataAdapter). </param>
+            <returns>L'indice de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> ajouté.</returns>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacParameterCollection.Add(System.String,System.Data.DbType,System.Int32)">
+            <summary>
+            Ajoute nouvel objet <see cref="T:System.Data.EasycomClient.EacParameter"/> en utilisant le nom, le type et la taille du paramètre.
+            </summary>
+            <param name="parameterName">Le nom du paramètre.</param>
+            <param name="dbType">Une des valeurs de <see cref="T:System.Data.DbType"/>.</param>
+            <param name="Size">La taille du paramètre.</param>
+            <returns>L'indice de l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> ajouté.</returns>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacParameterCollection.Item(System.String)">
+            <summary>
+            Retourne l'objet <see cref="T:System.Data.EasycomClient.EacParameter"/> correspondant au nom indiqué.  
+            </summary>
+        </member>
+        <member name="T:System.Data.EasycomClient.EacTransaction">
+            <summary>
+            Représente une transaction sur l'AS/400. Seule une transaction peut être démarrée à la fois pour une connexion donnée.
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacTransaction.#ctor(System.Data.EasycomClient.EacConnection)">
+            <summary>
+            Crée une nouvelle transaction, à partir d'un objet EacConnection. Démarre automatiquement la transaction.
+            Appelé par <see cref="M:System.Data.EasycomClient.EacConnection.BeginTransaction"/>
+            </summary>
+            <param name="connection"></param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacTransaction.#ctor(System.Data.EasycomClient.EacConnection,System.Data.IsolationLevel)">
+            <summary>
+            Crée une nouvelle transaction à partir d'un objet connexion et d'un niveau d'isolation.
+            Appelé par <see cref="M:System.Data.EasycomClient.EacConnection.BeginTransaction"/>
+            </summary>
+            <param name="connection">L'objet connection.</param>
+            <param name="iso">Le niveau d'isolation.</param>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacTransaction.Commit">
+            <summary>
+             Valide la transaction.   
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacTransaction.Rollback">
+            <summary>
+             Annulle la transaction.   
+            </summary>
+        </member>
+        <member name="M:System.Data.EasycomClient.EacTransaction.Dispose">
+            <summary>
+            Libère l'objet EacTransaction
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacTransaction.IsolationLevel">
+            <summary>
+            Renvoie le niveau d'isolation <see cref="T:System.Data.IsolationLevel"/>.  
+            </summary>
+        </member>
+        <member name="P:System.Data.EasycomClient.EacTransaction.Connection">
+            <summary>
+            Renvoie l'objet <see cref="T:System.Data.EasycomClient.EacConnection"/> associé, ou null si la transaction n'est plus valide.  
+            </summary>
+        </member>
+        <member name="T:Easycom.EasycomConnection">
+            <summary>
+            L'objet connection de Easycom permettant des accès bas niveau (API fichier, ...) à Easycom.
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomConnection.#ctor">
+            <summary>
+            Crée un objet EasycomConnection vide. La propriété ConnectionString doit être renseignée avant l'appel à la méthode "Open".
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomConnection.#ctor(System.String)">
+            <summary>
+            Crée un objet EasycomConnetion avec la chaîne de connexion spécifiée. La méthode "Open" peut être appelée juste après.
+            </summary>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:Easycom.EasycomConnection.OpenFile(System.String)">
+            <summary>
+            Ouvre un fichier Physique ou logique sur le serveur. Ce fichier peut ensuite être utilisé de manière native (ReadKey, ReadFirst, ...)
+            </summary>
+            <param name="FileName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Easycom.EasycomDataSet">
+            <summary>
+            Classe générique pour tous les objets base de données: Fichier, Requête, Procédure Stockée, ...
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.ReadFirst">
+            <summary>
+            Lit le premier enregistrement
+            </summary>
+            <returns>vrai si OK, faux si fin de fichier atteinte. Une exception est déclenchée si une autre erreur survient</returns>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.ReadNext">
+            <summary>
+            Lit l'enregistrement suivant depuis la position courante
+            </summary>
+            <returns>vrai si OK, faux si fin de fichier atteinte. Une exception est déclenchée si une autre erreur survient</returns>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.ReadPrev">
+            <summary>
+            Lit l'enregistrement précédent depuis la position courante
+            </summary>
+            <returns>vrai si OK, faux si fin de fichier atteinte. Une exception est déclenchée si une autre erreur survient</returns>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.ReadLast">
+            <summary>
+            Lit le dernier enregsitrement
+            </summary>
+            <returns>vrai si OK, faux si fin de fichier atteinte. Une exception est déclenchée si une autre erreur survient</returns>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.GetPosition">
+            <summary>
+            Retourne la position courante, s'il y en a une. S'il n'y a pas de position courante, une exception est déclenchée.
+            </summary>
+            <returns></returns>
+            <remarks>
+            La position est la valeur du RRN (Relative Record Number) pour l'objet EasycomFile. 
+            Elle ne représente donc pas le rang de l'enregistrement.
+            </remarks>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.GotoPosition(System.Int32)">
+            <summary>
+            Effectue un déplacement à la position donnée. Une exception est déclenchée en cas d'échec.
+            </summary>
+            <param name="pos">La position renvoyée par GetPosition</param>
+            <remarks>
+            La position est la valeur du RRN (Relative Record Number) pour l'objet EasycomFile. 
+            Elle ne représente donc pas le rang de l'enregistrement.
+            </remarks>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.IsDBNull(System.Int32)">
+            <summary>
+            retourne vrai si le champ à la position f est nul.
+            </summary>
+            <param name="f"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.GetValue(System.Int32)">
+            <summary>
+            retourne la valeur pour le champ d'indice f (base zéro).
+            </summary>
+            <param name="f"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.GetValue(System.String)">
+            <summary>
+            retourne la valeur pour le champ de nom fldName
+            </summary>
+            <param name="fldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.Close">
+            <summary>
+            Ferme le DataSet
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomDataSet.Dispose">
+            <summary>
+            Libère toute la mémoire occupée par l'objet (et ferme le DataSet)
+            </summary>
+        </member>
+        <member name="T:Easycom.EasycomException">
+            <summary>
+            Objet de type Exception, utilisé pour toutes les erreurs liées à Easycom.
+            </summary>
+        </member>
+        <member name="T:Easycom.openFileAccess">
+            <summary>
+            Définit les modes d'ouverture possibles pour l'objet EasycomFile
+            </summary>
+        </member>
+        <member name="T:Easycom.fetchMode">
+            <summary>
+            Définit les modes de lecture possibles pour l'objet EasycomFile. Ceci affecte le comportement des méthodes Readxxx et Recordxx.
+            Les valeurs possibles sont:
+            Unlocked: La lecture n'est pas bloquante par défaut. La taille du cache est limitée.
+            SequentialUnlocked: La lecture n'est pas bloquante par défaut. La taille du cache est élevée et optimisée pour une lecture séquentielle en avant.
+            Locked: Les lectures sont toutes bloquantes. Aucun cache n'est utilisé. Ce mode est recommandé pour des mises à jour ou suppressions en séquence.
+            </summary>
+        </member>
+        <member name="T:Easycom.keyReadOp">
+            <summary>
+            Définit les différentes options de lecture de la méthode EasycomFile.ReadKey (lecture par clé):
+            Les valeurs possibles sont:
+            Eq:		Exactement égal
+            Gt:		Plus grand que, strictement
+            Ge:		Plus grand ou égal
+            Lt:		Plus petit que, strictement
+            Le:		Plus petit que
+            NextEq:	Suivant égal
+            PrevEq:	Précédent égal
+            Next UnEq:	Suivant non égal
+            Prev EnEq:	Précédent non égal
+            </summary>
+        </member>
+        <member name="T:Easycom.fieldInformation">
+            <summary>
+            Définit les valeurs de type d'information pouvant être données à la méthode EasycomFile.GetFieldInformation.
+            Les valeurs possibles sont:
+            FieldName:	Nom du champ
+            EasycomType:	Type Eayscom, calculé depuis le type réel du serveur.
+            ServerLen:	Longueur du champ réellement occupée sur le serveur.
+            Digits:	Nombre exact de chiffres significatifs sur le serveur (incluant les décimales).
+            Decimals:	Nombre de décimales
+            ColumnHeader:	Entête de colonne
+            ColumnText:	Texte de colonne
+            NullAllowed:	Un booléen qui informe si la colonne peut être nulle.
+            </summary>
+        </member>
+        <member name="T:Easycom.EasycomFile">
+            <summary>
+            une classe dérivée de EasycomDataSet qui représente un fichier du serveur (Physique, ou logique).
+            Cet objet permet des opérations bas niveau comme l'accès par clé (partiel ou total), la mise à jour directe, insertion, suppression, ...
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomFile.#ctor(Easycom.EasycomConnection,System.String,Easycom.openFileAccess,System.Boolean)">
+            <summary>
+            Crée un objet EasycomFile, et ouvre le fichier spécifié.
+            </summary>
+            <param name="cnx">L'objet EasycomConnection auquel le fichier est associé</param>
+            <param name="FileName">Le nom du fichier. La syntaxe est LIBRARY/FILENAME(MEMBER). Si LIBRARY est omis, FILE est ouvert en utilisant la liste des bibilothèques du travail (*LIBL). Si MEMBER est omis, le premier membre est ouvert</param>
+            <param name="openMode">Le mode d'ouverture; Read, ReadWrite, ExclusiveRead, ExclusiveReadWrite</param>
+            <param name="bCommit">vrai si le fichier est ouvert pour faire partie des transactions. Le fichier doit également être journalisé sur l'AS/400 pour pouvoir faire partie d'une transaction.</param>
+        </member>
+        <member name="M:Easycom.EasycomFile.#ctor(Easycom.EasycomConnection,System.String,Easycom.openFileAccess)">
+            <summary>
+            Crée un objet EasycomFile, et ouvre le fichier spécifié.
+            </summary>
+            <param name="cnx">L'objet EasycomConnection auquel le fichier est associé</param>
+            <param name="FileName">Le nom du fichier. La syntaxe est LIBRARY/FILENAME(MEMBER). Si LIBRARY est omis, FILE est ouvert en utilisant la liste des bibilothèques du travail (*LIBL). Si MEMBER est omis, le premier membre est ouvert</param>
+            <param name="openMode">Le mode d'ouverture; Read, ReadWrite, ExclusiveRead, ExclusiveReadWrite</param>
+        </member>
+        <member name="M:Easycom.EasycomFile.#ctor(Easycom.EasycomConnection,System.String)">
+            <summary>
+            Crée un objet EasycomFile, et ouvre le fichier spécifié.
+            </summary>
+            <param name="cnx">L'objet EasycomConnection auquel le fichier est associé</param>
+            <param name="FileName">Le nom du fichier. La syntaxe est LIBRARY/FILENAME(MEMBER). Si LIBRARY est omis, FILE est ouvert en utilisant la liste des bibilothèques du travail (*LIBL). Si MEMBER est omis, le premier membre est ouvert</param>
+        </member>
+        <member name="M:Easycom.EasycomFile.ReadKey(System.Object,Easycom.keyReadOp,System.Int32)">
+            <summary>
+            Recherche par clé d'un enregistrement sur le fichier logique ou physique.
+            </summary>
+            <param name="keyValues">Valeur(s) de clé. Si cet objet est un type simple (comme string, integer,...) la valeur correspond au premier champ. Si ce paramètre est un tableau, chaque élément de table correspond au différents champs de clé.</param>
+            <param name="op">Type d'opération de clé. Valeurs possibles: Eq, Neq, Lt, Le, Gt, Ge, NextEq, PrevEq, NextNeq, PrevNeq</param>
+            <param name="lastFieldPartialLen">Si ce paramètre est supérieur à 0, la recherche s'effectue sur une partie de la clé, la valeur correspondant à la taille du dernier champ de clé spécifié</param>
+            <returns>vrai si l'enregistrement a été trouvé.</returns>
+        </member>
+        <member name="M:Easycom.EasycomFile.ReadKey(System.Object,Easycom.keyReadOp)">
+            <summary>
+            Recherche par clé d'un enregistrement sur le fichier logique ou physique.
+            </summary>
+            <param name="keyValues">Valeur(s) de clé. Si cet objet est un type simple (like string, integer,...) la valeur correspond au premier champ. Si ce paramètre est un tableau, chaque élément de table correspond au différents champs de clé.</param>
+            <param name="op">Type d'opération de clé. Valeurs possibles: Eq, Neq, Lt, Le, Gt, Ge, NextEq, PrevEq, NextNeq, PrevNeq</param>
+            <returns>vrai si l'enregistrement a été trouvé.</returns>
+        </member>
+        <member name="M:Easycom.EasycomFile.ReadKey(System.Object)">
+            <summary>
+            Recherche par clé d'un enregistrement sur le fichier logique ou physique.
+            </summary>
+            <param name="keyValues">Valeur(s) de clé. Si cet objet est un type simple (like string, integer,...) la valeur correspond au premier champ. Si ce paramètre est un tableau, chaque élément de table correspond au différents champs de clé.</param>
+            <returns>vrai si l'enregistrement a été trouvé.</returns>
+        </member>
+        <member name="M:Easycom.EasycomFile.ReadKey(System.Object,System.Int32)">
+            <summary>
+            Recherche par clé d'un enregistrement sur le fichier logique ou physique.
+            </summary>
+            <param name="keyValues">Valeur(s) de clé. Si cet objet est un type simple (like string, integer,...) la valeur correspond au premier champ. Si ce paramètre est un tableau, chaque élément de table correspond au différents champs de clé.</param>
+            <param name="lastFieldPartialLen">Si ce paramètre est supérieur à 0, la recherche s'effectue sur une partie de la clé, la valeur correspondant à la taille du dernier champ de clé spécifié</param>
+            <returns>vrai si l'enregistrement a été trouvé.</returns>
+        </member>
+        <member name="M:Easycom.EasycomFile.RecordLock">
+            <summary>
+            Verrouille l'enregistrement courrant. Cela permet de modifier ou supprimer ensuite l'enregistrement.
+            Une exception est déclenchée si l'enregistrement a été modifié depuis la précédente lecture, ou
+            si l'enregistrement est déjà verrouillé par un autre utilisateur.
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomFile.RecordUnlock">
+            <summary>
+            Annule tout verrouillage en cours.
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomFile.RecordAppend(System.Boolean)">
+            <summary>
+            Passe l'objet EasycomFile en mode ajout d'enregistrement. la méthode RecordUpdate doit être appelée pour valider le nouvel enregistrement.
+            </summary>
+            <param name="bClear">si faux, les valeurs de champ de sont pas mise à blanc</param>
+        </member>
+        <member name="M:Easycom.EasycomFile.RecordAppend">
+            <summary>
+            Passe l'objet EasycomFile en mode ajout d'enregistrement. la méthode RecordUpdate doit être appelée pour valider le nouvel enregistrement.
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomFile.RecordUpdate">
+            <summary>
+            Valide la modification ou insertion en cours. Une exception est déclenchée en cas d'échec (intégrité, clé en double, ...)
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomFile.RecordDelete">
+            <summary>
+            Efface l'enregistrement en cours. Verrouille implicitement l'enregistrement s'il ne l'était pas (avec contrôle de non changement).
+            </summary>
+        </member>
+        <member name="M:Easycom.EasycomFile.SetValue(System.Int32,System.Object)">
+            <summary>
+            Définit une valeur pour le champ spécifié. Verrouille implicitement l'enregistrement s'il ne l'était pas (avec contrôle de non changement).
+            </summary>
+            <param name="f">l'indice de base zéro du champ</param>
+            <param name="Value">valeur du champ</param>
+        </member>
+        <member name="M:Easycom.EasycomFile.SetValue(System.String,System.Object)">
+            <summary>
+            Définit une valeur pour le champ spécifié. Verrouille implicitement l'enregistrement s'il ne l'était pas (avec contrôle de non changement).
+            </summary>
+            <param name="fieldName">Nom du champ</param>
+            <param name="Value">valeur du champ</param>
+        </member>
+        <member name="M:Easycom.EasycomFile.GetFieldInformation(System.Int32,Easycom.fieldInformation)">
+            <summary>
+            Retourne des informations sur le champ spécifié.
+            </summary>
+            <param name="f">l'indice de base zéro du champ</param>
+            <param name="info">le type d'information à retourner</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easycom.EasycomFile.GetFieldInformation(System.String,Easycom.fieldInformation)">
+            <summary>
+            Retourne des informations sur le champ spécifié.
+            </summary>
+            <param name="fieldName">Nom du champ</param>
+            <param name="Value">valeur du champ</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

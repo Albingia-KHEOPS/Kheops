@@ -1,0 +1,110 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleLogTracePage
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vLogTrace.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albLogTrace.js" }, "~/Scripts/AlbingiaJS/")
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm TotalWidth">
+        <div id="divBodyPage" class="GroupFull GroupWithBorder TotalWidth">
+            <div class="GroupTitle">
+                Trace des Logs
+            </div>
+            <div class="HorizontalFullWithGroup WidthBody">
+                <div class="GradientSection RechFiltre">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Type :</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => m.CodeType, Model.CodesType, "CodeType", htmlAttributes: new { @id = "CodeType" }, generateTitle: true, @genEmptyLine: false)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="ColumnMotCle">
+                            <div class="FloatLeft">
+                                <label class="Block">Contient :</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="MotCle" name="MotCle" value="@Model.MotCle" class="inputMotCle" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft lblDateDebut">Date de début:</div>
+                            <div class="FloatLeft">
+                                @Html.AlbDateFormat(m => m.DateDebutFiltre, new { @class = "datepicker" })
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft lblDateFin">Date de fin:</div>
+                            <div class="FloatLeft">
+                                @Html.AlbDateFormat(m => m.DateFinFiltre, new { @class = "datepicker" })
+                            </div>
+                        </div>
+                        <div class="FloatLeft">
+                            <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="GradientSection">
+                    <div id="divHeaderListLogTraces">
+                        <table id="tblHeader" class="trHeight">
+                            <tr>
+                                <th class="colHType tablePersoHead" id="th_1">Type
+                                </th>
+                                <th class="colHMessage tablePersoHead" id="th_2">Message
+                                </th>
+                                <th class="colHDate tablePersoHead triable" id="th_3">Date<span class="spImg" style="float: right;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" /></span>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyListLogTraces">
+                        @if (Model.LogTraces == null || Model.LogTraces.Count == 0)
+                        {
+                            <br />
+                            <b>@Html.Raw("Aucune trace de log")</b>
+                            <br />
+                            <br />
+                        }
+                        else
+                        {
+                            @Html.Partial("ListeLogTraces", Model.LogTraces)
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnulerRetour" type="button" albshortcut="true" data-accesskey="t">Re<u>t</u>our</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divMessageLog" class="None">
+    <div class="overlay-background" style="z-index:14" >
+    </div>
+    <div id="divDataMessageLog">
+        <div class="GroupFull GroupWithBorder">
+            <div class="HorizontalHalfWithGroupAdmin HeightClauseVisu">
+                <div id="divMessageVisu" class="GradientSection">
+                    <div id="Message"></div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="FloatRight">
+                    <button id="btnFermer" type="button">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

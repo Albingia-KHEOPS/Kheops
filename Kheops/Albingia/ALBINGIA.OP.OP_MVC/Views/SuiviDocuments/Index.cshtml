@@ -1,0 +1,13 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleSuiviDocumentsPage>
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albSuiviDocuments.js" }, "~/Scripts/AlbingiaJS/")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vSuiviDocuments.css" }, "~/Content/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+    var splitHtmlChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+}
+
+
+<div class="FullWidth">   
+    @Html.Partial("SuiviDocumentsBody", Model)
+</div>
+

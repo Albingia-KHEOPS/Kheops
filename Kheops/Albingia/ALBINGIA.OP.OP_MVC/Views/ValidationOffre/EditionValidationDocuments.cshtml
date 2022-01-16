@@ -1,0 +1,212 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesValidationOffre.ModeleEditionDocuments
+@using ALBINGIA.Framework.Common.Constants
+<div class="CommonForm FloatLeft" style="width: 1050px;">
+    <div class="nGroupFull nGroupWithBorder" style="width: 1030px;">
+        <div class="nHorizontalFullWithGroup" style="width: 1030px;">
+            <div class="nGradientSection">
+                @if (Model.TypeAffaire == AlbConstantesMetiers.TYPE_CONTRAT && Model.ActeGestion != AlbConstantesMetiers.TYPE_ATTESTATION) {
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft PaddingLeft">
+                                Engagements par traité de réassurance
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <table width="485px;" class="trHeight">
+                            <tr>
+                                <th class="tdHeaderTraite tablePersoHead PaddingLeft">
+                                    &nbsp;
+                                </th>
+                                <th class="tdHeaderEngagement tablePersoHead">
+                                    Engagement total (€)
+                                </th>
+                                <th class="tdHeaderEngagement tablePersoHead">
+                                    Engagement Albingia (€)
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="divTraite">
+                        @Html.Partial("/Views/Engagements/EngagementTraite.cshtml", Model.EngagementsTraites)
+                    </div>
+                    <hr />
+                }
+                <div class="divDocuments">
+                    @Html.Hidden("ModeEcranDocEdit", (Model.ModeEcran))
+                    <div id="divHeaderDocument" class="PaddingLeft">
+                        <table id="tblHeaderDocument" style="table-layout: fixed; width: 932px;" class="trHeight">
+                            <tr>
+                                <th class="tablePersoHead" style="width: 22px;">&nbsp;</th>
+                                <th class="tablePersoHead" style="width: 22px;">&nbsp;</th>
+                                <th class="tablePersoHead" style="width: 250px;">Document</th>
+                                <th class="tablePersoHead" style="width: 250px;">Destinataire</th>
+                                <th class="tablePersoHead" style="width: 100px;">Type d'envoi</th>
+                                <th class="tablePersoHead" style="width: 42px;">Nb ex.</th>
+                                <th class="tablePersoHead" style="width: 60px;">Tampon</th>
+                                <th class="tablePersoHead" style="width: 100px;">Lettre d'accomp.</th>
+                                <th class="tablePersoHead" style="width: 42px;">Email</th>
+                                <th class="tablePersoHead" style="width: 46px;">&nbsp;</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyDocument" class="PaddingLeft" style="overflow-y: auto; max-height: 150px; height: 150px;">
+                        @if (Model.ListeDocuments != null && Model.ListeDocuments.Any()) {
+                            @Html.Partial("/Views/DocumentGestion/LstDocuments.cshtml", Model.ListeDocuments)
+                        }
+                        else {
+                            @Html.Raw("<b>Aucun document</b>")
+                        }
+                    </div>
+                </div>
+                <hr />
+                <div class="HeightRow"></div>
+                <div class="FloatLeft">
+                    <div id="divMessageAlerte" class="FloatLeft" style="padding-left: 10px;">
+                        @if (Model.ModeEcran == "editer") {
+                            <div class="HeightRow">
+                                @Html.Raw(string.Format("<b>Attention, pour {2} {0}-{1}</b>", Model.CodeAffaire, Model.VersionAffaire, Model.TypeAffaire == AlbConstantesMetiers.TYPE_CONTRAT ? "le contrat" : "l'offre"))
+                            </div>
+                            <div class="HeightRow" style="padding-left: 20px;">
+                                @Html.Raw("- les documents ci-avant vont être édités et sauvegardés")
+                            </div>
+                        }
+                        else {
+                            <div class="HeightRow">
+                                @Html.Raw(string.Format("<b>Attention, vous allez valider {2} {0}-{1}</b>", Model.CodeAffaire, Model.VersionAffaire, Model.TypeAffaire == AlbConstantesMetiers.TYPE_CONTRAT ? "le contrat" : "l'offre"))
+                            </div>
+                            <div class="HeightRow" style="padding-left: 20px;">
+                                @Html.Raw(string.Format("- <u>{0} ne sera plus modifiable</u>", Model.TypeAffaire == AlbConstantesMetiers.TYPE_CONTRAT ? "il" : "elle"))
+                            </div>
+                            <div class="HeightRow" style="padding-left: 20px;">
+                                @Html.Raw("- les documents ci-avant vont être édités et sauvegardés")
+                            </div>
+                        }
+                    </div>
+                    @if (Model.TypeAffaire == AlbConstantesMetiers.TYPE_CONTRAT) {
+                        <div id="divCotisations" class="FloatLeft">
+                            @if (Model.TraceEmiss == "O" || Model.TraceEmissRegule == "O") {
+                                <div class="FloatLeft" style="width: 300px;color: red; padding-bottom: 5px;">
+                                    <font style="color: red; font-size: 20px;">@(Model.TraceEmissRegule == "O" ? "*" : string.Empty)</font>Les cotisations ci-dessous ne seront pas émises.
+
+                                </div>
+                            }
+                            <div style="clear: both;">
+                                @if (Model.ActeGestion == AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF || Model.ActeGestion == AlbConstantesMetiers.TYPE_AVENANT_REGUL) {
+                                    <table id="tblHeaderCotisation" class="trHeight">
+                                        <tr>
+                                            <th class="tablePersoHead" style="width: 142px;">Acte de gestion</th>
+                                            <th class="tablePersoHead" style="width: 48px;">Part Albingia</th>
+                                            <th class="tablePersoHead" style="width: 62px;">Cotis. HT</th>
+                                            <th class="tablePersoHead" style="width: 62px;">dont CN</th>
+                                            <th class="tablePersoHead" style="width: 62px;">Cotis. TTC</th>
+                                        </tr>
+                                    </table>
+                                    <table id="tblDetailsBodyCotisation" class="trHeight ">
+                                        @if (Model.CotAlbTTC != 0) {
+                                            <tr>
+                                                <td style="width: 140px; padding-left: 5px;">
+                                                    Avenant de modification<font style="color: red; font-size: 20px;">@(Model.TraceEmiss == "O" ? "*" : string.Empty)</font>
+                                                </td>
+                                                <td style="width: 50px; text-align: center;">
+                                                    100%
+                                                </td>
+                                                <td class="" style="@(Model.TraceEmiss == "O" ? "width: 60px; padding-right: 5px; text-align: right; font-style: italic;" : "width: 60px; padding-right: 5px; text-align: right;")">
+                                                    <span albmask="decimal">@Model.CotAlbHT</span>
+                                                </td>
+                                                <td class="colBodyCotiDontCN" style="@(Model.TraceEmiss == "O" ? "width: 60px; padding-right: 5px; text-align: right; font-style: italic;" : "width: 60px; padding-right: 5px; text-align: right;")">
+                                                    <span albmask="decimal">@Model.CotAlbCatNat</span>
+                                                </td>
+                                                <td class="colBodyCotiTTC" style="@(Model.TraceEmiss == "O" ? "width: 60px; padding-right: 5px; text-align: right; font-style: italic;" : "width: 60px; padding-right: 5px; text-align: right;")">
+                                                    <span albmask="decimal">@Model.CotAlbTTC</span>
+                                                </td>
+                                            </tr>
+                                        }
+                                        @if (Model.CotReguleTTC != 0) {
+                                            <tr>
+                                                <td style="width: 140px; padding-left: 5px;">
+                                                    Régularisation<font style="color: red; font-size: 20px;">@(Model.TraceEmissRegule == "O" ? "*" : string.Empty)</font>
+                                                </td>
+                                                <td style="width: 50px; text-align: center;">
+                                                    100%
+                                                </td>
+                                                <td class="" style="@(Model.TraceEmissRegule == "O" ? "width: 60px; padding-right: 5px; text-align: right; font-style: italic;" : "width: 60px; padding-right: 5px; text-align: right;")">
+                                                    <span albmask="decimal">@Model.CotReguleHT</span>
+                                                </td>
+                                                <td class="" style="@(Model.TraceEmissRegule == "O" ? "width: 60px; padding-right: 5px; text-align: right; font-style: italic;" : "width: 60px; padding-right: 5px; text-align: right;")">
+                                                    <span albmask="decimal">@Model.CotReguleCatNat</span>
+                                                </td>
+                                                <td class="" style="@(Model.TraceEmissRegule == "O" ? "width: 60px; padding-right: 5px; text-align: right; font-style: italic;" : "width: 60px; padding-right: 5px; text-align: right;")">
+                                                    <span albmask="decimal">@Model.CotReguleTTC</span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                }
+                                else if (Model.ActeGestion != AlbConstantesMetiers.TYPE_ATTESTATION) {
+
+                                    <table id="tblHeaderCotisation" class="trHeight ">
+                                        <tr>
+                                            <td class="colHeaderCoti"></td>
+                                            <td class="tablePersoHead colHeaderCotiHT">
+                                                Coti. HT
+                                            </td>
+                                            <td class="tablePersoHead colHeaderCotiDontCN">
+                                                dont CN
+                                            </td>
+                                            <td class="tablePersoHead colHeaderCotiTTC">
+                                                Coti. TTC
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table id="tblDetailsBodyCotisation" class="trHeight ">
+                                        <tr>
+                                            <td class="colBodyCoti">
+                                                100%
+                                            </td>
+                                            <td class="colBodyCotiHT" style="@(Model.TraceEmiss == "O" ? "text-align: right; font-style: italic;" : "text-align: right;")">
+                                                <span albmask="decimal">@Model.Cot100HTAvecCatNat</span>
+                                            </td>
+                                            <td class="colBodyCotiDontCN" style="@(Model.TraceEmiss == "O" ? "text-align: right; font-style: italic;" : "text-align: right;")">
+                                                <span albmask="decimal">@Model.Cot100CatNat</span>
+                                            </td>
+                                            <td class="colBodyCotiTTC" style="@(Model.TraceEmiss == "O" ? "text-align: right; font-style: italic;" : "text-align: right;")">
+                                                <span albmask="decimal">@Model.Cot100TTC</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="colBodyCoti">
+                                                part Albingia
+                                            </td>
+                                            <td class="colBodyCotiHT" style="@(Model.TraceEmiss == "O" ? "text-align: right; font-style: italic;" : "text-align: right;")">
+                                                <span albmask="decimal">@Model.CotAlbHT</span>
+                                            </td>
+                                            <td class="colBodyCotiDontCN" style="@(Model.TraceEmiss == "O" ? "text-align: right; font-style: italic;" : "text-align: right;")">
+                                                <span albmask="decimal">@Model.CotAlbCatNat</span>
+                                            </td>
+                                            <td class="colBodyCotiTTC" style="@(Model.TraceEmiss == "O" ? "text-align: right; font-style: italic;" : "text-align: right;")">
+                                                <span albmask="decimal">@Model.CotAlbTTC</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="HeightRow"></div>
+            </div>
+        </div>
+    </div>
+    <div class="nGroupFull nGroupWithBorder ButtonsHeight" style="width: 1030px">
+        <div class="ActionButtons ActionButtonRight" style="width: 150px; padding: 0;">
+            <button id="btnAnnulerEditDoc" type="button">Annuler</button>
+            <button id="btnValiderEditDoc" type="button" albcontext="@Model.ModeEcran">Valider</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,247 @@
+﻿<div class="simpleGradientSection FloatLeft dvRegule" data-bind="template: { afterRender : initSelectionPeriodePage }">
+    <input type="hidden" id="TypeAvt" data-bind="value : InfoPB.TypeAvt" />
+    <input type="hidden" id="erreurPGM" data-bind="value : InfoPB.ErreurPGM" />
+    <div class="dvWarning PaddingTop">
+        <!-- ko if : InfoPB.isCreateActeGestion() -->
+        <div class="FloatLeft">
+            <label class="Block reguleWarning">Attention, vous allez créer un nouvel acte de gestion. Toutes les informations du contrat en cours vont être mises en historique.</label>
+        </div>
+        <!-- /ko -->
+        <div class="FloatRight PaddingRight">
+            <input type="text" id="NumInterne" name="NumInterne" readonly="readonly" class="readonly inputNumInterne" data-bind="attr : { value : InfoPB.NumAvt }" />
+        </div>
+        <div class="FloatRight PaddingLeft">
+            <label class="Block cssType">N° avt</label>
+        </div>
+    </div>
+    <div class="dvDesc">
+        <div class="FloatLeft">
+            <label class="Block">Réf. de gestion</label>
+        </div>
+        <div id="zoneTxtArea" class="FloatLeft divTextArea2 NonReprisCP" albcontext="Description" data-bind="text : InfoPB.DescriptionAvt"></div>
+        <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="Description">
+            <img src="/Content/Images/moreinfo.png" width="22" height="22" />
+        </div>
+        <div id="txtArea" class="None" albcontext="Description">
+            <div class="FloatLeft">
+                <!-- ko if : InfoPB.IsReadOnly -->
+                <div id="Description" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;" data-bind="text : InfoPB.DescriptionAvt"></div>
+                <!-- /ko -->
+                <!-- ko ifnot : InfoPB.IsReadOnly -->
+                <textarea id="Description" name="Description" albcontext="Description" class="textareaDesc" data-bind="value : InfoPB.DescriptionAvt"></textarea>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+    <div class="PaddingLeft">
+        <b>Renseignez la période régularisée</b> :
+    </div>
+
+    <div class="PaddingLeft PaddingTop">
+        <table id="tblAttesHeader" class="trHeight">
+            <tr>
+                <th class="tablePersoHead thExercice">Exercice</th>
+                <th class="tablePersoHead thPeriode">Période régularisation</th>
+                <th class="tablePersoHead thBlank">&nbsp;</th>
+            </tr>
+        </table>
+    </div>
+    <div class="PaddingLeft TabPeriode">
+        <table id="tblReguleBody" class="trHeight">
+            <tr>
+                <!--<td>
+                    <select id="ddlExercices" data-bind="options: ListeExercices, valueAllowUnset: true, optionsValue: 'Libelle', optionsText: 'Libelle', disable: InfoPB.isReadonly, css: { readonly: InfoPB.isReadonly }"></select>
+                    <input type="hidden" id="PeriodeDeb" name="PeriodeDeb" class="inputDate datepicker" data-bind="attr : { value : InfoPB.PeriodeDeb }" />
+                    <input type="hidden" id="PeriodeFin" name="PeriodeFin" class="inputDate datepicker" data-bind="attr : { value : InfoPB.PeriodeFin }" />
+                </td>-->
+                <td>
+                    <!-- ko if : Contrat != null && Contrat.IsTemporaire() -->
+                    <input type="text" id="ExerciceRegule" class="inExercice numerique" disabled="disabled" albmask="year" data-bind="value : InfoPB.Exercice() != 0 ? InfoPB.Exercice : ''" maxlength="4" />
+                    <!-- /ko -->
+                    <!-- ko ifnot : Contrat != null && Contrat.IsTemporaire() -->
+                    <input type="text" id="ExerciceRegule" class="inExercice numerique" albmask="year" data-bind="value : InfoPB.Exercice() != 0 ? InfoPB.Exercice : '', css: { readonly : InfoPB.ReguleId() > 0 } , attr: { 'disabled' : InfoPB.ReguleId() > 0 ? 'disabled' : null }" maxlength="4" />
+                    <!-- /ko -->
+                </td>
+                <td class="width-periode-date"><input id="PeriodeDeb" name="PeriodeDeb" class="inputDate datepicker" data-bind="value : InfoPB.PeriodeDeb, css: { readonly : InfoPB.ReguleId() > 0 } , attr: { 'disabled' : InfoPB.ReguleId() > 0 ? 'disabled' : null }" /></td>
+                <td class="width-periode-date"><input id="PeriodeFin" name="PeriodeFin" class="inputDate datepicker" data-bind="value : InfoPB.PeriodeFin, css: { readonly : InfoPB.ReguleId() > 0 } , attr: { 'disabled' : InfoPB.ReguleId() > 0 ? 'disabled' : null }" /></td>
+                <!-- ko if : InfoPB.IsReadOnly -->
+                <td style="width: 36px;">
+                    &nbsp;
+                </td>
+                <!-- /ko -->
+                <!-- ko ifnot : InfoPB.IsReadOnly -->
+                <td class="thBlank center-content">
+                    <img id="btnDeleteRegule" src="/Content/Images/poubelle1616.png" alt="Delete" data-bind="css : { CursorPointer : InfoPB.PeriodeDeb() != '' && InfoPB.PeriodeFin() != '' },attr : { title : InfoPB.ReguleId() > 0 ? 'Supprimer la régularisation' : 'Vider la période' }, click : showDeleteRegul" />
+                </td>
+                <!-- /ko -->
+            </tr>
+        </table>
+    </div>
+    <div id="dvReguleCourtier">
+        <div class="HeightRow">
+            <input type="hidden" data-bind="value : InfoPB.LotId" id="lotId" />
+            <input type="hidden" data-bind="value : InfoPB.ReguleId" id="ReguleId" />
+            <input type="hidden" data-bind="value : InfoPB.RetourPGM" id="inRetourPGM" />
+            <input type="hidden" data-bind="value : InfoPB.HasSelections" id="HasSelections" />
+            <div class="FloatLeft">
+                <label class="Block lblRegule">Courtier sur la période</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="inCourtier" class="inCourtier readonly" data-bind="attr : { value : InfoPB.hasCourtier ? InfoPB.courtier() : '', albcode : InfoPB.CodeCourtier }" readonly="readonly" />
+                <input type="hidden" id="inCourtierCom" data-bind="value : InfoPB.hasCourtier ? InfoPB.courtier() : '', attr : { albcode : InfoPB.CodeCourtierCom }" />
+            </div>
+            <!-- ko if : InfoPB.hasCourtier -->
+            <div class="PaddingLeft FloatLeft">
+                <img id="btnModifCourtier" class="CursorPointer" src="/Content/Images/editer1616.png" title="Sélection courtier" alt="Select" data-bind="click : modifCourtier" />
+            </div>
+            <!-- /ko -->
+            <!-- ko if : InfoPB.MultiCourtier -->
+            <div class="PaddingLeft FloatLeft" style="padding-top: 2px;">
+                <img id="icoAlert" src="/Content/Images/alertes/notif_icn_warn16.png" title="Plusieurs courtiers existent sur la période" alt="Alerte" />
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblRegule">Commissions hors CATNAT</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="inHorsCATNAT" class="inCATNAT decimal readonly" data-bind="value : InfoPB.hasCourtier ? InfoPB.TauxHCATNAT : 0 " albmask="decimal" readonly="readonly" />
+            </div>
+            <div class="FloatLeft" style="padding-left: 37px;">
+                <label class="Block lblRegule">Commissions CATNAT</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="inCATNAT" class="inCATNAT decimal readonly" data-bind="value : InfoPB.hasCourtier ? InfoPB.TauxCATNAT : 0 " albmask="decimal" readonly="readonly" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblRegule">Quittancement</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="inQuittancement" class="readonly" data-bind="attr : { value : InfoPB.hasCourtier ? InfoPB.quittancement() : '', albcode : InfoPB.CodeQuittancement }" readonly="readonly" />
+            </div>
+        </div>
+
+        <div id="dvChoixCourtier" class="None">
+            <div class="overlay-background" style="z-index:5">
+            </div>
+            <div id="dvInfoChoixCourtier" class="divInfoChoixCourtier">
+                <div class="nGroupFull nGroupWithBorder WidthCourtierRegule">
+                    <div class="nHorizontalFullWithGroup WidthCourtierRegule">
+                        <div class="nGradientSection">
+                            <div class="HeightRow">
+                                <!-- ko if : InfoPB.MultiCourtier() && !InfoPB.IsReadOnly() -->
+                                <div class="FloatLeft PaddingLeft"><u>Plusieurs courtiers sont intervenus sur la période</u> :</div>
+                                <!-- /ko -->
+                                <!-- ko ifnot : InfoPB.MultiCourtier() && !InfoPB.IsReadOnly() -->
+                                <div class="FloatLeft PaddingLeft"><u>Courtier sur la période</u> :</div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block">Adressé à</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="hidden" id="oldCourtier" data-bind="value: InfoPB.CodeCourtier" />
+                                    <!-- ko if : InfoPB.MultiCourtier() && !InfoPB.IsReadOnly() -->
+                                    <select class="inCourtier" data-bind="options: InfoPB.Courtiers, value : InfoPB.ChoixCodeCourtier, valueAllowUnset: true, optionsValue: 'Value', optionsText: 'Text', attr : { id : 'ddlCourtiers' }"></select>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot : InfoPB.MultiCourtier() && !InfoPB.IsReadOnly() -->
+                                    <input type="text" id="ddlCourtiers" name="ddlCourtiers" class="inCourtier readonly" data-bind="value: InfoPB.hasCourtier() ? InfoPB.courtier() : '', attr : { title : InfoPB.hasCourtier() ? InfoPB.courtier() : '' }" readonly="readonly" />
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block">Commissioné</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="hidden" id="oldCourtierCom" data-bind="value: InfoPB.CodeCourtierCom" />
+                                    <!-- ko if : InfoPB.MultiCourtier() && !InfoPB.IsReadOnly() -->
+                                    <select class="inCourtierCom" data-bind="options: InfoPB.Courtiers, value : InfoPB.ChoixCodeCourtierCom, valueAllowUnset: true, optionsValue: 'Value', optionsText: 'Text', attr : { id : 'ddlCourtiersCom' }"></select>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot : InfoPB.MultiCourtier() && !InfoPB.IsReadOnly() -->
+                                    <input type="text" id="ddlCourtiersCom" name="ddlCourtiersCom" class="inCourtier readonly" data-bind="value: InfoPB.hasCourtierCom() ? InfoPB.courtierCom() : '', attr : { title : InfoPB.hasCourtierCom() ? InfoPB.courtierCom() : '' }" readonly="readonly" />
+                                    <!-- /ko -->
+                                </div>
+                                <div class="FloatLeft PaddingLeft">
+                                    <label class="Block">Quittancement</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="hidden" id="oldQuittancement" data-bind="value: InfoPB.CodeQuittancement" />
+                                    <!-- ko if : !InfoPB.IsReadOnly() -->
+                                    <select data-bind="foreach: InfoPB.Quittancements, value: InfoPB.ChoixCodeQuittancement, attr : { id : 'ddlQuittancements' }, event : { change: quittancementChanged }">
+                                        <option data-bind="value: Value, text: Text, attr: {title: Text}"></option>
+                                    </select>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot : !InfoPB.IsReadOnly() -->
+                                    <input type="text" class="readonly" data-bind="value: InfoPB.CodeQuittancement() + ' - ' + InfoPB.LibQuittancement()" readonly="readonly" />
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block">Com hors CATNAT</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input type="hidden" id="oldHCATNAT" data-bind="value: InfoPB.TauxHCATNAT" albmask="pourcentdecimal" />
+                                    <input type="text" id="ComHCATNAT" name="ComHCATNAT" class="inCATNAT decimal" data-bind="css : { readonly : InfoPB.CodeQuittancement() == ' D' || InfoPB.IsReadOnly() }, value : InfoPB.ChoixTauxHCATNAT, attr : { readonly : InfoPB.CodeQuittancement() == 'D' || InfoPB.IsReadOnly() }, event : { change: catnatChanged }" albmask="pourcentdecimal" />
+                                </div>
+                                <div class="FloatLeft" style="padding-left: 50px;">
+                                    <label class="AutoWidth" style="display: block;">Com CATNAT</label>
+                                </div>
+                                <div class="FloatLeft PaddingLeft">
+                                    <input type="hidden" id="oldCATNAT" data-bind="value: InfoPB.TauxCATNAT" albmask="pourcentdecimal" />
+                                    <input type="text" id="ComCATNAT" name="ComCATNAT" class="inCATNAT decimal" data-bind="css : { readonly : InfoPB.CodeQuittancement() == ' D' || InfoPB.IsReadOnly() }, value : InfoPB.ChoixTauxCATNAT, attr : { readonly : InfoPB.CodeQuittancement() == 'D' || InfoPB.IsReadOnly() }, event : { change: catnatChanged }" albmask="pourcentdecimal" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft WidthCourtierRegule">
+                    <div class="nActionButtons ActionButtonRight">
+                        <button id="btnCancelCourtier" type="button" class="None" data-bind="click : cancelCourtier">Annuler</button>
+                        <button id="btnCloseCourtier" type="button" data-bind="click : closeCourtier">Fermer</button>
+                        <button id="btnValidCourtier" type="button" data-bind="css : { None : InfoPB.IsReadOnly }, click : validCourtier" disabled="disabled">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="simpleGradientSection FloatRight dvAlertRegule">
+    <div class="HeightRow paddingleft150">
+        <div class="FloatLeft">
+            <img src="/Content/Images/ControleFin/A.png" />
+        </div>
+        <div class="FloatLeft PaddingLeft"><u>Alertes</u></div>
+    </div>
+    <div class="dvAlertes">
+        <table id="tblAlerteAvenant" class="trHeight tblAlertes">
+            <tbody>
+                <!-- ko foreach: InfoPB.Alertes -->
+                <tr style="background-color : white">
+                    <td class="PaddingTop tdImgAlerte">
+                        <!-- ko if: TypeBloquante() == "B" -->
+                        <img src="/Content/Images/ControleFin/B.png" />
+                        <!-- /ko -->
+                        <!-- ko ifnot: TypeBloquante() == "B" -->
+                        <img src="/Content/Images/ControleFin/A.png" />
+                        <!-- /ko -->
+                    </td>
+                    <td class="PaddingTop tdMsgAlerte" data-bind="attr : { title : MessageAlerte }"><!-- ko text : MessageAlerte--><!-- /ko --></td>
+                    <td id="linkAlerte" class="navig PaddingTop tdLinkAlerte" data-bind="attr : { albParam : TypeAlerte }, click : $parent.openAlerte.bind(this)">
+                        <input type="hidden" data-bind="attr : { id : 'inputAlerte' + TypeAlerte(), value : TypeBloquante() == 'B' ? TypeAlerte : '' }" />
+                        <!-- ko text : LienMessage --><!-- /ko -->
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+</div>

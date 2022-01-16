@@ -1,0 +1,177 @@
+﻿@using OP.WSAS400.DTO.Regularisation
+@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+@model ModeleRegularisationPage
+
+@Url.IncludeKoComponent("entete-contrat")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css", "vCreationAvenant.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/albRegul_Step1_ChoixPeriode.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    ViewBag.Title = "CreationRegule";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.ChoixPeriodeCourtier })
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="divGlobalRegulGroup">
+                @Html.HiddenNoName("isContratTempo", Model.Contrat.IsTemporaire.ToString())
+                @Html.HiddenNoName("attestId", string.Empty)
+                @Html.HiddenNoName("ModeAvt", Model.AvnMode)
+                @Html.HiddenNoName("hiddenInputId", string.Empty)
+                @Html.HiddenNoName("modeConsult", string.Empty)
+                @Html.HiddenNoName("periodicite", Model.Contrat.PeriodiciteCode)
+                @Html.HiddenNoName("FinEffetHeure", Model.FinEffetHeure)
+                @Html.Hidden("CodePeriodicite", (Model.Contrat.PeriodiciteCode))
+                @Html.HiddenNoName("SouscripteurCode", (Model.Contrat.SouscripteurCode))
+                @Html.HiddenNoName("GestionnaireCode", (Model.Contrat.GestionnaireCode))
+
+                <entete-contrat></entete-contrat>
+
+                <div id="divInfoRegul" class="simpleGradientSection divPeriodeAlertRegularisation">
+
+                    <div class="simpleGradientSection FloatLeft dvRegule">
+                        @Html.Hidden("TypeAvt", (Model.InfoRegule.TypeAvt))
+                        @Html.Hidden("erreurPGM", (Model.InfoRegule.ErreurPGM))
+                        @Html.Hidden("deleteMod", string.Empty)
+                        @Html.Hidden("cancelMod", string.Empty)
+                        <div class="dvWarning PaddingTop">
+                            @if (Model.InfoRegule.ModeAvt == "CREATE" && Model.InfoRegule.TypeAvt != ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF) {
+                                <div class="FloatLeft">
+                                    <label class="Block reguleWarning">Attention, vous allez créer un nouvel acte de gestion. Toutes les informations du contrat en cours vont être mises en historique.</label>
+                                </div>
+                            }
+                            <div class="FloatRight PaddingRight">
+                                <input type="text" id="NumInterne" name="NumInterne" value="@Model.InfoRegule.NumAvt" readonly="readonly" class="readonly inputNumInterne" />
+                            </div>
+                            <div class="FloatRight PaddingLeft">
+                                <label class="Block cssType">N° avt</label>
+                            </div>
+                        </div>
+                        <div class="dvDesc">
+                            <div class="FloatLeft">
+                                <label class="Block">Réf. de gestion</label>
+                            </div>
+                            <div id="zoneTxtArea" class="FloatLeft divTextArea2 NonReprisCP" albcontext="Description">@Html.Raw(!string.IsNullOrEmpty(Model.InfoRegule.DescriptionAvt) ? Model.InfoRegule.DescriptionAvt.Replace("</p><p>", "<br />").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+                            <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="Description">
+                                <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+                            </div>
+                            <div id="txtArea" class="None" albcontext="Description">
+                                <div class="FloatLeft">
+                                    @if (Model.InfoRegule.IsReadOnly) {
+                                        <div id="Description" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.InfoRegule.DescriptionAvt)</div>
+                                    }
+                                    else {
+                                        <textarea id="Description" name="Description" albcontext="Description" class="textareaDesc">@Model.InfoRegule.DescriptionAvt</textarea>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="@(Model.ScreenType == " PB" || Model.ScreenType == "BNS" || Model.ScreenType == "BURNER" ? "HeightRow None" : "HeightRow" )">
+                            <div class="FloatLeft">
+                                <label class="Block">Motif*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.Hidden("MotifAvtInitial", Model.InfoRegule.MotifAvt)
+                                @Html.AlbDropDownListFor(m => Model.InfoRegule.MotifAvt, Model.InfoRegule.Motifs, "MotifAvt", htmlAttributes: new { @id = "MotifAvt", @albCFList = "motifavt" }, generateTitle: true)
+                            </div>
+                        </div>
+                        <div class="PaddingLeft">
+                            <b>Renseignez la période générale du contrat à régulariser</b> :
+                        </div>
+
+                        <div class="PaddingLeft PaddingTop">
+                            <table id="tblAttesHeader" class="trHeight">
+                                <tr>
+                                    <th class="tablePersoHead thExercice">Exercice</th>
+                                    <th class="tablePersoHead thPeriode">Période régularisation</th>
+                                    <th class="tablePersoHead thBlank">&nbsp;</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="PaddingLeft TabPeriode">
+                            @Html.HiddenNoName("PeriodeValide", 0)
+                            <table id="tblReguleBody" class="trHeight">
+                                <tr>
+                                    <td>
+                                        @if (Model.Contrat != null && Model.Contrat.IsTemporaire) {
+                                            <input type="text" id="ExerciceRegule" class="inExercice numerique" disabled="disabled" albmask="year" value="@(Model.InfoRegule.Exercice != default(int).ToString() ? Model.InfoRegule.Exercice : string.Empty)" maxlength="4" />
+                                        }
+                                        else {
+                                            <input type="text" id="ExerciceRegule" class="inExercice numerique" albmask="year" value="@(Model.InfoRegule.Exercice != default(int).ToString() ? Model.InfoRegule.Exercice : string.Empty)" maxlength="4" />
+                                        }
+                                    </td>
+                                    <td class="width-periode-date">@Html.AlbDateFormat(m => m.InfoRegule.PeriodeDeb, new { @class = "inputDate datepicker", @id = "PeriodeDeb", @name = "PeriodeDeb" }, htmlName: "PeriodeDeb")</td>
+                                    <td class="width-periode-date">@Html.AlbDateFormat(m => m.InfoRegule.PeriodeFin, new { @class = "inputDate datepicker", @id = "PeriodeFin", @name = "PeriodeFin" }, htmlName: "PeriodeFin")</td>
+                                    @if (Model.InfoRegule.IsReadOnly) {
+                                        <td style="width: 36px;">
+                                            @Html.Raw("&nbsp;")
+                                        </td>
+                                    }
+                                    else {
+                                        <td class="thBlank center-content">
+                                            <img id="btnDeleteRegule" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Delete" title="@(Model.InfoRegule?.ReguleId > 0 ? "Supprimer la régularisation" : "Vider la période")" />
+                                        </td>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="dvReguleCourtier">
+                            @Html.Partial("CreationReguleCourtier", Model.InfoRegule)
+                        </div>
+                    </div>
+                    <div class="simpleGradientSection FloatRight dvAlertRegule">
+                        <div class="HeightRow paddingleft150">
+                            <div class="FloatLeft">
+                                <img src="@Url.Content("/Content/Images/ControleFin/A.png")" />
+                            </div>
+                            <div class="FloatLeft PaddingLeft"><u>Alertes</u></div>
+                        </div>
+                        <div class="dvAlertes">
+                            <table id="tblAlerteAvenant" class="trHeight tblAlertes">
+                                @foreach (var item in Model.InfoRegule.Alertes) {
+                                    <tr>
+                                        <td class="PaddingTop tdImgAlerte">
+                                            @if (item.TypeBloquante == "B") {
+                                                <img src="@Url.Content("/Content/Images/ControleFin/B.png")" />
+                                            }
+                                            else {
+                                                <img src="@Url.Content("/Content/Images/ControleFin/A.png")" />
+                                            }
+                                        </td>
+                                        <td class="PaddingTop tdMsgAlerte" title="@item.MessageAlerte">@item.MessageAlerte</td>
+                                        @if (item.TypeBloquante == "B") {
+                                            <td id="linkAlerte" class="navig PaddingTop tdLinkAlerte" albParam="@item.TypeAlerte">
+                                                @Html.Hidden("inputAlerte", item.TypeAlerte, new { id = $"inputAlerte{item.TypeAlerte}" })
+                                                @item.LienMessage
+                                            </td>
+                                        }
+                                        else {
+                                            <td id="linkAlerte" class="navig PaddingTop tdLinkAlerte" albParam="@item.TypeAlerte">
+                                                @Html.Hidden("inputAlerte", string.Empty, new { id = $"inputAlerte{item.TypeAlerte}" })
+                                                @item.LienMessage
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnRegulePrec" type="button" albshortcut="true" data-accesskey="P"><u>P</u>récedent</button>
+                <button id="btnReguleSuivant" type="button" class="@(Model.InfoRegule != null ? string.Empty : "None")" albshortcut="true" data-accesskey="s" disabled="@(Model.InfoRegule?.HasSelections != true)" title="@(Model.InfoRegule?.HasSelections == false ? "Pas de régularisation possible pour la période sélectionnée" : string.Empty)"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.contrat = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Context.IdContrat, Newtonsoft.Json.Formatting.Indented));
+</script>
+

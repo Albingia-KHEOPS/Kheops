@@ -1,0 +1,160 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsExprComplexeDetails
+@{
+    var splitCharHtml = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+}
+<table id="tblBodyDetail" class="tabBodyDetail trHeight">
+    @foreach (var item in Model.LstLigneGarantie)
+    {
+        switch (Model.Type)
+        {
+            case "LCI":
+        <tr>
+            <td class="tdValLCI None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="LCI">
+                <input type="text" id="LCIValeur@(splitCharHtml)@(item.Id)" name="LCIValeur@(splitCharHtml)@(item.Id)" value="@(item.LCIValeur)" class="inValLCI numerique" albmask="decimal" />
+                @*<input type="text" id="LCIValeur@(splitCharHtml)@(item.Id)" name="LCIValeur@(splitCharHtml)@(item.Id)" value="@(item.LCIValeur)" class="inValLCI numerique" albmask ="@(item.LCIUnite == "%" ? "pourcentdecimal" : "decimal")" />*@
+            </td>
+            <td class="tdUnitType None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="LCI">
+                @Html.AlbDropDownListFor(m => item.LCIUnite, Model.UnitesLCINew.Select(u => { u.Selected = (u.Value == item.LCIUnite ? true : false); return u; }).ToList(), "LCIUniteCPX", htmlAttributes: new { @id = "LCIUniteCPX" + splitCharHtml + item.Id, @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdUnitType None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="LCI">
+                @Html.AlbDropDownListFor(m => item.LCIType, Model.TypesLCINew.Select(u => { u.Selected = (u.Value == item.LCIType ? true : false); return u; }).ToList(), "LCIType", htmlAttributes: new { @id = "LCIType" + splitCharHtml + item.Id, @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdValLCI None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="LCI">
+                <input type="text" name="ConcurrenceValeur@(splitCharHtml)@(item.Id)" id="ConcurrenceValeurCPX@(splitCharHtml)@(item.Id)" value="@((item.ConcurrenceValeur == "0" && item.ConcurrenceUnite == "") ? "" : item.ConcurrenceValeur)" class="inValLCI numerique" albMask="@(item.ConcurrenceUnite == "%" ? "pourcentdecimal" : "decimal")" />
+            </td>
+            <td class="tdUnitType None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="LCI">
+                @Html.AlbDropDownListFor(m => item.ConcurrenceUnite, Model.UnitesConcurrence.Select(u => { u.Selected = (u.Value == item.ConcurrenceUnite ? true : false); return u; }).ToList(), "ConcurrenceUniteCPX", htmlAttributes: new { @id = "ConcurrenceUniteCPX" + splitCharHtml + item.Id, @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdUnitType None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="LCI">
+                @Html.AlbDropDownListFor(m => item.ConcurrenceType, Model.TypesConcurrence.Select(u => { u.Selected = (u.Value == item.ConcurrenceType ? true : false); return u; }).ToList(), "ConcurrenceType", htmlAttributes: new { @id = "ConcurrenceType" + splitCharHtml + item.Id, @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdImg None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="LCI">
+                <img class="CursorPointer" id="saveDetail@(splitCharHtml)@(item.Id)" name="saveDetail" alt="" src="@(Url.Content("/Content/Images/Save_16.png"))" />
+            </td>
+
+            <td class="tdValLCI" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="LCI">
+                <span albmask="decimal">@((item.LCIValeur == "0" && item.LCIUnite == "") ? "" : item.LCIValeur)</span>
+                @*<span albmask="@(item.LCIUnite == "%" ? "pourcentdecimal" : "decimal")">@((item.LCIValeur == "0" && item.LCIUnite == "") ? "" : item.LCIValeur)</span>*@
+            </td>
+            <td class="tdUnitType" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="LCI">@((item.LCIValeur == "0" && item.LCIUnite == "") ? "" : item.LCIUnite)</td>
+            <td class="tdUnitType" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="LCI">@((item.LCIValeur == "0" && item.LCIUnite == "") ? "" : item.LCIType)</td>
+            <td class="tdValLCI" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="LCI">
+                <span albMask="@(item.ConcurrenceUnite == "%" ? "pourcentdecimal" : "decimal")">@((item.ConcurrenceValeur == "0" && item.ConcurrenceUnite == "") ? "" : item.ConcurrenceValeur)</span>
+            </td>
+            <td class="tdUnitType" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="LCI">@((item.ConcurrenceValeur == "0" && item.ConcurrenceUnite == "") ? "" : item.ConcurrenceUnite)</td>
+            <td class="tdUnitType" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="LCI">@((item.ConcurrenceValeur == "0" && item.ConcurrenceUnite == "") ? "" : item.ConcurrenceType)</td>
+            <td class="tdImg" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="LCI">
+                <img class="CursorPointer" id="delDetail@(splitCharHtml)@(item.Id)" name="delDetail" alt="" src="@(Url.Content("/Content/Images/poubelle1616.png"))" />
+            </td>
+        </tr>
+                break;
+            case "Franchise":
+        <tr>
+            <td class="tdValMinMax None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="FRH">
+                <input type="text" name="FranchiseValeur@(splitCharHtml)@(item.Id)" id="FranchiseValeurCPX@(splitCharHtml)@(item.Id)" value="@(item.FranchiseValeur)" class="inValMinMax numerique" albMask="decimal" />
+                @*<input type="text" name="FranchiseValeur@(splitCharHtml)@(item.Id)" id="FranchiseValeurCPX@(splitCharHtml)@(item.Id)" value="@(item.FranchiseValeur)" class="inValMinMax numerique" albMask="@(item.FranchiseUnite == "%" ? "pourcentdecimal" : "decimal")" />*@
+            </td>
+            <td class="tdUnitType None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="FRH">
+                @Html.AlbDropDownListFor(m => item.FranchiseUnite, Model.UnitesFranchiseNew.Select(u => { u.Selected = (u.Value == item.FranchiseUnite ? true : false); return u; }).ToList(), "FranchiseUniteCPX", htmlAttributes: new { @id = "FranchiseUniteCPX" + splitCharHtml + item.Id, @class = "inUnitType", @selecttype = "FRHCPX" }, generateTitle: true)
+            </td>
+            <td class="tdUnitType None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="FRH">
+                @Html.AlbDropDownListFor(m => item.FranchiseType, Model.TypesFranchiseNew.Select(u => { u.Selected = (u.Value == item.FranchiseType ? true : false); return u; }).ToList(), "FranchiseType", htmlAttributes: new { @id = "FranchiseType" + splitCharHtml + item.Id, @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdValMinMax None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="FRH">
+                <input type="text" name="FranchiseMini@(splitCharHtml)@(item.Id)" id="FranchiseMini@(splitCharHtml)@(item.Id)" value="@(item.FranchiseMini == "0" ? "" : item.FranchiseMini)" class="inValMinMax numerique" albMask="decimal" />
+            </td>
+            <td class="tdValMinMax None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="FRH">
+                <input type="text" name="FranchiseMaxi@(splitCharHtml)@(item.Id)" id="FranchiseMaxi@(splitCharHtml)@(item.Id)" value="@(item.FranchiseMaxi == "0" ? "" : item.FranchiseMaxi)" class="inValMinMax numerique" albMask="decimal" />
+            </td>
+            <td class="tdDebFin None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="FRH">
+                @Html.AlbDateFormat(m => item.FranchiseDebut, new { @name = "FranchiseDebut" + (splitCharHtml) + (item.Id), @id = "FranchiseDebut" + (splitCharHtml) + (item.Id), @class = "inDebFin datepicker" })
+            </td>
+            <td class="tdDebFin None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="FRH">
+                @Html.AlbDateFormat(m => item.FranchiseFin, new { @name = "FranchiseFin" + (splitCharHtml) + (item.Id), @id = "FranchiseFin" + (splitCharHtml) + (item.Id), @class = "inDebFin datepicker" })
+            </td>
+            <td class="tdImg None" name="edit" albTdMode="tdEdit@(splitCharHtml)@(item.Id)" albType="FRH">
+                <img class="CursorPointer" id="saveDetail@(splitCharHtml)@(item.Id)" name="saveDetail" alt="" src="@(Url.Content("/Content/Images/Save_16.png"))" />
+            </td>
+
+            <td class="tdValMinMax" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="FRH">
+                <span albMask="decimal">@((item.FranchiseValeur == "0" && item.FranchiseUnite == "") ? "" : item.FranchiseValeur)</span>
+                @*<span albMask="@(item.FranchiseUnite == "%" ? "pourcentdecimal" : "decimal")">@((item.FranchiseValeur == "0" && item.FranchiseUnite == "") ? "" : item.FranchiseValeur)</span>*@
+            </td>
+            <td class="tdUnitType" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="FRH">@((item.FranchiseValeur == "0" && item.FranchiseUnite == "") ? "" : item.FranchiseUnite)</td>
+            <td class="tdUnitType" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="FRH">@((item.FranchiseValeur == "0" && item.FranchiseUnite == "") ? "" : item.FranchiseType)</td>
+            <td class="tdValMinMax" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="FRH">
+                <span albmask="decimal">@((item.FranchiseMini == "0" && item.FranchiseMini == "") ? "" : item.FranchiseMini)</span>
+            </td>
+            <td class="tdValMinMax" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="FRH">
+                <span albmask="decimal">@((item.FranchiseMaxi == "0" && item.FranchiseMaxi == "") ? "" : item.FranchiseMaxi)</span>
+            </td>
+            <td class="tdDebFin" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="FRH">@(item.FranchiseDebut.HasValue ? string.Format("{0}/{1}/{2}", item.FranchiseDebut.Value.Day.ToString().PadLeft(2, '0'), item.FranchiseDebut.Value.Month.ToString().PadLeft(2, '0'), item.FranchiseDebut.Value.Year) : string.Empty)</td>
+            <td class="tdDebFin" name="lock" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="FRH">@(item.FranchiseFin.HasValue ? string.Format("{0}/{1}/{2}", item.FranchiseFin.Value.Day.ToString().PadLeft(2, '0'), item.FranchiseFin.Value.Month.ToString().PadLeft(2, '0'), item.FranchiseFin.Value.Year) : string.Empty)</td>
+            <td class="tdImg" albTdMode="tdLock@(splitCharHtml)@(item.Id)" albType="FRH">
+                <img class="CursorPointer" id="delDetail@(splitCharHtml)@(item.Id)" name="delDetail" alt="" src="@(Url.Content("/Content/Images/poubelle1616.png"))" />
+            </td>
+        </tr>
+                break;
+            default:
+                break;
+        }
+    }
+    @switch (Model.Type)
+    {
+        case "LCI":
+        <tr id="newExprComp" class="None">
+            <td class="tdValLCI">
+                <input type="text" id="LCIValeur@(splitCharHtml)0" name="LCIValeur@(splitCharHtml)0" value="" class="inValLCI" albmask ="decimal" />
+            </td>
+            <td class="tdUnitType">
+                @Html.AlbDropDownListFor(m => m.UniteLCINew, Model.UnitesLCINew, "LCIUniteCPX", htmlAttributes: new { @id = "LCIUniteCPX" + splitCharHtml + "0", @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdUnitType">
+                @Html.AlbDropDownListFor(m => m.TypeLCINew, Model.TypesLCINew, "LCIType", htmlAttributes: new { @id = "LCIType" + splitCharHtml + "0", @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdValLCI">
+                <input type="text" name="ConcurrenceValeur@(splitCharHtml)0" id="ConcurrenceValeurCPX@(splitCharHtml)0" value="" class="inValLCI" albMask="decimal" />
+            </td>
+            <td class="tdUnitType">
+                @Html.AlbDropDownListFor(m => m.UniteConcurrence, Model.UnitesConcurrence, "ConcurrenceUniteCPX", htmlAttributes: new { @id = "ConcurrenceUniteCPX" + splitCharHtml + "0", @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdUnitType">
+                @Html.AlbDropDownListFor(m => m.TypeConcurrence, Model.TypesConcurrence, "ConcurrenceType", htmlAttributes: new { @id = "ConcurrenceType" + splitCharHtml + "0", @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdImg">&nbsp;
+                        <img class="CursorPointer" id="saveDetail@(splitCharHtml)0" name="saveDetail" alt="" src="@(Url.Content("/Content/Images/Save_16.png"))" />
+            </td>
+        </tr>
+            break;
+        case "Franchise":
+        <tr id="newExprComp" class="None">
+            <td class="tdValMinMax">
+                <input type="text" name="FranchiseValeur@(splitCharHtml)0" id="FranchiseValeurCPX@(splitCharHtml)0" value="" class="inValMinMax" albMask="decimal" />
+            </td>
+            <td class="tdUnitType">
+                @Html.AlbDropDownListFor(m => Model.UniteFranchiseNew, Model.UnitesFranchiseNew, "FranchiseUniteCPX", htmlAttributes: new { @id = "FranchiseUniteCPX" + splitCharHtml + "0", @class = "inUnitType", @selecttype = "FRHCPX" }, generateTitle: true)
+            </td>
+            <td class="tdUnitType">
+                @Html.AlbDropDownListFor(m => Model.TypeFranchiseNew, Model.TypesFranchiseNew, "FranchiseType", htmlAttributes: new { @id = "FranchiseType" + splitCharHtml + "0", @class = "inUnitType" }, generateTitle: true)
+            </td>
+            <td class="tdValMinMax">
+                <input type="text" name="FranchiseMini@(splitCharHtml)0" id="FranchiseMini@(splitCharHtml)0" value="" class="inValMinMax" albMask="decimal" />
+            </td>
+            <td class="tdValMinMax">
+                <input type="text" name="FranchiseMaxi@(splitCharHtml)0" id="FranchiseMaxi@(splitCharHtml)0" value="" class="inValMinMax" albMask="decimal" />
+            </td>
+            <td class="tdDebFin">
+                @Html.AlbDateFormat(m => Model.FranchiseDebut, new { @name = "FranchiseDebut" + (splitCharHtml) + "0", @id = "FranchiseDebut" + (splitCharHtml) + "0", @class = "inDebFin datepicker" })
+            </td>
+            <td class="tdDebFin">
+                @Html.AlbDateFormat(m => Model.FranchiseFin, new { @name = "FranchiseFin" + (splitCharHtml) + "0", @id = "FranchiseFin" + (splitCharHtml) + "0", @class = "inDebFin datepicker" })
+            </td>
+            <td class="tdImg">
+                <img class="CursorPointer" id="saveDetail@(splitCharHtml)0" name="saveDetail" alt="" src="@(Url.Content("/Content/Images/Save_16.png"))" />
+            </td>
+        </tr>
+            break;
+        default:
+            break;
+    }
+</table>

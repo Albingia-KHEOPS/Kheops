@@ -1,0 +1,27 @@
+﻿.nHorizontalFullWithGroup input,select,button {
+margin-right:15px;
+margin-left:5px;
+}
+
+.nHorizontalFullWithGroup  button {
+    height: 20px;
+}
+
+.errMessage {
+    text-align:center;
+    color:red;
+    margin:5px;
+    font-weight: bold;
+}
+
+#CibleVersion {
+width:60px;
+}
+
+#CibleRecupLabel {
+width:200px;
+}
+
+.marGinTop {
+margin-top:3px !important;
+}

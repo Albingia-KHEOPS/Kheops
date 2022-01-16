@@ -1,0 +1,382 @@
+﻿.RadioWidth
+{
+    width: 130px;
+}
+
+.DoubleInputWidth
+{
+    width: 383px !important;
+}
+
+.ParamWidth
+{
+    width: 1195px !important;
+}
+
+#tblHeaderParam tr, #tblBodyParam tr
+{
+    height: 1px;
+}
+
+.ParamHeight
+{
+    height: 500px;
+}
+
+.colHType
+{
+    width: 40px;
+}
+
+.colHNumOrd
+{
+    width: 50px;
+}
+
+.colHBtn
+{
+    padding-top: 6px;
+    width: 20px;
+}
+
+.colHActe
+{
+    width: 80px;
+    /*width: 200px;*/
+}
+
+.colHLibelle
+{
+    width: 250px;
+    /*width: 400px;*/
+}
+
+.colBType
+{
+    text-align: center;
+    width: 42px;
+}
+
+.colBNumOrd
+{
+    text-align: center;
+    width: 48px;
+    /*width: 52px;*/
+}
+
+.colBBtn
+{
+    width: 22px;
+    text-align: center;
+}
+
+.colBActe
+{
+    padding-left: 5px;
+    width: 78px;
+    /*width: 198px;*/
+}
+
+.colBLibelle
+{
+    padding-left: 5px;
+    width: 248px;
+    /*width: 398px;*/
+}
+
+.AlignCenter
+{
+    text-align: center;
+}
+
+#divBodyParam
+{
+    width: 1179px;
+    /*width: 660px;*/
+    overflow: auto;
+    max-height: 380px;
+}
+
+#divBodyEGDI
+{
+    /*width: 762px;*/
+    overflow: auto;
+    max-height: 380px;
+}
+
+#ajoutParam, #saisieRattach
+{
+    display: none;
+}
+
+#divDataParam
+{
+    position: absolute;
+    top: 5px;
+    /*left: 35%;*/
+    left: 5px;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}
+
+#divDataSaisie
+{
+    position: absolute;
+    top: 50px;
+    width: 1210px;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}
+
+.clauseNom
+{
+    width: 125px !important;
+}
+
+/*-----------CSS Rattachement des clauses-----------*/
+#divBodyClauses
+{
+    max-height: 270px;
+    overflow: auto;
+    width: 1110px;
+}
+
+#divClauses
+{
+    height: 300px;
+}
+
+#tblHeaderClauses tr, #tblBodyClauses tr
+{
+    height: 1px;
+}
+
+.td22
+{
+    width: 22px;
+}
+
+.td100
+{
+    width: 100px;
+}
+
+.td650
+{
+    width: 650px;
+}
+
+.td80
+{
+    width: 80px;
+}
+
+.td20
+{
+    width: 20px;
+}
+
+.td98
+{
+    width: 98px;
+}
+
+.td648
+{
+    width: 648px;
+}
+
+.td82
+{
+    width: 82px;
+    text-align: center;
+}
+
+.colHNumOrdre
+{
+    width: 50px;
+}
+
+.colBNumOrdre
+{
+    padding-left: 5px;
+    width: 48px;
+    /*width: 52px;*/
+}
+
+.WidthInput
+{
+    width: 255px !important;
+}
+
+.ColumnEnteteContexte
+{
+    float: left;
+    width: 390px;
+}
+
+.colBEtape
+{
+    padding-left: 5px;
+    width: 198px;
+}
+
+.colHEtape
+{
+    width: 200px;
+}
+
+.colHLibelleEtape
+{
+    width: 366px;
+}
+
+.colBLibelleEtape
+{
+    padding-left: 5px;
+    width: 364px;
+}
+
+.colHAjout
+{
+    width: 50px;
+}
+
+.colBAjout
+{
+    width: 52px;
+    text-align: center;
+}
+
+.colHScript
+{
+    width: 194px;
+}
+
+.colBScript
+{
+    padding-left: 5px;
+    width: 192px;
+    /*width: 412px;*/
+}
+
+.labelEmplModif
+{
+    display: block;
+    width: 150px;
+}
+
+.dvDataConceptFamille
+{
+    position: absolute;
+    top: 0;
+    width: 608px;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    /*padding: 5px 0 0 5px;*/
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    left: 0;
+}
+
+.divSectionValeursHeight
+{
+    height: 373px;
+}
+
+.WidthLabelCodeVideAutorise
+{
+    width: 154px !important;
+}
+
+.TitledivSection
+{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.col_HeaderCodeValeur
+{
+    width: 81px;
+}
+
+.col_HeaderLibelleValeur
+{
+    width: 328px;
+}
+
+.col_HeaderFiltre
+{
+    width: 77px;
+}
+
+.col_HeaderButtons
+{
+    width: 46px;
+}
+
+.col_CodeValeur
+{
+    width: 79px;
+    padding-left: 5px;
+}
+
+.col_LibelleValeur
+{
+    width: 326px;
+    padding-left: 5px;
+}
+
+.col_Filtre
+{
+    overflow: hidden;
+    padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 75px;
+}
+
+.colBtn
+{
+    width: 43px;
+}
+
+#divDataEditValeur
+{
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 7;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 431px;
+    width: 854px;
+}
+
+#divButtons
+{
+    width: 838px;
+}
+
+#divSectionInfoValeur
+{
+    height: 369px;
+}
+
+.InputLong
+{
+    width: 663px !important;
+}
+
+#tblBodyValeurs
+{
+    table-layout: fixed;
+    width: 553px;
+}

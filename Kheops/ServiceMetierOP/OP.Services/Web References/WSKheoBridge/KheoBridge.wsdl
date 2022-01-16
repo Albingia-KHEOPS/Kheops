@@ -1,0 +1,2546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GenererClauses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="KpParam" type="tns:KpClausePar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KpClausePar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ActeGestion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Letape" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeContexte" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NuRisque" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NuObjet" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NuFormule" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NuOption" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeModeleIs" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdAttesKpAtt" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GenererClausesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenererClausesResult" type="tns:KpClauseRet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KpClauseRet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NbClausesGenerees" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NbClausesObligatoires" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NbClausesSuggerees" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MsgErreur" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListChoixClauses" type="tns:ArrayOfClauseOpChoix" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfClauseOpChoix">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClauseOpChoix" nillable="true" type="tns:ClauseOpChoix" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClauseOpChoix">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdLot" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origine" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Idunique" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rub" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SRub" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Seq" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Libclause" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Retenue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Avenant" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdClause" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrigineClause" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GenererClausesThread">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="KpParam" type="tns:KpClausePar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererClausesThreadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenererClausesThreadResult" type="tns:KpClauseRet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererClausesIdDec">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="KpParam" type="tns:KpClausePar" />
+            <s:element minOccurs="0" maxOccurs="1" name="declist" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifierContraintesClauses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="KpParam" type="tns:KpClausePar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifierContraintesClausesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerifierContraintesClausesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererCp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LacteGestion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminCP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererCpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenererCpResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererDoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LacteGestion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nom1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nom2" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Nom3" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminCP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererDocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenererDocResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererAttesCo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCourri" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomDoc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererAttesCoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenererAttesCoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherClauseLibre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpclause" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherClauseLibreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChercherClauseLibreResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherCanevasClauseLibre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherCanevasClauseLibreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChercherCanevasClauseLibreResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherCanevasClauseKalcont">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdKalcont" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherCanevasClauseKalcontResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChercherCanevasClauseKalcontResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherClause">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdClause" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherClauseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChercherClauseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResoudreClause">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpclause" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResoudreClauseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResoudreClauseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResoudreClausePdf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpclause" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResoudreClausePdfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResoudreClausePdfResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResoudreClauseHisto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpclause" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="Avn" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResoudreClauseHistoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResoudreClauseHistoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuterScript">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="KpParam" type="tns:KpClausePar" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListeScripts" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExecuterScriptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuterScriptResult" type="tns:KtRet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KtRet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MsgAvertissement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MsgErreur" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConditionnerAffichageIs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="KpParam" type="tns:KpClausePar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConditionnerAffichageIsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConditionnerAffichageIsResult" type="tns:ArrayOfKtIsAffiche" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfKtIsAffiche">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="KtIsAffiche" nillable="true" type="tns:KtIsAffiche" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="KtIsAffiche">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdLigne" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Libelle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Afficher" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AjouterFiligrane">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomDocWordSource" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TexteFiligrane" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomDocDest" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AjouterFiligraneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AjouterFiligraneResult" type="tns:KpClauseRet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertirDocEnPdf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomDocWordSource" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomFichierPdf" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertirDocEnPdfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConvertirDocEnPdfResult" type="tns:KpClauseRet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerAvisEcheance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypeContrat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NuContrat" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Avn" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Nuprime" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dupli" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LeUser" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerAvisEcheanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditerAvisEcheanceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerBulletinSouscription400">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypeContrat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NuContrat" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Avn" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dupli" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LeUser" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerBulletinSouscription400Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditerBulletinSouscription400Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererKpdocw">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpdocw" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererKpdocwResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenererKpdocwResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerDocParLot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroLot" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LibFiligrane" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmissionComptant" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroPrime" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Valider" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Utilisateur" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroPrimeRegul" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegenererDoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpdocld" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegenererDocResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RegenererLot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdLot" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerDocParLotSansMaj">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroLot" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LibFiligrane" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmissionComptant" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroPrime" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroPrimeRegul" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreparerDocPourMiseEnPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomDocumentWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreparerDocPourMiseEnPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreparerDocPourMiseEnPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreparerDocPourMiseEnPagePourVisu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomDocumentWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreparerDocPourMiseEnPagePourVisuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreparerDocPourMiseEnPagePourVisuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppelOutlook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Chaine" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppelOutlookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppelOutlookResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValiderMiseEnPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomDocumentWordBloc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValiderMiseEnPageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="FormuleGarantiePlatDto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Formule" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Option" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormuleGarantiePlatDtoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FormuleGarantiePlatDtoResult" type="tns:ArrayOfFormuleGarantiePlatDto_KBridge" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFormuleGarantiePlatDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormuleGarantiePlatDto_KBridge" nillable="true" type="tns:FormuleGarantiePlatDto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormuleGarantiePlatDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GuidOption" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppliqueA" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidV" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeVolet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescrVolet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaracVolet" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidVolet" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="isCheckedV" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoletCollapse" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidB" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeBloc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescrBloc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaracBloc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidBloc" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="isCheckedB" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeBlocIncomp" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="BlocIncomp" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeBlocAssoc" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="BlocAssoc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidM" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeModele" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescrModele" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidNiv1" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionNiv1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeGarNiv1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescrNiv1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaracNiv1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureNiv1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureParamNiv1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeParentNiv1" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1Niv1" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlagModifNiv1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatModNiv1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarIncompNiv1" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarAssocNiv1" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarAltNiv1" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvenPossible1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeInven1" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeInven1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateAvt1" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MajAvt1" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateDeb1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFin1" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="HeureFin1" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duree1" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DureeUnite1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlimNiv1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidNiv2" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv2" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeGarNiv2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescrNiv2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaracNiv2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureNiv2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureParamNiv2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeParentNiv2" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1Niv2" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlagModifNiv2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatModNiv2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarIncompNiv2" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarAssocNiv2" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarAltNiv2" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvenPossible2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeInven2" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeInven2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateAvt2" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MajAvt2" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateDeb2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFin2" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="HeureFin2" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duree2" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DureeUnite2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidNiv3" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv3" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeGarNiv3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescrNiv3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaracNiv3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureNiv3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureParamNiv3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeParentNiv3" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1Niv3" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlagModifNiv3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatModNiv3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarIncompNiv3" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarAssocNiv3" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarAltNiv3" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvenPossible3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeInven3" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeInven3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateAvt3" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MajAvt3" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateDeb3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFin3" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="HeureFin3" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duree3" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DureeUnite3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidNiv4" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv4" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeGarNiv4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescrNiv4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaracNiv4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureNiv4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureParamNiv4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeParentNiv4" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1Niv4" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlagModifNiv4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatModNiv4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarIncompNiv4" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarAssocNiv4" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeGarAltNiv4" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvenPossible4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeInven4" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeInven4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateAvt4" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MajAvt4" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateDeb4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFin4" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="HeureFin4" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duree4" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DureeUnite4" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFormuleGarantieDto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Formule" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Option" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFormuleGarantieDtoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormuleGarantieDtoResult" type="tns:FormuleGarantieDto_KBridge" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FormuleGarantieDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsAvenantModificationLocale" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateEffetAvtModif" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateEffetAvenantModificationLocale" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FormuleChecked" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Volets" type="tns:ArrayOfDtoVolet_KBridge" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeOption" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDtoVolet_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DtoVolet_KBridge" nillable="true" type="tns:DtoVolet_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DtoVolet_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caractere" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidVolet" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeOption" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Check" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsVoletGeneral" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsVoletCollapse" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrdreVolet" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreation" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="iDateCreation" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iHeureCreation" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoriesVolet" type="tns:ArrayOfCategorieDto_KBridge" />
+          <s:element minOccurs="0" maxOccurs="1" name="Categories" type="tns:ArrayOfCategorieDto_KBridge" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branches" type="tns:ArrayOfParametreDto_KBridge" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branche" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Blocs" type="tns:ArrayOfBlocDto_KBridge" />
+          <s:element minOccurs="1" maxOccurs="1" name="isChecked" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MAJ" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModeAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCategorieDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CategorieDto_KBridge" nillable="true" type="tns:CategorieDto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CategorieDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GuidId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreation" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeBranche" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caractere" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfParametreDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ParametreDto_KBridge" nillable="true" type="tns:ParametreDto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParametreDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Libelle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descriptif" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Utilise" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LongId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeTpcn1" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBlocDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BlocDto_KBridge" nillable="true" type="tns:BlocDto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BlocDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GuidId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuidBloc" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrdreBloc" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreation" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="iDateCreation" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iHeureCreation" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caractere" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modeles" type="tns:ArrayOfModeleDto_KBridge" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeOption" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isChecked" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MAJ" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="BlocIncompatible" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BlocAssocie" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModeAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfModeleDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ModeleDto_KBridge" nillable="true" type="tns:ModeleDto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ModeleDto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreation" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caractere" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuidId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modeles" type="tns:ArrayOfGarantieModeleNiveau1Dto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGarantieModeleNiveau1Dto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GarantieModeleNiveau1Dto" nillable="true" type="tns:GarantieModeleNiveau1Dto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GarantieModeleNiveau1Dto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Action" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeGarantie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FCTCodeGarantie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caractere" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureParam" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeParent" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modeles" type="tns:ArrayOfGarantieModeleNiveau2Dto_KBridge" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppliqueA" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuidGarantie" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MAJ" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlagModif" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Niveau" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatMod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatModVal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GarantieIncompatible" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GarantieAssociee" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GarantieAlternative" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvenPossible" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeInven" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeInven" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateInAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateInAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModeAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateEffetAvtModifLocale" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsGarantieSortie" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlimAssiette" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGarantieModeleNiveau2Dto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GarantieModeleNiveau2Dto_KBridge" nillable="true" type="tns:GarantieModeleNiveau2Dto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GarantieModeleNiveau2Dto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeGarantie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FCTCodeGarantie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caractere" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureParam" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeParent" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modeles" type="tns:ArrayOfGarantieModeleNiveau3Dto_KBridge" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppliqueA" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuidGarantie" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MAJ" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlagModif" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Niveau" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatMod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatModVal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GarantieIncompatible" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GarantieAssociee" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GarantieAlternative" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvenPossible" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeInven" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeInven" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateInAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateInAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModeAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateEffetAvtModifLocale" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsGarantieSortie" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGarantieModeleNiveau3Dto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GarantieModeleNiveau3Dto_KBridge" nillable="true" type="tns:GarantieModeleNiveau3Dto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GarantieModeleNiveau3Dto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeGarantie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FCTCodeGarantie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caractere" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureParam" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeParent" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modeles" type="tns:ArrayOfGarantieModeleNiveau4Dto_KBridge" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppliqueA" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuidGarantie" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MAJ" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlagModif" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Niveau" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatMod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatModVal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GarantieIncompatible" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GarantieAssociee" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GarantieAlternative" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvenPossible" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeInven" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeInven" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateInAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateInAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModeAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateEffetAvtModifLocale" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsGarantieSortie" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGarantieModeleNiveau4Dto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GarantieModeleNiveau4Dto_KBridge" nillable="true" type="tns:GarantieModeleNiveau4Dto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GarantieModeleNiveau4Dto_KBridge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeGarantie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FCTCodeGarantie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caractere" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureParam" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeParent" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeNiv1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuidGarantie" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppliqueA" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MAJ" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlagModif" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Niveau" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatMod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamNatModVal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GarantieIncompatible" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GarantieAssociee" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GarantieAlternative" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvenPossible" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeInven" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeInven" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateInAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateInAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModeAvt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateEffetAvtModifLocale" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsGarantieSortie" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFormuleGarantieOp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Formule" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Option" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFormuleGarantieOpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormuleGarantieOpResult" type="tns:FormuleOpDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FormuleOpDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FormuleGarantiePlat" type="tns:ArrayOfFormuleGarantiePlatDto_KBridge" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormuleGarantie" type="tns:FormuleGarantieDto_KBridge" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RechPol">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WhereArgs" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RechPolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RechPolResult" type="tns:ArrayOfOffreRechPlatDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOffreRechPlatDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OffreRechPlatDto" nillable="true" type="tns:OffreRechPlatDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OffreRechPlatDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodeOffre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeAvn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateSaisie" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeBranche" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LibBranche" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeCible" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LibCible" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeEtat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LibEtat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeSit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LibSit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeQualite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LibQualite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descriptif" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeAss" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomAss" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CpAss" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VilleAss" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodeCourt" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomCourt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CpCourt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VilleCourt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeTraitement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeAccord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatutKheops" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvnExt" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="GenerDoc" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MotifRefus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodePeriodicite" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NbLine" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFinEffet" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="HeureFinEffet" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasSusp" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DtFinSusp" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoubleSaisie" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxIdRegul" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrtLot" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateMaj" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RecherchePolices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WhereArgs" type="tns:ArrayOfRechPolDto" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypeReq" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRechPolDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RechPolDto" nillable="true" type="tns:RechPolDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RechPolDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Liaison" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Champ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operateur" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Expression" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RecherchePolicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecherchePolicesResult" type="tns:ArrayOfOffreRechPlatDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifierContraintesGarantie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TypePolice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPolice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpgaran" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypeCtl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifierContraintesGarantieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerifierContraintesGarantieResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValiderChoixClause">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Typ" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ipb" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Alx" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Avn" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListChoixClauses" type="tns:ArrayOfClauseOpChoix" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValiderChoixClauseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValiderChoixClauseResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherClausePush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Usr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WrkStation" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdClause" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherClausePushResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChercherClausePushResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherClauseLibrePush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Usr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WrkStation" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpclause" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChercherClauseLibrePushResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChercherClauseLibrePushResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResoudreClausePush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Usr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WrkStation" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdKpclause" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheminSortie" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Avn" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResoudreClausePushResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResoudreClausePushResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerDocParLotPush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroLot" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LibFiligrane" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmissionComptant" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroPrime" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Valider" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Utilisateur" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroPrimeRegul" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="WrkStation" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerDocParLotSansMajPush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroLot" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LibFiligrane" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmissionComptant" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroPrime" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroPrimeRegul" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="WrkStation" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditerDocParLotSansMajPushResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExecuterPush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PushDto" type="tns:KheoPushDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KheoPushDto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Fonction" type="tns:PushFonction" />
+          <s:element minOccurs="0" maxOccurs="1" name="Adresse_IP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserAs400" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypContrat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroContrat" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Aliment" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lot" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LibFiligrane" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmissionComptant" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroPrime" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Valider" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroPrimeRegul" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActeGestion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chemin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rubrique" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SRub" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Seq" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomFichier" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnneeSin" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NuSin" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SinSbr" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PushFonction">
+        <s:restriction base="s:string">
+          <s:enumeration value="OUVRIR_GESTION_DOCUMENT" />
+          <s:enumeration value="SENDLOT" />
+          <s:enumeration value="SAISIR_CLAUSE_LIBRE" />
+          <s:enumeration value="OUVRIR_DOC_EN_PDF" />
+          <s:enumeration value="OUVRIR_DOC_EN_LECTURE" />
+          <s:enumeration value="GENERER_CP" />
+          <s:enumeration value="GENERER_DOC" />
+          <s:enumeration value="OUVRIR_FENETRE_GED" />
+          <s:enumeration value="MESSAGE_GENERIQUE" />
+          <s:enumeration value="TRAITEMENT_ACTIF" />
+          <s:enumeration value="GENERER_KPDOCW" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="TraitementActif">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PushDto" type="tns:KheoPushDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraitementActifResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraitementActifResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererFicheSin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JsonData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererFicheSinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenererFicheSinResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererCourrierRelance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroRequete" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererLettresCheques">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="typesTraitements" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenererLettresChequesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenererLettresChequesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientIp">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetClientIpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientIpResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GenererClausesSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererClauses" />
+  </wsdl:message>
+  <wsdl:message name="GenererClausesSoapOut">
+    <wsdl:part name="parameters" element="tns:GenererClausesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenererClausesThreadSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererClausesThread" />
+  </wsdl:message>
+  <wsdl:message name="GenererClausesThreadSoapOut">
+    <wsdl:part name="parameters" element="tns:GenererClausesThreadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenererClausesIdDecSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererClausesIdDec" />
+  </wsdl:message>
+  <wsdl:message name="VerifierContraintesClausesSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifierContraintesClauses" />
+  </wsdl:message>
+  <wsdl:message name="VerifierContraintesClausesSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifierContraintesClausesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenererCpSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererCp" />
+  </wsdl:message>
+  <wsdl:message name="GenererCpSoapOut">
+    <wsdl:part name="parameters" element="tns:GenererCpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenererDocSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererDoc" />
+  </wsdl:message>
+  <wsdl:message name="GenererDocSoapOut">
+    <wsdl:part name="parameters" element="tns:GenererDocResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenererAttesCoSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererAttesCo" />
+  </wsdl:message>
+  <wsdl:message name="GenererAttesCoSoapOut">
+    <wsdl:part name="parameters" element="tns:GenererAttesCoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChercherClauseLibreSoapIn">
+    <wsdl:part name="parameters" element="tns:ChercherClauseLibre" />
+  </wsdl:message>
+  <wsdl:message name="ChercherClauseLibreSoapOut">
+    <wsdl:part name="parameters" element="tns:ChercherClauseLibreResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChercherCanevasClauseLibreSoapIn">
+    <wsdl:part name="parameters" element="tns:ChercherCanevasClauseLibre" />
+  </wsdl:message>
+  <wsdl:message name="ChercherCanevasClauseLibreSoapOut">
+    <wsdl:part name="parameters" element="tns:ChercherCanevasClauseLibreResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChercherCanevasClauseKalcontSoapIn">
+    <wsdl:part name="parameters" element="tns:ChercherCanevasClauseKalcont" />
+  </wsdl:message>
+  <wsdl:message name="ChercherCanevasClauseKalcontSoapOut">
+    <wsdl:part name="parameters" element="tns:ChercherCanevasClauseKalcontResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChercherClauseSoapIn">
+    <wsdl:part name="parameters" element="tns:ChercherClause" />
+  </wsdl:message>
+  <wsdl:message name="ChercherClauseSoapOut">
+    <wsdl:part name="parameters" element="tns:ChercherClauseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResoudreClauseSoapIn">
+    <wsdl:part name="parameters" element="tns:ResoudreClause" />
+  </wsdl:message>
+  <wsdl:message name="ResoudreClauseSoapOut">
+    <wsdl:part name="parameters" element="tns:ResoudreClauseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResoudreClausePdfSoapIn">
+    <wsdl:part name="parameters" element="tns:ResoudreClausePdf" />
+  </wsdl:message>
+  <wsdl:message name="ResoudreClausePdfSoapOut">
+    <wsdl:part name="parameters" element="tns:ResoudreClausePdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResoudreClauseHistoSoapIn">
+    <wsdl:part name="parameters" element="tns:ResoudreClauseHisto" />
+  </wsdl:message>
+  <wsdl:message name="ResoudreClauseHistoSoapOut">
+    <wsdl:part name="parameters" element="tns:ResoudreClauseHistoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuterScriptSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuterScript" />
+  </wsdl:message>
+  <wsdl:message name="ExecuterScriptSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuterScriptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConditionnerAffichageIsSoapIn">
+    <wsdl:part name="parameters" element="tns:ConditionnerAffichageIs" />
+  </wsdl:message>
+  <wsdl:message name="ConditionnerAffichageIsSoapOut">
+    <wsdl:part name="parameters" element="tns:ConditionnerAffichageIsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AjouterFiligraneSoapIn">
+    <wsdl:part name="parameters" element="tns:AjouterFiligrane" />
+  </wsdl:message>
+  <wsdl:message name="AjouterFiligraneSoapOut">
+    <wsdl:part name="parameters" element="tns:AjouterFiligraneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertirDocEnPdfSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertirDocEnPdf" />
+  </wsdl:message>
+  <wsdl:message name="ConvertirDocEnPdfSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertirDocEnPdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditerAvisEcheanceSoapIn">
+    <wsdl:part name="parameters" element="tns:EditerAvisEcheance" />
+  </wsdl:message>
+  <wsdl:message name="EditerAvisEcheanceSoapOut">
+    <wsdl:part name="parameters" element="tns:EditerAvisEcheanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditerBulletinSouscription400SoapIn">
+    <wsdl:part name="parameters" element="tns:EditerBulletinSouscription400" />
+  </wsdl:message>
+  <wsdl:message name="EditerBulletinSouscription400SoapOut">
+    <wsdl:part name="parameters" element="tns:EditerBulletinSouscription400Response" />
+  </wsdl:message>
+  <wsdl:message name="GenererKpdocwSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererKpdocw" />
+  </wsdl:message>
+  <wsdl:message name="GenererKpdocwSoapOut">
+    <wsdl:part name="parameters" element="tns:GenererKpdocwResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditerDocParLotSoapIn">
+    <wsdl:part name="parameters" element="tns:EditerDocParLot" />
+  </wsdl:message>
+  <wsdl:message name="RegenererDocSoapIn">
+    <wsdl:part name="parameters" element="tns:RegenererDoc" />
+  </wsdl:message>
+  <wsdl:message name="RegenererDocSoapOut">
+    <wsdl:part name="parameters" element="tns:RegenererDocResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegenererLotSoapIn">
+    <wsdl:part name="parameters" element="tns:RegenererLot" />
+  </wsdl:message>
+  <wsdl:message name="EditerDocParLotSansMajSoapIn">
+    <wsdl:part name="parameters" element="tns:EditerDocParLotSansMaj" />
+  </wsdl:message>
+  <wsdl:message name="PreparerDocPourMiseEnPageSoapIn">
+    <wsdl:part name="parameters" element="tns:PreparerDocPourMiseEnPage" />
+  </wsdl:message>
+  <wsdl:message name="PreparerDocPourMiseEnPageSoapOut">
+    <wsdl:part name="parameters" element="tns:PreparerDocPourMiseEnPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="PreparerDocPourMiseEnPagePourVisuSoapIn">
+    <wsdl:part name="parameters" element="tns:PreparerDocPourMiseEnPagePourVisu" />
+  </wsdl:message>
+  <wsdl:message name="PreparerDocPourMiseEnPagePourVisuSoapOut">
+    <wsdl:part name="parameters" element="tns:PreparerDocPourMiseEnPagePourVisuResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppelOutlookSoapIn">
+    <wsdl:part name="parameters" element="tns:AppelOutlook" />
+  </wsdl:message>
+  <wsdl:message name="AppelOutlookSoapOut">
+    <wsdl:part name="parameters" element="tns:AppelOutlookResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValiderMiseEnPageSoapIn">
+    <wsdl:part name="parameters" element="tns:ValiderMiseEnPage" />
+  </wsdl:message>
+  <wsdl:message name="ValiderMiseEnPageSoapOut">
+    <wsdl:part name="parameters" element="tns:ValiderMiseEnPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="FormuleGarantiePlatDtoSoapIn">
+    <wsdl:part name="parameters" element="tns:FormuleGarantiePlatDto" />
+  </wsdl:message>
+  <wsdl:message name="FormuleGarantiePlatDtoSoapOut">
+    <wsdl:part name="parameters" element="tns:FormuleGarantiePlatDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormuleGarantieDtoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFormuleGarantieDto" />
+  </wsdl:message>
+  <wsdl:message name="GetFormuleGarantieDtoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormuleGarantieDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormuleGarantieOpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFormuleGarantieOp" />
+  </wsdl:message>
+  <wsdl:message name="GetFormuleGarantieOpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormuleGarantieOpResponse" />
+  </wsdl:message>
+  <wsdl:message name="RechPolSoapIn">
+    <wsdl:part name="parameters" element="tns:RechPol" />
+  </wsdl:message>
+  <wsdl:message name="RechPolSoapOut">
+    <wsdl:part name="parameters" element="tns:RechPolResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecherchePolicesSoapIn">
+    <wsdl:part name="parameters" element="tns:RecherchePolices" />
+  </wsdl:message>
+  <wsdl:message name="RecherchePolicesSoapOut">
+    <wsdl:part name="parameters" element="tns:RecherchePolicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifierContraintesGarantieSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifierContraintesGarantie" />
+  </wsdl:message>
+  <wsdl:message name="VerifierContraintesGarantieSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifierContraintesGarantieResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValiderChoixClauseSoapIn">
+    <wsdl:part name="parameters" element="tns:ValiderChoixClause" />
+  </wsdl:message>
+  <wsdl:message name="ValiderChoixClauseSoapOut">
+    <wsdl:part name="parameters" element="tns:ValiderChoixClauseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChercherClausePushSoapIn">
+    <wsdl:part name="parameters" element="tns:ChercherClausePush" />
+  </wsdl:message>
+  <wsdl:message name="ChercherClausePushSoapOut">
+    <wsdl:part name="parameters" element="tns:ChercherClausePushResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChercherClauseLibrePushSoapIn">
+    <wsdl:part name="parameters" element="tns:ChercherClauseLibrePush" />
+  </wsdl:message>
+  <wsdl:message name="ChercherClauseLibrePushSoapOut">
+    <wsdl:part name="parameters" element="tns:ChercherClauseLibrePushResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResoudreClausePushSoapIn">
+    <wsdl:part name="parameters" element="tns:ResoudreClausePush" />
+  </wsdl:message>
+  <wsdl:message name="ResoudreClausePushSoapOut">
+    <wsdl:part name="parameters" element="tns:ResoudreClausePushResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditerDocParLotPushSoapIn">
+    <wsdl:part name="parameters" element="tns:EditerDocParLotPush" />
+  </wsdl:message>
+  <wsdl:message name="EditerDocParLotSansMajPushSoapIn">
+    <wsdl:part name="parameters" element="tns:EditerDocParLotSansMajPush" />
+  </wsdl:message>
+  <wsdl:message name="EditerDocParLotSansMajPushSoapOut">
+    <wsdl:part name="parameters" element="tns:EditerDocParLotSansMajPushResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuterPushSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuterPush" />
+  </wsdl:message>
+  <wsdl:message name="TraitementActifSoapIn">
+    <wsdl:part name="parameters" element="tns:TraitementActif" />
+  </wsdl:message>
+  <wsdl:message name="TraitementActifSoapOut">
+    <wsdl:part name="parameters" element="tns:TraitementActifResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenererFicheSinSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererFicheSin" />
+  </wsdl:message>
+  <wsdl:message name="GenererFicheSinSoapOut">
+    <wsdl:part name="parameters" element="tns:GenererFicheSinResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenererCourrierRelanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererCourrierRelance" />
+  </wsdl:message>
+  <wsdl:message name="GenererLettresChequesSoapIn">
+    <wsdl:part name="parameters" element="tns:GenererLettresCheques" />
+  </wsdl:message>
+  <wsdl:message name="GenererLettresChequesSoapOut">
+    <wsdl:part name="parameters" element="tns:GenererLettresChequesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientIpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientIp" />
+  </wsdl:message>
+  <wsdl:message name="GetClientIpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientIpResponse" />
+  </wsdl:message>
+  <wsdl:portType name="KheoBridgeSoap">
+    <wsdl:operation name="GenererClauses">
+      <wsdl:input message="tns:GenererClausesSoapIn" />
+      <wsdl:output message="tns:GenererClausesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererClausesThread">
+      <wsdl:input message="tns:GenererClausesThreadSoapIn" />
+      <wsdl:output message="tns:GenererClausesThreadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererClausesIdDec">
+      <wsdl:input message="tns:GenererClausesIdDecSoapIn" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifierContraintesClauses">
+      <wsdl:input message="tns:VerifierContraintesClausesSoapIn" />
+      <wsdl:output message="tns:VerifierContraintesClausesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererCp">
+      <wsdl:input message="tns:GenererCpSoapIn" />
+      <wsdl:output message="tns:GenererCpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererDoc">
+      <wsdl:input message="tns:GenererDocSoapIn" />
+      <wsdl:output message="tns:GenererDocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererAttesCo">
+      <wsdl:input message="tns:GenererAttesCoSoapIn" />
+      <wsdl:output message="tns:GenererAttesCoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClauseLibre">
+      <wsdl:input message="tns:ChercherClauseLibreSoapIn" />
+      <wsdl:output message="tns:ChercherClauseLibreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChercherCanevasClauseLibre">
+      <wsdl:input message="tns:ChercherCanevasClauseLibreSoapIn" />
+      <wsdl:output message="tns:ChercherCanevasClauseLibreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChercherCanevasClauseKalcont">
+      <wsdl:input message="tns:ChercherCanevasClauseKalcontSoapIn" />
+      <wsdl:output message="tns:ChercherCanevasClauseKalcontSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClause">
+      <wsdl:input message="tns:ChercherClauseSoapIn" />
+      <wsdl:output message="tns:ChercherClauseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClause">
+      <wsdl:input message="tns:ResoudreClauseSoapIn" />
+      <wsdl:output message="tns:ResoudreClauseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClausePdf">
+      <wsdl:input message="tns:ResoudreClausePdfSoapIn" />
+      <wsdl:output message="tns:ResoudreClausePdfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClauseHisto">
+      <wsdl:input message="tns:ResoudreClauseHistoSoapIn" />
+      <wsdl:output message="tns:ResoudreClauseHistoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuterScript">
+      <wsdl:input message="tns:ExecuterScriptSoapIn" />
+      <wsdl:output message="tns:ExecuterScriptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConditionnerAffichageIs">
+      <wsdl:input message="tns:ConditionnerAffichageIsSoapIn" />
+      <wsdl:output message="tns:ConditionnerAffichageIsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AjouterFiligrane">
+      <wsdl:input message="tns:AjouterFiligraneSoapIn" />
+      <wsdl:output message="tns:AjouterFiligraneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertirDocEnPdf">
+      <wsdl:input message="tns:ConvertirDocEnPdfSoapIn" />
+      <wsdl:output message="tns:ConvertirDocEnPdfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditerAvisEcheance">
+      <wsdl:input message="tns:EditerAvisEcheanceSoapIn" />
+      <wsdl:output message="tns:EditerAvisEcheanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditerBulletinSouscription400">
+      <wsdl:input message="tns:EditerBulletinSouscription400SoapIn" />
+      <wsdl:output message="tns:EditerBulletinSouscription400SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererKpdocw">
+      <wsdl:input message="tns:GenererKpdocwSoapIn" />
+      <wsdl:output message="tns:GenererKpdocwSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLot">
+      <wsdl:input message="tns:EditerDocParLotSoapIn" />
+    </wsdl:operation>
+    <wsdl:operation name="RegenererDoc">
+      <wsdl:input message="tns:RegenererDocSoapIn" />
+      <wsdl:output message="tns:RegenererDocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegenererLot">
+      <wsdl:input message="tns:RegenererLotSoapIn" />
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotSansMaj">
+      <wsdl:input message="tns:EditerDocParLotSansMajSoapIn" />
+    </wsdl:operation>
+    <wsdl:operation name="PreparerDocPourMiseEnPage">
+      <wsdl:input message="tns:PreparerDocPourMiseEnPageSoapIn" />
+      <wsdl:output message="tns:PreparerDocPourMiseEnPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PreparerDocPourMiseEnPagePourVisu">
+      <wsdl:input message="tns:PreparerDocPourMiseEnPagePourVisuSoapIn" />
+      <wsdl:output message="tns:PreparerDocPourMiseEnPagePourVisuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppelOutlook">
+      <wsdl:input message="tns:AppelOutlookSoapIn" />
+      <wsdl:output message="tns:AppelOutlookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValiderMiseEnPage">
+      <wsdl:input message="tns:ValiderMiseEnPageSoapIn" />
+      <wsdl:output message="tns:ValiderMiseEnPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FormuleGarantiePlatDto">
+      <wsdl:input message="tns:FormuleGarantiePlatDtoSoapIn" />
+      <wsdl:output message="tns:FormuleGarantiePlatDtoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormuleGarantieDto">
+      <wsdl:input message="tns:GetFormuleGarantieDtoSoapIn" />
+      <wsdl:output message="tns:GetFormuleGarantieDtoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormuleGarantieOp">
+      <wsdl:input message="tns:GetFormuleGarantieOpSoapIn" />
+      <wsdl:output message="tns:GetFormuleGarantieOpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RechPol">
+      <wsdl:input message="tns:RechPolSoapIn" />
+      <wsdl:output message="tns:RechPolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecherchePolices">
+      <wsdl:input message="tns:RecherchePolicesSoapIn" />
+      <wsdl:output message="tns:RecherchePolicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifierContraintesGarantie">
+      <wsdl:input message="tns:VerifierContraintesGarantieSoapIn" />
+      <wsdl:output message="tns:VerifierContraintesGarantieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValiderChoixClause">
+      <wsdl:input message="tns:ValiderChoixClauseSoapIn" />
+      <wsdl:output message="tns:ValiderChoixClauseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClausePush">
+      <wsdl:input message="tns:ChercherClausePushSoapIn" />
+      <wsdl:output message="tns:ChercherClausePushSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClauseLibrePush">
+      <wsdl:input message="tns:ChercherClauseLibrePushSoapIn" />
+      <wsdl:output message="tns:ChercherClauseLibrePushSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClausePush">
+      <wsdl:input message="tns:ResoudreClausePushSoapIn" />
+      <wsdl:output message="tns:ResoudreClausePushSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotPush">
+      <wsdl:input message="tns:EditerDocParLotPushSoapIn" />
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotSansMajPush">
+      <wsdl:input message="tns:EditerDocParLotSansMajPushSoapIn" />
+      <wsdl:output message="tns:EditerDocParLotSansMajPushSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuterPush">
+      <wsdl:input message="tns:ExecuterPushSoapIn" />
+    </wsdl:operation>
+    <wsdl:operation name="TraitementActif">
+      <wsdl:input message="tns:TraitementActifSoapIn" />
+      <wsdl:output message="tns:TraitementActifSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererFicheSin">
+      <wsdl:input message="tns:GenererFicheSinSoapIn" />
+      <wsdl:output message="tns:GenererFicheSinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererCourrierRelance">
+      <wsdl:input message="tns:GenererCourrierRelanceSoapIn" />
+    </wsdl:operation>
+    <wsdl:operation name="GenererLettresCheques">
+      <wsdl:input message="tns:GenererLettresChequesSoapIn" />
+      <wsdl:output message="tns:GenererLettresChequesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientIp">
+      <wsdl:input message="tns:GetClientIpSoapIn" />
+      <wsdl:output message="tns:GetClientIpSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="KheoBridgeSoap" type="tns:KheoBridgeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GenererClauses">
+      <soap:operation soapAction="http://tempuri.org/GenererClauses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererClausesThread">
+      <soap:operation soapAction="http://tempuri.org/GenererClausesThread" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererClausesIdDec">
+      <soap:operation soapAction="http://tempuri.org/GenererClausesIdDec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="VerifierContraintesClauses">
+      <soap:operation soapAction="http://tempuri.org/VerifierContraintesClauses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererCp">
+      <soap:operation soapAction="http://tempuri.org/GenererCp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererDoc">
+      <soap:operation soapAction="http://tempuri.org/GenererDoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererAttesCo">
+      <soap:operation soapAction="http://tempuri.org/GenererAttesCo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClauseLibre">
+      <soap:operation soapAction="http://tempuri.org/ChercherClauseLibre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherCanevasClauseLibre">
+      <soap:operation soapAction="http://tempuri.org/ChercherCanevasClauseLibre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherCanevasClauseKalcont">
+      <soap:operation soapAction="http://tempuri.org/ChercherCanevasClauseKalcont" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClause">
+      <soap:operation soapAction="http://tempuri.org/ChercherClause" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClause">
+      <soap:operation soapAction="http://tempuri.org/ResoudreClause" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClausePdf">
+      <soap:operation soapAction="http://tempuri.org/ResoudreClausePdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClauseHisto">
+      <soap:operation soapAction="http://tempuri.org/ResoudreClauseHisto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuterScript">
+      <soap:operation soapAction="http://tempuri.org/ExecuterScript" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConditionnerAffichageIs">
+      <soap:operation soapAction="http://tempuri.org/ConditionnerAffichageIs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AjouterFiligrane">
+      <soap:operation soapAction="http://tempuri.org/AjouterFiligrane" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertirDocEnPdf">
+      <soap:operation soapAction="http://tempuri.org/ConvertirDocEnPdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditerAvisEcheance">
+      <soap:operation soapAction="http://tempuri.org/EditerAvisEcheance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditerBulletinSouscription400">
+      <soap:operation soapAction="http://tempuri.org/EditerBulletinSouscription400" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererKpdocw">
+      <soap:operation soapAction="http://tempuri.org/GenererKpdocw" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLot">
+      <soap:operation soapAction="http://tempuri.org/EditerDocParLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RegenererDoc">
+      <soap:operation soapAction="http://tempuri.org/RegenererDoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegenererLot">
+      <soap:operation soapAction="http://tempuri.org/RegenererLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotSansMaj">
+      <soap:operation soapAction="http://tempuri.org/EditerDocParLotSansMaj" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="PreparerDocPourMiseEnPage">
+      <soap:operation soapAction="http://tempuri.org/PreparerDocPourMiseEnPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreparerDocPourMiseEnPagePourVisu">
+      <soap:operation soapAction="http://tempuri.org/PreparerDocPourMiseEnPagePourVisu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppelOutlook">
+      <soap:operation soapAction="http://tempuri.org/AppelOutlook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValiderMiseEnPage">
+      <soap:operation soapAction="http://tempuri.org/ValiderMiseEnPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormuleGarantiePlatDto">
+      <soap:operation soapAction="http://tempuri.org/FormuleGarantiePlatDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormuleGarantieDto">
+      <soap:operation soapAction="http://tempuri.org/GetFormuleGarantieDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormuleGarantieOp">
+      <soap:operation soapAction="http://tempuri.org/GetFormuleGarantieOp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RechPol">
+      <soap:operation soapAction="http://tempuri.org/RechPol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecherchePolices">
+      <soap:operation soapAction="http://tempuri.org/RecherchePolices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifierContraintesGarantie">
+      <soap:operation soapAction="http://tempuri.org/VerifierContraintesGarantie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValiderChoixClause">
+      <soap:operation soapAction="http://tempuri.org/ValiderChoixClause" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClausePush">
+      <soap:operation soapAction="http://tempuri.org/ChercherClausePush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClauseLibrePush">
+      <soap:operation soapAction="http://tempuri.org/ChercherClauseLibrePush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClausePush">
+      <soap:operation soapAction="http://tempuri.org/ResoudreClausePush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotPush">
+      <soap:operation soapAction="http://tempuri.org/EditerDocParLotPush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotSansMajPush">
+      <soap:operation soapAction="http://tempuri.org/EditerDocParLotSansMajPush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuterPush">
+      <soap:operation soapAction="http://tempuri.org/ExecuterPush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="TraitementActif">
+      <soap:operation soapAction="http://tempuri.org/TraitementActif" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererFicheSin">
+      <soap:operation soapAction="http://tempuri.org/GenererFicheSin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererCourrierRelance">
+      <soap:operation soapAction="http://tempuri.org/GenererCourrierRelance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GenererLettresCheques">
+      <soap:operation soapAction="http://tempuri.org/GenererLettresCheques" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientIp">
+      <soap:operation soapAction="http://tempuri.org/GetClientIp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="KheoBridgeSoap12" type="tns:KheoBridgeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GenererClauses">
+      <soap12:operation soapAction="http://tempuri.org/GenererClauses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererClausesThread">
+      <soap12:operation soapAction="http://tempuri.org/GenererClausesThread" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererClausesIdDec">
+      <soap12:operation soapAction="http://tempuri.org/GenererClausesIdDec" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="VerifierContraintesClauses">
+      <soap12:operation soapAction="http://tempuri.org/VerifierContraintesClauses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererCp">
+      <soap12:operation soapAction="http://tempuri.org/GenererCp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererDoc">
+      <soap12:operation soapAction="http://tempuri.org/GenererDoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererAttesCo">
+      <soap12:operation soapAction="http://tempuri.org/GenererAttesCo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClauseLibre">
+      <soap12:operation soapAction="http://tempuri.org/ChercherClauseLibre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherCanevasClauseLibre">
+      <soap12:operation soapAction="http://tempuri.org/ChercherCanevasClauseLibre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherCanevasClauseKalcont">
+      <soap12:operation soapAction="http://tempuri.org/ChercherCanevasClauseKalcont" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClause">
+      <soap12:operation soapAction="http://tempuri.org/ChercherClause" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClause">
+      <soap12:operation soapAction="http://tempuri.org/ResoudreClause" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClausePdf">
+      <soap12:operation soapAction="http://tempuri.org/ResoudreClausePdf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClauseHisto">
+      <soap12:operation soapAction="http://tempuri.org/ResoudreClauseHisto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuterScript">
+      <soap12:operation soapAction="http://tempuri.org/ExecuterScript" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConditionnerAffichageIs">
+      <soap12:operation soapAction="http://tempuri.org/ConditionnerAffichageIs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AjouterFiligrane">
+      <soap12:operation soapAction="http://tempuri.org/AjouterFiligrane" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertirDocEnPdf">
+      <soap12:operation soapAction="http://tempuri.org/ConvertirDocEnPdf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditerAvisEcheance">
+      <soap12:operation soapAction="http://tempuri.org/EditerAvisEcheance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditerBulletinSouscription400">
+      <soap12:operation soapAction="http://tempuri.org/EditerBulletinSouscription400" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererKpdocw">
+      <soap12:operation soapAction="http://tempuri.org/GenererKpdocw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLot">
+      <soap12:operation soapAction="http://tempuri.org/EditerDocParLot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RegenererDoc">
+      <soap12:operation soapAction="http://tempuri.org/RegenererDoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegenererLot">
+      <soap12:operation soapAction="http://tempuri.org/RegenererLot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotSansMaj">
+      <soap12:operation soapAction="http://tempuri.org/EditerDocParLotSansMaj" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="PreparerDocPourMiseEnPage">
+      <soap12:operation soapAction="http://tempuri.org/PreparerDocPourMiseEnPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreparerDocPourMiseEnPagePourVisu">
+      <soap12:operation soapAction="http://tempuri.org/PreparerDocPourMiseEnPagePourVisu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppelOutlook">
+      <soap12:operation soapAction="http://tempuri.org/AppelOutlook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValiderMiseEnPage">
+      <soap12:operation soapAction="http://tempuri.org/ValiderMiseEnPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormuleGarantiePlatDto">
+      <soap12:operation soapAction="http://tempuri.org/FormuleGarantiePlatDto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormuleGarantieDto">
+      <soap12:operation soapAction="http://tempuri.org/GetFormuleGarantieDto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormuleGarantieOp">
+      <soap12:operation soapAction="http://tempuri.org/GetFormuleGarantieOp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RechPol">
+      <soap12:operation soapAction="http://tempuri.org/RechPol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecherchePolices">
+      <soap12:operation soapAction="http://tempuri.org/RecherchePolices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifierContraintesGarantie">
+      <soap12:operation soapAction="http://tempuri.org/VerifierContraintesGarantie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValiderChoixClause">
+      <soap12:operation soapAction="http://tempuri.org/ValiderChoixClause" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClausePush">
+      <soap12:operation soapAction="http://tempuri.org/ChercherClausePush" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChercherClauseLibrePush">
+      <soap12:operation soapAction="http://tempuri.org/ChercherClauseLibrePush" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResoudreClausePush">
+      <soap12:operation soapAction="http://tempuri.org/ResoudreClausePush" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotPush">
+      <soap12:operation soapAction="http://tempuri.org/EditerDocParLotPush" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EditerDocParLotSansMajPush">
+      <soap12:operation soapAction="http://tempuri.org/EditerDocParLotSansMajPush" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuterPush">
+      <soap12:operation soapAction="http://tempuri.org/ExecuterPush" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="TraitementActif">
+      <soap12:operation soapAction="http://tempuri.org/TraitementActif" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererFicheSin">
+      <soap12:operation soapAction="http://tempuri.org/GenererFicheSin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenererCourrierRelance">
+      <soap12:operation soapAction="http://tempuri.org/GenererCourrierRelance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GenererLettresCheques">
+      <soap12:operation soapAction="http://tempuri.org/GenererLettresCheques" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientIp">
+      <soap12:operation soapAction="http://tempuri.org/GetClientIp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="KheoBridge">
+    <wsdl:port name="KheoBridgeSoap" binding="tns:KheoBridgeSoap">
+      <soap:address location="http://editique.ws.support.albingia.local/KheoBridge.asmx" />
+    </wsdl:port>
+    <wsdl:port name="KheoBridgeSoap12" binding="tns:KheoBridgeSoap12">
+      <soap12:address location="http://editique.ws.support.albingia.local/KheoBridge.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,97 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamISAssocier.ParamISLigneModele
+<td class="col_Action_line">
+    <div class="col_Action_in" name="colReadOnly_@(Model.GuidId)">
+        <img id="deleteModele_@(Model.GuidId)" name="deleteModele" title="Supprimer la ligne modèle" alt="Supprimer la ligne modèle" class="CursorPointer Action paddingReadonly" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+    </div>
+</td>
+<td class="col_code_line FloatLeft" name="selectableCol" id="col_Code_@(Model.GuidId)">
+    <div class="col_code_in" name="colReadOnly_@(Model.GuidId)" title="Détails référentiel">
+        @if (!string.IsNullOrEmpty(Model.Referentiel))
+        {
+            <input type="hidden" id="@("idReferentiel_" + Model.GuidId)" value="@Model.ReferentielId" />
+            <img id="infoReferentiel_@(Model.GuidId)" name="infoReferentiel" class="deferredto-lazy" alt="Informations" src="/Content/Images/alertes/notif_icn_info16.png" />
+        }
+    </div>
+</td>
+<td class="col_Referentiel_line" name="selectableCol" id="col_Referentiel_@(Model.GuidId)">
+    <input type="hidden" id="typeUI_@(Model.GuidId)" value="@Model.TypeUI" />
+    <div class="col_Referentiel_in" name="colReadOnly_@(Model.GuidId)" title="@Model.Referentiel">
+        @Model.Referentiel
+    </div>
+</td>
+<td class="col_Libelle_line" name="selectableCol" id="col_Libelle_@(Model.GuidId)">
+    <div class="col_Libelle_in paddingReadonly" name="colReadOnly_@(Model.GuidId)" title="@Model.Libelle">
+        @Model.Libelle
+    </div>
+</td>
+<td class="col_NumAff_line" name="selectableCol" id="col_NumAff_@(Model.GuidId)">
+    <div class="col_NumAff_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.NumOrdreAffichage
+    </div>
+</td>
+<td class="col_SautLigne_line" name="selectableCol" id="col_SautLigne_@(Model.GuidId)">
+    <div class="col_SautLigne_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.SautDeLigne
+    </div>
+</td>
+<td class="col_Modifiable_line" name="selectableCol" id="col_Modifiable_@(Model.GuidId)">
+    <div class="col_Modifiable_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Modifiable
+    </div>
+</td>
+<td class="col_Obligatoire_line" name="selectableCol" id="col_Obligatoire_@(Model.GuidId)">
+    <div class="col_Obligatoire_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Obligatoire
+    </div>
+</td>
+<td class="col_Tcon_line" name="selectableCol" id="col_Tcon_@(Model.GuidId)">
+    <div class="col_Tcon_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Tcon
+    </div>
+</td>
+<td class="col_Tfam_line" name="selectableCol" id="col_Tfam_@(Model.GuidId)">
+    <div class="col_Tfam_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Tfam
+    </div>
+</td>
+<td class="col_Presentation_line" name="selectableCol" id="col_Presentation_@(Model.GuidId)">
+    <div class="col_Presentation_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Presentation
+    </div>
+</td>
+<td class="col_ScriptAffichage_line" name="selectableCol" id="col_ScriptAffichage_@(Model.GuidId)">
+    <div class="col_ScriptAffichage_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Affichage
+    </div>
+</td>
+<td class="col_ScriptControle_line" name="selectableCol" id="col_ScriptControle_@(Model.GuidId)">
+    <div class="col_ScriptControle_in paddingReadonly" name="colReadOnly_@(Model.GuidId)">
+        @Model.Controle
+    </div>
+</td>
+<td class="col_LienParent_line" name="selectableCol" id="col_LienParent_@(Model.GuidId)">
+    <div class="col_LienParent_in" name="colReadOnly_@(Model.GuidId)" title="@Model.LienParentLibelle">
+        @Model.LienParentLibelle
+    </div>
+</td>
+<td class="col_ParentComportement_line" name="selectableCol" id="col_ParentComportement_@(Model.GuidId)">
+    <div class="col_ParentComportement_in" name="colReadOnly_@(Model.GuidId)">
+        @Model.ParentComportement
+    </div>
+</td>
+<td class="col_ParentEvt_line" name="selectableCol" id="col_ParentEvt_@(Model.GuidId)">
+    <div class="col_ParentEvt_in" name="colReadOnly_@(Model.GuidId)">
+        @Model.ParentEvenement
+    </div>
+</td>
+<td class="col_ScriptAff_line" name="selectableCol" id="col_ScriptAff_@(Model.GuidId)">
+    <div class="col_Script_in" name="colReadOnly_@(Model.GuidId)" title="@Model.ScriptAffichage">
+        @Model.ScriptAffichage
+    </div>
+</td>
+<td class="col_ScriptCtrl_line" name="selectableCol" id="col_ScriptCtrl_@(Model.GuidId)">
+    <div class="col_Script_in" name="colReadOnly_@(Model.GuidId)" title="@Model.ScriptControle">
+        @Model.ScriptControle
+    </div>
+</td>
+

@@ -1,0 +1,16 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VentilationCommissionGarantie>
+@{
+    foreach (var garantie in Model)
+    {
+    <tr>
+        <td class="col_VentDetailDoubleColumn ">@garantie.Garantie
+        </td>
+        <td class="col_VentDetailSmallColumn ">@garantie.HorsCATNAT
+        </td>
+        <td class="col_VentDetailSmallColumn ">@garantie.CATNAT
+        </td>
+        <td class="col_VentDetailSmallColumn ">@garantie.Total
+        </td>
+    </tr>        
+    }
+}

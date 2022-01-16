@@ -1,0 +1,44 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestUtilisateursPage
+
+<div id="rechercheTable" class="GradientSection rPanel" albcontext="@Model.Albcontext">
+
+    <div class="rCell" albcontext="@Model.Albcontext">
+        <label>Utilisateur :</label>
+        <input type="hidden" id="rechercheUtilisateurHidden" name="rechercheUtilisateurHidden" value="" albcontext="@(Model.Albcontext + "recherche")" albautocomplete="autoCompUserSelect" />
+        <input type="text" name="rechercheUtilisateur" id="rechercheUtilisateur" tabindex="1" value="@Model.RechercheUtilisateur" albautocomplete="autoCompUserNom" albcontext="@(Model.Albcontext + "recherche")" />
+    </div>
+    <div class="rCell" albcontext="@Model.Albcontext">
+        <label>Branche :</label>
+        @Html.AlbDropDownListFor(m => m.RechercheBranche, Model.Branches, "Branche", htmlAttributes: new
+                                                           {
+                                                               @id = "rechercheBranche",
+                                                               @tabindex = "2",
+                                                               @class = "FieldBranche",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+    </div>
+    <div class="rCell" albcontext="@Model.Albcontext">
+        <label>Type de droit :</label>
+        @Html.AlbDropDownListFor(m => m.RechercheTypeDroit, Model.TypeDroits, "TypeDroit", htmlAttributes: new
+                                                           {
+                                                               @id = "rechercheTypeDroit",
+                                                               @tabindex = "3",
+                                                               @class = "FieldBranche",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+
+    </div>
+    <div class="rCell floatR">
+        
+        <div class="rpCell padTop" albcontext="@Model.Albcontext" tabindex="4">
+            <span id="btnRechercherGestUsers" albcontext="@Model.Albcontext">
+                <img class="CursorPointer" id="RechercherImg" alt="" src="/Content/Images/loupe.png">
+            </span>
+        </div>
+
+        <div class="floatR padB" albcontext="@Model.Albcontext" tabindex="5">
+            <button tabIndex="" title="" id="btnInitialize" type="button" albcontext="@Model.Albcontext">Ré<u>i</u>nitialiser</button>
+            <button tabIndex="" title="" id="btnverifdroit" type="button" albcontext="@Model.Albcontext">V<u>é</u>rifier</button>
+        </div>
+    </div>
+</div>

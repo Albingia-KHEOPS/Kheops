@@ -1,0 +1,84 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamDocumentChemin.ModeleLigneDocumentChemin
+<div id="divSectionInfoBase" class="HorizontalHalfWithGroupAdmin">
+    <input type="hidden" id="identifiantChemin" value ="@Model.IdChemin" />
+    <div class="GradientSection divHeightDetails">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Identifiant</label>
+                </div>
+                @if (string.IsNullOrEmpty(Model.IdChemin))
+                {
+                    <div class="FloatLeft">
+                        @Html.AlbDropDownListFor(m => Model.Type, Model.ListeTypes, "TypeChemin", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "TypeChemin" })
+                    </div>
+                    <div class="FloatLeft" id="divTypologies">
+                        <input id="Typologie" value="@Model.Typologie" class="GenericColumn"/>
+                    </div>
+                }
+                else
+                {
+                    @Html.HiddenNoName("TypeChemin", Model.Type)
+                    @Html.HiddenNoName("Typologie", Model.Typologie)
+                    <input value="@Model.IdChemin" disabled="disabled" class="readonly widthColumn" />
+                }
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Désignation</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="LibelleChemin" value="@Model.LibelleChemin" class="widthColumn"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Chemin</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="Chemin" value="@Model.Chemin" class="widthColumn"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Serveur</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="Serveur" value="@Model.Serveur" class="widthColumn"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Racine</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="Racine" value="@Model.Racine" class="widthColumn"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Environnement</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="Environnement" value="@(string.IsNullOrEmpty(Model.Environnement) ? ALBINGIA.Framework.Common.Constants.AlbOpConstants.ClientWorkEnvironment : Model.Environnement)" class="widthColumn readonly" readonly="readonly"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ActionButtons ActionButtonRight PaddingRight">
+                <input type="button" id="btnEnregistrer" value="Enregistrer" />
+            </div>
+        </div>
+    </div>
+</div>
+

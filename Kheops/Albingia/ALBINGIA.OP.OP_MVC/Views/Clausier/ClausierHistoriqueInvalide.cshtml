@@ -1,0 +1,94 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClausier
+<div class="FloatLeft">
+    <div class="GroupFull GroupWithBorder" style="width: 518px">
+        @Html.HiddenNoName("CodeClauseSelected", Model.CodeClauseValide)
+        @Html.HiddenNoName("VersionClauseSelected", Model.VersionClauseValide)
+        @if (Model.ClauseValideExist) {
+            <div class="Alerte">
+                <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")" title="Attention" class="IconeAlerte" />
+                <label class="MsgAlerte">Attention, la version de la clause sélectionnée n'est pas valable pour cette offre. </label>
+                <br />
+                <br />
+                Si vous choisissez cette clause, la version suivante sera sélectionnée : @Model.VersionClauseValide
+            </div>
+        }
+        else {
+            <div class="Alerte">
+                <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")" title="Attention" class="IconeAlerte" />
+                <label class="MsgAlerte">Attention, la version de la clause sélectionnée n'est pas valable pour cette offre. </label>
+                <br />
+                Aucune autre version n'est disponible à cette période, cette clause ne peut donc pas être ajoutée à l'offre.
+            </div>
+        }
+        <div class="GroupTitle BackgroundColorTitreHisto">
+            @Model.Code - @Model.Libelle
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 507px; height: 300px;">
+            <div class="tblHistorique GradientSection">
+                <div id="divHistoriqueInvalideHeader">
+                    <table id="tblHistoriqueInvalideHeader">
+                        <tr>
+                            <th class="col_HeaderHistoVersion tablePersoHead">
+                                Version
+                            </th>
+                            <th class="col_HeaderHistoDateDeb tablePersoHead">
+                                Date de début
+                            </th>
+                            <th class="col_HeaderHistoDateFin tablePersoHead">
+                                Date de fin
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divHistoriqueInvalideBody">
+                    <table id="tblHistoriqueInvalideBody">
+                        @{
+
+                            foreach (var item in Model.Historique) {
+                                if (@item.Valide && Model.ClauseValideExist) {
+                                    <tr class="ClauseValide">
+                                        <td class="col_BodyHistoVersion">@item.Version</td>
+                                        <td class="col_BodyHistoDateDeb">@item.DateDeDebut</td>
+                                        <td class="col_BosyHistoDateFin">@item.DateDeFin</td>
+                                    </tr>
+                                }
+                                else {
+                                    <tr>
+                                        <td class="col_BodyHistoVersion">@item.Version</td>
+                                        <td class="col_BodyHistoDateDeb">@item.DateDeDebut</td>
+                                        <td class="col_BosyHistoDateFin">@item.DateDeFin</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder" style="width: 518px">
+        <div class="DivContexte">
+            <div class="FloatLeft">
+                <label class="Block">Contexte*</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.AlbDropDownListFor(m => m.ModeleContexte.Contexte, Model.ModeleContexte.Contextes, "ContexteInvalide", htmlAttributes: new { @id = "ContexteInvalide" }, generateTitle: true)
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 518px">
+        <div class="ActionButtonsHisto ActionButtonRight">
+            @if (!Model.ClauseValideExist)
+            {            
+                <input type="button" id="btnFermer" value="Fermer" />          
+            }
+            else
+            {
+                <input type="button" id="btnFermer" value="Annluer" />
+                <input type="button" id="btnContinuer" value="Continuer" />
+            }
+        </div>
+    </div>
+
+</div>
+

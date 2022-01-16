@@ -1,0 +1,135 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleSaisieRegulGarantiePage
+
+
+<div class="nHorizontalFullWithGroup">
+    <div class="nGradientSection divInfoPeriode ">
+        @Html.HiddenNoName("codeFor", Model.codeFor)
+        @Html.HiddenNoName("codeRsq", Model.codeRsq)
+        @Html.HiddenNoName("lotID", Model.lotId)
+        @Html.HiddenNoName("codeOpt", Model.codeOpt)
+        @Html.HiddenNoName("idGar", Model.idGar)
+        @Html.HiddenNoName("codeGar", Model.CodeGar)
+        @Html.HiddenNoName("ReguleId", Model.reguleId)
+        @Html.HiddenNoName("libgar", Model.libGar)
+        @Html.HiddenNoName("idregulgar", Model.idregulgar)
+        @Html.HiddenNoName("typeregulgar", Model.modelInfoInitregul.InfoInitregul.TypeGrille)
+        @Html.Hidden("TypeRegule", (Model.modelInfoInitregul.InfoInitregul.TypeGrille), new { id = "TypeGrille" })
+        @Html.Hidden("grisSuivant", (Model.modelInfoInitregul.InfoInitregul.SuivantDesactiv.ToString()))
+        @Html.Hidden("motifInf", (Model.modelInfoInitregul.InfoInitregul.Motif_Inf))
+        @Html.Hidden("reload", (Model.modelInfoInitregul.InfoInitregul.relaod.ToString()))
+
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label style="font-weight: bold;">Régularisation  @(Model.CodeGar) @(Model.libGar) @(Model.modelInfoInitregul.InfoInitregul.DateDebRegul_STR)  au   @(Model.modelInfoInitregul.InfoInitregul.DateFinRegul_STR) : </label>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class=" Block tblabelPeriod">Période du </label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="DateDebRegul" name="DateDebRegul" readonly="readonly" class="inputDate readonly " value="@(Model.modelInfoInitregul.InfoInitregul.DateDeb_STD_STR)" />
+            </div>
+            <div class="FloatLeft">
+                <label class=" Block tblabel">au  </label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="DateFinRegul" name="DateFinRegul" readonly="readonly" class=" inputDate readonly " value="@(Model.modelInfoInitregul.InfoInitregul.DateFin_STD_STR)" />
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block tblabelRisque">Risque </label>
+            </div>
+            <div class="FloatLeft" style="padding-left: 35px;">
+                <input type="text" id="RisqueIden" name="RisqueIden" readonly="readonly" class="readonly DoubleInput" value="@(Model.modelInfoInitregul.InfoInitregul.CodeRsq_STD)- @(Model.modelInfoInitregul.InfoInitregul.LibRsq_STD)" />
+            </div>
+            <div class="FloatLeft">
+                <label class="BlockRegimeTaxe">Régime taxe</label>
+            </div>
+            <div class="FloatLeft" style="padding-left: 20px;">
+                <input type="text" id="CodeRgt" name="CodeRgt" readonly="readonly" class="readonly" value="@(Model.modelInfoInitregul.InfoInitregul.CodeRgt_STD) -  @(Model.modelInfoInitregul.InfoInitregul.LibRgt_STD)" />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="nGradientSection divInfoFormuleSaisie " style="height: 65px;">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblField">Formule</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="FormuleDescr" name="FormuleDescr" class="readonly DoubleInput" readonly="readonly" value="@(Model.modelInfoInitregul.InfoInitregul.LettreFor_STD) - @(Model.modelInfoInitregul.InfoInitregul.LibFor_STD)" />
+            </div>
+            <div class="FloatLeft">
+                <button type="button" id="btnAppliquerA" style="margin-left: 30px">S'applique à </button>
+                <div id="divAppliqueA" class="None nInfoBandeau">
+                    <div class="even" style="width: 410px; padding: 5px;">@string.Format("Risque {0} - {1}", Model.AppliqueA.Code, Model.AppliqueA.Designation)</div>
+                    @foreach (var obj in Model.AppliqueA.Objets)
+                    {
+                        <div class="odd" style="width: 400px; padding: 5px; padding-left: 15px;">
+                            @string.Format("Objet {0} - {1}", obj.Code, obj.Designation)
+                        </div>
+                    }
+                    <div class="ActionButtons ActionButtonRight">
+                        <button id="btnFermerpop" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="FloatLeft">
+                <label class="Block ">Code Taxe</label>
+            </div>
+            <div class="FloatLeft" style="padding-left: 20px;">
+                <input type="text" id="Codetaxe" name="CodeTaxe" class="readonly WidthCodeTaxe" readonly="readonly" value="@Model.modelInfoInitregul.InfoInitregul.CodeTaxe_STD - @Model.modelInfoInitregul.InfoInitregul.LibTaxe_STD">
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block lblField">Type de régul.</label>
+            </div>
+            <div class="FloatLeft">
+                @if (!string.IsNullOrEmpty(Model.modelInfoInitregul.InfoInitregul.TypeReguleGar_STD) || !string.IsNullOrEmpty(Model.modelInfoInitregul.InfoInitregul.LibReguleGar_STD))
+                {
+                        <input type="text" id="TypeRegul" name="TypeRegul" class="readonly DoubleInput" readonly="readonly" value="@(Model.modelInfoInitregul.InfoInitregul.TypeReguleGar_STD) - @(Model.modelInfoInitregul.InfoInitregul.LibReguleGar_STD)" />
+                }
+                else
+                {
+                        <input type="text" id="TypeRegul" name="TypeRegul" class="readonly DoubleInput" readonly="readonly" value="" />
+                }
+            </div>
+        </div>
+        @if (Model.modelInfoInitregul.InfoInitregul.TypeReguleGar_STD == "A" && !Model.modelInfoInitregul.IsSimplifiedRegul)
+        {
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block lblField">Garantie automatique</label>
+                </div>
+                <div class="FloatLeft" style="margin-right: 5px">
+                    <input type="text" class="readonly Input txtGAr" readonly="readonly" id="ValeurGar" albmask="pourcentdecimal" value="@(Model.modelInfoInitregul.InfoInitregul.ValGarAuto_STD)" />
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" class="readonly inUnite txtGAr" readonly="readonly" id="UniteGar" value="@(Model.modelInfoInitregul.InfoInitregul.UnitGarAuto_STD)" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="nGradientSection divInfoTaux " style="height: 25px">
+
+        @Html.Partial("TauxRegulPeriod", Model.modelInfoInitregul.InfoInitregul)
+        @Html.Partial("TauxRegulProv", Model.modelInfoInitregul.InfoInitregul)
+
+    </div>
+
+    <div class="@(Model.modelInfoInitregul.InfoInitregul.TypeReguleGar_STD == "A" ? "nGradientSection divInfoDataA" : "nGradientSection divInfoDataSTD")"  style="height: 280px;">
+        <div id="DataRegul" class="FloatLeft">
+
+            @Html.Partial("DataRegularisationPeriod", Model.modelInfoInitregul)
+
+        </div>
+    </div>
+</div>
+
+
+

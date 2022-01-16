@@ -1,0 +1,65 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VisualisationQuittancesLigne>
+@{
+    double totalTTC = 0;
+    double totalRegle = 0;
+}
+
+
+
+<div class='divHeightVisuquittances @(Model!= null && Model.Any() && Model.FirstOrDefault().IsModifHorsAvenant? "height-visu-quittances-havn":string.Empty)'>
+    @if (Model != null && Model.Count > 0)
+    {
+        <table id="tblVisuQuittancesBody" class="trHeight">
+            @foreach (var ligne in Model)
+            {
+            <tr class="@(ligne.IsModeAnnulation && ligne.SitCode == "S" ? "textBlue" : (ligne.SitCode == "X" || ligne.SitCode == "W") ? "NotAffecte" : string.Empty)">
+                <td class="tdQuittChkAnnul">
+                    @if (ligne.IsModeAnnulation && ligne.IsAnnulable)
+                    {
+                        <input type="checkbox" name="checkAnnuleQuittance" id="@("chkAnnul_" + ligne.NumQuittance)" checked="@(ligne.IsAnnulee || ligne.IsCheck == "C" || (ligne.Avenant == ligne.CurrentCodeAvt && ligne.CurrentCodeAvt != 0 && ligne.OpeCode != 20) )" disabled="@(ligne.Avenant == ligne.CurrentCodeAvt && ligne.CurrentCodeAvt != 0 && ligne.OpeCode != 20 )" />
+                    }
+                    else
+                    {
+                        @Html.Raw("&nbsp;")
+                    }
+                </td>
+                <td class="tdQuittEmission" id="@("emission_" + ligne.NumQuittance)">@(ligne.Emission.HasValue ? ligne.Emission.Value.ToString("dd/MM/yyyy") : string.Empty)</td>
+                <td class="tdQuittNum navig" name="linkVisu" id="@("num_" + ligne.NumQuittance)" albnumavn="@(ligne.Avenant)">@(ligne.NumQuittance)</td>
+                <td class="tdQuittAvis" style="text-align:right;" id="@("avis_" + ligne.NumQuittance)">@ligne.Avis</td>
+                <td class="tdQuittDateDeb" id="@("datedeb_" + ligne.NumQuittance)">@(ligne.DateDeb.HasValue ? ligne.DateDeb.Value.ToString("dd/MM/yyyy") : string.Empty)</td>
+                <td class="tdQuittDateFin" id="@("datefin_" + ligne.NumQuittance)">@(ligne.DateFin.HasValue ? ligne.DateFin.Value.ToString("dd/MM/yyyy") : string.Empty)</td>
+                <td class="tdQuittEcheance" id="@("echeance_" + ligne.NumQuittance)">@(ligne.Echeance.HasValue ? ligne.Echeance.Value.ToString("dd/MM/yyyy") : string.Empty)</td>
+                <td class="tdQuittAvn" id="@("avn_" + ligne.NumQuittance)">@(ligne.Avenant)</td>
+                <td class="tdQuittDem" id="@("dem_" + ligne.NumQuittance)" title="@(ligne.DemCode == "O" ? "coti. à la demande" : string.Empty)">
+                    @if (ligne.DemCode == "O")
+                    {
+                        <img alt="" src="@Url.Content("/Content/Images/Checkmark-16.png")" />
+                    }
+                </td>
+                <td class="tdQuittMvt" id="@("mvt_" + ligne.NumQuittance)" title="@(ligne.MvtCode + " - " + ligne.MvtLibelle)">@(ligne.MvtCode)</td>
+                <td class="tdQuittOperation" id="@("operation_" + ligne.NumQuittance)">@(ligne.OpeCode + " - " + ligne.OpeLibelle)</td>
+                <td class="tdQuittSit" id="@("sit_" + ligne.NumQuittance)" title="@(ligne.SitCode + " - " + ligne.SitLibelle)">@(ligne.SitCode)</td>
+
+                <td class="tdQuittHT" id="@("ht_" + ligne.NumQuittance)"><span albmask="decimal">@(ligne.HT)</span></td>
+                <td class="tdQuittTTC" id="@("ttc_" + ligne.NumQuittance)"><span albmask="decimal">@(ligne.TTC)</span></td>
+                <td class="tdQuittRegle" id="@("regle_" + ligne.NumQuittance)"> <span albmask="decimal">@(ligne.Regle)</span></td>
+
+            </tr>
+                totalTTC += ligne.TTC;
+                totalRegle += ligne.Regle;
+            }
+        </table>
+    }
+</div>
+<table id="tblVisuQuittancesTotalBody" class="trHeight">
+    <tr>
+        <td class="width751"></td>
+        <td class="width80">Cumuls</td>
+        <td class="width80 numerique titleBold backgroundWhite">
+            <span albmask="decimal">@(totalTTC > 0 ? totalTTC.ToString() : string.Empty)</span>
+        </td>
+        <td class="width80 smallPaddingLeft numerique titleBold backgroundWhite">
+            <span albmask="decimal">@(totalRegle > 0 ? totalRegle.ToString() : string.Empty)</span>
+        </td>
+    </tr>
+</table>

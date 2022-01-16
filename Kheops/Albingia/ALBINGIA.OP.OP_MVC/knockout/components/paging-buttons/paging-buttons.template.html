@@ -1,0 +1,33 @@
+﻿<div class="inner-right">
+    <div class="empty-zone"></div>
+    <!-- ko ifnot: isSinglePage -->
+    <table class="push-right Pagination">
+        <tr data-bind="visible: !isSinglePage()">
+            <!-- ko ifnot: allowPrevious -->
+            <td><img src="/Content/Images/1340965186_pagination_1_first_disabled.png" /></td>
+            <td><img src="/Content/Images/1340965176_pagination_1_previous_disabled.png" /></td>
+            <!-- /ko -->
+            <!-- ko if: allowPrevious -->
+            <td><img src="/Content/Images/1340965186_pagination_1_first.png" class="CursorPointer" data-bind="click: requestFirstPage" /></td>
+            <td><img src="/Content/Images/1340965176_pagination_1_previous.png" class="CursorPointer" data-bind="click: requestPreviousPage" /></td>
+            <!-- /ko -->
+            <td><span data-bind="text: currentPage"></span></td>
+            <!-- ko ifnot: allowNext -->
+            <td><img src="/Content/Images/1340965171_pagination_1_next_disabled.png" /></td>
+            <td><img src="/Content/Images/1340965180_pagination_1_last_disabled.png" /></td>
+            <!-- /ko -->
+            <!-- ko if: allowNext -->
+            <td><img src="/Content/Images/1340965171_pagination_1_next.png" class="CursorPointer" data-bind="click: requestNextPage" /></td>
+            <td><img src="/Content/Images/1340965180_pagination_1_last.png" class="CursorPointer" data-bind="click: requestLastPage" /></td>
+            <!-- /ko -->
+            <td class="PageSize">
+                <span data-bind="text: firstLine"></span> - <span data-bind="text: lastLine"></span>
+                [total : <span data-bind="text: TotalLinesNumber"></span>]
+            </td>
+        </tr>
+    </table>
+    <!-- /ko -->
+    <!-- ko if: isSinglePage -->
+    <span class="single-page-text">[total : <span data-bind="text: TotalLinesNumber"></span>]</span>
+    <!-- /ko -->
+</div>

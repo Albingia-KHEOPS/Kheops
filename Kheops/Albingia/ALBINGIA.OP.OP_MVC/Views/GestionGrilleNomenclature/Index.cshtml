@@ -1,0 +1,56 @@
+﻿@model  ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestionGrilleNomenclaturePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vGestionGrilleNomenclature.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albGestionGrilleNomenclature.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft TotalWidth">
+        <div class="nGroupFull nGroupWithBorder TotalWidth">
+            <div class="nHorizontalFullWithGroup widthGrilleNomenclature">
+                <div class="nGradientSection widthGrilleSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Filtre</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="searchGrille" name="searchGrille" value="" />
+                        </div>
+                        <div class="FloatLeft">
+                            <button id="btnSearchGrille" class="btnSearch">
+                                <img src="@Url.Content("/Content/Images/loupe1616.png")" width="16" height="16" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection FloatLeft dvListGrilleNomenclature">
+                    <div class="HeightRow PaddingTop">
+                        <div class="FloatLeft">
+                            <label><u>Liste des grilles</u></label>
+                        </div>
+                    </div>
+                    <div id="divListGrilles" class="PaddingLeft">
+                        @Html.Partial("ListeGrilles", Model)
+                    </div>
+                </div>
+                <div id="divInfoGrille" class="FloatLeft">
+                    <div class="nGradientSection FloatLeft dvListGrilleNomenclature">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupeFull GroupWithBorder ButtonsHeight TotalWidth">
+            <div class="ActionButtons ActionButtonRight">
+                <input type="button" id="btnCancel" value="Retour" tabindex="29" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divEmptyGrille" class="None">
+    <div class="nGradientSection FloatLeft dvListGrilleNomenclature">
+    </div>
+</div>

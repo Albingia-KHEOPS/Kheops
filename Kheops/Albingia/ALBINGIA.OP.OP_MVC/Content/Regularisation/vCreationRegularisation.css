@@ -1,0 +1,1255 @@
+﻿/*#region Index*/
+
+.divInfoContratRegularisation {
+    width: 1023px;
+}
+
+
+.CommonForm .divGlobalRegulGroup {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 6px;
+    width: 1027px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+    height: 495px;
+}
+
+.divListRisquesRegularisation {
+    width: 1023px;
+    height: 448px;
+    max-height: 448px;
+    min-height: 243px;
+}
+
+.divOverflowHeight {
+    overflow-y: auto;
+}
+
+
+.divPeriodeAlertRegularisation {
+    width: 1023px;
+    height: 453px;
+    max-height: 453px;
+    min-height: 248px;
+    background-color: transparent;
+}
+
+
+.divRegularisationRCInfoGen {
+    width: 1025px;
+    /*height: 220px;*/
+    background-color: transparent;
+    display:block;
+}
+
+
+.divInfoContratLightDisplay {
+    width: 1023px;
+    height: 20px;
+}
+
+.divInfoContratDetailedDisplay {
+    width: 1023px;
+    height: 235px;
+}
+
+/* Region : collapse Div*/
+
+.divInfoLeftLightDisplay {
+    width: 1023px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.divInfoBandeau {
+    height: 15px;
+}
+
+.divDetailedContratInfo {
+    max-height: 0;
+    display: none;
+    transition: max-height 0.9s ease-out;
+    width: 1023px;
+    height: 185px;
+}
+
+/*Endregion*/
+
+
+.divInfoLeft {
+    /*width: 615px;*/
+}
+
+
+
+.cssCodeOffre {
+    width: 75px !important;
+}
+
+.cssSpanCodeOffre {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 180px;
+}
+
+
+.cssVersion {
+    width: 40px !important;
+    text-align: right;
+}
+
+.cssSpanVersion {
+    font-size: small;
+    font-weight: bold;
+    padding-right: 125px;
+}
+
+
+.cssSpanIdentificationLightDisplay {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cssSpanDateDebutEffet {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.cssSpanDateFinEffet {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.lblDateAu {
+    width: 20px;
+}
+
+.lblRegularisation {
+    width: 115px !important;
+}
+
+.inputRegularisation {
+    width: 285px !important;
+}
+
+.lblPart {
+    width: 97px !important;
+}
+
+.inPart {
+    width: 50px !important;
+}
+
+.inNatureContrat {
+    width: 90px !important;
+}
+
+.PaddingCourtGest {
+    padding-left: 200px;
+}
+
+.divInfoAddRegule {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 6;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 550px;
+}
+
+.WidthAddRegule {
+    width: 530px !important;
+}
+
+.dvDataInfoSaisieGar {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 580px;
+    width: 1046px;
+}
+
+.dvDataUpdateRegul {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 159px;
+    width: 619px;
+}
+
+
+.dvDataRegulSimplifiee {
+    position: absolute;
+    top: 280px;
+    left: 500px;
+    display: block;
+    z-index: 17;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 159px;
+    width: 619px;
+}
+
+.dvDataConfirmMntRegul {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 26;
+    background-color: White;
+    height: 232px;
+    width: 526px;
+    padding: 5px;
+}
+
+/*#endregion*/
+
+/*#region Liste régularisations*/
+
+.HeightInfoRegul {
+    height: 266px;
+}
+
+.thNumAvnRegule {
+    width: 38px;
+}
+
+.thTraitementRegule {
+    width: 108px;
+}
+
+.thPeriodeRegule {
+    width: 142px;
+}
+
+.thSituationRegule {
+    width: 112px;
+}
+
+.thQuittanceRegule {
+    width: 122px;
+}
+
+.thAvisQuittanceRegule {
+    width: 97px;
+}
+
+.thActionRegule {
+    width: 66px;
+}
+
+.thBtnRegule {
+    width: 40px;
+    padding-top: 5px;
+}
+
+.divBodyRegule {
+    width: 825px;
+    max-height: 292px;
+    overflow: auto;
+}
+
+.tableBodyRegule {
+    table-layout: fixed;
+}
+
+/*#endregion*/
+
+/*#region Liste risques régularisation*/
+
+.dvInfoRsqRegul {
+    width: 1023px;
+    height: 456px;
+    max-height: 456px;
+    min-height: 248px;
+    background-color: transparent;
+}
+
+.dvReguleRsq {
+    background-color: #eee;
+    height: 100%;
+    width: 1023px;
+    border: 1px #ddd outset;
+    /*width: 650px;*/
+}
+
+.dvBodyRsqRegularisation {
+    max-height: 173px;
+    overflow: auto;
+}
+
+.thRsqObj {
+    width: 300px;
+}
+
+.thCible {
+    width: 200px;
+}
+
+.dvDataInfoGarRsq {
+    position: absolute;
+    top: 43px;
+    left: 20px;
+    display: block;
+    z-index: 12;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 352px;
+    width: 1030px;
+}
+
+/*#endregion*/
+
+/*#region Tab risque régularisation*/
+
+.tdRsq {
+    width: 302px;
+}
+
+.tableTDRRsq {
+    width: 296px;
+    table-layout: fixed;
+}
+
+.tdImgRsq {
+    width: 10px;
+}
+
+.tdInfoRsq {
+    width: 286px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tdCible {
+    width: 200px;
+    text-align: center;
+}
+
+.tdObj {
+    width: 277px;
+    padding-left: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tableRsqRegule {
+    width: 930px;
+    table-layout: fixed;
+}
+
+/*#endregion*/
+
+/*#region Liste garanties régularisation*/
+
+.dvInfoGarRegule {
+    width: 1023px;
+    height: 290px;
+}
+
+.dvBodyGarRegularisation {
+    max-height: 208px;
+    overflow: auto;
+}
+
+.thFormule {
+    width: 248px;
+}
+
+.thGarantie {
+    width: 298px;
+}
+
+.inRsqRegule {
+    width: 250px !important;
+}
+
+.dvDataInfoPeriodGar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    z-index: 14;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 567px;
+    width: 1046px;
+}
+
+/*#endregion*/
+
+/*#region Tab garantie régularisation*/
+
+.tdFormule {
+    width: 250px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tdGarantie {
+    width: 300px;
+}
+
+.tableTDGar {
+    width: 300px;
+    table-layout: fixed;
+}
+
+.tdImgGar {
+    width: 18px;
+}
+
+.tdInfoGar {
+    width: 271px;
+    padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tableGarRegule {
+    width: 976px;
+    table-layout: fixed;
+}
+
+/*#endregion*/
+
+/*#region Lignes régularisations*/
+
+.tdNumAvnRegule {
+    width: 40px;
+    text-align: center;
+}
+
+.tdAvisQuittanceRegule {
+    width: 100px;
+    text-align: center;
+}
+
+.tdTraitementRegule {
+    width: 110px;
+    text-align: center;
+}
+
+.tdDateRegule {
+    width: 70px;
+    text-align: center;
+}
+
+.tdEtatRegule {
+    width: 40px;
+    text-align: center;
+}
+
+.tdNumQuittanceRegule {
+    width: 40px;
+    text-align: center;
+}
+
+.tdLibQuittanceRegule {
+    width: 80px;
+    text-align: center;
+}
+
+.tdActionRegule {
+    width: 32px;
+    text-align: center;
+}
+
+.tdUpdateTypeRegule {
+    width: 42px;
+    text-align: center;
+}
+
+/*#endregion*/
+
+/*#region Regule Courtier*/
+
+.divInfoChoixCourtier {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 6;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 695px;
+}
+
+.WidthCourtierRegule {
+    width: 675px !important;
+}
+
+.lblRegule {
+    /*width: 130px !important;*/
+    width: 160px !important;
+}
+
+.inCourtier {
+    width: 306px !important;
+}
+
+.inCATNAT {
+    width: 50px !important;
+}
+
+/*#endregion*/
+
+/*#region Creation Regule*/
+
+.reguleWarning {
+    width: 400px;
+    font-style: italic;
+}
+
+.dvWarning {
+    height: 38px;
+}
+
+.dvDesc {
+    height: 46px;
+}
+
+.TabPeriode {
+    height: 40px;
+}
+
+.thExercice {
+    width: 52px;
+}
+
+.thPeriode {
+    width: 149px;
+}
+
+.width-periode-date {
+    width: 75px;
+}
+
+.thBlank {
+    width: 35px;
+}
+
+.inExercice {
+    width: 50px !important;
+}
+
+.cssType {
+    width: 40px !important;
+}
+
+.inputNumInterne {
+    width: 40px !important;
+    text-align: right;
+}
+
+.dvAlertRegule {
+    background-color: #eee;
+    width: 459px;
+    /*width: 369px;*/
+    height: 100%;
+    border: 1px #ddd outset;
+}
+
+.dvRegule {
+    background-color: #eee;
+    height: 100%;
+    width: 560px;
+    border: 1px #ddd outset;
+    overflow-y: auto;
+    /*width: 650px;*/
+}
+
+/* Scroll Bar*/
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+/* end */
+
+.paddingleft150 {
+    padding-left: 150px;
+}
+
+.dvAlertes {
+    overflow: auto;
+    max-height: 285px;
+    padding-left: 5px;
+    width: 440px;
+    /*width: 360px;*/
+}
+
+.tblAlertes {
+    width: 425px;
+    /*width: 345px;*/
+    table-layout: fixed;
+}
+
+.tdImgAlerte {
+    width: 30px;
+    text-align: center;
+}
+
+.tdMsgAlerte {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdLinkAlerte {
+    text-align: center;
+    width: 120px;
+    /*width: 50px;*/
+}
+
+/*#endregion*/
+
+/*#region Details garantie*/
+
+.dvDataInfoDetail {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 61;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    height: 293px;
+}
+
+/*#endregion*/
+
+/*#region Liste mouvement période*/
+
+.divTable {
+    table-layout: fixed;
+    width: 400px;
+}
+
+.dvMouvementBody {
+    width: 498px;
+    max-height: 113px;
+    overflow: auto;
+}
+
+/*#endregion*/
+
+/*#region Liste période régularisée*/
+
+.divTableG {
+    table-layout: fixed;
+    width: 600px;
+}
+
+.col_HeaderPeriode {
+    width: 145px;
+}
+
+.col_HeaderForfait {
+    width: 100px;
+}
+
+.col_HeaderMontant {
+    /*width: 130px;*/
+    width: 170px;
+}
+
+.col_HeaderImg {
+    width: 40px;
+}
+
+.col_TdPeriodeRegul {
+    width: 85px;
+    text-align: center;
+}
+
+.col_TdAssietteRegul {
+    width: 71px;
+    padding-right: 5px;
+    text-align: right;
+}
+
+.col_TdTauxForfaitRegul {
+    width: 55px;
+    padding-right: 5px;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col_TdMontantRegulHF {
+    /*width: 153px;*/
+    width: 168px;
+    padding-right: 5px;
+    text-align: right;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.col_TdImg {
+    /*width: 50px;*/
+    width: 42px;
+    text-align: center;
+}
+
+.dvPeriodRegul {
+    width: 720px;
+    max-height: 99px;
+    overflow: auto;
+}
+
+/*#endregion*/
+
+/*#region Creation période régularisation*/
+
+.divInfoMvt {
+    /*width: 1023px;*/
+    height: 166px;
+}
+
+.divInfoRisque {
+    /*width: 1023px;*/
+    height: 60px;
+}
+
+.divInfoFormule {
+    /*width: 1023px;*/
+    height: 70px;
+}
+
+#dvInfoAddReguleData {
+    position: absolute;
+    top: 250px;
+    left: 20%;
+    display: block;
+    z-index: 11;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 130px;
+    width: 510px;
+}
+
+
+
+/*#endregion*/
+
+/*#region Saisie période regularisation*/
+
+.tblabel {
+    width: 20px;
+}
+
+.tblabelRisque {
+    width: 45px;
+}
+
+.tblabelPeriod {
+    width: 80px;
+}
+
+.lblField {
+    width: 120px;
+}
+
+.divInfoDataA {
+    width: 1025px;
+    height: 261px;
+}
+
+.divInfoDataSTD {
+    width: 1025px;
+    height: 261px;
+}
+
+.divInfoDataPB {
+    width: 1025px;
+    height: 233px;
+}
+
+.divInfoDataBN {
+    width: 1025px;
+    height: 261px;
+}
+
+.divInfoPeriode {
+    width: 1025px;
+    height: 90px;
+}
+
+.divInfoFormuleSaisie {
+    width: 1025px;
+    height: 80px;
+}
+
+.divInfoTaux {
+    width: 1025px;
+    /*height:50px;*/
+}
+
+.divInfoRegule {
+    width: 1025px;
+    height: 264px;
+    overflow-y: auto;
+}
+
+.divInfoReguleGarantieRC {
+    height: 232px;
+    max-height: 455px;
+    min-height: 232px;
+    width: 1025px;
+    overflow-y: auto;
+}
+
+.styleImgCollapser {
+    padding-left: 512px;
+    cursor: pointer;
+}
+
+.inUnite {
+    width: 50px !important;
+    text-align: left;
+}
+
+/*#endregion*/
+
+/*#region Data régularisation période*/
+
+.LabelHT {
+    padding-right: 70px;
+}
+
+.inTaux {
+    /*width: 80px !important;
+    text-align: right;*/
+}
+
+.inUnit {
+    width: 80px !important;
+    text-align: right;
+}
+
+.InCodtaxe {
+    width: 80px !important;
+    text-align: right;
+}
+
+.lblAssiette {
+    padding-left: 10px;
+}
+
+.lblUnite {
+    padding-left: 25px;
+}
+
+.lblCode {
+    padding-left: 10px;
+}
+
+.lblHorsCatNat {
+    padding-left: 50px;
+}
+
+/*#endregion*/
+
+/*#region Data régularisation PBBNS période*/
+
+.RistInput {
+    padding-left: 20px;
+}
+
+.inNumericRegule {
+    width: 85px !important;
+    text-align: right;
+}
+
+.inSmallNumericRegule {
+    width: 85px !important;
+    text-align: right;
+}
+
+.WidthRegulPB150 {
+    width: 150px;
+}
+
+.WidthRegulPB140 {
+    width: 140px;
+    padding-left: 10px;
+}
+
+/*#endregion*/
+
+/*#region Taux régularisation prov*/
+
+.lblcotis {
+    width: 150px !important;
+}
+
+/*#endregion*/
+
+/*#region Confirmation montant régularisation*/
+
+.InputField {
+    width: 120px;
+}
+
+.LblTaxeGar {
+    padding-left: 65px;
+}
+
+.LblMntTotalGar {
+    padding-left: 90px;
+}
+
+.InputTaxeGar {
+    padding-left: 40px;
+}
+
+.InputMntTotalGar {
+    padding-left: 60px;
+}
+
+.InputTaxeAtt {
+    padding-left: 40px;
+}
+
+.InputMntTotalAtt {
+    padding-left: 60px;
+}
+
+/*#endregion*/
+
+/*#region Transverse (vues régularisations)*/
+
+.textareaDesc {
+    width: 325px;
+}
+
+.tdDates {
+    width: 99px;
+    text-align: center;
+}
+
+.tdTypeRegule {
+    width: 202px;
+    padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.thDates {
+    width: 200px;
+}
+
+.thTypeRegule {
+    width: 204px;
+}
+
+.col_HeaderMouvement {
+    /*width: 120px;*/
+    width: 174px;
+}
+
+.col_HeaderAssiette {
+    /*width: 100px;*/
+    width: 112px;
+}
+
+.col_HeaderTaux {
+    /*width: 120px;*/
+    width: 175px;
+}
+
+.col_TdAssiette {
+    /*width: 76px;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+    width: 110px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.col_TdMvt {
+    /*width: 74px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+    width: 86px;
+    text-align: center;
+}
+
+.col_TdTauxForfait {
+    /*width: 71px;*/
+    width: 110px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.col_TdUnite {
+    width: 55px;
+    text-align: center;
+    padding-right: 5px;
+}
+
+.tablePersoHeader {
+    border: 1px solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.WidthCode {
+    width: 33px !important;
+    text-align: right;
+}
+
+.WidthCodeTaxe {
+    width: 130px !important;
+    /*text-align: right;*/
+}
+
+.txtGAr {
+    text-align: right;
+    width: 90px !important;
+}
+
+
+/*#endregion*/
+
+/*#region Régularisation PB*/
+
+.lblCodeTaxe {
+    padding-left: 75px;
+}
+
+.inInfoRsqFor {
+    width: 277px !important;
+}
+
+.dvGroupFull {
+    height: 511px !important;
+}
+
+.dvHorizontal {
+    height: 496px;
+}
+
+.dvInfoDataRegul {
+    height: 247px;
+}
+
+.lblInfo {
+    width: 140px !important;
+}
+
+.lblDataRegul {
+    width: 180px !important;
+}
+
+.lblDataRegulTR {
+    width: 140px !important;
+    padding-left: 45px;
+}
+
+.lblLibelleMnt {
+    width: 165px !important;
+}
+
+.lblLibelleMntTR {
+    width: 180px !important;
+}
+
+.lblSigneMnt {
+    width: 10px !important;
+}
+
+/*#endregion*/
+
+/*#region Poubelle*/
+
+.WidthAddReg {
+    width: 1027px !important;
+}
+
+.col_TdMouvement {
+    width: 45px;
+    padding-left: 3px;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.txtRight {
+    text-align: right;
+}
+
+.listunit {
+    width: 50px;
+}
+
+.divInfoTauxleft {
+    width: 600px;
+}
+
+.tblabelmontant {
+    width: 145px;
+}
+
+.tbllabelgar {
+    width: 125px;
+}
+
+.labeldef {
+    width: 110px;
+}
+
+.InputCotisdue {
+    padding-left: 30px;
+}
+
+.InputNbr {
+    padding-left: 19px;
+}
+
+.InputCotis {
+    padding-left: 19px;
+}
+
+.InputCotisRet {
+    padding-left: 64px;
+}
+
+.InputTauxRet {
+    padding-left: 10px;
+}
+
+.InputChargeSin {
+    padding-left: 30px;
+}
+
+.InputBNS {
+    padding-left: 98px;
+}
+
+.InputRist {
+    padding-left: 70px;
+}
+
+.RistAn {
+    padding-left: 39px;
+}
+
+.inMntCalcul {
+    width: 70px;
+}
+
+.txtDate {
+    width: 80px !important;
+    text-align: center;
+}
+
+.InputTaux {
+    padding-left: 60px;
+}
+
+.InputFieldTxt {
+    width: 90px !important;
+}
+
+.LblMntHTGar {
+    padding-left: 120px;
+}
+
+.InputMntHTGar {
+    padding-left: 98px;
+}
+
+.InputMntHTAtt {
+    padding-left: 59px;
+}
+
+.Titre {
+    text-align: center;
+    padding-left: 100px;
+    padding-top: 20px;
+}
+
+#divConfirmMntRegul {
+    display: none;
+}
+
+.lblUpdate {
+    padding-left: 20px;
+    width: 205px;
+}
+
+.inputUpdate {
+    width: 250px !important;
+}
+
+.DDLTypeRegul {
+    width: 200px !important;
+}
+
+.divTypeRegul {
+    width: 250px;
+}
+
+.BlockRegulGar {
+    display: block;
+    width: 170px;
+}
+
+.BlockRegulGarTxAppel {
+    display: block;
+    width: 120px;
+}
+
+.BlockRegulGarTxAttentat {
+    display: block;
+    width: 120px;
+    padding-left: 74px;
+}
+/*#endregion*/

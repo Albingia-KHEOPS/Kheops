@@ -1,0 +1,62 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamISAssocier.ParamISModele
+<div class="GroupFull GroupWithBorder" id="divDialogSupprModele">
+    @Html.HiddenNoName("idModeleSuppr", Model.NomModele)
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                <div class="FloatLeft">
+                    <img src="@Url.Content("/Content/Images/alertes/notif_icn_warn16.png")"  title="Attention" class="iconeAlerte" />
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    Etes-vous sûr(e) de vouloir supprimer ce modèle?<br>
+                    Les lignes suivantes seront également supprimées :<br>
+                </div>
+            </div>
+        </div>
+        <div class="GradientSection">
+
+            <div id="divLignesModeleHeader">
+                <table id="tblLignesModeleHeader">
+                    <tr>
+                        <th class="col_Referentiel tablePersoHead" title="Référentiel">Référentiel
+                        </th>
+                        <th class="col_Libelle tablePersoHead paddingReadonly" title="Libellé affiché">Lib.
+                        </th>
+                        <th class="col_NumAff tablePersoHead paddingReadonly" title="N° ordre affichage">N° aff.
+                        </th>
+                        <th class="col_SautLigne tablePersoHead paddingReadonly" title="Saut de ligne">Saut lgn.
+                        </th>
+                        <th class="col_Modifiable tablePersoHead paddingReadonly" title="Modifiable">Mod.
+                        </th>
+                        <th class="col_Obligatoire tablePersoHead paddingReadonly" title="Obligatoire">Required
+                        </th>
+                        <th class="col_Sql tablePersoHead paddingReadonly" title="SQL">SQL
+                        </th>
+                        <th class="col_SqlOrder tablePersoHead " title="SQL Order">SQL Order
+                        </th>
+                        <th class="col_ScriptAffichage tablePersoHead paddingReadonly" title="Présence script affichage">Script aff.
+                        </th>
+                        <th class="col_ScriptControle tablePersoHead paddingReadonly" title="Présence script contrôle">Script cont.
+                        </th>
+                        <th class="col_LienParent tablePersoHead " title="Lien champ parent">Lien Parent
+                        </th>
+                        <th class="col_ParentComportement tablePersoHead " title="Parent comportement">Parent compt.
+                        </th>
+                        <th class="col_ParentEvt tablePersoHead " title="Parent Evénement">Parent evt.
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="FloatLeft" id="divLignesModeleBodyLinesSuppr">
+                @if ((Model.ListeLignesModele != null) && (Model.ListeLignesModele.Count > 0))
+                {                    
+                    @Html.Partial("/Views/ParamISModeleAssocier/ListeISLignesModele.cshtml", Model.ListeLignesModele)                           
+                }
+            </div>
+        </div>
+    </div>
+    <div style="text-align: right">
+        <button id="btnAnnulerSuppressionModele" type="button">Annuler</button>
+        <button id="btnConfirmerSuppressionModele" type="button">Confirmer</button>
+    </div>
+</div>

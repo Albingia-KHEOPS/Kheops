@@ -1,0 +1,64 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleGestionDocument.ModeleGestionDistribution>
+<div id="divBodyDocument" class="PaddingLeft">
+    <table id="tblBodyDocument">
+        @{
+            var j = 0;
+            foreach (var doc in Model)
+            {
+                var i = 0;
+                foreach (var diff in doc.Diffusions)
+                {
+            <tr class="@(j % 2 == 0 ? "even" : "odd")">
+                <td class="PaddingLeft tdDocName">
+                    @if (i == 0)
+                    {
+                        @doc.NomDoc
+                    }
+                </td>
+                <td class="tdDiffusion">
+                    @switch (diff.TypeDiffusion)
+                    {
+                        case "cour":
+                        <img id="" name="" src="@Url.Content("/Content/Images/ico_32_138.gif")" title="Diffusion par email" alt="Email" />
+                            break;
+                        case "mail":
+                        <img id="" name="" src="@Url.Content("/Content/Images/Entity32_4202.png")" title="Diffusion par courrier" alt="Courrier" />
+                            break;
+                    }
+                </td>
+                <td class="PaddingLeft tdPartenaire">
+                    @diff.Partenaire
+                </td>
+                <td class="PaddingLeft tdDestinataire">
+                    @diff.Destinataire
+                </td>
+                <td class="tdDate">
+                    @diff.CreationDateStr
+                </td>
+                <td class="tdDate">
+                    @diff.TraitementDateStr
+                </td>
+                <td class="tdImg">
+                    @if (string.IsNullOrEmpty(diff.TraitementDateStr))
+                    {
+                        if (i == 0)
+                        {
+                        <img id="" name="supprDocument" src="@Url.Content("/Content/Images/poubelle1616.png")" class="CursorPointer" title="Supprimer" alt="Supprimer" />
+                        }
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                        <img id="" name="" src="@Url.Content("/Content/Images/poubelle1616_gris.png")" title="" alt="" />
+                        }
+                    }
+                </td>
+            </tr>
+                    i++;
+                }
+                j++;
+            }
+        }
+    </table>
+</div>

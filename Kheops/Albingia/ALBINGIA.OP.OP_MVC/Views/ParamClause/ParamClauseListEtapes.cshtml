@@ -1,0 +1,75 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamActeGestionEtape
+<div class="GroupTitle FloatLeft">
+    Liste des étapes
+</div>
+<div class="FloatRight PaddingTop">
+    <button id="AjoutCTX" type="button" albshortcut="true" data-accesskey="c">KHEOP/<u>C</u>TX</button>
+    <button id="AjoutOMP" type="button" albshortcut="true" data-accesskey="o">KHEOP/<u>E</u>MP</button>
+    @Html.Hidden("CodeConcept", string.Empty)
+    @Html.Hidden("LibelleConcept", string.Empty)
+</div>
+<div class="HorizontalFullWithGroup ParamWidth">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    @Html.HiddenFor(m => m.CodeService)
+                    @Html.Hidden("CodeActGes", Model.CodeActeGestion)
+                    @Html.Hidden("CodeEtape", string.Empty)
+                    <label class="Block">Service</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Service" name="Service" value="@(Model.CodeService + " - " + Model.Service)" readonly="readonly" class="readonly WidthInput" />
+                </div>
+            </div>
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Acte de gestion</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="ActeGestion" name="ActeGestion" value="@(Model.CodeActeGestion + " - " + Model.ActeGestion)" readonly="readonly" class="readonly WidthInput" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection ParamHeight">
+        <div id="listParam" class="PaddingLeft">
+            <div id="divHeaderParam">
+                <table id="tblHeaderParam">
+                    <tr>                       
+                        <th class="colHNumOrdre tablePersoHead">N° Ordre
+                        </th>
+                        <th class="colHEtape tablePersoHead">Etape
+                        </th>
+                        <th class="colHLibelleEtape tablePersoHead">Libellé
+                        </th>
+                        <th class="colHBtn tablePersoHead">
+                            <img src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" title="Ajouter" id="addEtape" />
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divBodyParam">
+                <table id="tblBodyParam">
+                    @foreach (var etape in Model.ListEtapes)
+                    {
+                        <tr>                           
+                            <td class="colBNumOrdre numerique">
+                                @etape.NumOrdre
+                            </td>
+                            <td class="colBEtape">
+                                <a href="#" id="openEtape_@(etape.Param)" name="openEtape">@etape.Param</a>
+                            </td>
+                            <td class="colBLibelleEtape">
+                                @etape.Libelle
+                            </td>
+                            <td class="colBBtn">
+                                <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="delEtape_@(etape.Code)" name="delEtape" alt="Supprimer étape" title="Supprimer étape" class="CursorPointer" />
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

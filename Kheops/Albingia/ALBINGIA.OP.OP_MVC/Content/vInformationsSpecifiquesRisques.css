@@ -1,0 +1,302 @@
+﻿.GroupColumn
+{
+    float: left;
+}
+
+.FieldLabelInfoDetails
+{
+    display: block;
+    float: left;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+    padding-right: 5px;
+    padding-left: 20px;
+}
+
+.FieldInfosDetails input
+{
+    width: 60px;
+}
+
+.FieldLabelColumn2
+{
+    display: block;
+    float: left;
+    width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+    padding-left: 20px;
+    padding-right: 5px;
+}
+
+.FieldLabelLCI
+{
+    width: 30px !important;
+}
+
+.FieldLabelFranchise
+{
+    width: 70px !important;
+}
+
+.FieldLabelAssiette
+{
+    width: 60px !important;
+}
+
+.FieldLabelCATNAT
+{
+    width: 60px !important;
+}
+
+.PaddingLeftInfo
+{
+    padding-left: 30px;
+}
+
+.MarginRightInfo
+{
+    margin-right: 50px;
+}
+
+.RisqueIndexe
+{
+    width: 400px;
+}
+
+#divFullScreenListeOpposition,
+#divFullScreenEditOpposition,
+#divFullScreen
+{
+    display: none;
+}
+
+#divOppositions
+{
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 370px;
+    width: 1055px;
+}
+
+#divEditOpposition
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 341px;
+    width: 1055px;
+}
+
+#divBodyOppositions
+{
+    height: 240px;
+}
+
+#divDialogOpposition
+{
+    height: 350px;
+    width: 1030px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#divDialogEditOpposition
+{
+    height: 321px;
+    width: 1030px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.col_Organisme
+{
+    width: 150px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col_Ville
+{
+    width: 150px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col_Description
+{
+    width: 273px;
+    max-width: 273px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col_Type
+{
+    width: 40px;
+    max-width: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col_Reference
+{
+    width: 100px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col_Echeance
+{
+    width: 100px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col_Montant
+{
+    width: 100px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+.col_Action
+{
+    width: 90px;
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#tblOppositionsHeader
+{
+    height: 1px;
+    width: 1013px;
+}
+
+#tblOppositionsBody
+{
+    width: 1013px;
+    overflow-y: auto;
+}
+
+.QuarterGenericColumn
+{
+    width: 125px;
+    float: left;
+}
+
+.GenericColumnAndQuarter
+{
+    float: left;
+    width: 378px;
+}
+
+.GenericColumnAndAHalf
+{
+    float: left;
+    width: 503px;
+}
+
+.InputQuarterGenericColumn
+{
+    width: 120px;
+    float: left;
+}
+
+.InputHalfGenericColumn
+{
+    width: 246px;
+    float: left;
+}
+
+.padLeft
+{
+    padding-left: 20px;
+}
+
+#FormOpposition
+{
+    width: 635px;
+    height: 241px;
+}
+
+#FormRisque
+{
+    width: 370px;
+    height: 241px;
+}
+
+.spanText
+{
+    /*float: right; */
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+.MarginLeftButton
+{
+    margin-left: -6px;
+}
+
+.InputMontant
+{
+    text-align: right;
+}
+
+.ObjetRisque
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+    width: 325px !important;
+}
+
+.tblInfo
+{
+    table-layout: fixed;
+    width: 892px;
+}
+
+.paddingImgWarning
+{
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.GenericColumnAdresse2
+{
+    float: left;
+    padding-left: 125px;
+    width: 503px;
+}
+
+.paddingBtnAction
+{
+    padding-left: 22px;
+}
+
+
+.partBenefLib
+{
+    color: #039;
+    text-decoration: underline;
+}

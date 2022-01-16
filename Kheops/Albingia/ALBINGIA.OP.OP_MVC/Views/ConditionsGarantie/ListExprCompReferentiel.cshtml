@@ -1,0 +1,34 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsListExprComplexe
+<div class="CommonForm FloatLeft GlobalWidthComplexe">
+    @Html.HiddenNoName("modeReferentiel", Model.Mode)
+    <div class="nGroupFull nGroupWithBorder WidthComplexe GroupNoTitle">
+        <div style="padding-bottom: 20px;">
+            <div class="PaddingLeft FloatLeft"><u>Sélection d'une @(Model.Type) du référentiel</u></div>
+        </div>
+        <div class="nHorizontalFullWithGroup WidthInfoComplexe">
+            <div class="nGradientSection" style="height: 430px;">
+                <div class="HeightRow">
+                    <div class="PaddingLeft FloatLeft">
+                        <input type="text" id="CodeExpr" name="CodeExpr" value="" />
+                    </div>
+                    <div class="FloatLeft">
+                        <img id="imgSearchExprComp" class="CursorPointer" src="@Url.Content("/Content/Images/loupe1616.png")" />
+                    </div>
+                </div>
+                <div id="lstExpression">
+                    @Html.Partial("../ConditionsGarantie/TabExprCompReferentiel", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nGroupFull GroupWithBorder ButtonsHeight WidthComplexe">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnCloseExprRef" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+            @if (!Model.IsReadOnly)
+            {
+                <button id="btnValideExprRef" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            }
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,115 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleConditionsGarantiePage>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@section stylesheets {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/ConditionsGarantie")
+    @AlbAddCssJsScripts.AlbAddCssToViews(
+        new UrlHelper(ViewContext.RequestContext),
+        new[] {
+            //"vCreationFormuleGarantie.css",
+            "gareat.css",
+            "ko-popup.css",
+            "less/formule/edition/details-valeurs-garantie.css"//,
+            //"less/formule/edition/portees.css"
+        },
+        "~/Content/")
+}
+@section scripts {
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/ConditionsGarantie")
+    @Url.IncludeKoComponent("details-garantie")
+}
+<div class="FullWidth">
+    @*Input sauvegardant les informations lors d'un appel Fancy Confirm*@
+    @Html.HiddenNoName("hiddenInputId", string.Empty)
+    @switch (Model.ScreenType) {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+        @Html.Hidden("CodeFormule", Model.CodeFormule)
+        @Html.Hidden("CodeOption", Model.CodeOption)
+        @Html.Hidden("CodeRisque", Model.CodeRisque)
+        @Html.Hidden("CurrentExpression", string.Empty)
+        @Html.Hidden("CurrentDetail", string.Empty)
+        @Html.Hidden("NewExpr", string.Empty)
+        @Html.Hidden("EditGarantieId", string.Empty)
+        @Html.HiddenFor(m => m.InformationsCondition.IsAvnDisabled)
+        @Html.Hidden("CurrentConditionExprComp", string.Empty)
+        @Html.Hidden("CurrentCodeExprComp", string.Empty)
+        @Html.HiddenNoName("TypeOperation", string.Empty)
+        @Html.HiddenNoName("NomEcran", Model.NomEcran.ToString())
+        <div id="areaConditionsGaranties" class="nGroupFull nGroupWithBorder">
+            <div id="overlayCG"></div>
+            <div class="nHorizontalFullWithGroup">
+                <div id="InfoConditionGarantie" class="nGradientSection">
+                    <div>
+                        <div class="HeightRow">
+                            <div class="GenericColumn">
+                            </div>
+                        </div>
+                        <div class="HeightRow">
+                            @Html.Partial("~/Views/Shared/LCIFranchise/LCIFranchise.cshtml", Model.InformationsContrat.LCIGenerale)
+                            @Html.Partial("~/Views/Shared/LCIFranchise/LCIFranchise.cshtml", Model.InformationsContrat.FranchiseGenerale)
+                        </div>
+                        <div class="HeightRow">
+                            @Html.Partial("~/Views/Shared/LCIFranchise/LCIFranchise.cshtml", Model.InformationsContrat.LCIRisque)
+                            @Html.Partial("~/Views/Shared/LCIFranchise/LCIFranchise.cshtml", Model.InformationsContrat.FranchiseRisque)
+                        </div>
+                    </div>
+                    <div id="divDataConditions">
+                        @Html.Partial("TableauConditions", Model)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="FullScreen" class="FloatLeft" style="padding-top: 6px;">
+                <button id="btnFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Plein écran">
+                    <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+                </button>
+            </div>
+            <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s" tabindex="28"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divExprComplexe">
+    <div class="overlay-background" style="z-index:4">
+    </div>
+    <div id="divDataExprComp">
+    </div>
+</div>
+<div id="divFullScreen">
+    <div class="overlay-background" style="z-index:2">
+    </div>
+    <div id="divDataFullScreen">
+    </div>
+</div>
+<div id="divTauxMini" style="display: none;">
+    @Html.Hidden("idTauxMini", string.Empty)
+    <input type="text" id="largeTauxMini" name="largeTauxMini" albmask="decimal" value="" />
+</div>
+<div id="divDetailsGarantie" class="None">
+    <div class="overlay-background" style="z-index:50">
+    </div>
+    <div style="position: absolute; top: 10px; left: 21px; display: block; z-index: 51; float: left; background-color: #FFF; padding: 10px;">
+        <div id="divDataDetailsGarantie"></div>
+    </div>
+</div>

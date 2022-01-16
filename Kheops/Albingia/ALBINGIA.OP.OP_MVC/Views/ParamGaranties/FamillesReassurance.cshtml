@@ -1,0 +1,48 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.DetailsFamillesReassurance 
+<div class="CommonForm FloatLeft">
+    @Html.HiddenNoName("idFamilleReassuranceSuppr", string.Empty)
+    <div class="nHorizontalFullWithGroup WidthGroupTypesValeur">
+        <div class="nGradientSection GradientSectionTypesValeur">
+            <div class="HeightRow">
+                <label class="TitleTypesValeur">Sélection des familles de réassurance</label>
+            </div>
+            <div class="HeightRow">
+                <div id="divLstFamillesReassurance">
+                    <div>
+                        <table id="tblFamillesReassuranceHeader">
+                            <tr>
+                                <th class="col_HeaderBr tablePersoHead">Branche
+                                </th>
+                                <th class="col_HeaderSsBr tablePersoHead">Sous Branche
+                                </th>
+                                <th class="col_HeaderCat tablePersoHead">Catégorie
+                                </th>
+                                  <th class="col_HeaderFamille tablePersoHead">Famille
+                                </th>
+                                <th class="col_HeaderButtonsTypesValeur tablePersoHead">
+                                    <img id="AjouterFamilleReassurance" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter un type de valeur" />
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBodyFamillesReassurance" class="divHeight">
+                        @if (Model.ListeLigneFamilleReassurance != null)
+                        {
+                            @Html.Partial("ListFamillesReassurance", Model.ListeLigneFamilleReassurance)
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGradientSection divPaneauDynamicHeight">
+            <div class="HeightRow" id="divPaneauDynamic" style="display: none">
+                @*  @Html.Partial("EditTypeValeur", Model.EditTypeValeur)*@
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight DivButtonsFermerTypesValeur">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFermerFamillesReassurance" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>

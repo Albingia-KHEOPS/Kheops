@@ -1,0 +1,78 @@
+﻿@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.OP.OP_MVC
+@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleOffreSimplifieePage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "OffreSimplifie.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albOffreSimplifie.js" }, "~/Scripts/AlbingiaJS/")
+@if (AlbOpConstants.ClientWorkEnvironment == AlbOpConstants.OPENV_DEV)
+{
+    <script language="JavaScript" type="text/javascript" src="../../Scripts/AlbingiaJS/Excel/AlbEvents.js"></script>
+}
+else
+{
+   <script language="JavaScript" type="text/javascript" src="../../Scripts/AlbingiaJS/Excel/AlbEvents.min.js"></script>
+}
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div id="excelDocView" class="CommonForm FloatLeft">
+        @Html.HiddenNoName("fileName", Model.FileName)
+        @Html.HiddenNoName("urlPath", ALBINGIA.OP.OP_MVC.MvcApplication.OS_EXCELTEMPLATEFILE)
+        @Html.HiddenNoName("jsSplitChar", ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML)
+        @Html.HiddenNoName("Branche", Model.Offre.Branche.Code)
+        @Html.HiddenNoName("parameters", Model.SpecificParams)
+        @Html.HiddenNoName("nouvelleVersion", Model.NouvelleVersion)
+        @Html.HiddenNoName("user", ALBINGIA.Framework.Common.CacheTools.AlbSessionHelper.ConnectedUser)
+        @Html.HiddenNoName("cellsMapInput", string.Empty)
+        @Html.HiddenNoName("cellsMapOutPut", string.Empty)
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        <div class="nHorizontalFullWithGroupOS">
+            <div id="contentExcelError" class="nGradientSection conentExcel None" style="height: 600px;width: 1205px"></div>
+            <div id="contentCanevas" class="nGradientSection None" style="height: 600px;width: 1205px"></div>
+            <div id="contentObjExcel" class="nGradientSection">
+                <object classid="clsid:7677E74E-5831-4C9E-A2DD-9B1EF9DF2DB4" id="OA1" width="1205px"
+                        height="600px" codebase="http://opmvc.local/OfficeViewer/officeviewer.cab#version=8,0,0,503">
+                    <param name="Toolbars" value="-1">
+                   @* <param name="LicenseName" value="30daytrial">*@
+                    <param name="LicenseCode" value="EDO8-5554-1213-ABEB">
+                    <param name="BorderColor" value="15647136">
+                    <param name="BorderStyle" value="2">
+                </object>
+                @if (AlbOpConstants.ClientWorkEnvironment == AlbOpConstants.OPENV_DEV)
+                {
+                    <script language="JavaScript" type="text/javascript" src="../../Scripts/AlbingiaJS/Excel/AlbExcelDocs.js"></script>
+                }
+                else
+                {
+                    <script language="JavaScript" type="text/javascript" src="../../Scripts/AlbingiaJS/Excel/AlbExcelDocs.min.js"></script>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="GroupFullOS GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonLeft">
+        </div>
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnAnnuler" type="button" albshortcut="true" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>
+            <button id="btnSuivant" type="button" albshortcut="true" tabindex="28" data-accesskey="s"><u>S</u>uivant</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var ws = document.OA1.contentDocument.GetApplication().ActiveSheet;
+
+    //ws.UnProtectDoc();
+    ws.Application.DisplayFormulaBar = false;
+    ws.Application.DisplayStatusBar = false;
+    ws.Application.DisplayFormulaAutoComplete = false;
+    ws.Application.DisplayFunctionToolTips = false;
+    document.OA1.contentDocument.ShowRibbonTitlebar(1);
+    document.OA1.contentDocument.ShowMenubar(1);
+
+    var c = ws.Application.columns;
+    OA_DocumentOpened();
+</script>

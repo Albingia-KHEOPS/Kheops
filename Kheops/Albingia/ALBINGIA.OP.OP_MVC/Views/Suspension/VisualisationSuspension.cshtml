@@ -1,0 +1,91 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Avenant.ModelesAvenant.ModeleVisuSuspension
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vVisuSuspension.css" }, "~/Content/")
+
+<div id="divVisualisationSuspvConteneur" class="FloatLeft" style="width: 900px;">
+    <input type="hidden" id="isBackOffice" value="@((Model.EtapeEcran == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE).ToString())" />
+    <div class="GroupFull GroupWithBorder" id="infoContrat">
+        <input class="widthSearch" type="hidden" id="TypeRech" name="TypeRech" value="P" />
+        <div class="GroupTitle">
+            Périodes de suspension
+        </div>
+        <div id="divInfos" style="margin-left: 10px;">
+            @Html.Partial("~/Views/Suspension/VisuInfosContrat.cshtml", Model.InfosContrat)
+        </div>
+    </div>
+
+    @if (Model.EtapeEcran == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE) {
+     <div class="GroupFull GroupWithBorder">
+         <input class="widthSearch" type="hidden" id="TypeRech" name="TypeRech" value="P" />
+
+
+         <div id="divSearch" style="margin-left: 10px; padding-top: 20px;">
+             <div class="HeightRow">
+                 <div class="FloatLeft">
+                     <label class="Block LblSearch">Code : </label>
+                 </div>
+                 <div class="FloatLeft">
+                     <input class="widthSearch" type="text" id="CodeRech" name="CodeRech" value="@Model.CodeOffre" />
+                 </div>
+                 <div class="FloatLeft" style="padding-left: 20px;">
+                     <label class="Block LblSearch">Version : </label>
+                 </div>
+                 <div class="FloatLeft">
+                     <input class="widthSearchSmall" type="text" id="VersionRech" class="numerique" albmask="numeric" name="VersionRech" value="@Model.Version" />
+                 </div>
+                 <div class="FloatRight">
+                     <input id="btnSearch" type="button" value="Rechercher" title="Rechercher" style="margin-right: 15px;" />
+                 </div>
+             </div>
+         </div>
+
+     </div>
+    }
+
+    <div class="GroupFull GroupWithBorder" style="padding-bottom: 4px; padding-top: 4px">
+        <div class="HorizontalFullWithGroup PaddingLeft" style="width: 100%; height: 185px;">
+            <div class="nGradientSection">
+                <div id="divSuspHeader" class="PaddingLeft">
+                    <table class="tblSuspHeader">
+                        <tr>
+                            @if(Model.EtapeEcran == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE)
+                            {
+                                <th class="tablePersoHead LstSuspRadioButtonHeader "></th>
+                                <th class="tablePersoHead LstSuspHeader">Code Offre</th>
+                            }
+                            
+                            <th class="tablePersoHead LstSuspHeader">Date de mise en demeure</th>
+                            <th class="tablePersoHead LstSuspHeader">Suspendu le</th>
+                            <th class="tablePersoHead LstSuspHeader">Date fin suspension</th>
+                            <th class="tablePersoHead LstSuspHeader">Résilié le</th>
+                            <th class="tablePersoHead LstSuspHeader">Date de remise en vigueur</th>
+
+                        </tr>
+                    </table>
+                </div>
+                <div id="divSusp" class="PaddingLeft dvBodySuspension">
+                    @if ( (Model.Suspensions.Any()))
+                    {
+                        @Html.Partial("~/Views/Suspension/ListVisuSuspension.cshtml", Model.Suspensions)
+                    }
+                    else
+                    {                       
+                        <br />
+                    <b>@Html.Raw("Aucune suspension pour ce contrat")</b>
+                    <br />
+                    <br />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder ButtonsHeight" style="">
+    <div id="LoadingDiv" class="FloatLeft">
+        <img src="/Content/Images/ajax-loader.gif" alt="" />
+    </div>
+
+    <div class="ActionButtons ActionButtonRight">
+        <button id="btnFermerVisualisationSuspension" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+
+</div>

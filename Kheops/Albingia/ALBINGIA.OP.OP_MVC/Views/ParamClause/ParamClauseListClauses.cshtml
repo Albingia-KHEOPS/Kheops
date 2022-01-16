@@ -1,0 +1,60 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamRattachClause
+<div id="divHeaderClauses">
+    <table id="tblHeaderClauses">
+        <tr>
+            <th class="tablePersoHead td22">
+                &nbsp;
+            </th>
+            <th class="tablePersoHead td100">
+                Nom 1
+            </th>
+            <th class="tablePersoHead td100">
+                Nom 2
+            </th>
+            <th class="tablePersoHead td100">
+                Nom 3
+            </th>
+            <th class="tablePersoHead td650">
+                Libellé
+            </th>
+            <th class="tablePersoHead td80">
+                Rattachée
+            </th>
+        </tr>
+    </table>
+</div>
+<div id="divBodyClauses">
+    <table id="tblBodyClauses">
+        @foreach (var clause in Model.Clauses)
+        {
+            <tr id="trAttach_@(clause.Code)" rattach="@(clause.Rattache)">
+                <td id="rattachDtl_@(clause.Code)" class="PaddingLeft td20">
+                    <input type="hidden" id="codeClause_@(clause.Code)" name="codeClause" value="@(clause.Code)" />
+                    <input type="hidden" id="codeRattach_@(clause.Code)" name="codeRattach" value="@(clause.Rattache)" />
+                    @if (clause.Rattache != 0)
+                    { 
+                        <img id="dtl_@(clause.Code)_@(clause.Rattache)" width="16" height="16" class="CursorPointer" src="@Url.Content("/Content/Images/afficher_details1616.png")" alt="" name="detail" />
+                    }
+                </td>
+                <td class="PaddingLeft td98">@clause.Nom1
+                </td>
+                <td class="PaddingLeft td98">@clause.Nom2
+                </td>
+                <td class="PaddingLeft td98">@clause.Nom3
+                </td>
+                <td class="PaddingLeft td648">@clause.Libelle
+                </td>
+                <td class="td82">
+                    @if (clause.Rattache != 0)
+                    {                        
+                        <input type="checkbox" id="rattach_@(clause.Code)" name="rattach" checked="checked" title="Rattacher/Détacher la clause" />
+                    }
+                    else
+                    { 
+                        <input type="checkbox" id="rattach_@(clause.Code)" name="rattach" title="Rattacher/Détacher la clause" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>

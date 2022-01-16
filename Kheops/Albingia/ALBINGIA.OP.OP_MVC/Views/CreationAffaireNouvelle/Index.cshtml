@@ -1,0 +1,272 @@
+﻿
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationAffaireNouvellePage
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@section stylesheets {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbCreationAffaireNouvelle")
+}
+@section scripts {
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbCreationAffaireNouvelle")
+}
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+    <div class="FullWidth FloatLeft">
+        @Html.Hidden("Offre_PossedeUnContratEnCours", Model.PossedeUnContratEnCours.ToString())
+        @Html.HiddenFor(m => m.DateDuJour)
+        @Html.Hidden("Offre_DateEffet", (Model.DateEffet))
+        @Html.Hidden("Offre_HeureEffet", (Model.HeureEffet))
+        @Html.HiddenNoName("selectedOffreContrat", string.Empty)
+        @Html.HiddenNoName("typeRecherche", string.Empty)
+        @Html.HiddenNoName("Observation", Model.Observation)
+
+        @Html.HiddenNoName("CreationAffNouv", 0)
+
+        <div class="nGroupFull nGroupWithBorder TotalWidth">
+            <div class="nHorizontalFullWithGroup TotalWidth">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label><u>Informations concernant l'offre</u></label>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="Column1">
+                            <div class="FloatLeft">
+                                <label class="Block">N° offre / Version</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="CodeOffre" name="CodeOffre" readonly="readonly" class="readonly" value="@(Model.CodeOffre)" />
+                                <input type="text" id="Version" name="Version" readonly="readonly" class="readonly" style="width:55px;" value="@(Model.Version)" />
+                            </div>
+                        </div>
+                        <div class="Column2">
+                            <div class="FloatLeft">
+                                <label class="Block">Date de Saisie</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="DateSaisie" name="DateSaisie" readonly="readonly" class="readonly" value="@(Model.DateSaisie)" />
+                            </div>
+                        </div>
+                        <div class="Column3">
+                            <div class="FloatLeft">
+                                <label class="Block">Souscripteur</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Souscripteur" name="Souscripteur" readonly="readonly" class="readonly" value="@(Model.Souscripteur)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="Column1">
+                            <div class="FloatLeft">
+                                <label class="Block">Branche / Cible</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Branche" name="Branche" readonly="readonly" class="readonly" value="@(Model.CodeBranche) - @(Model.LibBranche)" />
+                                <input type="text" id="Cible" name="Cible" readonly="readonly" class="readonly" value="@(Model.CodeCible) - @(Model.LibCible)" />
+                            </div>
+                        </div>
+                        <div class="Column2">
+                            <div class="FloatLeft">
+                                <label class="Block">Devise</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Devise" name="Devise" readonly="readonly" class="readonly" value="@(Model.CodeDevise) - @(Model.LibDevise)" />
+                            </div>
+                        </div>
+                        <div class="Column3">
+                            <div class="FloatLeft">
+                                <label class="Block">Gestionnaire</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Gestionnaire" name="Gestionnaire" readonly="readonly" class="readonly" value="@(Model.Gestionnaire)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="Column1">
+                            <div class="FloatLeft">
+                                <label class="Block">Identification</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Identification" name="Identification" readonly="readonly" class="readonly" style="width:265px;" value="@(Model.Identification)" />
+                            </div>
+                        </div>
+                        <div class="Column2">
+                            <div class="FloatLeft">
+                                <label class="Block">Nature de contrat</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="NatureContrat" name="NatureContrat" readonly="readonly" class="readonly" value="@(Model.CodeNatureContrat) - @(Model.LibNatureContrat)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="Column1">
+                            <div class="FloatLeft">
+                                <label class="Block">Courtier</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Courtier" name="Courtier" readonly="readonly" class="readonly" style="width:265px;" value="@(Model.CodeCourtier) - @(Model.NomCourtier)" />
+                            </div>
+                        </div>
+                        <div class="ColumnSpan23">
+                            <div class="FloatLeft">
+                                <label class="Block">Assuré</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Assure" name="Assure" readonly="readonly" class="readonly" style="width:265px;" value="@(Model.CodeAssure > 0 ? string.Format("{0} - {1}", Model.CodeAssure, Model.NomAssure) : string.Empty)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nHorizontalFullWithGroup TotalWidth">
+                <div class="nGradientSection ParamHeight">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label><u>Contrats créés à partir de cette offre</u></label>
+                        </div>
+                        <div class="FloatRight PaddingRight">
+                            <button type="button" id="btnNouveauContrat" style="float: right;" data-accesskey="n"><u>N</u>ouveau Contrat</button>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div id="divHeaderParam">
+                            <table id="tblHeaderParam">
+                                <tr>
+                                    <th class="colHCodeContrat tablePersoHead" id="th_1">
+                                        N° Contrat<span class="spImg" style="float: right;">
+                                            <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                                        </span>
+                                    </th>
+                                    <th class="colHType tablePersoHead" id="th_2">
+                                        Type de contrat<span class="spImg" style="float: right; display: none;">
+                                            <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                                        </span>
+                                    </th>
+                                    <th class="colHDateEffet tablePersoHead" id="th_3">
+                                        Date d'effet<span class="spImg" style="float: right; display: none;">
+                                            <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                                        </span>
+                                    </th>
+                                    <th class="colHDateAccord tablePersoHead" id="th_4">
+                                        Date d'accord<span class="spImg" style="float: right; display: none;">
+                                            <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                                        </span>
+                                    </th>
+                                    <th class="colHContratRemplace tablePersoHead" id="th_5">
+                                        Contrat remplacé<span class="spImg" style="float: right; display: none;">
+                                            <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                                        </span>
+                                    </th>
+                                    <th class="colHSouscripteur tablePersoHead" id="th_6">
+                                        Souscripteur<span class="spImg" style="float: right; display: none;">
+                                            <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                                        </span>
+                                    </th>
+                                    <th class="colHGestionnaire tablePersoHead" id="th_7">
+                                        Gestionnaire<span class="spImg" style="float: right; display: none;">
+                                            <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                                        </span>
+                                    </th>
+                                    <th class="colHEtat tablePersoHead" id="th_8">
+                                        Etat<span class="spImg" style="float: right; display: none;">
+                                            <img class="imageTri" alt="" src="../../Content/Images/tri_desc.png" />
+                                        </span>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divBodyParam" class="AlignCenter" style="height: 255px; overflow-y: scroll;">
+                            @if (Model.Contrats != null)
+                            {
+                                @Html.Partial("ListeContrats", Model.Contrats)
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight TotalWidth">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button type="button" id="btnAccueil" tabindex="28" data-accesskey="a"><u>A</u>ccueil</button>
+            </div>
+        </div>
+        <div id="divNouveauContrat">
+            <div class="overlay-background" style="z-index:2">
+            </div>
+            <div id="divDataNouveauContrat">
+            </div>
+        </div>
+        <div id="divConfirmation" style="display: none;">
+            <div class="overlay-background" style="z-index:6">
+            </div>
+            <div id="divDataConfirmation">
+                <div>
+                    L'offre <b><span id="ConfirmationCodeOffre"></span></b>&nbsp;est transformée en affaire nouvelle
+                    portant le numéro :
+                    <br>
+                    <br>
+                    <div id="ConfirmationCodeContrat"></div>
+                    <br>
+                    Voulez-vous <b>poursuivre</b> la saisie ou copier <b>toutes les données de l'offre par défaut</b>
+                    ?<br>
+                    <br>
+                </div>
+                <div class="HeightRow" style="text-align: left;">
+                    <div class="FloatLeft">
+                        <input type="radio" id="radBtnActionNext" name="radBtnAction" checked="checked" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="AutoWidth" style="margin-top: 2px; float: left;">Poursuivre (choisir les Rsqs. et Gties.)</label>
+                    </div>
+                </div>
+                <div class="HeightRow" style="text-align: left;">
+                    <div class="FloatLeft">
+                        <input type="radio" id="radBtnActionCopy" name="radBtnAction" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="AutoWidth" style="margin-top: 2px; float: left;">Tout copier et terminer</label>
+                    </div>
+                </div>
+                <div>
+                    <button id="btnChooseOption" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+                    @*                    <button id="btnConfirmationCopyAll" type="button" albshortcut="true" data-accesskey="u">To<u>u</u>t copier</button>
+                        <button id="btnConfirmationPoursuivre" type="button" albshortcut="true" data-accesskey="v">Poursui<u>v</u>re</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divRechercheContrat">
+        <div class="overlay-background" style="z-index:9">
+        </div>
+        <div id="divDataRechercheContrat">
+            @Html.Partial("/Views/RechercheSaisie/BodyRechercheSaisie.cshtml", Model.Recherche)
+        </div>
+    </div>
+
+    <div id="divLstRsq" class="ui-dialog ui-widget ui-widget-content ui-corner-all undefined ui-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-1" style="display: none; z-index: 1002; outline: 0px; position: absolute; height: auto; width: auto; top: 238px; left: 721px;">
+
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+            <span class="ui-dialog-title" id="ui-dialog-title-1">Confirmation</span>
+        </div>
+        <div class="GroupFull GroupWithBorder" style="width: 500px;">
+            <div>
+                <div class="GroupTitle" style="color:black; padding-left: 0;">Un contrat a déjà été établi à partir de l'offre, voulez-vous continuer ?</div>
+                <div class="Validation">
+                    <button id="btnValidationContrat" type="button" albshortcut="false">Oui</button>
+                    <button id="btnRefusContrat" type="button" albshortcut="false">Non</button>
+                    <!-- /ko -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

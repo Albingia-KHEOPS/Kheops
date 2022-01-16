@@ -1,0 +1,114 @@
+﻿
+<div class="nGradientSection dvInfoDataRegul">
+    <div class="HeightRow PaddingLeft">
+        <div class="FloatLeft">
+            <b>Données de régularisation :</b>
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <span class="title-center-text short">HT Hors Cat Nat</span>
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Cotisations émises sur la période</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" data-bind="autoNumeric: { value : CotisationPeriode, min: -99999999999.99, max: 99999999999.99 }, disable: $root.isReadonly" albmask="decimal" />
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <label class="Block lblInfo">Cotisations totales</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="inputDate numerique" disabled value="100" />%
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Cotisations retenues</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: { value : CotisationsRetenues, min: -99999999999.99, max: 99999999999.99 }" albmask="decimal" />
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <label class="Block lblInfo">Cotisations retenues (%)</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: PrcCotisationsRetenues" albmask="pourcentnumeric" />%
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Chargement sinistres</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" data-bind="autoNumeric: ChargementSinistres, disable: $root.isReadonly" albmask="decimal" />
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Ristourne anticipée</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: { value: MontantRistourneAnticipee, min: -999999999.99, disable: $root.isReadonly }" albmask="decimal" />
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <label class="Block lblInfo">Ristourne anticipée</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: { value: RistourneAnticipee}" albmask="pourcentnumeric" />%
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        &nbsp;
+    </div>
+
+    <div class="HeightRow None">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Montant (hors ATTENTAT)</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" disabled value="" />
+        </div>
+    </div>
+
+    <div class="HeightRow None">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Montant ATTENTAT</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" disabled value="" />
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblLibelleMnt" data-bind="text: LibelleMontant"></label>
+        </div>
+        <div class="FloatLeft LargePaddingLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: { value: MontantCalcule, min: -999999999.99 }" albmask="decimal" />
+        </div>
+        <div class="FloatLeft paddingLeft50">
+            <label class="Block lblInfo">Ristourne</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="inputDate numerique" disabled data-bind="autoNumeric: Ristourne" albmask="pourcentnumeric" />%
+        </div>
+    </div>
+
+    <div class="HeightRow">
+        &nbsp;
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block lblDataRegul">Comptant</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" class="numerique" disabled data-bind="autoNumeric: { value: MontantComptant, min: -999999999.99 }" albmask="decimal" />
+        </div>
+    </div>
+</div>

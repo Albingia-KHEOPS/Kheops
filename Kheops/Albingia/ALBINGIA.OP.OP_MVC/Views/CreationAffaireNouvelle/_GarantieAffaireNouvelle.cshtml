@@ -1,0 +1,15 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.FormuleGarantie
+
+@{
+    var nameOfTag = Model.namePrefix as string;
+    var garantie = Model.garantie as Garantie;
+}
+<div class="@(garantie.IsChecked && garantie.Niveau == 1 ? "" : "hide-it")">
+    @Html.Hidden($"{nameOfTag}.{nameof(garantie.IsChecked)}", garantie.IsChecked)
+    @Html.Hidden($"{nameOfTag}.{nameof(garantie.Libelle)}", garantie.Libelle)
+    @Html.Hidden($"{nameOfTag}.{nameof(garantie.Niveau)}", garantie.Niveau)
+    @*@Html.Hidden($"{nameOfTag}.{nameof(garantie.Nature)}", garantie.Nature)*@
+    @*@Html.Hidden($"{nameOfTag}.{nameof(garantie.UniqueId)}", garantie.UniqueId)*@
+    @*@Html.Hidden($"{nameOfTag}.{nameof(garantie.TypeAlimentation)}.{nameof(garantie.TypeAlimentation.Code)}", garantie.TypeAlimentation.Code)*@
+    @garantie.Libelle
+</div>

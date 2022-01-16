@@ -1,0 +1,259 @@
+﻿#divAjouterVolet
+{
+    clear: both;
+    padding-bottom: 10px;
+}
+
+#divLinkCategorie
+{
+    display: none;
+}
+
+.tablePersoHead
+{
+    border: 1px solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.divHeight
+{
+    overflow-y: auto;
+    height: 475px;
+}
+
+.GroupHeightVolets
+{
+    height: 600px;
+    max-height: 600px;
+}
+
+.GroupHeightVoletsFixe
+{
+    height: 600px;
+}
+
+.GroupHeightVoletsInterieur
+{
+    max-height: 560px;
+}
+
+#divLstVolets
+{
+    display: none;
+}
+
+#divInfoVolet
+{
+    display: none;
+}
+
+.divRechercheCode
+{
+    width: 105px;
+    float: left;
+}
+
+.divRecherche
+{
+    padding-top: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20px;
+    float: left;
+}
+
+.divRechercheDescr
+{
+    width: 255px;
+    float: left;
+}
+
+.FieldVoletsLabel
+{
+    width: 150px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.FieldVoletsCode input
+{
+    width: 100px;
+}
+
+.FieldVoletsDescr input
+{
+    width: 240px;
+}
+
+.FieldInfoLabel
+{
+    width: 100px;
+    float: left;
+}
+
+.linkVolet
+{
+    cursor: pointer; /*text-decoration: underline;*/
+}
+
+.modifVolet
+{
+    cursor: pointer;
+}
+
+.supprVolet
+{
+    cursor: pointer;
+}
+
+.col1
+{
+    width: 25px;
+}
+
+.hCible
+{
+    width: 325px;
+}
+
+.hBranche
+{
+    width: 171px;
+}
+
+.hCarac
+{
+    width: 37px;
+}
+
+.bCible
+{
+    width: 327px;
+}
+
+.bBranche
+{
+    width: 173px;
+}
+
+.bCarac
+{
+    width: 39px;
+    text-align: center;
+}
+
+.col3
+{
+    width: 200px;
+}
+
+.col4
+{
+    width: 25px;
+}
+
+.col4Head
+{
+    width: 35px;
+}
+
+.BtnAdd
+{
+    padding-left: 10px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+.FieldDropDown select
+{
+    width: 190px;
+}
+
+.ddlCarac
+{
+    width: 50px !important;
+}
+
+.divHeightCat
+{
+    overflow-y: auto;
+    height: 340px;
+}
+
+.FieldLabelVBM
+{
+    padding-left: 5px;
+    width: 190px;
+}
+
+.colOrder
+{
+    display: none;
+}
+
+.width100
+{
+    width: 100%;
+}
+
+.labelVolet
+{
+    width: 50px;
+}
+
+
+.widthTableVolet
+{
+    width: 554px;
+    table-layout: fixed;
+}
+
+.tdHeaderEditVolet
+{
+    width: 18px;
+}
+
+.tdHeaderCodeVolet
+{
+    width: 64px;
+}
+
+.tdHeaderImgVolet
+{
+    width: 25px;
+}
+
+.tdHeaderDescVolet
+{
+    width: 390px;
+}
+
+.tdBodyEditVolet
+{
+    width: 20px;
+    text-align: center;
+}
+
+.tdBodyCodeVolet
+{
+    width: 66px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdBodyImgVolet
+{
+    width: 27px;
+    text-align: center;
+}
+
+.tdBodyDescVolet
+{
+    width: 392px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

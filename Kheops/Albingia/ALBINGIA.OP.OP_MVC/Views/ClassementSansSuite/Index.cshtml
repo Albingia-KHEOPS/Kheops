@@ -1,0 +1,102 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleClassementSansSuitePage>
+
+@Url.IncludeKoComponent("entete-contrat")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css", "vClassementSansSuite.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albClassementSansSuite.js" }, "~/Scripts/AlbingiaJS/")
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    @Html.Hidden("EtatAvt", (Model.Contrat.Etat))
+    @Html.Hidden("SituationAvt", (Model.Contrat.Situation))
+    @Html.Hidden("ReguleId", (Model.Contrat.ReguleId))
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="divGlobalRegulGroup">
+                @Html.Hidden("SouscripteurSelect", string.Empty, new { albautocomplete = "autoCompSouscripteurSelect" })
+                @Html.Hidden("SouscripteurCode", Model.Contrat.SouscripteurCode, new { albautocomplete = "autoCompSouscripteurCode" })
+                @Html.Hidden("CodePeriodicite", (Model.Contrat.PeriodiciteCode))
+                @Html.Hidden("GestionnaireSelect", string.Empty, new { albautocomplete = "autoCompGestionnaireSelect" })
+                @Html.Hidden("GestionnaireCode", Model.Contrat.GestionnaireCode, new { albautocomplete = "autoCompGestionnaireCode" })
+
+                <entete-contrat></entete-contrat>
+
+                <div id="divInfoRegul" class="simpleGradientSection divPeriodeAlertRegularisation">
+                    <div class="simpleGradientSection FloatLeft dvPrime">
+                        <div class="GroupTitle">
+                            Visualisation des quittances
+                        </div>
+                        @if (Model.Primes.ListQuittances.Any())
+                        {
+                            <div class="">
+                                <!--HorizontalFullWithGroup-->
+                                <div class=" PaddingLeft">
+                                    <!--GradientSection-->
+                                    <div class="divVisuQuittancesOverflow">
+                                        <div class="divVisuQuittancesOverflow2">
+                                            <div id="divVisuQuittancesHeader" class="PaddingLeft">
+                                                <table id="tblVisuQuittancesHeader" class="trHeight">
+                                                    <tr>
+                                                        @*<th class="tablePersoHead thHeadChkAnnul">&nbsp;</th>*@
+                                                        <th class="tablePersoHead tdHeadQuittEmission">Emission</th>
+                                                        <th class="tablePersoHead tdHeadQuittNum CursorPointer" name="headerTri" albcontext="QuittNum" albModeAff="Visu">
+                                                            <span class="Block spImg FloatLeft PaddingTop" style="width: 40px;">N° Qui</span>
+                                                            <span class="Block spImg" style="float: right;">
+                                                                <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" albcontext="QuittNum" albModeAff="Visu" />
+                                                            </span>
+                                                        </th>
+                                                        <th class="tablePersoHead tdHeadQuittAvis">Avis</th>
+                                                        <th class="tablePersoHead tdHeadQuittDateDeb">Début Période</th>
+                                                        <th class="tablePersoHead tdHeadQuittDateFin">Fin Période</th>
+                                                        <th class="tablePersoHead tdHeadQuittEcheance">Echéance</th>
+                                                        <th class="tablePersoHead tdHeadQuittAvn CursorPointer" name="headerTri" albcontext="QuittNumInt" albModeAff="Visu">
+                                                            <span class="Block spImg FloatLeft PaddingTop" style="width: 40px;">N° int</span>
+                                                            <span class="Block spImg" style="float: right;">
+                                                                <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="QuittNumInt" albModeAff="Visu" />
+                                                            </span>
+                                                        </th>
+                                                        <th class="tablePersoHead tdHeadQuittDel">Dem.</th>
+                                                        <th class="tablePersoHead tdHeadQuittMvt">Mvt</th>
+                                                        <th class="tablePersoHead tdHeadQuittOperation">Opération</th>
+                                                        <th class="tablePersoHead tdHeadQuittSit">Sit</th>
+                                                        <th class="tablePersoHead tdHeadQuittHT">HT</th>
+                                                        <th class="tablePersoHead tdHeadQuittTTC">TTC</th>
+                                                        <th class="tablePersoHead tdHeadQuittRegle">Réglé</th>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="divVisuQuittancesBody" class="PaddingLeft">
+                                                @if (Model.Primes.ListQuittances != null)
+                                                {
+                                                    @Html.Partial("~/Views/Quittance/VisualisationQuittancesListe.cshtml", Model.Primes.ListQuittances)
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <p>Aucune prime en cours</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,136 @@
+﻿#divDistribution {
+    display: none;
+}
+
+#divDataDistribution {
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    /*background-color: White;*/
+    padding: 5px 0 0 5px;
+    height: 685px;
+    width: 1045px;
+}
+
+#tblHeaderDocument tr, #tblBodyDocument tr {
+    height: 1px;
+}
+
+#tblHeaderDocument, #tblBodyDocument {
+    width: 983px;
+}
+
+#divHeaderDocument {
+    width: 1000px;
+}
+
+#divBodyDocument {
+    width: 1000px;
+    max-height: 427px;
+    overflow: auto;
+}
+
+.tdEmpty {
+    width: 20px;
+}
+
+.tdImg {
+    width: 22px;
+    text-align: center;
+}
+
+.tdDocNameH {
+    width: 250px;
+}
+
+.tdDocName {
+    width: 243px;
+}
+
+.tdPartenaireH {
+    width: 100px;
+}
+
+.tdPartenaire {
+    width: 97px;
+}
+
+.tdDiffusionH {
+    width: 50px;
+}
+
+.tdDiffusion {
+    width: 52px;
+    text-align: center;
+}
+
+.tdDestinataireH {
+    width: 320px;
+}
+
+.tdDestinataire {
+    width: 313px;
+}
+
+.tdDate {
+    width: 100px;
+    text-align: center;
+}
+
+
+/*-- CSS tableau partenaire création document --*/
+.CreationHeight {
+    height: 250px;
+}
+
+#tblHeaderCourrier tr, #tblBodyCourrier tr, #tblHeaderMail tr, #tblBodyMail tr {
+    height: 1px;
+}
+
+.tdPartenaire22 {
+    width: 22px;
+    text-align: center;
+}
+
+.tdPartenaire43 {
+    width: 43px;
+}
+
+.tdPartenaire108 {
+    width: 108px;
+}
+
+.tdPartenaire233 {
+    width: 233px;
+}
+
+.tdPartenaire296 {
+    width: 296px;
+}
+
+.tdPartenaire24 {
+    width: 24px;
+    text-align: center;
+}
+
+.tdPartenaire45 {
+    width: 45px;
+}
+
+.tdPartenaire110 {
+    width: 110px;
+}
+
+.tdPartenaire235 {
+    width: 235px;
+}
+
+.tdPartenaire298 {
+    width: 298px;
+}
+
+.tdHidden {
+    display: none;
+}

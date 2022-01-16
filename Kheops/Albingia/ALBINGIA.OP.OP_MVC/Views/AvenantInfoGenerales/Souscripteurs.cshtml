@@ -1,0 +1,9 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Avenant.ModelesAvenant.ModeleAvenantInfoGeneralesPage
+<div class="FloatLeft">
+    <label class="Block">Souscripteur*</label>
+</div>
+<div class="FloatLeft marginRight">
+    @Html.Hidden("SouscripteurSelect", string.Empty, new { albautocomplete = "autoCompSouscripteurSelect" })
+    @Html.HiddenFor(m => m.SouscripteurCode, new { albAutoComplete = "autoCompSouscripteurCode" })
+    <input type="text" id="SouscripteurNom" albhorsavn name="SouscripteurNom" value="@(Model.SouscripteurNom)" tabindex="29" class="SuperInput" albAutoComplete="autoCompSouscripteurNom" />
+</div>

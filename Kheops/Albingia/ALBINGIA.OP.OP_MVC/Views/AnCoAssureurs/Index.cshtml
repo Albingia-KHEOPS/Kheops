@@ -1,0 +1,95 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.ModelePage.AnCoAssureursPage>
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+@section stylesheets {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbCoAssureurs")
+}
+@section scripts {
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbCoAssureurs")
+}
+
+<div class="FullWidth">
+    @Html.HiddenNoName("etatVerrouillage", Model.EstVerrouillee)
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection" style='@(!Model.IsModeAvenant ? "height: 477px;" : "height: 440px;")'>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Part Couverte (%)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly decimal" id="inPartCouverte" readonly="readonly" albMask="pourcentdecimal" value="@Model.PartCouverte" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Part Albingia (%)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" class="readonly decimal" id="inPartAlbingia" readonly="readonly" albMask="pourcentdecimal" value="@Model.PartAlbingia" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divLstCoAssureur">
+                        <div id="divCoAssureursHeader" class="PaddingLeft">
+                            <table id="tblCoAssureursHeader">
+                                <tr>
+                                    <th class="col_CodeCoAssureur tablePersoHead">
+                                        Code
+                                    </th>
+                                    <th class="col_NomCoAssureur tablePersoHead">
+                                        Co-Assureur
+                                    </th>
+                                    <th class="col_CodePostal tablePersoHead">
+                                        C.P.
+                                    </th>
+                                    <th class="col_Ville tablePersoHead">
+                                        Ville
+                                    </th>
+                                    <th class="col_PourcentPart tablePersoHead">
+                                        % Part
+                                    </th>
+                                    <th class="col_Action tablePersoHead">
+                                        <img class="CursorPointer Action" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="AjouterButton" "   />
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divCoAssureurs" class="PaddingLeft">
+                            @if ((Model.ListeCoAssureurs != null) && (Model.ListeCoAssureurs.Count > 0)) {
+                                @Html.Partial("ListeCoAssureurs", Model.ListeCoAssureurs)
+                            }
+                            else {
+                                <br />
+                                <b>@Html.Raw("Aucun co-assureur pour ce contrat")</b>
+                                <br />
+                                <br />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+
+            <div class="ButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnSuivant" class="next-step" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreen">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataEditPopIn">
+    </div>
+</div>
+

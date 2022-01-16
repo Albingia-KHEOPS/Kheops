@@ -1,0 +1,17 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamISReference.LigneModeleIS>
+<table id="tblReferencesBody" class="trHeight">
+    @{    
+        if (Model != null && Model.Count > 0)
+        {
+            foreach (var reference in Model)
+            {
+                string code = reference.Code.Replace(' ', '¤');
+        <tr id="@("referenceIS_" + code)" name="lineReference">
+            @Html.Partial("LigneISReferentielReadOnly", reference)
+        </tr>
+            }
+        }
+    
+    }
+</table>
+

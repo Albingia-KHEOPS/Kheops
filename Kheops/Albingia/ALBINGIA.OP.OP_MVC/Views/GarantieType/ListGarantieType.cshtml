@@ -1,0 +1,57 @@
+﻿
+@model List<ALBINGIA.OP.OP_MVC.Models.ModelesGarantieType.ModeleGarantieType>
+
+@foreach (var item in Model)
+{
+    <tr id="@("tr-" + item.NumeroSeq)" data-niveau="@item.Niveau" data-codegar="@item.CodeGarantie" data-meregar="@item.NumeroSeqM">
+        <td class="modifGarantieType tdBodyEditType">
+            @if (item.IsModifiable)
+            {
+                <img class="CursorPointer" id="@("edt-" + item.NumeroSeq)" src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" name="modifType" />
+            }
+        </td>
+        <td name="niveau" class="tdBodySmall linkGarantieType" title="@item.Niveau">
+            @item.Niveau
+        </td>
+        <td name="codeGarantie" class="tdBodyCodeGarantie linkGarantieType" title="@item.CodeGarantie">
+            @item.CodeGarantie
+        </td>
+        <td name="description" class="tdBodyDescription linkGarantieType" title="@item.Description">
+            @item.Description
+        </td>
+        <td name="ordre" class="tdBodySmall linkGarantieType" title="@item.Ordre" data-ordre="@item.Ordre">
+            @item.Ordre
+        </td>
+        <td name="caractere" class="tdBodySmall linkGarantieType" title="@item.CaractereLib">
+            @item.Caractere
+        </td>
+        <td name="nature" class="tdBodySmall linkGarantieType" title="@item.NatureLib">
+            @item.Nature
+        </td>
+        <td name="indexee" class="tdBodySmall linkGarantieType" title="@(item.IsIndexee ? "Oui" : "Non")">
+            @(item.IsIndexee ? 'O' : 'N')
+        </td>
+        <td name="soumisCATNAT" class="tdBodySmall linkGarantieType" title="@(item.SoumisCATNAT ? "Oui" : "Non")">
+            @(item.SoumisCATNAT ? 'O' : 'N')
+        </td>
+        <td name="taxeCode" class="tdBodySmall linkGarantieType" title="@item.CodeTaxe">
+            @item.CodeTaxe
+        </td>
+        <td name="groupeAlternative" class="tdBodySmall linkGarantieType" title="@item.GroupeAlternative">
+            @item.GroupeAlternative
+        </td>
+        <td name="typePrime" class="tdBodyTypePrime linkGarantieType" title="@item.TypePrime">
+            @item.TypePrime
+        </td>
+        <td class="supprGarantieType tdBodyImgType">
+            @if (item.IsModifiable)
+            {
+                <img class="CursorPointer" id="@("suppr-" + item.NumeroSeq)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprType" />
+            }
+        </td>
+    </tr>
+    if (item.ListSousGarantie != null && item.ListSousGarantie.Any())
+    {
+        @Html.Partial("ListGarantieType", item.ListSousGarantie);
+    }
+}

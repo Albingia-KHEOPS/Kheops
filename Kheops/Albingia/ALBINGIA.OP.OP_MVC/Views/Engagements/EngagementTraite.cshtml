@@ -1,0 +1,25 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleEngagements.ModeleEngagementTraite>
+<table id="tblTraite" class="trHeight">
+    @{
+            bool noTraite = !Model.Any() || Model.Count == 1 && Model.Single().FamilleTraite.IsEmpty();
+            foreach (var item in Model) {
+            <tr id="idTraite_@item.FamilleTraite"
+                name="@(noTraite ? string.Empty : "traite")"
+                class="@(noTraite ? string.Empty : "CursorPointer")">
+                <td class="tdNomTraite PaddingLeft">@item.NomTraite</td>
+                <td class="tdEngagement">
+                    <span albmask="decimal">@item.EngagementTotal</span>
+                </td>
+                <td class="tdEngagement">
+                    <span albmask="decimal">@item.EngagementAlbingia</span>
+                </td>
+                @*<td class="tdEngagement">
+                    <span albmask="decimal">@item.SMPTotal</span>
+                </td>
+                <td class="tdEngagement">
+                    <span albmask="decimal">@item.SMPAlbingia</span>
+                </td>*@
+            </tr>
+        }
+    }
+</table>

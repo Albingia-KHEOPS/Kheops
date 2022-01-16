@@ -1,0 +1,14 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.Template_InformationBase
+<div class="FloatLeft">
+    <label class="labelTemplate">Canevas</label>
+</div>
+<div class="divTemplate FloatLeft">
+    @if ( (Model.IsReadOnly || Model.CopyMode) && !Model.LoadTemplateMode)
+    {
+        <input type="text" id="Template" name="Template" readonly="readonly" class="readonly inputTemplate" value="@(Model.Template)" />
+    }
+    else
+    { 
+        @Html.AlbDropDownListFor(m => m.Template, Model.Templates, "Template", htmlAttributes: new { id = "Template", @tabindex = "2", @class = "inputTemplate" }, generateTitle: true, replaceHtmlName: "Template")
+    }
+</div>

@@ -1,0 +1,51 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDetailsRisque.ModeleRechercheActivite
+<div class="GroupFull GroupWithBorder TotalWidth RechercheActivite" id="dialogGrid">
+    <div id="divRechercherResultActivite">
+
+        <div class="scroll ">
+            <div class="GroupTitle">
+                <div class="HeightRow">
+                    <div class="FloatLeft" style="margin-right: 20px;">
+                        Recherche d'une activité
+                    </div>
+                    <div class="FloatLeft" style="margin-right: 10px;">
+                        <input id="CodeConcept" type="text" class="readonly"   name="CodeConcept" value="@(!string.IsNullOrEmpty(Model.concept) ? Model.concept : "")" />
+                    </div>
+                    <div class="FloatLeft">
+                        <input  id="CodeFamille" type="text" class="readonly"  name="CodeFamille" value="@(Model.famille)" />
+                    </div>
+                </div>
+            </div>
+            <div class="FieldRow">
+
+                <div class="CodeActiviteLabel">
+                    <label class="AutoWidth">Code de l'activité</label>
+                </div>
+                <div class="CodeTextBox">
+                    <input id="CodeActiviteRecherche" type="text" name="CodeActiviteRecherche" value="" />
+                </div>
+                <div class="NomActiviteLabel">
+                    <label class="AutoWidth">Nom de l'activité </label>
+                </div>
+                <div class="NomActiviteTextBox">
+                    <input id="NomActiviteRecherche" type="text" name="NomActiviteRecherche" value="" />
+                </div>
+                <div class="FloatLeft PaddingLeft">
+                    <button id="RechercherFamButton" type="button" albshortcut="true" data-accesskey="r">
+                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" class="paddingLoupe" />
+                    </button>
+                    <button id="btnInitializeRech" type="button" value="Réinitialiser" tabindex="24" albshortcut="false" data-accesskey="i" style="padding-top: 5px;">Ré<u>i</u>nitialiser</button>
+                </div>
+            </div>
+            <div id="ActiviteRechercherResultDialogDiv">
+                @Html.Partial("/Views/Shared/RechercheActivite/ResultRechecheActivite.cshtml")
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+    <div class="ActionButtons ActionButtonsSearchRight ActionButtonRight">
+        <button type="button" id="btnfermerActivite">Fermer</button>
+    </div>
+</div>

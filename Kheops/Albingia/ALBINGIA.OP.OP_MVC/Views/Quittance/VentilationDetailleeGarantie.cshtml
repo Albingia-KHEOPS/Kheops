@@ -1,0 +1,20 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VentilationDetailleeGarantie>
+@{
+    foreach (var garantie in Model)
+    {
+    <tr>
+        <td class="col_VentDetailDoubleColumn" style="text-align:left;"><span>@(garantie.CodeGarantie + " - " + garantie.LibelleGarantie)</span>
+        </td>
+        <td class="col_VentDetailSmallColumn" style="text-align:right;"><span albmask="decimal">@garantie.HorsCATNAT</span>
+        </td>
+        <td class="col_VentDetailSmallColumn" style="text-align:right;"><span albmask="decimal">@garantie.CATNAT</span>
+        </td>
+        <td class="col_VentDetailSmallColumn" style="text-align:right;"><span albmask="decimal">@garantie.MontantTaxes</span>
+        </td>
+        <td class="col_VentDetailSmallColumn" style="text-align:right;"><span albmask="decimal">@garantie.MontantTTC</span>
+        </td>
+    </tr>        
+    }
+}
+
+

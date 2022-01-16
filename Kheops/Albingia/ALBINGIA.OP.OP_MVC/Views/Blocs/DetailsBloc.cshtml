@@ -1,0 +1,129 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesBlocs.ModeleBloc
+@Html.HiddenNoName("GuidId", Model.GuidId)
+@Html.HiddenNoName("selectedRow", string.Empty)
+
+<div class="GroupTitle">
+    Consultation / Modification Blocs
+</div>
+<div class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Code Bloc</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.ReadOnly || !string.IsNullOrEmpty(Model.GuidId))
+                    {                         
+                        <input id="Code" class="readonly DoubleInput" readonly="readonly" value="@Model.Code" />
+                    }
+                    else
+                    {                         
+                        <input id="Code" class="DoubleInput" value="@Model.Code" maxlength="10"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Description</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.ReadOnly)
+                    {
+                        <input id="Description" class="readonly DoubleInput" readonly="readonly" value="@Model.Description" />
+                    }
+                    else
+                    {
+                        <input id="Description" class="DoubleInput" value="@Model.Description" maxlength="60"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Créé le</label>
+                </div>
+                <div>@Html.DisplayFor(m => m.DateCreation)</div>
+            </div>
+            @if (!Model.ReadOnly)
+            {
+                <div class="" style="text-align: right; padding-right: 5px;">
+                    <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection" style="height: 442px;">
+        <div id="divLstBlocsIncompatibles" class="FloatLeft">
+            <div id="divBlocsIncompatiblesHeader">
+                <table class="widthSmallTable">
+                    <tr>
+                        <th class="HCodeIncompAssoc tablePersoHead">&nbsp;
+                        </th>
+                        <th class="HLibIncompAssoc tablePersoHead">Blocs incompatibles
+                        </th>
+                        <th class="HImgIncompAssoc tablePersoHead">
+                            @if (Model.GuidId != string.Empty)
+                            {
+                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouterBlocIncompatible"/>
+                            }
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divBlocsIncompatiblesLigneVide">
+                <table id="tblBlocsIncompatiblesLigneVide" class="widthSmallTable trHeight">
+                    <tr>
+                        <td name="codeBloc" class="linkBloc HCodeIncompAssoc">
+                            @Html.AlbDropDownListFor(m => Model.GuidId, Model.ListeReferentielBlocsIncompatibles, "dvAction", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlNewBlocIncompatible", @class = "drlListeBlocs" })
+                        </td>
+                        <td class="supprBloc HLibIncompAssoc">
+                            <img id="btnSaveNewBlocIncompatible" src="@Url.Content("/Content/Images/Save_16.png")" alt="Sauvegarder" title="Sauvegarder"  class="paddingAction"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divBodyBlocsIncompatibles" class="divHeightSmallTable FloatLeft">
+                @Html.Partial("ListeBlocsIncompatibles", Model.ListeBlocsIncompatibles)
+            </div>
+        </div>
+        <div id="divLstBlocsAssocies" class="FloatLeft">
+            <div id="divBlocsAssociesHeader">
+                <table class="widthSmallTable">
+                    <tr>
+                        <th class="HCodeIncompAssoc tablePersoHead">&nbsp;
+                        </th>
+                        <th class="HLibIncompAssoc tablePersoHead">Blocs associés
+                        </th>
+                        <th class="HImgIncompAssoc tablePersoHead">
+                            @if (Model.GuidId != string.Empty)
+                            {
+                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouterBlocAssocie" />
+                            }
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divBlocsAssociesLigneVide">
+                <table id="tblBlocsAssociesLigneVide" class="widthSmallTable trHeight">
+                    <tr>
+                        <td name="codeBloc" class="linkBloc HCodeIncompAssoc">
+                            @Html.AlbDropDownListFor(m => Model.GuidId, Model.ListeReferentielBlocsAssocies, "dvAction", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlNewBlocAssocie", @class = "drlListeBlocs" })
+                        </td>
+                        <td class="supprBloc HLibIncompAssoc">
+                            <img id="btnSaveNewBlocAssocie" src="@Url.Content("/Content/Images/Save_16.png")" alt="Sauvegarder" title="Sauvegarder" class="paddingAction"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divBodyBlocsAssocies" class="divHeightSmallTable FloatLeft">
+                @Html.Partial("ListeBlocsAssocies", Model.ListeBlocsAssocies)
+            </div>
+        </div>
+    </div>
+</div>

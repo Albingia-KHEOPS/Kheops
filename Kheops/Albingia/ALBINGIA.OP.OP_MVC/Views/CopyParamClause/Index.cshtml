@@ -1,0 +1,50 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCopyParamClausePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vCopyParamClause.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albCopyParamClause.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft">
+        <div id="contenu">
+            <div class="CommonForm TotalWidth">
+                @Html.Hidden("hiddenInputId", string.Empty)
+                <div id="divBodyPage" class="GroupFull GroupWithBorder TotalWidth">
+                    <div class="GroupTitle FloatLeft">Livraison Paramétrage de Clauses</div>
+                    <div class="HorizontalFullWithGroup ParamWidth">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div class="FloatLeft PaddingLeft" style="width: 650px;">
+                                    <div class="FloatLeft">Source : </div>
+                                    <div class="FloatLeft PaddingLeft">
+                                        @Html.AlbDropDownListFor(m => m.Source, Model.Sources, "Source", htmlAttributes: new { id = "Source", @class = "inputCible", @disabled = "disabled" }, generateTitle: true)
+                                    </div>
+                                    <div class="FloatLeft" style="padding-left: 30px;">Destination :</div>
+                                    <div class="FloatLeft PaddingLeft">
+                                        @Html.AlbDropDownListFor(m => m.Destination, Model.Destinations, "Destination", htmlAttributes: new { id = "Destination", @class = "inputCible" }, generateTitle: true)
+                                    </div>
+                                </div>
+                                <div class="FloatRight PaddingRight">
+                                    <button type="button" id="btnCopyParam" data-accesskey="v" albshortcut="true">Li<u>v</u>raison</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <button type="button" id="btnCancel" data-accesskey="r" albshortcut="true"><u>R</u>etour</button>
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>

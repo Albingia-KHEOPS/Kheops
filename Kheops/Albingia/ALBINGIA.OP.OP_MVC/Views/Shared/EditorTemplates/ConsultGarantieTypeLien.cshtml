@@ -1,0 +1,115 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGarantieType.ModeleGarantieType
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+<div class="GroupTitle">
+    Listes des liens pour la garantie @Model.CodeGarantie
+    <div class="ActionButtonRight">
+        <img id="btnToggleLien" class="CursorPointer" src="@Url.Content("/Content/Images/collapse.png")" title="Agrandir" name="agrLien" onclick="toggleLien(this);" />
+    </div>
+</div>
+<div class="HorizontalHalfWithGroupAdmin GroupHeightGarantieTypeLienInterieur">
+    <div class="GradientSection divAssociation">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block LabelLien">Garanties associées :</label>
+            </div>
+            <div class="divHeightLien FloatLeft">
+                <table id="tblAssociation" class="trHeight widthTableLien">
+                    @foreach (var asso in Model.ListLien.Where(x => x.Type == "A"))
+                    {
+                        <tr id="tr-@asso.Type-@asso.GarantieA-@asso.GarantieB" class="trHeight">
+                            <td class="tdBodyLienGarantie" title="@asso.ModeleGarantieLiee - @asso.NomGarantieLiee (@asso.NiveauGarantieLiee)">@asso.ModeleGarantieLiee - @asso.NomGarantieLiee (@asso.NiveauGarantieLiee)</td>
+                            <td class="supprGarantieTypeLien tdBodyImgLien CursorPointer">
+                                @if (Model.IsModifiable && !Model.ReadOnly)
+                                {
+                                    <img id="suppr-@asso.Type-@asso.GarantieA-@asso.GarantieB" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprLien" onclick="supprimerLien('@asso.Type', @asso.GarantieA, @asso.GarantieB);" />
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            @if (Model.IsModifiable && !Model.ReadOnly)
+            {
+                <div class="FloatLeft">
+                    <label class="Block LabelWidthLien">Associer à</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.DropDownList("GarantieAssociation", Model.ListGarantieType.Select(x => new SelectListItem() { Value = x.NumeroSeq.ToString(), Text = x.CodeModele + " - " + x.CodeGarantie + " (" + x.Niveau + ")" }), new { @class = "InputSelectLien" })
+                </div>
+                <div class="FloatLeft">
+                    <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter une association" onclick="ajouterLien('A');" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="GradientSection divDependance">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block LabelLien">Dépend des garanties :</label>
+            </div>
+            <div class="divHeightLien FloatLeft">
+                <table id="tblDependance" class="trHeight widthTableLien">
+                    @foreach (var asso in Model.ListLien.Where(x => x.Type == "D"))
+                    {
+                        <tr id="tr-@asso.Type-@asso.GarantieA-@asso.GarantieB">
+                            <td class="tdBodyLienGarantie" title="@asso.ModeleGarantieLiee - @asso.NomGarantieLiee (@asso.NiveauGarantieLiee)">@asso.ModeleGarantieLiee - @asso.NomGarantieLiee (@asso.NiveauGarantieLiee)</td>
+                            <td class="supprGarantieTypeLien tdBodyImgLien">
+                                @if (Model.IsModifiable && !Model.ReadOnly)
+                                {
+                                    <img id="suppr-@asso.Type-@asso.GarantieA-@asso.GarantieB" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprLien" onclick="supprimerLien('@asso.Type', @asso.GarantieA, @asso.GarantieB);" />
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            @if (Model.IsModifiable && !Model.ReadOnly)
+            {
+                <div class="FloatLeft">
+                    <label class="Block LabelWidthLien">Faire dépendre de</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.DropDownList("GarantieDependance", Model.ListGarantieType.Select(x => new SelectListItem() { Value = x.NumeroSeq.ToString(), Text = x.CodeModele + " - " + x.CodeGarantie + " (" + x.Niveau + ")" }), new { @class = "InputSelectLien" })
+                </div>
+                <div class="FloatLeft">
+                    <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter une dépendance" onclick="ajouterLien('D');" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="GradientSection divIncompatibilite">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block LabelLien">Incompatible avec les garanties :</label>
+            </div>
+            <div class="divHeightLien FloatLeft">
+                <table id="tblIncompatibilite" class="trHeight widthTableLien">
+                    @foreach (var asso in Model.ListLien.Where(x => x.Type == "I"))
+                    {
+                        <tr id="tr-@asso.Type-@asso.GarantieA-@asso.GarantieB">
+                            <td class="tdBodyLienGarantie" title="@asso.ModeleGarantieLiee - @asso.NomGarantieLiee (@asso.NiveauGarantieLiee)">@asso.ModeleGarantieLiee - @asso.NomGarantieLiee (@asso.NiveauGarantieLiee)</td>
+                            <td class="supprGarantieTypeLien tdBodyImgLien">
+                                @if (Model.IsModifiable && !Model.ReadOnly)
+                                {
+                                    <img id="suppr-@asso.Type-@asso.GarantieA-@asso.GarantieB" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprLien" onclick="supprimerLien('@asso.Type', @asso.GarantieA, @asso.GarantieB);" />
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            @if (Model.IsModifiable && !Model.ReadOnly)
+            {
+                <div class="FloatLeft">
+                    <label class="Block LabelWidthLien">Incompatible avec</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.DropDownList("GarantieIncompatibilite", Model.ListGarantieType.Select(x => new SelectListItem() { Value = x.NumeroSeq.ToString(), Text = x.CodeModele + " - " + x.CodeGarantie + " (" + x.Niveau + ")" }), new { @class = "InputSelectLien" })
+                </div>
+                <div class="FloatLeft">
+                    <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter une incompatibilité" onclick="ajouterLien('I');" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

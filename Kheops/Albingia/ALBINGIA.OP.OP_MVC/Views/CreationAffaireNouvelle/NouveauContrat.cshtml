@@ -1,0 +1,146 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesCreationAffaireNouvelle.ModeleCreationAffaireNouvelleContrat
+<div class="CommonForm FloatLeft" style="width: 800px;">
+    <div class="GroupFull GroupWithBorder" style="width: 780px;">
+        <div class="GroupTitle">
+            Création d'une affaire nouvelle
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 770px;">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Branche*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.Branches.Count > 1)
+                            {
+                                @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "NouveauContrat_Branche", htmlAttributes: new { @id = "NouveauContrat_Branche" }, generateTitle: true, genEmptyLine: false)
+                            }
+                            else
+                            {
+                                <input type="text" id="NouveauContrat_Branche" name="NouveauContrat_Branche" value="@(Model.Branche)" readonly="readonly" class="readonly" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="Column1">
+                        <div class="FloatLeft">
+                            <label class="Block">Type de contrat*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.TypeContrat, Model.TypesContrat, "NouveauContrat_TypeContrat", htmlAttributes: new { @id = "NouveauContrat_TypeContrat" }, generateTitle: true, genEmptyLine: false)
+                        </div>
+                    </div>
+                    <div class="Column2">
+                        <div class="FloatLeft">
+                            <label class="Block">Contrat mère</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="NouveauContrat_ContratMere" name="NouveauContrat_ContratMere"
+                                readonly="readonly" class="readonly" style="text-transform: uppercase;" />
+                        </div>
+                        <div class="FloatLeft">
+                            <img id="RechercherContratMereImg" alt="" src="/Content/Images/loupegris.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="Column1">
+                        &nbsp
+                    </div>
+                    <div class="Column2">
+                        <div class="FloatLeft">
+                            <label class="Block">N° Aliment</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="NouveauContrat_Aliment" name="NouveauContrat_Aliment" readonly="readonly"
+                                class="readonly numerique" albmask="numeric" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="Column1">
+                        <div class="FloatLeft">
+                            <label class="Block">Date d'effet*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.DateEffet, new { @id = "NouveauContrat_DateEffet", @class = "datepicker" })
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="Column1">
+                        <div class="FloatLeft">
+                            <label class="Block">Heure d'effet*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbTimePicker(m => m.HeureEffet, "NouveauContrat_Effet", new { @class = "HourMinute" })
+                        </div>
+                    </div>
+                    <div class="Column2">
+                        <div class="FloatLeft">
+                            <label class="Block">Contrat remplacé</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="checkbox" id="NouveauContrat_EstContratRemplace" name="NouveauContrat_EstContratRemplace" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="Column1">
+                        <div class="FloatLeft">
+                            <label class="Block">Date d'accord*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.DateAccord, new { @id = "NouveauContrat_DateAccord", @class = "datepicker" })
+                        </div>
+                    </div>
+                    <div class="Column2">
+                        <div class="FloatLeft">
+                            <input type="text" id="NouveauContrat_ContratRemplace" name="NouveauContrat_ContratRemplace"
+                                readonly="readonly" class="readonly" />
+                            <input type="text" id="NouveauContrat_ContratRemplaceAliment" name="NouveauContrat_ContratRemplaceAliment"
+                                style="width: 55px;" readonly="readonly" class="readonly" />
+                        </div>
+                        <div class="FloatLeft">
+                            <img id="RechercherContratRemplaceImg" alt="" src="/Content/Images/loupegris.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div style="width: 670px; float: left">
+                        <div class="FloatLeft">
+                            <label class="Block">Souscripteur*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.Hidden("autoCompSouscripteurSelect", 1, new { id = "NouveauContrat_SouscripteurSelect", albautocomplete = "autoCompSouscripteurSelect" })
+                            @Html.Hidden("autoCompSouscripteurCode", Model.Souscripteur?.Split('-').FirstOrDefault()?.Trim() ?? string.Empty, new { id = "NouveauContrat_SouscripteurCode", albAutoComplete = "autoCompSouscripteurCode" })
+                            <input type="text" id="NouveauContrat_Souscripteur" name="autoCompSouscripteurNom" value="@(Model.Souscripteur)" albAutoComplete="autoCompSouscripteurNom" style="width:220px" />
+                        </div>
+
+                        <div class="FloatLeft">
+                            <label class="Block">Gestionnaire*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.Hidden("autoCompGestionnaireSelect", 0, new { id = "NouveauContrat_GestionnaireSelect", albautocomplete = "autoCompGestionnaireSelect" })
+                            @Html.Hidden("autoCompGestionnaireCode", Model.GestionnaireCode, new { id = "NouveauContrat_GestionnaireCode", albautocomplete = "autoCompGestionnaireCode" })
+                            <input type="text" id="NouveauContrat_Gestionnaire" name="autoCompGestionnaireNom" value="@Model.Gestionnaire" albautocomplete="autoCompGestionnaireNom" style="width:220px" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 780px;">
+        <div class="ActionButtons ActionButtonLeft" style="width: 200px;">
+        </div>
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight" style="width: 200px;">
+            <button type="button" id="btnNouveauContratCancel" tabindex="29" data-accesskey="a"><u>A</u>nnuler</button>
+            <button type="button" id="btnNouveauContratValid" tabindex="28" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>

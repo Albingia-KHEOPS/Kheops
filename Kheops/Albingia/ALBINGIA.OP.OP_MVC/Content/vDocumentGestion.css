@@ -1,0 +1,375 @@
+﻿#divDataModifierLot {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 522px;
+    width: 1180px;
+}
+
+#divDataDocLibre {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    /*padding: 5px 0 0 5px;*/
+    height: 471px;
+    width: 352px;
+}
+
+#divDataSelectionGeneric {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 165px;
+    width: 670px;
+}
+
+#divContainerEditionDocument {
+    position: absolute;
+    top: 41px;
+    left: 1%;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    padding: 5px 0 0 5px;
+}
+
+.LargeurDetailsDocument {
+    width: 1160px;
+}
+
+.LargeurDetailsSelection {
+    width: 650px;
+}
+
+
+.divHeightDestinataires {
+    height: 300px;
+}
+
+.divHeightSelectionCourrier {
+    height: 170px;
+}
+
+.MarginLeft10 {
+    margin-left: 10px;
+}
+
+.inputDDL {
+    width: 240px !important;
+}
+
+.LargeInput {
+    width: 210px !important;
+}
+
+.SmallInput {
+    width: 50px !important;
+}
+
+.LargeLabel {
+    width: 200px !important;
+}
+
+.BoldUnderline {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.tdHeadIsPrincipal {
+    width: 20px;
+}
+
+.tdDestinatairePrincipal {
+    width: 20px;
+    padding-left: 2px;
+}
+
+.tdHeadDestinataire {
+    width: 150px !important;
+}
+
+.tdDestinataire {
+    width: 150px !important;
+    padding-left: 3px;
+}
+
+.DDLDestinataire {
+    width: 145px !important;
+}
+
+.tdHeadDestinataire2 {
+    width: 250px !important;
+}
+
+.tdCodeDestinataire {
+    width: 50px !important;
+}
+
+.INCodeDestinataire {
+    width: 45px !important;
+}
+
+.tdNomDestinataire {
+    width: 198px !important;
+}
+
+.INNomDestinataire {
+    width: 170px !important;
+}
+
+.INNomDestinataireLong {
+    width: 417px !important;
+}
+
+.tdHeadInterlocuteur {
+    width: 100px !important;
+}
+
+.tdInterlocuteur {
+    width: 100px !important;
+    padding-left: 3px;
+}
+
+.INNomInterlocuteur {
+    width: 95px !important;
+}
+
+.tdHeadTypeEnvoi {
+    width: 80px !important;
+}
+
+.tdTypeEnvoi {
+    width: 80px !important;
+    padding-left: 4px;
+}
+
+.DDLTypeEnvoi {
+    width: 75px !important;
+}
+
+.tdHeadNbEx {
+    width: 50px !important;
+}
+
+.tdNbExr {
+    width: 50px !important;
+    padding-left: 3px;
+}
+
+.INNbEx {
+    width: 45px !important;
+}
+
+.tdHeadTampon {
+    width: 80px !important;
+}
+
+.tdTampon {
+    width: 80px !important;
+    padding-left: 3px;
+}
+
+.DDLTampon {
+    width: 75px !important;
+}
+
+.tdHeadLettreAccomp {
+    width: 100px !important;
+}
+
+.tdLettreAccompagnement {
+    width: 100px !important;
+    padding-left: 3px;
+}
+
+.DDLLettreAccompagnement {
+    width: 95px !important;
+}
+
+.tdHeadLotEmail {
+    width: 50px !important;
+}
+
+.tdLotEmail {
+    width: 50px !important;
+    padding-left: 3px;
+}
+
+.INLotEmail {
+    width: 45px !important;
+}
+
+.tdHeadColAction1 {
+    width: 60px !important;
+}
+
+.tdColAction1 {
+    width: 60px !important;
+    padding-left: 3px;
+}
+
+.tdHeadColGenere {
+    width: 50px !important;
+}
+
+.tdIsGenere {
+    width: 50px !important;
+    padding-left: 3px;
+    text-align: center;
+}
+
+.tdHeadColAction2 {
+    width: 60px !important;
+}
+
+.tdDocAction {
+    width: 60px !important;
+    text-align: center;
+}
+
+.divHeightSelection {
+    height: 195px;
+}
+
+.tdHeadSelection {
+    width: 20px;
+}
+
+.tdSelection {
+    width: 20px;
+    padding-left: 3px;
+}
+
+.tdHeadLibelle {
+    width: 420px;
+}
+
+.tdHeadLibelleMedium {
+    width: 480px;
+}
+
+.tdHeadLibelleLarge {
+    width: 590px;
+}
+
+.tdCodeLibelle {
+    width: 420px;
+    padding-left: 3px;
+}
+
+.tdHeadRole {
+    width: 150px;
+}
+
+.tdRole {
+    width: 150px;
+}
+
+.tdHeadCode {
+    width: 100px;
+}
+
+.tdCode {
+    width: 100px;
+    padding-left: 3px;
+}
+
+.tdLibelle {
+    width: 400px;
+}
+
+.tdLibelleMedium {
+    width: 465px;
+}
+
+.tdLibelleLarge {
+    width: 580px;
+}
+
+.divHeightSelectionTypeIntervenant {
+    height: 195px;
+}
+
+#divTypeIntervenantTypeBody {
+    max-height: 195px;
+    overflow-y: auto;
+}
+
+#divCourrierTypeBody {
+    max-height: 195px;
+    overflow-y: auto;
+}
+
+#divDestinatairesBody {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.inputAutre {
+    width: 520px !important;
+}
+
+#divFichierJoint {
+    display: none;
+    padding-left: 50px;
+}
+
+.TablePersoTdBody1 {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.TablePersoTdBody2 {
+    vertical-align: middle;
+    text-align: right;
+}
+
+TablePersoTd1 {
+    width: 20px;
+}
+
+.TablePersoTd2 {
+    width: auto;
+}
+
+.TablePersoTd3 {
+    width: 90px;
+}
+
+.TablePersoTd4 {
+    width: 70px;
+}
+
+.TablePersoTdHead {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.tablePersoHead {
+    background-image: url("/Content/Images/RechercheSaisieGridHeaderThBg.png");
+    background-position: center center;
+    background-repeat: repeat-x;
+}
+
+.tabFichier {
+    width: 100%;
+}
+
+#divSectionPiecesJointes {
+    padding-left: 150px;
+}
+
+.blkListEnvoi {
+    height: 435px;
+}

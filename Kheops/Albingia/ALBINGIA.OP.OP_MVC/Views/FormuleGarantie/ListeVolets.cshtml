@@ -1,0 +1,11 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesFormGarantie.ModeleFormVolet>
+@foreach (var volet in Model)
+{
+    <tr style="background-color: blue;">
+        <td>@(volet.Code) - @(volet.Description)</td>
+    </tr>
+    if (volet.Blocs != null && volet.Blocs.Any())
+    {
+    @Html.Partial("ListeBlocs", volet.Blocs)
+    }
+}

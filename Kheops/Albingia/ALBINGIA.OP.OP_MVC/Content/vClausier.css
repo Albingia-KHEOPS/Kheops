@@ -1,0 +1,470 @@
+﻿.spanText {
+    /*float: right; */
+    /*margin-top: 5px; */
+    margin-left: 10px;
+}
+
+.btn {
+    width: 400px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+/*#divBodyClausier {
+    overflow: auto;
+    max-height: 354px;
+}*/
+
+.fullscreenHeight{
+     overflow: auto;
+     height:630px;
+    max-height: 630px !important;
+}
+
+/*#tblBodyClausier {
+    table-layout: fixed;
+    width: 980px;
+}*/
+
+/*#tblHeaderClausier {
+    width: 1014px;
+}*/
+
+
+.LargeurDemi {
+    width: auto !important;
+}
+
+.LargeurDemiInterieur {
+    width: 400px !important;
+}
+
+/*
+.GroupTitle
+{
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #800000;
+    font-size: 11pt;
+    font-weight: normal;
+    font-style: italic;
+}
+*/
+
+/*.HorizontalFullWithGroup
+{    
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 80px;
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    border: 1px #ddd inset;
+}*/
+
+.HorizontalQuarterWithGroup {
+    border-radius: 5px;
+    float: right;
+    margin-left: 10px; /*margin-top: 10px;*/
+    margin-bottom: 5px;
+    width: 80%;
+    height: 40px;
+    padding-top: 0px;
+    padding-left: 5px;
+    border: 1px #ddd inset; /*background-color: #ddd;*/
+}
+
+.GroupSplitQuarter {
+    width: 221px;
+    margin-right: 10px;
+    float: left;
+}
+
+.GroupSplitQuarterFin {
+    width: 221px;
+    float: left;
+}
+
+.PartieElement {
+    float: left;
+}
+
+.divClause {
+    width: 100%;
+    border: solid 1px;
+    height: 100%;
+}
+
+
+
+#dvRechercheGeneral {
+    display: none;
+}
+
+#dvTabClauses {
+    overflow-y: auto;
+    height: 87%;
+    border: solid 0px;
+}
+
+.TableauClauses {
+    width: 100%;
+    background-color: White;
+}
+
+/*.tdEmpty {
+    width: 45px;
+}*/
+
+/*.tdEmptyBody {
+    width: 39px;
+}*/
+
+/*.tdEmptyHistoBody {
+    width: 26px;
+}*/
+
+#TableFichier {
+    width: 100%;
+    height: 90%;
+    background-color: White;
+}
+
+.float {
+    float: right;
+}
+
+.margin {
+    margin-top: 10px;
+}
+
+#TableEntete {
+    border: solid 0px;
+}
+
+.colHisto1 {
+    width: 50px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.colHisto2 {
+    width: 75px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.Valider {
+    text-align: right;
+}
+
+.ColumnMotCle {
+    float: left;
+    width: 150px;
+}
+
+.ButonChercher {
+    float: left;
+    padding-left: 89px;
+}
+/* Liste de clauses Clausiers*/
+
+
+/*.col_HeaderRubrique {
+    width: 93px;
+}*/
+
+/*.col_HeaderSousRubrique {
+    width: 100px;
+}*/
+
+/*.col_HeaderSequence {
+    width: 50px;
+    text-align: center;
+}*/
+
+/*.col_HeaderVersion {
+    width: 44px;
+    text-align: center;
+}*/
+
+/*.col_HeaderLibelle {
+    width: 690px;
+    text-align: center;
+}*/
+
+/*.col_RubriqueBody {
+    width: 92px;
+    text-align: center;
+}*/
+
+/*.col_SousRubriqueBody {
+    width: 95px;
+    text-align: center;
+}*/
+
+/*.col_SequenceBody {
+    width: 59px;
+    text-align: center;
+}*/
+
+/*.col_VersionBody {
+    width: 46px;
+    text-align: center;
+}*/
+
+/*.col_LibelleBody {
+    width: 611px;
+}*/
+
+/*#divVisualisationClause {
+    display: none;
+}*/
+
+#divDataVisualisationClause {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 231px;
+}
+
+/*#divHistoriqueClause {
+    display: none;
+}*/
+
+/*#divHistoriqueClauseInvalide {
+    display: none;
+}*/
+
+.GroupWithBorderHistorique {
+    background-color: #EEEEEE;
+    float: left;
+    height: 204px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+    border: 1px outset #EEEEEE;
+    border-radius: 10px;
+}
+
+.ChkClause {
+}
+
+.ClauseValide {
+    background-color: #0094FF !important;
+}
+
+.Alerte {
+    margin: 8px 10px 5px 14px;
+}
+
+.MsgAlerte {
+    font-weight: bold;
+    padding-left: 10px !important;
+    padding-top: 0 !important;
+}
+
+.DivContexte {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.MarginLeftButton {
+    margin-left: -6px;
+}
+
+/*#divLstObj {
+    display: none;
+}*/
+
+#divDataLstObj {
+    position: absolute;
+    top: 123px;
+    left: 1075px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 10px;
+    width: 275px;
+    height: 275px;
+}
+
+.LabelObjetRisque {
+    width: 171px;
+    padding-left: 22px;
+    padding-top: 5px;
+}
+
+.TxtObjetRisque {
+    width: 300px !important;
+}
+
+.col_ObjetDesignation {
+    width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col_CheckBoxObjet {
+    width: 25px;
+}
+
+#tblObjets {
+    margin-left: 10px;
+    table-layout: fixed;
+    width: 200px;
+}
+
+.divListRsqObj {
+    max-height: 170px;
+    overflow-y: auto;
+}
+
+.DivObjets {
+    /*padding-bottom: 155px;*/
+}
+
+.LibelleBandeau {
+    font-weight: bold;
+    width: 80px;
+}
+
+.CheckRsq {
+    margin-right: 10px;
+}
+
+.PaddingValidation {
+    left: 60px;
+    padding-top: 20px;
+    position: absolute;
+    top: 243px;
+}
+
+.DivRsqTitle {
+    font-weight: bold;
+}
+
+.DivObjTitle {
+    font-weight: bold;
+    margin-top: 14px;
+}
+
+.columnObjetRisque {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 180px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.tblInfo {
+    table-layout: fixed;
+    width: 1030px;
+}
+
+    .tblInfo tr {
+        height: 1px;
+    }
+
+.columnRisque {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 130px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.columnOffre {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 130px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.columnLabelOffre {
+    width: 103px;
+}
+
+.columnLabelRisque {
+    width: 103px;
+}
+
+.labelRisque {
+    padding-left: 12px;
+}
+
+.labelOffre {
+    width: 97px !important;
+}
+
+.columnFormule {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 250px;
+    border-color: #EEEEEE;
+    border-style: ridge hidden hidden ridge;
+}
+
+.labelFormule {
+    padding-left: 12px;
+}
+
+.Ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 250px;
+}
+
+.RsqColumn {
+    float: left;
+    width: 301px;
+}
+
+.SelectedObjetsEllipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+}
+
+.PaddingBottom {
+    padding-bottom: 5px;
+}
+
+.divSelectedObjetsDim {
+    overflow: auto;
+    max-height: 200px;
+    width: 338px;
+}
+/*.trHeight {
+    height: 26px !important;
+}*/
+
+
+#divDataFullScreen {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 721px;
+    width: 1055px;
+}

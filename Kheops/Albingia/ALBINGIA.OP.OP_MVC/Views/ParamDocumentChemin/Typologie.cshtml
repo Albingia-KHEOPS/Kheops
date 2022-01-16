@@ -1,0 +1,9 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamDocumentChemin.ModeleTypologies
+@if (Model.ListeTypologies != null && Model.ListeTypologies.Any())
+{ 
+    @Html.AlbDropDownListFor(m => Model.Typologie, Model.ListeTypologies, "Typologie", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "Typologie", @class="GenericColumn" })                    
+}
+else
+{
+    <input id="Typologie" value="@Model.Typologie" class="GenericColumn"/>
+}

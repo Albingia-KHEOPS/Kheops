@@ -1,0 +1,43 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationAttestationPage
+<div>
+    <b>Renseignez la période de l'attestation</b> :
+</div>
+
+<div class="PaddingTop">
+    <table id="tblAttesHeader" class="trHeight">
+        <tr>
+            <th class="tablePersoHead thExercice">Exercice</th>
+            <th class="tablePersoHead thPeriode">Période attestation</th>
+        </tr>
+    </table>
+</div>
+<div class="TabPeriode">
+    <input type="hidden" id="PeriodeValide" value="0" />
+    <table id="tblAttesBody" class="trHeight">
+        <tr>
+            <td>
+                <input type="text" id="ExerciceAttes" class="inExercice numerique" albmask="year" value="@(Model.Exercice)" maxlength="4" />
+            </td>
+            <td>@Html.AlbDateFormat(m => m.PeriodeDeb, new { @class = "inputDate datepicker", @id = "PeriodeDeb", @name = "PeriodeDeb" }, htmlName: "PeriodeDeb")</td>
+            <td>@Html.AlbDateFormat(m => m.PeriodeFin, new { @class = "inputDate datepicker", @id = "PeriodeFin", @name = "PeriodeFin" }, htmlName: "PeriodeFin")</td>
+        </tr>
+    </table>
+</div>
+<div class="HeightIntegralite PaddinTop">
+    @*2017-02-02 : correction bug 2239*@
+    @if (Model.Contrat.Branche == "RC")
+    {
+        <input type="checkbox" id="IntegraliteContrat" checked="checked" />
+    }
+    else
+    {
+        <input type="checkbox" id="IntegraliteContrat" />
+    }
+    <label class="AutoWidth">Intégralité du contrat</label>
+</div>
+<div>
+    <b>Sélectionner le type d'attestation</b> :
+</div>
+<div class="HeightRow PaddingTop">
+    @Html.AlbDropDownListFor(m => m.TypeAttes, Model.TypesAttes, "TypeAttes", htmlAttributes: new { @id = "TypeAttes", @class = "inTypeAttes" }, generateTitle: true)@*, genEmptyLine: false)*@
+</div>

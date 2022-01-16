@@ -1,0 +1,376 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.AnInformationsGeneralesPage>
+
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+@section stylesheets {
+
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbAnInformationsGenerales")
+}
+
+@section scripts {
+   
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbAnInformationsGenerales")
+}
+<div id="GestionErreur">
+</div>
+<div class=" FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+        @Html.HiddenFor(m => m.ExistEcheancier)
+        @Html.Hidden("AnciennePeriodicite", Model.Periodicite)
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection divGeneral">
+                    <div class="HeightRow">
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Identification*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" name="Identification" id="Identification" albhorsavn tabindex="1" class="SuperInput NonReprisCP" value="@Model.Identification" maxlength="40" />
+                                @Html.ValidationMessageFor(m => m.Identification, "", new { @style = "display:none;" })
+                            </div>
+                        </div>
+                        <div class="DoubleGenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Cible</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" name="Cible" id="Cible" tabindex="2" class="SuperInput readonly" value="@(Model.Cible + " - " + Model.CibleLib)"
+                                       readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Mots-clés</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef1, Model.MotsClefs1, "MotClef1", htmlAttributes: new { @id = "MotClef1", @tabindex = "3", @class = "inputMotCle NonReprisCP", @albCFList = "motscles", @albhorsavn = "" }, generateTitle: true)</div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef2, Model.MotsClefs2, "MotClef2", htmlAttributes: new { @id = "MotClef2", @tabindex = "4", @class = "inputMotCle NonReprisCP", @albCFList = "motscles", @albhorsavn = "" }, generateTitle: true)</div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.MotClef3, Model.MotsClefs3, "MotClef3", htmlAttributes: new { @id = "MotClef3", @tabindex = "5", @class = "inputMotCle NonReprisCP", @albCFList = "motscles", @albhorsavn = "" }, generateTitle: true)</div>
+                    </div>
+                    <div class="HeightRow" style="height: 58px;">
+                        <div class="FloatLeft">
+                            <label class="Block">Observations</label>
+                        </div>
+                        
+                        <div class="FloatLeft">
+                            @if (Model.IsReadOnly && !Model.IsModifHorsAvenant) {
+                                <div id="Observations" style="width: 902px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Observations)</div>
+                            }
+                            else {
+                                <textarea id="Observations" albhorsavn name="Observations" tabindex="6" class="heightAreaInfosGeneObsv NonReprisCP" rows="2" style="width: 866px;">@Model.Observations</textarea>
+                            }
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Devise*</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Devise, Model.Devises, "Devise", htmlAttributes: new { @id = "Devise", @tabindex = "7", @class = "inputDevise", @albCFList = "devise" }, generateTitle: true)
+                            @Html.ValidationMessageFor(m => m.Devise, "", new { @style = "display:none;" })
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Regime de taxe</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.IsMonoRisque) {
+                                @Html.AlbDropDownListFor(m => m.RegimeTaxe, Model.RegimesTaxe, "RegimeTaxe", htmlAttributes: new { @id = "RegimeTaxe", @tabindex = "8", @disabled = "disabled", @class = "inputRegimesTaxe", @albCFList = "regimeTaxe" , @albhorsavn=""}, generateTitle: true)
+                            }
+                            else {
+                                @Html.AlbDropDownListFor(m => m.RegimeTaxe, Model.RegimesTaxe, "RegimeTaxe", htmlAttributes: new { @id = "RegimeTaxe", @tabindex = "8", @class = "inputRegimesTaxe", @albCFList = "regimeTaxe", @albhorsavn = "" }, generateTitle: true)
+                            }
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">CATNAT possible</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.IsMonoRisque) {
+                                <input type="checkbox" id="SoumisCatNat" name="SoumisCatNat" tabindex="9" value="@Model.SoumisCatNat.ToString()" checked="@(Model.SoumisCatNat )" disabled="disabled" title="Catnat possible sur le contrat " />
+                            }
+                            else {
+
+                                <input type="checkbox" id="SoumisCatNat" name="SoumisCatNat" tabindex="9" value="true" checked="@(Model.SoumisCatNat )" title="Catnat possible sur le contrat " />
+                            }
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block labelStop">STOP</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Stop, Model.Stops, "Stop", htmlAttributes: new { @id = "Stop", @albCFList = "stopan", @albhorsavn = "" }, generateTitle: true)
+                        </div>
+
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Antécédents</label>
+                        </div>
+                        <div class="FloatLeft divAntedecent">@Html.AlbDropDownListFor(m => m.Antecedent, Model.Antecedents, "Antecedent", htmlAttributes: new { @id = "Antecedent", @tabindex = "1", @albCFList = "antecedent", @class = "marginRight" }, generateTitle: true, genEmptyLine: false)</div>
+                        <div class="FloatLeft">
+                            <label class="Block">Description</label>
+                        </div>
+                        
+                        <div class="FloatLeft">
+                            @if (Model.IsReadOnly && !Model.IsModifHorsAvenant) {
+                                <div id="Description" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Description)</div>
+                            }
+                            else {
+                                <textarea id="Description" albhorsavn name="Description" class="heightAreaInfosGeneDesc NonReprisCP" style="margin-bottom: 5px; width: 626px;" tabindex="6" rows="2">@Model.Description</textarea>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Périodicité*</label>
+                        </div>
+                        <div class="inputPeriodicite">
+                            @Html.AlbDropDownListFor(m => m.Periodicite, Model.Periodicites, "Periodicite", htmlAttributes: new { @id = "Periodicite", @tabindex = "10", @albCFList = "periodicite" }, generateTitle: true)
+                            @Html.ValidationMessageFor(m => m.Periodicites, "", new { @style = "display:none;" })
+                        </div>
+                        <div class="FloatLeft">
+                            <label class="Block">Ech. principale*</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDateFormat(m => m.EcheancePrincipale, new { @tabindex = "11", @class = "inputEcheance" }, "dd/MM")</div>
+                        <div class="FloatLeft">
+                            (JJ/MM)
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 9px">
+                            <label class="Block labelPreavis">Prochaine échéance</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.ProchaineEcheance, new { @class = "readonly inputDate", @readonly = "readonly" })
+                            @Html.AlbDateFormat(m => m.PeriodeDeb, new { @class = "readonly inputDate", @readonly = "readonly", @type = "hidden" })
+                            @Html.AlbDateFormat(m => m.PeriodeFin, new { @class = "readonly inputDate", @readonly = "readonly", @type = "hidden" })
+                        </div>
+                        @if (!Model.IsReadOnly) {
+                            <div class="FloatLeft PaddingLeft">
+                                <img id="infoEcheance" src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" />
+                            </div>
+                        }
+                        <div id="userEcheance" class="None">
+                            <div class="overlay-background" style="z-index:49" >
+                            </div>
+                            <div id="dataUserEcheance" style="width: 203px; height: 33px; background-color: white">
+                                <div class="FloatLeft PaddingLeft" style="padding-top: 7px;">
+                                    <input type="text" class="datepicker inputDate" id="UserEcheance" name="UserEcheance" value="" />
+                                </div>
+                                <div class="FloatLeft PaddingLeft PaddingTop">
+                                    <div class="FloatLeft">
+                                        <button type="button" id="btnEchOK">OK</button>
+                                    </div>
+                                    <div class="FloatLeft PaddingLeft">
+                                        <button type="button" id="btnEchCancel">Annuler</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 20px;">
+                            @if (!string.IsNullOrEmpty(Model.PartBenef) && Model.PartBenef == "B") {
+                                <label class="blueUnderline">Présence de BNS</label>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.PartBenef) && Model.PartBenef == "O") {
+                                <label class="blueUnderline">Présence de PB</label>
+                            }
+                        </div>
+                        <div class="FloatLeft" style="padding-left: 20px;">
+                            @if (Model.OppBenef) {
+                                <label class="blueUnderline">Présence d'opposition/bénéficiaire</label>
+                            }
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">Effet des garanties</label>
+                        </div>
+                        <div class="divDateInfoGen">@Html.AlbDateFormat(m => m.EffetGaranties, new { @class = "datepicker inputDate", @tabindex = "13" })</div>
+                        <div class="divHeure">@Html.AlbTimePicker(m => m.HeureEffet, "HeureEffet", new { @class = "HourMinute", @tabindex = "14" })</div>
+                        @Html.Hidden("EffetCheck", Model.EffetCheck, new { id = "inputEffet" })
+                        <div class="FloatLeft divEffetCheck">
+                            @if (Model.Periodicite != "E" && Model.Periodicite != "U") {
+                                if ((Model.FinEffet == null && Model.Duree == null) || Model.CanModifEndEffectDate) {
+                                    @Html.CheckBoxFor(m => m.EffetCheck, new { @tabindex = "15", @albhorsavn = "", data_can_check = "true" })
+                                }
+                                else {
+                                    @Html.CheckBoxFor(m => m.EffetCheck, new { @tabindex = "15" })
+                                }
+                            }
+                            else {
+                                @Html.CheckBoxFor(m => m.EffetCheck, new { @tabindex = "15" })
+                            }
+                            <label id="EffetCheckLabel" class="AutoWidth">Fin d'effet</label>
+                        </div>
+                        @Html.Hidden("DureeCheck", Model.DureeCheck, new { id = "inputDuree" })
+                        <div class="divDuree">
+                            @if (Model.Periodicite != "E" && Model.Periodicite != "U") {
+                                if ((Model.FinEffet == null && Model.Duree == null) || Model.CanModifEndEffectDate) {
+                                    @Html.CheckBoxFor(m => m.DureeCheck, new { @tabindex = "16", @albhorsavn = "", data_can_check = "true" })
+                                }
+                                else {
+                                    @Html.CheckBoxFor(m => m.DureeCheck, new { @tabindex = "16" })
+                                }
+                            }
+                            else {
+                                @Html.CheckBoxFor(m => m.DureeCheck, new { @tabindex = "16" })
+                            }
+                            <label id="DureeCheckLabel" class="AutoWidth">Durée</label>
+                        </div>
+                        <div id="divDataFinEffet" class="FloatLeft None">
+                            @if (Model.Periodicite != "E" && Model.Periodicite != "U") {
+                                if ((Model.FinEffet == null && Model.Duree == null) || Model.CanModifEndEffectDate) {
+                                    <div class="divDateInfoGen">@Html.AlbDateFormat(m => m.FinEffet, new { @class = "datepicker  inputDate", @tabindex = "17", @albhorsavn = "" })</div>
+                                    <div class="divHeure">@Html.AlbTimePicker(m => m.HeureFinEffet, "HeureFinEffet", new { @class = " HourMinute", @tabindex = "18", @albhorsavn = "" })</div>
+                                }
+                                else {
+                                    <div class="divDateInfoGen">@Html.AlbDateFormat(m => m.FinEffet, new { @class = "datepicker inputDate", @tabindex = "17" })</div>
+                                    <div class="divHeure">@Html.AlbTimePicker(m => m.HeureFinEffet, "HeureFinEffet", new { @class = "HourMinute", @tabindex = "18" })</div>
+                                }
+                            }
+                            else {
+                                <div class="divDateInfoGen">@Html.AlbDateFormat(m => m.FinEffet, new { @class = "datepicker readonly inputDate", @disabled = "disabled", @tabindex = "17" })</div>
+                                <div class="divHeure">@Html.AlbTimePicker(m => m.HeureFinEffet, "HeureFinEffet", new { @class = "readonly HourMinute", @disabled = "disabled", @tabindex = "18" })</div>
+                            }
+                        </div>
+                        <div id="divDataDuree" class="FloatLeft None" style="padding-left: 21px;">
+                            <div class="divDateInfoGen">
+                                @if ((Model.Periodicite != "E" && Model.Periodicite != "U") || Model.CanModifEndEffectDate) {
+                                    <input type="text" id="Duree" name="Duree" albhorsavn tabindex="19" class=" inputDate numerique" albMask="numericDuree" value="@Model.Duree" />
+
+                                }
+                                else {
+                                    <input type="text" id="Duree" name="Duree" tabindex="19" disabled="disabled" class="readonly inputDate numerique" albMask="numericDuree" value="@Model.Duree" />
+
+                                }
+
+                            </div>
+                            <div class="FloatLeft">
+                                @if ((Model.Periodicite != "E" && Model.Periodicite != "U") || Model.CanModifEndEffectDate) {
+                                    @Html.AlbDropDownListFor(m => m.DureeString, Model.Durees, "DureeString", htmlAttributes: new { @id = "DureeString", @class = " inputDuree", @tabindex = "20", @albCFList = "uniteDuree", @albhorsavn = "" }, generateTitle: true)
+                                }
+                                else {
+                                    @Html.AlbDropDownListFor(m => m.DureeString, Model.Durees, "DureeString", htmlAttributes: new { @id = "DureeString", @class = "readonly inputDuree", @disabled = "disabled", @tabindex = "20", @albCFList = "uniteDuree" }, generateTitle: true)
+                                }
+                            </div>
+                        </div>
+                        <div class="FloatRight PaddingRightLarge None">
+                            @Html.CheckBoxFor(m => m.LTA)
+                            <label id="lnkLTA" class="@(Model.LTA ? "AutoWidth navig" : "AutoWidth")">LTA</label>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Date accord*</label>
+                            </div>
+                            <div class="divDateInfoGen">@Html.AlbDateFormat(m => m.DateAccord, new { @class = "datepicker inputDate", @tabindex = "21" })</div>
+                        </div>
+                        <div class="GenericColumn" style="width: 215px;">
+                            <div class="FloatLeft">
+                                <label class="Block labelPreavis">Préavis de résil.(mois)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @if (Model.Periodicite == "A" || Model.Periodicite == "S" || Model.Periodicite == "T") {
+                                    <input type="text" id="Preavis" albhorsavn class="numerique inputPreavis" name="Preavis" tabindex="12" albMask="numeric" value="@Model.Preavis" />
+                                }
+                                else {
+                                    <input type="text" id="Preavis" albhorsavn class="numerique inputPreavis readonly" disabled="disabled" name="Preavis" tabindex="12" albMask="numeric" value="@Model.Preavis" />
+                                }
+                            </div>
+                        </div>
+                        <div class="FloatLeft" style="width: 115px">
+                            <label class="Block">Indice référence</label>
+                        </div>
+                        <div class="FloatLeft marginRight" style="padding-left: 20px;">
+                            @Html.AlbDropDownListFor(m => m.IndiceReference, Model.IndicesReference, "IndiceReference", htmlAttributes: new { @id = "IndiceReference", @tabindex = "22", @albCFList = "indiceReference" }, generateTitle: true)
+                        </div>
+                        <div class="FloatLeft" style="width: 60px">
+                            <label class="Block">Valeur</label>
+                        </div>
+
+                        <div class="FloatLeft marginRight">
+                            <input type="text" id="Valeur" name="Valeur" tabindex="23" readonly="readonly" class="readonly numerique" value="@Model.Valeur" albMask="decimal" style="width: 60px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Nature contrat*</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.AlbDropDownListFor(m => m.NatureContrat, Model.NaturesContrat, "NatureContrat", htmlAttributes: new { @id = "NatureContrat", @tabindex = "24", @albCFList = "natureContrat" }, generateTitle: true, genEmptyLine: false)
+                                @Html.ValidationMessageFor(m => m.NaturesContrat, "", new { @style = "display:none;" })
+                            </div>
+                        </div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Part Albingia (%)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="PartAlbingia" name="PartAlbingia" value="@(Model.PartAlbingia)" readonly="readonly" class="readonly decimal PourcentWidth" albMask="pourcentdecimal" tabindex="25" />
+                            </div>
+                        </div>
+                        @Html.Partial("Aperiteurs", Model)
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">&nbsp;</div>
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block">Couverture (%)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="Couverture" name="Couverture" tabindex="27" readonly="readonly" class="readonly numerique PourcentWidth" albMask="pourcentnumeric" value="@Model.Couverture" />
+                            </div>
+                        </div>
+                        <div class="GenericColumn @(Model.NatureContrat == "A" || Model.NatureContrat == "E" || string.IsNullOrEmpty(Model.NatureContrat) ? "None" : string.Empty)" id="dvFraisAperiteur">
+                            <div class="FloatLeft">
+                                <label class="Block">Comm. Apé. (%)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="FraisApe" name="FraisApe" tabindex="26" readonly="readonly" class="readonly decimal PourcentWidth" albMask="pourcentdecimal" value="@Model.FraisApe" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label class="Block InputIntercalaire">Intercalaire courtier ?</label>
+                            </div>
+                            <div class="FloatLeft">@Html.CheckBoxFor(m => m.Intercalaire, new { @tabindex = "28" })</div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        @Html.Partial("Souscripteurs", Model)
+                        @Html.Partial("Gestionnaires", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div id="LoadingDiv" class="FloatLeft">
+            </div>
+            <div class="ButtonRight">
+                <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s" class="next-step"><u>S</u>uivant</button>
+            </div>
+        </div>
+        <div id="divLTA" class="None">
+            <div class="overlay-background" style="z-index:28" >
+            </div>
+            <div id="divDataLTA" class="PaddingTop PaddingLeft">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreen">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataEditPopIn">
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿@using ALBINGIA.OP.OP_MVC
+@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRetoursPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vRetours.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albRetours.js" }
+                   , "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @*Input sauvegardant les informations lors d'un appel Fancy Confirm*@
+    @Html.HiddenNoName("hiddenInputId", string.Empty)
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+    @Html.Partial("RetoursBody", Model)
+</div>
+

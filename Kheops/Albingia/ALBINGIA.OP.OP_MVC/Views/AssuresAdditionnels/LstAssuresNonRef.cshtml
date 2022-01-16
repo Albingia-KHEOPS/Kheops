@@ -1,0 +1,29 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.AssuresAdditionnels.AssuAdditionnels
+@{
+    var splitChar = ALBINGIA.OP.OP_MVC.MvcApplication.SPLIT_CONST_HTML;
+
+    if (Model != null && Model.AssuresNonReference != null)
+    {
+    var i = 0;
+        foreach (var assurNonRef in Model.AssuresNonReference)
+        {
+            i = i + 1;
+    <tr>
+        <td class="tdBodyQualitesNonRef" name="Qual1@(splitChar)@(i)">@(!string.IsNullOrEmpty(assurNonRef.CodeQualite1) ? string.Format("{0} - {1}", assurNonRef.CodeQualite1, assurNonRef.LibQualite1) : string.Empty)</td>
+        <td class="tdBodyQualitesNonRef" name="Qual2@(splitChar)@(i)">@(!string.IsNullOrEmpty(assurNonRef.CodeQualite2) ? string.Format("{0} - {1}", assurNonRef.CodeQualite2, assurNonRef.LibQualite2) : string.Empty)</td>
+        <td class="tdBodyQualitesNonRef" name="Qual3@(splitChar)@(i)">@(!string.IsNullOrEmpty(assurNonRef.CodeQualite3) ? string.Format("{0} - {1}", assurNonRef.CodeQualite3, assurNonRef.LibQualite3) : string.Empty)</td>
+        <td class="tdBodyAutreRef">
+            @if (!string.IsNullOrEmpty(assurNonRef.QualiteAutre))
+            {
+                <img name="QualAutre@(splitChar)@(i)" src="@Url.Content("/Content/Images/Checkmark-16.png")" title="@(assurNonRef.QualiteAutre)"/>
+            }
+        </td>
+        <td class="tdBodyAutreRef">
+            <img id="updAssRef@(splitChar)@(i)" title="Modifier l'assuré" name="UpdAssNonRef" class="CursorPointer" src="@Url.Content("/Content/Images/editer1616.png")" />
+            &nbsp;
+            <img id="delAssNonRef@(splitChar)@(i)" title="Supprimer l'assuré" name="DelAssNonRef" class="CursorPointer" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+        </td>
+    </tr>
+        }
+    }
+}

@@ -1,0 +1,11 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.EditTypeValeur
+<td class="col_Ordre">
+    <input id="EditedNumOrdre" name="EditedNumOrdre"  type="text" class="InputEditedNumOrder" albMask="decimal" value="@Model.EditedNumOrdre" />
+</td>
+<td class="col_DesignationGarantie">
+    @Html.Partial("DDLTypesValeur", Model.DDLTypesValeur)
+</td>
+
+<td class="col_ButtonsTypesValeur">
+    <img name="updateTypeValeur" id="@("update_" + Model.EditedId)" src="@Url.Content("/Content/Images/editer1616.png")" class="CursorPointer PaddingLeft10" name="enregistrerTypeValeur" alt="Enregistrer" title="Enregistrer"/>
+</td>

@@ -1,0 +1,326 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleMatriceGarantiePage
+<div id="divHeaderGen">
+    <div class="FloatLeft divTitleFormule">
+        <table id="tblHeaderInven" class="tableHeaderInven" cellpadding="0" cellspacing="0"
+            border="0">
+            <tr>
+                <td class="tablePersoHead PaddingLeft">
+                    @Html.Hidden("rsqExpandCollapseVal", 1, new { id = "garExpandCollapseVal" })
+                    <img id="garExpandCollapse" class="CursorPointer" src="@(Url.Content("/Content/Images/Op.png"))" alt="Déplier" />
+                </td>
+                <td class="tablePersoHead cellTitleFormule">Formules de bases
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="divHeadFormule" class="FloatLeft HeaderFormule">
+        <div>
+            <table id="tblHeaderFormule" cellpadding="0" cellspacing="0" border="0" style="width:@(Model.Risques.Count * 70)px;">
+                <tbody style="border: 1px;">
+                    <tr>
+                        @foreach (var risques in Model.Risques)
+                        {
+                            <td class="tablePersoHead cellRisque">
+                                <table class="tableRisque" cellpadding="0" cellspacing="0"
+                                    border="0">
+                                    <tr>
+                                        <td name="lnkRisque" title="@risques.Designation" albCodeRsq="@(risques.Code)" class="TxtLink CursorPointer">
+                                            @string.Format("Risque n°{0}", risques.Code)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="divBodyGen" class="ClearBoth">
+    <div id="divRisque">
+        <table id="tblBodyRisque" class="tableBodyRisque" cellpadding="0" cellspacing="0">
+            @{
+                if (Model.Volets != null)
+                {
+                    foreach (var volet in Model.Volets)
+                    {
+                <tr id="@(volet.Code)" class="bgVolet">
+                    <td class="BorderGrayBottom cellAutre">
+                        <input type="hidden" id="input_img¤volet¤@(volet.Code)" name="input_img¤volet¤@(volet.Code)" value="0" />
+                        <img src="@Url.Content("/Content/Images/Op.png")" alt="" class="imgExpand" id="img¤volet¤@(volet.Code)" />
+                    </td>
+                    <td colspan="2" class="BorderGrayBottom cellVoletDescr" title="@volet.Description">
+                        @volet.Description
+                    </td>
+                </tr>
+                        if (volet.Blocs.Count > 0)
+                        {
+                            foreach (var bloc in volet.Blocs)
+                            {
+                <tr id="tr¤volet¤@(volet.Code)" class="bgBloc borderGrayBottom" origine="volet¤@(volet.Code)">
+                    <td class="BorderGrayBottom cellAutre">&nbsp;
+                    </td>
+                    <td>
+                        <table class="tableBloc" cellpadding="0" cellspacing="0">
+                            <tr class="bgBloc">
+                                <td class="BorderGrayBottom cellAutre">
+                                    <input type="hidden" id="input_img¤bloc¤@(volet.Code)¤@(bloc.Code)" name="input_img¤bloc¤@(volet.Code)¤@(bloc.Code)" value="0" />
+                                    <img src="@Url.Content("/Content/Images/Op.png")" alt="" class="imgExpand" id="img¤bloc¤@(volet.Code)¤@(bloc.Code)" />
+                                </td>
+                                <td class="BorderGrayBottom cellBlocDescr" title="@bloc.Description">- @bloc.Description
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                                if (bloc.Modeles.Count > 0)
+                                {
+                                    foreach (var modele in bloc.Modeles)
+                                    {
+                                        if (modele.Modeles.Count > 0)
+                                        {
+                                            foreach (var modeleN1 in modele.Modeles)
+                                            {
+                <tr id="tr¤@(modeleN1.Code)" class="odd borderGrayBottom" origine="volet¤@(volet.Code)¤bloc¤@(volet.Code)¤@(bloc.Code)">
+                    <td class="BorderGrayBottom cellAutre">&nbsp;
+                    </td>
+                    <td>
+                        <table class="tableBloc" cellpadding="0" cellspacing="0">
+                            <tr class="odd">
+                                <td class="BorderGrayBottom cellAutre">&nbsp;
+                                </td>
+                                <td class="BorderGrayBottom cellNiv">1
+                                </td>
+                                <td class="BorderGrayBottom @(modeleN1.Risques == null || modeleN1.Risques.Count == 0 ? "RedFont" : "") cellVoletDescr" title="@modeleN1.Description">
+                                    @modeleN1.Description
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                                                if (modeleN1.Modeles.Count > 0)
+                                                {
+                                                    foreach (var modeleN2 in modeleN1.Modeles)
+                                                    {
+                <tr id="tr¤@(modeleN2.Code)" class="odd borderGrayBottom" origine="volet¤@(volet.Code)¤bloc¤@(volet.Code)¤@(bloc.Code)">
+                    <td class="BorderGrayBottom cellAutre">&nbsp;
+                    </td>
+                    <td>
+                        <table class="tableBloc" cellpadding="0" cellspacing="0">
+                            <tr class="odd">
+                                <td class="BorderGrayBottom cellAutre">&nbsp;
+                                </td>
+                                <td class="BorderGrayBottom cellNiv">2
+                                </td>
+                                <td class="BorderGrayBottom @(modeleN2.Risques == null || modeleN2.Risques.Count == 0 ? "RedFont" : "") cellNiv2Descr" title="@modeleN2.Description">
+                                    @modeleN2.Description
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                                                        if (modeleN2.Modeles.Count > 0)
+                                                        {
+                                                            foreach (var modeleN3 in modeleN2.Modeles)
+                                                            {
+                <tr id="tr¤@(modeleN3.Code)" class="odd borderGrayBottom" origine="volet¤@(volet.Code)¤bloc¤@(volet.Code)¤@(bloc.Code)">
+                    <td class="BorderGrayBottom cellAutre">&nbsp;
+                    </td>
+                    <td>
+                        <table class="tableBloc" cellpadding="0" cellspacing="0">
+                            <tr class="odd">
+                                <td class="BorderGrayBottom cellAutre">&nbsp;
+                                </td>
+                                <td class="BorderGrayBottom cellNiv">3
+                                </td>
+                                <td class="BorderGrayBottom @(modeleN3.Risques == null || modeleN3.Risques.Count == 0 ? "RedFont" : "") cellNiv3Descr" title="@modeleN3.Description">
+                                    @modeleN3.Description
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                                                                if (modeleN3.Modeles.Count > 0)
+                                                                {
+                                                                    foreach (var modeleN4 in modeleN3.Modeles)
+                                                                    {
+                <tr id="tr¤@(modeleN4.Code)" class="odd borderGrayBottom" origine="volet¤@(volet.Code)¤bloc¤@(volet.Code)¤@(bloc.Code)">
+                    <td class="BorderGrayBottom cellAutre">&nbsp;
+                    </td>
+                    <td>
+                        <table class="tableBloc" cellpadding="0" cellspacing="0">
+                            <tr class="odd">
+                                <td class="BorderGrayBottom cellAutre">&nbsp;
+                                </td>
+                                <td class="BorderGrayBottom cellNiv">4
+                                </td>
+                                <td class="BorderGrayBottom @(modeleN4.Risques == null || modeleN4.Risques.Count == 0 ? "RedFont" : "") cellNiv4Descr" title="@modeleN4.Description">
+                                    @modeleN4.Description
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        </table>
+    </div>
+    <div id="divFormule">
+        <table id="tldBodyFormule" cellpadding="0" cellspacing="0" border="0" style="width:@(Model.Risques.Count * 70)px;">
+            @{
+                if (Model.Volets != null)
+                {
+                    foreach (var volet in Model.Volets)
+                    {
+                <tr class="bgVolet BorderBlackLeft">
+                    @{foreach (var Rsq in Model.Risques)
+                      {
+                        <td class="BorderGrayBottom">&nbsp;
+                        </td>
+                      }
+                    }
+                </tr>
+                      foreach (var bloc in volet.Blocs)
+                      {
+                <tr id="tr2¤@(bloc.Code)" class="bgBloc BorderBlackLeft" origine="volet¤@(volet.Code)">
+                    @{
+                          foreach (var Rsq in Model.Risques)
+                          {
+                        <td class="BorderGrayBottom BorderBlackLeft">&nbsp;
+                        </td>
+                          } 
+                    }
+                </tr>
+                          foreach (var modele in bloc.Modeles)
+                          {
+                              foreach (var modeleN1 in modele.Modeles)
+                              {
+                <tr id="tr2¤@(modeleN1.Code)" class="odd" origine="volet¤@(volet.Code)¤bloc¤@(volet.Code)¤@(bloc.Code)">
+                    @{foreach (var risque in Model.Risques)
+                      {
+                          if (modeleN1.Risques != null && modeleN1.Risques.Count(r => r.Code == risque.Code) >= 1)
+                          {
+                        <td align="center" class="BorderGrayBottom BorderBlackLeft">
+                            @if (modeleN1.Risques.Find(r => r.Code == risque.Code).Flag == "C")
+                            {
+                                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("/Content/Images/Checkmark_2-16.png")" alt="" />
+                            }
+                        </td>
+                          }
+                          else
+                          {
+                        <td class="BorderGrayBottom BorderBlackLeft cellImgCheck">&nbsp;
+                        </td>    
+                          }
+                      }
+                    }
+                </tr>                                        
+                      foreach (var modeleN2 in modeleN1.Modeles)
+                      {     
+                <tr id="tr2¤@(modeleN2.Code)" class="odd" origine="volet¤@(volet.Code)¤bloc¤@(volet.Code)¤@(bloc.Code)">
+                    @{foreach (var risque in Model.Risques)
+                      {
+                          if (modeleN2.Risques != null && modeleN2.Risques.Count(r => r.Code == risque.Code) >= 1)
+                          {
+                        <td align="center" class="BorderGrayBottom BorderBlackLeft">
+                            @if (modeleN2.Risques.Find(r => r.Code == risque.Code).Flag == "C")
+                            {
+                                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("/Content/Images/Checkmark_2-16.png")" alt="" />
+                            }
+                        </td>
+                          }
+                          else
+                          {
+                        <td class="BorderGrayBottom BorderBlackLeft cellImgCheck">&nbsp;
+                        </td>  
+                          }
+
+                      }
+                    }
+                </tr>                
+                      foreach (var modeleN3 in modeleN2.Modeles)
+                      {     
+                <tr id="tr2¤@(modeleN3.Code)" class="odd" origine="volet¤@(volet.Code)¤bloc¤@(volet.Code)¤@(bloc.Code)">
+                    @{foreach (var risque in Model.Risques)
+                      {
+                          if (modeleN3.Risques != null && modeleN3.Risques.Count(r => r.Code == risque.Code) >= 1)
+                          {
+                        <td align="center" class="BorderGrayBottom BorderBlackLeft">
+                            @if (modeleN3.Risques.Find(r => r.Code == risque.Code).Flag == "C")
+                            {
+                                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("/Content/Images/Checkmark_2-16.png")" alt="" />
+                            }
+                        </td> 
+                          }
+                          else
+                          {
+                        <td class="odd BorderGrayBottom BorderBlackLeft cellImgCheck">&nbsp;
+                        </td>  
+                          }
+                      }
+                    }
+                </tr>        
+                      foreach (var modeleN4 in modeleN3.Modeles)
+                      {     
+                <tr id="tr2¤@(modeleN4.Code)" class="odd" origine="volet¤@(volet.Code)¤bloc¤@(volet.Code)¤@(bloc.Code)">
+                    @{foreach (var risque in Model.Risques)
+                      {
+                          if (modeleN4.Risques != null && modeleN4.Risques.Count(r => r.Code == risque.Code) >= 1)
+                          {
+                        <td align="center" class="BorderGrayBottom BorderBlackLeft">
+                            @if (modeleN4.Risques.Find(r => r.Code == risque.Code).Flag == "C")
+                            {
+                                <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("/Content/Images/Checkmark_2-16.png")" alt="" />
+                            }
+                        </td>
+                          }
+                          else
+                          {
+                        <td class="BorderGrayBottom BorderBlackLeft cellImgCheck">&nbsp;
+                        </td>  
+                          }
+                      }
+                    }
+                </tr>
+                      }
+                      }
+                      }
+                              }
+                          }
+                      }
+                    }
+                }
+            }
+        </table>
+    </div>
+</div>

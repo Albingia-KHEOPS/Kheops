@@ -1,0 +1,4 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleListeCibles
+<div class="FloatLeft">
+    @Html.AlbDropDownListFor(m => m.Cible, Model.Cibles, "Cible", htmlAttributes: new { id = "Cible", @tabindex = "11", @class = "FieldCible",@albemplacement="recherche", @albGroup = "Advanced" }, generateTitle: true)
+</div>

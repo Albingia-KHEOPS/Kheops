@@ -1,0 +1,276 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamRattachSaisie
+@*  [Obsolete] cette page n'est pas utilisée *@
+<div class="GroupTitle">
+    Saisie des Eléments Générateurs / Délencheurs Inconditionels
+</div>
+<div class="HorizontalFullWithGroup ParamWidth">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @Html.Hidden("ModeSaisie", Model.ModifMode.ToString())
+                    @Html.HiddenFor(m => m.CodeAttachService)
+                    @Html.Hidden("CodeAttachActGes", (Model.CodeAttachActeGestion))
+                    @Html.HiddenFor(m => m.CodeAttachEtape)
+                    @Html.HiddenFor(m => m.CodeAttachContexte)
+                    @Html.HiddenFor(m => m.IdAttachEGDI)
+                    @Html.HiddenFor(m => m.CodeRattachement)
+                    @Html.HiddenFor(m => m.CodeAttachClause)
+                    @Html.Hidden("VersionClause", (Model.Version))
+                    <label class="Block">Service</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Service" name="Service" value="@(Model.AttachService)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Acte de gestion</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="ActeGestion" name="ActeGestion" value="@(Model.AttachActeGestion)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Etape</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Etape" name="Etape" value="@(Model.AttachEtape)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Contexte</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Contexte" name="Contexte" value="@(Model.AttachContexte)" readonly="readonly" class="readonly" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">
+                        Type</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AttachEG)
+                    {
+                        <input type="radio" id="AttachEG" name="AttachEGDI" value="@(Model.AttachEG.ToString())" disabled="disabled" checked="checked" />  
+                    }
+                    else
+                    { 
+                        <input type="radio" id="AttachEG" name="AttachEGDI" value="@(Model.AttachEG.ToString())" disabled="disabled" />     
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Elément Générateur</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AttachDI)
+                    {
+                        <input type="radio" id="AttachDI" name="AttachEGDI" value="@(Model.AttachDI.ToString())" disabled="disabled" checked="checked" /> 
+                    }
+                    else
+                    { 
+                        <input type="radio" id="AttachDI" name="AttachEGDI" value="@(Model.AttachDI.ToString())" disabled="disabled" />
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Déclencheur Incond.</label>
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Code EG/DI</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="CodeAttachEGDI" name="CodeAttachEGDI" value="@(Model.CodeAttachEGDI)" class="readonly" readonly="readonly" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Clause</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="ClauseNom1" name="ClauseNom1" value="@(Model.ClauseNom1)" readonly="readonly" class="readonly clauseNom" />
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="ClauseNom2" name="ClauseNom2" value="@(Model.ClauseNom2)" readonly="readonly" class="readonly clauseNom" />
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="ClauseNom3" name="ClauseNom3" value="@(Model.ClauseNom3)" readonly="readonly" class="readonly clauseNom" />
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <input type="text" id="LibelleClause" name="LibelleClause" value="@(Model.LibelleClause)" readonly="readonly" class="readonly DoubleInputWidth" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Ordre</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="AttachOrdre" name="AttachOrdre" value="@(Model.AttachOrdre)" class="numerique" albMask="numeric" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="">
+                <div class="FloatLeft">
+                    <label class="Block">
+                        Nature</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.Obligatoire)
+                    {
+                        <input type="radio" id="Obligatoire" name="NatureClause" value="@Model.Obligatoire.ToString()" checked="checked" />  
+                    }
+                    else
+                    {                                                                                        
+                        <input type="radio" id="Obligatoire" name="NatureClause" value="@Model.Obligatoire.ToString()" />     
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Obligatoire</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.Proposee)
+                    {
+                        <input type="radio" id="Proposee" name="NatureClause" value="@Model.Proposee.ToString()" checked="checked" />  
+                    }
+                    else
+                    {                                                                                        
+                        <input type="radio" id="Proposee" name="NatureClause" value="@Model.Proposee.ToString()" />     
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Proposée</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.Suggeree)
+                    {
+                        <input type="radio" id="Suggeree" name="NatureClause" value="@Model.Suggeree.ToString()" checked="checked" />  
+                    }
+                    else
+                    {                                                                                        
+                        <input type="radio" id="Suggeree" name="NatureClause" value="@Model.Suggeree.ToString()" />     
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block RadioWidth">Suggérée</label>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    @if (Model.ImpressAnnexe)
+                    { 
+                        <input type="checkbox" id="ImpressAnnexe" name="ImpressAnnexe" checked="checked" />
+                    }
+                    else
+                    { 
+                        <input type="checkbox" id="ImpressAnnexe" name="ImpressAnnexe" />
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="AutoWidth">Impression Annexe</label>
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Code annexe</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.ImpressAnnexe)
+                    { 
+                        <input type="text" id="CodeAnnexe" name="CodeAnnexe" value="@(Model.CodeAnnexe)" />
+                    }
+                    else
+                    { 
+                        <input type="text" id="CodeAnnexe" name="CodeAnnexe" value="@(Model.CodeAnnexe)" readonly="readonly" class="readonly" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="AutoWidth">
+                        Attributs d'impression</label>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Style Word</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="StyleWord" name="StyleWord" value="@(Model.StyleWord)" class="DoubleInputWidth" />
+                </div>
+            </div>
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Taille</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Taille" name="Taille" value="@(Model.Taille)" class="SmallInput" />
+                </div>
+                <div class="FloatLeft">
+                    &nbsp;
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.Gras)
+                    { 
+                        <input type="checkbox" id="Gras" name="Gras" checked="checked" />
+                    }
+                    else
+                    { 
+                        <input type="checkbox" id="Gras" name="Gras" />
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Gras</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.Souligne)
+                    { 
+                        <input type="checkbox" id="Souligne" name="Souligne" checked="checked" />
+                    }
+                    else
+                    { 
+                        <input type="checkbox" id="Souligne" name="Souligne" />
+                    }
+                </div>
+                <div class="FloatLeft">
+                    <label class="Block">Souligne</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 1193px;">
+    <div id="LoadingDiv" class="FloatLeft">
+        <img src="/Content/Images/ajax-loader.gif" alt="" />
+    </div>
+    <div class="ActionButtons ActionButtonRight">
+        <input type="button" id="btnFancyValider" value="Valider" tabindex="29" />
+        <input type="button" id="btnFancyAnnuler" value="Annuler" tabindex="30" />
+    </div>
+</div>

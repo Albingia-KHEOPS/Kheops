@@ -1,0 +1,22 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleSaisieRegulGarantie.InfoInitSaisieRegul
+<div class="FloatRight None" style="padding-right: 130px">
+
+    <div class="HeightRow@(Model.PrimePro == "O" ? string.Empty : " None")">
+        <div class="FloatLeft">
+            <label class="Block lblcotis">Cotis. Pro sur contrat</label>
+        </div>
+
+        <div class="FloatLeft">
+            <input type="text" readonly id="MontantCotisationsProv"  albmask="decimal" name ="MontantCotisationsProv" class="readonly Input" value="@(Model.MntCotisProv_STD)" />
+        </div>
+    </div>
+
+    <div class="HeightRow@(Model.MntCotisAquis_STD != 0 ? string.Empty : " None")">
+        <div class="FloatLeft">
+            <label class="Block lblcotis">Cotis. Acquises sur contrat</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" readonly id="MontantCotisationsAcquises"  albmask="decimal" name ="MontantCotisationsAcquises" class="readonly Input" value="@(Model.MntCotisAquis_STD)" />
+        </div>
+    </div>
+</div>

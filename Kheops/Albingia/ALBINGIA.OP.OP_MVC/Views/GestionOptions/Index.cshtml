@@ -1,0 +1,66 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestionOptionsPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vGestionOptions.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albGestionOptions.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+@Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+<div class="FullWidth">
+    <div class="CommonForm FloatLeft">
+        @Html.Hidden("Offre_CodeOffre", Model.Offre.CodeOffre)
+        @Html.Hidden("Offre_Version", Model.Offre.Version)
+        @Html.Hidden("Offre_Type", Model.Offre.Type)
+
+        <div class="GroupFull GroupWithBorder">
+            <div class="GroupTitle">
+                Création d'une option de formule
+            </div>
+            <div class="HorizontalFullWithGroup">
+                <div class="GradientSection divHeight">
+                    <div class="GradientSection">
+                        <div class="HeightRow">
+                            <label>Sélectionnez les informations concernées par l'option créée :</label>
+                        </div>
+                        <div id="divInformationsSpecifiques">
+                            @if (Model.InformationsSpecifiques != null)
+                            { 
+                                @Html.Partial("ListeIS", Model.InformationsSpecifiques)    
+                            }
+                        </div>
+                    </div>
+                    <div class="PadTop">
+                        <div class="FloatLeft HeightRow">
+                            <label>Ou autre : </label>
+                        </div>
+                        <div class="FloatLeft">
+                            <textarea id="Autre" name="Autre" rows="3" cols="180"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="GradientSection">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            <div class="FloatLeft">
+                                <label>Quel type d'option voulez-vous créer?*</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="PadLeft">
+                            @Html.AlbDropDownListFor(m => m.Options, Model.Options, "dvOptions", generateTitle: true, htmlAttributes: new { @id = "drlOptions" }, genEmptyLine: false)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ButtonRight">
+                <input id="btnAnnuler" type="button" value="Annuler" class="ButtonPrecedent" />
+                <input id="btnSuivant" type="button" value="Suivant" class="ButtonSuivant">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

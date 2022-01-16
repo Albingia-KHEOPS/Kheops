@@ -1,0 +1,8 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.LigneGarantie>
+@Html.Hidden("TypeRetourData", "ListeGaranties")
+<table id="tblGarantiesBody" class="trHeight">
+    @foreach (var ligne in Model)
+    {
+        @Html.Partial("LigneGarantie", ligne)
+    }
+</table>

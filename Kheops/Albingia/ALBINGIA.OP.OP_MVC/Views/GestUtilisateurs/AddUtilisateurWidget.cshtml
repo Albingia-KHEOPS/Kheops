@@ -1,0 +1,34 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestUtilisateursPage
+@if (Model.AddUserEnabled && !Model.IsReadOnly) 
+{
+    //row for new user
+    var newItem = Model.NewUtilisateurBranche;
+    <tr id="NewUtilisateurBrancheRow" class="editableRow None" albcontext="@Model.Albcontext" >
+        <td class="newCell" albcontext="@Model.Albcontext">
+            <input type="hidden" id="newUtilisateurHidden" name="newUtilisateurHidden" value="" albautocomplete="autoCompUserSelect" albcontext="@(Model.Albcontext + "newutilisateur")" />
+            <input name="newUtilisateur" id="newUtilisateur" value="@newItem.Utilisateur" albAutoComplete="autoCompUserNom" albcontext="@(Model.Albcontext + "newutilisateur")"/>
+        </td>
+        <td class="newCell" albcontext="@Model.Albcontext">
+            @Html.AlbDropDownListFor(m => newItem.Branche, Model.Branches, "Branche", htmlAttributes: new
+                                                           {
+                                                               @id = "newBranche",
+                                                               @tabindex = "2",
+                                                               @class = "FieldBranche",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+
+        </td>
+        <td class="newCell" id="newTypeDroitCell" albcontext="@Model.Albcontext"></td>
+        <td class="btnCell" albcontext="@Model.Albcontext">
+
+            <span id="saveNewUtilisateurBranche" alt="Enregistrer" title="Enregistrer" albcontext="@Model.Albcontext">
+                <img src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer" />
+            </span>
+
+            <span id="cancelNewUtilisateurBranche" title="Annuler l'edition d'un nouveau Utilisateur"
+                                                        class="cancelNewUtilisateurBranche" albcontext="@Model.Albcontext">
+                <img name="cancel" src="/Content/Images/reset.png">
+            </span>
+        </td>
+    </tr>
+}

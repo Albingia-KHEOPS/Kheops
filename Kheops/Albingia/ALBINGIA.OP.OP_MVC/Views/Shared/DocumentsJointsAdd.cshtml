@@ -1,0 +1,80 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentsJoints.DocumentsAdd
+<div id="divDocJointsAdd" class="CommonForm FloatLeft" style="width: 440px;">
+    <div class="GroupFull GroupWithBorder" style="width: 425px;">
+        <div class="GroupTitle">Gestion d'un document</div>
+        <div class="HorizontalFullWithGroup" style="width: 420px;">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    @Html.Hidden("DocIdAdd", (Model.DocumentId))
+                    <div class="FloatLeft">
+                        <label class="Block">Type*</label>
+                    </div>
+                    @if (Model.TypeDoc == "INTER")
+                    {
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.TypeDoc, Model.TypesDoc, "TypeDoc", htmlAttributes: new { @id = "TypeDoc", @class = "DocJointInput", @disabled = "disabled" }, generateTitle: true) </div>                    
+                    }
+                    else
+                    {
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.TypeDoc, Model.TypesDoc, "TypeDoc", htmlAttributes: new { @id = "TypeDoc", @class = "DocJointInput" }, generateTitle: true) </div>
+                    }
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Titre*</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="Titre" name="Titre" class="DocJointInput" value="@Model.Titre" />
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Fichier*</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.HiddenFor(m => m.Chemin)
+                        @if (Model.DocumentId != 0)
+                        {
+                            <input type="text" id="Fichier" name="Fichier" class="DocJointInput readonly" readonly="readonly" value="@Model.Fichier" />
+                        }
+                        else
+                        {
+                            <div class="FloatLeft">
+                                <input type="text" id="Fichier" name="Fichier" class="DocJointInput readonly" value="@Model.Fichier" />
+                            </div>
+                            <div id="divMoreInfo" class="">
+                                &nbsp;
+                                <img src="@Url.Content("/Content/Images/moreinfo.png")" class="CursorPointer" id="UploadFile" name="UploadFile" width="22" height="22" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block">Reference</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="Reference" name="Reference" class="DocJointInput" value ="@Model.Reference" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonHeight" style="width: 425px;">
+        <div class="ActionButtons ActionButtonLeft" style="width: 150px;">
+            <button id="btnAddCancelDocJoints" type="button" albshortcut="true" data-accesskey="n">A<u>n</u>nuler</button>
+        </div>
+        <div class="ActionButtons ActionButtonRight" style="width: 150px;">
+            <button id="btnAddSaveDocJoints" type="button" albshortcut="true" data-accesskey="r">En<u>r</u>egistrer</button>
+        </div>
+    </div>
+</div>
+
+<div id="divDocumentInter" class="None">
+    <div class="overlay-background" style="z-index:10" ></div>
+    <div id="divDataDocumentInter">
+    </div>
+</div>
+
+<iframe class="None" src="/CommonNavigation/GetSaveDocsJointsForm" id="iframeDocJoint" onload="MapIframeElementDocJoint();"></iframe>
+
+

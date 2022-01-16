@@ -1,0 +1,44 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegularisation.ModeleRisquesRegularisation
+<div class="simpleGradientSection FloatLeft dvReguleRsq">
+    @Html.Hidden("ReguleIdRsq", (Model.ReguleId))
+    @Html.Hidden("CodeAvtRsq", (Model.CodeAvn))
+    @Html.Hidden("TypeAvtRsq", (Model.TypeAvt))
+    @Html.Hidden("NbRsqRegule", (Model.Risques.Count))
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="display: block;">Période générale de régularisation du contrat</label>
+        </div>
+        <div class="FloatLeft PaddingLeft">
+            @Html.AlbDateFormat(m => m.DateDebRsq, htmlAttributes: new { @id = "inDateDebRsqRegule", @class = "inputDate readonly", @name = "inDateDebRsqRegule", @disabled = "disabled" }, htmlName: "inDateDebRsqRegule")
+        </div>
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="display: block;">au</label>
+        </div>
+        <div class="FloatLeft PaddingLeft">
+            @Html.AlbDateFormat(m => m.DateFinRsq, htmlAttributes: new { @id = "inDateFinRsqRegule", @class = "inputDate readonly", @name = "inDateFinRsqRegule", @disabled = "disabled" }, htmlName: "inDateFinRsqRegule")
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="display: block;">Liste des risques régularisables sur le contrat</label>
+        </div>
+    </div>
+    <div id="dvHeaderRsqRegularisation" class="PaddingLeft">
+        <table id="tblHeaderRsqRegularisation" class="trHeight">
+            <tr>
+                <th class="tablePersoHead thRsqObj">Risques régularisables</th>
+                <th class="tablePersoHead thDates">Dates du risque</th>
+                <th class="tablePersoHead thCible">Cible</th>
+                <th class="tablePersoHead thTypeRegule">Type de régularisation principal</th>
+            </tr>
+        </table>
+    </div>
+    <div id="dvBodyRsqRegularisation" class="dvBodyRsqRegularisation PaddingLeft">
+        @Html.Partial("TabRisquesRegularisation", Model.Risques)
+    </div>
+</div>
+<div id ="divInfoGarRsq" class="None">
+        <div class="overlay-background" style="z-index:11" >
+    </div>
+    <div id ="divDataInfoGarRsq" class="dvDataInfoGarRsq"> </div>
+</div>

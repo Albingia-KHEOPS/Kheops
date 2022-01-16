@@ -1,0 +1,39 @@
+﻿CREATE TABLE ZALBINKHEO.KPCOPDC ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KPCOPDC de ZALBINKHEO ignoré. 
+	KHQTYP CHAR(1) CCSID 297 NOT NULL DEFAULT '' , 
+	KHQIPB CHAR(9) CCSID 297 NOT NULL DEFAULT '' , 
+	KHQALX NUMERIC(4, 0) NOT NULL DEFAULT 0 , 
+--  SQL150D   10   EDTCDE ignoré pour la colonne KHQALX. 
+	KHQAVN DECIMAL(3, 0) NOT NULL DEFAULT 0 , 
+	KHQOLDC CHAR(250) CCSID 297 NOT NULL DEFAULT '' , 
+	KHQCODE NUMERIC(15, 0) NOT NULL DEFAULT 0 , 
+	KHQNOMD CHAR(250) CCSID 297 NOT NULL DEFAULT '' , 
+	KHQTABLE CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KHQOLDID NUMERIC(15, 0) NOT NULL DEFAULT 0 )   
+	RCDFMT FPCOPDC    ; 
+  
+LABEL ON TABLE ZALBINKHEO.KPCOPDC 
+	IS 'Table_W Copie                                  KHQ' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KPCOPDC 
+( KHQTYP IS 'Type' , 
+	KHQIPB IS 'IPB' , 
+	KHQALX IS 'Aliment/Version' , 
+	KHQAVN IS 'N° avenant' , 
+	KHQOLDC IS 'Chemin ancien fic' , 
+	KHQCODE IS 'N° du nouveau doc' , 
+	KHQNOMD IS 'Nom nouveau doc' , 
+	KHQTABLE IS 'Table cible' , 
+	KHQOLDID IS 'Ancien ID' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KPCOPDC 
+( KHQTYP TEXT IS 'Type' , 
+	KHQIPB TEXT IS 'IPB' , 
+	KHQALX TEXT IS 'Aliment/Version' , 
+	KHQAVN TEXT IS 'Avenant' , 
+	KHQOLDC TEXT IS 'Chemin complet de l''ancien fichier' , 
+	KHQCODE TEXT IS 'N° du nouveau document' , 
+	KHQNOMD TEXT IS 'Nom du nouveau document' , 
+	KHQTABLE TEXT IS 'Table cible de la copie' , 
+	KHQOLDID TEXT IS 'Ancien ID' ) ; 
+  

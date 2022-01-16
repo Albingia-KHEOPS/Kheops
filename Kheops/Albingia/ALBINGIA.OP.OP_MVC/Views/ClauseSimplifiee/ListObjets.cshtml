@@ -1,0 +1,16 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleObjetsRisque
+<table id="tblObjets">
+    @{int i = 1;
+      foreach (var obj in Model.Objets)
+      {
+      
+        <tr id="@(obj.Code)" name="@(obj.Designation)">
+            <td class="col_CheckBoxObjet">
+                <input id="obj_@(Model.CodeRisque)_@(obj.Code)" name="checkObj" type="radio" value="@(obj.Code)_@(obj.Designation)_@(Model.DescriptifRisque)" />
+            </td>
+            <td class="col_ObjetDesignation" title="@(obj.Code)-@obj.Designation">Objet @i : @(obj.Code)-@obj.Designation</td>
+        </tr>
+          i++;
+      }
+    }
+</table>

@@ -1,0 +1,16 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleMatriceFormule.ModeleMatriceFormuleForm>
+<table id="tblFormules">
+    @{int i = 1;
+      foreach (var frm in Model)
+      {
+      
+        <tr id="@(frm.Code)" name="@(frm.Designation)">
+            <td class="col_CheckBoxObjet">
+                <input id="frm_@(frm.Code)" name="checkFrm" type="radio" value="@(frm.Libelle)" />
+            </td>
+            <td class="col_FormuleLibelle" title="@(frm.Code)-@frm.Libelle"> @(frm.Libelle) @(!string.IsNullOrEmpty(frm.Designation)?"-"+frm.Designation:string.Empty) </td>
+        </tr>
+          i++;
+      }
+    }
+</table>

@@ -1,0 +1,148 @@
+﻿#tbloptTar th
+{
+    font-weight: bold;
+}
+
+#tblOptTarHeader
+{
+    width: 995px;
+}
+
+    #tbloptTarHeader tr, #tbloptTarBody tr
+    {
+        height: 1px;
+    }
+
+.HeightListOptTar
+{
+    height: 420px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.PaddingRsqLib
+{
+    padding-left: 5px;
+}
+
+.PaddingFormLib
+{
+    padding-left: 20px;
+}
+
+.PaddingOptLib
+{
+    padding-left: 35px;
+}
+
+.PaddingVolLib
+{
+    padding-left: 50px;
+}
+
+#divNouveauContrat
+{
+    display: none;
+}
+
+#divDataNouveauContrat
+{
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 10px 10px 10px 10px;
+    max-height: 500px;
+    width: 450px;
+}
+
+.ConfirmationButtons
+{
+    text-align: right;
+}
+
+.tdCodeForm
+{
+    width: 20px;
+}
+
+.tdGarantie
+{
+    width: 200px;
+}
+
+.tdLettreForm
+{
+    width: 20px;
+}
+
+.tdOption
+{
+    width: 40px;
+}
+
+.tdValeur
+{
+    width: 90px;
+}
+
+.tdUnite
+{
+    width: 30px;
+}
+
+.tdType
+{
+    width: 30px;
+}
+
+.tdBCodeForm
+{
+    width: 22px;
+    text-align: center;
+}
+
+.tdBGarantie
+{
+    width: 198px;
+    padding-left: 5px;
+}
+
+.tdBLettreForm
+{
+    width: 22px;
+    text-align: center;
+}
+
+.tdBOption
+{
+    width: 42px;
+    text-align: center;
+}
+
+.tdBValeur
+{
+    width: 92px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.tdBUnite
+{
+    width: 31px;
+    text-align: center;
+}
+
+.tdBType
+{
+    width: 31px;
+    text-align: center;
+}
+
+.msgWarning
+{
+    color: red;
+    font-weight: bold;
+}

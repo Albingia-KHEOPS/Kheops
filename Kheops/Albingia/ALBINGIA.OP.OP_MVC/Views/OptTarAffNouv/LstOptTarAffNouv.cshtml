@@ -1,0 +1,143 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesCreationAffaireNouvelle.ModeleOptTarAffNouvGaran>
+@if (Model != null && Model.Count > 0)
+{
+    <div id="divOptTarHeader">
+        <table id="tbloptTarHeader" class="">
+            <tr>
+                <th class="tablePersoHead tdCodeForm">N
+                </th>
+                <th class="tablePersoHead tdGarantie">Garantie
+                </th>
+                <th class="tablePersoHead tdLettreForm">F
+                </th>
+                <th class="tablePersoHead tdOption">Option
+                </th>
+                <th class="tablePersoHead">
+                    <table>
+                        <tr>
+                            <th colspan="3">Franchise
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="tdValeur">Valeur
+                            </th>
+                            <th class="tdUnite">U
+                            </th>
+                            <th class="tdType">T
+                            </th>
+                        </tr>
+                    </table>
+                </th>
+                <th class="tablePersoHead">
+                    <table>
+                        <tr>
+                            <th colspan="3">LCI
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="tdValeur">Valeur
+                            </th>
+                            <th class="tdUnite">U
+                            </th>
+                            <th class="tdType">T
+                            </th>
+                        </tr>
+                    </table>
+                </th>
+                <th class="tablePersoHead">
+                    <table>
+                        <tr>
+                            <th colspan="3">Assiette
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="tdValeur">Valeur
+                            </th>
+                            <th class="tdUnite">U
+                            </th>
+                            <th class="tdType">T
+                            </th>
+                        </tr>
+                    </table>
+                </th>
+                <th class="tablePersoHead">
+                    <table>
+                        <tr>
+                            <th colspan="3">Taux
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="tdValeur">Valeur
+                            </th>
+                            <th class="tdUnite">U
+                            </th>
+                            <th class="tdType">T
+                            </th>
+                        </tr>
+                    </table>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div id="divOptTarBody">
+        <table id="tbloptTarBody" style="width: 986px; table-layout: fixed;">
+            @{var i = 0;
+              foreach (var garan in Model)
+              {
+                  var j = 0;
+                  foreach (var tar in garan.Tarifs)
+                  {
+                <tr class="@(i % 2 == 0 ? "odd" : "even")">
+                    @if (j == 0)
+                    {
+                        <td class="tdBCodeForm" rowspan="@garan.Tarifs.Count">@garan.CodeForm
+                        </td>
+                        <td class="tdBGarantie" rowspan="@garan.Tarifs.Count">@garan.CodeGaran - @garan.DescGaran
+                        </td>
+                        <td class="tdBLettreForm" rowspan="@garan.Tarifs.Count">@garan.LettreForm
+                        </td>
+                    }
+                    <td class="tdBOption">
+                        @if (tar.CheckRow)
+                        {
+                            <input type="radio" id="checkTar_@(tar.GuidTarif)" name="checkTar_@(garan.CodeGaran)" checked="checked" />
+                        }
+                        else
+                        {
+                            <input type="radio" id="checkTar_@(tar.GuidTarif)" name="checkTar_@(garan.CodeGaran)" />
+                        }
+                    </td>
+                    <td class="tdBValeur">@tar.FRHVal
+                    </td>
+                    <td class="tdBUnite">@tar.FRHUnit
+                    </td>
+                    <td class="tdBType">@tar.FRHType
+                    </td>
+                    <td class="tdBValeur">@tar.LCIVal
+                    </td>
+                    <td class="tdBUnite">@tar.LCIUnit
+                    </td>
+                    <td class="tdBType">@tar.LCIType
+                    </td>
+                    <td class="tdBValeur">@tar.ASSVal
+                    </td>
+                    <td class="tdBUnite">@tar.ASSUnit
+                    </td>
+                    <td class="tdBType">@tar.ASSType
+                    </td>
+                    <td class="tdBValeur">@tar.PRIVal
+                    </td>
+                    <td class="tdBUnite">@tar.PRIUnit
+                    </td>
+                    <td class="tdBType" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" title="@tar.PRIMPro">@tar.PRIMPro
+                    </td>
+                </tr>
+                        j++;
+                  }
+                  i++;
+              }
+
+            }
+        </table>
+    </div>
+}

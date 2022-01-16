@@ -1,0 +1,189 @@
+label {
+    display: inline;
+}
+
+body {
+    font-size: 10pt;
+    font-family: Verdana, Tahoma, Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+    /*background-image: url(/Content/Images/logo-gris.png);*/
+    background-repeat: no-repeat;
+    background-position: center 10px;
+}
+
+a img {
+    border: none;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.titreGlobal {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    color: #800000;
+}
+
+.SousTitre {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #800000;
+}
+
+input[type=button], input[type=submit] {
+    border-radius: 5px;
+}
+
+ul[name^='list-'] {
+    padding-left: 20px;
+}
+
+.affair-row {
+    cursor: pointer;
+}
+
+.affair-row-citrix {
+    cursor: pointer;
+}
+
+    .affair-row-citrix:hover, .affair-row-citrix:hover div {
+        cursor: pointer;
+        color: white;
+        background-color: #c3c3c3;
+    }
+
+.affair-row:hover, .affair-row:hover td, .affair-row:hover div {
+    cursor: pointer;
+    color: white;
+    background-color: #dc6ec6;
+}
+
+.alerte-impayes-sinistres {
+    background-image: url('Images/alertes/notif_icn_warn16.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin-left: 10px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.alerte-blacklisted {
+    background-image: url('Images/type_COMA.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75% auto;
+    display: inline-block;
+    height: 19px;
+    width: 25px;
+    cursor: pointer;
+}
+
+.dialog-fix.ui-widget {
+    font-size: inherit;
+}
+
+    .dialog-fix.ui-widget .ui-widget-content a {
+        color: blue;
+    }
+
+#divConteneurBandeauRecherche {
+    padding: 2px;
+}
+
+/* Styles for file dropzone
+-----------------------------------------------------------*/
+
+.dropzone {
+    border: dashed 1px black;
+    height: 100px;
+    width: 200px;
+    text-align: center;
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.dropzone > label > strong {
+    cursor: pointer;
+}
+
+.dropzone.dragover {
+    border: solid 1px black !important;
+}
+
+.dropzone_list_file {
+    height: 120px;
+    width: 270px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    overflow-y: auto;
+}
+
+    .dropzone_list_file div {
+        height: 18px;
+    }
+    .dropzone_list_file > div > strong {
+        width: 235px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        overflow: hidden;
+    }
+    .dropzone_list_file > div > img {
+        cursor: pointer;
+    }

@@ -1,0 +1,145 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamCible.DetailsCible
+@Html.HiddenNoName("DetailGuidId", Model.GuidId)
+@Html.HiddenNoName("Mode", Model.Mode)
+<div class="GroupTitle">
+    Consultation / Modification Cibles
+</div>
+<div id="divSectionInfoBaseCible" class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Code Cible</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="CodeDetail" class="DoubleInput @(Model.Mode == "Update" ? "readonly" : string.Empty)" maxlength="10" value="@Model.Code" readonly="@(Model.Mode == "Update")" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Libellé</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="Libelle" class="DoubleInput" maxlength="40" value="@Model.Libelle"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block Gras">Créée le :</label>
+                </div>
+                <div class="FloatLeft">
+                    <label>
+                        @if (@Model.DateCreation != "0")
+                        {
+                            @Model.DateCreation
+                        }
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Grille</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.AlbDropDownListFor(m => m.Grille, Model.Grilles, "Grille", htmlAttributes: new { id = "Grille", @class = "DoubleInput" }, generateTitle: true)
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block" style="padding-top: 7px;">Concept</label>
+            </div>
+            <div class="FloatLeft">
+                <input id="CodeConcept" class="CodeConcept readonly"  readonly="readonly" value="@(!string.IsNullOrEmpty(Model.CodeConcept) ? Model.CodeConcept : "")" />
+            </div>
+            <div class="FloatLeft">
+                <label class="Block" style="padding-top: 7px; width: 75px;">Famille</label>
+            </div>
+            <div class="FloatLeft">
+                <input type="text" id="CodeFamille" name="CodeFamille" class="readonly"  readonly="readonly" value="@(!string.IsNullOrEmpty(Model.CodeFamilleRecherche) ? Model.CodeFamilleRecherche : "")" />
+            </div>
+            <div class="FloatLeft Loupe" id="btnRechercherActiv" title="Recherche">
+                <img src="@Url.Content("/Content/Images/loupe.png")" alt="Rechercher" title="Rechercher" class="CursorPointer"/>
+            </div>
+              <div class="FloatLeft Loupe" id="btnResetAct" title="supprimer activité ">
+            <img src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Reset" title="Réinitialiser" class="CursorPointer" width="20" height="20"/>
+        </div>
+        </div>
+        <div class="HeightRow">
+            <div class="FloatRight">
+                <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+            </div>
+        </div>
+
+    </div>
+</div>
+@if (Model.Mode == "Update")
+{
+    <div id="divSectionListeBSC" class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="MarginLeft">
+                <label>Cible utilisable dans les branches/catégories suivantes :</label>
+            </div>
+            <div class="HeightRow">
+                @*Espace vide *@
+            </div>
+            <div id="divLstBranche">
+                <table id="tblHeaderBSC">
+                    <tr>
+                        <th class="col_TableauBSC tablePersoHead">Branche
+                        </th>
+                        <th class="col_TableauBSC tablePersoHead">Sous-Branche
+                        </th>
+                        <th class="col_TableauBSC tablePersoHead">Catégorie
+                        </th>
+                        <th class="col_Templates tablePersoHead">Templates</th>
+                        <th class="col_SuuprimerBSC tablePersoHead">
+                            <img id="addBranche" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Add" title="Ajout d'une branche" />
+                        </th>
+                    </tr>
+                </table>
+                <div id="divListeBSC" class="divHeightCat">
+                    @if (Model.ListeBSC != null)
+                    {
+                        @Html.Partial("ParamListBSC", Model.ListeBSC)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divSectionAjoutBSC" class="HorizontalHalfWithGroupAdminBSC None">
+        <div class="GradientSectionBSC">
+            <div id="lstBSC">
+                <div class="FieldCiblesLabel">
+                    Ajouter :
+                </div>
+                <div id="Branche" class="FloatLeftDiv FieldDropDown">
+                    @if (Model.ListeBranches != null)
+                    {
+                        @Html.Partial("DrlBranches", Model.ListeBranches)
+                    }
+                </div>
+                <div id="SousBranche" class="FloatLeftDiv FieldDropDown">
+                    @if (Model.ListeSousBranches != null)
+                    {
+                        @Html.Partial("DrlSousBranches", Model.ListeSousBranches)
+                    }
+                </div>
+                <div id="Categorie" class="FloatLeftDiv FieldDropDown">
+                    @if (Model.ListeCategories != null)
+                    {
+                        @Html.Partial("DrlCategories", Model.ListeCategories)
+                    }
+                </div>
+                <div id="BtnAddBranche" class="FloatLeftDiv BtnAdd" style="display: none">
+                    <img onclick="javascript:LinkCible();" src="@Url.Content("/Content/Images/Save_16.png")" alt="Enregistrer" id="btnBrancheAdd" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

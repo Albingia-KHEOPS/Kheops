@@ -1,0 +1,816 @@
+﻿.HeightFormules {
+    height: 261px;
+}
+
+.HeightQuittConsult {
+    height: 480px;
+}
+
+#divFormulesBody {
+    max-height: 390px;
+    overflow-y: auto;
+}
+
+.formulepleinHeight {
+    max-height: 600px !important;
+    height: 600px !important;
+    overflow-y: auto;
+}
+
+.col_HeaderFormule {
+    width: 240px;
+}
+
+.col_HeaderRisque {
+    width: 240px;
+}
+
+.col_HeaderHTCATNAT {
+    width: 120px;
+}
+
+.col_HeaderCATNAT {
+    width: 120px;
+}
+
+.col_HeaderTaxes {
+    width: 120px;
+}
+
+.col_HeaderTTC {
+    width: 120px;
+}
+
+.col_HeaderFinEffet {
+    width: 120px;
+}
+
+.col_Formule {
+    width: 240px;
+    /*text-align: right;*/
+}
+
+.col_Risque {
+    width: 240px;
+    /*text-align: right;*/
+}
+
+.col_HTCATNAT {
+    width: 120px;
+    text-align: right;
+}
+
+.col_CATNAT {
+    width: 120px;
+    text-align: right;
+}
+
+.col_Taxes {
+    width: 120px;
+    text-align: right;
+}
+
+.col_TTC {
+    width: 120px;
+    text-align: right;
+}
+
+.col_FinEffet {
+    width: 120px;
+    text-align: right;
+}
+
+.GroupHeightCommission {
+    height: 212px;
+}
+
+.HeightCommission {
+    height: 153px;
+}
+
+.HeightGradientSectionCommission {
+    height: 159px;
+    margin-left: 5px;
+}
+
+/*input[type="text"] {
+    border: 1px solid grey;
+    padding: 1px 0;
+    width: 130px;
+}*/
+
+.inputTotal {
+    padding: 1px !important;
+    width: 95px !important;
+}
+
+#divFullScreen {
+    display: none;
+}
+
+#divFullScreenDetails {
+    display: none;
+}
+
+.dvDataInfoEcheance {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 15;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 200px;
+    max-height: 764px;
+    width: 500px;
+}
+
+
+#divDataDetailsVentilationCoassGarantie {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 203;
+    background-color: White;
+    height: 603px;
+    width: 1050px;
+}
+
+/*#divDetailsQuittance {
+    height: 583px;
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 1030px;
+}*/
+
+#divVentilationCoassGarantie {
+    height: 583px;
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 1030px;
+}
+
+#divFraisAccessoires {
+    display: none;
+}
+
+#divFraisAccessoiresAvn {
+    display: none;
+}
+
+#divDataFraisAccessoires {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 34;
+    background-color: White;
+    height: 288px;
+    width: 815px;
+}
+
+#divDataFraisAccessoiresAvn {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 34;
+    background-color: White;
+    height: 200px;
+    width: 400px;
+}
+
+#divCoCourtiers {
+    display: none;
+}
+
+#divDataCoCourtiers {
+    position: absolute;
+    top: 75px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 565px;
+    /*width: 1045px;*/
+    width: 867px;
+}
+
+#divEcheancier {
+    display: none;
+}
+
+#divDataEcheancier {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 35;
+    background-color: White;
+    /*height: 565px;*/
+    /*width: 1045px;*/
+    height: 602px;
+    width: 749px;
+}
+
+#divCalculForce {
+    display: none;
+}
+
+#divDataCalculForce {
+    position: absolute;
+    /*top: 5px;*/
+    top: 75px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 565px;
+    width: 1045px;
+}
+
+#divGarantieForce {
+    display: none;
+}
+
+#divDataGarantieForce {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 5;
+    background-color: White;
+    height: 565px;
+    width: 1045px;
+}
+
+.WidthDivCalculForce {
+    width: 1027px;
+    margin-left: 2px;
+}
+
+.MainDivCalculForce {
+    margin-top: 2px;
+    height: 490px;
+}
+
+.WidthGroupCalculForce {
+    height: 485px !important;
+    margin-top: 2px;
+}
+
+.CalculForceFirstRadio {
+    padding-top: 3px;
+    width: 100px;
+}
+
+.CalculForceSecondRadio {
+    padding-top: 3px;
+}
+
+.DivButtons {
+    margin-left: 2px;
+    width: 796px !important;
+}
+
+.DDLTypesFrais {
+    width: 170px !important;
+}
+
+.ColumnTypesFrais {
+    float: left;
+    width: 289px;
+}
+
+.ColumnAppliqueFraisSpecifiques {
+    float: left;
+    width: 543px;
+}
+
+.TitlesFraisAccessoires {
+    text-decoration: underline;
+}
+
+.FraisAccessoiresGradientSection {
+    height: 210px;
+    width: 800px;
+}
+
+.WidthGroupFraisAccessoires {
+    width: 804px !important;
+}
+
+.LabelTaxeAttentat {
+    padding-right: 5px;
+}
+
+.LabelAppliqueFraisSpecifiques {
+    padding-right: 5px;
+}
+
+.PaddingCommentaires {
+    padding-top: 10px;
+}
+
+/*tr {
+    height: 1px !important;
+}*/
+
+.PaddingLeftButtonActionLeft {
+    padding-left: 70px;
+}
+
+.PaddingLeftButtonActionRight {
+    padding-left: 44px;
+}
+
+.SmallGenericColumn {
+    width: 160px;
+    float: left;
+}
+
+.SmallMediumGenericColumn {
+    width: 180px;
+    float: left;
+}
+
+.MediumGenericColumn {
+    width: 200px;
+    float: left;
+}
+
+.DetailSmallInput {
+    width: 80px;
+}
+
+.DetailInput {
+    width: 136px;
+}
+
+.DetailInputSmaller {
+    width: 106px;
+}
+
+
+.DetailLargeInput {
+    width: 380px;
+}
+
+.RightAlign {
+}
+
+.SpaceTop {
+    padding-top: 60px;
+}
+
+.PadLeft {
+    padding-left: 40px;
+}
+
+#tblHeaderTotaux {
+    width: 400px;
+    text-align: center;
+}
+
+#tblBodyDetailsTotaux {
+    width: 400px;
+}
+
+#tblHeaderDetailsCommission {
+    width: 300px;
+    text-align: center;
+}
+
+#tblBodyDetailsCommission {
+    width: 300px;
+}
+
+.col_titre_detailsCommission {
+    width: 120px;
+    padding-left: 5px;
+}
+
+.col_titre_detailsTotaux {
+    width: 140px;
+    padding-left: 5px;
+}
+
+.col_mainHeader_detailsTotaux {
+    width: 240px;
+}
+
+.col_header_detailsTotaux {
+    width: 80px;
+    padding-left: 5px;
+}
+
+.col_row_detailsTotaux {
+    width: 80px;
+    padding: 0;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.col_VentDetailSmallColumn {
+    width: 100px;
+}
+
+.col_VentDetailColumn {
+    width: 200px;
+}
+
+.col_VentDetailDoubleColumn {
+    width: 400px;
+}
+
+#divVentilationDetailleeGarantieBody {
+    height: 90px;
+}
+
+.scroll1 {
+    overflow: auto;
+    width: 847px;
+}
+
+.widhTable {
+    table-layout: fixed;
+    width: 830px;
+}
+
+.headerTable {
+    /*table-layout: fixed;*/
+    width: 832px;
+}
+
+
+#divVentilationDetailleeTaxeBody {
+    height: 90px;
+}
+
+.scroll2 {
+    width: 636px;
+    overflow: auto;
+}
+
+.widthTbl2 {
+    width: 619px;
+    table-layout: fixed;
+}
+
+#divVentilationDetailleeRegimeBody {
+    height: 95px;
+}
+
+.CommissionsValues {
+    width: 80px;
+    padding: 0;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.HeaderCommissionTotaux {
+    font-weight: bold;
+    text-align: center;
+}
+
+.btnFrais {
+    background-image: url("/Content/Images/Quittance/frais.png");
+    background-repeat: no-repeat;
+}
+
+.btnDetailsCotisation {
+    background-image: url("/Content/Images/Quittance/détails_primes.png");
+    background-repeat: no-repeat;
+}
+
+.btnCalculForce {
+    background-image: url("/Content/Images/Quittance/calcul_forcé.gif");
+    background-repeat: no-repeat;
+}
+
+#divVentilationCommissionCourtierBody {
+    height: 160px;
+}
+
+#divVentilationCommissionGarantieBody {
+    height: 163px;
+}
+
+.paddingLabelTotaux {
+    padding-left: 5px;
+}
+
+.onglet { /* onglets inactifs */
+    border: solid 1px #DDDDDD;
+    border-left: none;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 5px 5px;
+    text-align: center;
+    background-color: #ccc;
+}
+
+.onglet-actif { /*l'onglet actif */
+    border: solid 1px #DDDDDD;
+    border-width: 1px 1px medium;
+    border-bottom: none;
+    border-left: none;
+    padding: 6px 2px 2px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+.onglet-vide {
+    border-bottom: solid 1px #DDDDDD;
+    border-top: none;
+    border-left: none;
+    padding: 21px 2px 2px;
+    float: left;
+    width: 234px;
+}
+
+.onglet-vide-tiny {
+    border-bottom: solid 1px #DDDDDD;
+    border-top: none;
+    border-left: none;
+    padding: 21px 2px 2px;
+    float: left;
+    width: 83px;
+}
+
+.titreOnglet {
+    text-align: center;
+}
+
+.col_titre_Totaux_Header {
+    padding-left: 11px;
+    width: 500px;
+}
+
+#tblHeaderTotauxBase {
+    margin-left: 171px;
+    padding-left: 10px;
+    text-align: center;
+    width: 262px;
+}
+
+#tblHeaderTotauxBaseBis {
+    margin-left: 171px;
+    text-align: center;
+    width: 262px;
+}
+
+.colTotauxBase {
+    width: 83px;
+}
+
+#tblBodyDetailsTotauxBase {
+    width: 430px;
+    margin-left: 4px;
+}
+
+.iconeAlerte {
+    margin-left: 8px;
+    width: 21px;
+}
+
+.iconeHistorique {
+    float: left;
+    margin-left: 10px;
+}
+
+#divSpaceVentilationDetaillee {
+    height: 132px;
+}
+
+#divSpaceVentilationCommission {
+    height: 208px;
+}
+
+.MarginLeftButton {
+    margin-left: -6px;
+}
+
+.spanText {
+    /*float: right; */
+    /*margin-top: 5px; */
+    margin-left: 10px;
+}
+
+.ChbEcheancier {
+    margin-left: 35px;
+}
+
+.BtnFlullScreen {
+    padding-top: 6px;
+    margin-left: 490px;
+}
+
+#divFullScreenListFormules {
+    display: none;
+}
+
+#divDataFullScreenListFormules {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 721px;
+    width: 1055px;
+}
+
+.DivListFormules {
+    height: 650px;
+    margin-left: 5px;
+}
+
+.divBtnFullScreenFermer {
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 1031px;
+}
+
+.TxtAreaPosition {
+    left: 34.5px !important;
+    top: 184px !important;
+}
+
+.requiredButton {
+    border: 1px solid red;
+}
+
+.warningButton {
+    border: 1px solid orange;
+}
+
+.requiredText {
+    color: red;
+}
+
+.tableHeaderTTC {
+    width: 200px;
+    text-align: center;
+}
+
+.colHeaderTTC {
+    width: 100px;
+}
+
+.tableBodyTTC {
+    width: 200px;
+    text-align: center;
+}
+
+.colBodyTTC {
+    width: 100px;
+    padding-left: 5px;
+}
+
+.colBodyTTCValue {
+    width: 100px;
+    padding: 0;
+    text-align: right;
+    padding-right: 5px;
+}
+
+#Encaissement {
+    width: 346px !important;
+}
+
+.TinyLabel {
+    width: 30px;
+}
+
+.width650 {
+    width: 667px;
+}
+
+.width100 {
+    width: 100px;
+}
+
+.width450 {
+    width: 460px;
+}
+
+.width200 {
+    width: 205px;
+}
+
+.width150 {
+    width: 150px !important;
+}
+
+.width300 {
+    width: 300px;
+}
+
+.width320 {
+    width: 320px;
+}
+
+.width250 {
+    width: 250px;
+}
+
+.width350 {
+    width: 350px;
+}
+
+.width470 {
+    width: 470px;
+}
+
+.width390 {
+    width: 390px;
+}
+
+.width80 {
+    width: 80px;
+}
+
+.width40 {
+    width: 40px;
+}
+
+.width20 {
+    width: 20px;
+}
+
+.width0 {
+    width: 0px;
+}
+
+.width80 {
+    width: 80px;
+}
+
+#divVPartAlbingiaGarantieBody {
+    height: 235px;
+    max-height: 235px;
+    overflow-y: auto;
+}
+
+#divVentilationCoassBody {
+    height: 350px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+#divVentilationCoassGarantieBody {
+    height: 430px;
+    max-height: 430px;
+    overflow-y: auto;
+}
+
+.height6 {
+    height: 6px;
+}
+
+.smallPaddingLeft {
+    padding-left: 3px;
+}
+
+.smallPaddingLeft2 {
+    padding-left: 2px;
+}
+
+.backgroundWhite {
+    background-color: white;
+}
+
+.paddingLeft50 {
+    padding-left: 50px;
+}
+
+.LargePaddingLeft {
+    padding-left: 15px;
+}
+
+.PaddingLeftEmission {
+    padding-left: 10px;
+}
+
+.lblEmission {
+    width: 54px !important;
+}
+
+
+.quittances-conteneur-havn {
+    height: 452px !important;
+}
+
+.quittances-body-havn {
+    height: auto !important;
+}
+.height-visu-quittances-havn {
+    height: 293px !important;
+}
+
+
+.visu-quittance-conteneur {
+    height: inherit !important;
+}
+

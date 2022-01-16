@@ -1,0 +1,16 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaModels.DoubleSaisie_Index_MetaModel
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vDoubleSaisie.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albDoubleSaisie.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutMenu.cshtml";
+}
+@*@using (Html.BeginForm("Offre", "DoubleSaisie", FormMethod.Post, new { @id = "frmMain" }))
+{*@
+    <div>
+        <div id="MainDiv" class="CommonForm TotalWidth">
+            @Html.HiddenFor(m => m.Offre.CodeOffre)
+            @Html.HiddenFor(m => m.Offre.Version)
+            @Html.EditorFor(m => m.MetaData, "OffreData")
+        </div>
+    </div>
+@*}*@

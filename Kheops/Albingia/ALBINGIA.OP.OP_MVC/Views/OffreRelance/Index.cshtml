@@ -1,0 +1,31 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleOffreRelancePage
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<script type="text/javascript">
+    window.modelRelances = @Html.Raw(MetaModelsBase.GetJsonFromData(Model.ListeRelances));
+</script>
+
+@AlbAddCssJsScripts.AlbAddJsToViews(
+    new UrlHelper(ViewContext.RequestContext),
+    new[] { "albOffreRelance.js" },
+    "~/Scripts/AlbingiaJS/",
+    false)
+@AlbAddCssJsScripts.AlbAddCssToViews(
+        new UrlHelper(ViewContext.RequestContext),
+        new[] { "vOffreRelance.css" },
+        "~/Content/")
+
+<div class="GroupFull GroupWithBorder TotalWidth">
+    <div class="nHorizontalFullWithGroup nHorizontalTotalWidth">
+        <div class="nGradientSection nDivExcel" data-search-area="advanced">
+            @Url.IncludeKoComponent("paging-buttons")
+            @Url.IncludeKoComponent("liste-relances")
+
+            <liste-relances params="showInPage: true"></liste-relances>
+
+        </div>
+    </div>
+</div>

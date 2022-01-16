@@ -1,0 +1,105 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleAnnulationQuittancesPage> 
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albQuittance.css" }, "~/Content/Quittance/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albAnnulationQuittances.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <div class="GroupFull GroupWithBorder">
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection PaddingLeft">
+
+                @Html.HiddenNoName("isAnnulQuittance", true.ToString().ToLower())
+                @Html.Hidden("DateEffetAvenant", Model.Contrat.DateEffetAvenant.HasValue ? Model.Contrat.DateEffetAvenant.Value.ToString("dd/MM/yyyy") : string.Empty)
+                @Html.HiddenNoName("isCheckedEch", Model.Contrat != null ? Model.Contrat.IsCheckedEcheance : false)
+
+                <div class="HeightRow">
+                    <div class="FloatLeft visuQuittanceWidthTitleLabelLarge">
+                        <label class="Block FloatLeft visuQuittanceWidthLargelabel">Emissions à partir du</label>
+                        @Html.AlbDateFormat(m => m.DateEmission, new { @class = "datepicker inputDate", @id = "AnnulQuittanceDateEmission" })
+                    </div>
+                    <div class="FloatLeft visuQuittanceWidthTitleLabelLarge">
+                        <label class="Block FloatLeft">Type d'opération</label>
+                        @Html.AlbDropDownListFor(m => m.TypeOperation, Model.TypesOperation, "AnnulQuittanceTypeOperation", htmlAttributes: new { @id = "AnnulQuittanceTypeOperation", @albCFList = "typeOperation" }, generateTitle: true, genEmptyLine: true)
+                    </div>
+                    <div class="FloatLeft visuQuittanceWidthTitleLabelLarge">
+                        <label class="Block FloatLeft">Situation</label>
+                        @if (!string.IsNullOrEmpty(Model.Situation))
+                        {
+                            @Html.AlbDropDownListFor(m => m.Situation, Model.Situations, "AnnulQuittanceSituation", htmlAttributes: new { @id = "AnnulQuittanceSituation", @albCFList = "situation", @disabled = "disabled", @class = "readonly" }, generateTitle: true, genEmptyLine: false)
+                        }
+                        else
+                        {
+                            @Html.AlbDropDownListFor(m => m.Situation, Model.Situations, "AnnulQuittanceSituation", htmlAttributes: new { @id = "AnnulQuittanceSituation", @albCFList = "situation" }, generateTitle: true, genEmptyLine: false)
+                        }
+                    </div>
+                    <div class="FloatLeft visuQuittanceWidthTitleLabel">
+                        <label class="Block FloatLeft visuQuittanceWidthSmalllabel">Période du</label>
+                        @if (Model.PeriodeDebut.HasValue)
+                        {
+                            @Html.AlbDateFormat(m => m.PeriodeDebut, new { @class = "inputDate readonly", @id = "AnnulQuittancePeriodeDebut", @readonly = "readonly" })
+                        }
+                        else
+                        {
+                            @Html.AlbDateFormat(m => m.PeriodeDebut, new { @class = "datepicker inputDate", @id = "AnnulQuittancePeriodeDebut" })
+                        }
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.AlbDateFormat(m => m.PeriodeFin, new { @class = "datepicker inputDate", @id = "AnnulQuittancePeriodeFin" })
+                    </div>
+                </div>
+                <div class="divVisuQuittancesOverflow">
+                    <div class="divVisuQuittancesOverflow2">
+                        <div id="divVisuQuittancesHeader" class="PaddingLeft">
+                            <table id="tblVisuQuittancesHeader" class="trHeight">
+                                <tr>
+                                    <th class="tablePersoHead thHeadChkAnnul">&nbsp;</th>
+                                    <th class="tablePersoHead tdHeadQuittEmission">Emission</th>
+                                    <th class="tablePersoHead tdHeadQuittNum CursorPointer" name="headerTri" albcontext="QuittNum">
+                                        <span class="Block spImg FloatLeft PaddingTop" style="width: 40px;">N° Qui</span>
+                                        <span class="Block spImg" style="float: right;">
+                                            <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" albcontext="QuittNum" />
+                                        </span>
+                                    </th>
+                                    <th class="tablePersoHead tdHeadQuittAvis">Avis</th>
+                                    <th class="tablePersoHead tdHeadQuittDateDeb">Début Période</th>
+                                    <th class="tablePersoHead tdHeadQuittDateFin">Fin Période</th>
+                                    <th class="tablePersoHead tdHeadQuittEcheance">Echéance</th>
+                                    <th class="tablePersoHead tdHeadQuittAvn CursorPointer" name="headerTri" albcontext="QuittNumInt">
+                                        <span class="Block spImg FloatLeft PaddingTop" style="width: 40px;">N° int</span>
+                                        <span class="Block spImg" style="float: right;">
+                                            <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="QuittNumInt" />
+                                        </span>
+                                    </th>
+                                    <th class="tablePersoHead tdHeadQuittDel">Dem.</th>
+                                    <th class="tablePersoHead tdHeadQuittMvt">Mvt</th>
+                                    <th class="tablePersoHead tdHeadQuittOperation">Opération</th>
+                                    <th class="tablePersoHead tdHeadQuittSit">Sit</th>
+                                    <th class="tablePersoHead tdHeadQuittHT">HT</th>
+                                    <th class="tablePersoHead tdHeadQuittTTC">TTC</th>
+                                    <th class="tablePersoHead tdHeadQuittRegle">Réglé</th>
+                                    @*<th class="tablePersoHead" style="width: 20px;">&nbsp</th>*@
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divAnnulQuittancesBody" class="PaddingLeft">
+                            @if (Model.ListQuittances != null)
+                            {
+                                @Html.Partial("/Views/Quittance/VisualisationQuittancesListe.cshtml", Model.ListQuittances)
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+            @*<button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="p" tabindex="29"><u>P</u>récédent</button>*@
+            <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="r" tabindex="29"><u>R</u>etour</button>
+            <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s" tabindex="28"><u>S</u>uivant</button>
+        </div>
+    </div>
+</div>
+

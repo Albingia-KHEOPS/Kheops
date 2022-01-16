@@ -1,0 +1,38 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModeleDescription
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block">Identification*</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.IsReadOnlyDisplay)
+        {
+            <input type="text" id="Description_Descriptif" name="Description.Descriptif" tabindex="15" class="inputIdentification NonReprisCP readonly" maxlength="40" value="@(Model.Descriptif)" disabled="disabled"/>
+        }
+        else
+        {
+            <input type="text" id="Description_Descriptif" name="Description.Descriptif" tabindex="15" class="inputIdentification NonReprisCP" maxlength="40" value="@(Model.Descriptif)" />
+        }
+    </div>
+</div>
+<div class="HeightRow" id="divMotsCles">
+    @Html.Partial("../CreationSaisie/MotsCles", Model)
+</div>
+<div class="HeightRow">
+    <div id="divAdresse" class="FloatLeft">
+    </div>
+    <div class="FloatLeft">
+        <label class="Block">Observations</label>
+    </div>
+    <div id="zoneTxtArea" class="FloatLeft divTextArea2 NonReprisCP">@Html.Raw(!string.IsNullOrEmpty(Model.Observation) ? Model.Observation.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+    <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer">
+        <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+    </div>
+    <div id="txtArea">
+        <div class="FloatLeft">
+            @if (Model.IsReadOnly || Model.IsReadOnlyDisplay)
+            {<div id="Description_Observation" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Observation)</div>}
+            else
+            {<textarea id="Description_Observation" name="Description.Observation" tabindex="32" class="DoubleInputHalfBlock">@(Model.Observation)</textarea>}
+        </div>
+    </div>
+</div>

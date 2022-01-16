@@ -1,0 +1,65 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+@using OP.WSAS400.DTO.Regularisation
+
+@model ModeleRegularisationPage
+
+<script type="text/html" id="header_template">
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/knockout/templates/regularisation/header-garanties-RC.html")))
+</script>
+
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "global.css" }, "~/Content/less/regularisation/")
+
+@{
+    ViewBag.Title = "Régul. Garantie RCFR/EX/US";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = RegularisationStep.Regularisation, RsqId = (int)Model.Context.RsqId, RgGrId = Model.Context.RgGrId })
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                <div id="infos_global" class="simpleGradientSection divRegularisationRCInfoGen"> <!-- divInfoRegul -->
+                    <!-- ko template: { name: 'header_template', data: infosGlobal } -->
+                    <!-- /ko -->
+                </div>
+
+                <div name="regul-rc" data-bind="component: regul.garantiesRC.componentName"></div>
+            </div>
+        </div>
+        
+        <div id="divActionButtons" class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight">
+                <button id="btnRegulePrec" type="button" albshortcut="true" data-accesskey="P" data-bind="click: back"><u>P</u>récedent</button>
+                <!-- ko ifnot: IsReadOnly -->
+                <button id="btnReguleSuivant" type="button" albshortcut="true" data-accesskey="s" data-bind="click: forward, enable: canGoNext"><u>S</u>uivant</button>
+                <!-- /ko -->
+                <!-- ko if: isSimplifiedReadOnly -->
+                <button id="btnReguleSuivant" type="button" albshortcut="true" data-accesskey="s" data-bind="click: forward, enable: canGoNext"><u>S</u>uivant</button>
+                <!-- /ko -->
+            </div>
+            <!-- ko ifnot: IsReadOnly -->
+            <div id="divRefresh" class="FloatRight PaddingRight" style="margin-top: 4px; margin-right: 30px">
+                <img id="btnRefresh" alt="Calcul" title="Calcul" data-bind="click: refresh, css: { CursorPointer: allowRefresh() }, attr: { src: refreshIcon }, enable: allowRefresh" />
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>    
+</div>
+
+<script type="text/javascript">
+    @{
+        string context = Newtonsoft.Json.JsonConvert.SerializeObject(Model.Context, Newtonsoft.Json.Formatting.None);
+    }
+
+    window.context = @Html.Raw(context);
+    window.sessionStorage[regul.regulKey] = JSON.stringify(window.context);
+</script>
+
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "regularisation-header-rcfr.js" }, "~/knockout/templates/regularisation/", false)
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "regul-rc.viewmodel.js", "regul-rc.initializer.js" }, "~/knockout/components/regul-rc/", false)
+
+

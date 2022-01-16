@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0581548-B430-479F-A38A-397259278639}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OP.Services</RootNamespace>
+    <AssemblyName>OP.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>latest</LangVersion>
+    <CodeAnalysisRuleSet>..\..\Rule Sets\Kheops.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EmitMapper">
+      <HintPath>..\..\ThirdBinaries\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Mapster, Version=3.2.0.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mapster.3.2.0\lib\net45\Mapster.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Client.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PushClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\PushClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.EasycomClient, Version=2.0.0.6, Culture=neutral, PublicKeyToken=32fd8354c170411b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdBinaries\System.Data.EasycomClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\Administration.cs" />
+    <Compile Include="Avenant\AvenantRestService.cs" />
+    <Compile Include="Avenant\AvenantService.cs" />
+    <Compile Include="BLServices\BLCommon.cs" />
+    <Compile Include="BLServices\BLRemiseEnVigueur.cs" />
+    <Compile Include="BLServices\FolderService.cs" />
+    <Compile Include="Cibles\CibleService.cs" />
+    <Compile Include="ClausesRisquesGaranties\RisqueService.cs" />
+    <Compile Include="CommonAffaireService.cs" />
+    <Compile Include="DocumentService.cs" />
+    <Compile Include="EngagementService.cs" />
+    <Compile Include="Formules\FormuleService.cs" />
+    <Compile Include="Historization\ArchiverUpdateHorsAvn.cs" />
+    <Compile Include="Lablat\Lablat.cs" />
+    <Compile Include="Connexites\ConnexiteService.cs" />
+    <Compile Include="Navigation\NavigationService.cs" />
+    <Compile Include="Navigation\StepFinder.cs" />
+    <Compile Include="Regularisations\RegularisationManager.cs" />
+    <Compile Include="Regularisations\StepManagerRegularisation.cs" />
+    <Compile Include="Historization\Archiver.cs" />
+    <Compile Include="Historization\Archiver.Disposable.cs" />
+    <Compile Include="Historization\ArchiverHistoLess.cs" />
+    <Compile Include="Historization\ArchiverUpdate.cs" />
+    <Compile Include="Historization\ArchiverCreation.cs" />
+    <Compile Include="Historization\HistorizationService.cs" />
+    <Compile Include="Print\PrintJob.cs" />
+    <Compile Include="ExternalUse\Edithique.cs" />
+    <Compile Include="IS\InfoSpecif.cs" />
+    <Compile Include="Hexavia\AdresseHexavia.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Regularisations\Regularisation.cs" />
+    <Compile Include="RemiseEnVigueur\RemiseEnVigueur.cs" />
+    <Compile Include="REST\wsadel\CalculChargementRequest.cs" />
+    <Compile Include="REST\wsadel\CalculChargementResponse.cs" />
+    <Compile Include="REST\wsadel\CALCUL_CHARGEMENTReturn.cs" />
+    <Compile Include="REST\wsadel\CALCUL_CHARGEMENTReturnResultats.cs" />
+    <Compile Include="REST\wsadel\SinistresRestClient.cs" />
+    <Compile Include="Sinistres\SinistresService.cs" />
+    <Compile Include="TraceService.cs" />
+    <Compile Include="TraitementAffNouv\AffaireNouvelle.cs" />
+    <Compile Include="TraitementAffNouv\BLAffNouv\InitAffNouv.cs" />
+    <Compile Include="BLServices\BLFormuleGarantie.cs" />
+    <Compile Include="BLServices\BLInventaire.cs" />
+    <Compile Include="BOParametrage\ParametrageClauses.cs" />
+    <Compile Include="Common\CommonOffre.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClausesRisquesGaranties\RisquesGaranties.cs" />
+    <Compile Include="SaisieCreationOffre\ConfirmationSaisie.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SaisieCreationOffre\CreationOffre.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SaisieCreationOffre\DoubleSaisie.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SaisieCreationOffre\PoliceServices.cs" />
+    <Compile Include="SaisieCreationOffre\RechercheSaisie.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SaisieCreationOffre\SaisieOffre.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TraitementAffNouv\BLAffNouv\InitCommonAffNouv.cs" />
+    <Compile Include="TraitementAffNouv\CommonAffaireNouvelle.cs" />
+    <Compile Include="TraitementsFinOffre\FinOffre.cs" />
+    <Compile Include="Web References\WSKheoBridge\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="BOParametrage\ParametrageModelesService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj">
+      <Project>{a98a2815-a24c-4e02-891e-8b802ee892ea}</Project>
+      <Name>ALBINGIA.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Albingia.Kheops.Common\Albingia.Kheops.Common.csproj">
+      <Project>{7919e1a0-1894-4262-be0c-71cc06369408}</Project>
+      <Name>Albingia.Kheops.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OP.Application\Albingia.Kheops.OP.Application.Contracts\Albingia.Kheops.OP.Application.Contracts.csproj">
+      <Project>{4e616268-d872-424b-9fc6-6f89a7310fa0}</Project>
+      <Name>Albingia.Kheops.OP.Application.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OP.Application\Albingia.Kheops.OP.Application\Albingia.Kheops.OP.Application.csproj">
+      <Project>{8ebc1eb5-0c73-4857-906a-cf38d5dadaa6}</Project>
+      <Name>Albingia.Kheops.OP.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OP.Application\Albingia.Kheops.OP.Domain\Albingia.Kheops.OP.Domain.csproj">
+      <Project>{e00e8b1d-08a8-4a8d-b086-6517e83262b4}</Project>
+      <Name>Albingia.Kheops.OP.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RestContracts\RestContracts.csproj">
+      <Project>{3EE9F5D7-7716-44C1-B852-6E8AB5FE2A38}</Project>
+      <Name>RestContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OP.DataAccess\OP.DataAccess.csproj">
+      <Project>{dbed05e2-773d-4b40-b704-3359823bffb9}</Project>
+      <Name>OP.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OP.WSAS400.DTO\OP.WSAS400.DTO.csproj">
+      <Project>{583328b5-c77a-40b6-a9cc-e74bdb583afb}</Project>
+      <Name>OP.WSAS400.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OPServiceContract\OPServiceContract.csproj">
+      <Project>{51915333-f540-4663-aeb6-4c84cd955300}</Project>
+      <Name>OPServiceContract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WSKheoBridge\FormuleGarantieDto_KBridge.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSKheoBridge\FormuleGarantiePlatDto_KBridge.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSKheoBridge\FormuleOpDto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSKheoBridge\KheoBridge.disco" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\WSKheoBridge\KheoBridge.wsdl" />
+    <None Include="Web References\WSKheoBridge\KpClauseRet.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSKheoBridge\KtIsAffiche.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSKheoBridge\KtRet.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSKheoBridge\OffreRechPlatDto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSKheoBridge\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://editique.ws.support.albingia.local/KheoBridge.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSKheoBridge\</RelPath>
+      <UpdateFromURL>http://editique.ws.support.albingia.local/KheoBridge.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>OP_Services_WSKheoBridge_KheoBridge</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,119 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleListClauses
+@{
+    var prov = Model.Provenance.Split('/')[1];
+    var divPagination = (Model.FullScreen ? " padding-top: 380px;" : ((prov == "InformationsSpecifiquesRisques" || prov == "InformationsSpecifiquesGarantie") ? "padding-top:260px;" : (prov == "InformationsSpecifiquesBranche" ? "padding-top:290px;" : (prov == "ConditionsGarantie" ? "padding-top: 240px;" : "padding-top: 290px;"))));
+}
+
+
+<div>
+    <table>
+        <tr id="headerTableau">
+            <th class="tablePersoHead colSuppr">&nbsp;
+            </th>
+            <th class="tablePersoHead colDetail">&nbsp;
+            </th>
+            <th class="tablePersoHead TablePersoTdHead CursorPointer colNumAvn" name="headerTri" albcontext="NumInterne" id="4" title="AVT MODIF">
+                <span class="Block spImg FloatLeft PaddingTop">AVT</span>
+                <span class="Block spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="NumInterne"/>
+                </span>
+            </th>
+
+            <th class="tablePersoHead TablePersoTdHead CursorPointer colRsq" name="headerTri" albcontext="Risque" id="3" title="Risque">
+                <span class="Block spImg FloatLeft PaddingTop">R</span>
+                <span class="Block spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Risque"/>
+                </span>
+            </th>
+            <th class="tablePersoHead colObj" id="4" title="Objet">O</th>
+            <th class="tablePersoHead colFor" id="5" title="Formule">F
+            </th>
+            <th class="tablePersoHead TablePersoTdHead CursorPointer colTitreClause" name="headerTri" albcontext="Titre" id="6">
+                <span class="Block spImg FloatLeft PaddingTop" style="width: 415px;">Titre Clause</span>
+                <span class="Block spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Titre"/>
+                </span>
+            </th>
+            <th class="tablePersoHead TablePersoTdHead CursorPointer colContexte" name="headerTri" albcontext="Contexte" id="7">
+                <span class="Block spImg FloatLeft PaddingTop" style="width: 69px;">Contexte</span>
+                <span class="Block spImg" style="float: right;">
+                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_asc.png")" albcontext="Contexte"/>
+                </span>
+            </th>
+            <th class="tablePersoHead colGarantie" id="9">Garantie</th>
+            <th class="tablePersoHead colOrigine" id="10">Origine
+            </th>
+            <th class="tablePersoHead colEdition" id="10">Edition
+            </th>
+        </tr>
+    </table>
+</div>
+<div class="@(Model.FullScreen ? "divFichierPleinEcran" : "divFichier")" >
+    @if (Model.TableauClauses != null)
+    {
+        @Html.Partial("ListeChoixClauses", Model.TableauClauses);
+    }
+</div>
+<div>
+    @if (Model.TableauClauses != null)
+    {
+        <table class="field-right paginationClause" style="@(divPagination)">
+            <tr>
+                @if (Model.PageNumber > 1)
+                {
+                    <td>
+                        <img id="PaginationPremierePage" src="@Url.Content("/Content/Images/1340965186_pagination_1_first.png")" />
+                    </td>
+                    <td>
+                        <img id="PaginationPrecedent" src="@Url.Content("/Content/Images/1340965176_pagination_1_previous.png")" />
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <img src="@Url.Content("/Content/Images/1340965186_pagination_1_first_disabled.png")" />
+                    </td>
+                    <td>
+                        <img src="@Url.Content("/Content/Images/1340965176_pagination_1_previous_disabled.png")" />
+                    </td>
+                }
+                <td>
+                    <span id="PaginationPageActuelle">@Model.PageNumber</span>
+                </td>
+                @if (Model.PageNumber * (Model.EndLigne - Model.StartLigne + 1) < Model.LineCount)
+                {
+                    <td>
+                        <img id="PaginationSuivant" src="@Url.Content("/Content/Images/1340965171_pagination_1_next.png")" />
+                    </td>
+                    <td>
+                        <img id="PaginationDernierePage" src="@Url.Content("/Content/Images/1340965180_pagination_1_last.png")" />
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <img src="@Url.Content("/Content/Images/1340965171_pagination_1_next_disabled.png")" />
+                    </td>
+                    <td>
+                        <img src="@Url.Content("/Content/Images/1340965180_pagination_1_last_disabled.png")" />
+                    </td>
+                }
+                @if (Model.NbCount > Model.LineCount)
+                {
+                    <td class="PageSize">
+                        <span id="PaginationStart">@Html.DisplayFor(m => m.StartLigne)</span> - <span id="PaginationEnd">@Html.DisplayFor(m => m.EndLigne)</span>
+                        [total : <span id="PaginationTotal">@Html.DisplayFor(m => m.LineCount)</span>]
+                    </td>
+                }
+                else
+                {
+                    <td class="PageSize">
+                        <span id="PaginationStart">@Html.DisplayFor(m => m.StartLigne)</span> - <span id="PaginationEnd">@Html.DisplayFor(m => m.EndLigne)</span>
+                        [total : <span id="PaginationTotal">@Html.DisplayFor(m => m.NbCount)</span>]
+                    </td>
+                }
+            </tr>
+        </table>
+
+    }
+</div>

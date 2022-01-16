@@ -1,0 +1,133 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleChoixClauseTransverse>
+@*@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vChoixClauses.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albListeClauses.js" }, "~/Scripts/AlbingiaJS/")*@
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbChoixClauses")
+@AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbListeClauses")
+<div class="GradientSection" id="divTransverseLstClauses">
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Etape</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.Etape, Model.Etapes, "EtapesTransverse", htmlAttributes: new { @id = "EtapesTransverse", @class = "Input" }, generateTitle: true, genEmptyLine: true)
+                    <input type="hidden" id="EtapeTransverse" value="@Model.Etape" />
+                </div>
+            </div>
+            <div class="FiltreTansverseColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Filtrer</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.Filtre, Model.Filtres, "FiltreTransverse", htmlAttributes: new { @id = "FiltreTransverse", @class = "InputDDL" }, generateTitle: true, genEmptyLine: false)
+                </div>
+            </div>
+            <div class="GenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block">Contexte</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.Contexte, Model.Contextes, "ContexteTransverse", htmlAttributes: new { @id = "ContexteTransverse", @class = "Input" }, generateTitle: true, genEmptyLine: false)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="HeightRow" style="display: none;">
+        <div class="GenericColumn">
+            <div class="FloatLeft">
+                <label class="Block">Risque</label>
+            </div>
+            <div class="FloatLeft">
+                @Html.AlbDropDownListFor(m => m.Risque, Model.Risques, "Risque", htmlAttributes: new { @id = "Risque", @class = "Input" }, generateTitle: true, genEmptyLine: false)
+            </div>
+        </div>
+        @*@Html.Partial("DDLOptions", Model.DDLOptions)*@
+        @Html.Partial("ListFormules", Model.DDLFormules)
+    </div>
+    <table class="tabFichier">
+        <tr id="headerTableau">
+            <th class="tablePersoHead tdHead7">&nbsp;
+            </th>
+
+            <th class="tablePersoHead transverse tdHead1 CursorPointer" name="headerTriTransverse" albcontext="NumInterne" id="4" title="AVT MODIF">
+                <span class="Block transverseSpImg FloatLeft PaddingTop">AVT</span>
+                <span class="Block transverseSpImg" style="float: right;">
+                    <img class="transverseImageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="NumInterne"/>
+                </span>
+            </th>
+
+            <th class="tablePersoHead transverse tdHead1 CursorPointer" name="headerTriTransverse" albcontext="Risque" id="3" title="Risque">
+                <span class="Block transverseSpImg FloatLeft PaddingTop">R</span>
+                <span class="Block transverseSpImg" style="float: right;">
+                    <img class="transverseImageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Risque"/>
+                </span>
+            </th>
+            <th class="tablePersoHead tdHead1" id="4" title="Objet">O</th>
+            <th class="tablePersoHead tdHead1" id="5" title="Formule">F</th>
+            <th class="tablePersoHead transverse tdHead2 CursorPointer" name="headerTriTransverse" albcontext="Titre" id="6">
+                <span class="Block transverseSpImg FloatLeft PaddingTop" style="width: 335px;">Titre Clause</span>
+                <span class="transverseSpImg" style="float: right;">
+                    <img class="transverseImageTri" alt="" src="@Url.Content("/Content/Images/tri_asc.png")" albcontext="Titre"/>
+                </span>
+            </th>
+            <th class="tablePersoHead transverse thHeadcontexte CursorPointer" name="headerTriTransverse" albcontext="Contexte" id="7">
+                <span class="Block spImg FloatLeft PaddingTop" style="width: 68px;">Contexte</span>
+                <span class="transverseSpImg" style="float: right;">
+                    <img class="transverseImageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Contexte"/>
+                </span>
+            </th>
+            <th class="tablePersoHead TablePersoTh3" id="8">Titre Garantie
+            </th>
+            <th class="tablePersoHead tdHead4" id="9">Origine
+            </th>
+            @*<th class="tablePersoHead transverse tdHead4 CursorPointer" name="headerTriTransverse" albcontext="Edition" id="10">Edition<span class="transverseSpImg" style="float: right;"><img class="transverseImageTri"
+                                                alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Edition"/></span>
+                </th>*@
+            <th class="tablePersoHead tdHead4" id="10">Edition
+            </th>
+        </tr>
+    </table>
+    <div class="divFichier" id="dvTableauxChoixClausesTransverse">
+        @if (Model.TableauClauses != null)
+        {
+            @Html.Partial("TransverseListeChoixClauses", Model.TableauClauses);
+        }
+    </div>
+</div>
+
+<div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 1004px;">
+    <div class="ActionButtons ActionButtonRight">
+        <button id="btnFermer" type="button" albshortcut="true" accesskey="f" tabindex="29"><u>F</u>ermer</button>
+    </div>
+</div>
+<!--Visualisation d'une clause libre -->
+<div id="divTransverseVisualiserClause" style="display: none">
+    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div id="divTransverseDataVisualiserClause">
+    </div>
+</div>
+<div id="divFullScreenDetailsClauseTransverse" style="display: none">
+    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div id="divDetailsClauseTransverse">
+    </div>
+</div>
+<!--Ajout d'une clause libre -->
+<div id="divClauseLibre" style="display: none">
+    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+    </div>
+    <div id="divDataClauseLibre">
+    </div>
+</div>
+@*<!--Ajout d'une clause -->
+    <div id="divClausier" style="display: none">
+        <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; filter: alpha(opacity=30); opacity: 0.3; background-color: Gray;">
+        </div>
+        <div id="divDataClausier">
+        </div>
+    </div>*@
+

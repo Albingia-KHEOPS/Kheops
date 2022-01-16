@@ -1,0 +1,148 @@
+﻿.titre {
+    text-decoration: underline;
+}
+
+.HeightListeContratsConnexes {
+    height: 478px;
+}
+
+.HeightListeMontants {
+    height: 254px;
+}
+
+.col_HeaderEngagementVide {
+    width: 140px;
+}
+
+.col_HeaderDateDeb {
+    width: 128px;
+}
+
+.col_HeaderDateFin {
+    width: 128px;
+}
+
+.col_HeaderTraite {
+    width: 128px;
+}
+
+.col_Contrat {
+    width: 142px;
+    font-weight: bold;
+}
+
+.col_DateDeb {
+    width: 130px;
+}
+
+.col_DateFin {
+    width: 130px;
+}
+
+.col_Traite {
+    width: 130px;
+}
+
+
+.col_HeaderButonVide {
+    width: 110px;
+}
+
+.col_HeaderStatut {
+    width: 30px;
+}
+
+.col_ButonsMontant {
+    width: 112px;
+}
+
+.col_Statut {
+    width: 36px;
+}
+
+#tblEngagementHeader tr, #tblEngagementBody tr {
+    height: 1px !important;
+}
+
+#tblMontantHeader tr, #tblMontantBody tr {
+    height: 1px !important;
+}
+
+
+#divEngagementBody {
+    max-height: 162px;
+    overflow-y: auto;
+}
+
+#divMontantBody {
+    max-height: 162px;
+    overflow-y: auto;
+}
+
+.imgUpdate {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.imgDesactivate {
+    margin-right: 10px;
+}
+
+.inputStatut {
+    width: 28px !important;
+}
+
+.inputTraite {
+    width: 126px !important;
+}
+
+.inputDateDeb {
+    width: 126px !important;
+}
+
+.inputDateFin {
+    width: 126px !important;
+}
+
+.butonSave {
+    margin-left: 28px;
+}
+
+#newEngagementPeriode {
+    display: none;
+}
+
+
+td[name=partTotale] {
+    display: none;
+}
+
+td[name=lock_partTotale] {
+    display: none;
+}
+
+td[name=edit] {
+    display: none;
+}
+
+td[name=edit_partTotale] {
+    display: none;
+}
+
+td[name=edit_partAlbingia] {
+    display: none;
+}
+td[name=edit_partAlbingiaEng] {
+    display: none;
+}
+
+
+.alerteDiscontinuite {
+    display: none;
+    margin-left: 10px;
+}
+
+#divCnxEng {
+    padding: 10px;
+    background-color: #FFF;
+}

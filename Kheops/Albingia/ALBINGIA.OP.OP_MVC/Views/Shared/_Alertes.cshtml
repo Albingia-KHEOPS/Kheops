@@ -1,0 +1,22 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesCreationAvenant.ModeleAvenantAlerte>
+<div id="divAlertesAvenant" class="hide-it">
+    <div class="dvAlertes">
+        <table id="tblAlerteAvenant" class="trHeight tblAlertes">
+            @foreach (var item in Model) {
+                <tr>
+                    <td class="PaddingTop tdImgAlerte">
+                        @if (item.TypeBloquante == "B") {
+                            <img src="@Url.Content("/Content/Images/ControleFin/B.png")" />
+                        }
+                        else {
+                            <img src="@Url.Content("/Content/Images/ControleFin/A.png")" />
+                        }
+                    </td>
+                    <td class="PaddingTop tdMsgAlerte" title="@item.MessageAlerte">
+                        @item.MessageAlerte
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

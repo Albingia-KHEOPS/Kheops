@@ -1,0 +1,92 @@
+﻿.ParamWidth {
+    width: 1195px !important;
+}
+
+#tblHeaderParam tr, #tblBodyParam tr {
+    height: 30px;
+}
+
+
+.ParamHeight {
+    height: 420px;
+}
+
+.lblDateDebut {
+    margin-left: 20px;
+}
+
+.lblDateFin {
+    margin-left: 20px;
+}
+
+.lblUtilisateur {
+    margin-left: 20px;
+}
+
+.FiltreDateDebut {
+    margin-left: 22px;
+}
+
+.FiltreDateFin {
+    margin-left: 20px;
+}
+
+.FiltreUtilisateur {
+    margin-left: 41px;
+}
+
+#btnFiltre {
+    margin-left: 20px;
+}
+
+.ParamHeightCRUD {
+    height: 32px;
+}
+
+.lblTypeOffre {
+    margin-left: 20px;
+}
+
+.FiltreTypeOffre {
+    margin-left: 20px;
+}
+
+.lblNumOffre {
+    height: 27px;
+    margin-left: 20px;
+}
+
+.FiltreNumOffre {
+    margin-left: 23px;
+}
+
+.lblVersion {
+    margin-left: 20px;
+}
+
+.FiltreVersion {
+    margin-left: 58px;
+}
+
+.RechFiltre {
+    height: 108px;
+}
+
+.HeightRowTyeOffre {
+    height: 22px;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.dvDataOffreSession
+{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index:15;
+    background-color: White;
+    padding: 5px 0 0 5px; 
+    width: 795px;
+    /*height: 435px;*/
+}

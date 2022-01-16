@@ -1,0 +1,115 @@
+﻿.titre {
+    font-weight: bold;
+    text-decoration: underline;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.col_HeaderCoAssureurs {
+    width: 300px;
+}
+
+.col_CoAssureurs {
+    width: 300px;
+}
+
+.col_HeaderPart {
+    width: 80px;
+}
+
+.col_Part {
+    width: 78px;
+    padding-left: 3px;
+}
+
+.col_HeaderDateRetour {
+    width: 120px;
+}
+
+.col_DateRetour {
+    width: 118px;
+    padding-left: 3px;
+}
+
+.col_HeaderTypeAccord {
+    width: 120px;
+}
+
+.col_TypeAccord {
+    width: 118px;
+    padding-left: 3px;
+}
+
+.HeightSection {
+    height: 435px;
+}
+
+#divFichierJoint {
+    display: none;
+    padding-left: 50px;
+}
+
+.TablePersoTd2
+{
+    width: auto;
+}
+
+.TablePersoTd3
+{
+    width: 90px;
+}
+
+.TablePersoTd4
+{
+    width: 70px;
+}
+.TablePersoTdBody1
+{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.TablePersoTdBody2
+{
+    vertical-align: middle;
+    text-align: right;
+}
+TablePersoTd1
+{
+    width: 20px;
+}
+
+.TablePersoTd2
+{
+    width: auto;
+}
+
+.TablePersoTd3
+{
+    width: 90px;
+}
+
+.TablePersoTd4
+{
+    width: 70px;
+}
+.TablePersoTdHead
+{
+    vertical-align: middle;
+    text-align: center;
+}
+.tablePersoHead {
+    background-image: url("/Content/Images/RechercheSaisieGridHeaderThBg.png");
+    background-position: center center;
+    background-repeat: repeat-x;
+}
+.divFichier
+{
+    overflow-y: scroll;
+    height: 92px;
+}
+.tabFichier
+{
+    width: 100%;
+}
+

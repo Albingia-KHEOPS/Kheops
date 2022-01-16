@@ -1,0 +1,45 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFormuleGarantie.ModeleFormuleGarantieLstObjRsq
+<table id="tbl@(Model.TableName)">
+    @foreach (var rsq in Model.Risques)
+    {
+        <tr id="@(rsq.Code)_0">
+            <td class="tbCellIco">
+                &nbsp;
+            </td>
+            <td class="tbCellIco">
+                &nbsp;
+            </td>
+            <td>
+                @rsq.Designation
+            </td>
+        </tr>
+        foreach (var obj in rsq.Objets)
+        {
+        <tr id="@(rsq.Code)_@(obj.Code)">
+            <td class="tbCellIco linkImage">
+                <img src="@Url.Content("/Content/Images/supprimergris_1616.png")" id="icoPlus" alt="" title="" />
+            </td>
+            <td class="tbCellIco">
+                <input id="check_@(rsq.Code)_@(obj.Code)" name="checkObj" type="checkbox" value="@(rsq.Code)_@(obj.Code)" />
+            </td>
+            <td>
+                @obj.Designation
+            </td>
+        </tr>
+            foreach (var inven in obj.Inventaires)
+            {
+        <tr id="@(rsq.Code)_@(obj.Code)_@(inven.Code)">
+            <td class="tbCellIco">
+                &nbsp;
+            </td>
+            <td class="tbCellIco">
+                <input id="check_@(rsq.Code)_@(obj.Code)_@(inven.Code)" name="checkInven" type="checkbox" value="@(rsq.Code)_@(obj.Code)_@(inven.Code)" />
+            </td>
+            <td>
+                @inven.Descriptif
+            </td>
+        </tr>
+            }
+        }
+    }
+</table>

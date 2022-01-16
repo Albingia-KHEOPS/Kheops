@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<configuration>
+  <configSections>
+    <section name="AppDynamicsAgent" type="AppDynamics.Agent.Config.Section, AppDynamics.Agent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3f604d9e4f8e4985" allowLocation="true" allowDefinition="Everywhere" />
+  </configSections>
+  <!--
+    Pour obtenir une description des modifications de web.config pour .NET 4.5, voir http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    Les attributs suivants peuvent être définis dans la balise <httpRuntime>.
+      <system.Web>
+        <httpRuntime targetFramework="4.5" />
+      </system.Web>
+  -->
+  <system.web>
+    <compilation debug="true" targetFramework="4.5" />
+    <pages controlRenderingCompatibilityVersion="4.0" />
+  </system.web>
+  <system.data>
+    <DbProviderFactories>
+      <add name="EasyComSqlClient Data Provider" invariant="System.Data.EasycomClient" description="Easycom For .NET Client" type="System.Data.EasycomClient.EasycomClientFactory,System.Data.EasycomClient,Version=2.0.0.6, Culture=neutral, PublicKeyToken=32fd8354c170411b" />
+    </DbProviderFactories>
+  </system.data>
+  <system.diagnostics>
+    <sources>
+      <source name="System.ServiceModel.MessageLogging" switchValue="Verbose">
+        <listeners>
+          <add name="messages" type="System.Diagnostics.XmlWriterTraceListener" initializeData="c:\logs\messages.svclog" />
+        </listeners>
+      </source>
+    </sources>
+  </system.diagnostics>
+  <system.serviceModel>
+    <diagnostics>
+      <messageLogging logEntireMessage="true" logMalformedMessages="false" logMessagesAtServiceLevel="true" logMessagesAtTransportLevel="false" maxMessagesToLog="3000" maxSizeOfMessageToLog="2000" />
+    </diagnostics>
+    <services configSource="Configs\Dev\system.serviceModel.services.xml" />
+    <behaviors configSource="Configs\Dev\system.serviceModel.behaviors.xml" />
+    <bindings configSource="Configs\Dev\system.serviceModel.bindings.xml" />
+    <client configSource="Configs\Dev\system.serviceModel.clients.xml" />
+    <serviceHostingEnvironment multipleSiteBindingsEnabled="true" />
+  </system.serviceModel>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true" />
+    <security>
+      <authentication>
+        <anonymousAuthentication enabled="true" />
+      </authentication>
+    </security>
+  </system.webServer>
+  <connectionStrings configSource="Configs\Dev\configuration.connectionStrings.xml" />
+  <AppDynamicsAgent>
+    <controller-info>
+      <controller-host>portikeconsulting.saas.appdynamics.com</controller-host>
+      <controller-port>443</controller-port>
+      <controller-ssl-enabled>true</controller-ssl-enabled>
+      <!-- If the controller is running in multi-tenant mode, specify the account name
+           and access key for this agent to authenticate with the controller.
+           If the controller is running in single-tenant mode, there is no need to
+           specify these values. -->
+      <account-name>PORTIKEConsulting</account-name>
+      <account-access-key>sp4u83huw8fe</account-access-key>
+      <!--  For Auto Agent Registration specify the application name, tier name,
+            and optionally, node name. If the application and/or tier does not
+            exist already it will be created. -->
+      <application-name>ALB_0P</application-name>
+      <tier-name>Machine Agent</tier-name>
+      <!--  Recommended to leave it empty if your application tier node has more than one instance, 
+            as in case of IIS applications running in web garden (app pool) or in the case when nodes of the same tier
+            run on different machines.
+            If unsure - leave it empty, It will be auto-generated-->
+      <node-name />
+      <proxy disable="true">
+        <host />
+        <port />
+      </proxy>
+    </controller-info>
+    <app-agent-configuration>
+      <configuration-properties />
+      <agent-services>
+        <agent-service name="AgentOperationService" enabled="true">
+          <configuration-properties />
+          <configuration />
+        </agent-service>
+        <agent-service name="BCIEngine" enabled="true">
+          <configuration-properties />
+          <configuration />
+        </agent-service>
+        <agent-service name="CLRMetricsService" enabled="true">
+          <configuration-properties>
+            <!--<property name='update-interval-in-seconds' value='60'/>-->
+          </configuration-properties>
+          <configuration>
+            <perf-counters>
+              <!--  In this section you can add CLR related performance counters 
+                    The list of possible .NET performance counters is documented here
+                    Performance Counters in the .NET Framework  
+                    http://msdn.microsoft.com/en-us/library/w8f5kw2e%28v=VS.80%29.aspx -->
+              <!-- Example: <counter cat=".NET CLR Exceptions" name="# of Exceps Thrown"/> -->
+            </perf-counters>
+          </configuration>
+        </agent-service>
+        <agent-service name="SnapshotService" enabled="true">
+          <service-dependencies>BCIEngine</service-dependencies>
+          <configuration-properties />
+        </agent-service>
+        <agent-service name="TransactionMonitoringService" enabled="true">
+          <service-dependencies>BCIEngine,SnapshotService</service-dependencies>
+          <configuration-properties />
+        </agent-service>
+      </agent-services>
+    </app-agent-configuration>
+    <interceptors />
+    <EUM enable="True" />
+  </AppDynamicsAgent>
+</configuration>

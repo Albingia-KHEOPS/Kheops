@@ -1,0 +1,76 @@
+﻿
+.divHeightBlocage {
+    height: 385px;
+}
+
+.ButtonRight {
+    text-align: right;
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-right: 6px;
+    padding-top: 4px;
+}
+
+.ButtonsHeight {
+    height: 40px !important;
+    margin-top: 3px;
+}
+
+.ButtonsWidth {
+    width: 720px !important;
+}
+
+#divFullScreen {
+    display: none;
+}
+
+.ZoneStopWidth {
+    width: 350px;
+}
+
+label {
+    font-size: 12px;
+    padding-left: 5px;
+    padding-top: 2px;
+    width: 115px;
+}
+
+.GenericColumn {
+    width: 263px;
+    float: left;
+}
+
+#divDataDeblocage {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 270px;
+    width: 743px;
+}
+
+#divDeblocageHeight {
+    height: 192px;
+    width: 720px !important;
+    margin-left: 5px;
+    padding-top: 5px;
+}
+
+.divHeightDeblocage {
+    height: 130px;
+}
+
+.largeLabelWidth {
+    width: 250px;   
+}
+
+.VerylargeLabelWidth{
+     width: 274px;   
+}
+
+.divWidth{
+    width:250px;
+}

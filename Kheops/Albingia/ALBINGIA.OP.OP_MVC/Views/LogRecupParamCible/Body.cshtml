@@ -1,0 +1,25 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleLogRecupParamCiblePage
+<div id="BodyContainer" class="GroupFull GroupWithBorder">
+
+    <div class="GroupTitle">
+        @Model.PageTitle
+    </div>
+
+    <div class="HorizontalFullWithGroup">
+        @Html.Partial("Recherche", Model.Filtre)
+    </div>
+
+    <div id="ListResultLog" class="HorizontalFullWithGroup">
+        @Html.Action("List", "LogRecupParamCible", new { filtre = Model.Filtre })
+    </div>
+
+
+    <div id="RetourBlok" class="HorizontalFullWithGroup None" >
+        <div class="GradientSection rPanel fullWidth">
+            <button id="btnRetour">Retour</button>
+        </div>
+    </div>
+
+</div>
+
+

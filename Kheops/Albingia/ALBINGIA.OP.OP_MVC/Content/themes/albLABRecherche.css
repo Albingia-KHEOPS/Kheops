@@ -1,0 +1,317 @@
+﻿#divRecherche {
+    display: none;
+}
+
+#divDataRecherche {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 12;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1550px;
+}
+
+.scrollLAB{
+      width: 1530px;
+    /*max-height: 653px;*/
+    max-height: 603px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.TotalWidthLAB {
+    width: 1530px !important;
+}
+
+.SmallWidthLAB {
+    width: 1198px !important;
+     overflow-x: auto;
+}
+
+.thAction{
+    width:20px;
+}
+
+.thGuid {
+    width: 60px;
+}
+
+.thNom {
+    width: 160px;
+}
+
+.thPrenom {
+    width: 160px;
+}
+
+.thAge {
+    width: 30px;
+}
+
+.thAlias {
+    width: 140px;
+}
+
+.thPays {
+    width: 80px;
+}
+
+.thCategorie {
+    width: 140px;
+}
+
+.thPosition {
+    width: 140px;
+}
+
+.thDateNaissance {
+    width: 100px;
+}
+
+.thLieuNaissance {
+    width: 80px;
+}
+
+.thDateMort {
+    width: 80px;
+}
+
+.thPassport {
+    width: 100px;
+}
+
+.thEntreprise {
+    width: 80px;
+}
+
+.thAgeDate {
+    width: 60px;
+}
+
+.tdAction{
+    width:20px;
+    padding-left:3px;
+}
+
+.tdGuid {
+    width: 60px;
+    padding-left:3px;
+}
+
+.tdNom {
+    width: 160px;
+     padding-left:3px;
+}
+
+.tdPrenom {
+    width: 160px;
+     padding-left:3px;
+}
+
+.tdAge {
+    width: 30px;
+     padding-left:3px;
+}
+
+.tdAlias {
+    width: 140px;
+     padding-left:3px;
+}
+
+.tdPays {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdCategorie {
+    width: 140px;
+     padding-left:3px;
+}
+
+.tdPosition {
+    width: 140px;
+     padding-left:3px;
+}
+
+.tdDateNaissance {
+    width: 100px;
+     padding-left:3px;
+}
+
+.tdLieuNaissance {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdDateMort {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdPassport {
+    width: 100px;
+     padding-left:3px;
+}
+
+.tdEntreprise {
+    width: 80px;
+     padding-left:3px;
+}
+
+.tdAgeDate {
+    width: 60px;
+     padding-left:3px;
+}
+
+.inGuid {
+    width: 55px;
+ 
+}
+
+.inNom {
+    width: 156px;
+  
+}
+
+.inPrenom {
+    width: 156px;
+    
+}
+
+.inAge {
+    width: 25px;
+   
+}
+
+.inAlias {
+    width: 135px;
+   
+}
+
+.inPays {
+    width: 75px;
+    
+}
+
+.inCategorie {
+    width: 135px;
+    
+}
+
+.inPosition {
+    width: 135px;
+    
+}
+
+.inDateNaissance {
+    width: 95px;
+    
+}
+
+.inLieuNaissance {
+    width: 75px;
+  
+}
+
+.inDateMort {
+    width: 75px;
+   
+}
+
+.inPassport {
+    width: 95px;
+   
+}
+
+.inEntreprise {
+    width: 75px;
+   
+}
+
+.inAgeDate {
+    width: 55px;
+   
+}
+
+.divNom {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 160px;
+}
+
+.divPrenom {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 160px;
+}
+
+.divAlias {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:140px;
+}
+
+.divPays {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+}
+
+.divCategorie {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:140px;
+}
+
+.divPosition {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 140px;
+}
+.divLieuNaissance {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+}
+
+.divPassport {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:100px;
+}
+
+.divEntreprise {
+     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+}
+
+.labRecherchesaisie{
+    height:620px;
+}
+
+#divResultatsBody{
+    height:552px;
+}
+
+.widthNumber{
+    width:50px;
+}
+
+.smallFullScreenBtn
+{
+    height: 25px;
+    width: 29px;
+    padding: 0;
+}

@@ -1,0 +1,14 @@
+﻿<behaviors>
+  <serviceBehaviors>
+    <behavior name="OffreServiceBehavior">
+      <serviceDebug includeExceptionDetailInFaults="true" />
+      <serviceMetadata httpGetEnabled="true" httpGetUrl="/metadonnees" />
+      <serviceTelemetry/>
+    </behavior>
+    <behavior name="">
+      <serviceMetadata httpGetEnabled="true" />
+      <serviceDebug includeExceptionDetailInFaults="true" />
+      <serviceTelemetry/>
+    </behavior>
+  </serviceBehaviors>
+</behaviors>

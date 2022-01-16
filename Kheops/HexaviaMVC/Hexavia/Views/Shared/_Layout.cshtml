@@ -1,0 +1,59 @@
+﻿@{ 
+    var useGmap = Hexavia.Tools.Helpers.AppSettingsHelper.UseGoogleMaps;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>*@
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">*@
+
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.15.5"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
+
+
+
+    <title>Atlas</title>
+    @Styles.Render("~/Content/styles")
+    @Styles.Render("~/bundles/leafletcss")
+    @Styles.Render("~/Content/bootstrap-select")
+    @Styles.Render("~/Content/jquery-ui")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrapjs")
+    @Scripts.Render("~/bundles/sweetalert2")
+    @Scripts.Render("~/bundles/bootstrap-select")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/jspdf")
+    @Scripts.Render("~/bundles/html2canvas")
+    @Scripts.Render("~/bundles/specialCharacter")
+    @if (useGmap)
+    {
+        @Styles.Render("~/Content/sidebarGmap")
+        @Scripts.Render("~/bundles/sidebarGmap")
+    }
+
+
+    @Scripts.Render("~/bundles/leafletjs")
+    @RenderSection("scripts", required: false)
+    <link rel="icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/x-icon" />
+</head>
+
+<body>
+    <div id="divLoading">
+        <div id="divDataLoading">
+            <div></div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+</body>
+</html>

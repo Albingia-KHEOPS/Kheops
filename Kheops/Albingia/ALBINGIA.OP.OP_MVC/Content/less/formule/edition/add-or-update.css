@@ -1,0 +1,223 @@
+﻿#formule_option .lines-garanties {
+  background-color: #EEE;
+}
+#formule_option .lines-garanties > div:first-of-type .tree-line > div {
+  margin-top: 0;
+}
+#formule_option .lines-garanties > div:last-of-type .tree-line > div {
+  margin-bottom: 0;
+}
+#formule_option .lines-garanties > .tree-line.odd > div {
+  background-color: #EDEEFF;
+}
+#formule_option .lines-garanties > .tree-line.even > div {
+  background-color: #FFF;
+}
+#formule_option .lines-garanties > div {
+  background-color: transparent;
+}
+#formule_option .lines-garanties > div .tree-line {
+  background-color: transparent;
+}
+#formule_option .click-it {
+  cursor: pointer;
+}
+#formule_option .tree-line {
+  display: flex;
+  height: 30px;
+}
+#formule_option .tree-line div {
+  margin: 1px;
+  width: 20px;
+  display: flex;
+}
+#formule_option .tree-line div.no-text {
+  text-align: center;
+}
+#formule_option .tree-line div.no-text input:first-of-type {
+  line-height: 28px;
+  height: 28px;
+  margin: auto;
+}
+#formule_option .tree-line div.no-text img.h9:first-of-type {
+  line-height: 28px;
+  height: 9px;
+  margin: 8.5px auto;
+}
+#formule_option .tree-line div.no-text img.h16:first-of-type {
+  line-height: 28px;
+  height: 16px;
+  margin: 6px auto;
+}
+#formule_option .tree-line div span {
+  line-height: 28px;
+  height: 28px;
+}
+#formule_option .tree-line div select:first-of-type {
+  line-height: 28px;
+  height: 20px;
+  margin: 3px 0;
+}
+#formule_option .tree-line div.label {
+  width: auto;
+  flex: 1;
+  padding-left: 2px;
+}
+#formule_option .tree-line div.pad-bloc {
+  padding-left: 15px;
+}
+#formule_option .tree-line div.pad-1 {
+  padding-left: 30px;
+}
+#formule_option .tree-line div.pad-2 {
+  padding-left: 45px;
+}
+#formule_option .tree-line div.pad-3 {
+  padding-left: 60px;
+}
+#formule_option .tree-line div.pad-4 {
+  padding-left: 75px;
+}
+#formule_option .tree-line div.niveau,
+#formule_option .tree-line div.caractere {
+  text-align: center;
+}
+#formule_option .tree-line div.niveau span,
+#formule_option .tree-line div.caractere span {
+  margin: auto;
+}
+#formule_option .tree-line div.nature {
+  width: 33px;
+  padding-left: 1px;
+  text-align: center;
+}
+#formule_option .tree-line div.nature span {
+  flex: auto;
+}
+#formule_option .tree-line div.nature .liste-natures {
+  width: 100%;
+}
+#formule_option .tree-line.levelVolet div {
+  background-color: #003399;
+  color: white;
+  font-weight: bold;
+}
+#formule_option .tree-line.levelBloc div {
+  margin-bottom: 2px;
+  background-color: #AFADD1;
+  color: black;
+}
+#formule_option .tree-line.levelGarantie div {
+  background-color: transparent;
+}
+#formule_option .tree-line.levelGarantie.odd div {
+  background-color: #EDEEFF;
+}
+#formule_option .tree-line.levelGarantie.even div {
+  background-color: #FFF;
+}
+#formule_option .tree-line .validation-error-message {
+  display: none;
+}
+#formule_option .tree-line.validation-error .validation-error-message {
+  content: '';
+  margin-top: 5px;
+  display: block;
+  height: 16px;
+  width: 16px;
+  background-image: url('../../../Images/alertes/notif_icn_crit16.png');
+}
+#formule_option div::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+#action_buttons_formula {
+  position: relative;
+}
+#action_buttons_formula #FullScreenFormule {
+  position: absolute;
+  right: 493px;
+}
+body .libelle-formule {
+  width: 380px;
+}
+body .main div::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+body info-formule-applications,
+body #divModeAvenant,
+body #LayoutArbre,
+body #divFormuleGarantie,
+body #divGarantie,
+body #action_buttons_formula,
+body .CommonForm .main,
+body .CommonForm .main * {
+  transition-duration: 250ms;
+  transition-timing-function: ease-in;
+  transition-property: height, width, max-height, max-width, border-width, margin, padding;
+}
+body info-formule-applications,
+body #divModeAvenant {
+  display: block;
+  overflow: hidden;
+}
+body info-formule-applications {
+  height: 63px;
+}
+body #divModeAvenant {
+  height: 26px;
+}
+body #LayoutArbre {
+  overflow: hidden;
+}
+body #divFormuleGarantie {
+  height: 414px;
+}
+body #divListGaranties {
+  height: 381px;
+  max-height: 381px;
+  max-height: none;
+}
+body .mode-avenant #divFormuleGarantie {
+  height: 379px;
+}
+body .mode-avenant #divListGaranties {
+  height: 346px;
+}
+body #action_buttons_formula {
+  width: 1028px;
+}
+body.fullscreen info-formule-applications,
+body.fullscreen #divModeAvenant {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+body.fullscreen #LayoutArbre {
+  width: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border: none;
+}
+body.fullscreen .CommonForm .main .nHorizontalFullWithGroup {
+  width: 1200px;
+}
+body.fullscreen .CommonForm .main {
+  width: 1200px;
+}
+body.fullscreen #action_buttons_formula {
+  width: 1200px;
+}
+body.fullscreen #divFormuleGarantie {
+  height: 479px;
+}
+body.fullscreen #divListGaranties {
+  height: 447px;
+  max-height: 447px;
+}

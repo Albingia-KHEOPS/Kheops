@@ -1,0 +1,46 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRisque.ModeleOpposition
+<input type="hidden" id="editGuidId" value="@Model.GuidId" />
+<input type="hidden" id="mode" value="@Model.Mode" />
+<input type="hidden" id="KDESIRef" value="@Model.KDESIRef" />
+<input type="hidden" name="autoCompOrganismeSelect" albautocomplete="autoCompOrganismeSelect" />
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label>Objets concernés :</label>
+    </div>
+</div>
+<div id="CheckBoxes">
+    @if (@Model.AppliqueAuRisqueEntier)
+    {
+        <div>
+            <input type="checkbox" id="chkRisque" class="@(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" checked="checked" value="@Model.LibelleRisque" disabled="disabled" />@Model.LibelleRisque
+        </div>
+        <div>
+            @if (@Model.ObjetsRisque != null)
+            {
+                foreach (var item in Model.ObjetsRisque)
+                {
+                    <div class="padLeft">
+                        <input type="checkbox" name="chkObjet" albhorsavn value="@item.Value" class="padLeft @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" @(@item.Selected ? "checked=\"checked\"" : string.Empty) @(@Model.Mode == "D" || @Model.Mode == "R" ? "disabled=\"disabled\"" : string.Empty) />@item.Text<br />
+                    </div>
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <div>
+            <input type="checkbox" id="chkRisque" class="@(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" checked="checked" value="@Model.LibelleRisque" disabled="disabled" : string.Empty) />@Model.LibelleRisque
+        </div>
+        <div>
+            @if (@Model.ObjetsRisque != null)
+            {
+                foreach (var item in Model.ObjetsRisque)
+                {
+                    <div class="padLeft">
+                        <input type="checkbox" name="chkObjet" albhorsavn value="@item.Value" class="padLeft @(@Model.Mode == "D" || @Model.Mode == "R" ? "readonly" : string.Empty)" @(@item.Selected ? "checked" : string.Empty) disabled="disabled" />@item.Text<br />
+                    </div>
+                }
+            }
+        </div>
+    }
+</div>

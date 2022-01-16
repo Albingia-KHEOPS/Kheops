@@ -1,0 +1,150 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFinOffre.ModeleFinOffreInfos
+<div class="nGradientSection">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Antécédent</label>
+        </div>
+        <div class="FloatLeft divAntedecent">@Html.AlbDropDownListFor(m => m.Antecedent, Model.Antecedents, "Antecedent", htmlAttributes: new { @id = "Antecedent", @tabindex = "1", @albCFList = "antecedent" }, generateTitle: true, genEmptyLine: false)</div>
+        <div class="FloatLeft">
+            <label class="Block">Description</label>
+        </div>
+        <div id="zoneTxtArea" class="FloatLeft divTextArea" albcontext="Description">@Html.Raw(!string.IsNullOrEmpty(Model.Description) ? Model.Description.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+        <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="Description">
+            <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+        </div>
+        <div id="txtArea" albcontext="Description">
+            <div class="FloatLeft">
+                @if (Model.IsReadOnly)
+                {
+                    <div id="Description" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.Description)</div>
+                }
+                else
+                {
+                    <textarea id="Description" name="Description" class="" style="margin-bottom: 5px; width: 357px;" tabindex="6">@Model.Description</textarea>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    @*    <div style="float: left; width: 300px;">
+        <div class="HeightRow">
+            <div class="FloatLeft">@Html.AlbLabelFor(m => m.Antecedent, "Block")</div>
+            <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.Antecedent, Model.Antecedents, "Antecedent", htmlAttributes: new { @id = "Antecedent", @tabindex = "1" }, generateTitle: true, genEmptyLine: false)</div>
+        </div>
+    </div>
+    <div style="float: left; width: 650px;">
+        <div class="HeightRow">
+            <div class="FloatLeft">@Html.AlbLabelFor(m => m.Description, "Block")</div>
+            <div class="FloatLeft">
+                @if (Model.IsReadOnly)
+                {
+                    <div class="TextAreaReadOnly">@Html.Raw(Model.Description)</div>
+                }
+                else
+                {
+                    <textarea id="Description" name="Description" class="SuperInput" style="margin-bottom: 5px;" tabindex="2">@Model.Description</textarea>
+                }
+
+            </div>
+        </div>
+    </div>*@
+</div>
+<div class="nGradientSection" style="height: 409px;">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="labelValidite">Validité de l'offre (j)*</label>
+        </div>
+        <div class="divValidite">
+            <input type="text" id="ValiditeOffre" name="ValiditeOffre" value="@(Model.ValiditeOffre)" class="numerique inputValidite" albMask="numericValidite" tabindex="3" />
+        </div>
+        <div class="FloatLeft">
+            <label class="Block">Date du projet</label>
+        </div>
+        <div class="divValidite">
+            @Html.AlbDateFormat(m => m.DateProjet, new { @class = "datepicker inputDate", @tabindex = "4" })
+        </div>
+        <div class="FloatLeft">
+            @if (Model.Relance)
+            {
+                <input type="checkbox" id="Relance" name="Relance" tabindex="5" checked="checked" />
+            }
+            else
+            {
+                <input type="checkbox" id="Relance" name="Relance" tabindex="5" />
+            }
+        </div>
+        <div class="FloatLeft">
+            <label class="labelRelance">Relance ?</label>
+        </div>
+        <div class="FloatLeft" style="padding-right: 10px">
+            <label class="labelRelanceVal">(j)</label>
+        </div>
+        <div class="FloatLeft">
+            @if (Model.Relance)
+            {
+                <input type="text" id="RelanceValeur" name="RelanceValeur" class="numerique inputValidite" albMask="numeric" tabindex="6" value="@Model.RelanceValeur" />
+            }
+            else
+            {
+                <input type="text" id="RelanceValeur" name="RelanceValeur" class="numerique inputValidite" albMask="numeric" tabindex="6" disabled="disabled"  value="@Model.RelanceValeur" />
+            }
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="labelPreavis">Préavis de résil. (mois)</label>
+        </div>
+        <div class="FloatLeft">
+            @Html.HiddenNoName("PeridiciteOffre", Model.Periodicite)
+            @*2016-02-24 : ajout du type de periodicite "R" bug 1884*@
+            @if (Model.Periodicite == "A" || Model.Periodicite == "S" || Model.Periodicite == "T" || Model.Periodicite == "R")
+            {
+                <input type="text" id="Preavis" name="Preavis" class="numerique inputValidite" albMask="numeric" tabindex="8"  value="@Model.Preavis" />
+            }
+            else
+            {
+                <input type="text" id="Preavis" name="Preavis" class="numerique inputValidite readonly" disabled ="disabled" albMask="numeric" tabindex="8"  value="@Model.Preavis" />            
+            }
+        </div>
+    </div>
+    @*<div style="float: left; width: 300px;">
+        <div class="HeightRow">
+            <div class="FloatLeft">@Html.AlbLabelFor(m => m.ValiditeOffre, "Block")</div>
+            <div class="FloatLeft">@Html.TextBoxFor(m => m.ValiditeOffre, new { @class = "numerique", @tabindex = "3", @id = "ValiditeOffre" })</div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="FloatLeft">@Html.AlbLabelFor(m => m.Preavis, "Block")</div>
+            <div class="FloatLeft">@Html.TextBoxFor(m => m.Preavis, new { @class = "numerique", @tabindex = "8", @id = "Preavis" })</div>
+        </div>
+    </div>
+    <div style="float: left; width: 330px;">
+        <div class="HeightRow">
+            <div class="FloatLeft">@Html.AlbLabelFor(m => m.DateProjet, "Block")</div>
+            <div class="FloatLeft">@Html.AlbDateFormat(m => m.DateProjet, new { @class = "datepicker", @tabindex = "4" })@Html.ValidationMessageFor(m => m.DateProjet, "", new { @style = "display:none;" })</div>
+            <br />
+            <br />
+            <div class="FloatLeft">@Html.AlbLabelFor(m => m.DateStatistique, "Block")</div>
+            <div class="FloatLeft">@Html.AlbDateFormat(m => m.DateStatistique, new { @class = "datepicker", @tabindex = "7" })@Html.ValidationMessageFor(m => m.DateStatistique, "", new { @style = "display:none;" })</div>
+        </div>
+    </div>
+    <div style="float: left; width: 325px;">
+        <div class="HeightRow">
+            <div class="FloatLeft" style="margin-left: 30px">@Html.CheckBoxFor(m => m.Relance, new { @tabindex = "5" })</div>
+            <div class="FloatLeft">@Html.AlbLabelFor(m => m.Relance, "")</div>
+            <div class="FloatLeft" style="padding-right: 10px">@Html.AlbLabelFor(m => m.RelanceValeur, "")</div>
+            <div class="FloatLeft">
+                @if (Model.Relance)
+                {
+                    @Html.TextBoxFor(m => m.RelanceValeur, new { @class = "numerique", @tabindex = "6", @id = "RelanceValeur" })
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.RelanceValeur, new { @class = "numerique", @tabindex = "6", @id = "RelanceValeur", @disabled = "disabled" })
+                }
+            </div>
+        </div>
+    </div>*@
+</div>

@@ -1,0 +1,423 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFormuleGarantie.ModeleDetailsGarantie
+<div id="dtlGarantie" class="CommonForm FloatLeft" style="width: 790px;">
+    @Html.Hidden("isReadOnly", Model.isReadOnly.ToString())
+    @Html.Hidden("isAvnReadOnly", Model.AvnReadOnly.ToString())
+    @Html.Hidden("DetailGarAvnCreation", (Model.AvnCreation))
+    @Html.HiddenFor(m => m.CodeGarantie)
+    <div class="GroupFull GroupWithBorder GroupNoTitle" style="width: 775px;">
+        <div style="font-weight: bold; padding-bottom: 10px; padding-left: 10px;">
+            @(Model.Garantie)
+            - @(Model.LibelleGarantie)
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 770px">
+            @Html.HiddenFor(m => m.TypeControleDate)
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Caractère</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="Caractere" name="Caractere" class="readonly" readonly="readonly" value="@(Model.Caractere)" title="Caractere" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Nature standard</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="NatureStd" name="NatureStd" class="readonly" readonly="readonly" value="@(Model.NatureStd)" title="Nature standard" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Nature retenue</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.Nature, Model.Natures, "Nature", htmlAttributes: new { @id = "Nature", @disabled = "disabled", @class = "readonly", @albCFList = "nature" }, generateTitle: true)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 770px">
+            <div class="GradientSection">
+                <div class="HeightRow PaddingLeft">
+                    <b>Plage de dates possibles :</b>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Début</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDateFormat(m => m.DateDebStd, new { @class = "readonly", @readonly = "readonly", @title = "Date début standard" })</div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="AutoWidth">à</label>
+                        </div>
+                        <div class="FloatLeft PaddingLeft">@Html.AlbTimePicker(m => m.HeureDebStd, "HeureDebStd", new { @class = "readonly HourMinute", @disabled = "disabled", @id = "HeureDebStd", @title = "Heure début standard" })</div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Fin</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDateFormat(m => m.DateFinStd, new { @class = "readonly", @readonly = "readonly", @title = "Date fin standard" })</div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="AutoWidth">à</label>
+                        </div>
+                        <div class="FloatLeft PaddingLeft">@Html.AlbTimePicker(m => m.HeureFinStd, "HeureFinStd", new { @class = "readonly HourMinute", @disabled = "disabled", @id = "HeureFinStd", @title = "Heure fin standard" })</div>
+                    </div>
+                </div>
+                <div class="HeightRow PaddingLeft">
+                    <b>Dates de la garantie :</b>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Début</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @*@if (Model.isReadOnly || Model.AvnReadOnly)*@
+                            @*2017-04-04 : modification dates V5*@
+                            @if (Model.isReadOnly)
+                            {
+                                @Html.AlbDateFormat(m => m.DateDeb, new { @readonly = "readonly", @class = "readonly", @title = "Date début forcée" })
+                            }
+                            else
+                            {
+                                @Html.AlbDateFormat(m => m.DateDeb, new { @class = "datepicker", @title = "Date début forcée" })
+                            }
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="AutoWidth">à</label>
+                        </div>
+                        <div class="FloatLeft PaddingLeft">@Html.AlbTimePicker(m => m.HeureDeb, "HeureDeb", new { @class = "readonly HourMinute", @disabled = "disabled", @title = "Heure début forcée" })</div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft EmptyInput">
+                            @if (Model.isReadOnly)
+                            {
+                                @Html.CheckBoxFor(m => m.isFinEffet, new { @disabled = "disabled", @class = "readonly" })
+                            }
+                            else
+                            {
+                                @Html.CheckBoxFor(m => m.isFinEffet)
+                            }
+                            <label class="AutoWidth">Fin</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.isReadOnly)
+                            {
+                                @Html.AlbDateFormat(m => m.DateFin, new { @readonly = "readonly", @class = "readonly", @title = "Date fin forcée" })
+                            }
+                            else
+                            {
+                                @Html.AlbDateFormat(m => m.DateFin, new { @class = "datepicker", @title = "Date fin forcée" })
+                            }
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="AutoWidth">à</label>
+                        </div>
+                        <div class="FloatLeft PaddingLeft">@Html.AlbTimePicker(m => m.HeureFin, "HeureFin", new { @class = "readonly HourMinute", @disabled = "disabled", @title = "Heure fin forcée" })</div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft EmptyInput">
+                            @if (Model.isReadOnly)
+                            {
+                                @Html.CheckBoxFor(m => m.isDuree, new { @class = "readonly", @disabled = "disabled" })
+                            }
+                            else
+                            {
+                                @Html.CheckBoxFor(m => m.isDuree)
+                            }
+                            <label class="AutoWidth">Durée</label>
+
+                        </div>
+                        <div class="FloatLeft halfInput MarginRight">
+                            @Html.HiddenNoName("DateFinCalc", string.Empty)
+                            @if (Model.isReadOnly)
+                            {
+                                <input type="text" id="Duree" name="Duree" class="halfInput readonly" readonly="readonly" value="@(Model.Duree)" title="Durée" />
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(m => m.Duree, new { @class = "halfInput" })
+                            }
+                        </div>
+                        <div class="FloatLeft halfInput MarginLeft">
+                            @if (Model.isReadOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => m.DureeUnite, Model.DureeUnites, "DureeUnite", htmlAttributes: new { @id = "DureeUnite", @class = "halfInput readonly", @disabled = "disabled", @albCFList = "uniteDureeFormule" }, generateTitle: true)
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => m.DureeUnite, Model.DureeUnites, "DureeUnite", htmlAttributes: new { @id = "DureeUnite", @class = "halfInput", @albCFList = "uniteDureeFormule" }, generateTitle: true)
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 770px;">
+            <div class="FloatLeft" style="width: 250px;">
+                <div class="GradientSection">
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            @Html.HiddenFor(m => m.GarantieIndexe, new { @id = "inputEffet" })
+                            <div class="FloatLeft">
+                                @if (Model.isReadOnly || Model.Nature == "C" || Model.NatureStd == "C")
+                                {
+                                    @Html.CheckBoxFor(m => m.GarantieIndexe, new { @tabindex = "12", @class = "readonly", @disabled = "disabled", @title = "Garantie indexée" })
+                                }
+                                else
+                                {
+                                    @Html.CheckBoxFor(m => m.GarantieIndexe, new { @tabindex = "12", @title = "Garantie indexée" })
+                                }
+                                <label class="AutoWidth">Garantie indexée</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            @Html.HiddenFor(m => m.LCI, new { @id = "inputEffet" })
+                            <div class="FloatLeft">
+                                <label class="Block">
+                                    &nbsp;</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.CheckBoxFor(m => m.LCI, new { @tabindex = "12", @class = "readonly", @disabled = "disabled", @title = "LCI" })
+                                <label class="AutoWidth">LCI</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            @Html.HiddenFor(m => m.Franchise, new { @id = "inputEffet" })
+                            <div class="FloatLeft">
+                                <label class="Block">
+                                    &nbsp;</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.CheckBoxFor(m => m.Franchise, new { @tabindex = "12", @class = "readonly", @disabled = "disabled", @title = "Franchise" })
+                                <label class="AutoWidth">Franchise</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            @Html.HiddenFor(m => m.Assiette, new { @id = "inputEffet" })
+                            <div class="FloatLeft">
+                                <label class="Block">
+                                    &nbsp;</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @Html.CheckBoxFor(m => m.Assiette, new { @tabindex = "12", @class = "readonly", @disabled = "disabled", @title = "Assiette" })
+                                <label class="AutoWidth">Assiette</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="FloatLeft" style="width: 520px;">
+                <div class="GradientSection" style="height: 107px">
+                    <div class="HeightRow">
+                        @*<div class="GenericColumn">*@
+                        @Html.HiddenFor(m => m.CATNAT, new { @id = "inputEffet" })
+                        <div class="FloatLeft">
+                            <label class="Block">Soumis CATNAT</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.isReadOnly || Model.Nature == "C" || Model.NatureStd == "C")
+                            {
+                                @Html.CheckBoxFor(m => m.CATNAT, new { @tabindex = "12", @disabled = "disabled", @readonly = "readonly", @title = "Soumis CATNAT" })
+                            }
+                            else
+                            {
+                                @Html.CheckBoxFor(m => m.CATNAT, new { @tabindex = "12", @title = "Sousmis CATNAT" })
+                            }
+                        </div>
+                        @*</div>
+                        <div class="GenericColumn">*@
+                        <div class="@(Model.GarTemp != "O" ? "dvNonTempo" : "dvTempo")">
+                            @if (Model.GarTemp != "O")
+                            {
+                                <label class="Block">Application</label>
+                            }
+                            else
+                            {
+                                <label class="AutoWidth"><b>Temporaire :  pour la durée de la garantie et au comptant</b></label>
+                            }
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.isReadOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => m.Application, Model.Applications, "Application", htmlAttributes: new { @id = "Application", @disabled = "disabled", @class = (Model.GarTemp == "O") ? "None" : "readonly", @albCFList = "application" }, generateTitle: true)
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => m.Application, Model.Applications, "Application", htmlAttributes: new { @id = "Application", @class = (Model.GarTemp == "O") ? "None" : string.Empty, @albCFList = "application" }, generateTitle: true)
+                            }
+                        </div>
+                        @*</div>*@
+                    </div>
+                    <div class="HeightRow">
+                        <div class="GenericColumn">
+                            @Html.HiddenFor(m => m.InclusMontant, new { @id = "inputEffet" })
+                            <div class="FloatLeft">
+                                <label class="Block">Incl. montant réf</label>
+                            </div>
+                            <div class="FloatLeft">
+                                @if (Model.isReadOnly)
+                                {
+                                    @Html.CheckBoxFor(m => m.InclusMontant, new { @tabindex = "12", @disabled = "disabled", @class = "readonly", @title = "Inclus montant référence" })
+                                }
+                                else
+                                {
+                                    @Html.CheckBoxFor(m => m.InclusMontant, new { @tabindex = "12", @title = "Inclus montant référence" })
+                                }
+                            </div>
+                        </div>
+
+                        <div class="GenericColumn">
+
+                            <div class="FloatLeft">
+                                <label class="@(Model.GarTemp == "O" ? "None" : "Block")">Type d'émission</label>
+                            </div>
+                            <div class="FloatLeft">
+
+                                @if (Model.isReadOnly)
+                                {
+                                    @Html.AlbDropDownListFor(m => m.TypeEmission, Model.TypesEmission, "TypeEmission", htmlAttributes: new { @id = "TypeEmission", @disabled = "disabled", @class = (Model.GarTemp == "O") ? "None" : "readonly", @albCFList = "typeEmission" }, generateTitle: true)
+                                }
+                                else
+                                {
+                                    @Html.AlbDropDownListFor(m => m.TypeEmission, Model.TypesEmission, "TypeEmission", htmlAttributes: new { @id = "TypeEmission", @class = (Model.GarTemp == "O") ? "None" : string.Empty, @albCFList = "typeEmission" }, generateTitle: true)
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="HeightRow">
+                        <div class="ColumnCheckBox">
+                            <div class="FloatLeft">
+                                <label class="Block WidthLabelCheckBox">Régularisation</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input id="IsRegularisable" type="checkbox" checked="@(Model.IsRegul == "O" )" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="ColumnDDL">
+                            <div class="FloatLeft">
+                                <label class="Block WidthLabelDDL" style="width: 50px; padding-left: 10px;">Grille</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="LibGrille" name="LibGrille" class="readonly" readonly="readonly" value="@(Model.LibGrilleRegul)" title="Grille" />
+                            </div>
+                        </div>
+                    </div>
+
+                    @*   <div class="HeightRow">
+                        <div class="FloatRight PaddingRight">
+                            @if (Model.GarTemp == "O")
+                            {
+                                <label class="AutoWidth"><b>Temporaire :  pour la durée de la garantie et au comptant</b></label>
+                            }
+                            else
+                            {
+                                @Html.Raw("&nbsp;")
+                            }
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 770px">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Code Taxe</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.isReadOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => m.CodeTaxe, Model.CodesTaxe, "Taxe", htmlAttributes: new { @id = "Taxe", @disabled = "disabled", @class = "readonly", @albCFList = "codeTaxe" }, generateTitle: true)
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => m.CodeTaxe, Model.CodesTaxe, "Taxe", htmlAttributes: new { @id = "Taxe", @albCFList = "codeTaxe" }, generateTitle: true)
+                            }
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Définition garantie</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @*@Html.TextBoxFor(m => m.Definition, new { @class = "readonly", @readonly = "readonly" })*@
+                            <input type="text" id="Definition" name="Definition" class="readonly" readonly="readonly" value="@(Model.Definition)" title="Définition garantie" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Alimentation</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @if (Model.isReadOnly)
+                            {
+                                @Html.AlbDropDownListFor(m => m.AlimAssiette, Model.AlimAssiettes, "AlimAssiette", htmlAttributes: new { @id = "AlimAssiette", @disabled = "disabled", @class = "readonly" }, generateTitle: true)
+                            }
+                            else
+                            {
+                                @Html.AlbDropDownListFor(m => m.AlimAssiette, Model.AlimAssiettes, "AlimAssiette", htmlAttributes: new { @id = "AlimAssiette" }, generateTitle: true)
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 775px">
+        <div class="ActionButtons ActionButtonLeft" style="width: 20px;">
+            <img id="infoDetail" src="@(Url.Content("/Content/Images/alertes/notif_icn_info16.png"))" alt="Informations" class="CursorPointer" />
+        </div>
+        <div class="@(Model.Caractere == "O" ? "FloatLeft textRouge" : "FloatLeft None")" style="width: 508px; padding-top: 20px; padding-left: 50px;">
+            Attention la garantie est obligatoire, la modification des dates risque de créer des incohérences.
+        </div>
+        <div class="ActionButtons ActionButtonRight" style="width: 170px !important;">
+            @if (!Model.isReadOnly)
+            {
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnFancyValider" type="button" albshortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+
+            }
+            else
+            {
+                <button id="btnFancyAnnuler" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+            }
+        </div>
+    </div>
+
+    <div id="divInfoDetail" class="None">
+        <div class="overlay-background" style="z-index:60" >
+        </div>
+        <div id="divDataInfoDetail" class="dvDataInfoDetail">
+        </div>
+    </div>
+
+</div>
+

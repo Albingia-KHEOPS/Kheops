@@ -1,0 +1,119 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamClause.ParamEtapeContexte
+<div class="GroupTitle FloatLeft">
+    Liste des contextes
+</div>
+<div class="FloatRight PaddingTop">
+    <button id="AjoutCTX" type="button" albshortcut="true" data-accesskey="c">KHEOP/<u>C</u>TX</button>
+    <button id="AjoutOMP" type="button" albshortcut="true" data-accesskey="o">KHEOP/<u>E</u>MP</button>
+    @Html.Hidden("CodeConcept", string.Empty)
+    @Html.Hidden("LibelleConcept", string.Empty)
+</div>
+<div class="HorizontalFullWithGroup ParamWidth">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="ColumnEnteteContexte">
+                <div class="FloatLeft">
+                    @Html.HiddenFor(m => m.CodeService)
+                    @Html.Hidden("CodeActGes", (Model.CodeActeGestion))
+                    @Html.HiddenFor(m => m.CodeEtape)
+                    @Html.Hidden("CodeContexte", string.Empty)
+                    <label class="Block">Service</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Service" name="Service" value="@(Model.CodeService + " - " + Model.Service)" readonly="readonly" class="readonly WidthInput" />
+                </div>
+            </div>
+            <div class="ColumnEnteteContexte">
+                <div class="FloatLeft">
+                    <label class="Block">Acte de gestion</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="ActeGestion" name="ActeGestion" value="@(Model.CodeActeGestion + " - " + Model.ActeGestion)" readonly="readonly" class="readonly WidthInput" />
+                </div>
+            </div>
+            <div class="ColumnEnteteContexte">
+                <div class="FloatLeft">
+                    <label class="Block">Etape</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="text" id="Etape" name="Etape" value="@(Model.CodeEtape + " - " + Model.Etape)" readonly="readonly" class="readonly WidthInput" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GradientSection ParamHeight">
+        <div id="listParam" class="PaddingLeft">
+            <div id="divHeaderParam">
+                <table id="tblHeaderParam">
+                    <tr>
+                        <th class="colHActe tablePersoHead">Contexte
+                        </th>
+                        <th class="colHLibelle tablePersoHead">Libellé
+                        </th>
+                        <th class="colHAjout tablePersoHead">Ajout clausier
+                        </th>
+                        <th class="colHAjout tablePersoHead">Ajout libre</th>
+                        <th class="colHAjout tablePersoHead" title="Emplacement modifiable">Empl. Modif.</th>
+                        <th class="colHScript tablePersoHead">Script de contrôle</th>
+                        <th class="colHScript tablePersoHead">Modele de clause</th>
+                        <th class="colHScript tablePersoHead" title="Emplacement/Sous emplacement/Ordonnancement">Empl./Sous Empl./Ordo.</th>
+                        <th class="colHBtn tablePersoHead">
+                            <img src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" title="Ajouter" id="addContexte" />
+                        </th>
+                        <th class="colHBtn tablePersoHead">&nbsp;
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="divBodyParam">
+                <table id="tblBodyParam" style="table-layout: fixed; width: 1140px;">
+                    @foreach (var contexte in Model.ListContextes)
+                    {
+                        var libClause = (!string.IsNullOrEmpty(contexte.ModeleClause1) && !string.IsNullOrEmpty(contexte.ModeleClause2)
+                                                && !string.IsNullOrEmpty(contexte.ModeleClause3)) ?
+                                                string.Format("{0} - {1} - {2} - {3}", contexte.ModeleClause1, contexte.ModeleClause2, contexte.ModeleClause3, contexte.LibModelClause) : string.Empty;
+                        var empl = (!string.IsNullOrEmpty(contexte.Emplacement)) ? contexte.Emplacement + " - " + contexte.LibEmplacement : string.Empty;
+                        empl = (!string.IsNullOrEmpty(contexte.SousEmplacement)) ? !string.IsNullOrEmpty(empl) ? empl + " / " + contexte.SousEmplacement : contexte.SousEmplacement : empl;
+                        empl = (!string.IsNullOrEmpty(contexte.NumOrdonnancement) && contexte.NumOrdonnancement != "0") ? !string.IsNullOrEmpty(empl) ? empl + " / " + contexte.NumOrdonnancement : contexte.NumOrdonnancement : empl;
+                        <tr>
+                            <td class="colBActe">
+                                @*<a href="#" id="openContexte_@(contexte.Param)" name="openContexte">@contexte.Param</a>*@
+                                @contexte.Param
+                            </td>
+                            <td class="colBLibelle clipped" title="@contexte.Libelle">
+                                @contexte.Libelle
+                            </td>
+                            <td class="colBAjout">
+                                @if (contexte.AjoutClausier)
+                                { 
+                                    <img src="@(Url.Content("/Content/Images/check_1616.gif"))" alt="AjoutClausier" title="Ajout clausier" />
+                                }
+                            </td>
+                            <td class="colBAjout">
+                                @if (contexte.AjoutLibre)
+                                { 
+                                    <img src="@(Url.Content("/Content/Images/check_1616.gif"))" alt="AjoutLibre" title="Ajout libre" />
+                                }
+                            </td>
+                            <td class="colBAjout">
+                                @if (contexte.EmplModif)
+                                { 
+                                    <img src="@(Url.Content("/Content/Images/check_1616.gif"))" alt="EmplModif" title="Emplacement modifiable" />
+                                }
+                            </td>
+                            <td class="colBScript clipped" title="@contexte.ScriptControle">@contexte.ScriptControle</td>
+                            <td class="colBScript clipped" title="@libClause">@libClause</td>
+                            <td class="colBScript clipped" title="@empl">@empl</td>
+                            <td class="colBBtn">
+                                <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="delContexte_@(contexte.Code)" name="delContexte" alt="Supprimer contexte" title="Supprimer contexte" class="CursorPointer" />
+                            </td>
+                            <td class="colBBtn">
+                                <img src="@Url.Content("/Content/Images/editer1616.png")" id="editContexte_@(contexte.Code)" name="editContexte" alt="Modifier contexte" title="Modifier contexte" class="CursorPointer" />
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamClausePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamClause.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamClause.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft">
+        <div id="contenu">
+
+            <div class="CommonForm TotalWidth">
+                @Html.Hidden("hiddenInputId", string.Empty)
+                <div id="divBodyPage" class="GroupFull GroupWithBorder TotalWidth">
+                    @Html.Partial("ParamClauseActeGestion", Model)
+                </div>
+                <div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+
+
+<div id="ajoutParam">
+    <div class="overlay-background" style="z-index:4" >
+    </div>
+    <div id="divDataParam">
+    </div>
+</div>
+<div id="saisieRattach">
+    <div class="overlay-background" style="z-index:4" >
+    </div>
+    <div id="divDataSaisie">
+    </div>
+</div>
+<div id="addConceptFamille" class="None">
+    <div class="overlay-background" style="z-index:4" ></div>
+    <div class="dvDataConceptFamille">
+        <div id="divDataConceptFamille" class="GroupFull GroupWithBorder GroupBackOffice FloatLeft" style="height: 620px;"></div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight GroupBackOffice">
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnFermer" type="button" albshortcut="true" data-accesskey="m">Fer<u>m</u>er</button>
+            </div>
+        </div>
+    </div>
+</div>

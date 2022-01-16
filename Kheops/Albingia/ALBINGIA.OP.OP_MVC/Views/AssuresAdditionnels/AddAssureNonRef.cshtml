@@ -1,0 +1,46 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.AssuresAdditionnels.AssuresNonRef
+<div id="divAddAssureNonRef" class="CommonForm FloatLeft" style="width: 790px;">
+    @Html.HiddenFor(m => m.IdAssuNonRef)
+    @Html.Hidden("ModeAddAssu", "NonRef")
+    @Html.Hidden("ModeEdit", Model.ModeEdit ? 1 : 0)
+    <div class="GroupFull GroupWithBorder" style="width: 775px;">
+        <div class="GroupTitle">
+            Ajout / Modification d'un assuré non-désigné
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 770px;">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColum">
+                        <div class="FloatLeft">
+                            <label class="Block">Qualités</label>
+                        </div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.CodeQualite1, Model.Qualites1, "CodeQualite1", htmlAttributes: new { @id = "CodeQualite1", @albCFList = "qualite" }, generateTitle: true)</div>
+                    </div>
+                    <div class="GenericColum">
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.CodeQualite2, Model.Qualites2, "CodeQualite2", htmlAttributes: new { @id = "CodeQualite2", @albCFList = "qualite" }, generateTitle: true)</div>
+                        <div class="FloatLeft">@Html.AlbDropDownListFor(m => m.CodeQualite3, Model.Qualites3, "CodeQualite3", htmlAttributes: new { @id = "CodeQualite3", @albCFList = "qualite" }, generateTitle: true)</div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="">
+                        <div class="FloatLeft">
+                            <label class="Block">Autre</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="QualiteAutre" name="QualiteAutre" value="@(Model.QualiteAutre)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 775px">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+            <input type="button" id="btnFancyAnnuler" value="Annuler" tabindex="29" />
+            <input type="button" id="btnFancyValider" value="Valider" tabindex="28" />
+        </div>
+    </div>
+</div>

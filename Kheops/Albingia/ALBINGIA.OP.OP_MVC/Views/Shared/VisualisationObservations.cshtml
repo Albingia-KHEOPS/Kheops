@@ -1,0 +1,99 @@
+﻿@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.Framework.Common.Constants
+@model ALBINGIA.OP.OP_MVC.Models.Avenant.ModelesAvenant.ModeleVisuObservations
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albVisualisationObservations.js" }, "~/Scripts/AlbingiaJS/")
+<div id="divVisualisationObsvConteneur" class="FloatLeft" style="padding-left:3px;">
+    <div class="GroupFull GroupWithBorder" style="width: 1603px;">
+        <div class="GroupTitle">
+            Observations
+        </div>
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection PaddingLeft inputObsv" style="height:727px; margin-left:7px;">
+                <div class="HeightRow">
+                    <div class="FloatLeft visuObsvWidthTitleLabelLarge">
+                        <label class="Block FloatLeft visuObsvWidthLargelabel">Commentaires infos générales</label>
+
+
+                        <div class="FloatLeft">
+                            <!--<div id="ObsvInfoGen" style="width: 540px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.ObsvInfoGen)</div>-->
+                            <textarea id="ObsvInfoGen" name="ObsvInfoGen" class="NonReprisCP" style="margin-left:11px; width:1312px; max-width:1302px; height:112px" tabindex="6">@Model.ObsvInfoGen</textarea>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft visuObsvWidthTitleLabelLarge">
+                        <label class="Block FloatLeft visuObsvWidthLargelabel">Commentaires sur com. et cotis.</label>
+
+
+                        <div class="FloatLeft">
+                            <!--<div id="ObsvCotisation" style="width: 540px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.ObsvCotisation)</div>-->
+                            <textarea id="ObsvCotisation" name="ObsvCotisation" class="NonReprisCP" style="margin-left:11px; width:1312px; max-width:1302px; height:112px" tabindex="6">@Model.ObsvCotisation</textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft visuObsvWidthTitleLabelLarge">
+                        <label class="Block FloatLeft visuObsvWidthLargelabel">Commentaires sur engagements</label>
+                        <div class="FloatLeft">
+                            <!--<div id="ObsvEngagement" style="width: 540px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.ObsvEngagement)</div>-->
+                            <textarea id="ObsvEngagement" name="ObsvEngagement" class="NonReprisCP" style="margin-left:11px; width:1312px; max-width:1302px; height:112px" tabindex="6">@Model.ObsvEngagement</textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft visuObsvWidthTitleLabelLarge">
+                        <label class="Block FloatLeft visuObsvWidthLargelabel">Commentaires sur mnt. de référence</label>
+
+                        <div class="FloatLeft">
+                            <!--  <div id="ObsvMntRef" style="width: 540px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.ObsvMntRef)</div>-->
+                            <textarea id="ObsvMntRef" name="ObsvMntRef" class="NonReprisCP" style="margin-left:11px; width:1312px; max-width:1302px; height:112px" tabindex="6">@Model.ObsvMntRef</textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                @*SABbug2021  110516 *@
+                <div class="HeightRow">
+                    <div class="FloatLeft visuObsvWidthTitleLabelLarge">
+                        <label class="Block FloatLeft visuObsvWidthLargelabel">Commentaires sur réf de gestion </label>
+
+
+                        <div class="FloatLeft">
+                            <!--  <div id="ObsvRefGest" style="width: 540px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.ObsvRefGest)</div>-->
+                            <textarea id="ObsvRefGest" name="ObsvRefGest" class="NonReprisCP" style="margin-left:11px; width:1312px; max-width:1302px; height:112px" tabindex="6">@Model.ObsvRefGest</textarea>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight" style="width:1603px;">
+        <div id="LoadingDiv" class="FloatLeft">
+            <img src="/Content/Images/ajax-loader.gif" alt="" />
+        </div>
+        <div class="ActionButtons ActionButtonRight">
+
+            @if (ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Exists(
+                el => el.TypeDroit == TypeDroit.G.ToString()
+                || el.TypeDroit == TypeDroit.A.ToString()
+                || el.TypeDroit == TypeDroit.M.ToString()))
+            {
+                <button id="btnEnregistrerVisualisationObservations" type="button" albshortcut="true" data-accesskey="E"><u>E</u>nregistrer</button>
+                <script>
+                    $("#ObsvInfoGen").removeClass("readonly").removeAttr("disabled");
+                    $("#ObsvCotisation").removeClass("readonly").removeAttr("disabled");
+                    $("#ObsvEngagement").removeClass("readonly").removeAttr("disabled");
+                    $("#ObsvMntRef").removeClass("readonly").removeAttr("disabled");
+                    $("#ObsvRefGest").removeClass("readonly").removeAttr("disabled");
+
+                </script>
+            }
+            <button id="btnFermerVisualisationObservations" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>

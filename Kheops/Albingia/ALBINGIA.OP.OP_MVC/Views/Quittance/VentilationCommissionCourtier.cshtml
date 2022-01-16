@@ -1,0 +1,18 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.VentilationCommissionCourtier>
+@{
+    foreach (var courtier in Model)
+    {
+    <tr>
+        <td class="col_VentDetailDoubleColumn ">@courtier.LibelleCourtier
+        </td>
+        <td class="col_VentDetailSmallColumn " style="text-align:right;"><span albmask="decimal">@courtier.Repartition</span>
+        </td>     
+        <td class="col_VentDetailSmallColumn " style="text-align:right;"><span albmask="decimal">@courtier.HorsCATNAT</span>
+        </td>
+        <td class="col_VentDetailSmallColumn " style="text-align:right;"><span albmask="decimal">@courtier.CATNAT</span>
+        </td>
+        <td class="col_VentDetailSmallColumn " style="text-align:right;"><span albmask="decimal">@courtier.Total</span>
+        </td>
+    </tr>        
+    }
+}

@@ -1,0 +1,10 @@
+﻿@using ALBINGIA.Framework.Common.CacheTools
+@{
+    var messageErreur = AlbSessionHelper.MessageErreurEcran;
+    AlbSessionHelper.MessageErreurEcran = string.Empty;
+    if (!String.IsNullOrWhiteSpace(messageErreur)) {
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () { common.error.showMessage("@Html.Raw(HttpUtility.JavaScriptStringEncode(messageErreur))"); });
+        </script>
+    }
+}

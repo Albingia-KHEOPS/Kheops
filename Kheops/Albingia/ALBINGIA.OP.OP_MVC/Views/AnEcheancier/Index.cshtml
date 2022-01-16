@@ -1,0 +1,167 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleEcheancierPage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albEcheancier.css" }, "~/Content/AffaireNouvelle/")
+@*@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albEcheancier.js" }, "~/Scripts/AlbingiaJS/AffaireNouvelle/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}*@
+<div class="FullWidth">
+    <div class="CommonForm FloatLeft">
+        @Html.Hidden("currentPrimeUpd", 0)
+        @Html.Hidden("currentTauxUpd", 0)
+        <div class="nGroupFull GroupWithBorder" style="width: 735px;">
+            @*@Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)*@
+            <div class="nHorizontalFullWithGroup" style="width: 735px;">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="CoulumnPrimeHt FloatLeft">
+                            <div class="FloatLeft">
+                                <label id="lblPrimeHT" class="Block">Prime à répartir (€)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="PrimeHT" name="PrimeHT" class="readonly decimal" albMask="decimal" readonly="readonly" value="@Model.PrimeHT" title="Montant de la prime HT et hors CATNAT" />
+                            </div>
+                        </div>
+                        @*  <div class="CoulumnFraisHt FloatLeft">
+                            <div class="FloatLeft">
+                                <label class="Block LabelFraisAccessoire">Frais accessoires HT (€)</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="FraisAccessoiresHT" name="FraisAccessoiresHT" class="readonly decimal"  albMask="decimal"  readonly="readonly" value="@Model.FraisAccessoiresHT" title="Montant des frais accessoires HT et hors CATNAT" />
+                            </div>
+                        </div>*@
+                        <div class="CoulumnPeriode FloatLeft">
+                            <div class="FloatLeft labelPeriodeDebut">
+                                <label class="Block">Période du</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="PeriodeDebut" name="PeriodeDebut" class="readonly" readonly="readonly" value="@Model.PeriodeDebut" />
+                            </div>
+                        </div>
+                        <div class="CoulumnPeriode FloatLeft">
+                            <div class="FloatLeft">
+                                <label class="Block LabelPeriodeFin">au</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="PeriodeFin" name="PeriodeFin" class="readonly" readonly="readonly" value="@Model.PeriodeFin" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <span class="TitreComptant FloatLeft" style="padding-top: 2px;">Répartition du comptant </span>
+                        <div class="LargePaddingLeft FloatLeft">
+                            <input type="radio" id="modePourcent" name="modeComptant" value="@ALBINGIA.Framework.Common.AlbEnumInfoValue.GetEnumInfo(ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.ModeSaisieEcheancier.Pourcent)" checked="@(!Model.IsModeSaisieParMontant )" disabled="@(Model.IsReadOnly )"/>
+                        </div>
+                        <div class="FloatLeft" style="padding-top: 2px;">
+                            <label>en %</label>
+                        </div>
+                        <div class="LargePaddingLeft FloatLeft">
+                            <input type="radio" id="modeMontant" name="modeComptant" value="@ALBINGIA.Framework.Common.AlbEnumInfoValue.GetEnumInfo(ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.ModeSaisieEcheancier.Montant)" checked="@(Model.IsModeSaisieParMontant )" disabled="@(Model.IsReadOnly )"/>
+                        </div>
+                        <div class="FloatLeft" style="padding-top: 2px;">
+                            <label>en montant</label>
+                        </div>
+                    </div>
+                    <div class="HeightRow" style="height: 60px; padding-left: 90px;">
+                        <table id="tblComptantHeader">
+                            <tr>
+                                <th class="col_HeaderPourcentage tablePersoHead">
+                                    %
+                                </th>
+                                <th class="col_HeaderMontant tablePersoHead">
+                                    Montant(€)
+                                </th>
+                                <th class="col_HeaderFrais tablePersoHead">
+                                    Frais(€)
+                                </th>
+                                <th class="col_HeaderAttentat tablePersoHead">
+                                    FGA
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="divComptantBody">
+                            <table id="tblComptantBody" class="trHeight">
+                                <tr>
+                                    <td class="col_Pourcentage">
+                                        <input type="text" id="PrimeComptant" name="PrimeComptant" class="decimal PrimePourcent" albMask="pourcentnumeric" value="@(Model.PrimeComptant != 0 ? Model.PrimeComptant.ToString() : string.Empty)" disabled="@(Model.IsModeSaisieParMontant || Model.IsReadOnly )" />
+                                    </td>
+                                    <td class="col_Montant">
+                                        <input type="text" id="ComptantHT" name="ComptantHT" class="decimal" albMask="decimal" value="@Model.ComptantHT" disabled="@(!Model.IsModeSaisieParMontant || Model.IsReadOnly)" style="width:198px;" />
+                                        @Html.Hidden("MontantRestant", Model.MontantRestant.ToString().Replace(",", "."))
+                                    </td>
+                                    <td class="col_Frais">
+                                        <input type="text" id="FraisAccessoiresComptantHT" name="FraisAccessoiresComptantHT" class="decimal readonly WidthInputCell" albMask="decimal" value="@Model.FraisAccessoiresComptantHT" disabled="disabled" />
+                                    </td>
+                                    <td class="col_Attentat">
+                                        @if (@Model.TaxeAttentat)
+                                        {
+                                            <img src="@Url.Content("/Content/Images/Checkmark-16.png")" alt="" />
+                                        }
+                                        <input id="TaxeAttentatComptant" class="None" name="TaxeAttentatComptant" value="Model.TaxeAttentat" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nHorizontalFullWithGroup" style="width: 735px;">
+                <div class="nGradientSection HeightEcheances">
+                    <div id="divEcheancesHeader">
+                        <table id="tblEcheancesHeader">
+                            <tr>
+                                <th class="col_HeaderDate tablePersoHead">
+                                    Date
+                                </th>
+                                <th class="col_HeaderPourcentage tablePersoHead">
+                                    %
+                                </th>
+                                <th class="col_HeaderMontant tablePersoHead">
+                                    Montant(€)
+                                </th>
+                                <th class="col_HeaderFrais tablePersoHead">
+                                    Frais(€)
+                                </th>
+                                <th class="col_HeaderAttentat tablePersoHead">
+                                    FGA
+                                </th>
+                                <th class="col_HeaderButtons tablePersoHead">
+                                    @if (Model.IsReadOnly) {
+                                        <img title="Ajouter" alt="Ajouter" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" />
+                                    }
+                                    else {
+                                        <img title="Ajouter" alt="Ajouter" id="btnAfficherActionEcheance" name="btnAfficherActionEcheance" class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+                                    }
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divEcheancesBody">
+                        @Html.Partial("ListeEcheances", Model.Echeances)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight" style="width: 735px;">
+            <div class="ActionButtons ActionButtonLeft" style="width: 250px;">
+                @if (!Model.IsReadOnly) {
+                    <button id="btnSupprimerEcheancier" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uppression de l'échéancier</button>
+                }
+            </div>
+            <div class="ActionButtons ActionButtonRight" style="width: 250px;">
+                @if (!Model.IsReadOnly) {
+                    //KC<button id="btnAnnulerEcheancier" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                    <button id="btnValiderEcheancier" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+                }
+                else {
+                    <button id="btnAnnulerEcheancier" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divUpdateEcheance">
+    <div class="overlay-background" style="z-index:36" >
+    </div>
+    <div id="divDataUpdateEcheance">
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClausier
+<tr>
+    <td class="tdEmptyBody">
+        @*   <input type="radio" id="rbt_@(Model.Code)" name="rbt" value="@(Model.Code + '_' + Model.Version)" class="ChkClause"/>*@
+        @if (Model.SelectionPossible == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SELECTION_POSSIBLE_OUI)
+        {
+            <input type="radio" id="rbt_@(Model.Code)" name="rbt" value="@(Model.Code + "_" + Model.Rubrique + "_" + Model.SousRubrique + "_" + Model.Sequence + '_' + Model.Version + "_" + Model.DateDeb + "_" + Model.DateFin + "_" + Model.Rubrique + '_' + Model.SousRubrique + '_' + Model.Sequence + '_' + Model.Code + '_' + Model.Libelle)" class="ChkClause"/>
+        }
+        else
+        {
+            <input type="radio" id="rbt_@(Model.Code)" name="rbt" value="@(Model.Code + "_" + Model.Rubrique + "_" + Model.SousRubrique + "_" + Model.Sequence + '_' + Model.Version + "_" + Model.DateDeb + "_" + Model.DateFin + "_" + Model.Rubrique + '_' + Model.SousRubrique + '_' + Model.Sequence + '_' + Model.Code + '_' + Model.Libelle)" class="ChkClause" disabled="disabled" />
+        }
+    </td>
+    <td class="col_RubriqueBody">
+        @Model.Rubrique
+    </td>
+    <td class="col_SousRubriqueBody">
+        @Model.SousRubrique
+    </td>
+    <td class="col_SequenceBody">
+        @Model.Sequence
+    </td>
+    <td class="col_VersionBody">
+        @Model.Version
+    </td>
+    <td class="col_LibelleBody" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+        <a href="#@(Model.Code)detail" id="lnkDetail_@(Model.Code)" name="detail" class="lnkDetail" title="@Model.Libelle.Trim()" >@Model.Libelle.Trim()</a>
+    </td>
+    <td class="tdEmptyHistoBody">
+        @if (Model.Version > 1)
+        {
+            <a href="#Histo@(Model.Code)" id="HistoLink_@(Model.Code)">
+                <img id="HistoLink_@(Model.Rubrique + '_' + Model.SousRubrique + '_' + Model.Sequence + '_' + Model.Code + '_' + Model.Libelle)" name="HistoLink" class="CursorPointer" src="@Url.Content("/Content/Images/Clock-History-Frame-16-green.png")" alt="Historique" title="Historique" />
+            </a>
+        }
+        else
+        {
+            <img id="Histo_@(Model.Rubrique + '_' + Model.SousRubrique + '_' + Model.Sequence + '_' + Model.Code + '_' + Model.Libelle)" name="Histo" src="@Url.Content("/Content/Images/Clock-History-OFF-16.png")" alt="Historique" title="Historique" />
+        }
+    </td>
+</tr>

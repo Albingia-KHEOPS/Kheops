@@ -1,0 +1,9 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamTemplates.ModeleLigneTemplate>
+<table id="tblTemplatesBody" class="trHeight">
+    @foreach (var ligne in Model)
+    {
+        <tr name="ligneTemplate" id="@("ligneTemplate_" + @ligne.GuidId)">
+            @Html.Partial("LigneTemplate", @ligne)
+        </tr>
+    }
+</table>

@@ -1,0 +1,41 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesGarantieModeles.ModeleGarantieModele>
+<table id="tblModele" class="trHeight">
+    @foreach (var item in Model)
+    {
+        var linkCode = "";
+        if (!string.IsNullOrEmpty(item.GuidId))
+        {
+            linkCode = item.GuidId;
+        }
+        else
+        {
+            linkCode = item.Code;
+        }
+        <tr id="@("tr_" + @item.Code)" class="linkModelesGarantie">
+            @if (HttpContext.Current.Request.FilePath != "/GarantieModele/Recherche")
+            { 
+                <td class="modifModele tdBodyEditModele">
+                    <img id="@("edt_" + @linkCode)" src="@Url.Content("/Content/Images/editer1616.png")" alt="Modifier" title="Modifier" name="modifModele" />
+                </td>
+            }
+            <td name="codeModele" class="bCode" title="@item.Code">
+                @item.Code
+            </td>
+            <td class="bDescr" title="@item.Description">
+                @item.Description
+            </td>
+            @if (HttpContext.Current.Request.FilePath != "/GarantieModele/Recherche")
+            { 
+                <td name="dateModele" class="bDate">
+                    @item.DateAppli.Value.ToString("dd/MM/yyyy")
+                </td>
+                <td name="typologieModele" class="bTypo" title="Typologie">
+                    @item.Typologie
+                </td>
+                <td class="supprModele bImg">
+                    <img id="@("suppr_" + @linkCode)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprModele" />
+                </td>
+            }
+        </tr>
+    }
+</table>

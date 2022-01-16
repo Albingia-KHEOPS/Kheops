@@ -1,0 +1,35 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleGestUtilisateursPage
+<div id="liste" class="GradientSection PaddingLeft">
+    <table id="tblHeaderParam">
+        <tr>
+            <th class="headerCell tablePersoHead">Utilisateur
+            </th>
+            <th class="headerCell tablePersoHead">Branche<span class="spImg" style="float: right;">
+                                               
+            </th>
+            <th class="headerCell tablePersoHead">Type de Droit<span class="spImg" style="float: right;">
+                                                
+            </th>
+            @if (Model.AddUserEnabled && !Model.IsReadOnly)
+            {
+                <th id="btnAjouter" class="CursorPointer tablePersoHead headerBtnCell" title="Ajouter" albcontext="@Model.Albcontext">
+                    <img src="@Url.Content("/Content/Images/plusajouter1616.png")" />
+                </th>
+            }
+            else
+            {
+                if (!Model.IsReadOnly)
+                {
+                <th id="" class="CursorPointer tablePersoHead headerBtnCell" title="" albcontext="@Model.Albcontext"></th>
+                }
+            }
+        </tr>
+    </table>
+
+    <div id="divBodyParam" class="TblUserList" albcontext="@Model.Albcontext">
+        <table id="utilisateurBrancheRows" class="styled" albcontext="@Model.Albcontext">
+            @Html.Partial("AddUtilisateurWidget", Model)
+            @Html.Partial("UtiliDroitBranches", Model)
+        </table>
+    </div>
+</div>

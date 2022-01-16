@@ -1,0 +1,54 @@
+﻿
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationAffaireNouvellePage
+@{
+    ViewBag.Title = "Choix Fornules/Options";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+
+<div class="default-container">
+    <div class="container container-details">
+        <div class="main-title">Choix des formules / options</div>
+        <div class="container-lines">
+            <div>
+                @using (Ajax.BeginForm("SetSelectionFormules", "CreationAffaireNouvelle", null,
+                    new AjaxOptions {
+                        UpdateTargetId = "selectionFormulesOptions",
+                        OnBegin = "affaireNouvelle.choixFormules.startUpdate",
+                        OnSuccess = "affaireNouvelle.choixFormules.submitDone",
+                        OnComplete = "affaireNouvelle.choixFormules.submitEnded"
+                    },
+                    new { id = "ajaxForm" })) {
+                    <div id="selectionFormulesOptions">
+                        @Html.Partial("_FormulesAffaireNouvelle", Model.NouvelleAffaire)
+                    </div>
+                }
+
+                @using (Ajax.BeginForm("ValidationNewAffaire", "CreationAffaireNouvelle", null,
+                    new AjaxOptions {
+                        OnBegin = "affaireNouvelle.choixFormules.startValidate",
+                        OnSuccess = "affaireNouvelle.choixFormules.submitValidateDone",
+                        OnFailure = "affaireNouvelle.choixFormules.submitValidateError"
+                    },
+                    new { id = "form1", @class = "hide-it" })) {
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+    <div class="ActionButtons ActionButtonRight">
+        <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+        <button id="btnPrecedent" type="button" albshortcut="true" data-accesskey="p"><u>P</u>récédent</button>
+        <button id="btnValiderFormulesOptions" type="button" data-accesskey="s"><u>S</u>uivant</button>
+    </div>
+</div>
+
+@section stylesheets {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbCreationAffaireNouvelle")
+}
+
+@section scripts {
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "affaireNouvelle-choixFormules.js" })
+}

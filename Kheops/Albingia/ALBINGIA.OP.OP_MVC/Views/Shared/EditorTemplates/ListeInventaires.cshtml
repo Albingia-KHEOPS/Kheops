@@ -1,0 +1,54 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaData.ListInventaires_MetaData
+<div class="GradientSection HeightAdresse">
+    @Html.HiddenFor(m => m.CodeInventaire)
+    @Html.HiddenNoName("TypeInventaire", Model.TypeInventaire)
+    <div class="DoubleGenericColumn">
+        <div class="HeightRow">
+            <div class="FloatLeft">
+                <label class="Block">Type inventaire</label>
+            </div>
+            @if (Model.Inventaires.Inventaires.Count > 0 || Model.IsReadOnly)
+            { 
+                <div class="FloatLeft PaddingRight">
+                    @Html.AlbDropDownListFor(m => m.TypeInventaire, Model.TypesInventaire, "ListInventairesMetaData_TypeInventaire", htmlAttributes: new { @id = "ListInventairesMetaData_TypeInventaire", @tabindex = "19", @class = "readonly", @disabled = "disabled" }, generateTitle: true)
+                </div>
+                <div class="FloatLeft">
+                    <img src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" alt="Ajouter" id="btnAjouterInventaire" tabindex="20" />
+                </div>
+            }
+            else
+            {
+                <div class="FloatLeft PaddingRight">
+                    @Html.AlbDropDownListFor(m => m.TypeInventaire, Model.TypesInventaire, "ListInventairesMetaData_TypeInventaire", htmlAttributes: new { @id = "ListInventairesMetaData_TypeInventaire", @tabindex = "19" }, generateTitle: true)
+                </div>
+                <div class="FloatLeft">
+                    <img src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" id="btnAjouterInventaire" tabindex="20" class="CursorPointer" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="FieldRow">
+        <div>
+            <table class="tblListInventaire" width="95%">
+                <tr>
+                    <th class="colEmpty">
+                        &nbsp;
+                    </th>
+                    <th id="2" class="colTitle">
+                        Liste inventaires <span class="spImg" style="float: right;">
+                            <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" />
+                        </span>
+                    </th>
+                    <th id="3" class="colTitle">
+                        Spécificité <span class="spImg" style="display: none; float: right;">
+                            <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" />
+                        </span>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div id="divLstInventaires">
+            @Html.Partial("DetailsRisque_ListeInventaires", Model.Inventaires)
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesDocumentsJoints.ModeleDocumentsJoints
+<div id="divDocumentJoints" class="CommonForm FloatLeft">
+    <div class="GroupFull GroupWithBorder">
+        <div class="GroupTitle">Documents joints @(Model.Type == "O" ? "à l'offre" : Model.Type == "P" ? "au contrat" : "à l'offre")</div>
+        <div class="HorizontalFullWithGroup">
+            <div class="GradientSection PaddingLeft" style="height: 329px;">
+                <div id="divDocumentsJointsHeader" class="PaddingLeft">
+                    @Html.Hidden("orderFieldDoc", "DateAjout")
+                    @Html.Hidden("orderTypeDoc", "DESC")
+                    <table id="tblDocumentsJointsHeader" class="trHeight" style="width: 985px; table-layout: fixed;">
+                        <tr>
+                            <th class="tablePersoHead CursorPointer" name="headerTriDoc" albcontext="DateAjout" style="width: 90px;">
+                                <span class="Block FloatLeft PaddingTop" style="width: 75px;">Ajouté le</span>
+                                <span class="Block spImg" style="float: right;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri_desc.png")" albcontext="DateAjout"/>
+                                </span>
+                            </th>
+                            <th class="tablePersoHead CursorPointer" name="headerTriDoc" albcontext="Acte" style="width: 90px;">
+                                <span class="Block FloatLeft PaddingTop" style="width: 75px;">Acte</span>
+                                <span class="Block spImg" style="float: right;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Acte"/>
+                                </span>
+                            </th>
+                            @if (!string.IsNullOrEmpty(Model.CodeAvn) && Model.CodeAvn != "0")
+                            {
+                                <th class="tablePersoHead" style="width: 40px;">N° Int.</th>
+                            }
+                            <th class="tablePersoHead CursorPointer" name="headerTriDoc" albcontext="Titre" style="width: 260px;">
+                                <span class="Block FloatLeft PaddingTop" style="width: 245px;">Titre</span>
+                                <span class="Block spImg" style="float: right;">
+                                    <img class="imageTri" alt="" src="@Url.Content("/Content/Images/tri.png")" albcontext="Titre"/>
+                                </span>
+                            </th>
+                            <th class="tablePersoHead" style="width: @(!string.IsNullOrEmpty(Model.CodeAvn) && Model.CodeAvn != "0" ? "215px;" : "260px;")">Fichier</th>
+                            <th class="tablePersoHead" style="width: 100px;">Référence</th>
+                            <th class="tablePersoHead" style="width: 85px;">Référencé CP</th>
+                            <th class="tablePersoHead" style="width: 50px;">
+                                @if (!Model.ReadOnly || Model.IsValide)
+                                {
+                                    <img id="btnAddDoc" class="CursorPointer" style="text-align:center;" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" />
+                                }
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divDocumentsJointsBody" class="PaddingLeft" style="max-height: 290px; overflow: auto;">
+                    @if (Model.ListDocuments.Count > 0)
+                    {
+@*@Html.Partial("DocumentsJointsListe", Model.ListDocuments)*@
+                        @Html.Partial("DocumentsJointsListe", Model)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonRight">
+            <button id="btnFermerDocJoints" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+        </div>
+    </div>
+</div>
+
+<div id="divAddDocument">
+    <div class="overlay-background" style="z-index:8" ></div>
+    <div id="divDataAddDocument">
+    </div>
+</div>
+
+<div id="divMsgConfirmDocJoint" style="display: none;">
+    <div class="overlay-background" style="z-index:10" ></div>
+    <div id="divDataMsgConfirmDocJoint" style="position: absolute; top: 100px; left: 15%; display: block; z-index: 11; background-color: White; padding: 5px 0 0 5px; height: 149px;">
+        @Html.HiddenNoName("hiddenActionDocJoint", string.Empty)
+        @Html.HiddenNoName("hiddenIdDocJoint", string.Empty)
+        <div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;">
+            <div class="fancybox-outer">
+                <div class="fancybox-inner" style="overflow: auto; width: 281px; height: 115px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2" style="background-color: #EDEDED;">
+                                    <b>Message de Confirmation</b>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="middle" rowspan="2">
+                                    <img alt="" src="/Content/Images/alertes/notif_icn_warn.png">
+                                </td>
+                                <td>
+                                    <div id="msgConfirmDeleteDocJoint" class="FloatLeft FancyTextCenter None">
+                                        Etes-vous sûr de vouloir supprimer le document joint
+                                        <br>
+                                        ?
+                                    </div>
+                                    <div id="msgConfirmCancelDocJoint" class="FloatLeft FancyTextCenter None">
+                                        Etes-vous sûr de vouloir annuler les modifications
+                                        <br>
+                                        ?
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <button id="btnConfirmCancelDocJoint" data-accesskey="n" value="Non" type="button" title="Utilisez la combinaison Alt + N pour accéder à la fonctionnalité">
+                                        <u>N</u>on
+                                    </button>
+                                    <button id="btnConfirmOkDocJoint" data-accesskey="o" value="Oui" type="button" title="Utilisez la combinaison Alt + O pour accéder à la fonctionnalité">
+                                        <u>O</u>ui
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<iframe style="display: none" id="frmUploadedFile" name="frmUploadedFile" onload="UploadDocJoints()" onerror="FailedDocJoints()" width="350px"
+    height="100px" scrolling="no" frameborder="0" marginwidth="0px"
+    marginheight="0px"></iframe>

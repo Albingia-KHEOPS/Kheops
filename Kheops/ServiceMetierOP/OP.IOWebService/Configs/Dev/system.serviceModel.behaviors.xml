@@ -1,0 +1,31 @@
+﻿<behaviors>
+  <serviceBehaviors>
+    <behavior name="OffreServiceBehavior">
+      <serviceDebug includeExceptionDetailInFaults="true" />
+      <serviceMetadata httpGetEnabled="true" httpGetUrl="/metadonnees" />
+      <dataContractSerializer maxItemsInObjectGraph="2147483647" />
+      <serviceTelemetry/>
+      <exceptionLoggerTelemetry/>
+    </behavior>
+    <behavior name="">
+      <serviceMetadata httpGetEnabled="true" />
+      <serviceDebug includeExceptionDetailInFaults="true" />
+      <dataContractSerializer maxItemsInObjectGraph="2147483647" />
+      <serviceTelemetry/>
+      <exceptionLoggerTelemetry/>
+    </behavior>
+
+    <behavior name="restBehavior">
+      <serviceMetadata httpGetEnabled="true" />
+      <serviceDebug includeExceptionDetailInFaults="true"/>
+    </behavior>
+
+  </serviceBehaviors>
+
+  <endpointBehaviors>
+    <behavior name="web">
+      <webHttp />
+    </behavior>
+  </endpointBehaviors>
+
+</behaviors>

@@ -1,0 +1,249 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleFormuleGarantiePage>
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vCreationFormuleGarantie.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albCreationFormuleGarantie.js" } , "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div id="GestionErreur">
+</div>
+<div class="FullWidth">
+    @Html.HiddenNoName("buttonClicked", string.Empty)
+    @Html.HiddenNoName("currentGarantieId", string.Empty)
+    @Html.HiddenNoName("currentGuidGarantie", string.Empty)
+    @Html.HiddenNoName("currentGarantieNiv", string.Empty)
+    @Html.HiddenNoName("currentTypeInven", string.Empty)
+    @Html.Hidden("AddedInventaires", string.Empty)
+    @Html.Hidden("currentOriginCodeInventaire", string.Empty)
+    @Html.HiddenNoName("modeDuplication", (Model.ModeDuplicate.ToString()))
+
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+        @Html.HiddenFor(m => m.CodeFormule)
+        @Html.HiddenFor(m => m.CodeOption)
+        @Html.Hidden("FormGen", string.IsNullOrEmpty(Model.FormGen) ? "0" : Model.FormGen)
+        @Html.HiddenFor(m => m.LettreLib)
+        @Html.Hidden("GuidOption", string.Empty)
+        @Html.Hidden("CodeCibleRsq", Model.CodeCible > 0 ? Model.CodeCible.ToString() : string.Empty)
+        @Html.Hidden("FinEffet", Model.DateFinEffet)
+        @Html.Hidden("DateModifRsq", Model.DateModificationRsq)
+        @Html.Hidden("IsFormuleSortie", Model.IsAlertePeriode)
+        <div class="nGroupFull nGroupWithBorder">
+            <div class="nHorizontalFullWithGroup">
+                @if (Model.IsModeAvenant) {
+                    <div class="nGradientSection" id="divModeAvenant">
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label>Date d'effet de l'avenant</label>
+                                @Html.AlbDateFormat(m => m.DateEffetAvenant, new { @id = "DateEffetAvenant", @name = "DateEffetAvenant", @class = "inputDate readonly", @disabled = "disabled" }, htmlName: "DateEffetAvenant")
+                            </div>
+                            <div class="FloatRight PaddingRight">
+                                <input type="hidden" id="ProchEch" value="@(Model.Contrat.ProchaineEchAnnee != 0 && Model.Contrat.ProchaineEchMois != 0 && Model.Contrat.ProchaineEchJour != 0 ? string.Format("{0}/{1}/{2}", Model.Contrat.ProchaineEchJour.ToString().PadLeft(2, '0'), Model.Contrat.ProchaineEchMois.ToString().PadLeft(2, '0'), Model.Contrat.ProchaineEchAnnee) : string.Empty)" />
+                                @Html.HiddenFor(m => m.IsAvenantModificationLocale)
+                                @Html.HiddenFor(m => m.IsTraceAvnExist)
+                                <input type="checkbox" id="chkModificationAVN" name="chkModificationAVN" checked="@(Model.IsAvenantModificationLocale )" disabled="@(Model.IsTraceAvnExist )" />
+                                <label>Modification de la formule dans l'avenant au</label>
+                                @if (Model.IsAvenantModificationLocale) {
+                                    @Html.AlbDateFormat(m => m.DateEffetAvenantModificationLocale, new { @id = "DateEffetAvenantModificationLocale", @class = "inputDate datepicker", @name = "DateEffetAvenantModificationLocale" }, htmlName: "DateEffetAvenantModificationLocale")
+                                }
+                                else {
+
+                                    @Html.AlbDateFormat(m => m.DateEffetAvenantModificationLocale, new { @id = "DateEffetAvenantModificationLocale", @class = Model.IsAvenantModificationLocale ? "inputDate" : "inputDate readonly", @disabled = "disabled", @name = "DateEffetAvenantModificationLocale" }, htmlName: "DateEffetAvenantModificationLocale")
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="">
+                            <div class="FloatLeft">
+                                <label class="Block">Libellé formule</label>
+                            </div>
+                            @if (Model.FormGen == "0" || string.IsNullOrEmpty(Model.FormGen)) {
+                                <div class="FloatLeft PaddingRight">
+                                    <input type="text" id="LettreLib" name="LettreLib" value="@(Model.LettreLib)" readonly="readonly" class="readonly" style="width:30px;" />
+                                </div>
+                            }
+                            <div class="FloatLeft">
+                                <input type="text" id="Libelle" name="Libelle" value="@(Model.Libelle)" maxlength="60" class="LibWidth" />
+                            </div>
+                            @Html.Hidden("HiddenBranche", (Model.Branche))
+                            <div class="FloatLeft">
+                                <label style=" padding-left: 10px;padding-right:15px;">Cible</label>
+                            </div>
+                            <div class="FloatLeft">
+                                <input type="text" id="CibleRisque" name="CibleRisque" value="@(Model.Cible + " - " + Model.CibleLib)" readonly="readonly" class="readonly inputBranche" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="divAppliqueA">
+                            <div class="FloatLeft">
+                                <label class="Block">s'applique</label>
+                            </div>
+                            <div class="FloatLeft PaddingRight">
+                                @Html.HiddenFor(m => m.ObjetRisqueCode)
+                                <input type="text" id="ObjetRisque" name="ObjetRisque" value="@(Model.ObjetRisque)" readonly="readonly" class="readonly" />
+                            </div>
+                        </div>
+                        @if (Model.FormGen == "0" || string.IsNullOrEmpty(Model.FormGen)) {
+                            <div class="FloatLeft">
+                                <button id="btnMultiObj" type="button" albshortcut="true" data-accesskey="l">Sé<u>l</u>ectionner</button>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+                <div id="divFormuleGarantie" class="@(Model.IsModeAvenant ? "nGradientSection dvFormuleAvenant" : "nGradientSection dvFormule")">
+                    <div id="divGaranties">
+                        <div class="divLabelGarantie PaddingLeft">
+                            Sélection des garanties composant la formule :
+                        </div>
+                        @if (Model.Formule != null) {
+                            <div id="divListGaranties" class="@(Model.IsModeAvenant ? "AscenseurAvt" : "Ascenseur")">
+                                @Html.Partial("ListeFormuleGarantie", Model.Formule)
+                            </div>
+                        }
+                        else {
+                            <div id="divListGaranties" class="@(Model.IsModeAvenant ? "AscenseurAvt" : "Ascenseur")" style="display: none;">
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+            </div>
+            <div id="FullScreenFormule" class="FloatLeft" style="padding-top: 6px;" albcontext="Formule">
+                <button id="btnFullScreen" type="button" class="CursorPointer FullScreenBtn" title="Plein écran">
+                    <img src="@Url.Content("/Content/Images/window_fullscreen.png")" alt="Plein écran" />
+                </button>
+            </div>
+            <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+                <button id="btnAnnuler" type="button" albshortcut="true" albtargetscreen="mainFormuleGarantie" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" albshortcut="true" albtargetscreen="mainFormuleGarantie" data-accesskey="v" tabindex="28" disabled="disabled"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divLstRsqObj">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div style="position: absolute; top: 75px; left: 400px; display: block; z-index: 3; float: left; background-color: #FFF; padding: 10px;">
+        <div id="divWinListRsqObj">
+            <div class="GroupFull GroupWithBorder" style="width: 500px;">
+                <div class="GroupTitle">
+                    Sélection des risques liés à la formule de garantie
+                </div>
+                <div id="dvListObjRsq" class="divFancyListRsqObj">
+                    @if (Model.ObjetsRisquesAll != null)
+                    {
+                        @Html.Partial("ListRsqObj", Model.ObjetsRisquesAll)
+                    }
+                </div>
+            </div>
+            <div class="Validation">
+                @if (Model.IsReadOnly)
+                {
+                    <button id="btnListCancel" type="button" albshortcut="false" data-accesskey="#**#f"><u>F</u>ermer</button>
+                }
+                else
+                {
+                    <button id="btnListCancel" type="button" albshortcut="false" data-accesskey="#**#a"><u>A</u>nnuler</button>
+                    <button id="btnListValid" type="button" albshortcut="false" data-accesskey="#**#v"><u>V</u>alider</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divDetailsGarantie" class="None">
+    <div class="overlay-background" style="z-index:50" >
+    </div>
+    <div style="position: absolute; top: 10px; left: 21px; display: block; z-index: 51; float: left; background-color: #FFF; padding: 10px;">
+        <div id="divDataDetailsGarantie"></div>
+    </div>
+</div>
+<div id="divPorteGarantie" class="None">
+    <div class="overlay-background" style="z-index:8" >
+    </div>
+    <div id="divDataPorteGarantie" class="divDataPorteGarantie">
+    </div>
+</div>
+
+<div id="divLoadFormule">
+    <div class="overlay-background" style="z-index:4" >
+    </div>
+    <div style="position: absolute; top: 42%; left: 50%; display: block; z-index: 5;">
+        <img src="/Content/Images/ajax-loader.gif" alt="" />
+    </div>
+</div>
+<div id="divFullScreenFormule">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataFullScreenFormule">
+    </div>
+</div>
+<div id="divGarantieInventaire" class="None">
+    <div class="overlay-background" style="z-index:8" >
+    </div>
+    <div id="divDataGarantieInventaire" class="divDataGarantieInventaire">
+    </div>
+</div>
+<div id="divErrorAssietteMsg" class="None">
+    <div class="overlay-background" style="z-index:8" >
+    </div>
+    <div id="divDataErrorAssietteMsg" class="divDataErrorAssietteMsg">
+        <div id="divDataAssiette" class="dvDataAssiette">
+            <div class="GroupFull GroupWithBorder dvMessageError">
+                <div class="GroupTitle">Erreur Calcul Assiette</div>
+                <div id="divHeaderErrorMsg">
+                    <table id="tblHeaderErrorMsg" class="trHeight">
+                        <tr>
+                            <th class="tablePersoHead thErrorGarantie">Garantie</th>
+                            <th class="tablePersoHead thErrorMsg">Erreur</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divBodyErrorMsg" class="dvBodyErrorMsg">
+                    <table id="tblBodyErrorMsg" class="trHeight tableBodyError">
+                        <tr id="rowError$$">
+                            <td id="cellErrorGarantie$$" class="tdErrorGarantie"></td>
+                            <td id="cellErrorMsg$$" class="tdErrorMsg" title=""></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="Validation">
+                <input type="button" id="btnOKAssiette" value="OK" />
+            </div>
+        </div>
+    </div>
+</div>

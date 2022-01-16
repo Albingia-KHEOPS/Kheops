@@ -1,0 +1,108 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleTraites.ModeleTraiteInfoRsqVen
+@{
+    int tdWidth = Model.TraiteVentilations.Count < 2 ? 120 : 70;
+    int tabWidth = (Model.TraiteVentilations != null ? Model.TraiteVentilations.Count * tdWidth * 4 + 121 : 121);
+    int divHeight = (Model.TraiteVentilations.Count == 0 || Model.TraiteRisques.Count == 0 ? 300 : 289);
+}
+<div style="height: @(divHeight)px;">
+    <div id="divHeaderTraiteInfoList">
+        <table id="HeaderTraiteInfoList" style="width: @(tabWidth)px;" class="trHeight">
+            @Html.Hidden("Nb", 0)
+            <tr>
+                <td class="tdRisque tblHead20"></td>
+                @if (Model.TraiteVentilations != null)
+                {
+                    foreach (var ventilations in Model.TraiteVentilations)
+                    {
+                        <td colspan="2" class="tdVoletTitle tblHead20 titleVentilation">@ventilations.NomVentilation</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="tdRisque tblHead20"></td>
+                @if (Model.TraiteVentilations != null)
+                {
+                    foreach (var ventilations in Model.TraiteVentilations)
+                    {
+                        <td class="tblHead20 tdHeadTraite">Cpx assurés 100% (€)</td>
+                        <td class="tblHead20 tdHeadTraite">Cpx part Albingia (€)</td>
+                    }
+                }
+            </tr>
+        </table>
+    </div>
+    <div id="divTraiteInfoList">
+        <!--style="width: @(tabWidth)px;"-->
+     
+        <table id="tblTraiteInfoList" style="width: @(tabWidth)px;" class="trHeight">
+            @if (Model.TraiteRisques != null)
+            {
+                foreach (var risque in Model.TraiteRisques)
+                {
+            <tr>
+                <td class="tdRisque" title="@risque.CodeRisque - @risque.DescrRsq">
+                    @risque.CodeRisque - @risque.DescrRsq
+                </td>
+
+                @foreach (var traite in Model.TraiteVentilations)
+                {
+                    var ventilation = risque.TraiteVentilations.FirstOrDefault(t => t.IdVentilation == traite.IdVentilation);
+                    if (ventilation is null)
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    else
+                    {
+                        <td id="@ventilation.IdVentilation"><span albmask="numeric">@ventilation.CapitauxTotaux</span></td>
+                        <td><span albmask="numeric">@ventilation.CapitauxAlbingia</span></td>
+                    }
+                }
+            </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+<div id="divTraiteEngagementInfo">
+    <table id="tblTraiteEngagementInfo" style="width: @(tabWidth)px;" class="trHeight">
+        <tr>
+            <td class="tdEngagement">Capitaux assurés 100% (€)</td>
+            @if (Model.TraiteVentilations != null)
+            {
+                foreach (var ventilations in Model.TraiteVentilations)
+                {
+                    <td class="tdVoletTitle">
+                        <input type="hidden" name="engagementCalc" value="@ventilations.EngagementVentilationCalcule" />
+                        <span albmask="numeric">@ventilations.EngagementVentilationCalcule</span>
+                    </td>
+                }
+            }
+        </tr>
+        <tr>
+            <td class="tdEngagement">SMP Proposé 100% (€)</td>
+            @if (Model.TraiteVentilations != null)
+            {
+                foreach (var ventilations in Model.TraiteVentilations)
+                {
+                    <td class="tdVoletTitle">
+                        <span albmask="numeric">@ventilations.SMP</span>
+                    </td>
+                }
+            }
+        </tr>
+        <tr>
+            <td class="tdEngagement">SMP Retenu 100% (€)</td>
+            @if (Model.TraiteVentilations != null)
+                        {
+                            foreach (var ventilations in Model.TraiteVentilations) 
+                                        {
+        <td class="tdVoletTitle">
+            
+            <input id="SMPRetenue" name="@(ventilations.IdVentilation)-@(@ventilations.SMPF)" type="text"  class="numerique" value="@ventilations.SMPF" albmask="numeric" /> @*onkeypress="engagementsTraites.ISchange(event)">*@
+        </td>
+                }
+            }
+        </tr>
+    </table>
+</div>

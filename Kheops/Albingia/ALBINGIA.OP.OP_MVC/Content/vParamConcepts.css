@@ -1,0 +1,76 @@
+﻿
+.col_HCodeConcept
+{
+    width: 100px;
+}
+
+.col_HDescriptionConcept
+{
+    width: 384px;
+}
+
+.col_HAction
+{
+    width: 53px;
+}
+
+.col_BCodeConcept
+{
+    width: 102px;
+}
+
+.col_BDescriptionConcept
+{
+    width: 386px;
+}
+
+.col_BAction
+{
+    width: 25px;
+    text-align: center;
+}
+
+.divHeight
+{
+    overflow-y: auto;
+    height: 475px;
+}
+
+.Validation
+{
+    clear: both;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    text-align: right;
+}
+
+.PaddingLeft10
+{
+    padding-left: 10px;
+}
+
+.PaddingLeft5
+{
+    padding-left: 10px;
+}
+
+.GroupHeight
+{
+    height: 575px;
+    margin-left: 12px;
+}
+
+#VoletDetails
+{
+    display: none;
+}
+
+.searchField
+{
+    width: 250px;
+}
+
+.Gras
+{
+    font-weight: bold;
+}

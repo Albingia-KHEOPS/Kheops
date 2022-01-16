@@ -1,0 +1,159 @@
+﻿#divDataDetailsIntervenant{
+     position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 9;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 330px;
+    width: 670px;
+}
+
+#divDetailsIntervenant{
+    display:none;
+}
+
+#divDataApercuDetailsIntervenant{
+     z-index: 9;
+     background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+     height: 270px;
+    width: 670px;
+}
+
+.tdHeadInterType{
+    width:140px;
+}
+
+.tdHeadInterDenomination{
+      width:170px;      
+}
+
+.tdHeadInterVille{
+      width:160px;
+}
+
+.tdHeadInterInterlocuteur{
+      width:170px;
+}
+
+.tdHeadInterReference{
+      width:160px;
+}
+
+.tdHeadInterFonction{
+      width:100px;
+}
+
+.tdHeadDocAction{
+      width:40px;
+}
+
+.tdInterType{
+      width:140px;
+      padding-left:3px;
+}
+
+.tdInterDenomination{
+      width:170px;
+      padding-left:3px;
+}
+
+.tdInterVille{
+      width:160px;
+      padding-right:3px;
+}
+
+.tdInterInterlocuteur{
+      width:170px;
+      padding-right:3px;
+}
+
+.tdInterReference{
+      width:160px;
+       padding-right:3px;
+}
+
+.tdInterFonction{
+    padding-right:3px;
+      width:100px;
+}
+
+.tdDocAction{
+      width:40px;
+}
+
+.divHeightGestionIntervenants{
+    height:295px;
+      overflow-y: auto;
+}
+
+.LargeurDetailsIntervenant
+{
+    width:650px !important;
+}
+
+.MarginLeft10 {
+    margin-left: 10px;
+}
+
+.LargePaddingLeft{
+    padding-left:97px;
+}
+
+.MediumPaddingLeft{
+    padding-left:45px;
+}
+
+
+.LargeInput{
+    width:500px;
+}
+
+.WidthCP{
+    width:80px;
+}
+
+.WidthVille{
+    width: 417px;
+}
+
+.WidthSmallLabel{
+    width:50px;
+}
+
+.WidthEmail{
+    width:362px;
+}
+
+.BoldText{
+    font-weight: bold;
+}
+
+.textRed {
+    color: #EE0000;
+}
+
+.Action{  text-align: center;}
+
+.ellipsisVille {
+    width: 160px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.ellipsisInterlocuteur {
+    width: 170px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.ellipsisReference {
+    width: 160px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

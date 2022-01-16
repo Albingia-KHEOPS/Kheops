@@ -1,0 +1,79 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.MetaModels.ClausierHistoriqueMetaModel>
+@{
+    if (Model.Count > 0)
+    { 
+    <div id="divHisto" style="height: 400px; width: 100%; overflow: auto">
+        <table id="tblHisto" style="width: 100%">
+            <thead>
+                <tr>
+                    <th class="colHisto1 tablePersoHead" style="height: 30px; vertical-align: middle;
+                        border-width: 1px; border-color: rgb(237, 238, 255) !important">
+                        <div>
+                            Numero
+                        </div>
+                    </th>
+                    <th class="colHisto2 tablePersoHead" style="height: 30px; vertical-align: middle;
+                        border-width: 1px; border-color: rgb(237, 238, 255) !important">
+                        <div>
+                            Date Debut
+                        </div>
+                    </th>
+                    <th class="colHisto2 tablePersoHead" style="height: 30px; vertical-align: middle;
+                        border-width: 1px; border-color: rgb(237, 238, 255) !important">
+                        <div>
+                            Heure Debut
+                        </div>
+                    </th>
+                    <th class="colHisto2 tablePersoHead" style="height: 30px; vertical-align: middle;
+                        border-width: 1px; border-color: rgb(237, 238, 255) !important">
+                        <div>
+                            Date Fin
+                        </div>
+                    </th>
+                    <th id="DinamyqueCol" class="colHisto2 tablePersoHead" style="height: 30px; vertical-align: middle; text-align: center;
+                        border-width: 1px; border-color: rgb(237, 238, 255) !important">
+                        <div>
+                            Heure Fin
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="colHisto1" style="height: 30px; vertical-align: middle">
+                            <div>@Html.Raw(item.Numero)</div>
+                        </td>
+                        <td class="colHisto2" style="height: 30px; vertical-align: middle">
+                            <div>@Html.Raw(item.DateDebut.ToString("dd/MM/yyyy"))</div>
+                        </td>
+                        <td class="colHisto2" style="height: 30px; vertical-align: middle">
+                            <div>@Html.Raw(item.DateDebut.ToString("hh:mm"))</div>
+                        </td>
+                        <td class="colHisto2" style="height: 30px; vertical-align: middle">
+                            <div>@Html.Raw(item.DateFin.ToString("dd/MM/yyyy"))</div>
+                        </td>
+                        <td class="colHisto2" style="height: 30px; vertical-align: middle">
+                            <div>@Html.Raw(item.DateFin.ToString("hh:mm"))</div>
+                        </td>
+                    </tr>
+                }
+                @{
+                    int lignesVides = 10 - Model.Count;
+                    for (int i = 0; i < lignesVides; i++)
+                    {
+                        <tr>
+                            <td class="colHisto1" style="height: 30px; vertical-align: middle"></td>
+                            <td class="colHisto2" style="height: 30px; vertical-align: middle"></td>
+                            <td class="colHisto2" style="height: 30px; vertical-align: middle"></td>
+                            <td class="colHisto2" style="height: 30px; vertical-align: middle"></td>
+                            <td class="colHisto2" style="height: 30px; vertical-align: middle"></td>
+                        </tr>
+                    }          
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+}

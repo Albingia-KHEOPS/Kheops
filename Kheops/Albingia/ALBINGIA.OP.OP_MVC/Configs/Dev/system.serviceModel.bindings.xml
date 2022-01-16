@@ -1,0 +1,5 @@
+ <bindings>
+  <basicHttpBinding>
+    <binding sendTimeout="00:05:00" name="KheopsBasicHttpBinding" maxReceivedMessageSize="2147483647" />
+  </basicHttpBinding>
+ </bindings>

@@ -1,0 +1,12 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Avenant.ModelesAvenant.ModeleVisuSuspension
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albSuspension.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div>
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+</div>
+<div>
+    @Html.Partial("VisualisationSuspension", Model)
+</div>

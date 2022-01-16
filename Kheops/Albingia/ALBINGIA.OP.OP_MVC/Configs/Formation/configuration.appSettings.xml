@@ -1,0 +1,89 @@
+﻿<appSettings>
+  <add key="AppInsightInstrumntationKey" value="38e1e4f3-a09e-4377-af8b-f42a2328dae5" />
+
+
+  <add key="InternalApplicationId" value="OpFront" />
+  <add key="MessageAccueil" value="Bienvenue sur le portail Outils de Production, nous sommes le {0:dd/MM/yyyy} !" />
+  <add key="PageSize" value="20" />
+  <add key="PaginationSize" value="200" />
+  <!-- Variable utilisée pour le téléchargement des pieces jointes à l'inventaire-->
+  <add key="UploadPathInventory" value="C:\FormationOP\Upload\Inventaire" />
+  <add key="UploadParthReturnedDocument" value="C:\FormationOP\Upload\RetourDocuments" />
+  <add key=" UploadPathDocumentGestion" value="C:\FormationOP\Upload\DocumentsGestion" />
+  <!-- Variable utilisée pour le repertoire virtuel-->
+  <add key="VirtuelDirectoryInventory" value="Upload/Inventaire/" />
+  <!-- Taille du fichier maximale en Octet (Ko/1000 = Octet, Mo/1000000 = Octet)-->
+  <add key="FileSize" value="500000" />
+  <!-- Extension autorisée au telechargement-->
+  <add key="ExtentionFichier" value="*.doc;*.docx;*.pdf;*.xls;*.xlsx"/>
+  <!-- Chaine de spli qui sert à la construction du nom de fichier-->
+  <add key="SplitCharsFile" value="__"/>
+  <add key="UrlBackHexavia" value="host=formationop.albingia.local/AdresseHexavia/ResultRedirectTestGrp.html"/>
+  <!-- Url d'appel Hexavia-->
+  <add key="UrlHexavia" value="http://hexavia.albingia.local/Guide/GrpSaisieAdresse.aspx" />
+  <!-- Environnement de travail-->
+  <add key="EnvironnementDeploiment" value="Formation" />
+  <!-- Nom de l'application-->
+  <add key="ApplicationName" value="OutilsProd" />
+  <!-- Mail Notification-->
+  <add key="From" value="Admin.OutilProd@albingia.fr" />
+  <add key="To" value="erwan.coulm@albingia.fr" />
+  <add key="CC" value="" />
+  <add key="subject" value="Notification d'erreur Outils de production" />
+  <!-- Stockage des traces -->
+  <add key="WindowEventLog" value="true" />
+  <add key="FileLog" value="false" />
+  <!-- Stockage des traces -->
+  <add key="AlbWndEventLog" value="AlbOPLog" />
+  <!-- Notification Mail -->
+  <add key="NotificationMail" value="true" />
+  <!-- CS/JS Version -->
+  <add key="JsCsVersion" value="04120131" />
+  <!-- Color Conditions Garantie-->
+  <add key="GaraBaseColor" value="#000"/>
+  <add key="GaraIncludeColor" value="#09F"/>
+  <add key="GaraGrantedColor" value="#039"/>
+  <!-- Index de la ligne vide -->
+  <add key ="AlbIndexList" value="-9999"/>
+  <!-- Chaine de split pour séparer le nom du controle html et l'index de l'objet -->
+  <add key="SplitCharsHtml" value="#**#"/>
+  <!--<add key="spliCharJs" value="#**#" />-->
+  <add key="XmlParamPath" value="C:\Parametrage\Formation\" />
+  <!--Exctension Fichier Excel-->
+  <add key="ExcelFileExtention" value=".xlsm" />
+  <!--Navigateur-->
+  <add key="OtherBrowsers" value="false" />
+  <!--Répèrtoire de génération Offre-Contrat-->
+  <add key="TargetGenerateFolder" value="\\files01\kheops\Formation\temp\" />
+  <!--ExcelTemplateFile-->
+  <add key="ExcelTemplateFile" value="http://formationop.albingia.local/ExcelWeb/ExcelTemplates/" />
+  <!--Version Application-->
+  <add key="App_Version" value="1.0.1.9" />
+  <!--Code de l'application utilisé dans la gestion des droits-->
+  <add key="GdmAppName" value="KDV" />
+  <!--Page cible lors de l'ouverture d'une nouvelle feneêtre-->
+  <add key="UrlWinPageTarget" value="/" />
+  <!--répèrtoire virtuel de génèration des documents-->
+  <add key="UrlGenDoc" value="http://formationop.albingia.local/DocGen/" />
+  <!--Url Outils de gestions d'affichage des documents-->
+  <add key="UrlDocViewer" value="http://OfficeViewer.formation.albingia.local/" />
+  <!--Url du serveur de stockage de documents-->
+  <add key="UrlStockageDocumentServeur" value="Files01" />
+  <!--Url de la racine de stockage de documents-->
+  <add key="UrlStockageDocumentRacine" value="Kheops" />
+  <!-- Paramètres de stockage des contrats-->
+  <add key="StoragePrefixDirectory" value="DOC"/>
+  <add key="StorageMaxFiles" value="500"/>
+  <add key="StorageNumPosDirectory" value="15"/>
+  <!-- Chemin fichiers intercalaires-->
+  <add key="CheminIntercalaire" value="\\stockage\service$\PRD\Intercalaires\"/>
+  <!-- Chemin fichiers Documents Contractuels -->
+  <add key="CheminDocContract" value="L:\Documents\KheopsProduction"/>
+  <!-- Afficher ou non l'ecran IS Entête -->
+  <add key="IgnoreISBranche" value="true"/>
+  <!-- Url application externe-->
+  <add key="ExternalApp" value="External.Formation.albingia.local"/>
+  <!--Activer ou non le Log en mode Hard dans KEDILOG-->
+  <add key="SwitchHardLog" value="1" />
+
+</appSettings>

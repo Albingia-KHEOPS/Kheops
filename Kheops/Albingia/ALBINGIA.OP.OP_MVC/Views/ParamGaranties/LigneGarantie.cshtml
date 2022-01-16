@@ -1,0 +1,15 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.LigneGarantie
+<tr name="ligneGarantie" id="@("ligneGarantie_" + Model.CodeGarantie)">
+    <td class="col_CodeGarantie">
+        <label id="@("lblCode_" + Model.CodeGarantie)">@Model.CodeGarantie</label>
+    </td>
+    <td class="col_DesignationGarantie">
+        <label id="@("lblDesignation_" + Model.CodeGarantie)">@Model.DesignationGarantie</label>
+    </td>
+    <td class="col_Action">
+        @if (Model.AdditionalParam == "**")
+        {
+            <img src="@Url.Content("/Content/Images/poubelle1616.png")" id="@("btnSuppr_" + Model.CodeGarantie)" alt="Supprimer" title="Supprimer" class="Action CursorPointer" name="btnSupprimer"/>
+        }
+    </td>
+</tr>

@@ -1,0 +1,48 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesFraisAccessoires.FraisAccessoiresModel
+<tr id="EditItem">
+    <td title="@Model.Branche" class="Branche">
+        @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "Branche", htmlAttributes: new
+                                                           {
+                                                               @id = "BrancheEdit",
+                                                               @tabindex = "1",
+                                                               @class = "FieldBranche",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+
+    </td>
+    <td title="@Model.SousBranche" class="SousBranche">
+        @Html.AlbDropDownListFor(m => m.SousBranche, Model.SousBranches, "SousBranche", htmlAttributes: new
+                                                           {
+                                                               @id = "SousBrancheEdit",
+                                                               @tabindex = "2",
+                                                               @class = "FieldSousBranche",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+    </td>
+    <td title="@Model.Categorie" class="Categorie">
+        <input name="Categorie" id="CategorieEdit" tabindex="1" value="@Model.Categorie" albcontext="Model.Albcontext" />
+    </td>
+    <td title="@Model.Annee" class="Annee">
+        <input name="Annee" id="AnneeEdit" tabindex="1" albmask="numeric" class="numerique" value="@Model.Annee" albcontext="Model.Albcontext" />
+    </td>
+    <td title="@Model.Montant" class="Montant">
+        <input name="Montant" id="MontantEdit" tabindex="1" albmask="numeric" class="numerique" value="@Model.Montant" albcontext="Model.Albcontext" />
+    </td>
+    <td title="@Model.FRaiSACCMIN" class="FRaiSACCMIN">
+        <input name="FRaiSACCMIN" id="FRaiSACCMINEdit" tabindex="1" albmask="numeric" class="numerique" value="@Model.FRaiSACCMIN" albcontext="Model.Albcontext" />
+    </td>
+    <td title="@Model.FRaiSACCMAX" class="FRaiSACCMAX">
+        <input name="FRaiSACCMAX" id="FRaiSACCMAXEdit" tabindex="1" albmask="numeric" class="numerique" value="@Model.FRaiSACCMAX" albcontext="Model.Albcontext" />
+    </td>
+    <td class="btnsCol">
+        <span class="editBtns">
+            <span id="saveEdit" alt="Enregistrer" title="Enregistrer" albcontext="@Model.Albcontext">
+                <img  src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer" />
+            </span>
+
+            <span id="cancelEdit" title="Annuler l'edition" albcontext="@Model.Albcontext">
+                <img name="cancel" class="CursorPointer" src="/Content/Images/reset.png">
+            </span>
+        </span>
+    </td>
+</tr>

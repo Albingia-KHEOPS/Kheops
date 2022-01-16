@@ -1,0 +1,47 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClausier
+<div class="FloatLeft">
+    <div class="GroupFull GroupWithBorder" style="width: 518px">
+        <div class="GroupTitle PaddingTitreHisto">
+            Historique des versions
+        </div>
+        <div class="GroupTitle BackgroundColorTitreHisto">
+            @Model.Code - @Model.Libelle
+        </div>
+        <div class="HorizontalFullWithGroup" style="width: 507px; height: 300px;">
+            <div class="tblHistorique GradientSection">
+                <div id="divHistoriqueHeader">
+                    <table id="tblHistoriqueHeader">
+                        <tr>
+                            <th class="col_HeaderHistoVersion tablePersoHead">Version
+                            </th>
+                            <th class="col_HeaderHistoDateDeb tablePersoHead">Date de début
+                            </th>
+                            <th class="col_HeaderHistoDateFin tablePersoHead">Date de fin
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divHistoriqueBody">
+                    <table id="tblHistoriqueBody">
+                        @{                            
+                            foreach (var item in Model.Historique)
+                            {                                                         
+                            <tr>
+                                <td class="col_BodyHistoVersion">@item.Version</td>
+                                <td class="col_BodyHistoDateDeb">@item.DateDeDebut</td>
+                                <td class="col_BosyHistoDateFin">@item.DateDeFin</td>
+                            </tr>                               
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeightInvalide" style="width: 518px">
+        <div class="ActionButtonsHisto ActionButtonRight">
+            <input type="button" id="btnFermer" value="Fermer" />
+        </div>
+    </div>
+</div>
+

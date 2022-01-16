@@ -1,0 +1,37 @@
+﻿
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleCreationAffaireNouvellePage
+@{
+    ViewBag.Title = "Choix Risques/Objets";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+
+@using (Ajax.BeginForm("SetRisquesSelection", "CreationAffaireNouvelle", null,
+    new AjaxOptions {
+        UpdateTargetId = "selectionRisque",
+        OnBegin = "affaireNouvelle.choixRisques.startUpdate",
+        OnComplete = "affaireNouvelle.choixRisques.submitDone"
+    },
+    new { id = "ajaxForm" })) {
+    <div id="selectionRisque">
+        @Html.Partial("_RisquesAffaireNouvelle", Model.SelectionRisquesObjets)
+    </div>
+}
+
+@using (Html.BeginForm("ChoixFormulesOptions", "CreationAffaireNouvelle", FormMethod.Post, new { id = "form1", @class = "hide-it" })) {
+}
+
+<div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+    <div class="ActionButtons ActionButtonRight">
+        <button id="btnAnnuler" type="button" data-accesskey="a"><u>A</u>nnuler</button>
+        <button id="btnValiderRisquesObjets" type="button" data-accesskey="s"><u>S</u>uivant</button>
+    </div>
+</div>
+
+@section stylesheets {
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbCreationAffaireNouvelle")
+}
+
+@section scripts {
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "affaireNouvelle-choixRisques.js" })
+}

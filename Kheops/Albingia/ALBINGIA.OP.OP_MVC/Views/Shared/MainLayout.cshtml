@@ -1,0 +1,643 @@
+﻿@using Albingia.Common
+@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@{
+    MetaModelsBase layoutModel = (MetaModelsBase)Model;
+    Guid? tab = Guid.TryParse(layoutModel.TabGuid.Replace(PageParamContext.TabGuidKey, string.Empty), out var g) ? g : default(Guid?);
+    var isModeNavigHisto = (layoutModel.ModeNavig == ModeConsultation.Historique.AsCode());
+    var avn = layoutModel.Bandeau != null ? layoutModel.Bandeau.NumAvenant.ToString(System.Globalization.CultureInfo.InvariantCulture) : string.Empty;
+    var envParam = System.Configuration.ConfigurationManager.AppSettings["envParam"] == "true";
+    if (!int.TryParse(System.Configuration.ConfigurationManager.AppSettings["FileSize"], out int fileSize))
+    {
+        fileSize = 500000;
+    };
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="/Content/Images/LogoAlbingia.ico">
+    <link rel="icon" type="image/gif" href="@Url.Content(" ~/Content/Images/AnimatedLogoAlbingia.gif")">
+    <title>
+        @string.Format("{0}-[{1}]", "Outil de production", layoutModel.NameUser)
+    </title>
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/jQuery.js")
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/root.css")
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/fancybox/all.css")
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/themes/base/all.css")
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/CLEditor/all.css")
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/common.css")
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/paging.css")
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/select2.css")
+    @if (layoutModel.EtapeEcran != AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE) {
+    @*Ajouter les bundles*@
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/LayoutMenu")
+    }
+
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/scripts.js")
+
+    @if (layoutModel.EtapeEcran != AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE) {
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/LayoutMenu")
+    }
+</head>
+<body onload="DisableBackButton();">
+    <script type="text/javascript">
+        @* ***************** OBO Application Insights script injection  START ****************  *@
+        var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("addTelemetryInitializer"),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),t.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+        {
+          instrumentationKey:"@Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active.InstrumentationKey"
+        }
+        ); window[aiName] = aisdk, aisdk.queue && 0 === aisdk.queue.length && aisdk.trackPageView({});
+        appInsights.setAuthenticatedUserContext("@layoutModel.NameUser");
+        appInsights.addTelemetryInitializer(function (e) { e.data.client = { height : window.screen.height,  width : window.screen.height } });
+        @* *****************OBO Application Insights script injection  END ****************  *@
+
+        window.common = window.common || {};
+        window.common.appSettings = window.common.appSettings || {};
+        window.common.appSettings.maxFileSize = @fileSize;
+        window.common.appSettings.maxFileSizeString = "@Html.Raw(fileSize.ToString("n0",new System.Globalization.CultureInfo("fr-fr")))";
+    </script>
+
+    @RenderSection("stylesheets", false)
+    @RenderSection("scripts", false)
+    @Html.Partial("~/Views/Shared/_HiddenInputs.cshtml", layoutModel)
+    @Html.Partial("SessionError")
+    <div>
+        <!-- begin Entete -->
+        <div class="CommonForm TotalWidth">
+            <div class="GroupFull GroupWithBorderEntete DimEntete">
+                <div class="PaddingLeft nImageWidth FloatLeft">
+                    <div class="PaddingTop">
+                        <img src="@Url.Content("/Content/Images/logoalbingia.png")" alt="Accueil" id="linkAccueil" width="48px" height="32px" title="Accueil" style="cursor:pointer" />
+                    </div>
+                </div>
+                @if (layoutModel.AfficherBandeau && layoutModel.EtapeEcran != AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE)
+                {
+                    <div class="@(envParam ? " nEnvironnementParam" : (layoutModel.PageEnCours == NomsInternesEcran.RechercheSaisie.ToString()) ? "nEnvironnementBackOfficeDev" : isModeNavigHisto ? "nEnvironnementHisto" : "nEnvironnementTest" )">
+                        @(envParam ? "PARAM" : ALBINGIA.OP.OP_MVC.MvcApplication.ENVIRONMENT_NAME)
+                        @if (isModeNavigHisto)
+                        {
+                            <label title="Avenant @(avn)">Avn : @(avn)</label>
+                        }
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(layoutModel.ScreenType) && layoutModel.PageEnCours.ToLower() != "recherchesaisie")
+                {
+                    switch (layoutModel.ScreenType)
+                    {
+                        case AlbConstantesMetiers.SCREEN_TYPE_ATTES:
+                        case AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+                        case AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+                        case AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+                            <div class="nActeGest" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper()</div>
+                            break;
+                        case AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+                            <div class="nActeGestContrat" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper()</div>
+                            break;
+                        default:
+                            <div class="nActeGestAvenant" title="Version KP : @ALBINGIA.OP.OP_MVC.MvcApplication.APP_VERSION">@layoutModel.ScreenType.ToUpper() <span style="font-size: 10px;">@((layoutModel.LayoutModeAvt == "CREATE" && !string.IsNullOrEmpty(layoutModel.LayoutModeAvt) || (layoutModel.NumAvenantPage == "0")) || layoutModel.ScreenType.ToUpper() == "PB" || layoutModel.ScreenType.ToUpper() == "BNS" || layoutModel.ScreenType.ToUpper() == "BURNER" ? string.Empty : string.Concat("N°", layoutModel.NumAvenantPage))</span></div>
+                            break;
+                    }
+                }
+                @if (layoutModel.AfficherBandeau)
+                {
+
+                    if (layoutModel.EtapeEcran != AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE)
+                    {
+                        if (layoutModel.Bandeau != null)
+                        {
+                            <div class="nBandeau">
+                                @Html.Partial("~/Views/Shared/Entete/Bandeau.cshtml", layoutModel.Bandeau)
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="@(envParam ? " nEnvironnementParam" : "nEnvironnementBackOfficeDev" )">@(envParam ? "PARAM" : ALBINGIA.OP.OP_MVC.MvcApplication.ENVIRONMENT_NAME)</div>
+                    }
+                }
+            </div>
+        </div>
+        <div id="LayoutEntete" class="CommonForm TotalWidth">
+            <!-- begin Menu -->
+
+            <div class="GroupMenu">
+                @Html.Hidden("txtSaveCancel", 0)
+                @Html.Hidden("txtParamRedirect", string.Empty)
+                @if (layoutModel.AfficherNavigation && layoutModel.Navigation.Etape < 6 && layoutModel.Navigation.Etape != 0)
+                {
+                    if (layoutModel.IsReadOnly && !layoutModel.IsModifHorsAvenant)
+                    {
+                        <div class="FloatLeft NoSaveInfo" style="padding-right: 2px; margin-bottom: 7px;" id="btnSaveCancel">
+                            @Html.HiddenNoName("SavePath", "Rechercher")
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="FloatLeft CursorPointer SaveInfo" style="padding-right: 2px; margin-bottom: 7px;" id="btnSaveCancel">
+                            @Html.HiddenNoName("SavePath", "Rechercher")
+                        </div>
+                    }
+                }
+                else
+                {
+                    if (layoutModel.PageEnCours == "Recherche")
+                    {
+                        <div class="FloatLeft CursorPointer" style="padding-right: 2px; margin-bottom: 7px;" id="btnCleanSession">
+                            <img src="@Url.Content("/Content/Images/cleansession.png")" alt="" id="btnSave" title="" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="FloatLeft" style="padding-right: 2px; margin-bottom: 7px;" id="dvBackOfficeMenu">
+                            @if (layoutModel.EtapeEcran == AlbConstantesMetiers.ETAPE_ECRAN_BACKOFFICE)
+                            {
+
+                                <input id="FormatDecimalInput" type="hidden" value="{ digitGroupSeparator: '', decimalCharacter: ',', decimalPlacesOverride: 2, maximumValue: '99999999999.99' }" />
+                                <div id="BackOfficeMenu" class="MenuBackOffice CursorPointer">Menu</div>
+
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="btnSave" title="" />
+                            }
+                        </div>
+                    }
+                }
+
+                <div class="PageTitle" title="@layoutModel.TitleInfoBulle">
+                    <div class="FloatLeft">
+                        @if (layoutModel.Navigation != null && layoutModel.Navigation.Etape == 1)
+                        {
+                            if (layoutModel.ContratInfoBase != null && !string.IsNullOrEmpty(layoutModel.ContratInfoBase.CodeContrat))
+                            {
+                                @(layoutModel.PageTitle + " : ")
+                                <u>
+                                    @if (layoutModel.ContratInfoBase.Type == "P" && layoutModel.ContratInfoBase.VersionContrat > 0)
+                                    {
+                                        @(layoutModel.ContratInfoBase.CodeContrat + "-" + layoutModel.ContratInfoBase.VersionContrat)
+                                    }
+                                    else
+                                    {
+                                        @(layoutModel.ContratInfoBase.CodeContrat)
+                                    }
+                                </u>
+                            }
+                            else if (@layoutModel.Offre != null && @layoutModel.PageEnCours == "Création saisie" && !string.IsNullOrEmpty(@layoutModel.Offre.CodeOffre))
+                            {
+                                @(layoutModel.PageTitle + " : ") <u>@(layoutModel.Offre.CodeOffre + "-" + layoutModel.Offre.Version)</u>
+                            }
+                            else
+                            {
+                                @layoutModel.PageTitle
+                            }
+                        }
+                        else
+                        {
+                            @layoutModel.PageTitle
+                        }
+                    </div>
+                    <div id="divOffreLocked" class="FloatRight PaddingRight">
+                        @if (ALBINGIA.OP.OP_MVC.Common.AlbTransverse.HasUserOffreLocked(tab))
+                        {
+                            <img class="CursorPointer" src="@(Url.Content("/Content/Images/stock_lock.png"))" title="Offres Verrouillées" id="imgOffreLocked" />
+                        }
+                    </div>
+                    <div id="divGestDoc" class="FloatRight PaddingRight">
+                        <img class="CursorPointer" src="@(Url.Content("/Content/Images/u410_normal.gif"))" title="Suivi des documents" id="imgGestDoc" />
+                    </div>
+                </div>
+
+                @if (layoutModel.AfficherNavigation && layoutModel.Navigation.Etape != 0)
+                {
+                    if (layoutModel.Navigation.Etape < 6)
+                    {
+                        if ((layoutModel.ActeGestionRegule != AlbConstantesMetiers.TYPE_AVENANT_REGUL && layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_REGUL) || (layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_REGUL && layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_REGULMODIF))
+                        {
+                            <div style="margin-left: 2px; margin-bottom: 7px;" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranInfoGene && !layoutModel.IsValidation && (layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_RESIL || layoutModel.IsReadOnly) ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranInfoGene ? " InfoGenSelected" : "InfoGen" ) : "InfoGenUnactive" )" id="btnInfoGen">
+                                @*<input type="hidden" value="@(layoutModel.Offre != null ? " ModifierOffre" : (layoutModel.Contrat !=null ? "AnInformationsGenerales" : "ModifierOffre" ))" id="InfoGenPath" />*@
+                                <input type="hidden" value="@(layoutModel.Offre != null ? " ModifierOffre" : "AnInformationsGenerales" )" id="InfoGenPath" />
+                            </div>
+                            <div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranRisqueGarantie && !layoutModel.IsValidation && (layoutModel.ActeGestion != AlbConstantesMetiers.TYPE_AVENANT_RESIL || layoutModel.IsReadOnly) ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranRisqueGarantie ? " InfoRsqGarSelected" : "InfoRsqGar" ) : "InfoRsqGarUnactive" )" id="btnRsqGar">
+                                <input type="hidden" value="MatriceRisque" id="InfoRsqGarPath" />
+                            </div>
+                            <div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranEngagements && !layoutModel.IsValidation ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranEngagements ? " InfoEngageSelected" : "InfoEngage" ) : "InfoEngageUnactive" )" id="btnEngage">
+                                <input type="hidden" value="Engagements" id="InfoEngagePath" />
+                            </div>
+                            <div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranCotisations && !layoutModel.IsValidation && (Model.ModeNavig == ModeConsultation.Standard.AsCode()) ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranCotisations ? " InfoCotisSelected" : "InfoCotis" ) : "InfoCotisUnactive" )" id="btnCotis">
+                                <input type="hidden" value="@(layoutModel.TypePolicePage == " O" ? "Cotisations" : "Quittance" )" id="InfoCotisPath" />
+                            </div>
+                            <div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranInfoFin ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranInfoFin ? " InfoFinSelected" : "InfoFin" ) : "InfoFinUnactive" )" id="btnFin">
+                                <input type="hidden" value="ControleFin" id="InfoFinPath" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="FloatLeft" style="padding-left: 2px; width: 288px; margin-bottom: 7px;">
+                                <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="290px" height="32px;" />
+                            </div>
+                            <div class="FloatLeft" style="padding-left: 2px; width: 428px; margin-bottom: 7px;">
+                                <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="430px" height="32px;" style="border-top-right-radius:5px;border-bottom-right-radius:5px;" />
+                            </div>
+                            @*<div style="margin-bottom: 7px" class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranRegules && !layoutModel.IsValidation ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranRegules ? " InfoReguleSelected" : "InfoRegule" ) : "InfoReguleUnactive" )" id="btnRegule">
+                                    <input type="hidden" value="CreationRegularisation" id="InfoRegulePath" />
+                                </div>*@
+
+                        }
+                    }
+                    else if (layoutModel.Navigation.Etape < 8)
+                    {
+                        <div class="FloatLeft" style="padding-left: 2px; width: 428px; margin-bottom: 7px;">
+                            <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="430px" height="32px;" />
+                        </div>
+
+                        if (layoutModel.TypePolicePage == "O")
+                        {
+                            <div class="FloatLeft" style="margin-left: 3px;">
+                                <div class="@(layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranSaisie ? " SaisieActive" : "SaisieInactive" )">
+                                    &nbsp;
+                                </div>
+
+                                <div class="@(layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranConfirmation ? " ConfirmationActive" : "ConfirmationInactive" )">
+                                    &nbsp;
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="FloatLeft" style="padding-left: 2px; width: 288px; margin-bottom: 7px">
+                                <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="288px" height="32px;" style="border-top-right-radius:5px;border-bottom-right-radius:5px;" />
+                            </div>
+
+
+                        }
+                    }
+                    else
+                    {
+                        <div class="FloatLeft" style="padding-left: 2px; width: 141px; margin-bottom: 7px;">
+                            <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="143px" height="32px;" />
+                        </div>
+                        <div class="FloatLeft" style="margin-left: 3px;">
+                            <div class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranAffaireNouvelle ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranAffaireNouvelle ? " ContratActive" : "ContratInactive" ) : "ContratBlack" )">
+                                &nbsp;
+                            </div>
+                            <div class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranRsqObjAffNouv ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranRsqObjAffNouv ? " RsqObjActive" : "RsqObjInactive" ) : "RsqObjBlack" )">
+                                &nbsp;
+                            </div>
+                            <div class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranFormVolAffNouv ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranFormVolAffNouv ? " FormGaranActive" : "FormGaranInactive" ) : "FormGaranBlack" )">
+                                &nbsp;
+                            </div>
+                            <div class="@(layoutModel.Navigation.Etape >= layoutModel.Navigation.GetEcranOptTarAffNouv ? (layoutModel.Navigation.Etape == layoutModel.Navigation.GetEcranOptTarAffNouv ? " OptTarActive" : "OptTarInactive" ) : "OptTarBlack" )">
+                                &nbsp;
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="FloatLeft" style="padding-left: 2px; width: 720px; margin-bottom: 7px">
+                        <img src="@Url.Content("/Content/Images/backSaveEmpty.png")" alt="" id="imgEmpty" title="" width="720px" height="32px;" style="border-top-right-radius:5px;border-bottom-right-radius:5px;" />
+                    </div>
+                }
+            </div>
+            <div id="MenuLayout" class="FloatLeft">
+                @RenderBody()
+            </div>
+            <div id="divUserOffreLocked" class="None">
+                <div class="overlay-background" style="z-index:14">
+                </div>
+                <div id="divDataUserOffreLocked" class="dvDataUserOffreLocked">
+                </div>
+            </div>
+
+            <div id="divQuickSearch" class="nGradientRechercheTransverse QuickSearchByCode None">
+                <div class="FloatLeft PaddingLeft PaddingTop">N°</div>
+                <div class="FloatLeft PaddingLeft" style="padding-top: 2px;">
+                    <input type="text" id="idRechercheDossier" />
+                </div>
+                <div class="FloatLeft">
+                    <button type="button" id="btnSearchTransverse" albshortcut="true" data-accesskey="r" style="height: 25px; width: 34px;">
+                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" />
+                    </button>
+                </div>
+                <div class="FloatLeft PaddingLeft PaddingTop"><a class="navig" id="detailsRecherche">Recherche avancée</a></div>
+            </div>
+
+            <div id="divRechercheRapide" albname="divRechercheRapide" class="None">
+                <div class="overlay-background" style="z-index:22">
+                </div>
+                <div id="divDataRechercheRapide" albname="divDataRechercheRapide"></div>
+            </div>
+            <!-- end Menu -->
+        </div>
+        <!-- end Entete -->
+    </div>
+    <div id="ProgressDialog">
+    </div>
+    <div id="JQueryHttpPostResultDiv">
+    </div>
+    <div id="divTimePicker">
+        @Html.AlbTimePicker(m => layoutModel.AlbTime, "AlbTime", new { @class = "HourMinute" })
+        <input type="button" id="btnValidTime" name="btnValidTime" value="OK" />
+    </div>
+
+    @Html.Partial("~/Views/Shared/_Transverse.cshtml")
+
+    @Html.HiddenNoName("autres", AlbOpConstants.OtherBrowsers.ToString())
+
+    @Html.Hidden("oldCodeRegExp", string.Empty)
+    <div id="div_popups">
+        <div id="divDialogInFancy">
+            <div id="divDialog">
+                <div id="msgDialog" class="FancyTextCenter">
+                </div>
+                <br />
+                <div class="HeightRow FancyTextCenter">
+                    <input type="button" id="btnDialogOk" value="OK" />
+                </div>
+            </div>
+        </div>
+        <div id="divAutoComplete">
+            <div class="overlay-background" style="z-index:4">
+            </div>
+            <div id="divDataAutoComplete">
+            </div>
+            <div class="HeightRow FancyTextCenter">
+                <input type="button" id="btnDialogOk" value="OK" />
+            </div>
+        </div>
+        <div id="divComDblSaisie">
+            <div class="overlay-background" style="z-index:6">
+            </div>
+            <div id="divDataComDblSaisie">
+                <div id="MenuLayout" class="FloatLeft">
+                    <div class="FullWidth">
+                        <div id="DFDblSaisie" class="CommonForm FloatLeft">
+                        </div>
+                        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+                            <div class="nActionButtons ActionButtonLeft">
+                            </div>
+                            <div id="LoadingDiv" class="FloatLeft">
+                                <img src="@Url.Content(" ~/Content/Images/ajax-loader.gif")" alt="" />
+                            </div>
+                            <div class="nActionButtons ActionButtonRight">
+                                <button type="button" id="btnDFAnnulerDbl" tabindex="16" data-accesskey="f" value="Fermer"><u>F</u>ermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divSuiviGestionDocuments">
+            <div class="overlay-background" style="z-index:14">
+            </div>
+            <div id="divDataSuiviGestionDocuments">
+            </div>
+        </div>
+
+        <div id="divConnexites">
+            <div class="overlay-background" style="z-index:12">
+            </div>
+            <div id="divDataConnexites">
+            </div>
+        </div>
+
+        <div id="divConnexitesEng">
+            <div class="overlay-background" style="z-index:14">
+            </div>
+            <div id="divDataConnexitesEng">
+            </div>
+        </div>
+
+
+        <div id="divDetailsConnexites">
+            <div class="overlay-background" style="z-index:16">
+            </div>
+            <div id="divDataDetailsConnexites">
+            </div>
+        </div>
+
+        <div id="divFullScreenAjoutConnexite">
+            <div class="overlay-background" style="z-index:18">
+            </div>
+            <div id="divDataAjoutConnexite">
+            </div>
+        </div>
+
+        <div id="divFullScreenConnexite">
+            <div class="overlay-background" style="z-index:3">
+            </div>
+            <div id="divDataPleinEcranConnexite">
+            </div>
+        </div>
+
+        <div id="divFullScreenRecherche">
+            <div class="overlay-background" style="z-index:20">
+            </div>
+            <div id="divDataRechercheContrat">
+            </div>
+        </div>
+
+        <div id="divConfirmationAction">
+            <div class="overlay-background" style="z-index:7">
+            </div>
+            <div id="divDataConfirmationAction">
+            </div>
+        </div>
+
+        <div id="divListeClauses">
+            <div class="overlay-background" style="z-index:2">
+            </div>
+            <div id="divDataListeClauses">
+            </div>
+        </div>
+        <div id="divClausierRech" class="None">
+            <div class="overlay-background" style="z-index:2">
+            </div>
+            <div id="divDataClausierRech">
+            </div>
+        </div>
+        <div id="divDocumentContrat">
+            <div class="overlay-background" style="z-index:2">
+            </div>
+            <div id="divDataDocumentContrat">
+            </div>
+        </div>
+        <div id="divDocumentContratPieceJointe">
+            <div class="overlay-background" style="z-index:4">
+            </div>
+            <div id="divDataDocumentContratPieceJointe">
+            </div>
+        </div>
+        <div id="divGestionIntervenants">
+            <div class="overlay-background" style="z-index:6">
+            </div>
+            <div id="divDataGestionIntervenants">
+            </div>
+        </div>
+        <div id="divDocJoints">
+            <div class="overlay-background" style="z-index:6"></div>
+            <div id="divDataDocJoints"></div>
+        </div>
+        <div id="divRechercheCopyOffre">
+            <div class="overlay-background" style="z-index:60">
+            </div>
+            <div id="divDataRechercheCopyOffre">
+                <iframe id="RechercheCopyOffreIFrame" width="1245" height="630" scrolling="no" frameborder="0" align="left" marginwidth="0" z-index="61" background-color="Gray" marginheight="0"></iframe>
+            </div>
+        </div>
+
+        <div id="divVisuListeQuittances">
+            <div class="overlay-background" style="z-index:30">
+            </div>
+            <div id="divDataVisuListeQuittances">
+            </div>
+        </div>
+
+        <div id="divFullScreenCotisation" class="None">
+            <div class="overlay-background" style="z-index:32">
+            </div>
+            <div id="divDataCotisation">
+            </div>
+        </div>
+
+        <div id="divFullScreenDetailsCotisation" class="None">
+            <div class="overlay-background" style="z-index:34">
+            </div>
+            <div id="divDataDetailsCotisation">
+            </div>
+        </div>
+
+        <div id="divAssureAdditionnels">
+            <div class="overlay-background" style="z-index:2">
+            </div>
+            <div id="divDataAssureAdditionnels">
+            </div>
+        </div>
+
+        <div id="divBehindBandeau" class="None">
+            <div class="overlay-background" style="z-index:8">
+            </div>
+        </div>
+
+        <div id="divFullScreenVisuObservations">
+            <div class="overlay-background" style="z-index:28">
+            </div>
+            <div id="divDataVisuObservations">
+            </div>
+        </div>
+
+        <div id="divFullScreenVisuSuspension">
+            <div class="overlay-background" style="z-index:28">
+            </div>
+            <div id="divDataVisuSuspension">
+            </div>
+        </div>
+
+        <div id="divFullScreenVisuHistorique">
+            <div class="overlay-background" style="z-index:28">
+            </div>
+            <div id="divDataVisuHistorique">
+            </div>
+        </div>
+
+        <div id="divRechercheAvanceePreneurAssuTrans" albname="divRechercheAvanceePreneur">
+            <div class="overlay-background" style="z-index:22">
+            </div>
+            <div id="divDataRechercheAvanceePreneurAssuTrans" albname="divRechercheAvanceePreneur"></div>
+        </div>
+
+        @Html.Partial("DocLoadAsynch")
+
+        <div id="divCreationContainer">
+        </div>
+
+        <div id="divFullScreenBulletinAvis" class="None">
+            <div class="overlay-background" style="z-index:34">
+            </div>
+            <div id="divDataBulletinAvis">
+            </div>
+        </div>
+    </div>
+    <div id="divWordContainer" class="None">
+        <div class="overlay-background" style="z-index:60">
+        </div>
+        <div id="divDataWordContainer">
+
+            <div id="dvInfoClauseLibre" class="GroupFull GroupWithBorder TotalWidth None" style="height: 50px;">
+                @*Hauteur rajoutée pour la compatibilité iframe Magnetic*@
+            </div>
+            <div id="vwWaitSaveWord" class="GroupFull GroupWithBorder TotalWidth" style="height: 21px; text-align: center; color: red; padding-top: 12px; font-size: 17px;">
+                Veuillez traiter votre document dans le logiciel WORD
+            </div>
+            <div id="vwStandardBtn" class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+                <div class="ActionButtons ActionButtonsSearch ActionButtonRight">
+                    <button data-accesskey="o" albshortcut="true" id="btnImportWordStd" type="button" class="None" title="Utilisez la combinaison Alt + O pour accéder à la fonctionnalité">Imp<u>o</u>rter</button>
+                    <button data-accesskey="i" albshortcut="true" id="btnPrintWordStd" type="button" class="None" title="Utilisez la combinaison Alt + I pour accéder à la fonctionnalité"><u>I</u>mprimer</button>
+                    <button data-accesskey="f" albshortcut="true" id="btnFermerWordStd" type="button" title="Utilisez la combinaison Alt + F pour accéder à la fonctionnalité"><u>F</u>ermer</button>
+                    <button data-accesskey="v" albshortcut="true" id="btnValidWordStd" type="button" title="Utilisez la combinaison Alt + V pour accéder à la fonctionnalité"><u>V</u>alider</button>
+                    <button data-accesskey="s" albshortcut="true" id="btnValidBlocStd" type="button" title="Utilisez la combinaison Alt + S pour accéder à la fonctionnalité" class="None"><u>S</u>auvegarder</button>
+
+                </div>
+            </div>
+            <div id="vwClauseBtn" class="GroupFull GroupWithBorder TotalWidth ButtonsHeight None">
+                <div class="ActionButtons ActionButtonsSearch ActionButtonRight">
+                    <button data-accesskey="o" albshortcut="true" id="btnImportWordCla" type="button" class="None" title="Utilisez la combinaison Alt + O pour accéder à la fonctionnalité">Imp<u>o</u>rter</button>
+                    <button data-accesskey="i" albshortcut="true" id="btnPrintWordCla" type="button" class="None" title="Utilisez la combinaison Alt + I pour accéder à la fonctionnalité"><u>I</u>mprimer</button>
+                    <button data-accesskey="n" albshortcut="true" id="btnFermerWordCla" type="button" title="Utilisez la combinaison Alt + N pour accéder à la fonctionnalité">A<u>n</u>nuler</button>
+                    <button data-accesskey="v" albshortcut="true" id="btnValidWordCla" type="button" class="None" title="Utilisez la combinaison Alt + V pour accéder à la fonctionnalité"><u>V</u>alider</button>
+                    <button data-accesskey="s" albshortcut="true" id="btnValidBlocCla" type="button" title="Utilisez la combinaison Alt + S pour accéder à la fonctionnalité" class="None"><u>S</u>auvegarder</button>
+                    @Html.Hidden("IdSessionClause", string.Empty)
+                </div>
+            </div>
+            <iframe id="WordContainerIFrame" width="100%" height="630px" scrolling="no" frameborder="0" align="left" marginwidth="0px " z-index="61" background-color="Gray" marginheight="0px" src=""></iframe>
+            <iframe id="MagneticIframe" width="100%" height="640" scrolling="no" frameborder="0" align="left" marginwidth="0px " z-index="61" background-color="Gray" marginheight="0px" src=""></iframe>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        var scriptVersion = "@(ALBINGIA.Framework.Common.Constants.AlbOpConstants.JsCsVersion)";
+        var imgUrls = {
+            boutonRefresh: {
+                active: '@Url.Content("/Content/Images/boutonRefresh_3232.png")',
+                disabled: '@Url.Content("/Content/Images/boutonRefresh_gris3232.png")'
+            }
+        };
+        var defaultPageSize = @(System.Configuration.ConfigurationManager.AppSettings["PageSize"].ParseInt(20).Value);
+        var tabGuidKey = "@(PageParamContext.TabGuidKey)";
+        var navigKey = "@(PageParamContext.ModeNavigKey)";
+        var infosTab = {
+            type: $("#@(PageParamContext.ParamIdKey)Type").val() || "",
+            value: $("#@(PageParamContext.ParamIdKey)Value").val() || "",
+            tabGuid: $("#" + tabGuidKey).val().substring(tabGuidKey.length, $("#" + tabGuidKey).val().lastIndexOf(tabGuidKey)),
+            fullTabGuid: $("#" + tabGuidKey).val(),
+            isReadonly: @((layoutModel.IsReadOnly || layoutModel.IsModeConsultationEcran).ToString().ToLower()),
+            isLocked: @(layoutModel.IsForceReadOnly.ToString().ToLower()),
+            modeNavigation: "@(layoutModel.ModeNavig)",
+            fullModeNavig: navigKey + "@(layoutModel.ModeNavig)" + navigKey,
+            user: "@(AlbSessionHelper.ConnectedUser)"
+        };
+
+        var currentAffair = {
+            codeOffre: $("#Offre_CodeOffre").val(),
+            version: parseInt($("#Offre_Version").val()),
+            type: $("#Offre_Type").val(),
+            numeroAvenant: parseInt($("#NumAvenantPage").val()),
+            getUrlId: function () {
+                return window.currentAffair.codeOffre + "_" + window.currentAffair.version + "_" + window.currentAffair.type;
+            }
+        };
+        if (isNaN(currentAffair.numeroAvenant)) {
+            currentAffair.numeroAvenant = 0;
+        }
+    </script>
+
+</body>
+</html>

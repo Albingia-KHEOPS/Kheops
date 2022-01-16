@@ -1,0 +1,370 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGarantieType.ModeleGarantieType
+@using Albingia.Kheops.OP.Domain.Parametrage.Formules;
+@using (Html.BeginForm("Enregistrer", "GarantieType", FormMethod.Post, new { @id = "frmMain" }))
+{
+    @Html.Hidden("NumeroSeq", Model.NumeroSeq)
+    @Html.Hidden("NumeroSeq1", Model.NumeroSeq1)
+    @Html.Hidden("NumeroSeqM", Model.NumeroSeqM)
+    @Html.Hidden("CodeModele", Model.CodeModele)
+    @Html.Hidden("Tri", Model.Tri)
+    <div class="GroupTitle">
+        Consultation / Modification Paramétrage Garantie
+    </div>
+    <div class="HorizontalHalfWithGroupAdmin heightDivConsult">
+        <div class="GradientSection heightDivConsultInterne">
+            <div class="HeightRowTitle">
+                <div class="DoubleGenericColumn" style="font-weight:bold;font-style:italic">
+                    Identification
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block LabelWidth">Code garantie</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.IsNew)
+                        {
+                            @Html.DropDownList("CodeGarantie", Model.ListGarantie.Select(x => new SelectListItem() { Value = x.CodeGarantie, Text = x.CodeGarantie }), new { @class = "Input" })
+                        }
+                        else
+                        {
+                            @Html.TextBox("CodeGarantie", Model.CodeGarantie, new { @class = "readonly Input", @readonly = "readonly" })
+                        }
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block SmallLabelWidth">Niveau</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.TextBox("Niveau", Model.Niveau, new { @class = "readonly SmallInput", @readonly = "readonly" })
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block SmallLabelWidth">Ordre</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            @Html.TextBox("Ordre", Model.Ordre, new { @class = "readonly SmallInput", @readonly = "readonly" })
+                        }
+                        else
+                        {
+                            @Html.TextBox("Ordre", Model.Ordre, new { @class = "SmallInput numerique", albmask = "numeric" })
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block LabelWidth">Caractère</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            <input id="Caractere" class="readonly Input" readonly="readonly" value="@Model.Caractere - @(Model.ListCaractere.FirstOrDefault(x => x.Code == Model.Caractere)?.Libelle)" />
+                        }
+                        else
+                        {
+                            @Html.DropDownList("Caractere", Model.ListCaractere.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == Model.Caractere }), new { @class = "InputSelect" })
+                        }
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block LabelWidth">Nature</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            <input id="Nature" class="readonly Input" readonly="readonly" value="@Model.Nature - @(Model.ListNature.FirstOrDefault(x => x.Code == Model.Nature)?.Libelle)" />
+                        }
+                        else
+                        {
+                            @Html.DropDownList("Nature", Model.ListNature.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == Model.Nature }), new { @class = "InputSelect" })
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block LargeLabelWidth">Type controle de date</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            <input id="TypeControleDate" class="readonly Input" readonly="readonly" value="@Model.TypeControleDate" title="@Model.TypeControleDate - @(Model.ListTypeControleDate.FirstOrDefault(x => x.Code == Model.TypeControleDate)?.Libelle)" />
+                        }
+                        else
+                        {
+                            @Html.DropDownList("TypeControleDate", Model.ListTypeControleDate.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == Model.TypeControleDate }), new { @class = "InputSelect" })
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block LargeLabelWidth">Type application prime</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            <input id="TypePrime" class="readonly Input" readonly="readonly" value="@Model.TypePrime" />
+                        }
+                        else
+                        {
+                            @Html.TextBox("TypePrime", Model.TypePrime, new { @class = "Input", maxlength = 1 })
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block LargeLabelWidth">Groupe alternative</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            <input id="GroupeAlternative" class="readonly Input" readonly="readonly" value="@Model.GroupeAlternative" />
+                        }
+                        else
+                        {
+                            @Html.TextBox("GroupeAlternative", Model.GroupeAlternative, new { @class = "Input numerique", albmask = "numeric" })
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRowTitle">
+                <div class="DoubleGenericColumn" style="font-weight:bold;font-style:italic">
+                    Complément
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block LabelWidth">Indexee</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.CheckBox("IsIndexee", Model.IsIndexee, new { @class = "Input", onclick = (Model.ReadOnly ? "return false;" : "") })
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block LabelWidth">Soumis CATNAT</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @Html.CheckBox("SoumisCATNAT", Model.SoumisCATNAT, new { @class = "Input", onclick = (Model.ReadOnly ? "return false;" : "") })
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    <div class="FloatLeft">
+                        <label class="Block LabelWidth">Code taxe</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.ReadOnly)
+                        {
+                            <input id="CodeTaxe" class="readonly Input" readonly="readonly" value="@Model.CodeTaxe" />
+                        }
+                        else
+                        {
+                            @Html.TextBox("CodeTaxe", Model.CodeTaxe, new { @class = "Input", maxlength = 1 })
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    @Html.CheckBox("IsMontantRef", Model.IsMontantRef, new { onclick = (Model.ReadOnly ? "return false;" : "") })
+                    <div class="FloatLeft">
+                        <label class="Block LargeLabelWidth">Dans montant de référence</label>
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    @Html.CheckBox("IsNatureModifiable", Model.IsNatureModifiable, new { onclick = (Model.ReadOnly ? "return false;" : "") })
+                    <div class="FloatLeft">
+                        <label class="Block LargeLabelWidth">Nature Modifiable</label>
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRow">
+                <div class="DoubleGenericColumn">
+                    @Html.CheckBox("IsMasquerCP", Model.IsMasquerCP, new { onclick = (Model.ReadOnly ? "return false;" : "") })
+                    <div class="FloatLeft">
+                        <label class="Block LargeLabelWidth">Masquer dans CP</label>
+                    </div>
+                </div>
+            </div>
+            <div class="HeightRowTitle">
+                <div class="DoubleGenericColumn" style="font-weight:bold;font-style:italic">
+                    L.C.I.
+                </div>
+            </div>
+            <div class="HeightRowTable">
+                <div class="DoubleGenericColumn">
+                    <table class="trHeight">
+                        <tbody>
+                            <tr>
+                                <th class="tablePersoHead tdHeaderNature">Nature</th>
+                                <th class="tablePersoHead tdHeaderValeur">Valeur</th>
+                                <th class="tablePersoHead tdHeaderUnite">Unite</th>
+                                <th class="tablePersoHead tdHeaderBase">Base</th>
+                                <th class="tablePersoHead tdHeaderModi">Maj</th>
+                                <th class="tablePersoHead tdHeaderAlim">Alim</th>
+                                <th class="tablePersoHead tdHeaderSmall">Obl</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="tblLCI" class="trHeight widthTableLCI">
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var lci in Model.ListLCI)
+                        {
+                            <tr>
+                                @Html.Hidden("ListLCI[" + count + "].Type", lci.Type)
+                                @switch ((TypeDeValeur)int.Parse(lci.Type))
+                                {
+                                    case TypeDeValeur.Assiette:
+                                        <td class="tdBodyNature">Capitaux/Assiette</td>
+                                        break;
+                                    case TypeDeValeur.Prime:
+                                        <td class="tdBodyNature">Prime</td>
+                                        break;
+                                    case TypeDeValeur.LCI:
+                                        <td class="tdBodyNature">LCI</td>
+                                        break;
+                                    case TypeDeValeur.Franchise:
+                                        <td class="tdBodyNature">Franchise</td>
+                                        break;
+                                    case TypeDeValeur.FranchiseMin:
+                                        <td class="tdBodyNature">Franchise Min</td>
+                                        break;
+                                    case TypeDeValeur.FranchiseMax:
+                                        <td class="tdBodyNature">Franchise Max</td>
+                                        break;
+                                }
+                                <td class="tdBodyValeur">
+                                    @if (!Model.ReadOnly)
+                                    {
+                                        @Html.TextBox("ListLCI[" + count + "].Valeur", lci.Valeur, new { @class = "TableInput numerique", albmask = "decimal" })
+                                    }
+                                    else
+                                    {
+                                        <span>@lci.Valeur</span>
+                                    }
+                                </td>
+                                <td class="tdBodyUnite">
+                                    @if (!Model.ReadOnly)
+                                    {
+                                        switch ((TypeDeValeur)int.Parse(lci.Type))
+                                        {
+                                            case TypeDeValeur.Assiette:
+                                                @Html.DropDownList("ListLCI[" + count + "].Unite", Model.ListUniteAssiette.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Unite }), new { @class = "TableInput" })
+                                                break;
+                                            case TypeDeValeur.Prime:
+                                                @Html.DropDownList("ListLCI[" + count + "].Unite", Model.ListUnitePrime.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Unite }), new { @class = "TableInput" })
+                                                break;
+                                            case TypeDeValeur.LCI:
+                                                @Html.DropDownList("ListLCI[" + count + "].Unite", Model.ListUniteLCI.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Unite }), new { @class = "TableInput", data_oldvalue = lci.Unite })
+                                                break;
+                                            case TypeDeValeur.Franchise:
+                                            case TypeDeValeur.FranchiseMin:
+                                            case TypeDeValeur.FranchiseMax:
+                                                @Html.DropDownList("ListLCI[" + count + "].Unite", Model.ListUniteFranchise.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Unite }), new { @class = "TableInput", data_oldvalue = lci.Unite })
+                                                break;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <span>
+                                            @lci.Unite
+                                        </span>
+                                    }
+                                </td>
+                                <td class="tdBodyBase">
+                                    @if (!Model.ReadOnly)
+                                    {
+                                        switch ((TypeDeValeur)int.Parse(lci.Type))
+                                        {
+                                            case TypeDeValeur.Assiette:
+                                                @Html.DropDownList("ListLCI[" + count + "].Base", Model.ListBaseAssiette.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Base }), new { @class = "TableInput" })
+                                                break;
+                                            case TypeDeValeur.Prime:
+                                                @Html.DropDownList("ListLCI[" + count + "].Base", Model.ListBasePrime.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Base }), new { @class = "TableInput" })
+                                                break;
+                                            case TypeDeValeur.LCI:
+                                                @Html.DropDownList("ListLCI[" + count + "].Base", Model.ListBaseLCI.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Base }), new { @class = "TableInput" })
+                                                break;
+                                            case TypeDeValeur.Franchise:
+                                                @Html.DropDownList("ListLCI[" + count + "].Base", Model.ListBaseFranchise.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Base }), new { @class = "TableInput" })
+                                                break;
+                                            case TypeDeValeur.FranchiseMin:
+                                                @Html.DropDownList("ListLCI[" + count + "].Base", Model.ListBaseFranchiseMin.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Base }), new { @class = "TableInput" })
+                                                break;
+                                            case TypeDeValeur.FranchiseMax:
+                                                @Html.DropDownList("ListLCI[" + count + "].Base", Model.ListBaseFranchiseMax.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Base }), new { @class = "TableInput" })
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span>@lci.Base</span>
+                                    }
+                                </td>
+                                <td class="tdBodyModi">
+                                    @if (!Model.ReadOnly)
+                                    {
+                                        @Html.DropDownList("ListLCI[" + count + "].Modi", Model.ListModeModifiable.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Modi }), new { @class = "SmallTableInput" })
+                                    }
+                                    else
+                                    {
+                                        <span title="@(Model.ListModeModifiable.FirstOrDefault(x => x.Code == lci.Modi)?.Libelle)">
+                                            @lci.Modi
+                                        </span>
+                                    }
+                                </td>
+                                <td class="tdBodyAlim">
+                                    @if (!Model.ReadOnly)
+                                    {
+                                        @Html.DropDownList("ListLCI[" + count + "].Alim", Model.ListAlimentation.Select(x => new SelectListItem() { Value = x.Code, Text = x.Code + " - " + x.Libelle, Selected = x.Code == lci.Alim }), new { @class = "SmallTableInput" })
+                                    }
+                                    else
+                                    {
+                                        <span title="@(Model.ListAlimentation.FirstOrDefault(x => x.Code == lci.Alim)?.Libelle)">
+                                            @lci.Alim
+                                        </span>
+                                    }
+                                </td>
+                                <td class="tdBodySmall">
+                                    @Html.CheckBox("ListLCI[" + count + "].Obl", lci.Obl, new { onclick = (Model.ReadOnly ? "return false;" : "") })
+                                </td>
+                            </tr>
+                            {
+                                count++;
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+
+            <div class="HeightRow">
+                <div class="" style="text-align: right; padding-right: 5px;">
+                    @if (Model.ReadOnly)
+                    {
+                        if (Model.Niveau < 4 && Model.IsModifiable)
+                        {
+                            <input id="btnCreerSousGarantie" type="button" value="Créer une sous-garantie" title="Créer une sous-garantie" onclick="ajouterSousGarantieType(@Model.NumeroSeq);" />
+                        }
+                    }
+                    else
+                    {
+                        <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

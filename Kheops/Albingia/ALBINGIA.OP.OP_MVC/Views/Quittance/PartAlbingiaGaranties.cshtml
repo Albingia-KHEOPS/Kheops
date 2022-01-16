@@ -1,0 +1,36 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.Garanties>
+@{
+    double totalHCatnat = 0;
+    double totalCatnat = 0;
+    double totalTotal = 0;
+}
+<table id="tblPartAlbingiaGarantieBody" class="trHeight">
+    @foreach (ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.Garanties gar in Model)
+    {    
+        <tr>
+            <td class="width650 smallPaddingLeft">@(gar.CodeGarantie + " - " + gar.LibelleGarantie)
+            </td>
+            <td class="width100 smallPaddingLeft numerique"><span albMask="decimal">@(gar.HCatnat.ToString())</span>
+            </td>
+            <td class="width100 smallPaddingLeft numerique"><span albMask="decimal">@(gar.Catnat.ToString())</span>
+            </td>
+            <td class="width100 numerique"><span albMask="decimal">@(gar.Total.ToString())</span>
+            </td>
+        </tr>
+        totalHCatnat += gar.HCatnat;
+        totalCatnat += gar.Catnat;
+        totalTotal += gar.Total;
+    }
+</table>
+<table id="tblPartAlbingiaGarantieTotalBody" class="trHeight">
+    <tr>
+        <td class="width450"></td>
+        <td class="tablePersoHead width200 titleBold backgroundWhite">Total</td>
+        <td class="width100 numerique titleBold backgroundWhite"><span albMask="decimal">@(totalHCatnat.ToString())</span>
+        </td>
+        <td class="width100 smallPaddingLeft numerique titleBold backgroundWhite"><span albMask="decimal">@(totalCatnat.ToString())</span>
+        </td>
+        <td class="width100 numerique titleBold backgroundWhite"><span albMask="decimal">@(totalTotal.ToString())</span>
+        </td>
+    </tr>
+</table>

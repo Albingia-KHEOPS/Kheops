@@ -1,0 +1,119 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamIS.ParamModeleLigneInfo>
+<table id="tblLigneInfo">
+    @foreach (var item in Model)
+    {
+        <tr id="@("tr_" + @item.GuidId)">
+            <td class="col_SqlOrder lock" title="@item.SqlOrder">
+                <label id="@("lblSqlOrder_" + @item.GuidId)">@item.SqlOrder</label>
+            </td>
+            <td class="col_SqlOrder edit">
+                <input class="col_SqlOrder" id="@("inSqlOrder_" + @item.GuidId)" value="@item.SqlOrder" title="@item.SqlOrder"/>
+            </td>
+            <td class="col_Lib lock" title="@item.Lib">
+                <label id="@("lblLib_" + @item.GuidId)">@item.Lib</label>
+            </td>
+            <td class="col_Lib edit">
+                <input class="col_Lib" id="@("inLib_" + @item.GuidId)" value="@item.Lib" title="@item.Lib"/>
+            </td>
+            <td class="col_Cells lock" title="@item.Cells">
+                <label id="@("lblCells_" + @item.GuidId)">@item.Cells</label>
+            </td>
+            <td class="col_Cells edit">
+                <input class="col_Cells" id="@("inCells_" + @item.GuidId)" value="@item.Cells" title="@item.Cells"/>
+            </td>
+            <td class="col_DbMapCol lock" title="@item.DbMapCol">
+                <label id="@("lblDbMapCol_" + @item.GuidId)">@item.DbMapCol</label>
+            </td>
+            <td class="col_DbMapCol edit">
+                <input class="col_DbMapCol" id="@("inDbMapCol_" + @item.GuidId)" value="@item.DbMapCol" title="@item.DbMapCol"/>
+            </td>
+            <td class="col_Link lock" title="@item.Link">
+                <label id="@("lblLink_" + @item.GuidId)">@item.Link</label>
+            </td>
+            <td class="col_Link edit">
+                @Html.AlbDropDownListFor(m => item.Link, item.ListesGeneriques.ListLink, "dvLink", generateTitle: true, htmlAttributes: new { @class = "col_Link", @id = "drlLink_" + @item.GuidId })
+            </td>
+            <td class="col_Type lock" title="@item.Type">
+                <label id="@("lblType_" + @item.GuidId)">@item.Type</label>
+            </td>
+            <td class="col_Type edit">
+                @Html.AlbDropDownListFor(m => item.Type, item.ListesGeneriques.ListType, "dvType", generateTitle: true, htmlAttributes: new { @class = "col_Type", @id = "drlType_" + @item.GuidId })
+            </td>
+            <td class="col_SqlRequest lock" title="@item.SqlRequest">
+                <label id="@("lblSqlRequest_" + @item.GuidId)">@item.SqlRequest</label>
+            </td>
+            <td class="col_SqlRequest edit">
+                <input class="col_SqlRequest" id="@("inSqlRequest_" + @item.GuidId)" value="@item.SqlRequest" title="@item.SqlRequest"/>
+            </td>
+            <td class="col_ConvertTo lock" title="@item.ConvertTo">
+                <label id="@("lblConvertTo_" + @item.GuidId)">@(item.ListesGeneriques.ListConvertTo.FirstOrDefault(el => el.Value == item.ConvertTo)==null?string.Empty:item.ListesGeneriques.ListConvertTo.FirstOrDefault(el => el.Value == item.ConvertTo).Text)</label>
+            </td>
+            <td class="col_ConvertTo edit">
+                @Html.AlbDropDownListFor(m => item.ConvertTo, item.ListesGeneriques.ListConvertTo, "dvConvertTo", generateTitle: true, htmlAttributes: new { @class = "col_ConvertTo", @id = "drlConvertTo_" + @item.GuidId })
+            </td>
+            <td class="col_TextLabel lock" title="@item.TextLabel">
+                <label id="@("lblTextLabel_" + @item.GuidId)">@item.TextLabel</label>
+            </td>
+            <td class="col_TextLabel edit">
+                <input class="col_TextLabel" id="@("inTextLabel_" + @item.GuidId)" value="@item.TextLabel" title="@item.TextLabel"/>
+            </td>
+            <td class="col_HierarchyOrder lock" title="@item.HierarchyOrder">
+                <label id="@("lblHierarchyOrder_" + @item.GuidId)">@(item.ListesGeneriques.ListHierarchyOrder.FirstOrDefault(el => el.Value == item.HierarchyOrder.ToString())==null?string.Empty:item.ListesGeneriques.ListHierarchyOrder.FirstOrDefault(el => el.Value == item.HierarchyOrder.ToString()).Text)</label>
+            </td>
+            <td class="col_HierarchyOrder edit">
+                @Html.AlbDropDownListFor(m => item.HierarchyOrder, item.ListesGeneriques.ListHierarchyOrder, "dvHierarchyOrder", generateTitle: true, htmlAttributes: new { @class = "col_HierarchyOrder", @id = "drlHierarchyOrder_" + @item.GuidId })
+            </td>
+            <td class="col_LineBreak lock" title="@item.LineBreak">
+                <label id="@("lblLineBreak_" + @item.GuidId)">@(item.ListesGeneriques.ListLineBreak.FirstOrDefault(el => el.Value == item.LineBreak)==null?string.Empty:item.ListesGeneriques.ListLineBreak.FirstOrDefault(el => el.Value == item.LineBreak).Text)</label>
+            </td>
+            <td class="col_LineBreak edit">
+                @Html.AlbDropDownListFor(m => item.LineBreak, item.ListesGeneriques.ListLineBreak, "dvLineBreak", generateTitle: true, htmlAttributes: new { @class = "col_LineBreak", @id = "drlLineBreak_" + @item.GuidId })
+            </td>
+            <td class="col_Required lock" title="@item.Required">
+                <label id="@("lblRequired_" + @item.GuidId)">@(item.ListesGeneriques.ListRequired.FirstOrDefault(el => el.Value == item.Required)==null?string.Empty:item.ListesGeneriques.ListRequired.FirstOrDefault(el => el.Value == item.Required).Text)</label>
+            </td>
+            <td class="col_Required edit">
+                @Html.AlbDropDownListFor(m => item.Required, item.ListesGeneriques.ListRequired, "dvRequired", generateTitle: true, htmlAttributes: new { @class = "col_Required", @id = "drlRequired_" + @item.GuidId })
+            </td>
+            <td class="col_TypeUIControl lock" title="@item.TypeUIControl">
+                <label id="@("lblTypeUIControl_" + @item.GuidId)">@item.TypeUIControl</label>
+            </td>
+            <td class="col_TypeUIControl edit">
+                @Html.AlbDropDownListFor(m =>item.TypeUIControl, item.ListesGeneriques.ListUIControl, "dvUIControl", generateTitle: true, htmlAttributes: new { @class = "col_TypeUIControl", @id = "drlUIControl_" + @item.GuidId })
+            </td>
+            <td class="col_LinkBehaviour lock" title="@item.LinkBehaviour">
+                <label id="@("lblLinkBehaviour_" + @item.GuidId)">@item.LinkBehaviour</label>
+            </td>
+            <td class="col_LinkBehaviour edit">
+                <input class="col_LinkBehaviour" id="@("inLinkBehaviour_" + @item.GuidId)" value="@item.LinkBehaviour" title="@item.LinkBehaviour"/>
+            </td>
+            <td class="col_Behaviour lock" title="@item.Behaviour">
+                <label id="@("lblBehaviour_" + @item.GuidId)">@item.Behaviour</label>
+            </td>
+            <td class="col_Behaviour edit">
+                <input class="col_Behaviour" id="@("inBehaviour_" + @item.GuidId)" value="@item.Behaviour" title="@item.Behaviour"/>
+            </td>
+            <td class="col_EventBehaviour lock" title="@item.EventBehaviour">
+                <label id="@("lblEventBehaviour_" + @item.GuidId)">@item.EventBehaviour</label>
+            </td>
+            <td class="col_EventBehaviour edit">
+                <input class="col_EventBehaviour" id="@("inEventBehaviour_" + @item.GuidId)" value="@item.EventBehaviour" title="@item.EventBehaviour"/>
+            </td>
+            <td class="col_Disabled lock" title="@item.Disabled">
+                <label id="@("lblDisabled_" + @item.GuidId)">@(item.ListesGeneriques.ListDisabled.FirstOrDefault(el => el.Value == item.Disabled)==null?string.Empty:item.ListesGeneriques.ListDisabled.FirstOrDefault(el => el.Value == item.Disabled).Text)</label>
+            </td>
+            <td class="col_Disabled edit">
+                @Html.AlbDropDownListFor(m => item.Disabled, item.ListesGeneriques.ListDisabled, "dvDisabled", generateTitle: true, htmlAttributes: new { @class = "col_Disabled", @id = "drlDisabled_" + @item.GuidId })
+            </td>
+            <td class="col_Action suppr" id="@("suppr_" + @item.GuidId)" name="btnSupprimerLigneInfo">&nbsp;
+                 <img src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprLigneInfo"/>
+            </td>
+            <td class="col_Action edit"  id="@("edt_" + @item.GuidId)" name="btnEnregistrerModificationLigneInfo">&nbsp;
+                 <img src="@Url.Content("/Content/Images/Save_16.png")" alt="Enregistrer" title="Enregistrer" name="enregistrerLigneInfo"/>
+            </td>
+            <td style="display:none">
+                <a id="@("hrefLine_" + @item.GuidId)" href="#divDataEditPopIn"></a>
+            </td>
+        </tr>
+    }
+</table>

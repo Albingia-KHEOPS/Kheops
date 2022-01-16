@@ -1,0 +1,177 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleDetailsObjetRisquePage>
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@section stylesheets {
+
+    @AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbDetailsObjetRisque")
+}
+
+@section scripts {
+
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbDetailsObjetRisque")
+}
+<div id="GestionErreur">
+</div>
+<div class="FullWidth">
+
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+            @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+    <div class="CommonForm FloatLeft">
+        @Html.HiddenNoName("TypePolice", Model.Contrat != null ? Model.Contrat.TypePolice : string.Empty)
+        @Html.HiddenNoName("Periodicite", Model.Contrat != null ? Model.Contrat.PeriodiciteCode : Model.Offre != null ? Model.Offre.Periodicite.Code : string.Empty)
+        <!--Html.Hidden("DateFinContrat", (Model.Contrat.FinEffetAnnee != 0 && Model.Contrat.FinEffetMois != 0 && Model.Contrat.FinEffetJour != 0 ? string.Format("{0}/{1}/{2}", Model.Contrat.FinEffetJour.ToString().PadLeft(2, '0'), Model.Contrat.FinEffetMois.ToString().PadLeft(2, '0'), Model.Contrat.FinEffetAnnee) : string.Empty))-->
+        @Html.HiddenFor(m => m.CodeRisque)
+        @Html.HiddenFor(m => m.IsAvnDisabled)
+        @Html.HiddenFor(m => m.CodeObjet)
+        @Html.HiddenFor(m => m.ChronoDesi)
+        @Html.HiddenFor(m => m.DescrRisque)
+        @Html.HiddenFor(m => m.CountObj)
+        @Html.Hidden("HTObj", string.Empty)
+        @Html.Hidden("dateDebOffre", Model.DateDebStr)
+        @Html.Hidden("dateFinOffre", Model.DateFinStr)
+        @Html.Hidden("heureDebOffre", !string.IsNullOrEmpty(Model.HeureDebStr) ? Model.HeureDebStr.PadLeft(2, '0') : string.Empty)
+        @Html.Hidden("minuteDebOffre", !string.IsNullOrEmpty(Model.MinuteDebStr) ? Model.MinuteDebStr.PadLeft(2, '0') : string.Empty)
+        @Html.Hidden("heureFinOffre", !string.IsNullOrEmpty(Model.HeureFinStr) ? Model.HeureFinStr.PadLeft(2, '0') : string.Empty)
+        @Html.Hidden("minuteFinOffre", !string.IsNullOrEmpty(Model.MinuteFinStr) ? Model.MinuteFinStr.PadLeft(2, '0') : string.Empty)
+        @Html.Hidden("hasFormules", Model.HasFormules.ToString())
+        @Html.HiddenNoName("IsModeCreationRisque", Model.ModeCreationRisque ? "O" : "N")
+        @Html.Hidden("paramOpenInven", string.Empty)
+        @Html.Hidden("PageTitle", Model.PageTitle)
+
+
+        @if (Model.IsModeAvenant)
+        {
+            <input type="hidden" id="ProchEch" value="@(Model.Contrat.ProchaineEchAnnee != 0 && Model.Contrat.ProchaineEchMois != 0 && Model.Contrat.ProchaineEchJour != 0 ? string.Format("{0}/{1}/{2}", Model.Contrat.ProchaineEchJour.ToString().PadLeft(2, '0'), Model.Contrat.ProchaineEchMois.ToString().PadLeft(2, '0'), Model.Contrat.ProchaineEchAnnee) : string.Empty)" />
+            @Html.Hidden("IsAvenantModificationLocale", Model.IsAvenantModificationLocale.ToString())
+            <input type="hidden" id="DateEffetAvenantModificationLocaleVeille" name="DateEffetAvenantModificationLocaleVeille" value="@(Model.DateEffetAvenantModificationLocale.HasValue ? Model.DateEffetAvenantModificationLocale.Value.AddDays(-1).ToString("dd/MM/yyyy") : string.Empty)" />
+
+            <!--<input type="hidden" id="DateEffetAvenant" name="DateEffetAvenant" value="@(Model.DateEffetAvenant.HasValue ? Model.DateEffetAvenant.Value.ToString("dd/MM/yyyy") : string.Empty)" />-->
+            @Html.Hidden("MinuteEffetAvenant", (Model.HeureEffetAvenant.HasValue ? Model.HeureEffetAvenant.Value.Minutes : 0), new { id = "MinuteEffetAvenant" })
+            @Html.Hidden("HeureEffetAvenant", (Model.HeureEffetAvenant.HasValue ? Model.HeureEffetAvenant.Value.Hours : 0), new { id = "HeureEffetAvenant" })
+            @Html.HiddenFor(m => m.AvnCreationObj)
+
+            @Html.HiddenFor(m => m.DateDebHisto)
+            @Html.HiddenFor(m => m.HeureDebHisto)
+        }
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.Partial("~/Views/Shared/_InfoTab.cshtml", Model)
+            @*@Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)*@
+            <div class="nHorizontalFullWithGroup">
+                @if (Model.IsModeAvenant)
+                {
+
+                    <div class="nGradientSection" id="divModeAvenant">
+                        <div class="HeightRow">
+                            <div class="FloatLeft">
+                                <label>Date d'effet de l'avenant</label>
+                                <!--<input name="DateEffetAvenant" class="inputDate" value="(Model.DateEffetAvenant.HasValue ? Model.DateEffetAvenant.Value.ToString("dd/MM/yyyy") : string.Empty)" disabled="disabled" />-->
+                                <input class="inputDate" id="DateEffetAvenant" name="DateEffetAvenant" value="@(Model.DateEffetAvenant.HasValue ? Model.DateEffetAvenant.Value.ToString("dd/MM/yyyy") : string.Empty)" disabled="disabled"/>
+                            </div>
+                            <div class="FloatLeft" style="padding-left: 480px;">
+
+                                <input type="checkbox" name="CheckModificationAVN" checked="@(Model.IsAvenantModificationLocale || Model.ModeCreationRisque )" disabled="disabled" />
+                                <label>Modification d'objet dans l'avenant au</label>
+
+                                @if (Model.IsAvenantModificationLocale)
+                                {
+                                    @Html.AlbDateFormat(m => m.DateModifAvenantModificationLocale, new { @id = "DateEffetAvenantModificationLocale", @class = "inputDate datepicker", @name = "DateModificationObjetRisque" }, htmlName: "DateModificationObjetRisque")
+                                }
+                                else
+                                {
+                                    @Html.AlbDateFormat(m => m.DateModifAvenantModificationLocale, new { @id = "DateEffetAvenantModificationLocale", @class = Model.IsAvenantModificationLocale ? "inputDate" : "inputDate readonly", @disabled = "disabled", @name = "DateModificationObjetRisque" }, htmlName: "DateModificationObjetRisque")
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="nGradientSection" style="@(Model.IsModeAvenant ? "height: 351px;" : "height: 385px;")">
+
+                    @*@Html.EditorFor(m => m.InformationsGeneralesMetaData, "InformationsGenerales_DetailsRisque")*@
+                    <div class="FloatLeft" style="height: 330px;">
+                        @Html.Partial("InformationsGeneralesDetailsObjet", Model.InformationsGenerales)
+                    </div>
+                    <div class="HeightRow">
+                        <label style="font-style: italic">Remplir les champs <span style="color: green">**</span> uniquement s'ils sont différents du risque</label>
+                    </div>
+                </div>
+                <div class="nGradientSection" style="height: 80px;">
+                    <div class="FloatLeft PaddingLeft" style="width: 500px;">
+                        @Html.Partial("ObjetAdresse", Model.ContactAdresse)
+                    </div>
+                    <div class="FloatLeft" style="width: 500px;">
+                        @Html.Partial("ObjetInventaire", Model.ListInventaires)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonLeft">
+                @if (Model.CountObj > 1 && (!Model.IsModeAvenant || Model.AvnCreationObj.ToString() == Model.NumAvenantPage) && !Model.IsModifHorsAvenant)
+                {
+                    <button id="btnSupprimerObj" type="button" albshortcut="true" data-accesskey="p" tabindex="30">Sup<u>p</u>rimer</button>
+                }
+            </div>
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnSuivant" type="button" class="next-step" albshortcut="true" data-accesskey="s" tabindex="28" data-risque="@(Model.CodeRisque)" data-objet="@(Model.CodeObjet)"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.HiddenNoName("hiddenInventId", string.Empty)
+<div id="divModifierValeur">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataModifierValeur">
+        <div class="nGradientSection" style="height: 100px">
+            <div class="HeightRow">
+                <div class="FloatLeft">
+                    <label class="Block FloatLeft" style="width: 250px;">Saisissez la nouvelle valeur de l'objet :</label>
+                    <input id="inEditValeurAvn" value="@Model.InformationsGenerales.Valeur" class="numerique" />
+                </div>
+            </div>
+            <div class="HeightRow">
+                <label class="textBlue">Attention, la valeur doit correspondre à l'indice @(string.IsNullOrEmpty(Model.InformationsGenerales.IndiceCode) ? "de dernière échéance principale" : Model.InformationsGenerales.IndiceCode) : @Math.Round(Model.InformationsGenerales.IndiceActualise, 2)</label>
+            </div>
+            <div class="ActionButtons ActionButtonRight" style="width: 300px; padding-right: 10px;">
+                <button id="btnModifValAnnuler" type="button">Annuler</button>
+                <button id="btnModifValValider" type="button">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divRechercheActivite" albname="divRechercheActivite">
+    <div class="overlay-background" style="z-index:22" >
+    </div>
+    <div id="divDataRechercheActivite" albname="divDataRechercheActivite"></div>
+</div>

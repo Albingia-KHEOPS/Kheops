@@ -1,0 +1,74 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.QuittanceForceFormule
+<div class="HeightRow">
+    <div class="FloatLeft">Vous allez forcer le montant total <b>@(Model.TypeHTTC)</b> des formules de garanties :</div>
+</div>
+<div class="FloatLeft" style="width: @(Model.TypeHTTC == "HT" ? "480px;" : "450px;")">
+    @if (Model.ListFormule != null && Model.ListFormule.Any())
+    {
+        <div style="width: @(Model.TypeHTTC == "HT" ? "460px;" : "430px;")">
+            <table class="trHeight" style="width: 100%;">
+                <tr>
+                    <th class="tablePersoHead" style="width: 100px; text-align: center;">Formule</th>
+                    <th class="tablePersoHead" style="width: 100px; text-align: center;">Risque</th>
+                    <th class="tablePersoHead" style="width: 200px; text-align: center;">@(Model.TypeHTTC)</th>@*calculé*@
+                    <th class="tablePersoHead" style="width: @(Model.TypeHTTC == "HT" ? "60px;" : "30px;")">&nbsp;</th>
+                </tr>
+            </table>
+        </div>
+        <div style="width: @(Model.TypeHTTC == "HT" ? "480px;" : "450px;") max-height: 310px; overflow-y: auto;">
+            <table id="tblListForceFormule" class="trHeight" style="width: @(Model.TypeHTTC == "HT" ? "460px;" : "430px;")">
+                @foreach (var item in Model.ListFormule)
+                {
+                    <tr>
+                        <td id="forceFormInfo" albFormId="@(item.CodeFor)" style="width: 98px; text-align: center;" title="@(item.FormLettre) - @(item.FormDesc)">@(item.FormLettre)</td>
+                        <td id="forceCodeRsq" albFormId="@(item.CodeFor)" style="width: 98px; text-align: center;">@(item.CodeRsq)</td>
+                        <td style="width: 187px; text-align: right; padding-right: 5px;">
+                            <span id="forceMontantCal" albFormId="@(item.CodeFor)" albmask="calculdecimal" style="display:@(item.MontantForce > 0 ? "none" : "block")">@(item.MontantCal)</span>
+                            <span id="forceMontantForce" albFormId="@(item.CodeFor)" albmask="calculdecimal" style="display:@(item.MontantForce > 0 ? "block" : "none")">@(item.MontantForce)</span>
+                        </td>
+                        <td style="width: @(Model.TypeHTTC == "HT" ? "58px;" : "30px;") text-align: center;">
+                            <img id="updForm@(item.CodeFor)" name="updForm" albFormId="@(item.CodeFor)" src="@Url.Content("/Content/Images/editer1616.png")" class="CursorPointer" albNumFor="@(item.NumeroFormule)" title="Modifier formule" />
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>
+<div id="dvInfoFormuleForce" class="FloatRight None" style="padding: 10px 10px 3px 10px; border: 1px solid #ccc; border-radius: 10px; margin-right: 10px;">
+    @Html.Hidden("CodeRsqForce", string.Empty)
+    @Html.Hidden("CodeForForce", string.Empty)
+    <div class="HeightRow">
+        <div class="FloatLeft" style="width: 110px;">Formule</div>
+        <div class="FloatLeft">
+            <input type="text" id="FormuleInfoForce" name="FormuleInfoForce" value="" readonly="readonly" class="readonly" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft" style="width: 110px;">@(Model.TypeHTTC) actuel</div>
+        <div class="FloatLeft">
+            <input type="text" id="MontantCalForce" name="MontantCalForce" value="" readonly="readonly" class="decimal readonly" albmask="calculdecimal" />
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft" style="width: 110px;">Nouveau @(Model.TypeHTTC)*</div>
+        <div class="FloatLeft">
+            <input type="text" id="MontantForForce" name="MontantForForce" value="" class="decimal" albmask="calculdecimal" />
+        </div>
+    </div>
+    <div style="padding-top: 10px; height: 30px;">
+        <div class="FloatLeft">
+            <button type="button" id="btnCancelCalculForceForm" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+        </div>
+        <div class="FloatRight">
+            <button type="button" id="btnValidCalculForceForm" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="divGarantieForce">
+    <div class="overlay-background" style="z-index:4" ></div>
+    <div id="divDataGarantieForce">
+    </div>
+</div>

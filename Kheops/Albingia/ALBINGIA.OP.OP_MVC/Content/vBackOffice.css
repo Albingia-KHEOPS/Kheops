@@ -1,0 +1,35 @@
+﻿#Groupe {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+#GroupButton {
+    height: 460px;   
+}
+
+.redim {
+    width: 100% !important;
+    display: inline !important;
+    text-align: center !important;
+}
+
+.ajust {
+    width: auto !important;
+    margin-top: 10px;
+    text-align: center !important;
+    height: auto !important;
+}
+
+.btn {
+    width: 400px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.spanText {
+    /*float: right; */
+    margin-top: 5px;
+    margin-left: 10px;
+}

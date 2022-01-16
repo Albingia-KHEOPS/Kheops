@@ -1,0 +1,130 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.SelectionRisquesObjets
+@{
+    string view = VirtualPath.Split('/').Last();
+    view = view.Substring(0, view.LastIndexOf(".cshtml"));
+}
+@Html.Hidden(view + "IsValid", ViewContext.ViewData.ModelState.IsValid)
+@Html.HiddenFor(m => m.Folder.CodeOffre)
+@Html.HiddenFor(m => m.Folder.Version)
+@Html.HiddenFor(m => m.Folder.Type)
+@Html.HiddenFor(m => m.CodeAffaireNouvelle)
+@Html.HiddenFor(m => m.VersionAffaireNouvelle)
+
+<div class="default-container">
+    <div class="container container-details">
+        <div class="main-title">Choix des risques/objets</div>
+        <div class="container-lines">
+            <div>
+                <div class="flex-table-container">
+                    <div class="flex-table">
+                        <div class="flex-header vertical-gradient">
+                            <span class="cell tiny">&nbsp;</span>
+                            <span class="cell pretty-long">Libellé</span>
+                            <span class="cell">Date début</span>
+                            <span class="cell">Date fin</span>
+                            <span class="cell longer">Valeur</span>
+                            <span class="cell pretty-long">Unite</span>
+                            <span class="cell pretty-long">Type</span>
+                        </div>
+                        <div class="flex-body scroll">
+                            @for (int x = 0; x < Model.Risques.Count; x++) {
+                                <div class="alternate-bg-color">
+                                    @if (Model.Risques[x].Objets.Count > 1) {
+                                        <div id="risque_@(Model.Risques[x].Code)" name="risque-expand" class="cell tiny @(Model.Risques[x].IsExpanded ? "expanded-img-cell" : "collapsed-img-cell")">&nbsp;</div>
+                                    }
+                                    else {
+                                        <div class="cell tiny">&nbsp;</div>
+                                    }
+                                    <div class="cell pretty-long" title="@(Model.Risques[x].Name)">
+                                        @Html.HiddenFor(m => m.Risques[x].Code)
+                                        @Html.HiddenFor(m => m.Risques[x].IsExpanded)
+                                        @Html.HiddenFor(m => m.Risques[x].Name)
+                                        @Html.HiddenFor(m => m.Risques[x].DateDebut)
+                                        @Html.HiddenFor(m => m.Risques[x].DateFin)
+                                        @Html.HiddenFor(m => m.Risques[x].Valeur)
+                                        @Html.HiddenFor(m => m.Risques[x].Unite)
+                                        @Html.HiddenFor(m => m.Risques[x].Type)
+                                        @if (Model.Risques[x].Objets.Count == 1) {
+                                            @Html.HiddenFor(m => m.Risques[x].Objets[0].Code)
+                                            @Html.HiddenFor(m => m.Risques[x].Objets[0].Name)
+                                            @Html.HiddenFor(m => m.Risques[x].Objets[0].DateDebut)
+                                            @Html.HiddenFor(m => m.Risques[x].Objets[0].DateFin)
+                                            @Html.HiddenFor(m => m.Risques[x].Objets[0].Valeur)
+                                            @Html.HiddenFor(m => m.Risques[x].Objets[0].Unite)
+                                            @Html.HiddenFor(m => m.Risques[x].Objets[0].Type)
+                                            @Html.HiddenFor(m => m.Risques[x].Objets[0].Selected)
+                                        }
+                                        <label>@Html.CheckBoxFor(m => m.Risques[x].Selected) @Html.DisplayFor(m => m.Risques[x].Name)</label>
+                                    </div>
+                                    <div class="cell">@Html.DisplayFor(m => m.Risques[x].DateDebut)</div>
+                                    <div class="cell">@Html.DisplayFor(m => m.Risques[x].DateFin)</div>
+                                    <div class="cell center-content longer">@Html.DisplayFor(m => m.Risques[x].Valeur)</div>
+                                    <div class="cell center-content pretty-long" title="@(Model.Risques[x].Unite)">@Html.DisplayFor(m => m.Risques[x].Unite)</div>
+                                    <div class="cell center-content pretty-long" title="@(Model.Risques[x].Type)">@Html.DisplayFor(m => m.Risques[x].Type)</div>
+                                </div>
+                                if (Model.Risques[x].Objets.Count > 1) {
+                                    for (int y = 0; y < Model.Risques[x].Objets.Count; y++) {
+                                        <div class="@(Model.Risques[x].IsExpanded ? "alternate-bg-color" : "hide-it")">
+                                            <div class="cell tiny">&nbsp;</div>
+                                            <div class="cell pretty-long" title="@(Model.Risques[x].Objets[y].Name)">
+                                                @Html.HiddenFor(m => m.Risques[x].Objets[y].Code)
+                                                @Html.HiddenFor(m => m.Risques[x].Objets[y].Name)
+                                                @Html.HiddenFor(m => m.Risques[x].Objets[y].DateDebut)
+                                                @Html.HiddenFor(m => m.Risques[x].Objets[y].DateFin)
+                                                @Html.HiddenFor(m => m.Risques[x].Objets[y].Valeur)
+                                                @Html.HiddenFor(m => m.Risques[x].Objets[y].Unite)
+                                                @Html.HiddenFor(m => m.Risques[x].Objets[y].Type)
+                                                <label class="pad21-lf">@Html.CheckBoxFor(m => m.Risques[x].Objets[y].Selected) @Html.DisplayFor(m => m.Risques[x].Objets[y].Name)</label>
+                                            </div>
+                                            <div class="cell">@Html.DisplayFor(m => m.Risques[x].Objets[y].DateDebut)</div>
+                                            <div class="cell">@Html.DisplayFor(m => m.Risques[x].Objets[y].DateFin)</div>
+                                            <div class="cell center-content longer">@Html.DisplayFor(m => m.Risques[x].Objets[y].Valeur)</div>
+                                            <div class="cell center-content pretty-long" title="@(Model.Risques[x].Objets[y].Unite)">@Html.DisplayFor(m => m.Risques[x].Objets[y].Unite)</div>
+                                            <div class="cell center-content pretty-long" title="@(Model.Risques[x].Objets[y].Type)">@Html.DisplayFor(m => m.Risques[x].Objets[y].Type)</div>
+                                        </div>
+                                    }
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+                @Html.ValidationMessageFor(m => m.Risques)
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.AvailableOptions.Any()) {
+    <div class="default-container">
+        <div class="container container-details">
+            <div class="main-title">Formules et options disponibles</div>
+            <div class="container-lines">
+                <div>
+                    <ul>
+                        @foreach (var group in Model.AvailableOptions.GroupBy(o => o.NumFormule)) {
+
+                            <li>
+                                @group.First().NomFormule
+                                <ul>
+                                    @foreach (var item in group) {
+                                        <li>Option @item.NumOption @item.Application</li>
+                                    }
+                                </ul>
+                            </li>
+
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@for (int index = 0; index < Model.AvailableOptions.Count; index++) {
+    @Html.HiddenFor(m => m.AvailableOptions[index].NomFormule)
+    @Html.HiddenFor(m => m.AvailableOptions[index].NumFormule)
+    @Html.HiddenFor(m => m.AvailableOptions[index].NumOption)
+    @Html.HiddenFor(m => m.AvailableOptions[index].Application)
+}

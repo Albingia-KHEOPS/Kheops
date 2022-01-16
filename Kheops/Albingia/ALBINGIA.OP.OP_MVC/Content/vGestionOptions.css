@@ -1,0 +1,20 @@
+﻿.divHeight {
+    height: 362px;
+}
+
+.ButtonRight {
+    text-align: right;
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-right: 6px;
+    padding-top: 4px;
+}
+
+.PadTop {
+     padding-top: 10px;
+}
+
+.PadLeft {
+    padding-left : 55px;
+}

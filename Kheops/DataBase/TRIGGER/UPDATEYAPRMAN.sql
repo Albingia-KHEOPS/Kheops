@@ -1,0 +1,66 @@
+﻿CREATE TRIGGER ZALBINKHEO.UPDATEYAPRMAN 
+	AFTER UPDATE ON ZALBINKHEO.YAPRMAN 
+	REFERENCING OLD AS ANCLINE 
+	NEW AS NOUVLINE 
+	FOR EACH ROW 
+	MODE DB2SQL 
+	SET OPTION  ALWBLK = *ALLREAD , 
+	ALWCPYDTA = *OPTIMIZE , 
+	COMMIT = *NONE , 
+	CLOSQLCSR = *ENDMOD , 
+	DECRESULT = (31, 31, 00) , 
+	DFTRDBCOL = *NONE , 
+	DYNDFTCOL = *NO , 
+	DYNUSRPRF = *USER , 
+	SRTSEQ = *HEX   
+	BEGIN ATOMIC 
+DECLARE V_TYP CHAR ( 1 ) DEFAULT '' ; 
+DECLARE V_IPB CHAR ( 9 ) DEFAULT '' ; 
+DECLARE V_VERSION NUMERIC DEFAULT 0 ; 
+  
+SET SQLP_L3 . V_VERSION = NOUVLINE . ABRALX ; 
+SET SQLP_L3 . V_IPB = NOUVLINE . ABRIPB ; 
+SELECT YALBINFILE . YPOBASE . PBTYP INTO SQLP_L3 . V_TYP FROM YALBINFILE . YPOBASE WHERE 
+QSYS2 . TRIM ( YALBINFILE . YPOBASE . PBIPB ) = QSYS2 . TRIM ( SQLP_L3 . V_IPB ) AND YALBINFILE . YPOBASE . PBALX = SQLP_L3 . V_VERSION ; 
+CALL YALBINFILE . SP_UPDATEKGRPTRG ( SQLP_L3 . V_TYP , SQLP_L3 . V_IPB , SQLP_L3 . V_VERSION , 'YAPRMAN' , 'ABRMNT' ) ; 
+END  ; 
+  
+LABEL ON TABLE ZALBINKHEO.YAPRMAN 
+	IS 'Police : Prime Annuelle par contrat            ABR' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.YAPRMAN 
+( ABRIPB IS 'N° de police' , 
+	ABRALX IS 'N° Aliment' , 
+	ABRMNT IS 'Prime Annuelle' , 
+	ABRCRU IS 'User' , 
+	ABRCRA IS 'Année création' , 
+	ABRCRM IS 'Mois Création' , 
+	ABRCRJ IS 'Jour création' , 
+	ABRTTC IS 'TTC' , 
+	ABRPHH IS 'Prime Hors Catnat' , 
+	ABRATT IS 'Gareat ATTENT' , 
+	ABRSP IS 'S/P contrat' , 
+	ABRTHT IS 'HT Annuel av CN  TOT' , 
+	ABRTHH IS 'HT annuel horsCN TOT' , 
+	ABRTAT IS 'GAREAT      Part TOT' , 
+	ABRTSH IS 'Surprime HT Part TOT' , 
+	ABRTST IS 'Surprime TTC     TOT' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.YAPRMAN 
+( ABRIPB TEXT IS 'N° de Police' , 
+	ABRALX TEXT IS 'N° Aliment' , 
+	ABRMNT TEXT IS 'Prime Annuelle avec CN      Part ALB' , 
+	ABRCRU TEXT IS 'User' , 
+	ABRCRA TEXT IS 'Année création' , 
+	ABRCRM TEXT IS 'Mois Création' , 
+	ABRCRJ TEXT IS 'Jour Création' , 
+	ABRTTC TEXT IS 'TTC                         Part TOT' , 
+	ABRPHH TEXT IS 'Prime ref hors CATNAT       Part ALB' , 
+	ABRATT TEXT IS 'Gareat ATTENT               Part ALB' , 
+	ABRSP TEXT IS 'S/P contrat' , 
+	ABRTHT TEXT IS 'HT Annuelle avec CN         Part TOT' , 
+	ABRTHH TEXT IS 'HT annuel Hors CN           Part TOT' , 
+	ABRTAT TEXT IS 'GAREAT                      Part TOT' , 
+	ABRTSH TEXT IS 'Surprime (BNS PB ...)  HT   Part TOT' , 
+	ABRTST TEXT IS 'Surprime TTC                Part TOT' ) ; 
+  

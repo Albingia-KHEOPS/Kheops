@@ -1,0 +1,10 @@
+﻿ 
+@model ALBINGIA.OP.OP_MVC.Models.ModelesGestUtilisateurs.ModeleUtilisateurBranche
+
+@Html.AlbDropDownListFor(m => m.TypeDroit, Model.TypeDroits, "Type de droit", htmlAttributes: new
+                                               {
+                                                   @id = "newTypeDroit",
+                                                   @tabindex = "3",
+                                                   @class = "FieldTypeDroit",
+                                                   @albcontext=Model.Albcontext
+                                               }, generateTitle: true)

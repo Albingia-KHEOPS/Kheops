@@ -1,0 +1,22 @@
+﻿@using (Html.BeginForm("SaveDocsJoints", "CommonNavigation", FormMethod.Post, new { @id = "File", enctype = "multipart/form-data", target = "frmUploadedFile" }))
+{
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "Jquery/jquery-1.8.2.min.js", "Jquery/jquery-ui-1.8.23.min.js", "Jquery/autoNumeric.min.js" }, "~/Scripts/")
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albSaveDocJointsIframe.js" }, "~/Scripts/AlbingiaJS/")
+ 
+    @Html.Hidden("docCodeOffre", string.Empty)
+    @Html.Hidden("docVersIonOffre", string.Empty)
+    @Html.Hidden("docTypeOffre", string.Empty)
+    @Html.Hidden("docIdAdd", string.Empty)
+    @Html.Hidden("docTypeDoc", string.Empty)
+    @Html.Hidden("docTitleDoc", string.Empty)
+    @Html.Hidden("docFichier", string.Empty)
+    @Html.Hidden("docReference", string.Empty)
+    @Html.Hidden("docChemin", string.Empty)
+    @Html.Hidden("docTabGuid", string.Empty)
+    @Html.Hidden("docModeNavig", string.Empty)
+    @Html.Hidden("docActeGestion", string.Empty)
+    @Html.Hidden("docNumAvenant", string.Empty)
+    @Html.Hidden("docFileName", string.Empty)
+    <input type="file" id="fileUpd" name="fileUpd" class="FileUpload" accept=".doc,.docx,.pdf"/>
+    <button id="submitAddSaveDocJoints" type="submit" class="None">Load</button>    
+}

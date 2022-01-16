@@ -1,0 +1,46 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModeleLibellesClauses.ModeleClause>
+<table id="tblBloc" class="trHeight">
+    @{var n_ligne = 0; }
+
+    @foreach (var item in Model)
+    {
+        var linkCode = "";
+
+        if (!string.IsNullOrEmpty(item.GuidId))
+        {
+            linkCode = item.GuidId;
+        }
+        
+    <tr id="@("tr_" + @linkCode)">
+       
+        <td id="@("SelectBancheModif_" + @n_ligne)" name="codeBloc" class="linkBloc bBranche ">
+            @item.Branche
+        </td>
+        <td id="@("SelectCibleModif_" + @n_ligne)" class="linkBloc bCible">
+            @item.Cible
+        </td>
+
+        <td id="@("Nm1Modif_" + @n_ligne)" class="linkBloc col1" name="Nomenclature1" title="Nomenclature 1">
+            @item.Nomenclature1
+        </td>
+
+        <td id="@("Nm2Modif_" + @n_ligne)" class="linkBloc col2" name="Nomenclature2" title="Nomenclature 2">
+            @item.Nomenclature2
+        </td>
+
+        <td id="@("Nm3Modif_" + @n_ligne)" class="linkBloc col3" name="Nomenclature3" title="Nomenclature 3">
+            @item.Nomenclature3
+        </td>
+
+        <td id="@("LibelleClauseModif_" + @n_ligne)" class="linkBloc col4" name="Libellespecifique" title="Libelle Specifique">
+            @item.Libellespecifique
+        </td>
+
+        <td class="supprBloc bImg">
+            <img id="modifierClause" src="@Url.Content("/Content/Images/editer1616.png")" title="Modifier" name="@("modif_" + @n_ligne)" class="paddingAction" />
+            <img id="suprimerClause" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="@("supp_" + @n_ligne)" class="paddingAction" />
+        </td>
+    </tr>
+        n_ligne = n_ligne + 1;
+    }
+</table>

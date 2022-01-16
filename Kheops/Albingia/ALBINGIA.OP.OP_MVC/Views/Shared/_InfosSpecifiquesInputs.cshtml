@@ -1,0 +1,34 @@
+﻿@using Albingia.Kheops.DTO
+@model List<InformationSpecifiqueDto>
+@{
+    int niv = 0;
+}
+
+<table name="albISTable" class="nGradientSection FloatLeft Padding" cellpadding="10">
+    @foreach (var ligne in Model) {
+        niv = ligne.ModeleLigne.TypePresentation;
+        if (niv < 3) {
+            <tr>
+                <td colspan="2" class="titre@(niv == 1 ? "IS" : "2")">
+                    @if (niv == 1) {
+                        <div id="lnk@(ligne.Cle)">@ligne.ModeleLigne.Libelle</div>
+                    }
+                    else {
+                        @ligne.ModeleLigne.Libelle
+                    }
+                </td>
+            </tr>
+        }
+        else {
+            <tr>
+                <td style="width: 300px;">@ligne.ModeleLigne.Libelle</td>
+                <td>
+                    @Html.Partial("_InfoSpecifiqueValeur", ligne)
+                </td>
+            </tr>
+        }
+        if (ligne.ModeleLigne.NombreSautsLignes > 1) {
+            @Html.Raw("</table>\r\n<table name=\"albISTable\" class=\"nGradientSection FloatLeft Padding\" cellpadding=\"10\">")
+        }
+    }
+</table>

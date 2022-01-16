@@ -1,0 +1,93 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLLs", "DLLs", "{8EA38829-E7B7-4F49-8005-46CB29561009}"
+	ProjectSection(SolutionItems) = preProject
+		DLLs\Easyco32.dll = DLLs\Easyco32.dll
+		DLLs\Easycom_core.dll = DLLs\Easycom_core.dll
+		DLLs\NLog.dll = DLLs\NLog.dll
+		DLLs\NLog.Extended.dll = DLLs\NLog.Extended.dll
+		DLLs\NLog.Extended.xml = DLLs\NLog.Extended.xml
+		DLLs\NLog.xml = DLLs\NLog.xml
+		DLLs\Rhino.Mocks.dll = DLLs\Rhino.Mocks.dll
+		DLLs\System.Data.EasycomClient.dll = DLLs\System.Data.EasycomClient.dll
+		DLLs\System.Data.SQLite.DLL = DLLs\System.Data.SQLite.DLL
+		DLLs\System.Data.SQLite.Linq.dll = DLLs\System.Data.SQLite.Linq.dll
+		DLLs\Telerik.Web.Design.dll = DLLs\Telerik.Web.Design.dll
+		DLLs\Telerik.Web.UI.dll = DLLs\Telerik.Web.UI.dll
+		DLLs\Telerik.Web.UI.XML = DLLs\Telerik.Web.UI.XML
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12DBDA05-3F48-4B34-8588-2C4DBEFBE96A}"
+	ProjectSection(SolutionItems) = preProject
+		Hexavia1.vsmdi = Hexavia1.vsmdi
+		Local.testsettings = Local.testsettings
+		pom.xml = pom.xml
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Hexavia.CoreDomain", "Albingia.Hexavia.CoreDomain\Albingia.Hexavia.CoreDomain.csproj", "{B310CDEF-F58A-47B0-AB7E-B904B98B9F4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Hexavia.Core", "Albingia.Hexavia.Core\Albingia.Hexavia.Core.csproj", "{8832D8D9-4520-4EEA-B194-B39F45D5FAE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Hexavia.DataAccess", "Albingia.Hexavia.DataAccess\Albingia.Hexavia.DataAccess.csproj", "{02662931-B009-4908-8C8C-99DA68B0C04D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Hexavia.Services", "Albingia.Hexavia.Services\Albingia.Hexavia.Services.csproj", "{8B1F5093-2B4F-4F89-B6D0-1803478E1F4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albingia.Hexavia.Web", "Albingia.Hexavia.Web\Albingia.Hexavia.Web.csproj", "{7446EDDE-D234-4983-A1DE-2266FB882148}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs:8080/tfs/kheops
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Albingia.Hexavia.CoreDomain\\Albingia.Hexavia.CoreDomain.csproj
+		SccProjectName1 = Albingia.Hexavia.CoreDomain
+		SccLocalPath1 = Albingia.Hexavia.CoreDomain
+		SccProjectUniqueName2 = Albingia.Hexavia.Core\\Albingia.Hexavia.Core.csproj
+		SccProjectName2 = Albingia.Hexavia.Core
+		SccLocalPath2 = Albingia.Hexavia.Core
+		SccProjectUniqueName3 = Albingia.Hexavia.DataAccess\\Albingia.Hexavia.DataAccess.csproj
+		SccProjectName3 = Albingia.Hexavia.DataAccess
+		SccLocalPath3 = Albingia.Hexavia.DataAccess
+		SccProjectUniqueName4 = Albingia.Hexavia.Services\\Albingia.Hexavia.Services.csproj
+		SccProjectName4 = Albingia.Hexavia.Services
+		SccLocalPath4 = Albingia.Hexavia.Services
+		SccProjectUniqueName5 = Albingia.Hexavia.Web\\Albingia.Hexavia.Web.csproj
+		SccProjectName5 = Albingia.Hexavia.Web
+		SccLocalPath5 = Albingia.Hexavia.Web
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Hexavia1.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B310CDEF-F58A-47B0-AB7E-B904B98B9F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B310CDEF-F58A-47B0-AB7E-B904B98B9F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B310CDEF-F58A-47B0-AB7E-B904B98B9F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B310CDEF-F58A-47B0-AB7E-B904B98B9F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8832D8D9-4520-4EEA-B194-B39F45D5FAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8832D8D9-4520-4EEA-B194-B39F45D5FAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8832D8D9-4520-4EEA-B194-B39F45D5FAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8832D8D9-4520-4EEA-B194-B39F45D5FAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02662931-B009-4908-8C8C-99DA68B0C04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02662931-B009-4908-8C8C-99DA68B0C04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02662931-B009-4908-8C8C-99DA68B0C04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02662931-B009-4908-8C8C-99DA68B0C04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B1F5093-2B4F-4F89-B6D0-1803478E1F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1F5093-2B4F-4F89-B6D0-1803478E1F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B1F5093-2B4F-4F89-B6D0-1803478E1F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1F5093-2B4F-4F89-B6D0-1803478E1F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7446EDDE-D234-4983-A1DE-2266FB882148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7446EDDE-D234-4983-A1DE-2266FB882148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7446EDDE-D234-4983-A1DE-2266FB882148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7446EDDE-D234-4983-A1DE-2266FB882148}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

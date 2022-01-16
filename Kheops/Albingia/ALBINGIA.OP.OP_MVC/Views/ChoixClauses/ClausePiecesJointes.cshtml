@@ -1,0 +1,158 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleChoixClausePieceJointe
+<div class="CommonForm FloatLeft">
+    <div class="GroupFull GroupWithBorder">
+        <div class="GroupTitle">Edition de pièces jointes</div>
+        <div class="HorizontalHalfWithGroupAdmin">
+            <div class="GradientSection">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block" style="width: 60px;">Contexte</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="PiecesJointesContexte" value="@Model.Contexte" readonly="readonly" class="readonly" />
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block" style="width: 95px;">Emplacement*</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.Modifiable)
+                        {
+                            <input type="text" id="PiecesJointesEmplacement" value="@Model.Emplacement"  />
+                        }
+                        else
+                        {
+                            <input type="text" id="PiecesJointesEmplacement" value="@Model.Emplacement" readonly="readonly" class="readonly" />
+                        }
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block" style="width: 125px;">Sous-emplacement*</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.Modifiable)
+                        {
+                            <input type="text" id="PiecesJointesSousEmplacement" value="@Model.SousEmplacement" />
+                        }
+                        else
+                        {
+                            <input type="text" id="PiecesJointesSousEmplacement" value="@Model.SousEmplacement" readonly="readonly" class="readonly" />
+                        }
+                    </div>
+                    <div class="FloatLeft">
+                        <label class="Block" style="width: 50px;">Ordre*</label>
+                    </div>
+                    <div class="FloatLeft">
+                        @if (Model.Modifiable)
+                        {
+                            <input type="text" id="PiecesJointesOrdre" value="@Model.Ordre" />
+                        }
+                        else
+                        {
+                            <input type="text" id="PiecesJointesOrdre" value="@Model.Ordre" readonly="readonly" class="readonly numerique" />
+                        }
+
+                    </div>
+                </div>
+                <div id="divAppliquePieceJointe" class="HeightRow None">
+                    <div class="FloatLeft">
+                        @Html.Hidden("codeObjPiecesJointes", $"{Model.CodeRisque}_{Model.CodeObjet}")
+                        <label id="AppliqueLib" class="Block" style="width: 115px;">S'applique au risque</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="PiecesJointesApplique" name="wvApplique" value="@Model.Risque" />
+                    </div>
+                    <div class="FloatLeft">
+                        <img id="btnPiecesJointesApplique" src="@Url.Content("/Content/Images/moreinfo.png")" style="width:20px; height:20px;" class="CursorPointer" />
+                    </div>
+                </div>
+            </div>
+            <div class="GradientSection" style="height: 200px;">
+                <div id="divHeaderListPiecesJointes" class="PaddingLeft">
+                    <table id="tblHeaderListPiecesJointes" class="trHeight" style="width: 980px; table-layout: fixed;">
+                        <tr>
+                            <th class="tablePersoHead" style="width: 78px;">Ajouté le</th>
+                            <th class="tablePersoHead" style="width: 78px;">Acte</th>
+                            <th class="tablePersoHead" style="width: 38px;">Avnt.</th>
+                            <th class="tablePersoHead" style="width: 350px;">Titre</th>
+                            <th class="tablePersoHead" style="width: 250px;">Fichier</th>
+                            <th class="tablePersoHead" style="width: 120px;">Référence</th>
+                            <th class="tablePersoHead" style="width: 18px;">&nbsp;</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divBodyListPiecesJointes" class="PaddingLeft" style="max-height: 185px; overflow: auto;">
+                    <table id="tblBodyListPiecesJointes" class="trHeight" style="width: 980px; table-layout: fixed;">
+                        @foreach (var item in Model.PiecesJointes)
+                        {
+                            <tr>
+                                <td style="width: 80px; text-align: center;">@item.DateAjtStr</td>
+                                <td style="width: 80px; text-align: center;">@item.Acte</td>
+                                <td style="width: 40px; text-align: center;">@item.Avenant</td>
+                                <td style="width: 349px; padding-left: 5px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" title="@item.Titre">@item.Titre</td>
+                                <td style="width: 249px; padding-left: 5px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" title="@item.Fichier">@item.Fichier</td>
+                                <td style="width: 120px; padding-left: 5px;">@item.Reference</td>
+                                <td style="width: 22px; text-align: center;">
+                                    @if (!item.IsExist)
+                                    {
+                                        <img src="@Url.Content("/Content/Images/alertes/notif_icn_crit16.png")" title="Fichier inexistant" />
+                                    }
+                                    else
+                                    {
+                                        if (item.Checkable)
+                                        {
+                                        <input type="checkbox" id="chkPieceJointe_@(item.PieceJointeId)" name="chkPieceJointe" albPJId="@(item.PieceJointeId)" />
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+        <div class="ActionButtons ActionButtonLeft" style="width: 700px; text-align: center; color: red; font-weight: bold;">
+            Les formats de documents autorisés sont : ".doc", ".docx", ".pdf"
+        </div>
+        <div class="ActionButtons ActionButtonRight" style="width: 300px;">
+            <button id="btnCancelPiecesJointes" type="button" albshortcut="false" data-accesskey="a"><u>A</u>nnuler</button>
+            <button id="btnValidPiecesJointes" type="button" albshortcut="false" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="divLstObj" class="None">
+    <div class="overlay-background" style="z-index:80" >
+    </div>
+    <div id="divDataLstObj">
+        <div class="DivObjets">
+            <div class="HeightRow">
+                <div class="RsqColumn">
+                    <div class="FloatLeft CheckRsq">
+                        <input id="checkRsq_@(Model.CodeRisque)" name="checkRsq" type="radio" value="@(Model.CodeRisque)_@(Model.Risque)" checked="checked"/>
+                    </div>
+                    <div class="FloatLeft">
+                        <div class="DivRsqTitle Ellipsis" title="@Model.Risque">
+                            Sélection du risque : @Model.Risque
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="DivObjTitle">
+                Sélection de l'objet
+            </div>
+            <div class="divListRsqObj">
+                @if (Model.ObjetsRisqueAll != null)
+                {
+                    @Html.Partial("../Clausier/ListObjets", Model.ObjetsRisqueAll)
+                }
+            </div>
+
+            <div class="Validation FloatRight PaddingRight" style="width: 90%; top: 243px; padding-top: 20px; position: absolute;">
+                <button id="btnListCancel" type="button" albshortcut="false" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnListValid" type="button" albshortcut="false" data-accesskey="v"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>

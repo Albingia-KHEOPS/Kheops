@@ -1,0 +1,3011 @@
+﻿/* Feuille de style commune à tous les formulaires */
+/* Encadrement des groupes */
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.navig {
+    color: blue;
+    cursor: pointer;
+}
+
+    .navig:link,
+    .navig:visited,
+    .navig:active,
+    .navig:hover {
+        color: blue;
+        text-decoration: none;
+    }
+
+    .navig:hover {
+        text-decoration: underline;
+    }
+
+.navigvisited {
+    color: #609;
+    cursor: pointer;
+}
+
+    .navigvisited:link,
+    .navigvisited:visited,
+    .navigvisited:active,
+    .navigvisited:hover {
+        color: #609;
+        text-decoration: none;
+    }
+
+    .navigvisited:hover {
+        text-decoration: underline;
+    }
+
+.naviggreen {
+    color: green;
+    cursor: pointer;
+}
+
+    .naviggreen:link,
+    .naviggreen:visited,
+    .naviggreen:active,
+    .naviggreen:hover {
+        color: green;
+        text-decoration: none;
+    }
+
+    .naviggreen:hover {
+        text-decoration: underline;
+    }
+
+
+.navigorange {
+    color: orange;
+    cursor: pointer;
+}
+
+    .navigorange:link,
+    .navigorange:visited,
+    .navigorange:active,
+    .navigorange:hover {
+        color: orange;
+        text-decoration: none;
+    }
+
+    .navigorange:hover {
+        text-decoration: underline;
+    }
+
+a:link,
+a:visited,
+a:active,
+a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+/*classe pour le groupe de boutons (Engagement/Attentat)*/
+
+.btnStyle {
+    margin-top: 10px;
+    padding-top: 2px;
+}
+
+
+.tablePersoHead {
+    border: 1px solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.tblHead20 {
+    background-image: url(/Content/Images/bgHeader20.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+/*classe pour la dialog in fancy*/
+#divDialogInFancy {
+    background-color: transparent;
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+}
+
+.divDialog {
+    border: 1px solid grey;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background-color: White;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*classe de style pour l'arbre*/
+.ArbreWidth {
+    width: 153px;
+    margin-right: 5px;
+}
+
+.ArbreBackground {
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+    width: 145px;
+}
+
+.FullWidth {
+    width: 1212px !important;
+}
+
+/*classe de style pour le Helper Heure Minute*/
+.HourMinute {
+    width: 62px;
+}
+
+.HourMinuteReadOnly {
+    width: 20px;
+}
+/*Zone de styles définit le 16/04/12*/
+
+.HeaderSubSearch {
+    background-color: #F0F0F0;
+    font-weight: bold;
+}
+
+.HalfGroup {
+    width: 509px;
+}
+
+.HalfGenericColumn {
+    width: 251px;
+    float: left;
+}
+
+.CheckBoxWidth {
+    width: 20px;
+}
+
+.CursorPointer {
+    cursor: pointer;
+}
+
+.CursorDefault {
+    cursor: default;
+}
+
+.TxtLink {
+    text-decoration: underline;
+    color: #00E;
+}
+
+.HeightInfoGen {
+    height: 128px;
+}
+
+.HeightAdresse {
+    height: 195px;
+}
+
+.GroupHeightInfoTiers {
+    height: 263px;
+}
+
+.HeightInfoTiers {
+    height: 245px;
+}
+
+.GenericColumn {
+    width: 253px;
+    float: left;
+}
+
+.DoubleGenericColumn {
+    width: 506px;
+    float: left;
+}
+
+.DoubleGenericColumnSmaller {
+    width: 480px;
+    float: left;
+}
+
+.DoubleGenericColumnSearch {
+    width: 585px;
+    float: left;
+}
+
+.LayoutBody {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.TotalWidth {
+    width: 1200px !important;
+}
+
+.HorizontalTotalWidth {
+    width: 1195px !important;
+}
+
+.nHorizontalTotalWidth {
+    width: 1198px !important;
+}
+
+.TripleTotalWidth {
+    width: 691px !important;
+}
+
+.CommonForm {
+    width: 1040px;
+    margin-left: auto;
+    margin-right: auto; /*margin-top: 10px;     padding-top: 20px;*/
+}
+
+.GroupFull {
+    width: 1025px;
+    padding-bottom: 15px;
+    background: #fff;
+}
+
+.nGroupFull {
+    width: 1027px;
+    padding-bottom: 15px;
+    background: #fff;
+}
+
+.CommonForm .HorizontalFullWithGroup {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    width: 1020px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+    height: 1%;
+}
+
+.CommonForm .nHorizontalFullWithGroup {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 6px;
+    width: 1027px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+    height: 1%;
+}
+
+.DimEntete {
+    width: 1212px !important;
+    /*height: 81px;*/
+    height: 36px;
+    padding-bottom: 0px !important;
+    padding-right: 0px !important;
+}
+
+.Entete1 {
+    padding-left: 55px;
+}
+
+.Entete2 {
+    padding-left: 35px;
+}
+
+.Entete3 {
+    padding-left: 15px;
+}
+
+.DivEntete1 {
+    width: 45px;
+}
+
+.DivEntete2 {
+    /*width: 65px;*/
+    width: 45px;
+}
+
+.DivEntete3 {
+    width: 85px;
+}
+
+.DivEntete4 {
+    width: 120px;
+}
+
+.DivEntete5 {
+    width: 136px;
+}
+
+.DivEntete6 {
+    width: 146px;
+}
+
+.DivEntete7 {
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.DivCourtierPreneur {
+    width: 90px;
+}
+
+.DivEnteteCourtiers {
+    width: 90px;
+}
+
+.TripleColumnsGroup {
+    width: 326px;
+}
+
+.ImageWidth {
+    width: 175px;
+}
+
+.nImageWidth {
+    width: 50px;
+}
+
+.BGEntete {
+    border-radius: 5px;
+    background-image: url(/Content/Images/entete.png);
+    background-repeat: no-repeat;
+    width: 722px;
+    height: 81px;
+}
+
+.BGAnEntete {
+    border-radius: 5px;
+    background-image: url(/Content/Images/entetecontrat.png);
+    background-repeat: no-repeat;
+    width: 722px;
+    height: 81px;
+}
+
+.GradientSection {
+    margin-right: 5px;
+    border: 1px #ddd outset;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-radius: 5px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd');
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #fff),color-stop(1, #ddd));
+    background-image: -moz-linear-gradient(top, #fff, #ddd);
+    background-attachment: fixed !important;
+    background-color: #eee;
+}
+
+.nGradientSection {
+    margin-right: 2px;
+    border: 1px #ddd outset;
+    margin-top: 2px;
+    padding-top: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-radius: 5px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd');
+    background-image: -webkit-gradient(linear,left bottom,right bottom,color-stop(0, #fff),color-stop(1, #ddd));
+    background-image: -moz-linear-gradient(top, #fff, #ddd);
+    background-color: #eee;
+}
+
+.simpleGradientSection {
+    margin-top: 1px;
+    border-radius: 5px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd');
+    background-image: -webkit-gradient(linear,left bottom,right bottom,color-stop(0, #fff),color-stop(1, #ddd));
+    background-image: -moz-linear-gradient(top, #fff, #ddd);
+}
+
+.Padding {
+    padding: 5px;
+}
+
+.PaddingTop {
+    padding-top: 5px;
+}
+
+.PaddingTopLittle {
+    padding-top: 2px;
+}
+
+.PaddingLeft {
+    padding-left: 5px;
+}
+
+.PaddingRight {
+    padding-right: 5px !important;
+}
+
+.PaddingRightLittle {
+    padding-right: 3px !important;
+}
+
+
+.MarginBottom {
+    margin-bottom: 5px;
+}
+
+.SmallMarginBottom {
+    margin-bottom: 2px !important;
+}
+
+.MarginTop {
+    margin-top: 5px;
+}
+
+.MarginRight {
+    margin-right: 4px;
+}
+
+.MarginLeft {
+    margin-left: 5px !important;
+}
+
+.DoubleMarginLeft {
+    margin-left: 10px !important;
+}
+
+.FloatLeft {
+    float: left;
+}
+
+.FloatRight {
+    float: right;
+}
+
+.FancyTextCenter {
+    text-align: center;
+}
+
+.fancybox-inner > table {
+    width: 100%;
+}
+
+.ButtonsHeight {
+    height: 40px;
+}
+
+label {
+    padding-top: 2px;
+    padding-left: 5px;
+    font-size: 12px;
+    width: 105px;
+}
+
+.labelSearch {
+    padding-top: 2px;
+    padding-left: 5px;
+    font-size: 12px;
+    padding-right: 5px;
+    width: auto !important;
+    display: block;
+}
+
+input[type=text], select {
+    width: 130px;
+}
+
+input[type=checkbox] {
+    margin-left: 0px;
+}
+
+tr {
+    height: 30px;
+}
+
+.trDemi {
+    height: 15px !important;
+}
+
+.AutoWidth {
+    width: auto;
+}
+
+.ControlLabel {
+    width: 65px !important;
+    /*width: 105px !important;*/
+    margin-right: 5px;
+}
+
+.UnitSelect {
+    width: 100px !important;
+}
+
+.DoubleInput {
+    width: 377px !important;
+}
+
+.DoubleInputSmaller {
+    width: 360px !important;
+}
+
+.DoubleInputHalfBlock {
+    width: 370px !important;
+}
+
+.HalfInput {
+    width: 61px !important;
+}
+
+.EmptyInput {
+    width: 110px;
+}
+
+.AdresseInput {
+    width: 235px !important;
+}
+
+.TinyHeightRow {
+    height: 2px;
+    clear: both;
+    margin-bottom: 1px;
+}
+
+.HalfHeightRow {
+    height: 11px;
+    clear: both;
+    margin-bottom: 3px;
+}
+
+.HeightRow {
+    height: 22px;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.HeightRowBandeau {
+    height: 27px;
+    clear: both;
+    margin-bottom: 6px;
+}
+
+.HeightRowDesi {
+    height: 46px;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.DoubleHeightRow {
+    height: 44px;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.Block {
+    display: block;
+}
+
+.BlockRegimeTaxe {
+    display: block;
+    padding-left: 164px;
+}
+
+
+.None, .hide-it {
+    display: none;
+}
+
+.UniqueColumnWidth {
+    width: 1013px;
+}
+
+.ActionButtonsSearchAdvance {
+    display: block;
+    margin-left: 5px; /*margin-top: 10px;     padding-top: 6px;*/
+    width: 490px;
+}
+
+.ActionButtons {
+    display: block;
+    margin-top: 10px;
+    padding-top: 6px;
+    width: 490px;
+}
+
+.nActionButtons {
+    display: block;
+    margin-top: 10px;
+    /*padding-top: 6px;*/
+    width: 490px;
+}
+
+.nActionButtonsRegularisation {
+    display: block;
+    margin-top: 10px;
+    width: auto;
+}
+
+.ActionButtonsComment {
+    display: block;
+    margin-top: 10px;
+    padding-top: 6px;
+    width: 274px;
+}
+
+.dvCommentForce {
+    margin-top: 15px;
+}
+
+.ActionButtonsSearch {
+    width: 550px !important;
+}
+
+.ActionButtonsSearchLeft {
+    width: 900px !important;
+}
+
+.ActionButtonsSearchRight {
+    width: 250px !important;
+}
+
+.ActionButtonLeft {
+    float: left;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.ActionButtonRight {
+    float: right;
+    text-align: right;
+}
+
+#LoadingDiv, #LoadingDivSearch, #LoadingDivSearchPreneur, #LoadingRechDiv {
+    padding-top: 5px;
+    text-align: center;
+    vertical-align: middle;
+    display: none;
+}
+
+/*Fin de zone*/
+
+
+/*Zone _Site.css*/
+
+/*label
+{
+    display:inline;
+}*/
+
+body {
+    font-size: 12px;
+    font-family: Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff; /*background-image: url(/Content/Images/logo-gris.png);*/
+    background-repeat: no-repeat;
+    background-position: center 10px;
+}
+
+a img {
+    border: none;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+}
+
+    textarea.heightAreaEngagement {
+        margin: 0px 0px 5px;
+        width: 747px;
+        height: 27px;
+        max-width: 635px;
+        min-height: 27px;
+    }
+
+    textarea.heightAreaInfosDeBase {
+        max-width: 400px;
+        margin: 0px;
+        height: 62px;
+        min-height: 30px;
+    }
+
+    textarea.heightAreaInfosGeneObsv {
+        width: 932px;
+        margin: 0px;
+        height: 38px;
+        min-height: 29px;
+        max-width: 891px;
+    }
+
+    textarea.heightAreaInfosGeneDesc {
+        margin: 0px 0px 5px;
+        max-width: 627px;
+        min-height: 30px;
+        height: 112px;
+    }
+
+    textarea.heightAreaObjetRisque {
+        max-width: 328px;
+        min-height: 66px !important;
+    }
+
+    textarea.heightAreaMntRef {
+        margin: 0px 0px 5px;
+        width: 740px;
+        max-width: 634px;
+        min-height: 27px;
+        height: 21px;
+    }
+
+    textarea.heightAreaQuittance {
+        margin: 0px 0px 5px;
+        width: 350px;
+        max-width: 585px;
+        height: 27px;
+        min-height: 27px;
+    }
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.titreGlobal {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    color: #800000;
+}
+
+.SousTitre {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #800000;
+}
+
+input[type=button], input[type=submit] {
+    border-radius: 5px;
+}
+
+/*Fin de zone*/
+
+
+.notDisplayed {
+    display: none;
+}
+
+input {
+    border-width: 1px;
+}
+
+/*.disabled
+{
+    background-color: #666;
+    cursor: url(/Content/Cursors/unavail.cur),auto;
+}*/
+
+.readonly {
+    background-color: #ebebe4 !important;
+}
+
+.error {
+    color: Red;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.warning {
+    color: orange;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.scrollingVDiv {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.GroupSplitInfo {
+    width: 504px;
+}
+
+.GroupTotalSplitInfo {
+    width: 585px;
+}
+
+.GroupAdmin {
+    width: 580px;
+}
+
+.GroupInfoRisquePrinc {
+    height: 250px;
+}
+
+.GroupRisquePrincipal {
+    width: 1025px;
+    float: left;
+}
+
+.GroupHeightAdresse {
+    height: 213px;
+}
+
+.GroupWithBorder {
+    border: 1px #00F solid;
+    border-radius: 10px;
+}
+
+.nGroupWithBorder {
+    border: 1px #00F solid;
+    border-radius: 10px;
+}
+
+.GroupWithoutBorder {
+    border: 1px Transparent solid;
+}
+
+.GroupWithBorderEntete {
+    border: 1px #FFF solid;
+    border-radius: 10px;
+    float: left;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+    background-color: #FFF;
+}
+
+.GroupWithBorder, .GroupWithoutBorder {
+    float: left;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+    border: 1px #eee outset;
+    background-color: #eee;
+}
+
+.nGroupWithBorder, .nGroupWithoutBorder {
+    float: left;
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+    padding-right: 12px;
+    border: 1px #eee outset;
+    background-color: #eee;
+}
+
+.GroupTitle {
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 11pt;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.HorizontalHalfWithGroup {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    width: 500px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+}
+
+.HorizontalTotalHalfWithGroup {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    width: 587px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+}
+
+.HorizontalHalfWithGroupAdmin {
+    border-radius: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    width: 99%;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+}
+
+.HorizontalQuarterWithGroup {
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 90%;
+    height: 43px;
+    padding-top: 0px;
+    padding-left: 5px;
+    border: 1px #ddd inset;
+    background-color: #ccc;
+}
+
+.FieldRow {
+    clear: both;
+    height: 24px;
+    margin-bottom: 5px;
+}
+
+.Field2Row {
+    clear: both;
+    height: 48px;
+    margin-bottom: 5px;
+}
+
+.Field3Row {
+    clear: both;
+    height: 84px;
+    margin-bottom: 5px;
+}
+
+.FieldRow label {
+    display: block;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+.Field2Row label {
+    display: block;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+.Field3Row label {
+    display: block;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+.FieldLabel {
+    display: block;
+    float: left;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+}
+
+.FieldDescription {
+    display: block;
+    float: left;
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.FieldTextBox {
+    float: left;
+}
+
+    .FieldTextBox input {
+        width: 280px;
+    }
+
+.FieldTextBoxDescriptif input {
+    width: 340px;
+}
+
+.VilleLabelDiv {
+    float: right;
+}
+
+.InfoSaisieNoSaisieAttribueeTextBoxDiv {
+    float: left;
+    margin-right: 5px;
+}
+
+    .InfoSaisieNoSaisieAttribueeTextBoxDiv input {
+        width: 75px;
+    }
+
+.InfoSaisieNoAlimentLabelDiv {
+    float: left;
+    width: 50px;
+    margin-right: 5px;
+}
+
+.InfoSaisieNoAlimentTextBoxDiv {
+    float: left;
+    margin-right: 5px;
+}
+
+    .InfoSaisieNoAlimentTextBoxDiv input {
+        width: 45px;
+    }
+
+.InfoSaisieDateSaisieLabelDiv {
+    float: left;
+    width: 80px;
+    margin-right: 5px;
+}
+
+.InfoSaisieDateSaisieTextBoxDiv {
+    float: left;
+    margin-right: 5px;
+}
+
+    .InfoSaisieDateSaisieTextBoxDiv input {
+        width: 66px;
+    }
+
+.InfoSaisieBrancheNomLabelDiv {
+    float: left;
+    width: 55px;
+    margin-right: 5px;
+}
+
+.InfoSaisieBrancheNomTextBoxDiv {
+    float: left;
+    margin-right: 5px;
+}
+
+    .InfoSaisieBrancheNomTextBoxDiv input {
+        width: 66px;
+    }
+
+.ConfirmationSaisieRadioButtonDiv {
+    float: left;
+    margin-right: 5px;
+}
+
+.ConfirmationSaisieLabelDiv {
+    float: left;
+    margin-right: 5px;
+}
+
+.SubGroupTitle {
+    margin: 2px;
+    margin-left: 5px;
+    color: #800000;
+}
+
+.FieldLabel_3 {
+    display: block;
+    float: left;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+}
+
+.FieldTextBox_3 {
+    float: left;
+}
+
+.FieldTextBox_Img input {
+    width: 172px;
+}
+
+.FieldTextBox_3 input {
+    width: 192px;
+}
+
+.FieldTextBox_3 select {
+    width: 197px;
+}
+
+/*Mise en forme des auto complete*/
+
+.AutoCompleteIcon {
+    width: 70px;
+}
+
+.AutoCompleteValidTd {
+    width: 50px;
+}
+
+.AutoCompleteRueTd {
+    width: 150px;
+}
+
+.AutoCompleteCpTd {
+    width: 50px;
+}
+
+.AutoCompleteTd {
+    width: 150px;
+}
+
+.AutoCompleteLargeTd {
+    width: 250px;
+}
+
+.AutoCompleteTable {
+    border: 1px solid grey;
+    font-size: small;
+}
+
+    .AutoCompleteTable > tbody > tr > th {
+        text-align: center;
+    }
+
+.FieldTextBoxDescriptif select {
+    width: 340px;
+}
+
+table.dialogMessage {
+    border-width: 1px;
+    border-spacing: 1px;
+    border-style: outset;
+    border-color: white;
+    border-collapse: separate;
+    background-color: white;
+    font-size: 8;
+    width: 950px;
+}
+
+    table.dialogMessage th {
+        border-width: 1px;
+        border-style: inset;
+        border-color: gray;
+        background-color: white;
+    }
+
+    table.dialogMessage td {
+        border-width: 1px;
+        border-style: inset;
+        border-color: gray;
+        background-color: white;
+        font-size: xx-small;
+        word-wrap: break-word;
+        width: 150px;
+        max-height: 55px;
+        overflow-y: auto;
+        overflow-x: none;
+    }
+
+    table.dialogMessage .Trace {
+        width: auto;
+    }
+
+.Suppression {
+    float: left;
+}
+
+.Validation {
+    clear: both;
+    text-align: right;
+}
+
+.Ajout {
+    float: right;
+    padding-right: 5px;
+}
+
+.LoadingDiv {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.FieldLabelValeur {
+    display: block;
+    float: left;
+    width: 45px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right; /*padding-right: 5px;*/
+}
+
+.FieldInputValeur input {
+    width: 75px;
+}
+
+.NoDiv {
+    float: left;
+    width: 150px;
+    height: 24px;
+}
+
+.NoLabelDiv {
+    float: left;
+    display: block;
+}
+
+.NoTextBoxDiv, .ExtensionTextBoxDiv {
+    float: left;
+    margin-right: 5px;
+}
+
+    .NoTextBoxDiv input, .ExtensionTextBoxDiv input {
+        width: 33px;
+    }
+
+.VoieLabelDiv {
+    float: right;
+    display: block;
+    text-align: right;
+    margin-top: 0;
+}
+
+.CodePostalLabelDiv {
+    float: left;
+}
+
+.CodePostalTextBoxDiv {
+    float: left;
+}
+
+    .CodePostalTextBoxDiv input {
+        width: 55px;
+    }
+
+.VilleLabelDiv {
+}
+
+.requiredField {
+    border: 1px solid red !important;
+    background-color: #fee !important;
+}
+
+.invalid-input-no-borders {
+    border: none;
+    background-color: #fee;
+}
+
+.odd {
+    background-color: #fff;
+}
+
+.even {
+    background-color: #edeeff;
+}
+
+.LigneInfo {
+    height: 55px;
+    vertical-align: middle;
+}
+
+.MsgErrorHexavia {
+    display: none;
+    color: Red;
+}
+
+.GroupNoTitle {
+    padding-top: 15px;
+}
+
+#divBtn {
+    text-align: right;
+    padding-top: 10px;
+}
+
+.FloatLeftDiv {
+    float: left;
+}
+
+
+.tableHeader {
+    border: 1px solid transparent;
+    background-image: url(/Content/Images/RechercheSaisieGridHeaderThBg.png);
+    background-repeat: repeat-x;
+    background-position: center;
+    font-weight: bold;
+    text-align: center;
+}
+
+.BorderTable {
+    border: 1px solid transparent;
+}
+
+.div {
+    border: solid 1px;
+}
+
+.btnAdmin {
+    padding-top: 3px !important;
+    height: 18px;
+}
+
+.numerique, .decimal, .isDecimal {
+    text-align: right !important;
+}
+
+.halfInput {
+    width: 60px !important;
+}
+
+.greenValue {
+    color: Green;
+    font-weight: bold;
+}
+
+
+.divFancyPetite {
+    height: 70px;
+    width: 500px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: White;
+    left: 34%;
+    top: 40%;
+    position: absolute;
+    border: 1px solid grey;
+}
+
+.divFancyGrande {
+    height: 500px;
+    width: 800px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: White;
+    left: 25%;
+    top: 10%;
+    position: absolute;
+    border: 1px solid grey;
+}
+
+.BorderGrayBottom {
+    border-bottom: 1px solid gray;
+}
+
+.BorderGrayLeft {
+    border-left: 1px solid gray;
+}
+
+.BorderBlackLeft {
+    border-left: 1px solid black;
+}
+
+.BorderBlackRight {
+    border-right: 1px solid black;
+}
+
+.bgVolet {
+    background-color: #003399 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.bgBloc {
+    background-color: #AFADD1 !important;
+}
+
+.Loupe {
+    margin-left: 3px;
+}
+
+.NotAffecte {
+    color: Red;
+}
+
+#divTimePicker {
+    display: none;
+    background-color: #fff;
+    width: 150px;
+    height: 26px;
+    text-align: center;
+    padding-top: 7px;
+    border: 1px solid black;
+}
+
+#divAutoComplete {
+    display: none;
+}
+
+#divComDblSaisie {
+    display: none;
+}
+
+#divDataComDblSaisie {
+    background-color: White;
+    display: block;
+    height: 570px;
+    left: 12px;
+    padding: 5px 0 0 5px;
+    position: absolute;
+    top: 20px;
+    width: 1050px;
+    z-index: 7;
+}
+
+.divFlottante {
+    display: none;
+}
+
+.divDataFlottante {
+    position: absolute;
+    top: 20px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 671px;
+}
+/*FancyBox dans le cas d'un message d'erreur*/
+.fancybox-wrap_Top {
+    top: 5px !important;
+}
+
+
+
+/* Zone de style pour la double saisie */
+
+#tblDoubleSaisieHeader tr, #tblDoubleSaisieBody tr, #tblDoubleSaisieHistoHeader tr, #tblDoubleSaisieHistoBody tr {
+    height: 1px;
+}
+
+#tblDoubleSaisieHistoBody {
+    width: 1000px;
+    table-layout: fixed;
+}
+
+#tblDoubleSaisieBody {
+    table-layout: fixed;
+    width: 669px;
+}
+
+
+#divDoubleSaisieHistoBody {
+    height: 138px;
+    max-height: 138px;
+    overflow-y: scroll;
+}
+
+.colType {
+    width: 99px;
+}
+
+.colCode {
+    width: 59px;
+    text-align: center;
+}
+
+.colCourtierDelegationSouscripteur {
+    width: 215px;
+    padding-left: 5px;
+}
+
+.colDateHeure {
+    width: 79px;
+    text-align: center;
+}
+
+.colTypeHeader {
+    width: 97px;
+}
+
+.colCodeHeader {
+    width: 57px;
+}
+
+.colCourtierDelegationSouscripteurHeader {
+    width: 212px;
+}
+
+.colCourtierDblSaisieHeader {
+    width: 140px;
+}
+
+.colDelegationDblSaisieHeader {
+    width: 140px;
+}
+
+.colSouscripteurDblSaisieHeader {
+    width: 202px;
+}
+
+.colCourtierDblSaisie {
+    width: 142px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.colDelegationDblSaisie {
+    width: 142px;
+}
+
+.colSouscripteurDblSaisie {
+    width: 204px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.colDateheureHeader {
+    width: 77px;
+}
+
+.colTypeDem {
+    width: 104px;
+}
+
+.inputCodeDem {
+    width: 61px !important;
+}
+
+.inputCourtierDelegationSouscripteurDem {
+    width: 216px !important;
+}
+
+.inputInterlocuteurDblSaisie {
+    width: 130px !important;
+}
+
+.inputDateHeureDem {
+    width: 81px !important;
+}
+
+.divActions {
+    width: 580px;
+}
+
+.paddingLabel {
+    padding-top: 3px;
+}
+
+.widthNotification {
+    width: 180px;
+}
+
+/*            Fin de zone              */
+
+.trHeight tr {
+    height: 1px;
+}
+
+#MessageOffreVerrouillee {
+    display: none;
+}
+
+#divDataMessageOffreVerrouillee {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 15;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 400px;
+}
+
+.NavigationBasse {
+    font-size: 7pt;
+    height: 160px;
+}
+
+.CollapseNavigationBasse {
+    font-size: 7pt;
+    height: 283px;
+}
+
+.NavigationBasseContrat {
+    font-size: 7pt;
+    height: 180px;
+}
+
+.nEnvironnementHisto {
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    /*width: 60px;*/
+    width: 100px;
+    background-color: #9BA83A;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.nEnvironnementParam {
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    /*width: 60px;*/
+    width: 100px;
+    background-color: #FF00FF;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.nEnvironnementTest {
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    /*width: 60px;*/
+    width: 100px;
+    background-color: #FF0000;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.nEnvironnementQualif {
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    /*width: 60px;*/
+    width: 100px;
+    background-color: #EFA373;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.nEnvironnementProd {
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    /*width: 60px;*/
+    width: 100px;
+    background-color: #2CC3E9;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.nEnvironnementFormation {
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    /*width: 60px;*/
+    width: 100px;
+    background-color: #6699CC;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.nEnvironnementPreProd {
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    /*width: 60px;*/
+    width: 100px;
+    background-color: #A4F26C;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.nBandeau {
+    background-color: #e5e5e5;
+    border-radius: 0 5px 5px 0;
+    float: right;
+    height: 25px;
+    margin-top: 14px;
+    padding-left: 5px;
+    width: 881px;
+}
+
+.nBandeauContrat {
+    background-color: #BCBCBC;
+    border-radius: 0 5px 5px 0;
+    float: right;
+    height: 25px;
+    margin-top: 14px;
+    padding-left: 5px;
+    width: 881px;
+}
+
+.nBGEntete1 {
+    background-color: #ECF3FF;
+}
+
+.nBGEntete2 {
+    background-color: #F7FAFF;
+}
+
+.nInfoBandeau {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding: 4px;
+    border: 3px solid #CCCCCC;
+    display: none;
+    z-index: 10;
+}
+
+.backgroundBandeauInfo {
+    background-color: #F7FAFF;
+}
+
+.Block1 {
+    border: 2px ridge #DDDDDD;
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    width: 506px;
+}
+
+.BlockMenu {
+    border: 2px ridge #DDDDDD;
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    height: 555px;
+}
+
+.TitleOffre {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.EntetePaddingLeft {
+    padding-left: 5px;
+}
+
+.AlbNoWrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tabBandeau {
+    table-layout: fixed;
+    width: 880px;
+}
+
+.cellBandeauOffre {
+    width: 110px;
+}
+
+.cellBandeauBranche {
+    width: 60px;
+}
+
+.cellBandeauDescr {
+    width: 210px;
+}
+
+.cellBandeauAssu {
+    width: 220px;
+}
+
+.cellBandeauImg {
+    width: 30px;
+    text-align: center;
+}
+
+.selEtape {
+    background-image: url("/Content/Images/selectetape.png");
+    background-repeat: no-repeat;
+}
+
+.selEtapeRed {
+    background-image: url("/Content/Images/selectetapered.png");
+    background-repeat: no-repeat;
+}
+
+.bgSelEtape {
+    background-image: url("/Content/Images/bgArbre.png");
+    background-repeat: repeat-x;
+    border-radius: 5px;
+    padding-right: 5px;
+}
+
+.FullScreenBtn {
+    height: 38px;
+    width: 44px;
+    padding: 0;
+}
+
+.inputDate {
+    width: 70px !important;
+}
+
+.divTextArea {
+    background-color: white;
+    border: 1px solid #CDCDCD;
+    color: #CDCDCD;
+    height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 330px;
+    padding-top: 2px;
+    padding-left: 2px;
+    color: black !important;
+}
+
+.divTextArea2 {
+    background-color: white;
+    border: 1px solid #CDCDCD;
+    color: #CDCDCD;
+    height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 330px;
+    padding-top: 2px;
+    padding-left: 2px;
+    color: black !important;
+}
+
+#txtArea {
+    display: none;
+}
+
+.HeigthRowAdr {
+    clear: both;
+    height: 18px;
+    margin-bottom: 2px;
+}
+
+.ActionLibelle {
+    display: block;
+    margin-top: 10px;
+    padding-top: 6px;
+    width: 520px;
+}
+
+.ClearBoth {
+    clear: both;
+}
+
+.inputEcheance {
+    margin-right: 10px;
+    width: 40px !important;
+}
+
+.MenuBackOffice {
+    background-image: url("/Content/Images/backSaveEmpty.png");
+    background-repeat: no-repeat;
+    color: white;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    height: 32px;
+    width: 160px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.WidthRowButton {
+    width: 400px !important;
+}
+
+/******CSS Formule Générale******/
+.divFormGen {
+    padding-top: 2px;
+    height: 35px;
+}
+
+.divContentFormGen {
+    background-color: #d6d6d6;
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    width: 1002px;
+    padding: 5px 5px 2px 5px;
+}
+
+.divLibFormGen {
+    float: left;
+    padding-left: 5px;
+    width: 860px;
+}
+/********************************/
+
+#divBodyParam {
+    height: 380px;
+    overflow-y: scroll;
+}
+
+.colHUtilisateur {
+    width: 202px;
+}
+
+.colHCodeOffre {
+    width: 202px;
+}
+
+.colHTypeOffre {
+    width: 202px;
+}
+
+.colHDateVerrouillage {
+    width: 202px;
+}
+
+.colHVersion {
+    width: 202px;
+}
+
+.colHAvenant {
+    width: 202px;
+}
+
+.colUtilisateur {
+    width: 200px;
+    padding-left: 5px;
+}
+
+.colCodeOffre {
+    width: 200px;
+    padding-left: 5px;
+}
+
+.colTypeOffre {
+    width: 200px;
+    padding-left: 5px;
+}
+
+.colNumAvn {
+    width: 200px;
+    padding-left: 5px;
+}
+
+.colVersion {
+    width: 200px;
+    padding-left: 5px;
+}
+
+.colDateVerrouillage {
+    width: 200px;
+    padding-left: 5px;
+}
+
+input.btnSupprimer {
+    background-image: url("/Content/Images/poubelle1616.png");
+    height: 18px;
+    width: 18px;
+}
+
+.dvDataUserOffreLocked {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 15;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 795px;
+    /*height: 435px;*/
+}
+
+/****Back Office*****/
+.WidthBackOffice {
+    width: 1215px !important;
+}
+
+.GroupBackOffice {
+    width: 587px !important;
+}
+
+.ButtonsWidth {
+    width: 1201px !important;
+}
+
+.nEnvironnementBackOfficePreProd {
+    height: 20px;
+    margin-top: 14px;
+    width: 102px;
+    background-color: #A4F26C;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 11px;
+}
+
+.nEnvironnementBackOfficeDev {
+    height: 20px;
+    margin-top: 14px;
+    width: 102px;
+    background-color: #FF0000;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 11px;
+}
+
+.nEnvironnementBackOfficeRecette {
+    height: 20px;
+    margin-top: 14px;
+    width: 102px;
+    background-color: #EFA373;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 11px;
+}
+
+.nEnvironnementBackOfficeProd {
+    height: 20px;
+    margin-top: 14px;
+    width: 102px;
+    background-color: #2CC3E9;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 11px;
+}
+
+.nEnvironnementBackOfficeFormation {
+    height: 20px;
+    margin-top: 14px;
+    width: 102px;
+    background-color: #6699CC;
+    color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 11px;
+}
+
+.nActeGest {
+    float: left;
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    padding-left: 5px;
+    padding-top: 5px;
+    width: 155px;
+    background-color: #e5e5e5;
+}
+
+.nActeGestContrat {
+    float: left;
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    padding-left: 5px;
+    padding-top: 5px;
+    width: 155px;
+    background-color: #BCBCBC;
+}
+
+.nActeGestAvenant {
+    float: left;
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    padding-left: 5px;
+    padding-top: 5px;
+    width: 155px;
+    background-color: #e5e5e5;
+}
+/********************/
+.nAppVersion {
+    background-color: #000000;
+    color: #FFFFFF;
+    float: left;
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    padding-left: 5px;
+    padding-top: 5px;
+    width: 60px;
+    text-align: center;
+    font-size: 10px !important;
+    cursor: pointer;
+}
+
+    .nAppVersion:hover {
+        background-color: #9A9A9A;
+        color: #FFFFFF;
+        float: left;
+        height: 20px;
+        margin-top: 14px;
+        margin-right: 3px;
+        padding-left: 5px;
+        padding-top: 5px;
+        width: 60px;
+        text-align: center;
+        font-size: 10px !important;
+        cursor: pointer;
+    }
+
+.nAppVersionStandard {
+    background-color: #000000;
+    color: #FFFFFF;
+    float: left;
+    height: 20px;
+    margin-top: 14px;
+    margin-right: 3px;
+    padding-left: 5px;
+    padding-top: 5px;
+    width: 101px;
+    text-align: center;
+    font-size: 10px !important;
+    cursor: pointer;
+}
+
+    .nAppVersionStandard:hover {
+        background-color: #9A9A9A;
+        color: #FFFFFF;
+        float: left;
+        height: 20px;
+        margin-top: 14px;
+        margin-right: 3px;
+        padding-left: 5px;
+        padding-top: 5px;
+        width: 101px;
+        text-align: center;
+        font-size: 10px !important;
+        cursor: pointer;
+    }
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis; /* for internet explorer */
+    overflow: hidden;
+    display: block;
+}
+
+input[albautocomplete] {
+    background-color: #fafaee;
+}
+
+.WidthInterlocuteur {
+    width: 80px !important;
+    display: block;
+}
+
+.WidthRef {
+    width: 50px !important;
+    display: block;
+}
+
+.SmallColumnTitle {
+    width: 50px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.SingleColumnBandeau {
+    width: 180px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.DualColumnBandeau {
+    width: 100px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.TripleColumnBandeau {
+    width: 80px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.TinyColumnBandeau {
+    width: 30px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.TitleColumnBandeau {
+    width: 90px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#divDataDelOffre {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 4;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 110px;
+    width: 300px;
+}
+
+.NonReprisCP {
+    background-color: #DBF0FF;
+}
+
+#divConteneurBoiteDialogInfo {
+    display: none;
+}
+
+.BlocDialogInfoGen {
+    width: 280px;
+    height: 170px;
+}
+
+.BlocDialogInfoGenLight {
+    width: 280px;
+    height: 150px;
+}
+
+.BlocDialogInterlocuteur {
+    width: 280px;
+    height: 170px;
+}
+
+.BlocDialogDelegationLarge {
+    width: 567px;
+}
+
+.BlocDialogDelegationSmall {
+    width: 280px;
+}
+
+.DialogLabel {
+    width: 10px !important;
+}
+
+#BoiteDialogCourtierGestionnaire {
+    width: 575px !important;
+}
+
+#BoiteDialogCourtierApporteurPayeur {
+    width: 283px !important;
+}
+
+#BoiteDialogAssure {
+    width: 283px !important;
+}
+
+.titleBoiteDiag {
+    text-decoration: underline;
+}
+
+.titleBold {
+    font-weight: bold;
+}
+
+.textInfo {
+    font-weight: bold;
+    color: #1c40b6;
+}
+
+.clipped {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.LabelDelegation {
+    width: 70px;
+}
+
+.PaddingIndentation {
+    padding-left: 18px;
+}
+
+.QuickSearch {
+    background-color: black;
+    height: 22px;
+    width: 37px;
+    margin-top: 14px;
+    margin-right: 3px;
+    padding-top: 3px;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+.selectLine {
+    background-color: #FFDFDF !important;
+}
+
+#divConteneurNomenclatures {
+    margin-left: -18px;
+    width: 1011px;
+}
+
+.visuQuittanceWidthTitleLabel {
+    width: 180px;
+}
+
+.visuQuittanceWidthTitleLabelLarge {
+    width: 250px;
+}
+
+.visuQuittanceWidthLargelabel {
+    width: 125px;
+}
+
+.visuQuittanceWidthSmalllabel {
+    width: 80px;
+}
+
+.thHeadChkAnnul {
+    width: 20px;
+}
+
+.tdHeadQuittEmission {
+    width: 60px;
+}
+
+.tdHeadQuittDateDeb {
+    width: 85px;
+}
+
+.tdHeadQuittDateFin {
+    width: 85px;
+}
+
+.tdHeadQuittNum {
+    width: 55px;
+    text-align: center;
+}
+
+.tdHeadQuittAvis {
+    width: 50px;
+    text-align: center;
+}
+
+.tdHeadQuittEcheance {
+    width: 70px;
+    text-align: center;
+}
+
+.tdHeadQuittAvn {
+    width: 55px;
+    text-align: center;
+}
+
+.tdHeadQuittDel {
+    width: 40px;
+    text-align: center;
+}
+
+.tdHeadQuittMvt {
+    width: 20px;
+    text-align: center;
+}
+
+.tdHeadQuittOperation {
+    width: 80px;
+}
+
+.tdHeadQuittSit {
+    width: 20px;
+    text-align: center;
+}
+
+.tdHeadQuittHT {
+    width: 80px;
+    text-align: center;
+}
+
+.tdHeadQuittTTC {
+    width: 80px;
+    text-align: center;
+}
+
+.tdHeadQuittRegle {
+    width: 80px;
+    text-align: center;
+}
+
+.tdHeadQuittAction {
+    width: 20px;
+    text-align: center;
+}
+
+
+.tdQuittChkAnnul {
+    width: 20px;
+    padding-left: 3px;
+}
+
+.tdQuittDateDeb {
+    width: 85px;
+    padding-left: 3px;
+}
+
+.tdQuittDateFin {
+    width: 85px;
+    padding-left: 3px;
+}
+
+.tdQuittEmission {
+    width: 60px;
+    padding-left: 3px;
+}
+.tdQuittNum {
+    width: 55px;
+    padding-left: 3px;
+    text-align: center;
+}
+
+.tdQuittAvis {
+    width: 50px;
+    padding-left: 3px;
+    text-align: center;
+}
+
+.tdQuittEcheance {
+    width: 70px;
+    padding-left: 3px;
+}
+
+.tdQuittAvn {
+    width: 55px;
+    padding-left: 3px;
+    text-align: center;
+}
+
+.tdQuittDem {
+    width: 40px;
+    padding-left: 3px;
+    text-align: center;
+}
+
+.tdQuittMvt {
+    width: 20px;
+    padding-left: 3px;
+    text-align: center;
+}
+
+.tdQuittOperation {
+    width: 80px;
+    padding-left: 3px;
+}
+
+.tdQuittSit {
+    width: 20px;
+    padding-left: 3px;
+    text-align: center;
+}
+
+.tdQuittHT {
+    width: 80px;
+    padding-left: 3px;
+    text-align: right;
+}
+
+.tdQuittTTC {
+    width: 80px;
+    padding-left: 3px;
+    text-align: right;
+}
+
+.tdQuittRegle {
+    width: 80px;
+    text-align: right;
+    padding-left: 3px;
+}
+
+.tdQuittAction {
+    width: 20px;
+    text-align: center;
+    padding-left: 3px;
+}
+
+.divHeightVisuquittances {
+    height: 365px;
+    max-height: 365px;
+}
+
+.divVisuQuittancesOverflow {
+    height: 440px;
+    overflow-x: scroll;
+    width: 1000px;
+}
+
+.divVisuQuittancesOverflow2 {
+    width: 1200px;
+}
+
+.width751 {
+    /*width: 751px;*/
+    width: 713px;
+}
+
+.width100 {
+    width: 100px;
+}
+
+.backgroundWhite {
+    background-color: white;
+}
+
+.width80 {
+    width: 80px;
+}
+
+#divDataDetailsCotisation {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 35;
+    background-color: White;
+    height: 603px;
+    width: 1050px;
+}
+
+#divDataCotisation {
+    position: absolute;
+    top: 43px;
+    left: 12px;
+    display: block;
+    z-index: 33;
+    background-color: White;
+    height: 523px;
+    width: 1050px;
+}
+
+#divDataBulletinAvis {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 35;
+    background-color: White;
+    height: 205px;
+    width: 415px;
+}
+
+.textBlue {
+    color: blue;
+}
+
+.textOrange {
+    color: orange;
+}
+
+.textRouge {
+    color: red;
+}
+
+.textInvisible {
+    color: #ddd;
+}
+
+.textnoir {
+    color: #000000;
+}
+
+#divDataVisuObservations {
+    position: absolute;
+    /* top: 54px; */
+    bottom: 7%;
+    left: 8%;
+    display: block;
+    z-index: 29;
+    background-color: White;
+    height: 843px;
+    width: 1624px;
+}
+
+.visuObsvWidthTitleLabelLarge > #zoneTxtArea {
+    width: 1314px;
+    height: 132px;
+}
+
+.HeightRow > .visuObsvWidthTitleLabelLarge {
+    margin-top: 7px;
+}
+
+/*#divVisualisationObsvConteneur > .GroupFull, .GroupWithBorder {
+    width: 1526px;
+    height: 653px;
+}*/
+.HorizontalFullWithGroup > .GradientSection .PaddingLeft .inputObsv {
+    height: 602px;
+    /* position: relative;*/
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#divFullScreenVisuObservations {
+    display: none;
+}
+
+#divFullScreenVisuSuspension {
+    display: none;
+}
+
+#divDataVisuHistorique {
+    position: absolute;
+    top: 81px;
+    left: 12px;
+    display: block;
+    z-index: 29;
+    background-color: White;
+    height: 558px;
+    width: 1220px;
+}
+
+#divFullScreenVisuHistorique {
+    display: none;
+}
+
+.visuObsvWidthLargelabel {
+    width: 230px;
+}
+
+/*#region Class Informations de Saisie*/
+
+#dvDataInformationsBase {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 5px 0 5px;
+    height: 543px;
+}
+
+.labelSpace {
+    margin-right: 20px;
+    float: left;
+}
+
+.Column {
+    float: left;
+    border: 1px solid transparent;
+}
+
+    .Column > div {
+        margin-top: 2px;
+    }
+
+    .Column > .FieldLabel {
+        margin: 0 5px;
+        width: 110px;
+    }
+
+.divCible {
+    margin-top: -3px;
+}
+
+.inputBranche {
+    width: 223px !important;
+}
+
+.inputCible {
+    width: 223px !important;
+}
+
+.labelCible {
+    display: block;
+    width: 60px;
+}
+
+.divSouscripteur {
+    float: left;
+    margin-right: 30px;
+}
+
+.labelCourtier {
+    display: block;
+    width: 50px !important;
+}
+
+.inputCodeCourtier {
+    margin-right: 40px;
+    width: 50px !important;
+}
+
+.labelNomCourtier {
+    display: block;
+    width: 40px;
+}
+
+.inputNomCourtier {
+    width: 285px !important;
+}
+
+.labelNomInterlocuteur {
+    margin-left: 2px;
+}
+
+.inputInterlocuteur {
+    width: 255px !important;
+    margin-right: 20px;
+}
+
+.labelReference {
+    display: block;
+    width: 40px;
+}
+
+.inputGestionnaire {
+    width: 385px !important;
+}
+
+.Alinea {
+    padding-left: 154px;
+}
+
+.labelPreneurAssu {
+    width: 120px;
+    display: block;
+}
+
+.labelDept {
+    width: 50px;
+    display: block;
+}
+
+.inputDept {
+    margin-right: 40px;
+    width: 50px !important;
+}
+
+.inputIdentification {
+    width: 567px !important;
+}
+
+.inputMotCle {
+    width: 280px !important;
+    margin-right: 10px;
+}
+
+#divAdresse {
+    width: 397px;
+    height: 69px;
+}
+
+.blueUnderline {
+    color: #039;
+    text-decoration: underline;
+}
+/*#endregion*/
+
+#divDataRechercheAvanceePreneurAssuTrans {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 23;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+}
+
+#divRechercheAvanceePreneurAssuTrans {
+    display: none;
+}
+
+#divResRecherchePreneurAssuBody {
+    margin-left: 5px;
+    overflow-y: scroll;
+    height: 348px;
+}
+
+.col_HeaderCodePreneur {
+    width: 80px;
+}
+
+.col_HeaderNomPreneur {
+    width: 300px;
+}
+
+.col_HeaderNomSecPreneur {
+    width: 290px;
+}
+
+.col_HeaderDepartementPreneur {
+    width: 80px;
+}
+
+.col_HeaderVillePreneur {
+    width: 250px;
+}
+
+.col_HeaderSirenPreneur {
+    width: 150px;
+}
+
+.col_CodePreneur {
+    width: 77px;
+}
+
+.col_NomPreneur {
+    width: 305px;
+}
+
+.col_NomSecPreneur {
+    width: 300px;
+}
+
+.col_DepartementPreneur {
+    width: 83px;
+}
+
+.col_VillePreneur {
+    width: 256px;
+}
+
+.col_SirenPreneur {
+    width: 150px;
+}
+
+.backgroundColorOrange {
+    background-color: #FF6A00;
+}
+
+.backgroundColorWhite {
+    background-color: transparent;
+}
+
+.labelGpIdentiqueApporteur {
+    font-weight: bolder;
+    padding-left: 5px;
+    width: 308px;
+}
+
+#divDataLTA {
+    position: absolute;
+    top: 350px;
+    left: 516px;
+    display: block;
+    z-index: 29;
+    background-color: White;
+    height: 155px;
+    width: 855px;
+}
+
+#divDataHistoriqueClause {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 449px;
+}
+
+v.PaddingTitreHisto {
+    padding-left: 140px;
+}
+
+.BackgroundColorTitreHisto {
+    background-color: #EBEBE4;
+}
+
+.tblHistorique {
+    width: 502px;
+}
+
+.col_HeaderHistoVersion {
+    width: 212px;
+    text-align: center;
+}
+
+.col_HeaderHistoDateDeb {
+    width: 142px;
+    text-align: center;
+}
+
+.col_HeaderHistoDateFin {
+    width: 142px;
+    text-align: center;
+}
+
+.col_BodyHistoVersion {
+    width: 214px;
+    text-align: center;
+}
+
+.col_BodyHistoDateDeb {
+    width: 144px;
+    text-align: center;
+}
+
+.col_BosyHistoDateFin {
+    width: 144px;
+    text-align: center;
+}
+
+
+
+#divHistoriqueBody {
+    max-height: 235px;
+    overflow: auto;
+}
+
+#tblHistoriqueHeader tr, #tblHistoriqueBody tr {
+    height: 1px;
+}
+
+.ActionButtonsHisto {
+    display: block;
+    margin-top: 10px;
+    padding-top: 6px;
+    width: 400px;
+}
+
+#divDataHistoriqueClauseInvalide {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    padding: 5px 0 0 5px; /*height: 713px;*/
+    height: 525px;
+}
+
+#imgInfoApplique {
+    position: relative;
+}

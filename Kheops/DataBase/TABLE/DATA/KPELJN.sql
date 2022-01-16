@@ -1,0 +1,78 @@
+﻿CREATE TABLE ZALBINKHEO.KPELJN ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KPELJN de ZALBINKHEO ignoré. 
+--  SQL1506   30   Clé ou attribut ignoré pour KPELJN de ZALBINKHEO. 
+	KGWID NUMERIC(15, 0) NOT NULL DEFAULT 0 , 
+	KGWTYP CHAR(1) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWIPB CHAR(9) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWALX NUMERIC(4, 0) NOT NULL DEFAULT 0 , 
+	KGWSUA NUMERIC(4, 0) NOT NULL DEFAULT 0 , 
+	KGWNUM NUMERIC(5, 0) NOT NULL DEFAULT 0 , 
+	KGWSBR CHAR(2) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWSERV CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWACTG CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWAVN NUMERIC(3, 0) NOT NULL DEFAULT 0 , 
+	KGWORD NUMERIC(7, 2) NOT NULL DEFAULT 0 , 
+	KGWTYPO CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWLIB CHAR(60) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWNOM CHAR(60) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWCHM CHAR(150) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWSTU CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWSIT CHAR(1) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWSTD NUMERIC(8, 0) NOT NULL DEFAULT 0 , 
+	KGWSTH NUMERIC(6, 0) NOT NULL DEFAULT 0 , 
+	KGWCRU CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KGWCRD NUMERIC(8, 0) NOT NULL DEFAULT 0 , 
+	KGWCRH NUMERIC(6, 0) NOT NULL DEFAULT 0 )   
+	RCDFMT FPELJN     ; 
+  
+LABEL ON TABLE ZALBINKHEO.KPELJN 
+	IS 'Eléments joints                                KGW' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KPELJN 
+( KGWID IS 'ID unique' , 
+	KGWTYP IS 'Type O/P' , 
+	KGWIPB IS 'IPB' , 
+	KGWALX IS 'ALX' , 
+	KGWSUA IS 'Sinistre AA' , 
+	KGWNUM IS 'Sinistre N°' , 
+	KGWSBR IS 'Sinistre Sbr' , 
+	KGWSERV IS 'Service' , 
+	KGWACTG IS 'Acte de gestion' , 
+	KGWAVN IS 'N° Avenant' , 
+	KGWORD IS 'N° Ordre' , 
+	KGWTYPO IS 'Typologie' , 
+	KGWLIB IS 'Libellé' , 
+	KGWNOM IS 'Nom du document' , 
+	KGWCHM IS 'Chemin complet' , 
+	KGWSTU IS 'Situation User' , 
+	KGWSIT IS 'Situation Code' , 
+	KGWSTD IS 'Situation Date' , 
+	KGWSTH IS 'Situation Heure' , 
+	KGWCRU IS 'Création user' , 
+	KGWCRD IS 'Création Date' , 
+	KGWCRH IS 'Création Heure' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KPELJN 
+( KGWID TEXT IS 'ID unique' , 
+	KGWTYP TEXT IS 'Type O/P' , 
+	KGWIPB TEXT IS 'IPB' , 
+	KGWALX TEXT IS 'ALX' , 
+	KGWSUA TEXT IS 'Sinistre AA' , 
+	KGWNUM TEXT IS 'Sinistre N°' , 
+	KGWSBR TEXT IS 'Sinistre Sbr' , 
+	KGWSERV TEXT IS 'Service  (Produ,Sinistre...)' , 
+	KGWACTG TEXT IS 'Acte de gestion' , 
+	KGWAVN TEXT IS 'N° Avenant' , 
+	KGWORD TEXT IS 'N° Ordre' , 
+	KGWTYPO TEXT IS 'Typologie : inventaire .....' , 
+	KGWLIB TEXT IS 'Libellé' , 
+	KGWNOM TEXT IS 'Nom du document' , 
+	KGWCHM TEXT IS 'Chemin complet' , 
+	KGWSTU TEXT IS 'Situation User' , 
+	KGWSIT TEXT IS 'Situation Code' , 
+	KGWSTD TEXT IS 'Situation Date' , 
+	KGWSTH TEXT IS 'Situation Heure' , 
+	KGWCRU TEXT IS 'Création User' , 
+	KGWCRD TEXT IS 'Création Date' , 
+	KGWCRH TEXT IS 'Création Heure' ) ; 
+  

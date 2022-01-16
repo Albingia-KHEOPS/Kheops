@@ -1,0 +1,68 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesMontantReference.ModeleMontantReference
+
+@*//SLA (18/09/14) : désactivation sur Spec "- Contrat - montant de référence-V3.docx " du 04/09/14*@
+<div class="FloatLeft">
+    <div class="nGroupFull nGroupWithBorder" style="width: 370px; padding: 5px;">
+        @Html.Hidden("codeRsq", Model.CodeRsq)
+        @Html.Hidden("codeForm", Model.CodeForm)
+        <div class="GroupTitle">
+            <u>@(!string.IsNullOrEmpty(Model.LibFormule) ? string.Format("Formule {0} - {1}", Model.LettreForm, Model.LibFormule) : string.Format("Formule {0}", Model.LettreForm))</u>
+        </div>
+        <div class="nHorizontalFullWithGroup" style="width: 355px;">
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block WidthLabelDivFlottante">Montant réf. calculé</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="MontantCalcule" value="@Model.MontantCalcule" readonly="readonly" albmask="decimal" class="decimal readonly" tabindex="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="TripleColumnsGroup FloatLeft">
+                        <div class="FloatLeft">
+                            <label class="Block WidthLabelDivFlottante">Montant réf. forcé</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="MontantForce" value="@Model.MontantForce" albmask="decimal" class="decimal" tabindex="2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft" style="padding-left: 2px;">
+                        <input type="checkbox" id="MontantProvisionnel" name="MontantProvisionnel" checked="@(Model.MontantProvisionnel == "O" )" />
+                    </div>
+                    <div class="FloatLeft" style="padding-top: 3px; padding-right: 39px;">
+                        <label class="WidthLabelDivFlottante">Provisionnel</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="checkbox" id="chckMntAcquis" checked="@(Model.ChkMntAcquis == "O" )" />
+                    </div>
+                    <div class="FloatLeft" style="padding-top: 3px;">
+                        <label class="WidthLabelDivFlottante">Acquis</label>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block WidthLabelDivFlottante">ou Autre Mnt Acquis</label>
+                    </div>
+                    <div class="FloatLeft">
+                        <input type="text" id="MontantAcquis" value="@Model.MontantAcquis" albmask="decimal" class="@(Model.ChkMntAcquis == "O" ? "readonly decimal" : "decimal")" tabindex="3" readonly="@(Model.ChkMntAcquis == "O" )" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="msgErreurDiv" class="error msgErreur">
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder" style="width: 370px;">
+        <div class="ActionButtons ActionButtonRight">
+            <div class="HeightRow">
+                <button id="btnAnnulerMntFormule" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+                <button id="btnValiderMntFormule" type="button" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>

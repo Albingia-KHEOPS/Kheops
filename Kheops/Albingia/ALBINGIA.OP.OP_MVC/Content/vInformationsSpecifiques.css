@@ -1,0 +1,226 @@
+﻿body {
+    /*background-color:#CCCCCC;*/
+    background-color: #FFFFFF;
+    background-position: center 10px;
+    background-repeat: no-repeat;
+    color: #232323;
+    font-family: Arial,"Helvetica Neue",Helvetica,Sans-Serif;
+    font-size: 12px;
+}
+
+.titreIS {
+    /*text-decoration:underline;*/
+    font-weight: bold;
+    background: #D0D1D3;
+}
+
+.titre2 {
+    background-color: #E6E7E9;
+}
+
+.sub {
+    padding-left: 50px;
+}
+
+table[name="albISTable"] {
+    width: 700px;
+}
+
+tr {
+    width: 100%;
+}
+
+table[name="albISTable"] td:first-child {
+    width: 60%;
+}
+
+table[name="albISGlobalTable"] {
+    width: 100%;
+}
+
+#dvISGtiesResult {
+    height: 451px;
+    overflow-y: auto;
+    width: 1023px;
+}
+
+table[name=albISMenuTable] {
+    table-layout: fixed;
+    width: 150px;
+}
+
+table[name="albISMenuTable"] td:hover {
+    background: #FFDFDF;
+}
+
+.isTxtArea {
+    resize: none;
+}
+
+.inputSelect {
+    width: 500px;
+}
+
+#divDataOppositions {
+    position: absolute;
+    top: 119px;
+    left: 610px;
+    /*display: block;*/
+    z-index: 34;
+    background-color: White;
+    height: 200px;
+    width: 400px;
+    border: 3px solid #CCCCCC;
+    display: none;
+}
+
+#divOpp {
+    display: none;
+}
+
+#divDataRechercheOppositions {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 23;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+}
+
+#divRechercheOppositions {
+    display: none;
+}
+
+.CodeOppositionsLabel {
+    float: left;
+    padding-left: 5px;
+}
+
+.CodeOppositionsTextBox {
+    float: left;
+    margin-left: 20px;
+}
+
+.NomOppLabel {
+    float: left;
+    margin-left: 20px;
+}
+
+.NomOppTextBox {
+    float: left;
+    margin-left: 20px;
+}
+
+TablePersoTdHead {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tablePersoHeadRechercheOpp {
+    background-image: url("/Content/Images/RechercheSaisieGridHeaderThBg.png");
+    background-position: center center;
+    background-repeat: repeat-x;
+    height: 36px;
+}
+
+
+.TablePersoHeadCodeTd1 {
+    width: 99px;
+}
+
+.TablePersoHeadNomTd2 {
+    width: 146px;
+}
+
+.TablePersoHeadAdresse1Td3 {
+    width: 260px;
+}
+
+.TablePersoHeadAdresse2Td3 {
+    width: 260px;
+}
+
+.TablePersoHeadCPTd4 {
+    width: 93px;
+}
+
+.TablePersoHeadVilleTd5 {
+    width: 134px;
+}
+
+.TablePersoHeadPaysd6 {
+    width: 150px;
+}
+
+
+
+.tdCodeorganisme {
+    width: 99px;
+    text-align: right;
+}
+
+.tdNomorganisme {
+    width: 146px;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdAdresse1 {
+    width: 260px;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdAdresse2 {
+    width: 260px;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdCP {
+    width: 93px;
+    text-align: center;
+}
+
+.tdVilleorg {
+    width: 134px;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tdPays {
+    width: 150px;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#divLstResultatOppositions {
+    margin-left: 5px;
+    height: 358px;
+}
+
+#divRechercheOppBody {
+    overflow: auto;
+    height: 325px;
+}
+
+.LoupeSearch {
+    margin-top: -2px;
+    height: 24px;
+}
+
+#RechercherResultOppDialogDiv {
+    width: 1200px;
+}

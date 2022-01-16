@@ -1,0 +1,44 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesGestionDocumentContrat.ModeleLignePieceJointe>
+@{
+    <div id="divGestionDocumentContrat" class="FloatLeft" style="width: auto">
+        <div class="GroupFull GroupWithBorder LargeurPieceJointe">
+            <div class="GroupTitle">
+                Liste des PJ
+            </div>
+            <div class="GradientSection MarginLeft10">
+                <div id="divDocPieceJointeHeader" class="PaddingLeft">
+                    <table id="tblDocPieceJointeHeader" class="trHeight">
+                        <tr>
+                            <th class="tablePersoHead tdHeadDocPJDesignation">Désignation</th>
+                            <th class="tablePersoHead tdHeadDocPJDocument">Document</th>
+                            <th class="tablePersoHead tdHeadDocTailleDocument">Taille (Ko)</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divDocPieceJointeBody" class="PaddingLeft divHeightGestionDocPJ">
+                    @if (Model != null && Model.Count > 0)
+                    {                  
+                        <table id="tblDocPieceJointeBody" class="trHeight">
+                            @foreach (var ligne in Model)
+                            {
+                                <tr>
+                                    <td class="tdDocPJDesignation">@ligne.LibelleDocument</td>
+                                    <td class="tdDocPJDocument navig" albPathFile="@ligne.CheminFichier">@ligne.NomFichier</td>
+                                    <td class="tdDocPJTailleDocument">@ligne.Taille</td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight LargeurPieceJointe">          
+            <div id="LoadingDiv" class="FloatLeft">
+                <img src="/Content/Images/ajax-loader.gif" alt="" />
+            </div>
+            <div class="ActionButtons ActionButtonRight">
+                <button id="btnFermerGestionDocPieceJointe" type="button" albshortcut="true" data-accesskey="f" tabindex="29"><u>F</u>ermer</button>
+            </div>
+        </div>
+    </div>
+}

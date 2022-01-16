@@ -1,0 +1,56 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.Courtier
+<div class="HeightRow" data-courtier="gestionnaire">
+    <div class="FloatLeft">
+        @Html.HiddenNoName("inInvalidCourtierGest", string.Empty)
+        <label class="labelAnCourtier">Courtier gestionnaire</label>
+    </div>
+    <div id="CourtierInvalideGestionnaireDiv" class="FloatLeft error PaddingLeft"></div>
+</div>
+<div class="HeightRow" data-courtier="gestionnaire">
+    <div class="FloatLeft">
+        <label class="labelCourtierCode">Code*</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CourtierGestionnaire_Courtier_CodeCourtier" albhorsavn name="CodeCourtierGestionnaire" albcontext="courtierGestion" value="@Model.CodeCourtier" tabindex="18" class="inputAnCodeCourtier" albAutoComplete="autoCompCodeCourtierGestion" albname="codeCourtier" />
+    </div>
+    <div class="FloatLeft">
+        <label class="labelNomCourtier">Nom</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CourtierGestionnaire_Courtier_NomCourtier" albhorsavn name="NomCourtierGestionnaire" albcontext="courtierGestion" tabindex="19" class="inputNomCourtier" value="@Model.NomCourtier" albAutoComplete="autoCompNomCourtierGestion" albname="nomCourtier" />
+    </div>
+    <div class="FloatLeft">
+        @if (Model.EditMode) {
+            <img src="@Url.Content("/Content/Images/loupe.png")" albcontext="courtierGestion" alt="" class="CursorPointer" name="RechercherCourtier" />
+        }
+        else {
+            <img src="@Url.Content("/Content/Images/loupegris.png")" albcontext="courtierGestion" alt="" class="" name="RechercherCourtier" />
+        }
+    </div>
+    <div class="FloatLeft">
+        <img alt="Informations" src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" class="CursorPointer PaddingLeft PaddingTopLittle" albAutoComplete="autoCompImgInfoCourtierGestion" albIdInfo="@Model.CodeCourtier" albcontext="courtierGestion" />
+    </div>
+    <div class="FloatLeft PaddingLeft6">
+        <label class="Block">Interlocuteur</label>
+    </div>
+    <div class="FloatLeft">
+        @Html.Hidden("CodeInterlocuteurGestionnaire", Model.CodeInterlocuteur, new { id = "CourtierGestionnaire_Courtier_CodeInterlocuteur", albAutoComplete = "autoCompCodeInterlocuteurGestion" })
+        <input type="text" id="CourtierGestionnaire_Courtier_NomInterlocuteur" albhorsavn albcontext="courtierGestion" name="NomInterlocuteurGestionnaire" tabindex="20" value="@(Model.NomInterlocuteur)" class="inputInterlocuteur" albAutoComplete="autoCompNomInterlocuteurGestion" />
+    </div>
+</div>
+<div class="HeightRow">
+    <div class="FloatLeft" style="padding-left: 19px;">
+        <label class="labelReference">Référence</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CourtierGestionnaire_Courtier_Reference" albhorsavn name="Reference" tabindex="21" maxlength="25" value="@Model.Reference" albcontext="courtierGestion"  albAutoComplete="autoCompReferenceGestion" />
+    </div>
+    <div class="FloatLeft largePaddingLeft">
+        <div class="FloatLeft">@Html.AlbLabelFor(m => m.Encaissement, "labelEncaissement")</div>
+        <div class="FloatLeft">
+            @Html.HiddenNoName("EncaissementValueOnLoad", Model.Encaissement)
+            @Html.AlbDropDownListFor(m => m.Encaissement, Model.Encaissements, "CourtierPayeur_Encaissement", htmlAttributes: new { @id = "CourtierPayeur_Encaissement", @tabindex = "22", @class = !Model.IsReadOnly ? "NonReprisCP" : "", @albcontext = "courtierGestion", @albhorsavn = "" }, generateTitle: true, genEmptyLine: true)
+        </div>
+    </div>
+
+</div>

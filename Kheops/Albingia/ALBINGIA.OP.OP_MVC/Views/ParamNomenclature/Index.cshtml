@@ -1,0 +1,77 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamNomenclaturePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamNomenclature.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamNomenclature.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder WidthDivNomenclature GroupHeightNomenclatureFixe" style="margin-right: 12px;">
+                    <div class="HorizontalHalfWithGroupAdmin GroupHeightCiblesInterieur">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div style="clear: both;">
+                                    <div class="FloatLeft labelParamCibleRecherche">
+                                        <label>Description</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="RechercheDescription" />
+                                    </div>
+
+                                    <div class="FloatLeft">
+                                        <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" /></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear: both;">
+                                &nbsp;
+                            </div>
+                            <div id="divLstNomenclature">
+                                <div>
+                                    <table id="tblNomenclatureHeader" class="tableNomenclatureHeader">
+                                        <tr>
+                                            <th class="col_branche tablePersoHead">Branche
+                                            </th>
+                                            <th class="col_cible tablePersoHead">Cible
+                                            </th>
+                                            <th class="col_libelleNomenclature tablePersoHead">Libellé
+                                            </th>
+                                            <th class="col_Action tablePersoHead">                                               
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBodyNomenclature" class="divHeight">
+                                    @if (Model.ListeNomenclatures != null)
+                                    {
+                                        @Html.Partial("ListeNomenclatures", Model.ListeNomenclatures)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="VoletDetail" class="GroupFull GroupWithBorder WidthConsultNomenclature GroupHeightNomenclatureFixe FloatLeft" style="display: none">
+                    <div id="divNomenclatureDetails">
+                    </div>
+                </div>
+                <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>

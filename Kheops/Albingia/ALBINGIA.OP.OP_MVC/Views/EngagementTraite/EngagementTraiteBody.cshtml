@@ -1,0 +1,175 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleEngagementTraitePage
+@if (!string.IsNullOrEmpty(Model.AccessMode) && !IsAjax)
+{
+    Layout = null;
+    @Html.Raw("<!DOCTYPE html><html><head>")
+    @Html.Raw("<meta http-equiv=\"X-UA-Compatible\" content=\"charset =UTF-8\" /><meta http-equiv=\"X-UA-Compatible\" content=\"IE =Edge\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta name=\"viewport\" content=\"width =device-width\" />")
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutScriptCSS.cshtml")
+    @Html.Partial("~/Views/Shared/SessionError.cshtml")
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbEngagementTraiteBaseJs")
+    @Html.Raw("</head><body>")
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutHideInput.cshtml", (ALBINGIA.OP.OP_MVC.Models.MetaModels.MetaModelsBase)Model)
+}
+else
+{
+    @AlbAddCssJsScripts.AddScriptBundle("~/Scripts/AlbEngagementTraite")
+}
+
+@AlbAddCssJsScripts.AddStyleBundle("~/Content/AlbEngagementTraite")
+
+<div id="divEngagementTraite" class="CommonForm FloatLeft">
+    @Html.Hidden("fieldInput", string.Empty)
+    @Html.Hidden("CurrentExpression", string.Empty)
+    @Html.HiddenNoName("NomEcran", Model.NomEcran.ToString())
+    @Html.Hidden("NewExpr", string.Empty)
+    @Html.HiddenNoName("CodePeriodeEng", Model.CodePeriodeEng)
+    @Html.HiddenNoName("accessMode", Model.AccessMode)
+    @Html.HiddenNoName("TypeOperation", string.Empty)
+    @Html.HiddenFor(m => m.CurrentAccessMode)
+
+    <div class="nGroupFull nGroupWithBorder">
+        <div class="nHorizontalFullWithGroup">
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft PaddingLeft">
+                            Informations contrat
+                        </div>
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    @Html.Partial("/Views/Shared/LCIFranchise/LCIFranchise.cshtml", Model.LCIGenerale)
+                </div>
+            </div>
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Nom du traité</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" name="NomTraite" id="NomTraite" value="@(Model.NomTraite)" class="readonly" readonly="readonly" />
+                            @Html.HiddenFor(m => m.CodeTraite)
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Début d'effet</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.DDebutEffet, new { @class = "readonly", @readonly = "readonly", @id = "DebutEffet" }, htmlName: "DebutEffet")
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Fin d'effet</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDateFormat(m => m.DFinEffet, new { @class = "readonly", @readonly = "readonly", @id = "FinEffet" }, htmlName: "FinEffet")
+                        </div>
+                    </div>
+                </div>
+                <div id="divTableauEngagementTraite">
+                    @Html.Partial("TraiteRisquesVolets", Model.TraiteInfoRsqVen)
+                </div>
+            </div>
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Enga. 100% (€)</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="EngagementTotal" name="EngagementTotal" value="@(Model.EngagementTotal)" class="readonly numerique" readonly="readonly" albMask="numeric" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Part Albingia (%)</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="PartAlb" name="PartAlb" value="@(Model.PartAlb)" class="readonly numerique" readonly="readonly" albMask="pourcentdecimal" />
+                        </div>
+                    </div>
+                    <div class="GenericColumn">
+                        <div class="FloatLeft">
+                            <label class="Block">Enga. Albingia (€)</label>
+                        </div>
+                        <div class="FloatLeft">
+                            <input type="text" id="EngagementAlbingia" name="EngagementAlbingia" value="@(Model.EngagementAlbingia)" class="readonly numerique" readonly="readonly" albMask="numeric" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="GroupFull GroupWithBorder ButtonsHeight">
+
+        <div id="divCommentForce" class="FloatLeft dvCommentForce">
+            <input type="hidden" id="MontantForce" name="MontantForce" value="@(Model.MontantForce ? " 1" : "0")" />
+            <div class="FloatLeft">
+                <label class="Block">Commentaires</label>
+            </div>
+
+            @*<div id="zoneTxtArea" class="FloatLeft divTextArea ZoneTextAreaWidth NonReprisCP" albcontext="CommentForce">@Html.Raw(Model.CommentForce)</div>
+
+
+            <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="CommentForce">
+                <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+            </div>
+            <div id="txtArea" albcontext="CommentForce" class="TextAreaLeft">*@
+        <div class="FloatLeft">
+            @if (Model.IsReadOnly)
+            {
+                <textarea id="CommentForce" disabled name="CommentForce" class="heightAreaEngagement NonReprisCP" style="margin-bottom: 5px;" tabindex="6">@Model.CommentForce</textarea>
+            }
+            else
+            {
+                <textarea id="CommentForce" name="CommentForce" class="heightAreaEngagement NonReprisCP" style="margin-bottom: 5px;" tabindex="6">@Model.CommentForce</textarea>
+            }
+        </div>
+            @*</div>*@
+        </div>
+        <div class="ActionButtonsComment ActionButtonRight">
+            @if (Model.IsReadOnly) {
+                <div id="divReset" class="FloatLeft" style="margin-top: -4px;">
+                    <img id="btnReset" src="@Url.Content("/Content/Images/reset_formgris32.png")" alt="RAZ" title="RAZ" />
+                </div>
+            }
+            else {
+                <div id="divReset" class="FloatLeft CursorPointer" style="margin-top: -4px;">
+                    <img id="btnReset" src="@Url.Content("/Content/Images/reset_form32.png")" alt="RAZ" title="RAZ" />
+                </div>
+            }
+            <div id="divRefresh" class="FloatLeft PaddingLeft" style="margin-top: -4px;">
+                <img id="btnRefresh" src="@Url.Content("/Content/Images/boutonRefresh_gris3232.png")" alt="Rechargement" title="Rechargement" />
+            </div>
+            <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+            <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="v" tabindex="28"><u>V</u>alider</button>
+        </div>
+    </div>
+    <div id="divExprComplexe">
+        <div class="overlay-background" style="z-index:4">
+        </div>
+        <div id="divDataExprComp">
+        </div>
+    </div>
+</div>
+
+@if (string.IsNullOrEmpty(Model.AccessMode)) {
+    <script type="text/javascript">
+
+        $(function () {
+            engagementsTraites.initPage();
+        });
+
+    </script>
+}
+else {
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "LoadEnJSIframe.js" } , "~/Scripts/AlbingiaJS/")
+    @Html.Raw(@"
+    </body>
+</html>")
+}
+
+

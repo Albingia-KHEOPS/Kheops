@@ -1,0 +1,340 @@
+﻿
+.ko-component-popup, .default-container {
+    display: block;
+    font-size: 12px;
+
+    .container {
+        border-radius: 10px;
+        background-color: #eee;
+        border: 1px #eee outset;
+        margin-bottom: 7px;
+
+        .big-tab-right {
+            margin-left: 70px;
+        }
+
+        .has-changed {
+            background-color: aliceblue;
+            color: blue;
+            border-color: blue;
+        }
+
+        .invalid-value, .invalid-date {
+            border: 1px solid red;
+            background-color: #FEE;
+        }
+    }
+
+    .container-details {
+
+        .main-title {
+            font-weight: bold;
+            padding: 15px 5px 5px 5px;
+            margin: 2px;
+        }
+
+        .main-big-title {
+            color: #800000;
+            font-family: Arial,Helvetica,sans-serif;
+            font-size: 11pt;
+            font-style: italic;
+            font-weight: normal;
+            padding: 7px 13px;
+
+            .bold {
+                font-weight: bold;
+            }
+        }
+
+        .container-lines {
+            border-radius: 5px;
+            margin: 5px;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            border: 1px #ddd inset;
+            background-color: #ccc;
+
+            &.space-it {
+                .input-line, .sub-title {
+                    margin-bottom: 5px;
+                }
+            }
+
+            &.flex-it {
+                display: flex;
+
+                .flex1-3 {
+                    flex: 1;
+                }
+
+                .flex2-3 {
+                    flex: 2;
+                }
+            }
+
+            & > div {
+                border-radius: 5px;
+                margin-right: 5px;
+                border: 1px #ddd outset;
+                margin-top: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                background-color: #eee;
+
+                .sub-title {
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                    padding-left: 5px;
+                    margin-top: 5px;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+
+                .input-line {
+                    display: flex;
+
+                    &.children-fill {
+                        div {
+                            flex: 1;
+                        }
+                    }
+
+                    &.divs {
+                        div {
+                            min-width: 120px;
+                            height: 20px;
+                            padding: 0;
+
+                            &.auto-width {
+                                min-width: auto;
+                                width: auto;
+                            }
+
+                            &.minw60 {
+                                min-width: 60px;
+                            }
+
+                            &.minw80 {
+                                min-width: 80px;
+                            }
+
+                            &.multi {
+
+                                input, select {
+                                    margin: 0 4px 0 0;
+                                }
+                            }
+
+                            label {
+                                display: inline-block;
+                                width: auto;
+                                padding: 0 5px;
+                                line-height: 20px;
+
+                                &.input {
+                                    input[type=checkbox] {
+                                        width: 25px;
+                                        line-height: 20px;
+                                        margin: 0;
+                                    }
+                                }
+                            }
+
+                            &.input {
+                                padding: 0;
+                                margin: 0;
+
+                                input {
+                                    line-height: normal;
+                                    width: 110px;
+
+                                    &.large {
+                                        width: 200px;
+                                    }
+
+                                    &.short {
+                                        width: 70px;
+                                    }
+
+                                    &.slight {
+                                        width: 50px;
+                                    }
+
+                                    &.tiny {
+                                        width: 25px;
+                                    }
+                                }
+                            }
+
+                            &.select {
+                                padding: 0;
+                                margin: 0;
+
+                                select {
+                                    line-height: normal;
+                                    width: 110px;
+                                }
+                            }
+                        }
+                    }
+
+                    &.date-time {
+                        padding: 2px;
+
+                        .date {
+                            padding-left: 5px;
+                            padding-top: 2px;
+                            width: 255px;
+                        }
+
+                        .time {
+                            padding-left: 2px;
+                            padding-top: 2px;
+                            width: 255px;
+
+                            select {
+                                width: 62px;
+                            }
+
+                            .text-hour {
+                                padding-left: 5px;
+                            }
+                        }
+                    }
+
+                    &.duration {
+                        width: 255px;
+                        padding-left: 7px;
+                        padding-top: 2px;
+
+                        .value, .unit {
+                            width: 60px;
+                            margin-left: 3px;
+                            margin-right: 4px;
+                        }
+                    }
+
+                    &.n-data-inline {
+                        div {
+                            flex: 1;
+
+                            input, select {
+                                width: 130px;
+                            }
+                        }
+                    }
+
+                    &.text-img32 {
+                        span {
+                            display: block;
+                            height: 32px;
+                            line-height: 32px;
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        i, img {
+                            width: 32px;
+                            height: 32px;
+                            display: block;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .container-foot {
+        padding: 15px 3px;
+
+        .input-line {
+            display: flex;
+
+            .single-button-center {
+                align-content: center;
+            }
+
+            .flex1-12, .flex1-19, .flex1-23 {
+                text-align: center;
+                flex: 1;
+            }
+
+            .flex11 {
+                flex: 11;
+            }
+
+            .flex8-12, .flex8-10 {
+                text-align: center;
+                flex: 8;
+            }
+
+            .flex9-12 {
+                text-align: center;
+                flex: 9;
+            }
+
+            .flex2-12, .flex2-10 {
+                text-align: center;
+                flex: 2;
+            }
+
+            .flex14-19 {
+                text-align: center;
+                flex: 14;
+            }
+
+            .flex17-23 {
+                text-align: center;
+                flex: 17;
+            }
+
+            .flex18-23 {
+                text-align: center;
+                flex: 18;
+            }
+
+            .flex5-23, .flex5-10 {
+                text-align: center;
+                flex: 5;
+            }
+
+            .flex4-12, .flex4-19, .flex4-23 {
+                text-align: center;
+                flex: 4;
+            }
+
+            &.ok-cancel {
+                padding: 0;
+                margin: 0;
+                text-align: right;
+
+                .empty-zone {
+                    flex: 15;
+                }
+
+                .button-zone {
+                    flex: 4;
+
+                    button, input[type="button"] {
+                        margin: 0 2px;
+                    }
+                }
+            }
+        }
+
+        .input-line-right {
+            text-align: right;
+        }
+    }
+}
+
+#divWinListRsqObj {
+    div:first-child {
+        overflow: auto;
+        max-height: 400px;
+    }
+}

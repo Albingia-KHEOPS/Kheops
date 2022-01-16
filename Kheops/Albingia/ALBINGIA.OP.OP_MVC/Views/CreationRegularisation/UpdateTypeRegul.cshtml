@@ -1,0 +1,49 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegularisation.ModeleLigneRegularisation
+<div class="CommonForm FloatLeft">
+
+    <div class="nGroupFull nGroupWithBorder" style="width: 600px;">
+        <div class="nHorizontalFullWithGroup" style="width: 600px;">
+            <div class="nGradientSection">
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block lblUpdate">Type de traitement actuel</label>
+                    </div>
+                    <div class="FloatLeft" style="padding-left: 20px;">
+                        <input id="TraitementActuel" type="text" name="TraitementActuel" value="@(Model.CodeTraitement + " - " + Model.LibTraitement)" class="inputUpdate readonly" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block lblUpdate">Sélection nouveau type de traitement</label>
+                    </div>
+                    <div class="FloatLeft" style="padding-left: 20px;">
+                        @Html.AlbDropDownListFor(m => m.TypesTraitement, Model.TypesTraitement, "Type Traitement", htmlAttributes: new { @id = "TypeTraitement", @class = "inputUpdate" }, generateTitle: true)
+                    </div>
+                </div>
+                <div class="HeightRow">
+                    <div class="FloatLeft">
+                        <label class="Block lblUpdate">Date de debut d'avenant de modif.</label>
+                    </div>
+                    @if (Model.Periodicite != "U" && Model.Periodicite != "E")
+                    {
+                        <div class="FloatLeft" style="padding-left: 20px;">
+                            @Html.AlbDateFormat(m => m.DateDebutAvenant, new { @class = "readonly inputDate",  @disabled = "disabled"})
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="FloatLeft" style="padding-left: 20px;">
+                            @Html.AlbDateFormat(m => m.DateDebutAvenant, new {  @tabindex = "3", @class = "datepicker inputDate" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft" style="width: 600px;">
+        <div class="nActionButtons ActionButtonRight FloatLeft">
+            <button id="btnAnnulUpdate" type="button" style="width: 80px;" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+            <button id="btnValidUpdate" type="button" style="width: 80px;" albshortcut="true" data-accesskey="v"><u>V</u>alider</button>
+        </div>
+    </div>
+</div>

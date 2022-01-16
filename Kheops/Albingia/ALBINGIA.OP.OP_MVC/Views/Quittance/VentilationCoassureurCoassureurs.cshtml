@@ -1,0 +1,50 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.CoAssureurGarantie>
+@{
+    double totalFraisApe = 0;
+    double totalHTHCatnat = 0;
+    double totalHTCatnat = 0;
+    double totalHTTotal = 0;
+    double totalCommHCatnat = 0;
+    double totalCommCatnat = 0;
+    double totalCommTotal = 0;
+}
+<table id="tblVentilationCoassBody" class="trHeight">
+    @foreach (ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.CoAssureurGarantie coass in Model)
+    {    
+        <tr>
+            <td class="width20 ">
+                <input type="hidden" id="@("libelle_" + coass.Code)" value="@coass.Libelle" />
+                <input type="hidden" id="@("part_" + coass.Code)" value="@coass.Part" />
+                <img id="@("details_" + coass.Code)" name="detailsCoassureur" title="Détails" alt="Détails" class="CursorPointer" src="@Url.Content("/Content/Images/details1616.png")" />
+            </td>
+            <td class="width320 smallPaddingLeft">@(coass.Code + " - " + coass.Libelle)</td>
+            <td class="width40 smallPaddingLeft numerique"><span albmask="decimal">@coass.Part</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(coass.FraisAperition.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(coass.HTHCatnat.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(coass.HTCatnat.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(coass.HTTotal.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(coass.CommHCatnat.ToString())</span></td>
+            <td class="width80 smallPaddingLeft numerique"><span albmask="decimal">@(coass.CommCatnat.ToString())</span></td>
+            <td class="width80 numerique"><span albmask="decimal">@(coass.CommTotal.ToString())</span></td>
+        </tr>
+        totalFraisApe += coass.FraisAperition;
+        totalHTHCatnat += coass.HTHCatnat;
+        totalHTCatnat += coass.HTCatnat;
+        totalHTTotal += coass.HTTotal;
+        totalCommHCatnat += coass.CommHCatnat;
+        totalCommCatnat += coass.CommCatnat;
+        totalCommTotal += coass.CommTotal;
+    }
+</table>
+<table id="tblVentilationCoassTotal" class="trHeight">
+    <tr>
+        <td class="tablePersoHead width390 titleBold">Total</td>
+        <td class="width80 backgroundWhite titleBold smallPaddingLeft numerique"><span albmask="decimal">@(totalFraisApe.ToString())</span></td>
+        <td class="width80 backgroundWhite titleBold smallPaddingLeft numerique"><span albmask="decimal">@(totalHTHCatnat.ToString())</span></td>
+        <td class="width80 backgroundWhite titleBold smallPaddingLeft numerique"><span albmask="decimal">@(totalHTCatnat.ToString())</span></td>
+        <td class="width80 backgroundWhite titleBold smallPaddingLeft numerique"><span albmask="decimal">@(totalHTTotal.ToString())</span></td>
+        <td class="width80 backgroundWhite titleBold smallPaddingLeft numerique"><span albmask="decimal">@(totalCommHCatnat.ToString())</span></td>
+        <td class="width80 backgroundWhite titleBold smallPaddingLeft numerique"><span albmask="decimal">@(totalCommCatnat.ToString())</span></td>
+        <td class="width80 backgroundWhite titleBold numerique"><span albmask="decimal">@(totalCommTotal.ToString())</span></td>
+    </tr>
+</table>

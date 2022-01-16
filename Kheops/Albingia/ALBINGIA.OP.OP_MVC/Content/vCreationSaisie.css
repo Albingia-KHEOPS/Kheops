@@ -1,0 +1,224 @@
+﻿.Column
+{
+    float: left;
+    border: 1px solid transparent;
+}
+
+    .Column > div
+    {
+        margin-top: 2px;
+    }
+
+    .Column > .FieldLabel
+    {
+        margin: 0 5px;
+        width: 110px;
+    }
+
+.Column_3
+{
+    width: 310px;
+}
+
+    .Column_3 > .FieldTextBox > input
+    {
+        width: 150px;
+    }
+
+.Description > .FieldLabel
+{
+    width: 80px;
+}
+
+.Observation > textarea
+{
+    min-width: 340px;
+}
+
+.TiersGroup
+{
+    clear: both;
+}
+
+.cibleWidth
+{
+    width: 150px;
+}
+
+.BlockInfo
+{
+    height: 213px;
+    width: 1195px;
+}
+
+.SubBlockInfo
+{
+    height: 195px;
+    width: 595px;
+}
+
+.GroupImg
+{
+    padding-top: 10px;
+}
+
+.labelCible
+{
+    display: block;
+    width: 60px;
+}
+
+.labelTemplate {
+    display: block;
+    width: 103px;
+}
+
+.labelSpace
+{
+    margin-right: 20px;
+    float: left;
+}
+
+.divSouscripteur
+{
+    float: left;
+    margin-right: 30px;
+}
+
+.divCible
+{
+    margin-top: -3px;
+}
+
+.divTemplate{
+      margin-top: -3px;
+}
+
+.inputBranche
+{
+    width: 223px !important;
+}
+
+.inputCible
+{
+    width: 223px !important;
+}
+
+.inputTemplate{
+    width:223px !important;  
+}
+
+.inputGestionnaire{
+    width:385px !important;
+}
+
+.inputGes{
+    width:370px !important;
+}
+
+.labelCourtier
+{
+    display: block;
+    width: 50px !important;
+}
+
+.inputCodeCourtier
+{
+     margin-right: 40px;
+    width: 50px !important;
+}
+
+.labelNomCourtier
+{
+    display: block;
+    width: 40px;
+}
+
+.inputNomCourtier
+{
+    width: 285px !important;
+}
+
+.labelNomInterlocuteur
+{
+    margin-left: 2px;
+}
+
+.inputInterlocuteur
+{
+    width: 255px !important;
+    margin-right: 20px;
+}
+
+.labelReference
+{
+    display: block;
+    width: 40px;
+}
+
+.labelPreneurAssu
+{
+    width: 120px;
+    display: block;
+}
+
+.labelDept
+{
+    width: 50px;
+    display: block;
+}
+
+.inputDept
+{
+    margin-right: 40px;
+    width: 50px !important;
+}
+
+.inputIdentification
+{
+    width: 567px !important;
+}
+
+.inputMotCle
+{
+    width: 280px !important;
+    margin-right: 10px;
+}
+
+#divAdresse
+{
+    width: 397px;
+    height: 69px;
+}
+
+.HeightAdresse
+{
+    height: 220px;
+}
+
+.TextAlignCenter{
+    text-align:center;
+}
+
+.HeightSection{
+    height:500px !important;
+}
+
+.Alinea{
+    padding-left:154px;
+}
+
+#divRechercheAvanceeCourtierCreationContrat, #divRechercherCourtierGestion, #divRechercherCourtierApporteur, #divRechercherCourtierPayeur {
+    display: none;
+}
+
+#divDataRechercheAvanceeCourtierCreationCourtier {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: block;
+    z-index: 23;
+    background-color: White;
+    padding: 5px 0 0 5px;
+    width: 1220px;
+}

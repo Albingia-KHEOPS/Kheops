@@ -1,0 +1,89 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.Regularisation
+
+@model ModeleRegularisationPage
+
+@switch (Model.Context.Mode) {
+    case OP.WSAS400.DTO.Regularisation.RegularisationMode.PB:
+        <script type="text/html" id="risques_template">
+            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/knockout/templates/regularisation/check-list-risques-PB.html")))
+        </script>
+        break;
+
+    case OP.WSAS400.DTO.Regularisation.RegularisationMode.BNS:
+        <script type="text/html" id="risques_template">
+            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/knockout/templates/regularisation/check-list-risques-BNS.html")))
+        </script>
+        break;
+
+    case OP.WSAS400.DTO.Regularisation.RegularisationMode.Burner:
+        <script type="text/html" id="risques_template">
+            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/knockout/templates/regularisation/check-list-risques-BURNER.html")))
+        </script>
+        break;
+}
+
+@Url.IncludeKoComponent("entete-contrat")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "Regularisation/vCreationRegularisation.css", "Quittance/albQuittance.css", "vCreationAvenant.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "global.css" }, "~/Content/less/regularisation/")
+
+@{
+    ViewBag.Title = "CreationRegule";
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreRegule.cshtml", new NavTreeModel { NavTree = Model.NavigationArbre, Step = 0 })
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder ">
+            <div class="divGlobalRegulGroup">
+                <entete-contrat></entete-contrat>
+
+                <div id="divInfoRegul" class="nGradientSection divListRisquesRegularisation">
+                    <div id="listRisques" class="fieldset-container">
+                        <!-- ko template: { name: 'risques_template', data: checkListRisques } -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nGroupFull nGroupWithBorder ButtonsHeight FloatLeft">
+            <div class="nActionButtons ActionButtonRight" id="navButtons">
+                <button id="btnRegulePrec" type="button" albshortcut="true" data-accesskey="P" data-bind="click: back"><u>P</u>récedent</button>
+                <button id="btnReguleSuivant" type="button" albshortcut="true" data-accesskey="s" data-bind="click: forward, enable: canGoNext, visible: canGoNext"><u>S</u>uivant</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divInfoSaisieGar" class="None">
+    <div class="overlay-background" style="z-index:15">
+    </div>
+    <div id="divDataInfoSaisieGar" class="dvDataInfoSaisieGar"></div>
+</div>
+<div id="divConfirmMntRegul" class="None">
+    <div class="overlay-background" style="z-index:25">
+    </div>
+    <div id="divDataConfirmMntRegul" class="dvDataConfirmMntRegul">
+    </div>
+</div>
+<div id="divUpdateRegul" class="None">
+    <div class="overlay-background" style="z-index:15">
+    </div>
+    <div id="divDataUpdateRegul" class="dvDataUpdateRegul"></div>
+</div>
+
+<script type="text/javascript">
+    @{
+        string context = Newtonsoft.Json.JsonConvert.SerializeObject(Model.Context, Newtonsoft.Json.Formatting.None);
+    }
+
+    window.context = @Html.Raw(context);
+    window.sessionStorage[regul.regulKey] = JSON.stringify(window.context);
+    //regul.topRibbon.init();
+</script>
+
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "regularisation-bandeau-contrat.js", "regularisation-check-list-rsq.js" }, "~/knockout/templates/regularisation/", false)
+
+

@@ -1,0 +1,176 @@
+﻿body {
+}
+
+.SuperInput {
+    width: 385px !important;
+}
+
+.SuperInputLight {
+    width: 365px !important;
+}
+
+.MotsClefsColumnZone {
+    float: right;
+    width: 146px;
+}
+
+.LblMotClef {
+    float: inherit;
+    padding-right: 120px;
+}
+
+.Block {
+    display: block;
+}
+
+.IdentificationSection {
+    height: 115px;
+}
+
+.FinEffetDureeWidth {
+    width: 110px;
+}
+
+#Duree {
+    margin-right: 5px;
+    width: 55px;
+}
+
+.labelStop {
+    margin-left: 65px;
+    width: 54px;
+}
+
+.ButtonRight {
+    text-align: right;
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-right: 6px;
+    padding-top: 4px;
+}
+
+.inputMotCle {
+    margin-right: 10px;
+    width: 291px;
+}
+
+.inputPeriodicite {
+    margin-right: 13px;
+    float: left;
+}
+
+.inputPreavis {
+    margin-right: 10px;
+    width: 40px !important;
+}
+
+.labelPreavis {
+    /*padding-left: 18px !important;*/
+    width: 130px !important;
+}
+
+.divDateInfoGen {
+    float: left;
+    margin-right: 15px;
+}
+
+.divHeure {
+    float: left;
+    margin-right: 29px;
+}
+
+.divEffetCheck {
+    width: 110px;
+}
+
+.divDuree {
+    width: 110px;
+    float: left;
+}
+
+.inputDuree {
+    width: 133px;
+}
+
+.divGeneral {
+    height: 269px;
+}
+
+.InputIntercalaire {
+    width: 140px;
+}
+
+.ZoneTextAreaWidth {
+    width: 867px !important;
+}
+
+.ZoneTextAreaWidthSmall {
+    width: 626px !important;
+}
+
+.TextAreaLeft {
+    left: 394.5px !important;
+}
+
+.inputDevise {
+    margin-right: 10px;
+}
+
+.marginRight {
+    margin-right: 10px;
+}
+
+.inputRegimesTaxe {
+    width: 253px;
+}
+
+#divFullScreen {
+    display: none;
+}
+
+#divDataEditPopIn {
+    position: absolute;
+    top: 80px;
+    left: 330px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 270px;
+    width: 950px;
+}
+
+#divDialogEditCoAssureur {
+    height: 250px;
+    width: 930px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.divEditLigne {
+    display: block;
+    margin-top: 11px;
+    padding-bottom: 13px;
+    padding-right: 6px;
+    padding-top: 4px;
+}
+
+.editColCode {
+    width: 120px;
+}
+
+.editColLibelle {
+    width: 500px;
+}
+
+.editColInterlocuteur {
+    width: 235px;
+}
+
+.editColReference {
+    width: 400px;
+}
+
+.PourcentWidth {
+    width: 60px !important;
+}

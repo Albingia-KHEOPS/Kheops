@@ -1,0 +1,85 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleCreationSaisie.ModeleInformationSaisie
+<div class="HeightRow">
+    <div class="FloatLeft">
+        <label class="Block">Branche*</label>
+    </div>
+    <div class="labelSpace">
+        @if ((!Model.EditMode && !Model.CopyMode || Model.LoadTemplateMode) && !Model.IsReadOnlyDisplay)
+        {
+            @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "InformationSaisie.Branche", htmlAttributes: new { @id = "InformationSaisie_Branche", @tabindex = "1", @class = "inputBranche", @albCFList = "branche" }, generateTitle: true, replaceHtmlName: "InformationSaisie.Branche")
+        }
+        else
+        {
+            @Html.Hidden("InformationSaisie.Branche", (Model.Branches.Find(elm => elm.Value == Model.Branche) != null ? Model.Branches.Find(elm => elm.Value == Model.Branche).Value : Model.Branche), new { id = "InformationSaisie_Branche" })
+            <input type="text" id="InformationSaisie_BrancheText" name="InformationSaisie.BrancheText" albCFList="branche" value="@(Model.Branches.Find(elm => elm.Value == Model.Branche) != null ? Model.Branches.Find(elm => elm.Value == Model.Branche).Text : Model.Branche)" tabindex="1" readonly="readonly" class="readonly inputBranche" title="@(Model.Branches.Find(elm => elm.Value == Model.Branche) != null ? Model.Branches.Find(elm => elm.Value == Model.Branche).Text : Model.Branche)" />
+        }
+    </div>
+    @Html.Hidden("hideCible", (Model.InformationCible.Cible))
+    <div id="cibleDiv" class="Column divCible">
+        @Html.Partial("../CreationSaisie/Cible_InformationSaisie", Model.InformationCible)
+    </div>
+    <div class="FloatLeft">
+        <label class="Block">Date de saisie*</label>
+    </div>
+    <div class="labelSpace">
+        @if (Model.IsReadOnlyDisplay)
+        { 
+            @Html.AlbDateFormat(m => m.DateSaisieString, new { @tabindex = "3", @class = "datepicker inputDate readonly", @disabled = "disabled" }, htmlName: "InformationSaisie.DateSaisieString")              
+        }
+        else
+        {
+            @Html.AlbDateFormat(m => m.DateSaisieString, new { @tabindex = "3", @class = "datepicker inputDate" }, htmlName: "InformationSaisie.DateSaisieString")              
+        }
+        @Html.ValidationMessageFor(m => m.DateSaisie, String.Empty, new { @style = "display: none" })
+    </div>
+    <div class="FloatLeft">
+        @if (Model.IsReadOnlyDisplay)
+        {           
+            @Html.AlbTimePicker(m => m.HeureSaisieString, "HeureSaisieString", new { @class = "HourMinute readonly", @tabindex = "4", @disabled = "disabled" }, htmlName: "InformationSaisie.HeureSaisieString")
+        }
+        else
+        {
+            @Html.AlbTimePicker(m => m.HeureSaisieString, "HeureSaisieString", new { @class = "HourMinute", @tabindex = "4" }, htmlName: "InformationSaisie.HeureSaisieString")
+        }
+    </div>
+</div>
+<div class="HeightRow">
+    <div id="templateDiv" class="Column divTemplate">
+        @if (Model.InformationTemplate != null)
+        {
+            @Html.Partial("../CreationSaisie/Template_InformationSaisie", Model.InformationTemplate)
+        }
+    </div>
+</div>
+<div class="HeightRow">
+    @Html.Hidden("SouscripteurSelect", string.Empty, new { albautocomplete = "autoCompSouscripteurSelect" })
+    @Html.Hidden("InformationSaisie.CodeSouscripteur", Model.CodeSouscripteur, new { albAutoComplete = "autoCompSouscripteurCode" })
+    <div class="FloatLeft">
+        <label class="Block">Souscripteur*</label>
+    </div>
+    <div class="divSouscripteur">
+        @if (Model.IsReadOnlyDisplay)
+        { 
+            <input type="text" id="InformationSaisie_Souscripteurs" name="InformationSaisie.Souscripteurs" tabindex="5" value="@(Model.Souscripteurs)" class="DoubleInput readonly" albAutoComplete="autoCompSouscripteurNom" disabled="disabled"/>
+        }
+        else
+        {
+            <input type="text" id="InformationSaisie_Souscripteurs" name="InformationSaisie.Souscripteurs" tabindex="5" value="@(Model.Souscripteurs)" class="DoubleInput" albAutoComplete="autoCompSouscripteurNom" />         
+        }
+    </div>
+    @Html.Hidden("GestionnaireSelect", string.Empty, new { albautocomplete = "autoCompGestionnaireSelect" })
+    @Html.Hidden("InformationSaisie.CodeGestionnaire", Model.CodeGestionnaire, new { albAutoComplete = "autoCompGestionnaireCode" })
+    <div class="FloatLeft">
+        <label class="Block">Gestionnaire</label>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.IsReadOnlyDisplay)
+        { 
+            <input type="text" id="InformationSaisie_Gestionnaires" name="InformationSaisie.Gestionnaires" tabindex="6" value="@(Model.Gestionnaires)" class="inputGestionnaire readonly" albAutoComplete="autoCompGestionnaireNom" disabled="disabled"/>
+        }
+        else
+        {
+            <input type="text" id="InformationSaisie_Gestionnaires" name="InformationSaisie.Gestionnaires" tabindex="6" value="@(Model.Gestionnaires)" class="inputGestionnaire" albAutoComplete="autoCompGestionnaireNom" />             
+        }
+    </div>
+</div>

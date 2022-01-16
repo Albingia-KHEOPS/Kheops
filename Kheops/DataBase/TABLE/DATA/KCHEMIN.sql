@@ -1,0 +1,45 @@
+﻿CREATE TABLE ZALBINKHEO.KCHEMIN ( 
+--  SQL150B   10   REUSEDLT(*NO) de la table KCHEMIN de ZALBINKHEO ignoré. 
+--  SQL1506   30   Clé ou attribut ignoré pour KCHEMIN de ZALBINKHEO. 
+	KHMCLE CHAR(30) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMSRV CHAR(50) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMRAC CHAR(50) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMENV CHAR(50) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMDES CHAR(60) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMTCH CHAR(1) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMCHM CHAR(150) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMCRU CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMCRD NUMERIC(8, 0) NOT NULL DEFAULT 0 , 
+	KHMMJU CHAR(10) CCSID 297 NOT NULL DEFAULT '' , 
+	KHMMJD NUMERIC(8, 0) NOT NULL DEFAULT 0 )   
+	RCDFMT FCHEMIN    ; 
+  
+LABEL ON TABLE ZALBINKHEO.KCHEMIN 
+	IS 'Ancien nom KCHEMIN de ZALBINKHEO, propr DUPOUET.' ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KCHEMIN 
+( KHMCLE IS 'Clé d''accès chemin' , 
+	KHMSRV IS 'Serveur' , 
+	KHMRAC IS 'Racine' , 
+	KHMENV IS 'Environnement' , 
+	KHMDES IS 'Désignation' , 
+	KHMTCH IS '''D'' si répert Docum' , 
+	KHMCHM IS 'Chemin' , 
+	KHMCRU IS 'Création User' , 
+	KHMCRD IS 'Création Date' , 
+	KHMMJU IS 'Mise à jour User' , 
+	KHMMJD IS 'Mise à Jour Date' ) ; 
+  
+LABEL ON COLUMN ZALBINKHEO.KCHEMIN 
+( KHMCLE TEXT IS 'Clé document' , 
+	KHMSRV TEXT IS 'Serveur' , 
+	KHMRAC TEXT IS 'Racine' , 
+	KHMENV TEXT IS 'Environnement' , 
+	KHMDES TEXT IS 'Désignation' , 
+	KHMTCH TEXT IS '''D'' si répertoire Document' , 
+	KHMCHM TEXT IS 'Chemin' , 
+	KHMCRU TEXT IS 'Création user' , 
+	KHMCRD TEXT IS 'Création Date' , 
+	KHMMJU TEXT IS 'Mise à jour User' , 
+	KHMMJD TEXT IS 'Mise à jour Date' ) ; 
+  

@@ -1,0 +1,26 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.MetaData.Bandeau_MetaData
+<div class="HeightRow">
+    <table class="tabBandeau" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td class="AlbNoWrap cellBandeauOffre"><b>O - @Model.IdOffre - @Model.Version</b></td>
+            <td class="AlbNoWrap cellBandeauDescr" title="@Model.Description">@Model.Description</td>
+            <td class="AlbNoWrap cellBandeauBranche" title="@Model.Branche - @Model.Cible">@Model.Branche - @Model.Cible</td>
+            <td class="AlbNoWrap cellBandeauAssu" title="@Model.Delegation - @Model.Inspecteur">@Model.Delegation - @Model.Inspecteur</td>
+            <td class="AlbNoWrap cellBandeauAssu" title="@Model.IdAssure - @Model.NomAssure">@Model.IdAssure - @Model.NomAssure</td>
+            <td class="AlbNoWrap cellBandeauImg">
+                @if (Model.HasDoubleSaisie)
+                {
+                    <img id="DblSaisieBandeau" class="CursorPointer" src="@Url.Content("/Content/Images/ico_16_formorder.png")" alt="DoubleSaisie" title="Contient une double saisie" />
+                }
+            </td>
+            <td id="imgInfoBandeau" class="AlbNoWrap cellBandeauImg CursorPointer">
+                <img src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" alt="Informations" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+@if (Model != null)
+{
+    @Html.Partial("Entete/InfoBandeauOffre", Model);
+}

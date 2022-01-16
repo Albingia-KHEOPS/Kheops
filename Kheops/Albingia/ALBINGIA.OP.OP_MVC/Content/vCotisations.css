@@ -1,0 +1,136 @@
+﻿#tblHeaderGaranties tr
+{
+    height: 1px;
+}
+
+.tblCotis
+{
+    /*height: 341px;*/
+    height: 331px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.GroupHeightCommission
+{
+    height: 175px;
+}
+
+.HeightCommission
+{
+    height: 135px;
+}
+
+.HeightGradientSectionCommission
+{
+    height: 118px;
+}
+
+/*tr {
+    height: 1px !important;
+}*/
+
+input[type=text]
+{
+    border: 1px solid grey;
+    width: 83px;
+    padding: 1px 0;
+}
+
+.inputTotal
+{
+    padding: 1px !important;
+    width: 95px !important;
+}
+
+.readonlyCotis
+{
+    cursor: default;
+}
+
+.ActionButtonswidth
+{
+    width: 481px !important;
+}
+
+#divFullScreenListGaranties
+{
+    display: none;
+}
+
+#divDataFullScreenListGaranties
+{
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 721px;
+    width: 1055px;
+}
+
+
+.BtnFullScreenFermer
+{
+    margin-left: 480px;
+    padding-top: 6px;
+}
+
+.DivListGranties
+{
+    height: 650px;
+    margin-left: 5px;
+}
+
+.divHeightCotisationPleinEcran
+{
+    max-height: 500px;
+}
+
+.divBtnFullScreenFermer
+{
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 1031px;
+}
+
+#divFraisAccessoires
+{
+    display: none;
+}
+
+#divDataFraisAccessoires
+{
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: block;
+    z-index: 3;
+    background-color: White;
+    height: 190px;
+    width: 815px;
+}
+
+.FraisAccessoiresGradientSection
+{
+    height: 110px;
+    width: 800px;
+}
+
+.WidthGroupFraisAccessoires
+{
+    width: 804px !important;
+}
+
+.DivButtons
+{
+    margin-left: 2px;
+    width: 796px !important;
+}
+
+.SmallGenericColumn
+{
+    width: 160px;
+    float: left;
+}

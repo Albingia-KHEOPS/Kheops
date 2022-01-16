@@ -1,0 +1,242 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsExprComplexeDetails
+@{
+    var i = 0;
+    foreach (var item in Model.LstLigneGarantie)
+    {
+    <tr id="tr@(item.Code)">
+        <td class="@(Model.Type == "LCI" ? "tdValLCI" : "tdValFRH")">
+            @Html.Hidden("flag", false.ToString().ToLower(), new { id = item.Code })
+            @Html.Hidden($"Id¤{item.Code}", item.Code, new { id = $"Id¤{item.Code}" })
+            @if (Model.Type == "LCI")
+            {
+                if (!Model.IsReadOnly)
+                {
+                <input type="text" name="LCIValeur¤@(item.Code)" id="LCIValeurCPX¤@(item.Code)" value="@(item.LCIValeur)" class="inputValLCI" albMask="decimal" />
+                }
+                else
+                {
+                <input type="text" name="LCIValeur¤@(item.Code)" id="LCIValeurCPX¤@(item.Code)" value="@(item.LCIValeur)" class="readonly inputValLCI" readonly="readonly" albMask="decimal" />
+                }
+            }
+            else
+            {
+                if (!Model.IsReadOnly)
+                {
+                <input type="text" name="FranchiseValeur¤@(item.Code)" id="FranchiseValeurCPX¤@(item.Code)" value="@(item.FranchiseValeur)" class="inputValFRH" albMask="decimal" />
+                }
+                else
+                {
+                <input type="text" name="FranchiseValeur¤@(item.Code)" id="FranchiseValeurCPX¤@(item.Code)" value="@(item.FranchiseValeur)" class="readonly inputValFRH" readonly="readonly" albMask="decimal" />
+                }
+            }
+        </td>
+        <td class="tdUnitTypeVal">
+            @if (Model.Type == "LCI")
+            {
+                if (!Model.IsReadOnly)
+                {
+                @Html.AlbDropDownListFor(m => item.LCIUnite, Model.UnitesLCINew.Select(u => { u.Selected = (u.Value == item.LCIUnite ? true : false); return u; }).ToList(), "LCIUniteCPX", htmlAttributes: new { @id = "LCIUniteCPX¤" + item.Code, @class = "DetailSelect" }, generateTitle: true)
+                }
+                else
+                {
+                @Html.AlbDropDownListFor(m => item.LCIUnite, Model.UnitesLCINew.Select(u => { u.Selected = (u.Value == item.LCIUnite ? true : false); return u; }).ToList(), "LCIUniteCPX", htmlAttributes: new { @id = "LCIUniteCPX¤" + item.Code, @class = "DetailSelect", @disabled = "disabled" }, generateTitle: true)
+                }
+            }
+            else
+            {
+                if (!Model.IsReadOnly)
+                {
+                @Html.AlbDropDownListFor(m => item.FranchiseUnite, Model.UnitesFranchiseNew.Select(u => { u.Selected = (u.Value == item.FranchiseUnite ? true : false); return u; }).ToList(), "FranchiseUniteCPX", htmlAttributes: new { @id = "FranchiseUniteCPX¤" + item.Code, @class = "DetailSelect", @selecttype = "FRHCPX" }, generateTitle: true)
+                }
+                else
+                {
+                @Html.AlbDropDownListFor(m => item.FranchiseUnite, Model.UnitesFranchiseNew.Select(u => { u.Selected = (u.Value == item.FranchiseUnite ? true : false); return u; }).ToList(), "FranchiseUniteCPX", htmlAttributes: new { @id = "FranchiseUniteCPX¤" + item.Code, @class = "DetailSelect", @selecttype = "FRHCPX", @disabled = "disabled" }, generateTitle: true)
+                }
+            }
+            @Html.HiddenNoName($"IdComplexe{item.Code}", string.Empty)
+        </td>
+        <td class="tdUnitTypeVal">
+            @if (Model.Type == "LCI")
+            {
+                if (!Model.IsReadOnly)
+                {
+                @Html.AlbDropDownListFor(m => item.LCIType, Model.TypesLCINew.Select(u => { u.Selected = (u.Value == item.LCIType ? true : false); return u; }).ToList(), "LCIType", htmlAttributes: new { @id = "LCIType¤" + item.Code, @class = "DetailSelect" }, generateTitle: true)
+                }
+                else
+                {
+                @Html.AlbDropDownListFor(m => item.LCIType, Model.TypesLCINew.Select(u => { u.Selected = (u.Value == item.LCIType ? true : false); return u; }).ToList(), "LCIType", htmlAttributes: new { @id = "LCIType¤" + item.Code, @class = "DetailSelect", @disabled = "disabled" }, generateTitle: true)
+                }
+            }
+            else
+            {
+                if (!Model.IsReadOnly)
+                {
+                @Html.AlbDropDownListFor(m => item.FranchiseType, Model.TypesFranchiseNew.Select(u => { u.Selected = (u.Value == item.FranchiseType ? true : false); return u; }).ToList(), "FranchiseType", htmlAttributes: new { @id = "FranchiseType¤" + item.Code, @class = "DetailSelect" }, generateTitle: true)
+                }
+                else
+                {
+                @Html.AlbDropDownListFor(m => item.FranchiseType, Model.TypesFranchiseNew.Select(u => { u.Selected = (u.Value == item.FranchiseType ? true : false); return u; }).ToList(), "FranchiseType", htmlAttributes: new { @id = "FranchiseType¤" + item.Code, @class = "DetailSelect", @disabled = "disabled" }, generateTitle: true)
+                }
+            }
+        </td>
+        @if (Model.Type == "LCI")
+        { 
+            <td class="tdConcurVal">
+                @if (!Model.IsReadOnly)
+                {
+                    <input type="text" name="ConcurrenceValeur¤@(item.Code)" id="ConcurrenceValeurCPX¤@(item.Code)" value="@((item.ConcurrenceValeur == "0" && item.ConcurrenceUnite == "") ? "" : item.ConcurrenceValeur)" class="inputValLCI" albMask="@(item.ConcurrenceUnite == "%" ? "pourcentdecimal" : "decimal")" />
+                }
+                else
+                {
+                    <input type="text" name="ConcurrenceValeur¤@(item.Code)" id="ConcurrenceValeurCPX¤@(item.Code)" value="@((item.ConcurrenceValeur == "0" && item.ConcurrenceUnite == "") ? "" : item.ConcurrenceValeur)" class="readonly inputValLCI" readonly="readonly" albMask="@(item.ConcurrenceUnite == "%" ? "pourcentdecimal" : "decimal")" />
+                }
+            </td>
+            <td class="tdUnitTypeVal">
+                @if (!Model.IsReadOnly)
+                {
+                    @Html.AlbDropDownListFor(m => item.ConcurrenceUnite, Model.UnitesConcurrence.Select(u => { u.Selected = (u.Value == item.ConcurrenceUnite ? true : false); return u; }).ToList(), "ConcurrenceUniteCPX", htmlAttributes: new { @id = "ConcurrenceUniteCPX¤" + item.Code, @class = "DetailSelect" }, generateTitle: true)
+                }
+                else
+                {
+                    @Html.AlbDropDownListFor(m => item.ConcurrenceUnite, Model.UnitesConcurrence.Select(u => { u.Selected = (u.Value == item.ConcurrenceUnite ? true : false); return u; }).ToList(), "ConcurrenceUniteCPX", htmlAttributes: new { @id = "ConcurrenceUniteCPX¤" + item.Code, @class = "DetailSelect", @disabled = "disabled" }, generateTitle: true)
+                }
+            </td>
+            <td class="tdUnitTypeVal">
+                @if (!Model.IsReadOnly)
+                {
+                    @Html.AlbDropDownListFor(m => item.ConcurrenceType, Model.TypesConcurrence.Select(u => { u.Selected = (u.Value == item.ConcurrenceType ? true : false); return u; }).ToList(), "ConcurrenceType", htmlAttributes: new { @id = "ConcurrenceType¤" + item.Code, @class = "DetailSelect" }, generateTitle: true)
+                }
+                else
+                {
+                    @Html.AlbDropDownListFor(m => item.ConcurrenceType, Model.TypesConcurrence.Select(u => { u.Selected = (u.Value == item.ConcurrenceType ? true : false); return u; }).ToList(), "ConcurrenceType", htmlAttributes: new { @id = "ConcurrenceType¤" + item.Code, @class = "DetailSelect", @disabled = "disabled" }, generateTitle: true)
+                }
+            </td>
+        }
+        else
+        { 
+            <td class="tdValFRH">
+                @if (!Model.IsReadOnly)
+                {
+                    <input type="text" name="FranchiseMini¤@(item.Code)" id="FranchiseMini¤@(item.Code)" value="@(item.FranchiseMini == "0" ? "" : item.FranchiseMini)" class="inputValFRH" albMask="decimal" />
+                }
+                else
+                {
+                    <input type="text" name="FranchiseMini¤@(item.Code)" id="FranchiseMini¤@(item.Code)" value="@(item.FranchiseMini == "0" ? "" : item.FranchiseMini)" class="readonly inputValFRH" readonly="readonly" albMask="decimal" />
+                }
+            </td>
+            <td class="tdValFRH">
+                @if (!Model.IsReadOnly)
+                {
+                    <input type="text" name="FranchiseMaxi¤@(item.Code)" id="FranchiseMaxi¤@(item.Code)" value="@(item.FranchiseMaxi == "0" ? "" : item.FranchiseMaxi)" class="inputValFRH" albMask="decimal" />
+                }
+                else
+                {
+                    <input type="text" name="FranchiseMaxi¤@(item.Code)" id="FranchiseMaxi¤@(item.Code)" value="@(item.FranchiseMaxi == "0" ? "" : item.FranchiseMaxi)" class="readonly inputValFRH" readonly="readonly" albMask="decimal" />
+                }
+            </td>
+            <td class="tdDate">
+                @if (!Model.IsReadOnly)
+                {
+                    @Html.AlbDateFormat(m => item.FranchiseDebut, new { @name = "FranchiseDebut" + (item.Code), @id = "FranchiseDebut¤" + (item.Code), @class = "inputDate datepicker" })
+                }
+                else
+                {
+                    @Html.AlbDateFormat(m => item.FranchiseDebut, new { @name = "FranchiseDebut" + (item.Code), @id = "FranchiseDebut¤" + (item.Code), @class = "inputDate readonly", @readonly = "readonly" })
+                }
+            </td>
+            <td class="tdDate">
+                @if (!Model.IsReadOnly)
+                {
+                    @Html.AlbDateFormat(m => item.FranchiseFin, new { @name = "FranchiseFin" + (item.Code), @id = "FranchiseFin¤" + (item.Code), @class = "inputDate datepicker" })
+                }
+                else
+                {
+                    @Html.AlbDateFormat(m => item.FranchiseFin, new { @name = "FranchiseFin" + (item.Code), @id = "FranchiseFin¤" + (item.Code), @class = "inputDate readonly", @readonly = "readonly" })
+                }
+            </td>
+        }
+        <td class="tdImg">
+            @if (i != 0 && !Model.IsReadOnly)
+            { 
+                <img class="CursorPointer" id="delDetail¤@(item.Code)" name="delDetail" alt="" src="@(Url.Content("~/Content/Images/poubelle1616.png"))" />
+            }
+            else
+            {
+                <label>
+                    &nbsp;</label>
+            }
+        </td>
+    </tr>    
+            i++;
+    }
+}
+<tr id="tr000" style="display: none">
+    <td class="@(Model.Type == "LCI" ? "tdValLCI" : "tdValFRH")">
+        @Html.Hidden("flag", false.ToString().ToLower(), new { id = "000" })
+        @if (Model.Type == "LCI")
+        {
+            <input type="text" name="LCIValeur¤000" id="LCIValeurCPX¤000" class="inputValLCI" albmask="decimal" />
+        }
+        else
+        { 
+            <input type="text" name="FranchiseValeur¤000" id="FranchiseValeurCPX¤000" class="inputValFRH" albmask="decimal" />
+        }
+    </td>
+    <td class="tdUnitTypeVal">
+        @if (Model.Type == "LCI")
+        { 
+            @Html.AlbDropDownListFor(m => m.UniteLCINew, Model.UnitesLCINew, "LCIUniteCPX¤000", htmlAttributes: new { @id = "LCIUniteCPX¤000", @class = "DetailSelect" }, generateTitle: true)
+        }
+        else
+        { 
+            @Html.AlbDropDownListFor(m => m.UniteFranchiseNew, Model.UnitesFranchiseNew, "FranchiseUniteCPX¤000", htmlAttributes: new { @id = "FranchiseUniteCPX¤000", @class = "DetailSelect", @selecttype = "FRHCPX" }, generateTitle: true)
+        }
+    </td>
+    <td class="tdUnitTypeVal">
+        @if (Model.Type == "LCI")
+        {
+            @Html.AlbDropDownListFor(m => m.TypeLCINew, Model.TypesLCINew, "LCIType¤000", htmlAttributes: new { @id = "LCIType¤000", @class = "DetailSelect" }, generateTitle: true)
+        }
+        else
+        { 
+            @Html.AlbDropDownListFor(m => m.TypeFranchiseNew, Model.TypesFranchiseNew, "FranchiseType¤000", htmlAttributes: new { @id = "FranchiseType¤000", @class = "DetailSelect" }, generateTitle: true)
+                
+        }
+    </td>
+    @if (Model.Type == "LCI")
+    { 
+        <td class="inputValLCI">
+            <input type="text" name="ConcurrenceValeur¤000" id="ConcurrenceValeurCPX¤000" class="inputValLCI" albmask="decimal" />
+        </td>
+        <td class="tdConcurUnitType">
+            @Html.AlbDropDownListFor(m => m.UniteConcurrence, Model.UnitesConcurrence, "ConcurrenceUniteCPX¤000", htmlAttributes: new { @id = "ConcurrenceUniteCPX¤000", @class = "DetailSelect" }, generateTitle: true)
+        </td>
+        <td class="tdConcurUnitType">
+            @Html.AlbDropDownListFor(m => m.TypeConcurrence, Model.TypesConcurrence, "ConcurrenceType¤000", htmlAttributes: new { @id = "ConcurrenceType¤000", @class = "DetailSelect" }, generateTitle: true)
+        </td>
+    }
+    else
+    { 
+        <td class="tdValFRH">
+            <input type="text" name="FranchiseMini¤000" id="FranchiseMini¤000" class="inputValFRH" albmask="decimal" />
+        </td>
+        <td class="tdValFRH">
+            <input type="text" name="FranchiseMaxi¤000" id="FranchiseMaxi¤000" class="inputValFRH" albmask="decimal" />
+        </td>
+        <td class="tdDate">
+            @Html.AlbDateFormat(m => m.FranchiseDebut, new { @name = "FranchiseDebut¤000", @id = "FranchiseDebut¤000", @class = "inputDate datepicker" })
+        </td>
+        <td class="tdDate">
+            @Html.AlbDateFormat(m => m.FranchiseFin, new { @name = "FranchiseFin¤000", @id = "FranchiseFin¤000", @class = "inputDate datepicker" })
+        </td>
+    }
+    <td class="tdImg">&nbsp;
+    </td>
+</tr>
+<tr class="None">
+    <td colspan="@(Model.Type == "LCI" ? "7" : "8")">
+        @Html.HiddenNoName("LibelleTemp", Model.Libelle)
+        @Html.HiddenNoName("IdTemp", Model.Id)
+        @Html.HiddenNoName("DescriptifTemp", Model.Descriptif)
+    </td>
+</tr>

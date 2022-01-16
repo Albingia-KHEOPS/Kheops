@@ -1,0 +1,79 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleBlocPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vBlocs.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albBlocs.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            @Html.Hidden("SupprBloc", string.Empty)
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder GroupBackOffice GroupHeightBlocs" style="margin-right: 12px;">
+                    <div class="GroupTitle">
+                        Recherche de blocs
+                    </div>
+                    <div class="HorizontalHalfWithGroupAdmin GroupHeightBlocsInterieur">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div class="FloatLeft">
+                                    <label class="Block labelBloc">Code</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="RechercheBlocs_Code" value="@Model.RechercheBlocs.Code" />
+                                </div>
+                                <div class="FloatLeft">
+                                    <label class="Block">Description</label>
+                                </div>
+                                <div class="FloatLeft">
+                                    <input id="RechercheBlocs_Description" value="@Model.RechercheBlocs.Description" />
+                                </div>
+                                <div class="FloatLeft PaddingLeft">
+                                    <button type="button" id="btnRechercher" albshortcut="true" data-accesskey="r">
+                                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" /></button>
+                                </div>
+                            </div>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div id="divLstBlocs">
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <th class="hCode tablePersoHead">Code Bloc
+                                            </th>
+                                            <th class="hDescr tablePersoHead">Description
+                                            </th>
+                                            <th class="hImg tablePersoHead">
+                                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" onclick="javascript:ajouterBloc();" />
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBodyBlocs" class="divHeight">
+                                    @Html.Partial("ListeBlocs", Model.Blocs)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divInfoBloc" class="GroupFull GroupWithBorder GroupAdmin GroupHeightBlocsFixe FloatLeft GroupBackOffice">
+                </div>
+                <div class="GroupFull GroupWithBorder ButtonsHeight ButtonsWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+

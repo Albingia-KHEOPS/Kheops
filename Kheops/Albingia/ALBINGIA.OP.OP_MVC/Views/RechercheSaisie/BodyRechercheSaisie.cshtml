@@ -1,0 +1,51 @@
+﻿@using ALBINGIA.Framework.Common.CacheTools
+@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleRecherchePage
+
+@Html.Partial("/Views/RechercheSaisie/BodyRechercheCommon.cshtml")
+
+<div id="divRechercheAvancee" albname="divRechercheAvancee">
+    <div class="overlay-background" style="z-index:22" >
+    </div>
+    <div id="divDataRechercheAvancee" albname="divDataRechercheAvancee"></div>
+</div>
+<div id="divRechercheAvanceePreneur">
+    @*@Html.Partial("/Views/RechercheSaisie/RechercheAvanceePreneurAssurance.cshtml", Model.ListPreneurAssurance)*@
+</div>
+<div id="divRechercheAvanceeCourtier">
+    @Html.Partial("/Views/RechercheSaisie/RechercheAvanceeCabinetCourtage.cshtml", Model.ListCabinetCourtage)
+</div>
+<div id="divListeCPVille" style="display: none;">
+    @Html.Hidden("ligneId", string.Empty)
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataListeCPVille" class="dvDataListeCPVille">
+        <div id="divDataLst" class="FloatLeft">
+        </div>
+        <div class="PaddingLeft FloatLeft">
+            <button id="btnValidLst" type="button" albshortcut="true" data-accesskey="d">Vali<u>d</u>er</button>
+            <button id="btnCancelLst" type="button" albshortcut="true" data-accesskey="u">Ann<u>u</u>ler</button>
+        </div>
+    </div>
+</div>
+
+<div id="divRechEngagementPeriode" class="None">
+    <div class="overlay-background" style="z-index:82" >
+    </div>
+    <div class="dvDataRechEng">
+        @*<div id="dvEngagementData" style="width:1045px;height:570px;overflow:hidden;z-index:83;background-color:Gray;"></div>*@
+        <iframe id="EngagementIFrame" width="1045px" height="570px" scrolling="no" frameborder="0" align="left" marginwidth="0px" z-index="83" background-color="Gray"
+        marginheight="0px"></iframe>
+    </div>
+</div>
+
+
+<div id="divContextMenu" name="divContextMenu">
+</div>
+
+<div id="dvFlotted" class="None">
+    <div class="overlay-background" style="z-index:60" >
+    </div>
+    <div id="dvDataFlotted" style="position: absolute; top: 5px; left: 12px; display: block; z-index: 61; background-color: White; height: 603px; width: 1050px;"></div>
+</div>

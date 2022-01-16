@@ -1,0 +1,20 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesDoubleSaisie.ModeleDoubleSaisieCourtier>
+<table id="tblDoubleSaisieHistoBody">
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var courtHisto in Model)
+        {
+        <tr>
+            <td class="colType" title="@(!string.IsNullOrEmpty(courtHisto.LibelleMotif) ? string.Format("{0} - {1}", courtHisto.Motif, courtHisto.LibelleMotif) : courtHisto.Motif)">@(courtHisto.Motif)</td>
+            <td class="colCode">@(courtHisto.Code)</td>
+            <td class="colCourtierDblSaisie" title="@(courtHisto.Courtier)">@(courtHisto.Courtier)</td>
+            <td class="colDelegationDblSaisie">@(courtHisto.Delegation)</td>
+            <td class="colSouscripteurDblSaisie" title="@(!string.IsNullOrEmpty(courtHisto.SouscripteurCode) ? string.Format("{0} - {1}", courtHisto.SouscripteurCode, courtHisto.Souscripteur) : string.Empty)">@(!string.IsNullOrEmpty(courtHisto.SouscripteurCode) ? string.Format("{0} - {1}", courtHisto.SouscripteurCode, courtHisto.Souscripteur) : string.Empty)</td>
+            <td class="colDateHeure">@(courtHisto.SaisieDate.Value.ToString("dd/MM/yyyy"))</td>
+            <td class="colDateHeure">@(courtHisto.SaisieHeure.Value.ToString())</td>
+            <td class="colDateHeure">@(courtHisto.EnregistrementDate.Value.ToString("dd/MM/yyyy"))</td>
+            <td class="colDateHeure">@(courtHisto.EnregistrementHeure.Value.ToString())</td>
+        </tr>
+        }
+    }
+</table>

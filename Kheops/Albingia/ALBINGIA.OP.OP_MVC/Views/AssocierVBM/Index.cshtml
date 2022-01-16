@@ -1,0 +1,240 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleAssocierVBMPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vAssocierVBM.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albAssocierVBM.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft">
+        <div id="contenu">
+            <div class="CommonForm TotalWidth">
+                @*Input sauvegardant les informations lors d'un appel Fancy Confirm*@
+                @Html.HiddenNoName("hiddenInputId", string.Empty)
+                @Html.HiddenNoName("currentCible", string.Empty)
+                @Html.HiddenNoName("currentCibleGuid", string.Empty)
+                @Html.HiddenNoName("currentCategorie", string.Empty)
+                @Html.HiddenNoName("currentCategorieGuid", string.Empty)
+                @Html.HiddenNoName("currentVolet", string.Empty)
+                @Html.HiddenNoName("currentVoletGuid", string.Empty)
+                @Html.HiddenNoName("currentBloc", string.Empty)
+                @Html.HiddenNoName("currentBlocGuid", string.Empty)
+                @Html.HiddenNoName("currentModele", string.Empty)
+                @Html.HiddenNoName("currentModeleGuid", string.Empty)
+                <div class="GroupFull GroupWithBorder TotalWidth">
+                    <div class="GroupLeftTitle">
+                        Associer les Volets, Blocs, Modèles
+                    </div>
+                    <div class="HorizontalRightGroup div">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div class="GenericColumn">
+                                    <div class="FloatLeft">
+                                        <label class="Block">Branche</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        @Html.AlbDropDownListFor(m => m.Branche, Model.Branches, "Branche", htmlAttributes: new { @id = "Branche" }, generateTitle: true)
+                                    </div>
+                                </div>
+                                <div class="FloatRight" style="padding-right: 5px;">
+                                    <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divAssociation" class="GroupFull GroupWithBorder GroupNoTitle TotalWidth">
+                    <div id="divCible" class="HorizontalGroupLeft">
+                        <div class="GradientSection">
+                            <table>
+                                <tr>
+                                    <th class="col2Head tablePersoHead">Cible
+                                    </th>
+                                </tr>
+                            </table>
+                            <div id="divBodyCibles" class="divHeightCat">
+                                @Html.Partial("ParametreVBM/ListCibles", Model.Cibles)
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divCategorie" class="HorizontalGroupLeft">
+                        <div class="GradientSection">
+                            <table>
+                                <tr>
+                                    <th class="col2Head tablePersoHead">Catégorie
+                                    </th>
+                                </tr>
+                            </table>
+                            <div id="divBodyCategories" class="divHeightCat">
+                                @Html.Partial("ParametreVBM/ListCategories", Model.Categories)
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divVolet" class="HorizontalGroup GroupSplitInfo">
+                        <div class="GradientSection">
+                            <div>
+                                <table class="widthTableVolet">
+                                    <tr>
+                                        <th class="tdHeaderEdit tablePersoHead">&nbsp;
+                                        </th>
+                                        <th class="tdHeaderEdit tablePersoHead">&nbsp;
+                                        </th>
+                                        <th class="tdHeaderCode tablePersoHead">Code Volet
+                                        </th>
+                                        <th class="tdHeaderDesc tablePersoHead">Description
+                                        </th>
+                                        <th class="tdHeaderCarac tablePersoHead">Carac.
+                                        </th>
+                                        <th class="tdHeaderImg tablePersoHead">
+                                            <img src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" alt="Ajouter" id="btnAjouterVolet" />
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="divBodyVolet" class="divHeight">
+                                @Html.Partial("ParametreVBM/ListVolets", Model.Volets)
+                            </div>
+                        </div>
+                        <div class="GradientSection ">
+                            <div class="HeightRowAdd">
+                                <div id="divVoletAdd">
+                                    <div class="FloatLeftDiv PaddingLeft MarginRight">
+                                        <div class="colOrder">
+                                            <label>Ordre</label>
+                                        </div>
+                                        <div class="FloatLeft">
+                                            <input id="inOrdreVolet" albmask="decimal" class="colOrder" />
+                                        </div>
+                                    </div>
+                                    <div class="FloatLeftDiv DropDownDiv">
+                                        <div class="FieldLabelVBM">@Html.LabelFor(m => m.Volet)</div>
+                                        <div class="FieldDropDown">@Html.AlbDropDownListFor(m => m.Volet, Model.VoletsList, "Volet", htmlAttributes: new { @id = "Volet" })</div>
+                                    </div>
+                                    <div class="FloatLeftDiv">
+                                        <div>@Html.LabelFor(m => m.CaractereVolet)</div>
+                                        <div>@Html.AlbDropDownListFor(m => m.CaractereVolet, Model.CaracteresVolet, "CaractereVolet", htmlAttributes: new { @id = "CaractereVolet", @class = "ddlCarac", @title = "Caratères" }, generateTitle: true)</div>
+                                    </div>
+                                    <div class="FloatLeftDiv BtnAdd">
+                                        <img src="@Url.Content("/Content/Images/Save_16.png")" alt="Enregistrer" id="btnVoletAdd" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divBloc" class="HorizontalGroup GroupSplitInfo">
+                        <div class="GradientSection">
+                            <div>
+                                <table class="widthTableVolet">
+                                    <tr>
+                                        <th class="tdHeaderEdit tablePersoHead">&nbsp;
+                                        </th>
+                                        <th class="tdHeaderEdit tablePersoHead">&nbsp;
+                                        </th>
+                                        <th class="tdHeaderCode tablePersoHead">Code Bloc
+                                        </th>
+                                        <th class="tdHeaderDesc tablePersoHead">Description
+                                        </th>
+                                        <th class="tdHeaderCarac tablePersoHead">Carac.
+                                        </th>
+                                        <th class="tdHeaderImg tablePersoHead">
+                                            <img src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" alt="Ajouter" id="btnAjouterBloc" />
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="divBodyBloc" class="divHeight">
+                                @Html.Partial("ParametreVBM/ListBlocs", Model.Blocs)
+                            </div>
+                        </div>
+                        <div class="GradientSection ">
+                            <div class="HeightRowAdd">
+                                <div id="divBlocAdd">
+                                    <div class="FloatLeftDiv PaddingLeft MarginRight">
+                                        <div class="colOrder">
+                                            <label>Ordre</label>
+                                        </div>
+                                        <div class="FloatLeft">
+                                            <input id="inOrdreBloc" albmask="decimal" class="colOrder" />
+                                        </div>
+                                    </div>
+                                    <div class="FloatLeftDiv DropDownDiv">
+                                        <div class="FieldLabelVBM">@Html.LabelFor(m => m.Bloc)</div>
+                                        <div class="FieldDropDown">@Html.AlbDropDownListFor(m => m.Bloc, Model.BlocsList, "Bloc", htmlAttributes: new { @id = "Bloc" }, generateTitle: true)</div>
+                                    </div>
+                                    <div class="FloatLeftDiv">
+                                        <div>@Html.LabelFor(m => m.CaractereBloc)</div>
+                                        <div>@Html.AlbDropDownListFor(m => m.CaractereBloc, Model.CaracteresBloc, "CaractereBloc", htmlAttributes: new { @id = "CaractereBloc", @class = "ddlCarac", @title = "Caratères" }, generateTitle: true)</div>
+                                    </div>
+                                    <div class="FloatLeftDiv BtnAdd">
+                                        <img src="@Url.Content("/Content/Images/Save_16.png")" alt="Enregistrer" id="btnBlocAdd" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divModele" class="GroupFull GroupWithBorder TotalWidth">
+                    <div class="GroupTitle">
+                    </div>
+                    <div class="HorizontalFullWithGroup colorFond widthAdjust">@*GroupModeleHeight *@
+                        <div class="GradientSection">
+                            <div id="divModeleAdd">
+                                <div class="FieldRow">
+                                    <div class="FloatLeftDiv">
+                                        <div class="FieldLabelVBM">@Html.LabelFor(m => m.Modele)</div>
+                                        <div class="FieldDropDown">@Html.AlbDropDownListFor(m => m.Modele, Model.ModelesList, "Modele", htmlAttributes: new { @id = "Modele" }, generateTitle: true)</div>
+                                    </div>
+                                    <div class="FloatLeftDiv labelDate">
+                                        <div class="FieldLabelVBM2">@Html.LabelFor(m => m.DateAppli)</div>
+                                        <div class="FieldDropDown">@Html.AlbDateFormat(m => m.DateAppli, new { @class = "datepicker inputDate" })</div>
+                                    </div>
+                                    <div class="FloatLeftDiv labelDate">
+                                        <div class="FieldLabelVBM2">@Html.LabelFor(m => m.Typologie)</div>
+                                        <div class="FieldDropDown">@Html.AlbDropDownListFor(m => m.Typologie, Model.TypologiesList, "Typologie", htmlAttributes: new { @id = "Typologie", @class = "ddlCarac" }, generateTitle: true)</div>
+                                    </div>
+                                    <div class="FloatLeftDiv BtnAdd">
+                                        <img src="@Url.Content("/Content/Images/Save_16.png")" alt="Enregistrer" id="btnModeleAdd" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <table>
+                                    <tr>
+                                        <th class="tdHeaderEdit tablePersoHead">&nbsp;
+                                        </th>
+                                        <th class="tdHeaderCode tablePersoHead">Code Modèle
+                                        </th>
+                                        <th class="tdHeaderDesc tablePersoHead">Description
+                                        </th>
+                                        <th class="tdHeaderDate tablePersoHead">Date Appli.
+                                        </th>
+                                        <th class="tdHeaderTypo tablePersoHead">Typo.
+                                        </th>
+                                        <th class="tdHeaderImg tablePersoHead">
+                                            <img src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" alt="Ajouter" id="btnAjouterModele" />
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="divBodyModele" class="divHeightModele">
+                                @Html.Partial("ParametreVBM/ListGarantieModeles", Model.GarantieModeles)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+<div style="display: none; float: left;">
+    <div id="FancyAlert">
+        <div id="divMsg">
+            Code déjà existant
+        </div>
+        <div id="divBtn">
+            <input type="button" id="btnOK" value="OK" />
+        </div>
+    </div>
+</div>

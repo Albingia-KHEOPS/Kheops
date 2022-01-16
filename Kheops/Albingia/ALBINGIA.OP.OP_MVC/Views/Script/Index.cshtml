@@ -1,0 +1,47 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleBackOffice
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="GroupWithBorder CommonForm WidthBackOffice">
+        <div id="contenu">
+            <button id="btRegenerate">Regénérer la bibliothèque des scripts</button>
+        </div>@*fin contenu*@
+    </div>
+</div>
+<style>
+    #btRegenerate {
+        display: block;
+        margin: 150px auto;
+        max-width: 300px;
+    }
+</style>
+<script>
+    $('#btRegenerate').on('click',
+        function () {
+            common.dialog.initConfirm(
+                function () {
+                    ShowLoading();
+                    $.post('/Script/Regenerate').then(
+                        function () { common.error.showMessage("OK"); }
+                    ).fail(
+                        function (r, e) { common.error.showMessage(e); }
+                    ).always(
+                        function () { CloseLoading(); }
+                    )
+                }, function () {
+                    CloseFancy();
+                },
+                "Êtes-vous certains ?<br/>Le service Bridge sera redémarré !",
+                "Continuer",
+                "Annuler",
+                {width:280, height:100}
+            );
+        }
+
+    );
+
+</script>

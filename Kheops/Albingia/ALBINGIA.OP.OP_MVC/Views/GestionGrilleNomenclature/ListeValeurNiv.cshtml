@@ -1,0 +1,17 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesGestionNomenclature.ModeleSelectionValeurs
+<table id="tblValNomenclature" class="trHeight tableValNomclature">
+    @{
+        var countVal = 0;
+        foreach (var item in Model.Nomenclatures)
+        {
+            if (item.IdValeur > 0)
+            {
+                countVal += 1;
+        <tr>
+            <td class="tdValNomenclature">@item.Code - @item.Libelle</td>
+        </tr>
+            }
+        }
+    }
+</table>
+@Html.Hidden("CountVal", countVal)

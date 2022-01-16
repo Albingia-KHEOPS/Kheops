@@ -1,0 +1,37 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.FormuleGarantiePage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "FormCommon.css" }, "~/Content/")
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<div class="GradientSection">
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Lettre</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="Lettre" name="Lettre" value="@(Model.Lettre)" />
+        </div>
+        <div class="FloatLeft">
+            <label class="Block">Libelle</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="Libelle" name="Libelle" value="@(Model.Libelle)" />
+        </div>
+    </div>
+</div>
+<div class="GradientSection" style="height: 500px;">
+    <div>
+        <label class="AutoWidth">Sélection des garanties composant la formule : </label>
+    </div>
+    <div>
+        @if (Model.Volets != null && Model.Volets.Any())
+        {
+            <table class="trHeight">
+                @Html.Partial("ListeVolets", Model.Volets)
+            </table>
+        }
+    </div>
+</div>

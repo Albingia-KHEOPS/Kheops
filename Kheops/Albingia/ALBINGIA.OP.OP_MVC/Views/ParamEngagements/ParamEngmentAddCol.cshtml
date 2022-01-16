@@ -1,0 +1,29 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamEngment.ParamEngmentColonne
+<div class="HeightRow">
+    @Html.Hidden("ModeColonne", string.Empty)
+    <div class="DoubleGenericColumn">
+        <div class="FloatLeft">
+            @Html.HiddenFor(m => m.CodeTraite)
+            <input type="text" id="CodeColonne" name="CodeColonne" value="@Model.Code" class="readonly inCodeCol" readonly="readonly" />
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="LibColonne" name="LibColonne" value="@Model.Libelle" class="inLibCol" />
+        </div>
+    </div>
+    <div class="GenericColumn">
+        <div class="FloatLeft">
+            <label class="AutoWidth">Séparation</label>
+            @if (Model.Separation == "O")
+            {
+                <input type="checkbox" id="SepaColonne" name="SepaColonne" checked="checked" />
+            }
+            else
+            {
+                <input type="checkbox" id="SepaColonne" name="SepaColonne" />
+            }
+        </div>
+        <div class="FloatLeft PaddingLeft">
+            <input type="button" id="btnAdd" name="btnAdd" value="OK" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleResultRecherche
+@using ALBINGIA.Framework.Common.Constants
+@{
+    var SupportRole = ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Any(el => el.TypeDroit == ALBINGIA.Framework.Common.Constants.TypeDroit.S.ToString());
+}
+<div class="@*GroupFull GroupWithBorder*@ ButtonsHeight">
+
+    <div class="nGradientSection FloatLeft ButtonGroupCenter">
+        @{
+            var userRole = ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Any(
+                el => el.TypeDroit == TypeDroit.G.ToString() || el.TypeDroit == TypeDroit.A.ToString() || el.TypeDroit == TypeDroit.M.ToString());
+
+            //Ajout de la vérification des "Masters"
+            var userMaster = ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Any(
+            el => el.TypeDroit == TypeDroit.M.ToString());
+            string user = ALBINGIA.Framework.Common.CacheTools.AlbSessionHelper.ConnectedUser;
+            var menuOffcont = ALBINGIA.OP.OP_MVC.MvcApplication.AlbAllContextMenuUsers.FirstOrDefault(x => x.menu == AlbContextMenu.OFFCONT && x.Utilisateur == user);
+            bool allowMHA = false;
+            if (menuOffcont != null)
+            {
+                allowMHA = menuOffcont.items.Any(x => x.action == "HORSAVENANT");
+            }
+        }
+
+        @if ((string.IsNullOrEmpty(Model.CodeBranche) && userRole) || (!string.IsNullOrEmpty(Model.CodeBranche) && ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Any(
+           el => (el.Branche == Model.CodeBranche || el.Branche == "**") && el.TypeDroit != TypeDroit.V.ToString())))
+        {
+        <div class="FloatLeft">
+            @if (Model.AccesRecherche != AlbConstantesMetiers.TypeAccesRecherche.BlackListed && !SupportRole)
+            {
+                <button id="btnActionNouveau">
+                    Nouveau
+                    <img class="FloatRight" src="@Url.Content("/Content/Images/expand-red-right.png")" />
+                </button>
+            }
+            else
+            {
+                if (!SupportRole) { 
+                    <button id="btnActionNouveauBlackList" disabled="disabled">
+                        Nouveau
+                        <img class="FloatRight" src="@Url.Content("/Content/Images/expand-red-right.png")" />
+                    </button>
+                }
+            }
+        </div>
+        }
+        <div class="FloatLeft None" id="divButtonCitrix">
+            <button type="button" id="btnOpenInCitrix" title="Ouvrir dans Citrix" style="margin-left: 23px;">Ouvrir dans Citrix/AS400</button>
+        </div>
+        <div class="FloatLeft" id="divButtonPrincipal">
+            @if (Model.AccesRecherche != AlbConstantesMetiers.TypeAccesRecherche.BlackListed)
+            {
+
+            }
+            @if (!SupportRole)
+            {
+            <button id="btnActionMenu" disabled="disabled">
+                Menu
+                <img class="FloatRight" src="@Url.Content("/Content/Images/expand-red-right.png")" />
+            </button>
+            }
+            @{
+                if (Model.AccesRecherche != AlbConstantesMetiers.TypeAccesRecherche.BlackListed && !SupportRole)
+                {
+                    string brRights = string.Empty;
+                    var x = new HashSet<string>(ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Select(y => y.Branche.ToString()));
+                    brRights = ";" + string.Join(";", x) + ";";
+                    <button id="btnAvenant" disabled="disabled" class="None" albBrancheRights="@brRights" albGroupBtn="avn">
+                        Actes de gestion
+                        <img class="FloatRight" src="@Url.Content("/Content/Images/expand-red-right.png")" />
+                    </button>
+                }
+            }
+            <button type="button" id="btnFolderReadOnly" disabled="disabled" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="o" title="Visualiser l’offre/contrat en cours">C<u>o</u>nsulter</button>
+
+            @if ((string.IsNullOrEmpty(Model.CodeBranche) && userRole) || (!string.IsNullOrEmpty(Model.CodeBranche) && ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Any(
+                   el => (el.Branche == Model.CodeBranche || el.Branche == "**") && el.TypeDroit != TypeDroit.V.ToString())))
+            {
+                if (allowMHA && !SupportRole)
+                {
+                    <button type="button" id="btnMHA" name="btnMHA" disabled data-accesskey="h" title="Modifier le contrat hors-avenant">Modif. Hors Avn.</button>
+                }
+                if (!SupportRole)
+                {
+                    <button type="button" id="btnCreerOffre" disabled="disabled" albshortcut="true" albtargetscreen="resultRecherche" data-accesskey="m" title="Modifier l’offre/contrat en cours"><u>M</u>odifier</button>
+
+                }
+            }
+
+            @if (ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Exists(el => el.TypeDroit == TypeDroit.M.ToString()))
+            {
+                <button type="button" id="btnRepriseAvt" disabled="disabled" class="None">Reprise Avenant</button>
+            }
+
+            @if (Model.AccesRecherche != AlbConstantesMetiers.TypeAccesRecherche.BlackListed && !SupportRole)
+            {
+                <button type="button" id="btnAttestations" disabled="disabled" class="None">Attestations</button>
+            }
+
+
+            @if (Model.AccesRecherche != AlbConstantesMetiers.TypeAccesRecherche.BlackListed)
+            {
+                @*TODO ECM : à changer lorsqu'il y aura le menu Régulations dans GDM*@
+                if (((ALBINGIA.OP.OP_MVC.Common.CacheUserRights.UserRights.Any(
+                    el => el.TypeDroit == TypeDroit.A.ToString() || el.TypeDroit == TypeDroit.M.ToString()))
+                    && ALBINGIA.Framework.Common.Constants.AlbOpConstants.ClientWorkEnvironment == ALBINGIA.Framework.Common.Constants.AlbOpConstants.OPENV_PROD)
+                    || ALBINGIA.Framework.Common.Constants.AlbOpConstants.ClientWorkEnvironment != ALBINGIA.Framework.Common.Constants.AlbOpConstants.OPENV_PROD)
+                {
+                    <button type="button" id="btnRegularisations" disabled="disabled" class="None">Régularisations</button>
+                }
+            }
+        </div>
+    </div>
+
+    @if (Model.AccesRecherche == AlbConstantesMetiers.TypeAccesRecherche.Standard || Model.AccesRecherche == AlbConstantesMetiers.TypeAccesRecherche.BlackListed)
+    {
+        <div class="nGradientSection FloatLeft ButtonGroupRight">
+            <button type="button" value="Réinitialiser" id="btnInitializeRech" tabindex="24" albshortcut="true" data-accesskey="i">Ré<u>i</u>nitialiser</button>
+            <button type="submit" value="Nouvelle Recherche" id="btnNewRechercher" tabindex="22" albshortcut="true" data-accesskey="r"><u>R</u>etour</button>
+        </div>
+
+    }
+    else
+    {
+        <div class="nGradientSection FloatLeft ButtonGroupExitSearch">
+            <button value="Retour" id="btnRetourRechRapide" tabindex="22" albshortcut="false" data-accesskey="R"><u>R</u>etour</button>
+        </div>
+    }
+
+</div>
+<div id="LoadingRechDiv" class="FloatLeft">
+    <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+</div>

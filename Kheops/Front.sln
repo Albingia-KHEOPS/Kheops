@@ -1,0 +1,158 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebServices", "WebServices", "{44FE53B1-5252-48F8-B1FA-D964A3C642BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Front", "Front", "{FE980F3A-6CD6-4FD5-9154-01D088E9EE88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{4F8634C3-0C12-4E94-AFC1-0F6DCDB4FC89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBINGIA.Framework.Common", "Framework\ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj", "{A98A2815-A24C-4E02-891E-8B802EE892EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBINGIA.OP.OP_MVC", "Albingia\ALBINGIA.OP.OP_MVC\ALBINGIA.OP.OP_MVC.csproj", "{A30944B8-8881-4532-BE12-E04F45285A41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeViewer", "Albingia\OfficeViewer\OfficeViewer.csproj", "{568B3B98-B227-46C9-816C-0CB585916507}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AsynchDownLoad", "AsynchDownLoad", "{8662F9C9-D10D-4712-AE29-E180D2226B05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlbAsynchCopyContainer", "Albingia\AlbAsynchCopyContainer\AlbAsynchCopyContainer.csproj", "{81471931-5902-4F2A-9131-C8A0A77CE7A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyAsynchFiles", "Albingia\CopyAsynchFiles\CopyAsynchFiles.csproj", "{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPServiceContract", "ServiceMetierOP\OPServiceContract\OPServiceContract.csproj", "{51915333-F540-4663-AEB6-4C84CD955300}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|x86.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|x86.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|x86.Build.0 = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|x86.Build.0 = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|x86.ActiveCfg = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|x86.Build.0 = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|x86.Build.0 = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|x86.ActiveCfg = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|x86.Build.0 = Release|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Debug|x86.Build.0 = Debug|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Release|x86.ActiveCfg = Release|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Release|x86.Build.0 = Release|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Debug|x86.Build.0 = Debug|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Release|x86.ActiveCfg = Release|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Release|x86.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|x86.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|x86.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A98A2815-A24C-4E02-891E-8B802EE892EA} = {4F8634C3-0C12-4E94-AFC1-0F6DCDB4FC89}
+		{A30944B8-8881-4532-BE12-E04F45285A41} = {FE980F3A-6CD6-4FD5-9154-01D088E9EE88}
+		{568B3B98-B227-46C9-816C-0CB585916507} = {FE980F3A-6CD6-4FD5-9154-01D088E9EE88}
+		{8662F9C9-D10D-4712-AE29-E180D2226B05} = {FE980F3A-6CD6-4FD5-9154-01D088E9EE88}
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9} = {8662F9C9-D10D-4712-AE29-E180D2226B05}
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA} = {8662F9C9-D10D-4712-AE29-E180D2226B05}
+		{51915333-F540-4663-AEB6-4C84CD955300} = {44FE53B1-5252-48F8-B1FA-D964A3C642BC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E80A4A75-9681-44A1-9314-EAC0F9CE4BB3}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2018/defaultcollection
+		SccProjectUniqueName0 = Framework\\ALBINGIA.Framework.Common\\ALBINGIA.Framework.Common.csproj
+		SccProjectTopLevelParentUniqueName0 = Front.sln
+		SccProjectName0 = Framework/ALBINGIA.Framework.Common
+		SccLocalPath0 = Framework\\ALBINGIA.Framework.Common
+		SccProjectUniqueName1 = Albingia\\ALBINGIA.OP.OP_MVC\\ALBINGIA.OP.OP_MVC.csproj
+		SccProjectTopLevelParentUniqueName1 = Front.sln
+		SccProjectName1 = Albingia/ALBINGIA.OP.OP_MVC
+		SccLocalPath1 = Albingia\\ALBINGIA.OP.OP_MVC
+		SccProjectUniqueName2 = Albingia\\OfficeViewer\\OfficeViewer.csproj
+		SccProjectTopLevelParentUniqueName2 = Front.sln
+		SccProjectName2 = Albingia/OfficeViewer
+		SccLocalPath2 = Albingia\\OfficeViewer
+		SccProjectUniqueName3 = Albingia\\AlbAsynchCopyContainer\\AlbAsynchCopyContainer.csproj
+		SccProjectTopLevelParentUniqueName3 = Front.sln
+		SccProjectName3 = Albingia/AlbAsynchCopyContainer
+		SccLocalPath3 = Albingia\\AlbAsynchCopyContainer
+		SccProjectUniqueName4 = Albingia\\CopyAsynchFiles\\CopyAsynchFiles.csproj
+		SccProjectTopLevelParentUniqueName4 = Front.sln
+		SccProjectName4 = Albingia/CopyAsynchFiles
+		SccLocalPath4 = Albingia\\CopyAsynchFiles
+		SccProjectUniqueName5 = ServiceMetierOP\\OPServiceContract\\OPServiceContract.csproj
+		SccProjectTopLevelParentUniqueName5 = Front.sln
+		SccProjectName5 = ServiceMetierOP/OPServiceContract
+		SccLocalPath5 = ServiceMetierOP\\OPServiceContract
+		SccLocalPath6 = .
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ALBINGIA1.vsmdi
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = OP.vsmdi
+	EndGlobalSection
+EndGlobal

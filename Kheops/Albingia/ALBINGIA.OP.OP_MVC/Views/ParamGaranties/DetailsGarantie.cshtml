@@ -1,0 +1,224 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamGaranties.LigneGarantie
+@Html.HiddenFor(m => m.ModeOperation)
+@Html.Hidden("AncienCodeTypeInventaire", Model.CodeTypeInventaire)
+<div class="GroupTitle">
+    @switch (Model.ModeOperation)
+    {
+        case "I": <label>Création d'une garantie</label>
+            break;
+        case "U":<label> Modification de la garantie</label>
+            break;
+        default: <label>Création / Modification d'une garantie</label>
+            break;
+    }
+</div>
+<div class="HorizontalHalfWithGroupAdmin">
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Code*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AdditionalParam == "**") {
+                        <input id="CodeGarantieEdit" class="@(Model.ModeOperation == "U" ? "readonly codeRegExp" : "codeRegExp")" value="@Model.CodeGarantie" readonly="@(Model.ModeOperation == "U")" maxlength="10" />
+                    }
+                    else {
+                        <input id="CodeGarantieEdit" class="readonly codeRegExp" value="@Model.CodeGarantie" readonly="readonly" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Désignation*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.AdditionalParam == "**") {
+                        <input id="DesignationGarantieEdit" class="DoubleInput" value="@Model.DesignationGarantie" maxlength="120" />
+                    }
+                    else {
+                        <input id="DesignationGarantieEdit" class="DoubleInput readonly" value="@Model.DesignationGarantie" readonly="readonly" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block">Abrégé</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="Abrege" class="DoubleInput" value="@Model.Abrege" maxlength="30" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block">Taxe*</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.CodeTaxe, Model.Taxes, "CodeTaxe", htmlAttributes: new { @id = "CodeTaxe", @class = "InputDDL" }, generateTitle: true)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block">Cat Nat*</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.CodeCatNat, Model.CatNats, "CodeCatNat", htmlAttributes: new { @id = "CodeCatNat", @class = "InputDDL" }, generateTitle: true)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft">
+                    <label class="Block WidthLabelCheckBox">Garantie commune</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="checkbox" id="IsGarantieCommune" checked="@(Model.IsGarantieCommune == true )" />
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block">Définition</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.CodeTypeDefinition, Model.TypesDefinition, "CodeTypeDefinition", htmlAttributes: new { @id = "CodeTypeDefinition", @class = "InputDDL" }, generateTitle: true, genEmptyLine: false)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block">Infos compt.</label>
+                </div>
+                <div class="FloatLeft">
+                    @Html.AlbDropDownListFor(m => m.CodeTypeInformation, Model.TypesInformation, "CodeTypeInformation", htmlAttributes: new { @id = "CodeTypeInformation", @class = "InputDDL" }, generateTitle: true, genEmptyLine: false)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnCheckBox">
+                <div class="FloatLeft">
+                    <label class="Block WidthLabelCheckBox">Régularisation</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="checkbox" id="IsRegularisable" checked="@(Model.IsRegularisable == true )" />
+                </div>
+            </div>
+            <div class="ColumnDDL">
+                <div class="FloatLeft">
+                    <label class="Block WidthLabelDDL">Grille</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.IsRegularisable == false) {
+                        @Html.AlbDropDownListFor(m => m.CodeTypeGrille, Model.TypesGrille, "CodeTypeGrille", htmlAttributes: new { @id = "CodeTypeGrille", @class = "InputDDL readonly", @disabled = "disabled" }, generateTitle: true)
+                    }
+                    else {
+                        @Html.AlbDropDownListFor(m => m.CodeTypeGrille, Model.TypesGrille, "CodeTypeGrille", htmlAttributes: new { @id = "CodeTypeGrille", @class = "InputDDL" }, generateTitle: true)
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="divTypeRegul">
+            <table id="tblGarTypeRegulHeader">
+                <tr>
+                    <th class="col_TypeRegul_HeaderCodeTypeRegul tablePersoHead">Code</th>
+                    <th class="col_TypeRegul_HeaderLibelle tablePersoHead">Libellé</th>
+                    <th class="col_TypeRegul_HeaderGrille tablePersoHead">Grille</th>
+                    <th class="col_TypeRegul_HeaderAction tablePersoHead">
+                        <img class="CursorPointer" src="/Content/Images/plusajouter1616.png" alt="Ajouter" title="Ajouter" id="btnAjouterTypeRegul">
+                    </th>
+                </tr>
+                <tr id="trAjoutTypeRegul">
+                    <td colspan="4">
+                        @Html.AlbDropDownListFor(m => m.CodeTypeRegul, Model.TypeReguls, "CodeTypeRegul", htmlAttributes: new { @id = "CodeTypeRegul", @class = "InputDDL" }, generateTitle: true)
+
+                        <img class="CursorPointer" src="/Content/Images/Save_16.png" alt="Enregistrer" title="Enregistrer" id="btnEnregistrerTypeRegul">
+                        <img class="CursorPointer" src="/Content/Images/reset.png" alt="Annuler" title="Annuler" id="btnAnnulerTypeRegul">
+                    </td>
+                </tr>
+            </table>
+
+            <div id="divListeTypeRegulDetails">
+                @Html.Partial("ListeTypeRegul", Model.GarTypeReguls)
+            </div>
+
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnCheckBox">
+                <div class="FloatLeft">
+                    <label class="Block WidthLabelCheckBox">Inventaire</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="checkbox" id="IsLieInventaire" checked="@(Model.IsLieInventaire)" />
+                </div>
+            </div>
+            <div class="ColumnDDL">
+                <div class="FloatLeft">
+                    <label class="Block WidthLabelDDL">Type</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.IsLieInventaire == false) {
+                        @Html.AlbDropDownListFor(m => m.CodeTypeInventaire, Model.TypesInventaire, "CodeTypeInventaire", htmlAttributes: new { @id = "CodeTypeInventaire", @class = "InputDDL readonly", @disabled = "disabled" }, generateTitle: true)
+                    }
+                    else {
+                        @Html.AlbDropDownListFor(m => m.CodeTypeInventaire, Model.TypesInventaire, "CodeTypeInventaire", htmlAttributes: new { @id = "CodeTypeInventaire", @class = "InputDDL" }, generateTitle: true)
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="ColumnCheckBox">
+                <div class="FloatLeft">
+                    <label class="Block WidthLabelCheckBox">Attentat / Gareat</label>
+                </div>
+                <div class="FloatLeft">
+                    <input type="checkbox" id="IsAttentatGareat" checked="@(Model.IsAttentatGareat)" />
+                </div>
+            </div>
+        </div>
+        <div class="Validation">
+            <input id="btnEnregistrer" type="button" value="Enregistrer" title="Enregistrer" />
+        </div>
+    </div>
+    <div class="GradientSection">
+        <div class="ButtonAction">
+            @if (Model.ModeOperation == "U")
+            {
+                <input id="btnReassurance" type="button" class="ButtonReassurance" value="Réassurance" title="Réassurance" />
+                <input id="btnTypesValeur" type="button" class="ButtonTypesValeurs" value="Types valeurs" title="Types valeurs" />
+            }
+            else
+            {
+                <input id="btnReassurance" type="button" class="ButtonReassurance" value="Réassurance" disabled="disabled" title="Réassurance" />
+                <input id="btnTypesValeur" type="button" class="ButtonTypesValeurs" value="Types valeurs" disabled="disabled" title="Types valeurs" />
+            }
+        </div>
+    </div>
+</div>
+<div id="divTypesValeur">
+    <div class="overlay-background" style="z-index:6" >
+    </div>
+    <div id="divDataTypesValeur">
+    </div>
+</div>
+<div id="divFamillesReassurance">
+    <div class="overlay-background" style="z-index:6" >
+    </div>
+    <div id="divDataFamillesReassurance">
+    </div>
+</div>
+<div id="divConfirmModifTypeInventaire">
+    <div class="overlay-background" style="z-index:6" >
+    </div>
+    <div id="divDataConfirmModifTypeInventaire">
+    </div>
+</div>

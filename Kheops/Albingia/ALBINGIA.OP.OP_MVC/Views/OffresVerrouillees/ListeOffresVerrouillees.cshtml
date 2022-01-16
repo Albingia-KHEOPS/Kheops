@@ -1,0 +1,28 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesOffresVerrouillees.ModeleOffreVerrouillee>
+@if (Model == null || Model.Count == 0)
+{
+    <br />
+    <b>@Html.Raw("Aucune offre verrouillée")</b>
+    <br />
+    <br />
+}
+else
+{
+    <table id="tblBodyParam">
+        @foreach (var offreVerouillee in Model)
+        {
+            <tr class="trOffreVerouillee">
+                <td class="colTypeOffre">@offreVerouillee.Type</td>
+                <td class="colCodeOffre">@offreVerouillee.NumOffre</td>
+                <td class="colVersion">@offreVerouillee.Version</td>
+                <td class="colNumAvn">@offreVerouillee.NumAvenant</td>
+                <td class="colUtilisateur">@offreVerouillee.Utilisateur</td>
+                @*Mise en commentaire, date récupérée erronée.*@
+                @*<td class="colDateVerrouillage">@offreVerouillee.DateVerouillage</td>*@
+                <td class="colSuppression">
+                    <input class="checkboxSuppression" type="checkbox" />
+                </td>
+            </tr>
+        }
+    </table>
+}

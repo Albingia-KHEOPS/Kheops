@@ -1,0 +1,51 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamISModelesPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamISModeles.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamISModeles.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    @Html.HiddenNoName("actionParameter", string.Empty)
+    @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    <div class="CommonForm FloatLeft">
+        <div class="GroupFull GroupWithBorder TotalWidth">
+            <div id="divModeleEntete" class="nHorizontalFullWithGroup TotalWidth">
+                <div class="nGradientSection nDivEntete">
+                    <div id="divModeleEnteteTitle" class="SubGroupTitle CursorPointer" title="Réduire">
+                        <div class="FloatLeft">
+                            <img id="imgModeleEnteteTitle" title="" src="@Url.Content("/Content/Images/expand-red.png")" />
+                        </div>
+                        <div class="FloatLeft TxtMenuTitle">
+                            @Html.Raw("Modèle")
+                        </div>
+                        <div id="divModeleEnteteEllipsis" class="FloatLeft TxtMenuTitle None">...</div>
+                    </div>
+                    <div id="divModeleEnteteMenu" class="HeightRow PaddingLeftRow">
+                        <div id="divListeModeles" class="FloatLeft">
+                            @Html.Partial("/Views/ParamISModeleAssocier/ListeDrlModelesIS.cshtml", Model.ListeModelesISModele)
+                        </div>
+                        <div class="FloatLeft PaddingLeftRow">
+                            <img class="CursorPointer Action" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="ajouterModele" />
+                        </div>
+                    </div>
+                </div>
+                <div id="divConteneurModele">
+                    @Html.Partial("/Views/ParamISModeleAssocier/ModeleComplet.cshtml", Model.SelectedModele)
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+            <div class="ButtonLeft">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="t"><u>T</u>erminer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreenSuppr">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divDataConfirmSuppr">
+    </div>
+</div>

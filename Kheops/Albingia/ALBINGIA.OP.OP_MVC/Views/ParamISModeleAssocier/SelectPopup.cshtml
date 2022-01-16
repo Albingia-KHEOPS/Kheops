@@ -1,0 +1,31 @@
+﻿@model List<ALBINGIA.Framework.Common.Extensions.AlbSelectListItem>
+<div class="GroupFull GroupWithBorder" id="divDialogSelectPopup">
+    <div class="HorizontalHalfWithGroupAdmin">
+        @Html.HiddenNoName("modeSelect", string.Empty)
+        @Html.HiddenNoName("selectedRow", string.Empty)
+        @Html.HiddenNoName("oldSelection", string.Empty)
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                Sélection d'un référentiel
+            </div>
+        </div>
+        <div class="GradientSection divHeightSelector">
+            <div class="FloatLeft">
+                @{
+                    if (Model != null && Model.Count > 0)
+                    {
+                        foreach (var ligne in Model)
+                        {
+                    <input type="radio" name="rdOption" title="@ligne.Title" value="@ligne.Value" checked="@(ligne.Selected)"/>@ligne.Text <br />
+
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div style="text-align: right">
+
+        <input type="button" id="btnValiderSelectPopup" value="OK" />
+    </div>
+</div>

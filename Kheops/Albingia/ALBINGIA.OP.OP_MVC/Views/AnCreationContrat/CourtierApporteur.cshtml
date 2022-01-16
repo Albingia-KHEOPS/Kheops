@@ -1,0 +1,57 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.AffaireNouvelle.CreationContrat.CourtierApporteur
+<div class="HeightRow" data-courtier="apporteur">
+    <div class="FloatLeft">
+        @Html.HiddenNoName("inInvalidCourtierApp", string.Empty)
+        <label class="labelAnCourtier">Courtier apporteur</label>
+    </div>
+    <div class="FloatLeft hide-it">
+        <i class="alerte-blacklisted"></i>
+    </div>
+    <div id="CourtierInvalideDiv" class="FloatLeft error PaddingLeft"></div>
+</div>
+<div class="HeightRow" data-courtier="apporteur">
+    <div class="FloatLeft">
+        <label class="labelCourtierCode">Code*</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CourtierApporteur_Courtier_CodeCourtier" name="CodeCourtierApporteur" albcontext="courtierApporteur" tabindex="15" value="@Model.Courtier.CodeCourtier" albAutoComplete="autoCompCodeCourtier" class="inputAnCodeCourtier" disabled="@(Model.IdentiqueChecked)" albname="codeCourtier" maxlength="5" />
+    </div>
+    <div class="FloatLeft">
+        <label class="labelNomCourtier">Nom</label>
+    </div>
+    <div class="FloatLeft">
+        <input type="text" id="CourtierApporteur_Courtier_NomCourtier" name="NomCourtierApporteur" albcontext="courtierApporteur" tabindex="16" class="inputNomCourtier" value="@Model.Courtier.NomCourtier" albAutoComplete="autoCompNomCourtier" disabled="@(Model.IdentiqueChecked)" albname="nomCourtier"/>
+    </div>
+    <div class="FloatLeft">
+        @if (Model.IdentiqueChecked || !Model.EditMode)
+        {
+            <img src="@Url.Content("/Content/Images/loupegris.png")" albcontext="courtierApporteur" alt="" class="" name="RechercherCourtier" />
+        }
+        else
+        {
+            <img src="@Url.Content("/Content/Images/loupe.png")" albcontext="courtierApporteur" alt="" class="CursorPointer" name="RechercherCourtier" />
+        }
+    </div>
+    <div class="FloatLeft">
+        <img alt="Informations" src="@Url.Content("/Content/Images/alertes/notif_icn_info16.png")" class="CursorPointer PaddingLeft PaddingTopLittle" albAutoComplete="autoCompImgInfoCourtier" albIdInfo="@Model.Courtier.CodeCourtier" albcontext="courtierApporteur"/>
+    </div>
+</div>
+<div class="HeightRow" style="display: none">
+    <div class="ColumnIterLocCourt FloatLeft">
+        <div class="FloatLeft">
+            <label class="Block">Interlocuteur</label>
+        </div>
+        <div class="FloatLeft">
+            @Html.Hidden("CodeInterlocuteurApporteur", Model.Courtier.CodeInterlocuteur, new { id = "CourtierApporteur_Courtier_CodeInterlocuteur", albAutoComplete = "autoCompCodeInterlocuteur" })
+            <input type="text" id="CourtierApporteur_Courtier_NomInterlocuteur" name="NomInterlocuteurApporteur" tabindex="17" value="@(Model.Courtier.NomInterlocuteur)" class="MediumInput" albAutoComplete="autoCompNomInterlocuteur" />
+        </div>
+    </div>
+    <div class="FloatLeft">
+        <div class="FloatLeft">
+            <label class="labelReference">Référence</label>
+        </div>
+        <div class="FloatLeft">
+            <input type="text" id="CourtierApporteur_Courtier_Reference" name="ReferenceApporteur" tabindex="18" class="MediumInput"  value="@Model.Courtier.Reference" />
+        </div>
+    </div>
+</div>

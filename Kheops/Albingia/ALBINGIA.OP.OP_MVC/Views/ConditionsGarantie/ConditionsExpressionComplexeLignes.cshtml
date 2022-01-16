@@ -1,0 +1,47 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleConditionsGarantie.ModeleConditionsExprComplexe
+<table id="tblInfoExpr" style="table-layout: fixed;">
+    @foreach (var expr in Model.Expressions)
+    {
+        <tr>
+            <td class="tdImg">
+                <input type="radio" id="setExpr¤@(expr.Id)" name="setExpr" value="@(expr.Id)" />
+                @Html.Hidden("hidExpr", expr.Code, new { id = $"hidExpr¤{expr.Id}" })
+                @Html.Hidden("useExpr", expr.Utilise ? 1 : 0, new { id = $"useExpr¤{expr.Id}" })
+                @Html.Hidden("modifExpr", expr.Modifiable ? "O" : "N", new { id = $"modifExpr¤{expr.Id}" })
+                @Html.Hidden("libExp", expr.Libelle, new { id = $"libExpr¤{expr.Id}" })
+            </td>
+            <td class="tdCodeExpr" id="code_@(expr.Id)">@expr.Code</td>
+            <td class="tdTitleExpr">@expr.Libelle
+            </td>
+            <td class="tdOrigine">@(expr.Origine == "R" ? "Référentiel" : "Manuelle")</td>
+            <td class="tdImg" style="width: 20px; text-align: center;">
+                @if (expr.Modifiable)
+                {
+                    if (Model.IsReadOnly)
+                    {
+                    <img id="readExpr¤@(expr.Id)" name="readExpr" class="CursorPointer" alt="Visualiser l'expression" title="Visualiser l'expression" src="@Url.Content("/Content/Images/ContextMenu/m_consulter.png")" />
+                    }
+                    else{
+                    <img id="editExpr¤@(expr.Id)" name="editExpr" class="CursorPointer" alt="Editer l'expression" title="Editer l'expression" src="@Url.Content("/Content/Images/editer1616.png")" />
+                    }
+                }
+                else
+                {
+                    <img id="readExpr¤@(expr.Id)" name="readExpr" class="CursorPointer" alt="Visualiser l'expression" title="Visualiser l'expression" src="@Url.Content("/Content/Images/ContextMenu/m_consulter.png")" />
+                }
+            </td>
+            <td class="tdImg" style="width: 20px; text-align: center;">
+                @if (!Model.IsReadOnly)
+                {
+                    <img id="copyExpr¤@(expr.Id)" name="copyExpr" class="CursorPointer" alt="Copy" title="Dupliquer l'expression" src="@Url.Content("/Content/Images/ContextMenu/m_copier.png")" />
+                }
+            </td>
+            <td class="tdImg" style="width: 20px; text-align: center;">
+                @if (!Model.IsReadOnly)
+                {
+                    <img id="delExpr¤@(expr.Id)" name="delExpr" class="CursorPointer" alt="Supprimer l'expression" title="Supprimer l'expresion" src="@Url.Content("/Content/Images/poubelle1616.png")" />
+                }
+            </td>
+        </tr>
+    }
+</table>

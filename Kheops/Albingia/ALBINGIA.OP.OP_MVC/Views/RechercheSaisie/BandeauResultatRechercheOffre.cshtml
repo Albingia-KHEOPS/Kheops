@@ -1,0 +1,25 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRecherche.ModeleResultRecherche
+@using ALBINGIA.Framework.Common.Constants
+<div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+    <div class="ActionButtons ActionButtonsSearchLeft ActionButtonLeft">
+        <button id="btnAnnulerResultatRechercheOffre" type="button" albshortcut="false" data-accesskey="a"><u>A</u>nnuler la recherche</button>
+        <button id="btnSelectionnerOffre" type="button" albshortcut="false" data-accesskey="s"><u>S</u>electionner</button>
+    </div>
+    <div id="LoadingRechDiv" class="FloatLeft">
+        <img src="@Url.Content("/Content/Images/ajax-loader.gif")" alt="" />
+    </div>
+
+
+    @if (Model.AccesRecherche == AlbConstantesMetiers.TypeAccesRecherche.Standard) {
+        <div class="ActionButtons ActionButtonsSearchRight ActionButtonRight">
+            <button type="button" value="Réinitialiser" id="btnInitializeRech" tabindex="24" albshortcut="false" data-accesskey="i">Ré<u>i</u>nitialiser</button>
+            <button type="submit" value="Nouvelle Recherche" id="btnNewRechercher" tabindex="22" albshortcut="false" data-accesskey="r"><u>R</u>etour</button>
+        </div>
+
+    }
+    else {
+        <div class="nGradientSection FloatLeft ButtonGroupExitSearch">
+            <button value="Retour" id="btnRetourRechRapide" tabindex="22" albshortcut="false" data-accesskey="R"><u>R</u>etour</button>
+        </div>
+    }
+</div>

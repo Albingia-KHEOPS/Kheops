@@ -1,0 +1,43 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamISAssocier.ParamISModele
+<div class="GroupFull GroupWithBorder" id="divDialogAjoutModele">
+    <div class="HorizontalHalfWithGroupAdmin">
+        <div class="GradientSection">
+            <div class="GroupTitle">
+                Ajout d'un modèle
+            </div>
+        </div>
+        <div class="GradientSection">
+            <div class="HeightRow PaddingLeftRow">
+                <div class="FloatLeft">
+                    <label class="Block">Nom :</label>
+                </div>
+                <div class="FloatLeft ">
+                    <input  class="TxtNomModele"  id="nomModeleAjout" value="@Model.NomModele"/>
+                </div>
+                <div class="FloatLeft ">
+                    <label class="Block">Description :</label>
+                </div>
+                <div class="FloatLeft ">
+                    <input  class="TxtDescriptionModele"  id="descriptionModeleAjout" value="@Model.Description"/>
+                </div>
+                <div class="FloatLeft ">
+                    <label class="Block">Date début :</label>
+                </div>
+                <div class="FloatLeft ">
+                    <input  class="TxtDate datepicker" id="dateDebutModeleAjout" value="@(Model.DateDebut != 0 ? ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateDebut).Value.ToString("dd/MM/yyyy") : string.Empty)"/>
+                </div>
+                <div class="FloatLeft ">
+                    <label class="Block">Date fin :</label>
+                </div>
+                <div class="FloatLeft ">
+                    <input  class="TxtDate datepicker" id="dateFinModeleAjout" value="@(Model.DateFin != 0 ? ALBINGIA.Framework.Common.Tools.AlbConvert.ConvertIntToDate(Model.DateFin).Value.ToString("dd/MM/yyyy") : string.Empty)"/>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div style="text-align: right">
+        <button id="btnAnnulerAjout" type="button">Annuler</button>
+        <button id="btnEnregistrerAjout" type="button">OK</button>
+    </div>
+</div>

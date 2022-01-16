@@ -1,0 +1,268 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamISPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamIS.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamIS.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft">
+        <div id="contenu">
+            <div class="CommonFormIS TotalWidthIS">
+                <div class="GroupFullIS GroupWithBorder GroupAdminIS GroupWidthISFixe">
+                    <div class="ActionButtonLeft">
+                        <div class="GroupTitle">
+                            Sélection &nbsp;&nbsp;
+                            <label>
+                                Mode saisie
+                            </label>
+                            <input type="radio" name="rdModeSaisie" value="inline" checked="checked" />
+                            En Ligne
+                        <input type="radio" name="rdModeSaisie" value="form" />
+                            Formulaire
+                        </div>
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnPopulateDB" value="Populer BDD" />
+                        <input type="button" id="btnAnnuler" value="Retour" tabindex="29" />
+                    </div>
+                    <div class="HorizontalHalfWithGroupAdmin">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div class="GenericColumn">
+                                    <div class="FloatLeft labelParamISRecherche">
+                                        <label class="Block">Branches</label>
+                                    </div>
+                                    <div id="drlBranches" class="FloatLeft">
+                                        @Html.AlbDropDownListFor(m => m.Branches, Model.Branches, "dvBranche", generateTitle: true, htmlAttributes: new { @id = "drlBranche" }, genEmptyLine: false)
+                                    </div>
+                                </div>
+                                <div class="GenericColumn">
+                                    <div class="FloatLeft labelParamISRecherche">
+                                        <label class="Block">Sections</label>
+                                    </div>
+                                    <div id="drlSections" class="FloatLeft">
+                                        @Html.AlbDropDownListFor(m => m.Sections, Model.Sections, "dvSection", generateTitle: true, htmlAttributes: new { @id = "drlSection" }, genEmptyLine: false)
+                                    </div>
+                                </div>
+                                <div class="FloatLeft">
+                                    <div class="FloatLeft" id="btnAjouter">
+                                        <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter"/>
+                                    </div>
+                                </div>
+                                <div>
+                                    &nbsp;&nbsp;&nbsp;
+                        <input type="button" id="btnVisualiser" value="Visualiser" />&nbsp;&nbsp;&nbsp;               
+                        <input type="button" id="btnEnregistrer" name="btnEnregistrerEcran" value="Enregistrer les modifications" disabled />
+                                </div>
+                            </div>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div id="divDonnee">
+                                @if (Model.Intermediaire != null)
+                                {                                     
+                                    @Html.Partial("ParamIntermediaire", Model.Intermediaire);
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+
+<div style="display: none">
+    <div id="divDataEditPopIn" class="GroupFull GroupWithBorder">
+        <div class="HorizontalHalfWithGroupAdmin">
+            <div class="GradientSection">
+                @Html.HiddenNoName("hiddenIdEdit", string.Empty)
+                <table width="1000px">
+                    <tr>
+                        <td width="10%">
+                            <label>
+                                SqlOrder :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditSqlOrder">
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <label>
+                                TextLabel :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditTextLabel">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%">
+                            <label>
+                                Lib :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditLib">
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <label>
+                                HierarchyOrder :</label>
+                        </td>
+                        <td width="40%">
+                            <div id="divDrlEditHierarchyOrder">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%">
+                            <label>
+                                Cells :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditCells">
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <label>
+                                LineBreak :</label>
+                        </td>
+                        <td width="40%">
+                            <div id="divDrlEditLineBreak">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%">
+                            <label>
+                                DbMapCol :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditDbMapCol">
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <label>
+                                Requis :</label>
+                        </td>
+                        <td width="40%">
+                            <div id="divDrlEditRequired">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%">
+                            <label>
+                                Link :</label>
+                        </td>
+                        <td width="40%">
+                            <div id="divDrlEditLink">
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <label>
+                                TypeUIControl :</label>
+                        </td>
+                        <td width="40%">
+                            <div id="divDrlEditTypeUIControl">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%">
+                            <label>
+                                Type :</label>
+                        </td>
+                        <td width="40%">
+                            <div id="divDrlEditType">
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <label>
+                                LinkBehaviour :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditLinkBehaviour">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%">
+                            <label>
+                                SqlRequest :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditSqlRequest">
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <label>
+                                Behaviour :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditBehaviour">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%">
+                            <label>
+                                ConvertTo :</label>
+                        </td>
+                        <td width="40%">
+                            <div id="divDrlEditConvertTo">
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <label>
+                                EventBehaviour :</label>
+                        </td>
+                        <td width="40%">
+                            <div class="editTextBox" id="divInEditEventBehaviour">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%"></td>
+                        <td width="40%"></td>
+                        <td width="10%">
+                            <label>
+                                Disabled :</label>
+                        </td>
+                        <td width="40%">
+                            <div id="divDrlEditDisabled">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <div style="text-align: right">
+            <input type="button" id="btnAnnulerEdit" value="Annuler" />&nbsp
+            <input type="button" id="btnOKEdit" name="btnFancyOK" value="OK" />
+        </div>
+    </div>
+</div>
+
+<div style="display: none">
+    <div id="divFancyVisualiser">
+        <div style="text-align: right">
+            <input type="button" id="btnOKVisualiser" value="OK" />&nbsp
+        </div>
+        <div id="divFancyVisualiserData">
+        </div>
+    </div>
+</div>
+
+<div id="divFullScreen" style="display: none">
+    <div class="overlay-background" style="z-index:2" >
+    </div>
+    <div id="divSqlRequest">
+    </div>
+</div>

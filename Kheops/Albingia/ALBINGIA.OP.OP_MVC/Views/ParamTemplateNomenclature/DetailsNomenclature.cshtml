@@ -1,0 +1,52 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesParamTemplateNomenclature.ModeleDetailsTemplateNomenclature
+<div class="GroupTitle">
+    Création/Modification nomenclature
+</div>
+<div class="HorizontalHalfWithGroupAdmin">
+    @Html.HiddenNoName("ModeSaisie", Model.ModeSaisie)
+    @Html.HiddenNoName("GuidIdDetails", Model.GuidId)
+    <div class="GradientSection">
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Branche*</label>
+                </div>
+                <div class="FloatLeft">
+                    @if (Model.ModeSaisie == "Update")
+                    {
+                        @Html.AlbDropDownListFor(m => Model.Branche, Model.Branches, "dvBrancheNomenclature", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlBrancheEdit", @disabled = "disabled", @class = "readonly" }, replaceHtmlName: "dvBranche");
+                    }
+                    else if (Model.ModeSaisie == "Insert")
+                    {
+                        @Html.AlbDropDownListFor(m => Model.Branche, Model.Branches, "dvBrancheNomenclature", generateTitle: true, genEmptyLine: true, htmlAttributes: new { @id = "drlBrancheEdit" }, replaceHtmlName: "dvBranche")
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft ">
+                    <label class="Block Gras">Cible*</label>
+                </div>
+                <div class="FloatLeft" id="divCibles">
+                    @Html.Partial("ListeCibles", Model.ModeleCibles)
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow">
+            <div class="DoubleGenericColumn">
+                <div class="FloatLeft Block">
+                    <label class="Block Gras">Libellé*</label>
+                </div>
+                <div class="FloatLeft">
+                    <input id="descriptionTemplateNomenclatureEdit" class="DoubleInput" value="@Model.Libelle" maxlength="60"/>
+                </div>
+            </div>
+        </div>
+        <div class="HeightRow Validation">
+            <div id="divbtnEnregistrer" class="FloatRight">
+                <button id="btnEnregistrer" type="button" albshortcut="true" data-accesskey="e"><u>E</u>nregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>

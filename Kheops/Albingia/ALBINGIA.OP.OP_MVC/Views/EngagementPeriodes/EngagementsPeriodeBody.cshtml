@@ -1,0 +1,193 @@
+﻿@using ALBINGIA.OP.OP_MVC.Models.MetaModels
+@using ALBINGIA.OP.OP_MVC.Models.ModelesPages
+
+@inherits AlbToReadOnlyHtml<ModeleEngagementPeriodesPage>
+@if (!string.IsNullOrEmpty(Model.AccessMode)) {
+    Layout = null;
+    @Html.Raw(@"
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv='X-UA-Compatible' content='charset=UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+        <meta name='viewport' content='width=device-width' />")
+
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutScriptCSS.cshtml")
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albEngagementPeriodes.js" } , "~/Scripts/AlbingiaJS/")
+    @Html.Partial("~/Views/Shared/SessionError.cshtml")
+
+    @Html.Raw(@"
+    </head>
+    <body>")
+
+    @Html.Partial("~/Views/Shared/LayoutPage/LayoutHideInput.cshtml", Model as MetaModelsBase)
+}
+else {
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albEngagementPeriodes.js", "albEngPerRech.js" } , "~/Scripts/AlbingiaJS/")
+}
+@{
+    var isReadOnly = Model.IsReadOnly || Model.IsModifHorsAvenant;
+}
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vEngagementPeriodes.css" }, "~/Content/")
+@Html.Hidden("fieldInput", string.Empty)
+@Html.HiddenNoName("debutDernierePeriode", Model.DebutDernierePeriode)
+@Html.HiddenNoName("finDernierePeriode", Model.FinDernierePeriode)
+<input type="hidden" id="debutEffetContrat" value="@(Model.Contrat.DateEffetAnnee.ToString() + (Model.Contrat.DateEffetMois < 10 ? "0" + Model.Contrat.DateEffetMois.ToString() : Model.Contrat.DateEffetMois.ToString()) + (Model.Contrat.DateEffetJour < 10 ? "0" + Model.Contrat.DateEffetJour.ToString() : Model.Contrat.DateEffetJour.ToString()))" />
+<input type="hidden" id="finEffetContrat" value="@(Model.Contrat.FinEffetAnnee.ToString() + (Model.Contrat.FinEffetMois < 10 ? "0" + Model.Contrat.FinEffetMois.ToString() : Model.Contrat.FinEffetMois.ToString()) + (Model.Contrat.FinEffetJour < 10 ? "0" + Model.Contrat.FinEffetJour.ToString() : Model.Contrat.FinEffetJour.ToString()))" />
+@Html.HiddenNoName("dateControle", Model.DateControle)
+<input type="hidden" id="dateCreationContrat" value="@(Model.Contrat.DateCreationAnnee.ToString() + (Model.Contrat.DateCreationMois < 10 ? "0" + Model.Contrat.DateCreationMois.ToString() : Model.Contrat.DateCreationMois.ToString()) + (Model.Contrat.DateCreationJour < 10 ? "0" + Model.Contrat.DateCreationJour.ToString() : Model.Contrat.DateCreationJour.ToString()))" />
+<input type="hidden" id="albIndexLst" value="@ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST" />
+@Html.HiddenNoName("codePremierePeriode", Model.CodePremierePeriode)
+@Html.HiddenNoName("codeDernierePeriode", Model.CodeDernierePeriode)
+@Html.HiddenNoName("actionParameter", string.Empty)
+@Html.HiddenNoName("typeOperation", string.Empty)
+
+@Html.HiddenNoName("accessMode", Model.AccessMode)
+
+<div class="CommonForm FloatLeft">
+    <div class="nGroupFull GroupWithBorder">
+        <div class="nHorizontalFullWithGroup">
+            <div class="nGradientSection HeightListeEngagementPeriodes">
+                <div class="HeightRow">
+                    <div class="FloatLeft PaddingLeft">
+                        <label class="Block" style="width: 60px !important;">Actif/Tous</label>
+                    </div>
+                    <div class="FloatLeft PaddingLeft">
+                        @Html.AlbDropDownListFor(m => m.ModeActif, Model.ListeModesActif, "ListeModesActif", htmlAttributes: new { id = "ListeModesActif" }, generateTitle: true, genEmptyLine: false)
+                    </div>
+                </div>
+                <div id="divEngagementPeriodesHeader">
+                    <table id="tblEngagementPeriodesHeader">
+                        <tr>
+                            <th class="col_HeaderActif tablePersoHead">
+                                Utilisée
+                            </th>
+                            <th class="col_HeaderDateDeb tablePersoHead">
+                                Début
+                            </th>
+                            <th class="col_HeaderDateFin tablePersoHead">
+                                Fin
+                            </th>
+                            <th class="col_HeaderPart tablePersoHead">
+                                Part
+                            </th>
+                            <th class="col_HeaderEngagementTotal tablePersoHead">
+                                Eng. Total
+                            </th>
+                            <th class="col_HeaderEngagementAlbingia tablePersoHead">
+                                Eng. Albingia
+                            </th>
+                            <th class="col_HeaderButtons tablePersoHead">
+                                @if (isReadOnly) {
+                                    <img id="ajouterEngagementPeriode" title="Ajouter une période d'engagement" alt="Ajouter" name="ajoutEngagementPeriode" src="@Url.Content("/Content/Images/plusajouter_gris1616.jpg")" />
+                                }
+                                else {
+                                    <img id="ajouterEngagementPeriode" title="Ajouter une période d'engagement" alt="Ajouter" name="ajoutEngagementPeriode" src="@Url.Content("/Content/Images/plusajouter1616.png")" class="CursorPointer" />
+                                }
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="divEngagementPeriodesBody">
+                    <div id="divEngagementPeriodesBodyEmptyLine">
+                        <table id="tblEngagementPeriodesBodyEmptyLine">
+                            @{
+                                var albIndexLst = ALBINGIA.OP.OP_MVC.MvcApplication.ALBINDEXLIST;
+                                <tr id="newEngagementPeriode">
+                                    <td class="col_Actif">
+                                        <input id="EngagementPeriodeCode_@(albIndexLst)" name="EngagementPeriodeCode" value="@(albIndexLst)" type="hidden" />
+                                    </td>
+                                    <td class="col_DateDeb">
+                                        <input class="inputDateDeb datepicker" id="dateDeb_@(albIndexLst)" name="DateDeb" value="" type="text" />
+                                    </td>
+                                    <td class="col_DateFin">
+                                        <input class="inputDateFin datepicker" id="dateFin_@(albIndexLst)" name="DateFin" value="" type="text" />
+                                    </td>
+                                    <td class="col_Part">
+                                        <input class="inputPart decimal readonly" id="Part_@(albIndexLst)" name="Part" type="text" readonly="readonly" value="@Model.Contrat.PartAlbingia" />
+                                    </td>
+                                    <td class="col_EngagementTotal">
+                                        <input class="inputEngagementTotal decimal readonly" id="EngagementTotal_@(albIndexLst)" readonly="readonly" name="EngagementTotal" value="" type="text" />
+                                    </td>
+                                    <td class="col_EngagementAlbingia">
+                                        <input class="inputEngagementAlbingia decimal readonly" id="EngagementAlbingia_@(albIndexLst)" readonly="readonly" name="EngagementAlbingia" value="" type="text" />
+                                    </td>
+                                    <td class="col_Buttons">
+                                        <img id="saveEngagementPeriode_@(albIndexLst)" name="saveEngagementPeriode" alt="Sauvegarder la période d'engagement" title="Sauvegarder la période d'engagement" src="@Url.Content("/Content/Images/Save_16.png")" class="CursorPointer ImgSave" />
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    <div id="divEngagementPeriodesBodyLines">
+                        @Html.Partial("ListeEngagementPeriodes", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divAjoutPeriode">
+        <div class="overlay-background" style="z-index:3">
+        </div>
+        <div id="divAjoutPeriodeData" class="nGroupFull GroupWithBorder">
+
+            @Html.HiddenNoName("codePeriodeCourant", string.Empty)
+            <div class="HorizontalHalfWithGroupAdmin" style="width: 490px ! important">
+                <div class="GradientSection" style="width: 483px ! important">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            Veuillez saisir la période de l'engagement
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label>Du</label>
+                            <input id="dateDebutNewPeriode" class="inputDate datepicker" value="" />
+                            <label>Au</label>
+                            <input id="dateFinNewPeriode" class="inputDate datepicker" value="" />
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label><b id="Msg_Calcul" style="visibility: hidden;">Le calcul des engagements  ne sera pas relancé</b></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="GradientSection ButtonsHeight">
+                    <div class="ActionButtonRight" style="width: 490px ! important; padding-right: 10px; padding-top: 6px;">
+                        <button id="btnAnnulerNewPeriode" type="button">Annuler</button>
+                        <button id="btnSuivantNewPeriode" type="button">Suivant</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="GroupFull GroupWithBorder ButtonsHeight">
+    <div class="ActionButtons ActionButtonRight">
+        @if (string.IsNullOrEmpty(Model.AccessMode)) {
+            if (isReadOnly) {
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="p"><u>P</u>récédent</button>
+            }
+            else {
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a"><u>A</u>nnuler</button>
+            }
+            <button id="btnSuivant" type="button" albshortcut="true" data-accesskey="s"><u>S</u>uivant</button>
+        }
+        else {
+            <button id="btnFermer" type="button" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+        }
+
+    </div>
+</div>
+
+
+@if (!string.IsNullOrEmpty(Model.AccessMode)) {
+
+    @AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "LoadEnJSIframe.js" }, "~/Scripts/AlbingiaJS/")
+    @Html.Raw("</body></html>");
+
+}

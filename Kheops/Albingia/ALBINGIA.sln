@@ -1,0 +1,115 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OP", "OP", "{75D2CD8E-B2A5-432C-8DCB-1CAF4F3A0083}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1191926-9E3B-48B6-B0C9-D321E85EA3F6}"
+	ProjectSection(SolutionItems) = preProject
+		ALBINGIA1.vsmdi = ALBINGIA1.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBINGIA.OP.OP_MVC", "ALBINGIA.OP.OP_MVC\ALBINGIA.OP.OP_MVC.csproj", "{A30944B8-8881-4532-BE12-E04F45285A41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeViewer", "OfficeViewer\OfficeViewer.csproj", "{568B3B98-B227-46C9-816C-0CB585916507}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AsynchDownLoad", "AsynchDownLoad", "{8662F9C9-D10D-4712-AE29-E180D2226B05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlbAsynchCopyContainer", "AlbAsynchCopyContainer\AlbAsynchCopyContainer.csproj", "{81471931-5902-4F2A-9131-C8A0A77CE7A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{080B46C0-952E-4261-A957-13576C341BD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBINGIA.Framework.Common", "ALBINGIA.Framework.Common\ALBINGIA.Framework.Common.csproj", "{A98A2815-A24C-4E02-891E-8B802EE892EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyAsynchFiles", "CopyAsynchFiles\CopyAsynchFiles.csproj", "{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{06270092-D803-49D4-A4C2-316333A58E22}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPServiceContract", "..\ServiceMetierOP\OPServiceContract\OPServiceContract.csproj", "{51915333-F540-4663-AEB6-4C84CD955300}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A30944B8-8881-4532-BE12-E04F45285A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568B3B98-B227-46C9-816C-0CB585916507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98A2815-A24C-4E02-891E-8B802EE892EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51915333-F540-4663-AEB6-4C84CD955300}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A30944B8-8881-4532-BE12-E04F45285A41} = {75D2CD8E-B2A5-432C-8DCB-1CAF4F3A0083}
+		{568B3B98-B227-46C9-816C-0CB585916507} = {75D2CD8E-B2A5-432C-8DCB-1CAF4F3A0083}
+		{81471931-5902-4F2A-9131-C8A0A77CE7A9} = {8662F9C9-D10D-4712-AE29-E180D2226B05}
+		{A98A2815-A24C-4E02-891E-8B802EE892EA} = {080B46C0-952E-4261-A957-13576C341BD2}
+		{F4B5E4E1-ED03-49DC-A9FE-DCD7660FC0AA} = {8662F9C9-D10D-4712-AE29-E180D2226B05}
+		{51915333-F540-4663-AEB6-4C84CD955300} = {75D2CD8E-B2A5-432C-8DCB-1CAF4F3A0083}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1B7235A-5A96-4084-9C52-67273FB886C9}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2018/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ALBINGIA.OP.OP_MVC\\ALBINGIA.OP.OP_MVC.csproj
+		SccProjectTopLevelParentUniqueName1 = ALBINGIA.sln
+		SccProjectName1 = ALBINGIA.OP.OP_MVC
+		SccLocalPath1 = ALBINGIA.OP.OP_MVC
+		SccProjectUniqueName2 = OfficeViewer\\OfficeViewer.csproj
+		SccProjectTopLevelParentUniqueName2 = ALBINGIA.sln
+		SccProjectName2 = OfficeViewer
+		SccLocalPath2 = OfficeViewer
+		SccProjectUniqueName3 = AlbAsynchCopyContainer\\AlbAsynchCopyContainer.csproj
+		SccProjectTopLevelParentUniqueName3 = ALBINGIA.sln
+		SccProjectName3 = AlbAsynchCopyContainer
+		SccLocalPath3 = AlbAsynchCopyContainer
+		SccProjectUniqueName4 = CopyAsynchFiles\\CopyAsynchFiles.csproj
+		SccProjectTopLevelParentUniqueName4 = ALBINGIA.sln
+		SccProjectName4 = CopyAsynchFiles
+		SccLocalPath4 = CopyAsynchFiles
+		SccProjectUniqueName5 = ALBINGIA.Framework.Common\\ALBINGIA.Framework.Common.csproj
+		SccProjectTopLevelParentUniqueName5 = ALBINGIA.sln
+		SccProjectName5 = ALBINGIA.Framework.Common
+		SccLocalPath5 = ALBINGIA.Framework.Common
+		SccProjectUniqueName6 = ..\\ServiceMetierOP\\OPServiceContract\\OPServiceContract.csproj
+		SccProjectTopLevelParentUniqueName6 = ALBINGIA.sln
+		SccProjectName6 = ../ServiceMetierOP/OPServiceContract
+		SccLocalPath6 = ..\\ServiceMetierOP\\OPServiceContract
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ALBINGIA1.vsmdi
+	EndGlobalSection
+EndGlobal

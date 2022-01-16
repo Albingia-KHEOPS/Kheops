@@ -1,0 +1,115 @@
+﻿@inherits AlbToReadOnlyHtml<ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModelePrisePositionPage> 
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vPrendrePosition.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new[] { "albPrisePosition.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    @switch (Model.ScreenType)
+    {
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_CONTRAT:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNMD:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_AVNRS:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGUL:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REGULMODIF:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        case ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_REMISEVIGUEUR:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreContrat.cshtml", Model.NavigationArbre)
+            break;
+        default:
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbre.cshtml", Model.NavigationArbre)
+            break;
+    }
+
+    <div class="CommonForm FloatLeft">
+        <div class="nGroupFull nGroupWithBorder">
+            @Html.Partial("~/Views/Shared/LayoutPage/LayoutInfoTab.cshtml", Model)
+            <div class="nHorizontalFullWithGroup">
+                <div class="nGradientSection">
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label class="Block">En cours :</label>
+                        </div>
+                        @if (Model.ScreenType == ALBINGIA.Framework.Common.Constants.AlbConstantesMetiers.SCREEN_TYPE_OFFRE)
+                        {
+                            <div class="FloatRight PaddingRight">
+                                <div id="dvModifInfoBase" class="FloatLeft CursorPointer TxtLink">Informations de saisie</div>
+                            </div>
+                        }
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft">
+                            <label>Etat</label>
+                            <input type="hidden" id="oldEtat" value="@(Model.Offre != null ? Model.Offre.Etat : Model.Contrat != null ? Model.Contrat.Etat : string.Empty)" />
+                            <input class="readonly" value="@(Model.Bandeau != null ? string.Format("{0} - {1}", Model.Bandeau.CodeEtat, Model.Bandeau.LibelleEtat) : string.Empty)" disabled="disabled"/>
+                        </div>
+                        <div class="FloatLeft">
+                            <label>Situation</label>
+                            <input type="hidden" value="@(Model.Offre != null ? Model.Offre.Situation : Model.Contrat != null ? Model.Contrat.Situation : string.Empty)" id="oldSituation" />
+                            <input class="readonly" value="@(Model.Bandeau != null ? string.Format("{0} - {1}", Model.Bandeau.CodeSituation, Model.Bandeau.LibelleSituation) : string.Empty)" disabled="disabled"/>
+                        </div>
+                        <div class="FloatLeft">
+                            <label>Motif</label>
+                            <input class="readonly" value="@(string.IsNullOrEmpty(Model.Bandeau.CodeMotif) ? string.Empty : string.Format("{0} - {1}", Model.Bandeau.CodeMotif, Model.Bandeau.LibelleMotif))" disabled="disabled" />
+                        </div>
+                        <div class="FloatLeft">
+                            <label>Date</label>
+                            <input class="readonly" value="@(Model.Bandeau.DateMAJ.HasValue ? Model.Bandeau.DateMAJ.Value.ToString("dd/MM/yyyy") : string.Empty)" disabled="disabled" />
+                        </div>
+                    </div>
+                </div>
+                <div class="nGradientSection" style="height: 418px;">
+                    <div class="HeightRow">
+                        <label style="width: 150px;">Action à réaliser</label>
+                    </div>
+                    <div class="HeightRow">
+                        <input type="radio" id="rdAccepter" name="PrendrePosition" value="False" tabindex="29" disabled="@(Model.Bandeau.CodeEtat == "V" )"/>
+                        <label>Accepter/Remettre en cours</label>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="width: 250px;">
+                            <input type="radio" id="rdAttente" name="PrendrePosition" value="False" tabindex="30" disabled="@(Model.Bandeau.CodeEtat == "V" )"/>
+                            <label>Mettre en attente pour le motif suivant :</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.MotifAttente, Model.ListeMotifsAttente, "MotifAttente", htmlAttributes: new { @id = "MotifAttente", @tabindex = "30", @albCFList = "motifRefus", @disabled = "disabled" }, generateTitle: true)
+                        </div>
+                    </div>
+                    <div class="HeightRow">
+                        <div class="FloatLeft" style="width: 250px;">
+                            <input type="radio" id="rdRefus" name="PrendrePosition" value="False" tabindex="31" />
+                            <label>Refuser pour le motif suivant :</label>
+                        </div>
+                        <div class="FloatLeft">
+                            @Html.AlbDropDownListFor(m => m.MotifRefus, Model.ListeMotifsRefus, "MotifRefus", htmlAttributes: new { @id = "MotifRefus", @tabindex = "30", @albCFList = "motifRefus", @disabled = "disabled" }, generateTitle: true)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GroupFull GroupWithBorder ButtonsHeight">
+            <div class="ActionButtons ActionButtonRight" style="width: 400px;">
+                <button id="btnAnnuler" type="button" albshortcut="true" data-accesskey="a" tabindex="29"><u>A</u>nnuler</button>
+                <button id="btnValider" type="button" albshortcut="true" data-accesskey="v" tabindex="28" disabled="disabled"><u>V</u>alider</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvInformationsBase" class="None">
+    @Html.HiddenNoName("jobInfoBase", "Index")
+    @Html.HiddenNoName("cibleInfoBase", "PrisePosition")
+    <div class="overlay-background" style="z-index:2" ></div>
+    <div id="dvDataInformationsBase"></div>
+</div>

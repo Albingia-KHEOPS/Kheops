@@ -1,0 +1,29 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModeleTransverse.ErreursPages
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new[] { "vErreurs.css" }, "~/Content/Erreurs/")
+
+
+
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="GroupFull GroupWithBorder TotalWidth">
+    <div class="GroupTitle">
+        Albingia - Page d'erreur outil de production
+    </div>
+    <div class="HorizontalFullWithGroup HorizontalTotalWidth">
+        <div>
+
+            @switch (Model.ErrorType)
+            {
+                case ALBINGIA.Framework.Common.Constants.AlbOpConstants.REDIRECT_BROWSER_ERROR:
+                    Html.RenderPartial("BrowserError");
+                    break;
+                case ALBINGIA.Framework.Common.Constants.AlbOpConstants.REDIRECT_ACCESDENIED_ERROR:
+                    Html.RenderPartial("AccesDenied");
+                    break;
+            }
+        </div>
+    </div>
+</div>
+
+

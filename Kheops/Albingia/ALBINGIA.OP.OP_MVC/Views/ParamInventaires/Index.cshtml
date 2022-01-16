@@ -1,0 +1,86 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesPages.ModeleParamInventairesPage
+@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vParamInventaires.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albParamInventaires.js" }, "~/Scripts/AlbingiaJS/")
+@{
+    Layout = "~/Views/Shared/LayoutHeader/LayoutMenu.cshtml";
+}
+<div class="FullWidth">
+    <div>
+        @Html.Partial("~/Views/Shared/LayoutArbres/LayoutArbreBackOffice.cshtml")
+    </div>
+    <div class="CommonForm FloatLeft WidthBackOffice">
+        <div id="contenu">
+            @Html.HiddenNoName("idInventaireSuppr", string.Empty)
+            <div class="CommonForm FloatLeft WidthBackOffice">
+                <div class="GroupFull GroupWithBorder WidthDivInventaire GroupHeightInventairesFixe" style="margin-right: 12px;">
+                    <div class="GroupTitle">
+                        Recherche d'inventaires
+                    </div>
+                    <div class="HorizontalHalfWithGroupAdmin GroupHeightInventairesInterieur">
+                        <div class="GradientSection">
+                            <div class="HeightRow">
+                                <div>
+                                    <div class="FloatLeft labelParamInventaireRecherche">
+                                        <label>Code</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="RechercheCode" albautocomplete="autoCompCodeInventaire" />
+                                    </div>
+                                    <div class="FloatLeft labelParamInventaireRecherche">
+                                        <label>Description</label>
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <input id="RechercheDescription" value="@Model.Description" />
+                                    </div>
+                                    <div class="FloatLeft">
+                                        <button type="button" id="btnRechercher">
+                                            <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" /></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear: both;">
+                                &nbsp;
+                            </div>
+                            <div id="divLstInventaires">
+                                <div>
+                                    <table id="tblInventaireHeader" class="tableInventaireHeader">
+                                        <tr>
+                                            <th class="col_CodeInventaire tablePersoHead">Code Inventaire
+                                            </th>
+                                            <th class="col_LibelleInventaire tablePersoHead">Libellé
+                                            </th>
+                                            <th class="col4Head tablePersoHead">
+                                                <img class="CursorPointer" src="@Url.Content("/Content/Images/plusajouter1616.png")" alt="Ajouter" title="Ajouter" id="btnAjouter" />
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBodyInventaires" class="divHeight dvBodyInventaire">
+                                    @if (Model.ListeInventaires != null)
+                                    {
+                                        @Html.Partial("ParamListInventaires", Model.ListeInventaires)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="VoletDetail" class="GroupFull GroupWithBorder WidthConsultInventaire GroupHeightInventairesFixe FloatLeft" style="display: none">
+                    <div id="inventaireDetails">
+                    </div>
+                </div>
+                <div class="GroupButton GroupFull GroupWithBorder ButtonsHeight TotalWidth">
+                    <div class="ActionButtons ActionButtonLeft">
+                    </div>
+                    <div id="LoadingDiv" class="FloatLeft">
+                        <img src="/Content/Images/ajax-loader.gif" alt="" />
+                    </div>
+                    <div class="ActionButtons ActionButtonRight">
+                        <input type="button" id="btnCancel" value="Retour" tabindex="29" onclick="Javascript: Annuler();" />
+                    </div>
+                </div>
+            </div>
+        </div>@*fin contenu*@
+    </div>
+</div>
+

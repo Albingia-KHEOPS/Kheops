@@ -1,0 +1,68 @@
+﻿
+<div class="ko-cloak conceal">
+    <div class="container container-details">
+        <div class="page-results">
+            <!-- ko ifnot: hasResults -->
+            <div>Aucune relance en cours</div>
+            <!-- /ko -->
+            <!-- ko if: hasResults -->
+            <div class="flex-table pad7">
+                <div class="flex-header vertical-gradient">
+                    <span class="cell long">Date validation</span>
+                    <span class="cell">N° d'offre</span>
+                    <span class="cell short">Aliment</span>
+                    <span class="cell long">Descriptif</span>
+                    <span class="cell">Branche</span>
+                    <span class="cell long">Courtier</span>
+                    <span class="cell" title="En attente de document courtier">Attente Court.</span>
+                    <span class="cell">Date relance</span>
+                    <span class="cell long">Situation</span>
+                </div>
+                <div class="flex-body scroll">
+                    <!-- ko foreach: Relances -->
+                    <div class="alternate-bg-color grid auto-height">
+                        <div class="cell long center-text" data-bind="text: DateValidation"></div>
+                        <div class="cell center-text" data-bind="text: Offre.Code"></div>
+                        <div class="cell short center-text" data-bind="text: Offre.Version"></div>
+                        <div class="cell long lpad auto-shorten" data-bind="text: Offre.Libelle, attr: { title: Offre.Libelle }"></div>
+                        <div class="cell center-text auto-shorten" data-bind="text: Offre.Branche"></div>
+                        <div class="cell long right-text" data-bind="text: Courtier"></div>
+                        <div class="cell center-text"><input type="checkbox" data-bind="checked: IsAttenteDocCourtier" /></div>
+                        <div class="cell center-text">
+                            <input type="text" data-bind="dateselector: { value: DateRelance, pickerOptions: { dateFormat: 'dd/mm/yy' }, onlyTriggerChange: true }, css: { 'invalid-value': $data.isDateRelanceInvalid && $data.isDateRelanceInvalid() }" />
+                        </div>
+                        <div class="cell long center-text">
+                            <select class="block-margin" data-bind="value: Situation">
+                                <option value="">A relancer</option>
+                                <option value="W">Sans-suite</option>
+                            </select>
+                            <select class="block-margin" data-bind="visible: Situation() === 'W', options: $component.motifsSituations, optionsValue: 'Code', optionsText: 'LibelleLong', value: MotifStatut, optionsCaption: 'Choix du motif...'">
+                                <option value="">rien</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- /ko -->
+            <div id="relancesPaging" data-bind="attr: { name: paging.buttons.componentName }, component: { name: paging.buttons.componentName, params: { pageSize: NbLignesPage(), listName: listName(), total: NombreRelances() } }"></div>
+        </div>
+    </div>
+
+    <div class="container container-foot">
+
+        <div class="input-line">
+            <div class="flex8-10">
+                <label data-bind="visible: !showInPage">
+                    Ne plus afficher pour aujourd'hui
+                    <input type="checkbox" data-bind="checked: DoNotShowAgainForToday" />
+                </label>
+            </div>
+            <div class="flex2-10">
+                <button type="button" data-bind="click: hideList">Fermer</button>
+                <button type="button" data-bind="click: save, enable: hasUnsavedChanges">Valider</button>
+            </div>
+        </div>
+
+    </div>
+</div>

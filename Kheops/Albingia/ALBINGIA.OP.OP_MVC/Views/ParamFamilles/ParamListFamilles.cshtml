@@ -1,0 +1,36 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamFamilles.LigneFamille>
+<table id="tblBodyFamilles" class="trHeight">
+    @foreach (var item in Model)
+    {      
+        <tr id="@("tr_" + item.CodeFamille + "_" + item.CodeConcpet)">
+            @if (item.RestrictionParam != "Y" && item.AdditionalParam == "**")
+            {
+                <td id="@("codeFamille_" + item.CodeFamille)" class="linkFamille col_CodeFamille">@**@
+                    @item.CodeFamille
+                </td>
+                <td id="@("libelleFamille_" + item.CodeFamille)" class="linkFamille col_DescriptionFamille">@**@
+                    @item.LibelleFamille
+                </td>
+            }
+            else
+            {
+                <td id="@("codeFamille_" + item.CodeFamille)" class="col_CodeFamille">@**@
+                    @item.CodeFamille
+                </td>
+                <td id="@("libelleFamille_" + item.CodeFamille)" class="col_DescriptionFamille">@**@
+                    @item.LibelleFamille
+                </td>
+            }
+
+            <td class="col_RowButtons">@*col_Buttons*@
+                <img src="@Url.Content("/Content/Images/ico_16_formorder.png")" id="@("editValues_" + @item.CodeFamille)" alt="Editer les valeurs" title="Editer les valeurs" class="CursorPointer PaddingLeft" name="editValues"/>
+            </td>
+            <td class="col_RowButtons">
+                @if (item.RestrictionParam != "Y" && item.AdditionalParam == "**")
+                {
+                    <img id="@("suppr_" + item.CodeFamille)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" class="CursorPointer" title="Supprimer" name="supprFamille" />
+                }
+            </td>
+        </tr>
+    }
+</table>

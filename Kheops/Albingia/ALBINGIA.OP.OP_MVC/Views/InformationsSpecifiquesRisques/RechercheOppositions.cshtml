@@ -1,0 +1,38 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesRisque.ModeleRechercheOpp
+<div class="GroupFull GroupWithBorder TotalWidth" id="dialogGrid" style="height: 495px;">
+    <div id="divRechercherResultOpp">
+        <div class="scroll ">
+            <div class="GroupTitle">
+                Recherche des oppositions
+            </div>
+            <div class="FieldRow">
+                <div class="CodeOppositionsLabel">
+                    <label class="AutoWidth">Code </label>
+                </div>
+                <div class="CodeOppositionsTextBox">
+                    <input type="text" class="numerique" albMask="numericCodePreneur" id="CodeOrg" name="CodeOrg" value="@(Model.Code)" />
+                </div>
+                <div class="NomOppLabel">
+                    <label class="AutoWidth">Nom </label>
+                </div>
+                <div class="NomOppTextBox">
+                    <input type="text" class="DoubleInput" id="NomOrg" name="NomOrg" value="@(Model.Nom)" />
+                </div>
+                <div class="FloatRight">
+                    <button type="button" id="btnRechercheOpposition" albshortcut="true" data-accesskey="r" albcontext="opposition" >
+                        <img src="@Url.Content("/Content/Images/loupe1616.png")" alt="Rechercher" title="Rechercher" class="CursorPointer" class="LoupeSearch"  />
+                    </button>
+                    <button type="button" id="InitialiserOpp" albshortcut="true" data-accesskey="l" style="height: 24px; padding-top: 5px;">Réinitia<u>l</u>iser</button>
+                </div>
+            </div>
+            <div id="RechercherResultOppDialogDiv">
+                @Html.Partial("/Views/InformationsSpecifiquesRisques/ResultRechercheOppositions.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="GroupFull GroupWithBorder TotalWidth ButtonsHeight">
+    <div class="ActionButtons ActionButtonsSearchRight ActionButtonRight">
+        <button type="button" id="btnFermer" albshortcut="true" data-accesskey="f"><u>F</u>ermer</button>
+    </div>
+</div>

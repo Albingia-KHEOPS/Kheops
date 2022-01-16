@@ -1,0 +1,60 @@
+﻿@using Albingia.Kheops.DTO
+@using Albingia.Kheops.OP.Domain.InfosSpecifiques
+@model InfosSpecifiquesDto
+@{
+    var lignes = Model.Infos.Where(x => x.ModeleLigne.Propriete?.TypeUIControl != TypeAffichage.Hidden).OrderBy(x => x.ModeleLigne.Ordre).ToList();
+    var lignesTitres = lignes.Where(x => x.ModeleLigne.TypePresentation == 1);
+    var hiddenLines = Model.Infos.Where(x => x.ModeleLigne.Propriete?.TypeUIControl == TypeAffichage.Hidden).ToList();
+}
+
+
+
+@if (Model.Modele != null)
+{
+    @Html.HiddenNoName("Branche", Model.Modele.CodeBranche)
+    @Html.HiddenNoName("section", Model.Modele.Section.ToString())
+
+    if (Model.Infos.Any())
+    {
+
+        <div>
+            @foreach (var hidden in hiddenLines)
+            {
+                @Html.Partial("_InfoSpecifiqueValeur", hidden)
+            }
+        </div>
+
+        if (lignesTitres.Any())
+        {
+            <table name="albISGlobalTable" class="nGradientSection FloatLeft Padding" cellpadding="10">
+                <tr valign="top">
+                    <td style="width: 150px;" id="globalTable1">
+                        <div id="dvIsMenu" style="position:absolute; width:160px;">
+                            <table name="albISMenuTable" class="nGradientSection FloatLeft" cellpadding="10">
+                                @foreach (var titre in lignesTitres)
+                                {
+                                    <tr>
+                                        <td id="@titre.ModeleLigne.Code" class="AlbNoWrap" style="">
+                                            <span name="albISLink" class="CursorPointer TxtLink" albISLink="@titre.ModeleLigne.Code" title="@titre.ModeleLigne.Libelle">@titre.ModeleLigne.Libelle</span>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </td>
+                    <td id="globalTable2">
+                        <table>
+                            <tr>
+                                <td>@Html.Partial("_InfosSpecifiquesInputs", lignes)</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        }
+        else
+        {
+            @Html.Partial("_InfosSpecifiquesInputs", lignes)
+        }
+    }
+}

@@ -1,0 +1,16 @@
+﻿@using ALBINGIA.Framework.Common.Constants
+@using ALBINGIA.Framework.Common.Extensions
+@using OP.WSAS400.DTO
+@using ALBINGIA.OP.OP_MVC.Models.ModelesNavigationArbre
+@model ModeleNavigationArbre
+@{
+    var links = Model.Links.Where(x => x.Value.Level == 1).Select(x => x.Value).ToList();
+}
+
+@if (links.Any()) {
+    <ul class="MenuArbreRacine MenuArbreUL" id="MenuRacineGeneral">
+        @foreach (var link in links) {
+            @link.Render()
+        }
+    </ul>
+}

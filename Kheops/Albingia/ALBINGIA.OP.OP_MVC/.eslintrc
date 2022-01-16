@@ -1,0 +1,47 @@
+﻿{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script",
+    "ecmaFeatures": {
+      "binaryLiterals": false,
+      "classes": false,
+      "defaultParams": false,
+      "destructuring": false,
+      "experimentalObjectRestSpread": false,
+      "generators": false,
+      "globalReturn": false,
+      "impliedStrict": false,
+      "jsx": false,
+      "modules": false,
+      "objectLiteralComputedProperties": false,
+      "objectLiteralDuplicateProperties": true,
+      "objectLiteralShorthandMethods": true,
+      "objectLiteralShorthandProperties": true,
+      "octalLiterals": false,
+      "regexUFlag": false,
+      "regexYFlag": false,
+      "restParams": false,
+      "superInFunctions": false,
+      "templateStrings": false,
+      "unicodeCodePointEscapes": false,
+      "arrowFunctions": false,
+      "forOf": true,
+      "blockBindings": true,
+      "spread": false
+    }
+  },
+  "rules": {
+    "no-extra-parens": [ 2, "functions" ],
+    "semi": [ 2, "always" ],
+    "no-extra-semi": 2,
+    "eqeqeq": [ 0, "allow-null" ],
+    "no-unused-vars": [
+      1,
+      {
+        "vars": "local",
+        "varsIgnorePattern": ".*",
+        "args": "all"
+      }
+    ]
+  }
+}

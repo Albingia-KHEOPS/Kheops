@@ -1,0 +1,64 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesLogTrace.LogParamCibleRecupModel
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albLogRecupParamCible.js" }, "~/Scripts/AlbingiaJS/")
+
+<table id="RechercheLog" class="GradientSection rPanel fullWidth" albcontext="@Model.Albcontext">
+    <tr>
+
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Type :</label>
+            @Html.AlbDropDownListFor(m => m.TypeOffrePolice, Model.Types, "TypeOffrePolice", htmlAttributes: new
+                                                           {
+                                                               @id = "TypeOffrePolice",
+                                                               @tabindex = "2",
+                                                               @class = "FieldTypeOffrePolice",
+                                                               @albcontext = Model.Albcontext
+                                                           }, generateTitle: true)
+        </td>
+        <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>N° police/offre :</label>
+            <input name="NumOffrePolice" id="NumOffrePolice" tabindex="1" value="@Model.NumOffrePolice" albcontext="Model.Albcontext" />
+        </td>
+         <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>N° aliment :</label>
+            <input name="NumAliment" id="NumAliment" tabindex="1"  albmask="numeric" class="numerique" value="@Model.NumAliment" albcontext="Model.Albcontext" />
+        </td>
+         <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>N° avenant :</label>
+            <input name="NumAvenant" id="NumAvenant" tabindex="1" albmask="numeric" class="numerique" value="@Model.NumAvenant" albcontext="Model.Albcontext" />
+        </td>
+    </tr>
+    <tr>
+
+         <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>N° histo :</label>
+            <input name="NumHisto" id="NumHisto" tabindex="1" value="@Model.NumHisto" albmask="numeric" class="numerique" albcontext="Model.Albcontext" />
+        </td>
+
+         <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Id risque :</label>
+            <input name="IdRisque" id="IdRisque" tabindex="1" value="@Model.IdRisque" albmask="numeric" class="numerique" albcontext="Model.Albcontext" />
+        </td>
+
+         <td class="filtreCol" albcontext="@Model.Albcontext">
+            <label>Id objet :</label>
+            <input name="IdObjet" id="IdObjet" tabindex="1" value="@Model.IdObjet" albmask="numeric" class="numerique" albcontext="Model.Albcontext" />
+        </td>
+
+        <td class="BlockInLine">
+            <div class="" albcontext="@Model.Albcontext" tabindex="4">
+                <span id="btnRechercherLog"  albcontext="@Model.Albcontext">
+                    <img class="CursorPointer" id="RechercherImg" alt="" src="/Content/Images/loupe.png">
+                </span>
+            </div>
+
+            <div class="" albcontext="@Model.Albcontext" tabindex="5">
+                <button tabIndex="" title="" id="btnInitializeRechercheLog"  type="button" albcontext="@Model.Albcontext" >Ré<u>i</u>nitialiser</button>
+            </div>
+            <div class="" albcontext="@Model.Albcontext" tabindex="5">
+                <a id="exportExcelLog" href="javascript:ExportToCSV()">
+                    <img id="imgExportExcel" alt="Export Excel" title="Export Excel" src="@(Url.Content("~/Content/Images/exportExcel3232.png"))" class="CursorPointer" />
+                </a>
+            </div>
+        </td>
+    </tr>
+</table>

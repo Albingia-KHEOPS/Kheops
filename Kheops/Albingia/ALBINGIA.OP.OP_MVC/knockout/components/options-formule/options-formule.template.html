@@ -1,0 +1,105 @@
+﻿<div>
+    <!-- ko if: existsFormula -->
+    <!-- ko fastForEach: option().Volets -->
+    <div data-bind="visible: isDisplayed, template: { name: 'option_master_item', data: $data }"></div>
+    <!-- ko fastForEach: Blocs -->
+    <div data-bind="visible: isDisplayed, template: { name: 'option_master_item', data: $data }"></div>
+    <div class="lines-garanties">
+        <!-- ko fastForEach: { data: Garanties } -->
+        <!-- g1 -->
+        <!-- ko template: { name: 'option_sub_item', data: $data } --><!-- /ko -->
+        <!-- ko fastForEach: { data: SousGaranties } -->
+        <!-- g2 -->
+        <!-- ko template: { name: 'option_sub_item', data: $data } --><!-- /ko -->
+        <!-- ko fastForEach: { data: SousGaranties } -->
+        <!-- g3 -->
+        <!-- ko template: { name: 'option_sub_item', data: $data } --><!-- /ko -->
+        <!-- ko fastForEach: { data: SousGaranties } -->
+        <!-- g4 -->
+        <!-- ko template: { name: 'option_sub_item', data: $data } --><!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+
+
+    <script id="option_master_item" type="text/html">
+        <div class="tree-line" data-bind="css: { levelVolet: !isBloc(), levelBloc: isBloc(), 'validation-error': hasValidationErrors }">
+            <div class="no-text">
+                <!-- ko if: IsChecked -->
+                <img class="click-it h9" data-bind="click: expandOrCollapse, attr: { src: imgExpandState }" />
+                <!-- /ko -->
+            </div>
+            <div class="no-text">
+                <input type="checkbox" data-bind="checked: IsChecked, enable: isCheckingEnabled" />
+            </div>
+            <div class="niveau">
+                <span data-bind="text: shortLabel"></span>
+            </div>
+            <div class="nature"></div>
+            <div class="label" data-bind="css: { 'pad-bloc': isBloc }">
+                <span data-bind="text: description"></span>
+                <img data-bind="attr: { src: imgAvt }" />
+                <div class="validation-error-message" data-bind="attr:{title: validationErrors().map(function(x){return x.Error}).join('\n')}"></div>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </script>
+
+    <script id="option_sub_item" type="text/html">
+        <div class="tree-line levelGarantie" data-bind="visible: isDisplayed, css:{ 'validation-error': hasValidationErrors, displayed: isDisplayed }">
+            <div class="caractere">
+                <span data-bind="text: Caractere.Code"></span>
+            </div>
+            <div class="no-text">
+                <!-- ko ifnot: isCheckingHidden -->
+                <input type="checkbox" data-bind="checked: isChecked, enable: isCheckingEnabled" />
+                <!-- /ko -->
+                <!-- ko if: isCheckingHidden() && IsChecked() -->
+                <img class="h16" data-bind="attr: { src: imgGarantieSortie, title: Caractere.Label }" />
+                <!-- /ko -->
+            </div>
+            <div class="niveau">
+                <span data-bind="text: Niveau, attr: { title: Niveau }"></span>
+            </div>
+            <div class="nature">
+                <!-- ko if: NatureModifiable -->
+                <!-- ko if: readonlyNature -->
+                <span data-bind="text: natureCode"></span>
+                <!-- /ko -->
+                <!-- ko ifnot: readonlyNature -->
+                <select class="liste-natures" data-bind="options: $component.ListeNatures, value: natureCode, valueAllowUnset: true, valueAllowUnset: true, optionsCaption: '', optionsValue: 'Code', optionsText: 'Code_Label', bindElement: 'value'"></select>
+                <!-- /ko -->
+                <!-- /ko -->
+            </div>
+            <div class="label" data-bind="attr: { title: checkingTitle, class: padTitleCss }">
+                <span data-bind="text: description"></span>
+                <span><img data-bind="attr: { src: imgAlertModifAvt }" /></span>
+                <!-- ko if: hasValidationErrors -->
+                <div class="validation-error-message" data-bind="attr: { title: validationErrorMessage }"></div>
+                <!-- /ko-->
+            </div>
+            <div class="no-text">
+                <!-- ko if: IsChecked -->
+                <img class="click-it h16" data-bind="attr: { src: imgUrlDetails }, click: editDetails" name="icoDetailGaran" alt="Détails" title="Détails" />
+                <!-- /ko -->
+            </div>
+            <div class="no-text">
+                <!-- ko if: allowInventory -->
+                <img class="click-it h16" data-bind="attr: { src: addInvertoryImg }, click: editInventory" />
+                <!-- /ko -->
+            </div>
+            <div class="no-text">
+                <!-- ko if: showImpact -->
+                <img class="click-it h16" data-bind="attr: { src: imgImpact }, click: editImpact" />
+                <!-- /ko -->
+            </div>
+        </div>
+    </script>
+</div>

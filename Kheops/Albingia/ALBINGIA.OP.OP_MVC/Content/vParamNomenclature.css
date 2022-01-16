@@ -1,0 +1,54 @@
+﻿
+#divDetailsBodyEmptyLine {
+    display: none;
+}
+
+.GroupHeightNomenclatureFixe
+{
+    height: 600px;
+}
+
+.WidthDivNomenclature
+{
+    width: 342px;
+}
+
+.WidthConsultNomenclature
+{
+    width: 830px;
+}
+
+.heightEntete{
+    height:50px;
+}
+
+.col_branche{
+    width:60px;
+}
+
+.col_cible{
+    width:60px;
+}
+
+.col_libelleNomenclature{
+    width:160px;
+}
+
+.col_Action{
+    width:25px;
+}
+
+.drlEnteteWidth{
+    width:110px;
+}
+
+.col_TableauDetails{
+    width:185px;
+}
+
+#divLstDetailsHeader label {
+    font-size: 12px;
+    padding-left: 5px;
+    padding-top: 2px;
+    width: 70px;
+}

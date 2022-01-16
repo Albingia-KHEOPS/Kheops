@@ -1,0 +1,319 @@
+﻿body {
+    .flex-table {
+
+        .flex-body.connexites {
+            & > div:nth-child(odd) {
+                background-color: #FFF;
+            }
+
+            & > div:nth-child(even) {
+                background-color: #EDEEFF;
+            }
+        }
+    }
+
+    .connexites-engagements {
+        display: inline-block;
+        min-width: 800px;
+        max-width: 1100px;
+        height: 360px;
+
+        .scroll-y {
+            overflow-y: auto;
+        }
+
+        .scroll-x {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .scroll-x-hidden {
+            overflow-x: hidden;
+        }
+
+        .left {
+            flex: none;
+            width: 600px;
+        }
+
+        .traites {
+            flex: none;
+            min-width: 110px;
+        }
+
+        .commands {
+            flex: none;
+            width: 88px;
+        }
+
+        .left, .traites {
+            span, .line div {
+                flex: 3;
+
+                &.flex-short {
+                    flex: 2;
+                }
+
+                &.flex-long {
+                    flex: 5;
+                }
+
+                &.flex-pretty-long {
+                    flex: 6;
+                }
+
+                &.flex-min {
+                    width: 100px;
+                }
+            }
+        }
+
+        .title {
+            height: 32px;
+            display: flex;
+            margin: 0 0 7px 0;
+            padding: 0;
+
+            h1, div {
+                line-height: 32px;
+                height: 32px;
+                padding-left: 2px;
+                margin: 0;
+            }
+
+            div.radios-inline {
+                margin-left: 20px;
+            }
+
+            h1:first-child {
+                font-weight: bold;
+                font-size: larger;
+            }
+        }
+
+        .header {
+            display: flex;
+            height: 32px;
+            line-height: 32px;
+            font-weight: bold;
+
+            .pdl3 {
+                padding: 0 3px;
+            }
+
+            .left, .traites, .commands {
+                display: flex;
+            }
+
+            .traites {
+                max-width: 270px;
+
+                .flex-min {
+                    flex: auto;
+                    min-width: 95px;
+                }
+            }
+
+            span {
+                text-align: center;
+                width: inherit;
+                height: 32px;
+                line-height: 32px;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#DDDDDD',GradientType=0);
+                background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #fff),color-stop(1, #ddd));
+                background-image: -moz-linear-gradient(top, #fff, #ddd);
+                background-image: linear-gradient(to bottom, #fff, #ddd);
+                /*-pie-background: linear-gradient(#EEFF99, #66EE33);*/
+                background-color: #eee;
+                border-left: 1px solid #fff;
+                border-right: 1px solid #fff;
+                box-sizing: border-box;
+
+                &.add-img-cell {
+                    background: url('../../Images/plusajouter1616.png') no-repeat center center, -webkit-gradient(linear,center top,center bottom,color-stop(0, #fff),color-stop(1, #ddd));
+                    background: url('../../Images/plusajouter1616.png') no-repeat center center, -moz-linear-gradient(top, #fff, #ddd);
+                    //background-attachment: fixed !important;
+                    /*-pie-background: linear-gradient(#EEFF99, #66EE33);*/
+                    background-image: url('../../Images/plusajouter1616.png'), linear-gradient(to bottom, #fff, #ddd);
+                    background-color: #eee;
+                    cursor: pointer;
+                    width: inherit;
+                    height: 32px;
+                    line-height: 32px;
+                    padding: 0;
+                }
+
+                &.auto-shorten {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+
+                &.masked {
+                    background: none;
+                }
+            }
+        }
+
+        .line {
+            height: 30px;
+        }
+
+        .lines {
+            margin: 0;
+            padding: 0;
+            max-height: 102px;
+            display: flex;
+            overflow-x: hidden;
+
+            .line {
+                display: flex;
+
+                div {
+                    line-height: 30px;
+
+                    &.center {
+                        text-align: center;
+                    }
+
+                    &.lpad {
+                        padding-left: 5px;
+                    }
+
+                    &.auto-shorten {
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+
+                    &.masked {
+                        background-color: #FFF;
+                    }
+                }
+
+                div, input {
+                    &.currency-align {
+                        text-align: right;
+                        padding: 0 3px;
+                        box-sizing: border-box;
+                    }
+                }
+            }
+
+            .traites {
+                height: fit-content;
+
+                .line {
+                    min-width: 100px;
+                    max-width: 270px;
+
+                    &.fx-bas > div {
+                        flex-basis: 110px;
+                    }
+                }
+
+                input {
+                    width: 90px;
+                }
+            }
+
+            .commands .line i {
+                height: inherit;
+            }
+
+            .left, .traites, .commands {
+                .line:nth-child(odd) {
+                    background-color: #FFF;
+
+                    & > * {
+                        background-color: #FFF;
+                    }
+                }
+
+                .line:nth-child(even) {
+                    background-color: #EDEEFF;
+
+                    & > * {
+                        background-color: #EDEEFF;
+
+                        &.masked {
+                            background-color: #FFF;
+                        }
+                    }
+                }
+            }
+        }
+
+        .scrollbar {
+            margin: 0;
+            padding: 0;
+            height: 20px;
+            display: flex;
+
+            .left, .traites, .commands {
+                display: flex;
+            }
+
+            .traites {
+                max-width: 270px;
+            }
+
+            .invisible {
+                visibility: hidden;
+                height: 0px;
+
+                input {
+                    width: 100px;
+                }
+            }
+            /*.line {
+                height: auto;
+                min-height: 0;
+                max-height: 30px;
+
+                .invisible {
+                    visibility: hidden;
+                    height: 0px;
+                }
+            }*/
+        }
+
+        .connexites {
+            .traites .line .flex-min {
+                flex: none;
+                min-width: 90px;
+                max-width: 95px;
+            }
+        }
+
+        .periodes {
+            .header {
+                .commands .empty {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                }
+            }
+
+            .lines {
+                min-height: 95px;
+
+                .commands {
+                    min-width: 78px;
+
+                    .line.img20 i {
+                        width: 16px;
+                        height: 32px;
+                        margin: 0 3px;
+                    }
+                }
+
+                .traites .line .flex-min {
+                    flex: none;
+                    min-width: 90px;
+                    max-width: 95px;
+                }
+            }
+        }
+    }
+}

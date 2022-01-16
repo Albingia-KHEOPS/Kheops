@@ -1,0 +1,94 @@
+﻿<services>
+  <!--<service behaviorConfiguration="OffreServiceBehavior" name="OPService">
+    <endpoint address="http://wspreproop/Screen" binding="wsHttpBinding" contract="IScreen" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>-->
+  <service behaviorConfiguration="OffreServiceBehavior" name="ConfirmationSaisieService">
+    <endpoint address="http://wspreproop/OPServiceCreationOffre/ConfirmationSaisie" binding="wsHttpBinding" bindingConfiguration="BasicHttpBinding_IConfirmationSaisie" contract="OPServiceContract.ISaisieCreationOffre.IConfirmationSaisie" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+    <!--<host>
+          <baseAddresses>
+            <add baseAddress="http://wspreproop/OPServiceCreationOffre/ConfirmationSaisie/" />
+          </baseAddresses>
+        </host>-->
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="CreationOffreService">
+    <endpoint address="http://wspreproop/OPServiceCreationOffre/CreationOffree" binding="wsHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.ICreationOffre" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="DoubleSaisieService">
+    <endpoint address="http://wspreproop/OPServiceCreationOffre/DoubleSaisie" binding="wsHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IDoubleSaisie" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="PolicesServicesService">
+    <endpoint address="http://wspreproop/OPServiceCreationOffre/PolicesServices" binding="wsHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IPoliceServices" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="RechercheSaisieService">
+    <endpoint address="http://wspreproop/OPServiceCreationOffre/RechercheSaisie" binding="wsHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.IRechercheSaisie" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="SaisieOffreService">
+    <endpoint address="http://wspreproop/OPServiceCreationOffre/SaisieOffre" binding="wsHttpBinding" contract="OPServiceContract.ISaisieCreationOffre.ISaisieOffre" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="RisquesGarantiesService">
+    <endpoint address="http://wspreproop/ClausesRisquesGaranties/RisquesGaranties" binding="wsHttpBinding" contract="OPServiceContract.IClausesRisquesGaranties.IRisquesGaranties" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="VoletBlocModeleService">
+    <endpoint address="http://wspreproop/BackOffice/Administration" binding="wsHttpBinding" contract="OPServiceContract.IAdministration.IVoletsBlocsCategories" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="TraitementFinOffre">
+    <endpoint address="http://wspreproop/TraitementsFinOffre/FinOffre" binding="wsHttpBinding" contract="OPServiceContract.ITraitementsFinOffre.IFinOffre" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="BackGestionClausesModeleService">
+    <endpoint address="net.tcp://wspreproop/BackOffice/GestionClauses" binding="netTcpBinding" contract="OPServiceContract.IAdministration.IGestionClauses" />
+    <endpoint address="mex"  binding="mexTcpBinding" contract="IMetadataExchange"  />
+  </service>
+
+  <service behaviorConfiguration="OffreServiceBehavior" name="ParametrageClauses">
+    <endpoint address="http://wspreproop/BackOffice/ParametrageClauses" binding="wsHttpBinding"
+              contract="OPServiceContract.IBOParametrage.IParametrageClauses" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="ExcelInfoSpecif">
+    <endpoint address="http://wspreproop/ExcelInfo/ExcelInfoSpecif" binding="wsHttpBinding"
+              contract="OPServiceContract.IExcelInfo.IExcelInfoSpecif" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="CommonOffre">
+    <endpoint address="http://wspreproop/CommonOffre/CommonOffre" binding="wsHttpBinding" contract="OPServiceContract.ICommon.ICommonOffre" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="TraitementAffNouv">
+    <endpoint address="http://wspreproop/TraitementAffNouv/AffaireNouvelle" binding="wsHttpBinding" contract="OPServiceContract.ITraitementAffNouv.IAffaireNouvelle" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="CommonAffNouv">
+    <endpoint address="http://wspreproop/TraitementAffNouv/CommonAffaireNouvelle" binding="wsHttpBinding" contract="OPServiceContract.ITraitementAffNouv.ICommonAffaireNouvelle" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>  <service behaviorConfiguration="OffreServiceBehavior" name="AdresseHexavia">
+    <endpoint address="http://wspreproop/Hexavia/AdresseHexavia" binding="basicHttpBinding" contract="OPServiceContract.IHexavia.IAdresseHexavia" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="InfoSpecifique">
+    <endpoint address="http://wspreproop/IS/InfoSpecif" binding="basicHttpBinding" contract="OPServiceContract.IS.IInfoSpecif" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+<service behaviorConfiguration="OffreServiceBehavior" name="ExcelInfo">
+    <endpoint address="http://wspreproop/ExcelInfo/ExcelInfo" binding="basicHttpBinding"
+              contract="OPServiceContract.OffreSimple.IOffreSimplifieExcel" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+  <service behaviorConfiguration="OffreServiceBehavior" name="Edithique">
+    <endpoint address="http://wspreproop/ExternalUse/Edithique" binding="basicHttpBinding"
+              contract="OPServiceContract.ExternalUse.IEdithique" />
+    <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+  </service>
+</services>

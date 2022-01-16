@@ -1,0 +1,29 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamCible.LigneBSC>
+<table id="tblBodyBSC" class="tableBodyBSC">
+    @foreach (var item in Model)
+    {             
+        <tr name="trReadOnly_@(item.GuidId)"  class="trReadOnly">
+            <!--Mode Affichage-->
+            <td class="col_TableauBSC"  name="selectableCol" id="colBranche_@(item.GuidId)_@(item.CodeBranche)_@(item.CodeSousBranche)_@(item.CodeCategorie)" title="@item.CodeBranche - @item.LibelleBranche">
+                @item.CodeBranche - @item.LibelleBranche
+            </td>
+            <td class="col_TableauBSC cell"  name="selectableCol" id="colSousBranche_@(item.GuidId)_@(item.CodeBranche)_@(item.CodeSousBranche)_@(item.CodeCategorie)" title="@item.CodeSousBranche - @item.LibelleSousBranche">
+                @item.CodeSousBranche - @item.LibelleSousBranche
+            </td>
+            <td class="col_TableauBSC"  name="selectableCol" id="colCategorie_@(item.GuidId)_@(item.CodeBranche)_@(item.CodeSousBranche)_@(item.CodeCategorie)" title="@item.CodeCategorie  - @item.LibelleCategorie">
+                @item.CodeCategorie  - @item.LibelleCategorie
+            </td>
+            <td class="col_Templates TxtLink CursorPointer" id="colTemplates_@(item.GuidId)_@(item.CodeBranche)_@(item.CodeSousBranche)_@(item.CodeCategorie)"
+                albTemplates="@(item.Templates)">
+                @(!string.IsNullOrEmpty(item.Templates) ? item.Templates : "Ajouter")
+            </td>
+            <td class="supprBranche col_SuuprimerBSC">
+                <img id="@("suppr_" + item.GuidId)" src="@Url.Content("/Content/Images/poubelle1616.png")" name="supprBranche" alt="Supprimer" title="Supprimer"/>
+            </td>
+        </tr> 
+        <!--Mode Edition-->
+        <tr name="trEdition_@(item.GuidId)" class="trEdition">
+        </tr>             
+    }
+</table>
+

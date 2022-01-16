@@ -1,0 +1,51 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.ModelesQuittances.Commission
+<div>
+    <table id="tblHeaderDetailsCommission" class="trHeight">
+        <tr>
+            <td class="col_titre_detailsCommission"></td>
+            <td class="tablePersoHead" style="width: 180px;">
+                <table style="width: 100%">
+                    <tr>
+                        <td colspan="2" style="width: 180px;">Commission
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Taux (%)
+                        </td>
+                        <td>Montant (€)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table id="tblBodyDetailsCommission" class="trHeight">
+        <tr>
+            <td class="col_titre_detailsCommission">Hors CATNAT
+            </td>
+            <td style="width: 90px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="pourcentdecimal">@(Model.TauxHRCatNatRetenu)</span>
+            </td>
+            <td style="width: 90px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="decimal">@(Model.MontantHRCatNatRetenu)</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col_titre_detailsCommission">CATNAT
+            </td>
+            <td style="width: 90px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="pourcentdecimal">@(Model.TauxCatNatRetenu)</span>
+            </td>
+            <td style="width: 90px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="decimal">@(Model.MontantCatNatRetenu)</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 210px; padding-left: 5px; font-weight: bold;" colspan="2">Total
+            </td>
+            <td style="width: 90px; padding: 0; text-align: right; padding-right: 5px;">
+                <span albmask="decimal">@(Model.MontantTotalRetenu)</span>
+            </td>
+        </tr>
+    </table>
+</div>

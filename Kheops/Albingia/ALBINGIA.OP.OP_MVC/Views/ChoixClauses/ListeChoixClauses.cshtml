@@ -1,0 +1,14 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesClauses.ModeleClause>    
+
+    <table class="trHeight" id="tblTableFichier">
+        @foreach (var item in Model)
+        {
+            Html.RenderPartial("LigneChoixClauses", item);
+        }
+    </table>
+
+
+
+
+
+

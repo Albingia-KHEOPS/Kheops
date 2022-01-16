@@ -1,0 +1,51 @@
+﻿<#@ template language="C#" hostspecific="True"#>
+<#@ Assembly Name="Microsoft.CSharp.dll" #>
+<#@ Assembly name="C:\work\Clients\Albingia\OutilsMetierVS2012\OutilsMetier - VS2012\Albingia\ALBINGIA.Framework.Common\bin\Debug\ALBINGIA.Framework.Common.dll" #>
+<#@ Import Namespace="ALBINGIA.Framework.Common.ExcelXmlMap" #>
+<#@ output extension=".cs" #>
+<#@include file="MultiFileHelper.ttinclude"#>
+<#
+    var manager = Manager.Create(Host, GenerationEnvironment);
+    var model= ALBINGIA.Framework.Common.ExcelXmlMap.CommonExcel.GetControlsFromXmlDtoIS("RS");
+    foreach(var c in model.InfosExcel)  
+{       
+        manager.StartNewFile(c.Name + ".cs"); 
+#>
+using System;
+using System.Data.Linq.Mapping;
+using System.Runtime.Serialization;
+namespace OP.WSAS400.DTO.ExcelDto.RS {
+//Class Dto générée 
+[KnownType(typeof(<#=c.Name #>))]
+[DataContract]
+public class <#=c.Name #> : BaseExcelObjets
+{
+<#
+       foreach(var p in c.LignesInfos)
+        {
+		if(p.Link){
+		   continue;}#>
+		
+	[DataMember]
+    [Column(Name = "<#=                    p.DbMapCol #>")]
+    public <#=                    p.Type #> <#=                    p.Lib #>  {get;set;}
+	
+	
+<#            
+}
+#>
+<#
+       foreach(var p in c.LignesInfos)
+        {
+		if(p.Link){
+		   continue;}#>
+	[DataMember]
+	public string Cells<#=                    p.Lib #> {get;set;}
+	
+<#            
+}
+#>
+}}<#
+ manager.EndBlock(); 
+ }#>
+<#manager.Process(true);#>

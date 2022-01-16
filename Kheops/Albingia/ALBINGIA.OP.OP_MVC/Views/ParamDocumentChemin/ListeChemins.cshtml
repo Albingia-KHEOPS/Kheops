@@ -1,0 +1,20 @@
+﻿@model List<ALBINGIA.OP.OP_MVC.Models.ModelesParamDocumentChemin.ModeleLigneDocumentChemin>
+<table id="tblCheminBody" class="trHeight">
+    @foreach (var item in Model)
+    {      
+        <tr id="@("tr¤" + @item.IdChemin)">
+            <td id="@("id¤" + item.IdChemin)" name="clickableCol" class="col_identifiant CursorPointer PaddingLeft3" title="@item.IdChemin">
+                @item.IdChemin
+            </td>
+            <td id="@("libelle¤" + item.IdChemin)"  name="clickableCol" class="col_designation CursorPointer PaddingLeft3" title="@item.LibelleChemin">
+                @item.LibelleChemin
+            </td>
+            <td id="@("chemin¤" + item.IdChemin)"  name="clickableCol" class="col_chemin CursorPointer PaddingLeft3" title="@item.Chemin">
+                @item.Chemin
+            </td>
+            <td class="col_Action" style="text-align:center">
+                <img id="@("supprChemin¤" + item.IdChemin)" src="@Url.Content("/Content/Images/poubelle1616.png")" alt="Supprimer" title="Supprimer" name="supprChemin" class="CursorPointer"/>
+            </td>
+        </tr>
+    }
+</table>

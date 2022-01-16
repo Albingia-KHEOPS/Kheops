@@ -1,0 +1,75 @@
+﻿@model ALBINGIA.OP.OP_MVC.Models.Regularisation.ModeleCreationRegularisation.ModeleGarantiesRegularisation
+@*<div class="nGradientSection FloatLeft dvInfoGarRegule">*@
+    @Html.Hidden("CodeAvtGar", (Model.CodeAvn))
+    @Html.Hidden("TypeAvtGar", (Model.TypeAvt))
+    @Html.Hidden("NbGarRegule", (Model.Garanties.Count))
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="display: block;">Période générale de régularisation du contrat</label>
+        </div>
+        <div class="FloatLeft PaddingLeft">
+            @Html.AlbDateFormat(m => m.DateDebGar, htmlAttributes: new { @id = "inDateDebGarRegule", @class = "inputDate readonly", @name = "inDateDebGarRegule", @disabled = "disabled" }, htmlName: "inDateDebGarRegule")
+        </div>
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="display: block;">au</label>
+        </div>
+        <div class="FloatLeft PaddingLeft">
+            @Html.AlbDateFormat(m => m.DateFinGar, htmlAttributes: new { @id = "inDateFinGarRegule", @class = "inputDate readonly", @name = "inDateFinGarRegule", @disabled = "disabled" }, htmlName: "inDateFinGarRegule")
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Risque</label>
+        </div>
+        <div class="FloatLeft">
+            @Html.Hidden("codeRsq", (Model.Risque.Code))
+            <input type="text" id="inRsqRegule" name="inRsqRegule" class="inRsqRegule readonly" value="@(Model.Risque.Code) - @(Model.Risque.Designation)" readonly="readonly" />
+        </div>
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="display: block;">du</label>
+        </div>
+        <div class="FloatLeft PaddingLeft">
+            @Html.AlbDateFormat(m => m.Risque.EntreeGarantie, htmlAttributes: new { @id = "inDateDebRsqRegule", @class = "inputDate readonly", @name = "inDateDebRsqRegule", @disabled = "disabled" }, htmlName: "inDateDebRsqRegule")
+        </div>
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="display: block;">au</label>
+        </div>
+        <div class="FloatLeft PaddingLeft">
+            @Html.AlbDateFormat(m => m.Risque.SortieGarantie, htmlAttributes: new { @id = "inDateFinRsqRegule", @class = "inputDate readonly", @name = "inDateFinRsqRegule", @disabled = "disabled" }, htmlName: "inDateFinRsqRegule")
+        </div>
+    </div>
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="AutoWidth" style="display: block;"><u>Liste des garanties régularisables sur le risque</u></label>
+        </div>
+    </div>
+    <div id="dvHeaderGarRegularisation" class="PaddingLeft">
+        <table id="tblHeaderGarRegularisation" class="trHeight">
+            <tr>
+                <th class="tablePersoHead thFormule">Formules</th>
+                <th class="tablePersoHead thGarantie">Garanties régularisables</th>
+                <th class="tablePersoHead thDates">Dates de la garantie</th>
+                <th class="tablePersoHead thTypeRegule">Type de régularisation</th>
+            </tr>
+        </table>
+    </div>
+    <div id="dvBodyGarRegularisation" class="dvBodyGarRegularisation PaddingLeft">
+        @Html.Partial("TabGarantiesRegularisation", Model.Garanties)
+    </div>
+@*</div>*@
+<div id="dvBodyApplique">
+</div>
+<div id="dvDetailGarantie" class="None">
+    <div class="overlay-background" style="z-index:5" >
+    </div>
+    <div style="padding: 10px; left: 277px; top: 43px; float: left; display: block; position: absolute; z-index: 6; background-color: rgb(255, 255, 255);">
+        <div id="dvBodyDetail">
+        </div>
+    </div>
+</div>
+
+<div id="divInfoPeriodGar" class="None">
+    <div class="overlay-background" style="z-index:13" >
+    </div>
+    <div id="divDataInfoPeriodGar" class="dvDataInfoPeriodGar"></div>
+</div>

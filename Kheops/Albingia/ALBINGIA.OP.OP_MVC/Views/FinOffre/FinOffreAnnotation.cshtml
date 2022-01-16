@@ -1,0 +1,31 @@
+﻿@AlbAddCssJsScripts.AlbAddCssToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "vFinOffre.css" }, "~/Content/")
+@AlbAddCssJsScripts.AlbAddJsToViews(new UrlHelper(ViewContext.RequestContext), new string[] { "albFinOffre.js" }, "~/Scripts/AlbingiaJS/")
+@model ALBINGIA.OP.OP_MVC.Models.ModelesFinOffre.ModeleFinOffreAnnotation
+
+    <div class="HeightRow">
+        <div class="FloatLeft">
+            <label class="Block">Observations</label>
+        </div>
+        <div id="zoneTxtArea" class="FloatLeft divTextArea NonReprisCP" albcontext="AnnotationFin">@Html.Raw(!string.IsNullOrEmpty(Model.AnnotationFin) ? Model.AnnotationFin.Replace("</p><p>", "<br/>").Replace("<p>", "").Replace("</p>", "") : string.Empty)</div>
+        <div id="txtAreaLnk" name="txtAreaLnk" class="FloatLeft CursorPointer" albcontext="AnnotationFin">
+            <img src="@Url.Content("/Content/Images/moreinfo.png")" width="22" height="22" />
+        </div>
+        <div id="txtArea" albcontext="AnnotationFin">
+            <div class="FloatLeft">
+                @if (Model.IsReadOnly)
+                {
+                    <div id="AnnotationFin" style="width: 385px; height: 50px; border: 1px solid #cdcdcd; color: #cdcdcd; background-color: white; overflow-y: auto;">@Html.Raw(Model.AnnotationFin)</div>
+                }
+                else
+                {
+                    <textarea id="AnnotationFin" name="AnnotationFin" class="" style="margin-bottom: 5px; width: 357px;" tabindex="6">@Model.AnnotationFin</textarea>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
